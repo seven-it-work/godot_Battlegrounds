@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://capdicyd0jsdy"]
+
+[ext_resource type="Script" uid="uid://cysp4e7y31elh" path="res://minion/beast/嗡鸣害虫/嗡鸣害虫.gd" id="1_wfg0g"]
+[ext_resource type="Script" uid="uid://dighdlib1vulv" path="res://minion/beast/嗡鸣害虫/dead.gd" id="2_6kb1i"]
+
+[node name="嗡鸣害虫" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_wfg0g")
+name_str = "嗡鸣害虫"
+atk = 1
+"亡语" = [NodePath("Dead")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_6kb1i")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

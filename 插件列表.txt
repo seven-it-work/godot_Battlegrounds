@@ -1,2 +1,2 @@
 https://github.com/bitwes/Gut
-https://github.com/binogure-studio/godot-uuid
+https://github.com/Yukitty/godot-addon-crypto_uuid_v4

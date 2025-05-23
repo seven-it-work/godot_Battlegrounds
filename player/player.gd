@@ -12,6 +12,9 @@ var 最大战场随从数量:int=7
 # 酒馆回合（非战斗中）
 @export var 战场中的牌:Array[BaseCard]=[]
 
+# 野兽额外攻击力（哼鸣蜂鸟专属）
+var beat_attack:int=0
+
 var 当前选中的随从:BaseCard
 
 # 是否战斗中
@@ -84,4 +87,13 @@ func minion_property_func(card:BaseCard,call:Callable,permanently:bool=false):
 			else:
 				var find_card=get_minion().get(index)
 				call.call(find_card)
+	pass
+
+func start_fight():
+	is_fight=true
+	战斗中的牌.clear()
+	for i in 战场中的牌:
+		战斗中的牌.append(i.duplicate(true))
+	for i in 战斗中的牌:
+		i.fight_start(self)
 	pass

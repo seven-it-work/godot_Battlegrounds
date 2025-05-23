@@ -42,6 +42,11 @@ func dead(player:Player):
 func add_card_in_bord_end(player:Player):
 	pass
 
+func fight_start(player:Player):
+	pass
+
+func fight_end(player:Player):
+	pass
 
 func uuid_eq(other:BaseCard)->bool:
 	return other.uuid==self.uuid

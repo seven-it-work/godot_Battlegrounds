@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://q15lwiw1ep3v"]
+
+[ext_resource type="Script" uid="uid://b2k4vm8tstnqh" path="res://minion/beast/哼鸣蜂鸟/哼鸣蜂鸟.gd" id="1_ej6kb"]
+
+[node name="哼鸣蜂鸟" type="Node2D"]
+script = ExtResource("1_ej6kb")
+name_str = "哼鸣蜂鸟"
+lv = 2
+atk = 1
+hp = 4
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
