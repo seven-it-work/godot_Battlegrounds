@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3wyvl514n2ah"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_1ylay"]
+
+[node name="ChuShou" type="Node2D"]
+script = ExtResource("1_1ylay")
+name_str = "触手"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
