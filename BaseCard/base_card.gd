@@ -9,6 +9,8 @@ var uuid:String=""
 @export var atk:int=0;
 ## 生命值
 @export var hp:int=1;
+## 描述
+@export var desc:String=""
 # 属性
 @export var 嘲讽:bool=false
 @export var 圣盾:bool=false
@@ -27,6 +29,9 @@ var uuid:String=""
 @export var 亡语:Array[Dead]=[]
 @export var 战吼:Array[Roar]=[]
 
+signal mouse_entered
+
+signal mouse_exited
 func _init() -> void:
 	self.uuid=UUID.v4()
 
@@ -50,3 +55,13 @@ func fight_end(player:Player):
 
 func uuid_eq(other:BaseCard)->bool:
 	return other.uuid==self.uuid
+
+func _ready() -> void:
+	pass
+
+#region 按下相关操作
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	pass # Replace with function body.
+
+#endregion

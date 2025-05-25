@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg511cbq5i1tp"]
+[gd_scene load_steps=5 format=3 uid="uid://cg511cbq5i1tp"]
 
 [ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_knqv1"]
+[ext_resource type="Texture2D" uid="uid://bd7wrioa8ug0y" path="res://asserts/test.png" id="2_kvdpu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjje8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kvdpu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knqv1"]
+size = Vector2(71, 94.5)
 
 [node name="BaseCard" type="Node2D"]
 script = ExtResource("1_knqv1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_vjje8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_knqv1")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

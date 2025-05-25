@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 
 func _on_gui_input(event: InputEvent) -> void:

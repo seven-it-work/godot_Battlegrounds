@@ -1,2 +1,4 @@
 https://github.com/bitwes/Gut
 https://github.com/Yukitty/godot-addon-crypto_uuid_v4
+炉石浏览器:
+https://hs.blizzard.cn/battlegrounds/?sort=tier%3Aasc&bgCardType=minion&minionType=beast
