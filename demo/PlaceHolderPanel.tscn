@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8cuue624nja"]
+
+[ext_resource type="Script" uid="uid://b33s0dvuq3tnj" path="res://demo/place_holder_panel.gd" id="1_mdmdr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdmdr"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.99808, 0.760276, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 0.972549, 0.929412, 1)
+
+[node name="PlaceHolderPanel" type="Panel"]
+custom_minimum_size = Vector2(10, 4)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -635.0
+offset_bottom = -644.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mdmdr")
+script = ExtResource("1_mdmdr")

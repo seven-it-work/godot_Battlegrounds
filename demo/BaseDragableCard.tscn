@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvd0f5nupunq1"]
+
+[ext_resource type="Script" uid="uid://dq0jxt5awqiry" path="res://demo/base_dragable_card.gd" id="1_gugdn"]
+
+[node name="BaseDragableCard" type="PanelContainer"]
+script = ExtResource("1_gugdn")

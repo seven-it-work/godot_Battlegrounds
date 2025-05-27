@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr3w1srvxktsy"]
+
+[ext_resource type="Script" uid="uid://dcj8e5q68ombs" path="res://demo/example/自定义卡牌.gd" id="1_w0tye"]
+[ext_resource type="Texture2D" uid="uid://bd7wrioa8ug0y" path="res://asserts/test.png" id="2_w0tye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0tye"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="自定义卡牌" type="PanelContainer"]
+offset_right = 404.0
+offset_bottom = 558.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w0tye")
+script = ExtResource("1_w0tye")
+metadata/_custom_type_script = "uid://dq0jxt5awqiry"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_w0tye")
+expand_mode = 3

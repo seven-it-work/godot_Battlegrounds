@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://krjo2scs8jyl"]
+
+[ext_resource type="Script" uid="uid://bnrwp6cyyqcon" path="res://demo/draggable_card_component.gd" id="1_we87m"]
+
+[node name="DraggableCardComponent" type="HBoxContainer"]
+script = ExtResource("1_we87m")

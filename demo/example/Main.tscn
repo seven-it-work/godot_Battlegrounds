@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuxr34apq5d86"]
+
+[ext_resource type="Script" uid="uid://bq5664rbfkm8g" path="res://demo/example/main.gd" id="1_oapen"]
+[ext_resource type="PackedScene" uid="uid://krjo2scs8jyl" path="res://demo/DraggableCardComponent.tscn" id="2_yr78l"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oapen")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 189.0
+
+[node name="DraggableCardComponent" parent="PanelContainer" instance=ExtResource("2_yr78l")]
+layout_mode = 2
+place_holder_min_size = Vector2(4, 50)
