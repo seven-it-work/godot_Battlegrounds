@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv2b8dmpsmbau"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_35qix"]
+[ext_resource type="Script" uid="uid://suu0n5dnpkal" path="res://minion/beast/机械木马/dead小马.gd" id="2_pj3pp"]
+
+[node name="机械小马" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_35qix")
+"亡语" = [NodePath("Dead")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_pj3pp")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccubfqusy04hi"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_yqchx"]
+
+[node name="雏鹅" type="Node2D"]
+script = ExtResource("1_yqchx")
+name_str = "雏鹅"
+atk = 1
+"嘲讽" = true
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

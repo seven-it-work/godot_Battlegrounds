@@ -1,6 +1,33 @@
 extends Node2D
 class_name BaseCard
 
+enum RaceEnum{
+	## 没有类型
+	NONE,
+	## 野兽
+	BEAST,
+	## 恶魔
+	DEMON,
+	## 龙
+	DRAGON,
+	## 元素
+	ELEMENTAL,
+	## 机械
+	MECH,
+	## 鱼人
+	MURLOC,
+	## 纳迦
+	NAGA,
+	## 海盗
+	PIRATE,
+	## 野猪
+	QUILBOAR,
+	## 亡灵
+	UNDEAD,
+	## 全部
+	ALL,
+}
+
 var uuid:String=""
 @export var name_str:String=""
 # 等级
@@ -17,6 +44,9 @@ var uuid:String=""
 @export var 复生:bool=false
 @export var 剧毒:bool=false
 @export var 风怒:bool=false
+
+# 种族
+@export var race:Array[RaceEnum]=[RaceEnum.NONE]
 # 特殊属性
 @export var 超级风怒:bool=false
 @export var 烈毒:bool=false
@@ -28,12 +58,33 @@ var uuid:String=""
 
 @export var 亡语:Array[Dead]=[]
 @export var 战吼:Array[Roar]=[]
+@export var 抉择:ToChoose
 
 signal mouse_entered
 
 signal mouse_exited
 func _init() -> void:
 	self.uuid=UUID.v4()
+
+## 攻击力计算
+func add_atk(trigger:BaseCard,num:int,player:Player):
+	atk+=num
+	pass
+
+## 生命值计算
+# source_card 触发卡片
+# num 生命值（>0 加血）
+func add_hp(trigger:BaseCard,num:int,player:Player):
+	if num==0:
+		return
+	if num>=0:
+		# 加生命值
+		hp+=num
+	if num<=0:
+		# 受伤了，减去生命值
+		hp-=num
+		player.card受伤监听器(self,trigger,num)
+
 
 # 随从死亡时
 func dead(player:Player):
@@ -44,6 +95,8 @@ func dead(player:Player):
 	pass
 	
 ## add_card_in_bord执行完后调用
+## 一般是绑定player的信号
+## 信号如下：召唤信息、card等受伤信号
 func add_card_in_bord_end(player:Player):
 	pass
 
@@ -64,4 +117,13 @@ func _ready() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	pass # Replace with function body.
 
+#endregion
+
+#region 功能方法
+
+# 复制
+func copy()->BaseCard:
+	var d=self.duplicate()
+	d.uuid=self.uuid
+	return d
 #endregion

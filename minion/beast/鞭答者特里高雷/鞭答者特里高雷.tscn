@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://wapjkahch28c"]
+
+[ext_resource type="PackedScene" uid="uid://bbqgrg7u3tpa0" path="res://minion/beast/BeastCard.tscn" id="1_4fycj"]
+[ext_resource type="Script" uid="uid://5hkarb81jyin" path="res://minion/beast/鞭答者特里高雷/鞭答者特里高雷.gd" id="2_kfqy3"]
+
+[node name="鞭答者特里高雷" instance=ExtResource("1_4fycj")]
+script = ExtResource("2_kfqy3")
+name_str = "鞭答者特里高雷"
+lv = 4
+atk = 5
+hp = 3

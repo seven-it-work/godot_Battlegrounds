@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbqgrg7u3tpa0"]
+
+[ext_resource type="Script" uid="uid://dkyxu17pu6rrt" path="res://minion/beast/beast_card.gd" id="1_am82h"]
+
+[node name="Beast" type="Node2D"]
+script = ExtResource("1_am82h")
+race = Array[int]([1])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
