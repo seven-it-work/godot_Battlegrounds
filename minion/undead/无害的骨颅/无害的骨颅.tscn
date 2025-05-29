@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hc7yg3cfwet3"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_vtweh"]
+[ext_resource type="Script" uid="uid://dyarit0mi64cg" path="res://minion/undead/无害的骨颅/dead.gd" id="2_bau01"]
+
+[node name="无害的骨颅" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_vtweh")
+name_str = "无害的骨颅"
+atk = 1
+desc = "亡语：召唤两个1\\/1的骷髅。"
+gold_desc = "亡语：召唤四个1\\/1的骷髅。"
+race = Array[int]([10])
+"亡语" = [NodePath("Dead")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_bau01")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

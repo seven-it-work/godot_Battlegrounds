@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cowk6qpra4o4d"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_2wudc"]
+
+[node name="骷髅" type="Node2D"]
+script = ExtResource("1_2wudc")
+name_str = "骷髅"
+atk = 1
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

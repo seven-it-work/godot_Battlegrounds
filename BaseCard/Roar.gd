@@ -2,5 +2,5 @@
 extends Node
 class_name Roar
 
-func do_action(triggere:BaseCard,player:Player):
+func 战吼(触发者:BaseCard,player:Player,目标对象:BaseCard):
 	pass

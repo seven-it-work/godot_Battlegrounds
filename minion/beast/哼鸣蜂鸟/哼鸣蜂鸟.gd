@@ -1,10 +1,10 @@
 extends BaseCard
 
-func fight_start(player:Player):
-	super.fight_start(player)
+func 触发器_战斗开始时(player:Player):
+	super.触发器_战斗开始时(player)
 	player.beat_attack+=1
 
-func fight_end(player:Player):
-	super.fight_start(player)
+func 触发器_战斗结束后(player:Player):
+	super.触发器_战斗结束后(player)
 	player.beat_attack-=1
 	

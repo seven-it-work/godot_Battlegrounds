@@ -1,28 +1,68 @@
 extends Node
 class_name Player
 
-signal summoned(card:BaseCard,player:Player)
-signal 受伤触发信号(受伤card:BaseCard,攻击card:BaseCard,num:int,player:Player)
-
 var 最大手牌数量:int=10
 var 最大战场随从数量:int=7
-
+## 血量
+@export var hp:int=30;
+## 护甲
+@export var armor:int=0; 
 @export var 手牌:Array[BaseCard]=[]
 # 战斗中
 @export var 战斗中的牌:Array[BaseCard]=[]
 # 酒馆回合（非战斗中）
 @export var 战场中的牌:Array[BaseCard]=[]
+## 回合开始时回调的方法
+var 回合开始时回调的方法:Array[Callable]=[]
 
 # 野兽额外攻击力（哼鸣蜂鸟专属）
 var beat_attack:int=0
+# 甲虫加成(hp,atk)
+var 甲虫:Vector2=Vector2(2,2)
+# 元素加成(hp,atk)
+var 元素加成:Vector2=Vector2(0,0)
+# 酒馆元素加成
+var 酒馆元素加成:Vector2=Vector2(0,0)
+# 下一次酒馆法术花费减少
+var 下一次酒馆法术花费减少:int=0
 
 var 当前选中的随从:BaseCard
 
 # 是否战斗中
 var is_fight:bool=false
 
+## 酒馆信息
+var tavern:Tavern=preload("uid://cwx44t5ob0se1").instantiate()
+
+# 受伤伤害计算
+func player_hp_add(num:int):
+	if num>0:
+		hp+=num
+	else:
+		var temp=num
+		for i in self.get_minion():
+			temp=i.触发器_玩家受伤(num)
+			pass
+		if temp>=0:
+			return
+		if armor>=-temp:
+			armor+=temp
+		else:
+			hp+=(temp+armor)
+
+
 # 从手牌中使用
-func user_card():
+func user_card(card:BaseCard,targetCard:BaseCard=null):
+	if card.cardType==BaseCard.CardTypeEnum.MINION:
+		if get_minion().size()>=最大战场随从数量:
+			print("放不下了")
+			return
+		add_card_in_bord(card)
+		# 战吼触发
+		card.触发器_战吼(self,targetCard)
+	for i in get_minion():
+		if i.uuid!=card.uuid:
+			i.触发器_使用其他卡牌(card,self,null)
 	pass
 	
 # 从酒馆中购买
@@ -30,7 +70,10 @@ func buy_card():
 	pass
 
 # 卡片添加到手牌中
-func add_card_in_handler():
+func add_card_in_handler(card:BaseCard):
+	if 手牌.size()>=最大手牌数量:
+		return
+	手牌.append(card)
 	pass
 
 # 随从添加（分为战斗中和非战斗中）
@@ -39,11 +82,14 @@ func add_card_in_bord(card:BaseCard):
 	if get_minion().size()>=最大战场随从数量:
 		print("放不下了")
 		return
+	if beat_attack>0:
+		if card.race.has(BaseCard.RaceEnum.BEAST):
+			card.属性加成.append(AttributeBonus.create("哼鸣蜂鸟专属",beat_attack,0,"哼鸣蜂鸟专属"))
 	# 如果这里需要选择右方
 	get_minion().append(card)
-	summoned.emit(card,self)
-	# 绑定方法
-	card.add_card_in_bord_end(self)
+	for i in get_minion():
+		if i.uuid!=card.uuid:
+			i.触发器_召唤他人(card,self)
 	pass
 
 # 随从移除
@@ -100,13 +146,9 @@ func start_fight():
 		var copy=i.copy()
 		战斗中的牌.append(copy)
 	for i in 战斗中的牌:
-		i.fight_start(self)
+		i.触发器_战斗开始时(self)
 	pass
 
-# 用于触发受伤效果
-func card受伤监听器(受伤card:BaseCard,攻击card:BaseCard,num:int):
-	受伤触发信号.emit(受伤card,攻击card,num,self)
-	pass
 
 func do_fight(target:Player):
 	# 1、判断先手，谁的随从多谁先手

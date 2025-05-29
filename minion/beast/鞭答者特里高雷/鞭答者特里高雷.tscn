@@ -9,3 +9,6 @@ name_str = "鞭答者特里高雷"
 lv = 4
 atk = 5
 hp = 3
+desc = ""
+gold_desc = ""
+race = Array[int]([1])

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://djmnmdk5a7lnc"]
+
+[ext_resource type="Script" uid="uid://dw3a65s2476bl" path="res://minion/mech/催眠机器人/催眠机器人.gd" id="1_ilabm"]
+
+[node name="催眠机器人" type="Node2D"]
+script = ExtResource("1_ilabm")
+name_str = "催眠机器人"
+atk = 2
+hp = 2
+desc = "磁力\\n在你的回合结束时，获得+1生命值。"
+gold_desc = "磁力\\n在你的回合结束时，获得+1生命值。"
+"磁力" = true
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

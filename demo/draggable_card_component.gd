@@ -15,6 +15,14 @@ var _drag_offset := Vector2.ZERO
 var _previous_index :int
 var _shadow_panel:Panel
 
+var 准备购买的卡片:BaseDragableCard
+
+# 拖拽在外边的信号
+signal draged_out(draged_card:BaseDragableCard)
+
+func 准备购买(card:BaseDragableCard):
+	准备购买的卡片=card
+
 func _ready():
 	clear_cards()
 		
@@ -24,7 +32,10 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if not event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-			_stop_drag()
+			if 准备购买的卡片:
+				print("购买")
+			else:
+				_stop_drag()
 
 ## Interface
 func clear_cards():
@@ -77,10 +88,12 @@ func _auto_change_place_holder_size():
 	if not _draged_card:
 		return 
 	var mp = get_global_mouse_position()
-	if mp.y<100:
+	if mp.y>get_rect().size.y+get_rect().position.y:
+		draged_out.emit(_draged_card)
 		return
-#	todo 这里完善，如果鼠标不是在一定范围，则不进行拖拽释放
-	print(mp,get_rect())
+	if mp.y<get_rect().size.y+get_rect().position.y-_draged_card.size.y:
+		draged_out.emit(_draged_card)
+		return
 	var height = _draged_card.size.x*0.5
 	for holder:PlaceHolderPanel in _get_place_holders():
 		var rect = holder.get_global_rect()

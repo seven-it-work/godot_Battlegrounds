@@ -7,14 +7,17 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="自定义卡牌" type="PanelContainer"]
-offset_right = 404.0
-offset_bottom = 558.0
-scale = Vector2(0.1, 0.1)
+custom_minimum_size = Vector2(80, 100)
+offset_right = 80.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_w0tye")
 script = ExtResource("1_w0tye")
 metadata/_custom_type_script = "uid://dq0jxt5awqiry"
 
 [node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 texture = ExtResource("2_w0tye")
-expand_mode = 3
+expand_mode = 1

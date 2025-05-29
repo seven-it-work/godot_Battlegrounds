@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cesqcem0t671r"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_0unx3"]
+[ext_resource type="Script" uid="uid://bvhvgc6hv1qos" path="res://minion/quilboar/剃刀沼泽地卜师/roar.gd" id="2_ro20l"]
+
+[node name="剃刀沼泽地卜师" type="Node2D" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_0unx3")
+name_str = "剃刀沼泽地卜师"
+atk = 3
+desc = "战吼：获取一张鲜血宝石。"
+gold_desc = "战吼：获取2张鲜血宝石。"
+race = Array[int]([9])
+"战吼" = [NodePath("Roar")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_ro20l")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

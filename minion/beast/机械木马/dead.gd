@@ -1,7 +1,7 @@
 extends Dead
 
 
-func do_action(trigger:BaseCard,player:Player):
+func 亡语(攻击者:BaseCard,亡语者:BaseCard,player:Player):
 	for i in 2:
 		var data=preload("uid://dv2b8dmpsmbau").instantiate()
 		data.hp=2;

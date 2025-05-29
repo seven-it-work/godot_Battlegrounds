@@ -8,7 +8,7 @@ func test_亡语():
 	player.add_card_in_bord(d)
 	
 	player.add_card_in_bord(data)
-	d.dead(player)
+	d._dead(player)
 	
 	assert_eq(8+4,data.chu_shou_atk)
 	pass

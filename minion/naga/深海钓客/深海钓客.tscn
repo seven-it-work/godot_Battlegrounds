@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgn7xcrfqcjqj"]
+
+[ext_resource type="Script" uid="uid://di7oonqwubpxq" path="res://minion/naga/深海钓客/深海钓客.gd" id="1_3lwev"]
+
+[node name="深海钓客" type="Node2D"]
+script = ExtResource("1_3lwev")
+name_str = "深海钓客"
+atk = 2
+hp = 2
+desc = "塑造法术：直到下个回合，使一个随从获得+2生命值和嘲讽。"
+gold_desc = "塑造法术：直到下个回合，使一个随从获得+4生命值和嘲讽。"
+race = Array[int]([7])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

@@ -6,4 +6,7 @@
 script = ExtResource("1_be8u4")
 name_str = "机械马驹"
 atk = 1
+desc = ""
+gold_desc = ""
+race = Array[int]([1, 5])
 metadata/_custom_type_script = "uid://ctokvpt74qotl"

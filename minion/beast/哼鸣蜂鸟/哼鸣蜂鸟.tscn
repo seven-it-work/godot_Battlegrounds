@@ -8,4 +8,5 @@ name_str = "哼鸣蜂鸟"
 lv = 2
 atk = 1
 hp = 4
+desc = "战斗开始时：</b>在本场战斗的剩余时间内，你的野兽拥有+1攻击力。"
 metadata/_custom_type_script = "uid://ctokvpt74qotl"

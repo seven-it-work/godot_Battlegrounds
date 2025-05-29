@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dey50bwyvldqh"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_uqerx"]
+[ext_resource type="Script" uid="uid://gsy3667nb2qe" path="res://minion/pirate/南海卖艺者/roar.gd" id="2_u05ab"]
+
+[node name="南海卖艺者" type="Node2D" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_uqerx")
+name_str = "南海卖艺者"
+atk = 3
+desc = "战吼：下回合获得1枚铸币。"
+gold_desc = "战吼：下回合获得2枚铸币。"
+"战吼" = [NodePath("Roar")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_u05ab")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

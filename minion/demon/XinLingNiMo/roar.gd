@@ -1,6 +1,6 @@
 extends Roar
 
-func do_action(trigger:BaseCard,player:Player):
+func 战吼(触发者:BaseCard,player:Player,目标对象:BaseCard):
 	if player.is_fight:
 		# 战斗中触发不了
 		return

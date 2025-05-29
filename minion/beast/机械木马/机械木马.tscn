@@ -10,6 +10,9 @@ lv = 4
 atk = 4
 hp = 4
 "亡语" = [NodePath("Dead")]
+desc = ""
+gold_desc = ""
+race = Array[int]([1, 5])
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Dead" type="Node" parent="."]

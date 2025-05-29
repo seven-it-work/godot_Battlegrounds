@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bfqddlxorrm"]
+
+[ext_resource type="Script" uid="uid://d34plmhr1p5jm" path="res://minion/dragon/瞌睡雏龙/瞌睡雏龙.gd" id="1_mdobe"]
+
+[node name="瞌睡雏龙" type="Node2D"]
+script = ExtResource("1_mdobe")
+name_str = "瞌睡雏龙"
+hp = 4
+desc = "嘲讽。每当本随从受到攻击时，永久获得+1攻击力。"
+gold_desc = "嘲讽。每当本随从受到攻击时，永久获得+2攻击力。"
+"嘲讽" = true
+race = Array[int]([3])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

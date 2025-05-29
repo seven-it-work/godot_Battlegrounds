@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnfwkik4dy357"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_ocos6"]
+
+[node name="复活的骑兵" type="Node2D"]
+script = ExtResource("1_ocos6")
+name_str = "复活的骑兵"
+atk = 2
+desc = "嘲讽，复生"
+gold_desc = "嘲讽，复生"
+"嘲讽" = true
+"复生" = true
+race = Array[int]([10])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

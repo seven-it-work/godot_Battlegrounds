@@ -5,6 +5,8 @@
 
 [node name="机械小马" type="Node2D" node_paths=PackedStringArray("亡语")]
 script = ExtResource("1_35qix")
+name_str = "机械马驹"
+race = Array[int]([1, 5])
 "亡语" = [NodePath("Dead")]
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
