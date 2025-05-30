@@ -3,3 +3,6 @@ https://github.com/Yukitty/godot-addon-crypto_uuid_v4
 炉石浏览器:
 https://hs.blizzard.cn/battlegrounds/?sort=tier%3Aasc&bgCardType=minion&minionType=beast
 https://battlegrounds.gamerhub.cn/cards
+
+拖拽案例：
+https://github.com/SesinIvan/smart-drag-and-drop-cards

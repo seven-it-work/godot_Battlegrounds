@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhy4wb5l24kap"]
+
+[ext_resource type="Script" uid="uid://ccejthtpuer2f" path="res://minion/murloc/好斗的斥候/好斗的斥候.gd" id="1_y8h86"]
+
+[node name="好斗的斥候" type="Node2D"]
+script = ExtResource("1_y8h86")
+name_str = "好斗的斥候"
+atk = 3
+hp = 3
+desc = "<b>战斗开始时：<\\/b>如果本随从在你的手牌中，召唤一个它的复制。"
+gold_desc = "<b>战斗开始时：<\\/b>如果本随从在你的手牌中，召唤一个它的具有双倍属性值的复制。"
+race = Array[int]([6])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

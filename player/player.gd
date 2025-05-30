@@ -17,11 +17,11 @@ var 回合开始时回调的方法:Array[Callable]=[]
 
 # 野兽额外攻击力（哼鸣蜂鸟专属）
 var beat_attack:int=0
-# 甲虫加成(hp,atk)
+# 甲虫加成(atk,hp)
 var 甲虫:Vector2=Vector2(2,2)
-# 元素加成(hp,atk)
+# 元素加成(atk,hp)
 var 元素加成:Vector2=Vector2(0,0)
-# 酒馆元素加成
+# 酒馆元素加成(atk,hp)
 var 酒馆元素加成:Vector2=Vector2(0,0)
 # 下一次酒馆法术花费减少
 var 下一次酒馆法术花费减少:int=0
@@ -85,6 +85,7 @@ func add_card_in_bord(card:BaseCard):
 	if beat_attack>0:
 		if card.race.has(BaseCard.RaceEnum.BEAST):
 			card.属性加成.append(AttributeBonus.create("哼鸣蜂鸟专属",beat_attack,0,"哼鸣蜂鸟专属"))
+	card.触发器_召唤(self)
 	# 如果这里需要选择右方
 	get_minion().append(card)
 	for i in get_minion():
@@ -147,6 +148,8 @@ func start_fight():
 		战斗中的牌.append(copy)
 	for i in 战斗中的牌:
 		i.触发器_战斗开始时(self)
+	for i in 手牌:
+		i.手牌触发器_战斗开始时(self)
 	pass
 
 

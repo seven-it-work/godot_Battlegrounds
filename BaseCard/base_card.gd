@@ -81,6 +81,9 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 
 var 属性加成:Array[AttributeBonus]=[]
 
+# 出售金额
+var sell_coins:int=1
+
 ## 获取攻击力（包含加成属性）
 func atk_bonus()->int:
 	var result=atk;
@@ -104,6 +107,8 @@ func add_atk(trigger:BaseCard,num:int,player:Player):
 	temp.atk=num
 	属性加成.append(temp)
 	atk+=num
+	if num>0:
+		触发器_获得攻击力(trigger,num,player)
 	pass
 
 ## 生命值计算
@@ -117,6 +122,7 @@ func add_hp(trigger:BaseCard,num:int,player:Player):
 		var temp=trigger.get_AttributeBonus()
 		temp.hp=num
 		属性加成.append(temp)
+		触发器_获得生命值(trigger,num,player)
 	if num<=0:
 		# 受伤了，减去生命值
 		hp-=num
@@ -130,6 +136,18 @@ func get_AttributeBonus():
 	return AttributeBonus.create(self.name_str,0,0,self.name_str)
 
 #region 触发器
+func 触发器_获得生命值(触发者:BaseCard,num:int,player:Player):
+	pass
+	
+func 触发器_获得攻击力(触发者:BaseCard,num:int,player:Player):
+	pass
+	
+func 触发器_他人获得攻击力(获得者:BaseCard,num:int,player:Player):
+	pass
+
+func 手牌触发器_战斗开始时(player:Player):
+	pass
+
 func 触发器_回合结束时(player:Player):
 	pass
 
@@ -172,6 +190,9 @@ func 触发器_战吼(player:Player,targetCard:BaseCard=null):
 	pass
 
 func 触发器_召唤他人(召唤card:BaseCard,player:Player):
+	pass
+
+func 触发器_召唤(player:Player):
 	pass
 
 func 触发器_他人受伤(atkker:BaseCard,injurie_card:BaseCard,num:int,player:Player):

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqdrvaaepukqb"]
+
+[ext_resource type="Script" uid="uid://cpcs23keywf1t" path="res://minion/elemental/商贩元素/商贩元素.gd" id="1_py3ot"]
+
+[node name="商贩元素" type="Node2D"]
+script = ExtResource("1_py3ot")
+name_str = "商贩元素"
+lv = 2
+atk = 3
+hp = 3
+desc = "当你出售\\n本随从时，获取一张3\\/3的元素牌。"
+gold_desc = "当你出售\\n本随从时，获取两张3\\/3的元素牌。"
+race = Array[int]([4])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
