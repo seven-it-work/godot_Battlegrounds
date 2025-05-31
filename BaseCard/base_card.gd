@@ -40,12 +40,16 @@ enum RaceEnum{
 
 var uuid:String=""
 @export var name_str:String=""
+@export var show_name_str:bool=true
 # 等级
 @export var lv:int=1
+@export var show_lv:bool=true
 ## 攻击力
 @export var atk:int=0;
+@export var show_atk:bool=true
 ## 生命值
 @export var hp:int=1;
+@export var show_hp:bool=true
 ## 描述
 @export var desc:String=""
 @export var gold_desc:String=""
