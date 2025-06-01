@@ -69,6 +69,7 @@ vertical_alignment = 1
 [node name="lv" type="PanelContainer" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 1.0
 offset_top = 2.0
 offset_right = 41.0

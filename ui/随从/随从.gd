@@ -15,6 +15,7 @@ var 位置:PositionEnum
 signal select
 
 func initData(card:BaseCard):
+	self.card=card
 	if card.show_name_str:
 		$Node/name_str/Label.text=card.name_str;
 		$Node/name_str.show()

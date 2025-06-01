@@ -34,6 +34,64 @@ var is_fight:bool=false
 ## 酒馆信息
 var tavern:Tavern=preload("uid://cwx44t5ob0se1").instantiate()
 
+# 酒馆的牌变化
+var 酒馆的牌变化:bool=false
+# 战场的牌变化
+var 战场的牌变化:bool=false
+# 手牌的牌变化
+var 手牌的牌变化:bool=false
+
+#region ui操作的方法
+func buy_card(card:BaseCard):
+	# 基础判断
+	# 扣除数据（血量，金币）
+	# 酒馆移除
+	var index=tavern.buy_card(card)
+	酒馆的牌变化=true
+	# 加入手牌
+	add_card_in_handler(card)
+	手牌的牌变化=true
+	pass
+
+# 从手牌中使用
+func user_card(card:BaseCard,targetCard:BaseCard=null):
+	# 条件判断
+	
+	# 从手牌中去除
+	var index = _find_minion_index(手牌,card)
+	if index<0:
+		printerr("手牌中没有找到")
+	手牌.remove_at(index)
+	手牌的牌变化=true
+	# 添加到战场
+	add_card_in_bord(card)
+	战场的牌变化=true
+	
+	
+	#if card.cardType==BaseCard.CardTypeEnum.MINION:
+		#if get_minion().size()>=最大战场随从数量:
+			#print("放不下了")
+			#return
+		#add_card_in_bord(card)
+		## 战吼触发
+		#card.触发器_战吼(self,targetCard)
+	#for i in get_minion():
+		#if i.uuid!=card.uuid:
+			#i.触发器_使用其他卡牌(card,self,null)
+	pass
+
+func sell_card(card:BaseCard):
+	var index=_find_minion_index(战场中的牌,card)
+	if index<0:
+		printerr("查询不到，无法出售")
+		return
+	# 移除
+	战场中的牌.remove_at(index)
+	战场的牌变化=true
+	# 金币获得
+	tavern.current_coin+=card.sell_coins
+#endregion
+
 # 受伤伤害计算
 func player_hp_add(num:int):
 	if num>0:
@@ -51,23 +109,6 @@ func player_hp_add(num:int):
 			hp+=(temp+armor)
 
 
-# 从手牌中使用
-func user_card(card:BaseCard,targetCard:BaseCard=null):
-	if card.cardType==BaseCard.CardTypeEnum.MINION:
-		if get_minion().size()>=最大战场随从数量:
-			print("放不下了")
-			return
-		add_card_in_bord(card)
-		# 战吼触发
-		card.触发器_战吼(self,targetCard)
-	for i in get_minion():
-		if i.uuid!=card.uuid:
-			i.触发器_使用其他卡牌(card,self,null)
-	pass
-	
-# 从酒馆中购买
-func buy_card():
-	pass
 
 # 卡片添加到手牌中
 func add_card_in_handler(card:BaseCard):

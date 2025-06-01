@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vff52s2nhxjo"]
+[gd_scene load_steps=8 format=3 uid="uid://vff52s2nhxjo"]
 
 [ext_resource type="Script" uid="uid://xi11pra1l8wb" path="res://ui/main.gd" id="1_3ydky"]
 [ext_resource type="PackedScene" uid="uid://dl0ad8ft57aqx" path="res://ui/随从/随从.tscn" id="1_r4ypb"]
+[ext_resource type="PackedScene" uid="uid://qfp68ky6ai62" path="res://ui/提示信息/手牌提示信息.tscn" id="3_r4ypb"]
+[ext_resource type="PackedScene" uid="uid://1f6hxwdkydct" path="res://ui/提示信息/酒馆提示信息.tscn" id="3_t2vec"]
+[ext_resource type="PackedScene" uid="uid://02fcldhmpil7" path="res://ui/提示信息/战场提示信息.tscn" id="4_sx1v2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32dmw"]
 content_margin_left = 5.0
@@ -62,30 +65,30 @@ layout_mode = 2
 layout_mode = 2
 text = "随从"
 
-[node name="随从" type="HBoxContainer" parent="PanelContainer/HBoxContainer/core"]
+[node name="战场" type="HBoxContainer" parent="PanelContainer/HBoxContainer/core"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="PanelContainer8" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer8" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
-[node name="PanelContainer9" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer9" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
-[node name="PanelContainer10" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer10" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
-[node name="PanelContainer11" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer11" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
-[node name="PanelContainer12" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer12" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
-[node name="PanelContainer13" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer13" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
-[node name="PanelContainer14" parent="PanelContainer/HBoxContainer/core/随从" instance=ExtResource("1_r4ypb")]
+[node name="PanelContainer14" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="PanelContainer/HBoxContainer/core"]
@@ -150,121 +153,15 @@ size_flags_vertical = 3
 [node name="提示信息" type="PanelContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="酒馆提示信息" type="VBoxContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息"]
+[node name="酒馆提示信息" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息" instance=ExtResource("3_t2vec")]
+layout_mode = 2
+
+[node name="战场提示信息" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息" instance=ExtResource("4_sx1v2")]
+layout_mode = 2
+
+[node name="手牌提示信息" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息" instance=ExtResource("3_r4ypb")]
 visible = false
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息"]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "战吼：
-测试"
-
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息"]
-layout_mode = 2
-columns = 2
-
-[node name="lv" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "等级：1"
-
-[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "购买"
-
-[node name="atk" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "攻击：1"
-
-[node name="hp" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "攻击：1"
-
-[node name="战场提示信息" type="VBoxContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息"]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "战吼：
-测试"
-
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息"]
-layout_mode = 2
-columns = 2
-
-[node name="lv" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "等级：1"
-
-[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "出售"
-
-[node name="atk" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "攻击：1"
-
-[node name="hp" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "攻击：1"
-
-[node name="手牌提示信息" type="VBoxContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息"]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "战吼：
-测试"
-
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息"]
-layout_mode = 2
-columns = 2
-
-[node name="lv" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "等级：1"
-
-[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "使用"
-
-[node name="atk" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "攻击：1"
-
-[node name="hp" type="Label" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "攻击：1"
 
 [node name="升级酒馆" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer"]
 layout_mode = 2

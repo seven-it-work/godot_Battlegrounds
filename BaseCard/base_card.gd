@@ -88,19 +88,30 @@ var 属性加成:Array[AttributeBonus]=[]
 # 出售金额
 var sell_coins:int=1
 
+#region 一些基础属性的获取方法
+func get_desc()->String:
+	var text=""
+	if is_gold:
+		text=gold_desc
+	else:
+		text=desc
+	return text
+
 ## 获取攻击力（包含加成属性）
 func atk_bonus()->int:
-	var result=atk;
+	var result=atk*(2 if is_gold else 1);
 	for i in 属性加成:
 		result+=i.atk;
 	return result
 
 ## 获取生命值（包含加成属性）
 func hp_bonus()->int:
-	var result=hp;
+	var result=hp*(2 if is_gold else 1);
 	for i in 属性加成:
 		result+=i.hp;
 	return result
+
+#endregion
 
 func _init() -> void:
 	self.uuid=UUID.v4()

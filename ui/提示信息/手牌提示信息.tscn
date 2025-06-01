@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://qfp68ky6ai62"]
+
+[ext_resource type="Script" uid="uid://ce8xv6dmj8ah3" path="res://ui/提示信息/手牌提示信息.gd" id="1_4fbet"]
+
+[node name="手牌提示信息" type="VBoxContainer"]
+size_flags_vertical = 3
+script = ExtResource("1_4fbet")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+text = "战吼：
+测试"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="lv" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "等级：1"
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "使用"
+
+[node name="atk" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "攻击：1"
+
+[node name="hp" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "攻击：1"
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
