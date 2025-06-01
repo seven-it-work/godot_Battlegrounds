@@ -17,7 +17,7 @@ signal select
 func initData(card:BaseCard):
 	self.card=card
 	if card.show_name_str:
-		$Node/name_str/Label.text=card.name_str;
+		$Node/name_str/Label.text=card.name_str if card.name_str else card.name;
 		$Node/name_str.show()
 	if card.show_lv:
 		$Node/lv/Label.text="%s"%card.lv;
