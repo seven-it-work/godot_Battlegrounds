@@ -41,7 +41,67 @@ var 战场的牌变化:bool=false
 # 手牌的牌变化
 var 手牌的牌变化:bool=false
 
+#region 生命周期方法组
+func 回合结束时():
+	# 其他开始回合效果触发
+	pass
+func 回合开始时():
+	# 酒馆升级铸币-1
+	tavern.升级需要的铸币=maxi(tavern.升级需要的铸币-1,0)
+	# 上线如果可以继续+1
+	if tavern.铸币上线自动增加剩余次数>0:
+		tavern.铸币上线自动增加剩余次数-=1
+		tavern.max_coin+=1
+	# 铸币恢复
+	tavern.current_coin=tavern.max_coin
+	# 酒馆补充卡片
+	tavern.酒馆补充卡片()
+	# 技能复原
+	# 其他开始回合效果触发
+	pass
+
+func start_fight():
+	is_fight=true
+	战斗中的牌.clear()
+	for i in 战场中的牌:
+		var copy=i.copy()
+		战斗中的牌.append(copy)
+	for i in 战斗中的牌:
+		i.触发器_战斗开始时(self)
+	for i in 手牌:
+		i.手牌触发器_战斗开始时(self)
+	pass
+
+func end_fight():
+	pass
+#endregion
+
+#region 一些判断
+func 是否可以冻结()->bool:
+	return tavern.current_coin >= tavern.冻结需要的铸币
+	
+func 是否可以刷新()->bool:
+	return tavern.current_coin >= tavern.刷新需要的铸币
+
+func 是否可以升级()->bool:
+	return tavern.current_coin >= tavern.升级需要的铸币
+#endregion
+
+
 #region ui操作的方法
+func 冻结():
+	if 是否可以冻结():
+		tavern.冻结()
+	pass
+func 刷新():
+	if 是否可以刷新():
+		tavern.刷新()
+		酒馆的牌变化=true
+	pass
+func 升级酒馆():
+	if 是否可以升级():
+		tavern.升级()
+	pass
 func buy_card(card:BaseCard):
 	# 基础判断
 	# 扣除数据（血量，金币）
@@ -179,18 +239,6 @@ func minion_property_func(card:BaseCard,call:Callable,permanently:bool=false):
 			else:
 				var find_card=战场中的牌.get(index)
 				call.call(find_card)
-	pass
-
-func start_fight():
-	is_fight=true
-	战斗中的牌.clear()
-	for i in 战场中的牌:
-		var copy=i.copy()
-		战斗中的牌.append(copy)
-	for i in 战斗中的牌:
-		i.触发器_战斗开始时(self)
-	for i in 手牌:
-		i.手牌触发器_战斗开始时(self)
 	pass
 
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://vff52s2nhxjo"]
+[gd_scene load_steps=9 format=3 uid="uid://vff52s2nhxjo"]
 
 [ext_resource type="Script" uid="uid://xi11pra1l8wb" path="res://ui/main.gd" id="1_3ydky"]
 [ext_resource type="PackedScene" uid="uid://dl0ad8ft57aqx" path="res://ui/随从/随从.tscn" id="1_r4ypb"]
 [ext_resource type="PackedScene" uid="uid://qfp68ky6ai62" path="res://ui/提示信息/手牌提示信息.tscn" id="3_r4ypb"]
 [ext_resource type="PackedScene" uid="uid://1f6hxwdkydct" path="res://ui/提示信息/酒馆提示信息.tscn" id="3_t2vec"]
 [ext_resource type="PackedScene" uid="uid://02fcldhmpil7" path="res://ui/提示信息/战场提示信息.tscn" id="4_sx1v2"]
+[ext_resource type="PackedScene" uid="uid://cnsixq5cwyoc8" path="res://ui/酒馆操作/酒馆操作.tscn" id="6_enpfv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32dmw"]
 content_margin_left = 5.0
@@ -163,19 +164,5 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="升级酒馆" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer"]
+[node name="酒馆操作" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer" instance=ExtResource("6_enpfv")]
 layout_mode = 2
-text = "升级酒馆（8）"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="冻结" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "冻结（0）"
-
-[node name="刷新" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "刷新（1）"

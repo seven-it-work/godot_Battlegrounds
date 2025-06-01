@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlyppnis2m8ie"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_crxuy"]
+[ext_resource type="Script" uid="uid://dfsgvv8so2og2" path="res://all_card/minion/pirate/夺金健将/roar.gd" id="2_r5erg"]
+
+[node name="夺金健将" type="Node2D" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_crxuy")
+name_str = "夺金健将"
+atk = 1
+desc = "<b>圣盾<\\/b>。<b>战吼：<\\/b>使本随从变为金色。"
+gold_desc = "<b>圣盾<\\/b>。<b>战吼：<\\/b>使本随从变为金色。"
+"圣盾" = true
+"战吼" = [NodePath("Roar")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_r5erg")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://iepxlw2m2fdu"]
+
+[ext_resource type="Script" uid="uid://cd88tbwesme3l" path="res://all_card/minion/elemental/熔融岩石/熔融岩石.gd" id="1_tcjfy"]
+
+[node name="熔融岩石" type="Node2D"]
+script = ExtResource("1_tcjfy")
+name_str = "熔融岩石"
+atk = 3
+hp = 3
+desc = "在你使用一张元素牌后，获得+{元素加成.x}\\/+{元素加成.y+1}。"
+gold_desc = "在你使用一张元素牌后，获得+{元素加成.x}\\/+{元素加成.y+1}，触发两次。"
+race = Array[int]([4])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

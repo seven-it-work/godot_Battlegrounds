@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://csjfo15ra6ori"]
+
+[ext_resource type="Script" uid="uid://buncopj3gokrr" path="res://all_card/minion/pirate/白赚赌徒/白赚赌徒.gd" id="1_gb13j"]
+
+[node name="白赚赌徒" type="Node2D"]
+script = ExtResource("1_gb13j")
+name_str = "白赚赌徒"
+lv = 2
+atk = 3
+hp = 3
+desc = "出售本随从可以获得3枚铸币。"
+gold_desc = "出售本随从可以获得6枚铸币。"
+race = Array[int]([8])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://6hj3ylrn25gs"]
+
+[ext_resource type="Script" uid="uid://c5fm8x4un2g8k" path="res://all_card/minion/elemental/派对元素/派对元素.gd" id="1_vflgo"]
+
+[node name="派对元素" type="Node2D"]
+script = ExtResource("1_vflgo")
+name_str = "派对元素"
+lv = 2
+atk = 3
+hp = 2
+desc = "在你使用一张元素牌后，使一个被使用的元素之外的友方元素获得+{元素加成.x+1}\\/+{元素加成.y+1}。"
+gold_desc = "在你使用一张元素牌后，使一个被使用的元素之外的友方元素获得+{元素加成.x+1}\\/+{元素加成.y+1}，
+触发两次。"
+race = Array[int]([4])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqpjf6q4j6f3i"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_4qt5k"]
+[ext_resource type="Script" uid="uid://dxfaydg5x6io0" path="res://all_card/minion/demon/挑食魔犬/roar.gd" id="2_xui3l"]
+
+[node name="挑食魔犬" type="Node2D"]
+script = ExtResource("1_4qt5k")
+name_str = "挑食魔犬"
+desc = "战吼：随机吞食酒馆中的一个随从，获得其属性值。"
+gold_desc = "战吼：随机吞食酒馆中的一个随从，获得其双倍属性值。"
+race = Array[int]([2])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_xui3l")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

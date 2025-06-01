@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://wapjkahch28c"]
+
+[ext_resource type="Script" uid="uid://5hkarb81jyin" path="res://all_card/minion/beast/鞭答者特里高雷/鞭答者特里高雷.gd" id="2_kfqy3"]
+
+[node name="鞭答者特里高雷" type="Node2D"]
+script = ExtResource("2_kfqy3")
+name_str = "鞭答者特里高雷"
+lv = 4
+atk = 5
+hp = 3
+race = Array[int]([1])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

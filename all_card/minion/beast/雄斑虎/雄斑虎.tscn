@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwemm4q4qgq"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_5215h"]
+[ext_resource type="Script" uid="uid://cp8acp53x2kv1" path="res://all_card/minion/beast/雄斑虎/roar.gd" id="2_87ir0"]
+
+[node name="雄斑虎" type="Node2D" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_5215h")
+atk = 1
+desc = "战吼：召唤一头1\\/1的雌斑虎。"
+gold_desc = "战吼：召唤一头1\\/1的雌斑虎。"
+race = Array[int]([1])
+"战吼" = [NodePath("Roar")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_87ir0")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

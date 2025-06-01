@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfaj3twvflwbu"]
+
+[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_l3ug8"]
+[ext_resource type="Script" uid="uid://coun3octghd7p" path="res://all_card/minion/elemental/沙丘土著/roar.gd" id="2_wvyn5"]
+
+[node name="沙丘土著" type="Node2D" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_l3ug8")
+name_str = "沙丘土著"
+atk = 3
+hp = 2
+desc = "战吼：使酒馆中的元素在本局对战中获得+{元素加成.x+1}\\/+{元素加成.y+1}。"
+gold_desc = "战吼：\\n使酒馆中的元素在本局对战中获得+{元素加成.x+1}\\/+{元素加成.y+1}，触发两次。"
+race = Array[int]([4])
+"战吼" = [NodePath("Roar")]
+metadata/_custom_type_script = "uid://ctokvpt74qotl"
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_wvyn5")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

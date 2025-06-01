@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbd8efuedoe2l"]
+
+[ext_resource type="Script" uid="uid://w6axj24fy57u" path="res://all_card/minion/quilboar/野猪预言者/野猪预言者.gd" id="1_eoe20"]
+
+[node name="野猪预言者" type="Node2D"]
+script = ExtResource("1_eoe20")
+name_str = "野猪预言者"
+lv = 2
+atk = 2
+hp = 3
+desc = "<b>嘲讽<\\/b>。在你使用一张野猪人后，获取一张<b>鲜血宝石<\\/b>。"
+gold_desc = "<b>嘲讽<\\/b>。在你使用一张野猪人后，获取2张<b>鲜血宝石<\\/b>。"
+"嘲讽" = true
+"限定出现种族" = Array[int]([9])
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

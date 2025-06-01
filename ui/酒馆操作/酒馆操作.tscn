@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnsixq5cwyoc8"]
+
+[ext_resource type="Script" uid="uid://b1jvbkhe3vtam" path="res://ui/酒馆操作/酒馆操作.gd" id="1_m5if5"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+script = ExtResource("1_m5if5")
+
+[node name="升级酒馆" type="Button" parent="."]
+layout_mode = 2
+text = "升级酒馆（8）"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="冻结" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "冻结（0）"
+
+[node name="刷新" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "刷新（1）"
+
+[connection signal="pressed" from="升级酒馆" to="." method="_on_升级酒馆_pressed"]
+[connection signal="pressed" from="HBoxContainer/冻结" to="." method="_on_冻结_pressed"]
+[connection signal="pressed" from="HBoxContainer/刷新" to="." method="_on_刷新_pressed"]
