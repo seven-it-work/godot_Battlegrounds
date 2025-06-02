@@ -38,6 +38,11 @@ func initData(card:BaseCard):
 		$Node/name_str.show()
 	if FileAccess.file_exists(card.get_插画路径()):
 		$TextureRect/TextureRect.texture=load(card.get_插画路径())
+	else:
+		if card.ls_card_id:
+			# 尝试下载
+			var image_url="https://art.hearthstonejson.com/v1/orig/%s.png"%card.ls_card_id
+			CardsUtils.download_image(image_url,card.get_插画路径())
 	if card.show_lv:
 		$Node/lv/Label.text="%s"%card.lv;
 		$Node/lv.show()

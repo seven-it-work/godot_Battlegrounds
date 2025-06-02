@@ -14,7 +14,7 @@ func initData(card:CardUi):
 
 func _on_button_pressed() -> void:
 	var f=func(target:CardUi=null):
-		player.user_card(card.card,target.card)
+		player.user_card(card.card,target.card if target else null)
 		Globals.main_node.提示信息修改(null)
 	# 如果card需要选择对象
 	if card.card.need_select_target:

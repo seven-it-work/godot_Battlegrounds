@@ -5,6 +5,7 @@
 
 [node name="机变甲虫" type="Node2D" node_paths=PackedStringArray("抉择")]
 script = ExtResource("1_igv4l")
+ls_card_id = "BG27_084"
 name_str = "机变甲虫"
 lv = 3
 atk = 2

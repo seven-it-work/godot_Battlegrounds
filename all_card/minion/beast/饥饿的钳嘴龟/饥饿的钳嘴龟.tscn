@@ -4,6 +4,8 @@
 
 [node name="饥饿的钳嘴龟" type="Node2D"]
 script = ExtResource("1_k8yuh")
+ls_card_id="BG26_370"
+
 name_str = "饥饿的钳嘴龟"
 lv = 2
 atk = 4

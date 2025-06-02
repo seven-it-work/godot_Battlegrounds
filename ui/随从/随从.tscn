@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://cp6amf8rctaor" path="res://ui/随从/随从未选中.tres" id="1_87lop"]
 [ext_resource type="Script" uid="uid://cds0pj04llqmq" path="res://ui/随从/随从.gd" id="1_gdp4a"]
 [ext_resource type="Texture2D" uid="uid://ygnlskliqs0g" path="res://ui/随从/随从.png" id="1_pkrg4"]
-[ext_resource type="Texture2D" uid="uid://bkp1ie8hdcpjq" path="res://all_card/minion/beast/雄斑虎/雄斑虎.png" id="4_87lop"]
+[ext_resource type="Texture2D" uid="uid://dbvxhttq821pe" path="res://all_card/spell/鲜血宝石/鲜血宝石.png" id="4_87lop"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87lop"]
 bg_color = Color(0.572549, 0.47451, 0.364706, 1)
@@ -33,14 +33,16 @@ expand_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
-offset_left = -35.0
-offset_right = 477.0
-offset_bottom = 512.0
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 472.0
+offset_bottom = 504.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("4_87lop")
 
 [node name="disable" type="Panel" parent="."]
+visible = false
 z_index = 3
 layout_mode = 2
 

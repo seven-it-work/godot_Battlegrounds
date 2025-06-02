@@ -51,10 +51,11 @@ func 刷新():
 	var card_list=CardsUtils.find_card([
 		CardsUtils.COMMON_CODITION["是否出现在酒馆"],
 		CardsUtils.COMMON_CODITION["随从"],
-		等级限制,
+		#等级限制,
 		#CardFindCondition.build("name_str","雄斑虎",CardFindCondition.ConditionEnum.等于)
 	])
-	var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)
+	#var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)
+	var 随从个数=7
 	for i in 随从个数:
 		var data=card_list.pick_random()
 		var dup=data.duplicate()

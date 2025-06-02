@@ -5,7 +5,9 @@
 
 [node name="XiongPanHu" type="Node2D" node_paths=PackedStringArray("战吼")]
 script = ExtResource("1_7vx75")
-name_str = "熊斑虎"
+ls_card_id="BG_CFM_315"
+
+name_str = "雄斑虎"
 atk = 1
 "战吼" = [NodePath("Roar")]
 metadata/_custom_type_script = "uid://ctokvpt74qotl"

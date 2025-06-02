@@ -4,6 +4,7 @@
 
 [node name="晾膘的游客" type="Node2D"]
 script = ExtResource("1_bwbts")
+ls_card_id = "BG20_301"
 name_str = "晾膘的游客"
 atk = 2
 hp = 3

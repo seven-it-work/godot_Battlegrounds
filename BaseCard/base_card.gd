@@ -98,6 +98,10 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 func get_插画路径()->String:
 	if 插画路径:
 		return 插画路径
+	if !文件路径:
+		var temp= get_script().resource_path
+		文件路径=temp.get_base_dir()
+		文件名=temp.get_file().replace("."+temp.get_extension(),"")
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
 func get_desc()->String:
