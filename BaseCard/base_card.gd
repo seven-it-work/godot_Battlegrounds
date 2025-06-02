@@ -83,12 +83,22 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 @export var 战吼:Array[Roar]=[]
 @export var 抉择:ToChoose
 
-var 属性加成:Array[AttributeBonus]=[]
+# 插画路径
+@export var 插画路径:String=""
+@export var 文件路径:String=""
+@export var 文件名:String=""
+
+@export var 属性加成:Array[AttributeBonus]=[]
 
 # 出售金额
-var sell_coins:int=1
+@export var sell_coins:int=1
 
 #region 一些基础属性的获取方法
+func get_插画路径()->String:
+	if 插画路径:
+		return 插画路径
+	var 默认路径="%s/%s.png"%[文件路径,文件名]
+	return 默认路径
 func get_desc()->String:
 	var text=""
 	if is_gold:

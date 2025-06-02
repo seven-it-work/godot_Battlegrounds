@@ -67,6 +67,9 @@ static func scan_scenes_recursive(base_path: String, current_path: String = "",s
 			# 获取资源完整路径
 			var resource_path = full_path.path_join(file_name)
 			# 添加到字典
-			scene_dict[base_name] = load(resource_path).instantiate()
+			var data=load(resource_path).instantiate()
+			data.文件路径=full_path
+			data.文件名=base_name
+			scene_dict[base_name] = data
 		file_name = dir.get_next()
 	return scene_dict

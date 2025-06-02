@@ -19,6 +19,9 @@ func initData(card:BaseCard):
 	if card.show_name_str:
 		$Node/name_str/Label.text=card.name_str if card.name_str else card.name;
 		$Node/name_str.show()
+	print(card.get_插画路径())
+	if FileAccess.file_exists(card.get_插画路径()):
+		$TextureRect/TextureRect.texture=load(card.get_插画路径())
 	if card.show_lv:
 		$Node/lv/Label.text="%s"%card.lv;
 		$Node/lv.show()
