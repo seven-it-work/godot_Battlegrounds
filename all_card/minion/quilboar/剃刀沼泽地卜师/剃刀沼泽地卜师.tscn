@@ -5,6 +5,7 @@
 
 [node name="剃刀沼泽地卜师" type="Node2D" node_paths=PackedStringArray("战吼")]
 script = ExtResource("1_0unx3")
+ls_card_id = "BG20_100"
 name_str = "剃刀沼泽地卜师"
 atk = 3
 desc = "战吼：获取一张鲜血宝石。"

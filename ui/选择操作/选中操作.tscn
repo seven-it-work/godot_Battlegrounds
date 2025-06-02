@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://erh060hw2ac0"]
+
+[ext_resource type="Script" uid="uid://csg1ujyk6fm6x" path="res://ui/选择操作/选中操作.gd" id="1_u67dg"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+script = ExtResource("1_u67dg")
+
+[node name="取消" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "取消"
+
+[node name="确定" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "确定"
+
+[connection signal="pressed" from="取消" to="." method="_on_取消_pressed"]
+[connection signal="pressed" from="确定" to="." method="_on_确定_pressed"]

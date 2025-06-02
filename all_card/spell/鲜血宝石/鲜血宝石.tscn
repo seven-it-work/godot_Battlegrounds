@@ -1,12 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://c84v1i3ulob37"]
 
-[ext_resource type="Script" uid="uid://ctokvpt74qotl" path="res://BaseCard/base_card.gd" id="1_b6kwd"]
+[ext_resource type="Script" uid="uid://b0b0jicy6np17" path="res://all_card/spell/鲜血宝石/鲜血宝石.gd" id="1_4pfle"]
 
 [node name="鲜血宝石" type="Node2D"]
-script = ExtResource("1_b6kwd")
+script = ExtResource("1_4pfle")
+ls_card_id = "BG20_GEM"
 name_str = "鲜血宝石"
 desc = "使一个随从获得+{0}\\/+{1}。"
 gold_desc = "使一个随从获得+{0}\\/+{1}。"
 cardType = 2
 "是否出现在酒馆" = false
+need_select_target = true
 metadata/_custom_type_script = "uid://ctokvpt74qotl"

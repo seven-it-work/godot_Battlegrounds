@@ -4,6 +4,7 @@
 
 [node name="愤怒编织者" type="Node2D"]
 script = ExtResource("1_r7bfo")
+ls_card_id = "BGS_004"
 name_str = "愤怒编织者"
 atk = 1
 hp = 4

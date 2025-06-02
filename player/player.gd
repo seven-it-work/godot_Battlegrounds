@@ -123,18 +123,18 @@ func user_card(card:BaseCard,targetCard:BaseCard=null):
 		printerr("手牌中没有找到")
 	手牌.remove_at(index)
 	手牌的牌变化=true
-	# 添加到战场
-	add_card_in_bord(card)
+	# 随从使用逻辑
+	if card.cardType==BaseCard.CardTypeEnum.MINION:
+		if get_minion().size()>=最大战场随从数量:
+			print("放不下了")
+			return
+		# 添加到战场
+		add_card_in_bord(card)
+		# 战吼触发
+		card.触发器_战吼(self,targetCard)
+	card.触发器_使用(self,targetCard)
 	战场的牌变化=true
 	
-	
-	#if card.cardType==BaseCard.CardTypeEnum.MINION:
-		#if get_minion().size()>=最大战场随从数量:
-			#print("放不下了")
-			#return
-		#add_card_in_bord(card)
-		## 战吼触发
-		#card.触发器_战吼(self,targetCard)
 	#for i in get_minion():
 		#if i.uuid!=card.uuid:
 			#i.触发器_使用其他卡牌(card,self,null)

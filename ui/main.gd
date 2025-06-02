@@ -1,7 +1,10 @@
 extends Control
-
-var select_card=null
+# 实时选中的卡
+var select_card:CardUi=null
 var player:Player
+# 需要额外选中目标的卡
+var 选择的cardUi:CardUi
+var 选择的继续运行方法
 
 func _ready() -> void:
 	Globals.main_node=self
@@ -14,6 +17,10 @@ func _ready() -> void:
 	# 玩家初始化
 	var player=preload("uid://duyyralberadj").instantiate()
 	self.player=player
+	# test
+	player.buy_card(preload("uid://c84v1i3ulob37").instantiate())
+	player.手牌的牌变化=true
+	# endtest
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".player=player
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息".player=player
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息".player=player
@@ -74,15 +81,15 @@ func 提示信息修改(cardUi:CardUi):
 	if cardUi==null:
 		return
 	if cardUi.位置==CardUi.PositionEnum.酒馆:
-		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".initData(cardUi.card)
+		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".initData(cardUi)
 		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".show()
 		return
 	if cardUi.位置==CardUi.PositionEnum.战场:
-		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息".initData(cardUi.card)
+		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息".initData(cardUi)
 		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息".show()
 		return
 	if cardUi.位置==CardUi.PositionEnum.手牌:
-		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息".initData(cardUi.card)
+		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息".initData(cardUi)
 		$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息".show()
 		return
 

@@ -39,6 +39,7 @@ enum RaceEnum{
 }
 
 var uuid:String=""
+@export var ls_card_id:String=""
 @export var name_str:String=""
 @export var show_name_str:bool=true
 # 等级
@@ -186,6 +187,10 @@ func 触发器_玩家受伤(num:int)->int:
 	return num
 
 func 触发器_使用其他卡牌(使用的卡牌:BaseCard,player:Player,目标卡片:BaseCard):
+	pass
+
+func 触发器_使用(player:Player,目标卡片:BaseCard):
+	
 	pass
 
 func 触发器_亡语触发监听(攻击者:BaseCard,死亡者:BaseCard,player:Player):

@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://1f6hxwdkydct"]
+[gd_scene load_steps=3 format=3 uid="uid://1f6hxwdkydct"]
 
 [ext_resource type="Script" uid="uid://dj32idq5rd47o" path="res://ui/提示信息/酒馆提示信息.gd" id="1_s6qgr"]
+[ext_resource type="PackedScene" uid="uid://erh060hw2ac0" path="res://ui/选择操作/选中操作.tscn" id="2_5nk6o"]
 
 [node name="酒馆提示信息" type="VBoxContainer"]
-visible = false
 size_flags_vertical = 3
 script = ExtResource("1_s6qgr")
 
@@ -12,6 +12,9 @@ custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "战吼：
 测试"
+
+[node name="选中" parent="." instance=ExtResource("2_5nk6o")]
+layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2

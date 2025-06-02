@@ -4,6 +4,7 @@
 
 [node name="熔融岩石" type="Node2D"]
 script = ExtResource("1_tcjfy")
+ls_card_id = "BGS_127"
 name_str = "熔融岩石"
 atk = 3
 hp = 3
