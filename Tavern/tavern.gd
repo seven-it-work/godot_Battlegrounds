@@ -50,15 +50,22 @@ func 刷新():
 	for i in 出现法术个数:
 		pass
 	var card_list=CardsUtils.find_card([
-		CardsUtils.COMMON_CODITION["是否出现在酒馆"],
-		CardsUtils.COMMON_CODITION["随从"],
+		#CardsUtils.COMMON_CODITION["是否出现在酒馆"],
+		#CardsUtils.COMMON_CODITION["随从"],
 		#等级限制,
-		#CardFindCondition.build("name_str","雄斑虎",CardFindCondition.ConditionEnum.等于)
+		CardFindCondition.build("ls_card_id","",CardFindCondition.ConditionEnum.不等于)
 	])
 	#var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)
+	# 这里是自动下载插画
+	#card_list=card_list.filter(func(card:BaseCard):
+		#return !FileAccess.file_exists(card.get_插画路径())
+		#)
 	var 随从个数=7
 	for i in 随从个数:
 		var data=card_list.pick_random()
+		if !data:
+			print("没有随从了")
+			return
 		var dup=data.duplicate()
 		current_card.append(dup)
 	pass
