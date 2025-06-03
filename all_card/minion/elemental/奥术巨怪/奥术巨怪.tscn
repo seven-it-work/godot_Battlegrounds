@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcc2b1ho82frw"]
+
+[ext_resource type="Script" uid="uid://d13d3th01ytoc" path="res://all_card/minion/elemental/奥术巨怪/奥术巨怪.gd" id="1_cc03i"]
+
+[node name="奥术巨怪" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_360"
+name_str = "奥术巨怪"
+cardType = 0
+lv = 7.0
+atk = 4.0
+hp = 8.0
+desc = "<b>嘲讽</b>。在你出售一个元素后，获得其属性值。"
+gold_desc = "<b>嘲讽</b>。在你出售一个元素后，获得其双倍属性值。"
+race = Array[int]([4])

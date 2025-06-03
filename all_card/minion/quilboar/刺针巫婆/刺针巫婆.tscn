@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7lnoycpm4vol"]
+
+[ext_resource type="Script" uid="uid://80825whmumfh" path="res://all_card/minion/quilboar/刺针巫婆/刺针巫婆.gd" id="1_cc03i"]
+
+[node name="刺针巫婆" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_432"
+name_str = "刺针巫婆"
+cardType = 0
+lv = 6.0
+atk = 5.0
+hp = 4.0
+desc = "你在战斗中的<b>鲜血宝石</b>使随从获得的属性值变为两倍。"
+gold_desc = "你在战斗中的<b>鲜血宝石</b>使随从获得的属性值变为三倍。"
+race = Array[int]([9])

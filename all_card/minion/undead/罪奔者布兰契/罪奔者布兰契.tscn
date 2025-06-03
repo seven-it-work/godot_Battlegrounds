@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ku1tg2o3tij"]
+
+[ext_resource type="Script" uid="uid://du5twkpyu0ixy" path="res://all_card/minion/undead/罪奔者布兰契/罪奔者布兰契.gd" id="1_cc03i"]
+
+[node name="罪奔者布兰契" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG24_005"
+name_str = "罪奔者布兰契"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 4.0
+desc = "<b>复生</b>。本随从<b>复生</b>时会具有所有生命值和附加效果。"
+gold_desc = "<b>复生</b>。本随从<b>复生</b>时会具有所有生命值和附加效果。"
+race = Array[int]([10, 1])

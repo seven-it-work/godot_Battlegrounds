@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djpmvwrf6xc7s"]
+
+[ext_resource type="Script" uid="uid://c2mfodgxdjqgp" path="res://all_card/minion/beast/异种钻地虫/异种钻地虫.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://4dc0i3w377yh" path="res://all_card/minion/beast/异种钻地虫/dead.gd" id="2_bdkxc"]
+
+[node name="异种钻地虫" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_871"
+name_str = "异种钻地虫"
+desc = "<b>亡语：</b>使你的野兽获得+{0}/+{0}。<b>复仇（1）：</b>此效果永久提升+1/+1。"
+gold_desc = "<b>亡语：</b>使你的野兽获得+{0}/+{0}。<b>复仇（1）：</b>此效果永久提升+2/+2。"
+race = Array[int]([1])
+"亡语" = [NodePath("Dead")]
+"复仇" = 1
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_bdkxc")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

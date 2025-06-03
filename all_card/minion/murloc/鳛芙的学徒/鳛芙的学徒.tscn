@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0a4l1i6pxmv8"]
+
+[ext_resource type="Script" uid="uid://biwsef8vwtji2" path="res://all_card/minion/murloc/鳛芙的学徒/鳛芙的学徒.gd" id="1_cc03i"]
+
+[node name="鳛芙的学徒" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_332"
+name_str = "鳛芙的学徒"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 4.0
+desc = "在你的回合结束时，获得+4/+4和一个随机<b>额外关键词</b>。"
+gold_desc = "在你的回合结束时，获得+8/+8和两个随机<b>额外关键词</b>。"
+race = Array[int]([6])

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0wyaewq5062e"]
+
+[ext_resource type="Script" uid="uid://c1yjh25hphyb1" path="res://all_card/minion/beast/宽厚的驼鹿/宽厚的驼鹿.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://cgdlu6greajrg" path="res://all_card/minion/beast/宽厚的驼鹿/dead.gd" id="2_nlh2q"]
+
+[node name="宽厚的驼鹿" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_105"
+name_str = "宽厚的驼鹿"
+lv = 5.0
+atk = 5.0
+hp = 2.0
+desc = "<b>亡语：</b>召唤你的队友战队中一个随从<i>（宽厚的驼鹿除外）</i>的复制，将其生命值变为1。"
+gold_desc = "<b>亡语：</b>召唤你的队友战队中2个随从<i>（宽厚的驼鹿除外）</i>的复制，将其生命值变为1。"
+race = Array[int]([1])
+"是否出现在酒馆" = false
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_nlh2q")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

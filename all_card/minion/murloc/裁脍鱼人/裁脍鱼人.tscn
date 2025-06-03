@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdrthex7nhrb5"]
+
+[ext_resource type="Script" uid="uid://bcwlg4fbl4b2p" path="res://all_card/minion/murloc/裁脍鱼人/裁脍鱼人.gd" id="1_cc03i"]
+
+[node name="裁脍鱼人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_137"
+name_str = "裁脍鱼人"
+cardType = 0
+lv = 4.0
+atk = 4.0
+hp = 3.0
+desc = "当本牌在你手牌中时，在你使用一张鱼人牌后，获得+4/+3。"
+gold_desc = "当本牌在你手牌中时，在你使用一张鱼人牌后，获得+8/+6。"
+race = Array[int]([6])

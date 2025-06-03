@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqfus46s3fden"]
+
+[ext_resource type="Script" uid="uid://cuwc1ww61j7pp" path="res://all_card/minion/murloc/戈姆蛴食客/戈姆蛴食客.gd" id="1_cc03i"]
+
+[node name="戈姆蛴食客" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_336"
+name_str = "戈姆蛴食客"
+cardType = 0
+lv = 4.0
+atk = 4.0
+hp = 3.0
+desc = "<b>嘲讽</b>。<b>战吼，亡语：</b>获取一张海鲜乱炖。"
+gold_desc = "<b>嘲讽</b>。<b>战吼，亡语：</b>获取2张海鲜乱炖。"
+race = Array[int]([6])

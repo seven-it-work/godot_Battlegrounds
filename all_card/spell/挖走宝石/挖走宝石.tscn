@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds4e0ckrv5qge"]
+
+[ext_resource type="Script" uid="uid://by3iv70w1bima" path="res://all_card/spell/挖走宝石/挖走宝石.gd" id="1_cc03i"]
+
+[node name="挖走宝石" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_320t"
+name_str = "挖走宝石"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "获取2张
+<b>鲜血宝石</b>。"
+gold_desc = "获取2张
+<b>鲜血宝石</b>。"
+race = Array[int]([])

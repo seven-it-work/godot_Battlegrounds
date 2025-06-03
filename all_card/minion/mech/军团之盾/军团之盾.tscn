@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkf63rikupp5b"]
+
+[ext_resource type="Script" uid="uid://bhvi5il85ya4t" path="res://all_card/minion/mech/军团之盾/军团之盾.gd" id="1_cc03i"]
+
+[node name="军团之盾" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_807t4"
+name_str = "军团之盾"
+cardType = 0
+lv = 1.0
+atk = 7.0
+hp = 3.0
+desc = "<b>圣盾</b>。可以<b>磁力吸附</b>在机械<i>和</i>恶魔上。"
+gold_desc = "<b>圣盾</b>。可以<b>磁力吸附</b>在机械<i>和</i>恶魔上。"
+race = Array[int]([5, 2])

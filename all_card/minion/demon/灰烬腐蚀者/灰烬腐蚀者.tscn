@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://3x24wke5vgos"]
+
+[ext_resource type="Script" uid="uid://s10064usxflt" path="res://all_card/minion/demon/灰烬腐蚀者/灰烬腐蚀者.gd" id="1_cc03i"]
+
+[node name="灰烬腐蚀者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_873"
+name_str = "灰烬腐蚀者"
+cardType = 0
+lv = 5.0
+atk = 6.0
+hp = 6.0
+desc = "在你的英雄受到伤害后，回溯该伤害并使酒馆中的随从在本回合中获得+1/+1。"
+gold_desc = "在你的英雄受到伤害后，回溯该伤害并使酒馆中的随从在本回合中获得+2/+2。"
+race = Array[int]([2])

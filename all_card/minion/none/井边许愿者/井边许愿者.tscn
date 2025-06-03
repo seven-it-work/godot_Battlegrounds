@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8rgpw6rt03um"]
+
+[ext_resource type="Script" uid="uid://dph1g3tu6pupb" path="res://all_card/minion/none/井边许愿者/井边许愿者.gd" id="1_cc03i"]
+
+[node name="井边许愿者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_120"
+name_str = "井边许愿者"
+cardType = 0
+lv = 5.0
+atk = 6.0
+hp = 6.0
+desc = "<b>塑造法术：</b><b>传递</b>一个不同的非金色随从。"
+gold_desc = "<b>塑造法术：</b><b>传递</b>一个不同的非金色随从。"
+race = Array[int]([0])

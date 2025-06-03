@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6fmhkur44ivw"]
+
+[ext_resource type="Script" uid="uid://b1hsxlwgyvwjq" path="res://all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd" id="1_cc03i"]
+
+[node name="焦渴的流浪者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_756"
+name_str = "焦渴的流浪者"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 2.0
+desc = "<b>战吼：</b>使一个鱼人获得+2/+3和<b>嘲讽</b>。"
+gold_desc = "<b>战吼：</b>使一个鱼人获得+4/+6和<b>嘲讽</b>。"
+race = Array[int]([6])

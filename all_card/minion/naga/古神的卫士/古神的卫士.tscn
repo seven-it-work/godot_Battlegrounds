@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceitiqfq4fxig"]
+
+[ext_resource type="Script" uid="uid://bbwxugoeupifd" path="res://all_card/minion/naga/古神的卫士/古神的卫士.gd" id="1_cc03i"]
+
+[node name="古神的卫士" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_200"
+name_str = "古神的卫士"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 2.0
+desc = "<b>塑造法术：</b>获得1枚铸币。"
+gold_desc = "<b>塑造法术：</b>获得2枚铸币。"
+race = Array[int]([7])

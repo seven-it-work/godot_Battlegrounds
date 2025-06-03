@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://duxty2gci5r8s"]
+
+[ext_resource type="Script" uid="uid://rk1a6ri2e3u8" path="res://all_card/minion/quilboar/三只小野猪/三只小野猪.gd" id="1_cc03i"]
+
+[node name="三只小野猪" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_867"
+name_str = "三只小野猪"
+cardType = 0
+lv = 5.0
+atk = 3.0
+hp = 3.0
+desc = "<b>亡语：</b>对你的所有野猪人各使用3张<b>鲜血宝石</b>。"
+gold_desc = "<b>亡语：</b>对你的所有野猪人各使用6张<b>鲜血宝石</b>。"
+race = Array[int]([9])

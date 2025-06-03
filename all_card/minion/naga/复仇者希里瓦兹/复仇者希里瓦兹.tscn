@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxtniktayw5gt"]
+
+[ext_resource type="Script" uid="uid://chfm2l74fe8pt" path="res://all_card/minion/naga/复仇者希里瓦兹/复仇者希里瓦兹.gd" id="1_cc03i"]
+
+[node name="复仇者希里瓦兹" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_405"
+name_str = "复仇者希里瓦兹"
+cardType = 0
+lv = 6.0
+atk = 5.0
+hp = 8.0
+desc = "<b>塑造法术：发现</b>一张酒馆法术牌。"
+gold_desc = "<b>塑造法术：发现</b>2张酒馆法术牌。"
+race = Array[int]([7])

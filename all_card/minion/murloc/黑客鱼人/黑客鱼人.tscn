@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://xnf4uqg6booo"]
+
+[ext_resource type="Script" uid="uid://63uq5l2cn0go" path="res://all_card/minion/murloc/黑客鱼人/黑客鱼人.gd" id="1_cc03i"]
+
+[node name="黑客鱼人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_148"
+name_str = "黑客鱼人"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 3.0
+desc = "<b>战吼：</b>使你的其他随从获得+{0}/+{1}。<i>（你的战队中每有一个不同的<b>额外关键词</b>都会提升！）</i>"
+gold_desc = "<b>战吼：</b>使你的其他随从获得+{0}/+{1}。<i>（你的战队中每有一个不同的<b>额外关键词</b>都会提升！）</i>"
+race = Array[int]([6])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmbpppkfllvsy"]
+
+[ext_resource type="Script" uid="uid://c4akd45vb1mtw" path="res://all_card/minion/none/蓝壳始祖龟/蓝壳始祖龟.gd" id="1_cc03i"]
+
+[node name="蓝壳始祖龟" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG24_018"
+name_str = "蓝壳始祖龟"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 6.0
+desc = "如果你输掉了上一场战斗，出售本随从可以获得5枚铸币。"
+gold_desc = "如果你输掉了上一场战斗，出售本随从可以获得10枚铸币。"
+race = Array[int]([0])

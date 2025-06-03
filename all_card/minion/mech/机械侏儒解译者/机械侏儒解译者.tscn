@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpdn01ocjbkr7"]
+
+[ext_resource type="Script" uid="uid://dx28e8socvqs2" path="res://all_card/minion/mech/机械侏儒解译者/机械侏儒解译者.gd" id="1_cc03i"]
+
+[node name="机械侏儒解译者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_177"
+name_str = "机械侏儒解译者"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 4.0
+desc = "每当一个友方<b>磁力</b>随从被使用或<b>磁力吸附</b>时，使其获得+2/+2。"
+gold_desc = "每当一个友方<b>磁力</b>随从被使用或<b>磁力吸附</b>时，使其获得+4/+4。"
+race = Array[int]([5])

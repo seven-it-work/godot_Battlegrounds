@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ngwuqnr0tseo"]
+
+[ext_resource type="Script" uid="uid://b3ecobmw680ed" path="res://all_card/minion/beast/符文虫祖/符文虫祖.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://cq0plyot8kn84" path="res://all_card/minion/beast/符文虫祖/dead.gd" id="2_teha8"]
+
+[node name="符文虫祖" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_808"
+name_str = "符文虫祖"
+desc = "<b>复仇（3）：</b>在本局对战中，你的甲虫拥有+2/+2。<b>亡语：</b>召唤一只{0}/{1}的甲虫。"
+gold_desc = "<b>复仇（3）：</b>在本局对战中，你的甲虫拥有+4/+4。<b>亡语：</b>召唤两只{0}/{1}的甲虫。"
+race = Array[int]([1])
+"亡语" = [NodePath("Dead")]
+"复仇" = 3
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_teha8")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

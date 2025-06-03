@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://beth2ybpsh6k4"]
+
+[ext_resource type="Script" uid="uid://bxcu2ws5vlh74" path="res://all_card/minion/murloc/歌剧异术家/歌剧异术家.gd" id="1_cc03i"]
+
+[node name="歌剧异术家" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_888"
+name_str = "歌剧异术家"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 2.0
+desc = "<b>烈毒</b>。<b>亡语：</b>使一个友方鱼人获得<b>烈毒</b>。"
+gold_desc = "<b>烈毒</b>。<b>亡语：</b>使2个友方鱼人获得<b>烈毒</b>。"
+race = Array[int]([6])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7lifqab3ro5c"]
+
+[ext_resource type="Script" uid="uid://ds7uy6nb67rym" path="res://all_card/minion/mech/微型机器人/微型机器人.gd" id="1_cc03i"]
+
+[node name="微型机器人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_BOT_312t"
+name_str = "微型机器人"
+cardType = 0
+lv = 1.0
+atk = 1.0
+hp = 1.0
+desc = ""
+gold_desc = ""
+race = Array[int]([5])

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbnd3w3vj134t"]
+
+[ext_resource type="Script" uid="uid://bgki452w6la8b" path="res://all_card/minion/beast/陆行鸟先锋/陆行鸟先锋.gd" id="1_cc03i"]
+
+[node name="陆行鸟先锋" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_079"
+name_str = "陆行鸟先锋"
+desc = "<b>战斗开始时：</b>触发你最左边的两个<b>亡语</b>。"
+gold_desc = "<b>战斗开始时：</b>触发你最左边的两个<b>亡语</b>，触发两次。"
+race = Array[int]([1])

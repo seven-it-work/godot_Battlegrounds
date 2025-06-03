@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cube28ircgudo"]
+
+[ext_resource type="Script" uid="uid://j7x0r0qgybom" path="res://all_card/minion/mech/偏折机器人/偏折机器人.gd" id="1_cc03i"]
+
+[node name="偏折机器人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_071"
+name_str = "偏折机器人"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 2.0
+desc = "<b>圣盾</b>
+在战斗阶段中，每当你召唤一个机械，便获得+2攻击力和<b>圣盾</b>。"
+gold_desc = "<b>圣盾</b>
+在战斗阶段中，每当你召唤一个机械，便获得+4攻击力和<b>圣盾</b>。"
+race = Array[int]([5])

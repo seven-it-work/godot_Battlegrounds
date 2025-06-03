@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://diaf7i704v0j1"]
+
+[ext_resource type="Script" uid="uid://u4bng0eddxls" path="res://all_card/minion/undead/遗骸看管者/遗骸看管者.gd" id="1_cc03i"]
+
+[node name="遗骸看管者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_125"
+name_str = "遗骸看管者"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 3.0
+desc = "<b>亡语：</b>召唤三个1/1的骷髅。"
+gold_desc = "<b>亡语：</b>召唤六个1/1的骷髅。"
+race = Array[int]([10])

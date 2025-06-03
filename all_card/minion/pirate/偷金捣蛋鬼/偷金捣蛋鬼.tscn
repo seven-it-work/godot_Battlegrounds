@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://wcc446e1raum"]
+
+[ext_resource type="Script" uid="uid://ctwmiup1ne8an" path="res://all_card/minion/pirate/偷金捣蛋鬼/偷金捣蛋鬼.gd" id="1_cc03i"]
+
+[node name="偷金捣蛋鬼" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_232"
+name_str = "偷金捣蛋鬼"
+cardType = 0
+lv = 4.0
+atk = 5.0
+hp = 6.0
+desc = "在你的回合开始时，获得1枚铸币。每有一个友方金色随从，重复一次。"
+gold_desc = "在你的回合开始时，获得2枚铸币。每有一个友方金色随从，重复一次。"
+race = Array[int]([8])

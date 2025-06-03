@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo636n7qfniw7"]
+
+[ext_resource type="Script" uid="uid://5foc0irigpb8" path="res://all_card/minion/demon/狂蝠恐惧卫士/狂蝠恐惧卫士.gd" id="1_cc03i"]
+
+[node name="狂蝠恐惧卫士" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_871"
+name_str = "狂蝠恐惧卫士"
+cardType = 0
+lv = 5.0
+atk = 6.0
+hp = 2.0
+desc = "在你施放一个酒馆法术后，另一个友方恶魔会吞食
+酒馆中的一个随从以获得其属性值。"
+gold_desc = "在你施放一个酒馆法术后，另一个友方恶魔会吞食酒馆中的一个随从以获得其双倍属性值。"
+race = Array[int]([2])

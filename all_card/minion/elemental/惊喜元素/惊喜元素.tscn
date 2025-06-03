@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://di3qlou151r13"]
+
+[ext_resource type="Script" uid="uid://cvo8x2g86dc41" path="res://all_card/minion/elemental/惊喜元素/惊喜元素.gd" id="1_cc03i"]
+
+[node name="惊喜元素" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_175"
+name_str = "惊喜元素"
+cardType = 0
+lv = 6.0
+atk = 8.0
+hp = 8.0
+desc = "<b>圣盾</b>。可以与任意元素三连。"
+gold_desc = "<b>圣盾</b>。可以与任意元素三连。"
+race = Array[int]([4])

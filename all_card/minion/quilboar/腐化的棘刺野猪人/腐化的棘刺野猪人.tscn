@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://itysac1786bx"]
+
+[ext_resource type="Script" uid="uid://bjs7qv1mhtacv" path="res://all_card/minion/quilboar/腐化的棘刺野猪人/腐化的棘刺野猪人.gd" id="1_cc03i"]
+
+[node name="腐化的棘刺野猪人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_431"
+name_str = "腐化的棘刺野猪人"
+cardType = 0
+lv = 4.0
+atk = 5.0
+hp = 3.0
+desc = "<b>亡语：</b>召唤一个属性值等同于本随从的<b>鲜血宝石</b>的魔像。"
+gold_desc = "<b>亡语：</b>召唤2个属性值等同于本随从的<b>鲜血宝石</b>的魔像。"
+race = Array[int]([9])

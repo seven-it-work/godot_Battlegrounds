@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2qr6il2d18a5"]
+
+[ext_resource type="Script" uid="uid://b1siyoielu216" path="res://all_card/minion/none/竞技表演者/竞技表演者.gd" id="1_cc03i"]
+
+[node name="竞技表演者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_550"
+name_str = "竞技表演者"
+cardType = 0
+lv = 5.0
+atk = 3.0
+hp = 4.0
+desc = "<b>战吼：</b><b>发现</b>一张酒馆法术牌。"
+gold_desc = "<b>战吼：</b><b>发现</b>2张酒馆法术牌。"
+race = Array[int]([0])

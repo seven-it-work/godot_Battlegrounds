@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch7sw8fa4elo"]
+
+[ext_resource type="Script" uid="uid://c0txot732blc4" path="res://all_card/minion/murloc/潮汐先知摩戈尔/潮汐先知摩戈尔.gd" id="1_cc03i"]
+
+[node name="潮汐先知摩戈尔" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_513"
+name_str = "潮汐先知摩戈尔"
+cardType = 0
+lv = 7.0
+atk = 1.0
+hp = 10.0
+desc = "<b><b>剧毒</b>。</b>每当本随从攻击并消灭一个随从时，使你手牌中的一张随从牌获得被消灭随从的最大属性值。"
+gold_desc = "<b><b>剧毒</b>。</b>每当本随从攻击并消灭一个随从时，使你手牌中的一张随从牌获得被消灭随从的双倍最大属性值。"
+race = Array[int]([6])

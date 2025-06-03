@@ -6,6 +6,8 @@
 
 [node name="BaseCard" node_paths=PackedStringArray("亡语") instance=ExtResource("1_8hfe6")]
 script = ExtResource("2_n3nw0")
+version = "32.2.4.221850"
+ls_card_id = "BG26_800"
 name_str = "魔刃豹"
 atk = 4
 desc = "亡语：召唤两只0\\/1并具有嘲讽的豹宝宝。"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcmgkblt6pint"]
+
+[ext_resource type="Script" uid="uid://lldcrnbime63" path="res://all_card/minion/mech/蓄能女沙皇/蓄能女沙皇.gd" id="1_cc03i"]
+
+[node name="蓄能女沙皇" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_741"
+name_str = "蓄能女沙皇"
+cardType = 0
+lv = 5.0
+atk = 6.0
+hp = 3.0
+desc = "<b>圣盾</b>。每当你施放一个酒馆法术时，使你具有<b>圣盾</b>的随从获得+3攻击力。"
+gold_desc = "<b>圣盾</b>。每当你施放一个酒馆法术时，使你具有<b>圣盾</b>的随从获得+6攻击力。"
+race = Array[int]([5])

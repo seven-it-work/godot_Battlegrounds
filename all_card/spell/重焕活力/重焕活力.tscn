@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ot7o1gc5m0jr"]
+
+[ext_resource type="Script" uid="uid://b1a110kco6e6e" path="res://all_card/spell/重焕活力/重焕活力.gd" id="1_cc03i"]
+
+[node name="重焕活力" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_830t"
+name_str = "重焕活力"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "使一个随从获得+2/+2。如果该随从是纳迦，还会使其获得直到下回合的<b>复生</b>。"
+gold_desc = "使一个随从获得+2/+2。如果该随从是纳迦，还会使其获得直到下回合的<b>复生</b>。"
+race = Array[int]([])

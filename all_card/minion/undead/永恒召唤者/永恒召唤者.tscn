@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://p6m7vlsb3gu3"]
+
+[ext_resource type="Script" uid="uid://cdouklfm72g08" path="res://all_card/minion/undead/永恒召唤者/永恒召唤者.gd" id="1_cc03i"]
+
+[node name="永恒召唤者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_009"
+name_str = "永恒召唤者"
+cardType = 0
+lv = 6.0
+atk = 8.0
+hp = 1.0
+desc = "<b>复生</b>。<b>亡语：</b>召唤1个永恒骑士。"
+gold_desc = "<b>复生</b>。<b>亡语：</b>召唤一个金色的永恒骑士。"
+race = Array[int]([10])

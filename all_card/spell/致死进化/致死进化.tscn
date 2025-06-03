@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn8dw4os7twhk"]
+
+[ext_resource type="Script" uid="uid://jr2vqp33gpl" path="res://all_card/spell/致死进化/致死进化.gd" id="1_cc03i"]
+
+[node name="致死进化" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_144t2"
+name_str = "致死进化"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "获得+3生命值和<b>烈毒</b>。"
+gold_desc = "获得+3生命值和<b>烈毒</b>。"
+race = Array[int]([])

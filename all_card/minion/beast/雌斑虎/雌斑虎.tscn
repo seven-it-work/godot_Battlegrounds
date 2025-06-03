@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://s021h17wdor7"]
+
+[ext_resource type="Script" uid="uid://dfqym0repvsmb" path="res://all_card/minion/beast/雌斑虎/雌斑虎.gd" id="1_cc03i"]
+
+[node name="雌斑虎" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_CFM_315t"
+name_str = "雌斑虎"
+race = Array[int]([1])
+"是否出现在酒馆" = false

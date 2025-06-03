@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgt734ehakbo"]
+
+[ext_resource type="Script" uid="uid://cp4tuaafjc4y2" path="res://all_card/minion/murloc/浅鳍秘法师/浅鳍秘法师.gd" id="1_cc03i"]
+
+[node name="浅鳍秘法师" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_860"
+name_str = "浅鳍秘法师"
+cardType = 0
+lv = 3.0
+atk = 4.0
+hp = 4.0
+desc = "<b>战吼：</b>在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+1攻击力。"
+gold_desc = "<b>战吼：</b>在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+2攻击力。"
+race = Array[int]([6])

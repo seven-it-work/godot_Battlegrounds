@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://0bsy2sje6hkn"]
+
+[ext_resource type="Script" uid="uid://w0eqt0o74h61" path="res://all_card/minion/elemental/温和的灯神/温和的灯神.gd" id="1_cc03i"]
+
+[node name="温和的灯神" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_121"
+name_str = "温和的灯神"
+cardType = 0
+lv = 6.0
+atk = 4.0
+hp = 5.0
+desc = "<b>嘲讽</b>
+<b>战吼，亡语：</b>随机获取一张元素牌。"
+gold_desc = "<b>嘲讽</b>。<b>战吼，亡语：</b>随机获取2张元素牌。"
+race = Array[int]([4])

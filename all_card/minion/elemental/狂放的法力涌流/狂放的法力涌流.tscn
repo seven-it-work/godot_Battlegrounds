@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmnbf8yj8qch0"]
+
+[ext_resource type="Script" uid="uid://bc520kkwnh76c" path="res://all_card/minion/elemental/狂放的法力涌流/狂放的法力涌流.gd" id="1_cc03i"]
+
+[node name="狂放的法力涌流" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_846"
+name_str = "狂放的法力涌流"
+cardType = 0
+lv = 6.0
+atk = 6.0
+hp = 4.0
+desc = "在你使用一张元素牌后，随机使3个被使用的元素之外的友方元素获得+{0}/+{1}。"
+gold_desc = "在你使用一张元素牌后，
+随机使3个被使用的元素之外的友方元素获得+{0}/+{1}，触发两次。"
+race = Array[int]([4])

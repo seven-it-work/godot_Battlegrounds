@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq6jhiwpoqalq"]
+
+[ext_resource type="Script" uid="uid://b8mlqn3xa13qb" path="res://all_card/minion/murloc/暗鳞哀歌者/暗鳞哀歌者.gd" id="1_cc03i"]
+
+[node name="暗鳞哀歌者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_331"
+name_str = "暗鳞哀歌者"
+cardType = 0
+lv = 2.0
+atk = 3.0
+hp = 2.0
+desc = "在你的回合结束时，使一个友方随从和你手牌中的一张随从牌获得+1/+1。"
+gold_desc = "在你的回合结束时，使一个友方随从和你手牌中的一张随从牌获得+2/+2。"
+race = Array[int]([6])

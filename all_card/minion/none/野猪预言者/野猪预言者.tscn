@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpwcayu4431i7"]
+
+[ext_resource type="Script" uid="uid://cpk48jea1fx7" path="res://all_card/minion/none/野猪预言者/野猪预言者.gd" id="1_cc03i"]
+
+[node name="野猪预言者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG20_203"
+name_str = "野猪预言者"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 3.0
+desc = "<b>嘲讽</b>。在你使用一张野猪人后，获取一张<b>鲜血宝石</b>。"
+gold_desc = "<b>嘲讽</b>。在你使用一张野猪人后，获取2张<b>鲜血宝石</b>。"
+race = Array[int]([0])

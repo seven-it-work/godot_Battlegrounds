@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://l7qexrs52wuf"]
+
+[ext_resource type="Script" uid="uid://cls6gl4pvu6fv" path="res://all_card/minion/elemental/科技元素体/科技元素体.gd" id="1_cc03i"]
+
+[node name="科技元素体" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_859"
+name_str = "科技元素体"
+cardType = 0
+lv = 2.0
+atk = 4.0
+hp = 5.0
+desc = "<b>磁力</b>。可以<b>磁力吸附</b>在机械和元素上。"
+gold_desc = "<b>磁力</b>。可以<b>磁力吸附</b>在机械和元素上。"
+race = Array[int]([4, 5])

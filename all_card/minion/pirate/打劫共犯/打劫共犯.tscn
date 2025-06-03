@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://s745pvsemnsn"]
+
+[ext_resource type="Script" uid="uid://dlcfair53msk4" path="res://all_card/minion/pirate/打劫共犯/打劫共犯.gd" id="1_cc03i"]
+
+[node name="打劫共犯" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_118"
+name_str = "打劫共犯"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 2.0
+desc = "在你的回合开始时，你和你的队友各获得1枚铸币。"
+gold_desc = "在你的回合开始时，你和你的队友各获得2枚铸币。"
+race = Array[int]([8])

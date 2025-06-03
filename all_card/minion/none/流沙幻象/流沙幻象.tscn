@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7t7i0043k3hw"]
+
+[ext_resource type="Script" uid="uid://co33vd0xvhlxq" path="res://all_card/minion/none/流沙幻象/流沙幻象.gd" id="1_cc03i"]
+
+[node name="流沙幻象" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_125"
+name_str = "流沙幻象"
+cardType = 0
+lv = 7.0
+atk = 1.0
+hp = 1.0
+desc = "<b>战斗开始时：</b>变形成为你的队友生命值最高的随从的复制。"
+gold_desc = "<b>战斗开始时：</b>变形成为你的队友生命值最高的随从的金色复制。"
+race = Array[int]([0])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cadu3ipmyweld"]
+
+[ext_resource type="Script" uid="uid://ckfct78jpgtxx" path="res://all_card/minion/undead/死亡群居蛛魔/死亡群居蛛魔.gd" id="1_cc03i"]
+
+[node name="死亡群居蛛魔" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_011"
+name_str = "死亡群居蛛魔"
+cardType = 0
+lv = 2.0
+atk = 1.0
+hp = 4.0
+desc = "<b>战吼：</b>在本局对战中，你的亡灵拥有+1攻击力<i>（无论它们在哪）</i>。"
+gold_desc = "<b>战吼：</b>在本局对战中，你的亡灵拥有+2攻击力<i>（无论它们在哪）</i>。"
+race = Array[int]([10])

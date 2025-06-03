@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://dighdlib1vulv" path="res://all_card/minion/beast/嗡鸣害虫/dead.gd" id="2_6kb1i"]
 
 [node name="嗡鸣害虫" type="Node2D" node_paths=PackedStringArray("亡语")]
-ls_card_id="BG31_803"
 script = ExtResource("1_wfg0g")
+version = "32.2.4.221850"
+ls_card_id = "BG31_803"
 name_str = "嗡鸣害虫"
 atk = 1
 desc = "嘲讽。亡语：召唤一只{0}\\/{1}的甲虫。"

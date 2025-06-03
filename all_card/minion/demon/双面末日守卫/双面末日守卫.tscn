@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxidr5egn5awf"]
+
+[ext_resource type="Script" uid="uid://dr6fcktlbrsn1" path="res://all_card/minion/demon/双面末日守卫/双面末日守卫.gd" id="1_cc03i"]
+
+[node name="双面末日守卫" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_210"
+name_str = "双面末日守卫"
+desc = "在你的回合结束时，对你的英雄造成3点伤害并使你的队伍的随从获得+3/+3。"
+gold_desc = "在你的回合结束时，
+对你的英雄造成3点伤害并使你的队伍的随从获得+3/+3，触发两次。"
+race = Array[int]([2])
+"是否出现在酒馆" = false

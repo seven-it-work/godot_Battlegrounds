@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfxgaw00ahpbo"]
+
+[ext_resource type="Script" uid="uid://bx3ej57qj0elm" path="res://all_card/minion/none/红衣纳迪娜/红衣纳迪娜.gd" id="1_cc03i"]
+
+[node name="红衣纳迪娜" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_040"
+name_str = "红衣纳迪娜"
+cardType = 0
+lv = 6.0
+atk = 8.0
+hp = 4.0
+desc = "<b>亡语：</b>使3条友方的龙获得<b>圣盾</b>。"
+gold_desc = "<b>亡语：</b>使6条友方的龙获得<b>圣盾</b>。"
+race = Array[int]([0])

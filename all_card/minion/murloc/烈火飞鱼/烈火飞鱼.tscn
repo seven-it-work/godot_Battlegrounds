@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://irp4x7acbwpd"]
+
+[ext_resource type="Script" uid="uid://boemyplorvf5" path="res://all_card/minion/murloc/烈火飞鱼/烈火飞鱼.gd" id="1_cc03i"]
+
+[node name="烈火飞鱼" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_040"
+name_str = "烈火飞鱼"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 4.0
+desc = "在你触发一个<b>战吼</b>后，获得+1/+1。"
+gold_desc = "在你触发一个<b>战吼</b>后，获得+2/+2。"
+race = Array[int]([6, 3])

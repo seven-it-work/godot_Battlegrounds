@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://co6e2bajoup8l"]
+
+[ext_resource type="Script" uid="uid://b6klqf3e7h2d3" path="res://all_card/minion/quilboar/刺头吹笛人/刺头吹笛人.gd" id="1_cc03i"]
+
+[node name="刺头吹笛人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_160"
+name_str = "刺头吹笛人"
+cardType = 0
+lv = 3.0
+atk = 5.0
+hp = 1.0
+desc = "<b>亡语：</b>在本局对战中，你的<b>鲜血宝石</b>会额外获得+1攻击力。"
+gold_desc = "<b>亡语：</b>在本局对战中，你的<b>鲜血宝石</b>会额外获得+2攻击力。"
+race = Array[int]([9])

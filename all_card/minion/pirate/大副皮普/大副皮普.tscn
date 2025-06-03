@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ap1tvownhwj"]
+
+[ext_resource type="Script" uid="uid://bidb0rbybyxr3" path="res://all_card/minion/pirate/大副皮普/大副皮普.gd" id="1_cc03i"]
+
+[node name="大副皮普" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_192"
+name_str = "大副皮普"
+cardType = 0
+lv = 2.0
+atk = 5.0
+hp = 2.0
+desc = "本随从仅需2个复制即可变为金色。"
+gold_desc = "<i>（本随从仅需2个复制即变为了金色。）</i>"
+race = Array[int]([8])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://4c3ano0aeomj"]
+
+[ext_resource type="Script" uid="uid://dc4wa5lbkqwhf" path="res://all_card/spell/神圣进化/神圣进化.gd" id="1_cc03i"]
+
+[node name="神圣进化" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_144t"
+name_str = "神圣进化"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "获得+3攻击力和<b>圣盾</b>。"
+gold_desc = "获得+3攻击力和<b>圣盾</b>。"
+race = Array[int]([])

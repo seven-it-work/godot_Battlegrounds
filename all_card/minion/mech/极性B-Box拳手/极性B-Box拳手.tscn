@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwlbpjqqalqs"]
+
+[ext_resource type="Script" uid="uid://u2bfa5i0ncfs" path="res://all_card/minion/mech/极性B-Box拳手/极性B-Box拳手.gd" id="1_cc03i"]
+
+[node name="极性B-Box拳手" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_149"
+name_str = "极性B-Box拳手"
+cardType = 0
+lv = 6.0
+atk = 5.0
+hp = 10.0
+desc = "每当你对另一个随从<b>磁力吸附</b>时，还会对本随从<b>磁力吸附</b>。"
+gold_desc = "每当你对另一个随从<b>磁力吸附</b>时，还会对本随从<b>磁力吸附</b>两次。"
+race = Array[int]([5])

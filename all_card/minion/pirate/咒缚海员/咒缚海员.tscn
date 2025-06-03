@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1541tv3k0cy6"]
+
+[ext_resource type="Script" uid="uid://brpv4gxichdsf" path="res://all_card/minion/pirate/咒缚海员/咒缚海员.gd" id="1_cc03i"]
+
+[node name="咒缚海员" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_903"
+name_str = "咒缚海员"
+cardType = 0
+lv = 5.0
+atk = 3.0
+hp = 5.0
+desc = "在你购买3张牌后，随机获取一张酒馆法术牌。<i>（还剩3张！）</i>"
+gold_desc = "在你购买3张牌后，随机获取两张酒馆法术牌。<i>（还剩3张！）</i>"
+race = Array[int]([8])

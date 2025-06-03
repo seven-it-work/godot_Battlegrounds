@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://73rthnw2skhn"]
+
+[ext_resource type="Script" uid="uid://cgogymclb8axt" path="res://all_card/minion/naga/风暴分流者/风暴分流者.gd" id="1_cc03i"]
+
+[node name="风暴分流者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_122"
+name_str = "风暴分流者"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 5.0
+desc = "每回合一次：在你<b>传递</b>酒馆法术牌后，获取一张它的新复制。"
+gold_desc = "每回合一次：在你<b>传递</b>酒馆法术牌后，获取2张它的新复制。"
+race = Array[int]([7])

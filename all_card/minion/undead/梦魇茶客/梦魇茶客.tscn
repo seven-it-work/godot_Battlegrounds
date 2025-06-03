@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://n2andc72vrf3"]
+
+[ext_resource type="Script" uid="uid://d0u8rb38b1yjx" path="res://all_card/minion/undead/梦魇茶客/梦魇茶客.gd" id="1_cc03i"]
+
+[node name="梦魇茶客" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_111"
+name_str = "梦魇茶客"
+cardType = 0
+lv = 6.0
+atk = 6.0
+hp = 6.0
+desc = "<b>战吼，亡语：</b>获取一张乱放的茶具。"
+gold_desc = "<b>战吼，亡语：</b>获取2张乱放的茶具。"
+race = Array[int]([10, 6, 2, 5, 4, 1, 8, 3, 9, 7])

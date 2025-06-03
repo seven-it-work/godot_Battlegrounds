@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://da6g6dcvw3qtr"]
+
+[ext_resource type="Script" uid="uid://bidkxilhn1sbd" path="res://all_card/minion/none/达卡莱附魔师/达卡莱附魔师.gd" id="1_cc03i"]
+
+[node name="达卡莱附魔师" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_ICC_901"
+name_str = "达卡莱附魔师"
+cardType = 0
+lv = 5.0
+atk = 1.0
+hp = 5.0
+desc = "你的回合结束效果会触发两次。"
+gold_desc = "你的回合结束效果会触发三次。"
+race = Array[int]([0])

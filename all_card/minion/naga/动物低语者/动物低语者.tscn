@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://l8w32nekxyvk"]
+
+[ext_resource type="Script" uid="uid://inne6isf8fc0" path="res://all_card/minion/naga/动物低语者/动物低语者.gd" id="1_cc03i"]
+
+[node name="动物低语者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_837"
+name_str = "动物低语者"
+cardType = 0
+lv = 6.0
+atk = 3.0
+hp = 8.0
+desc = "在你的回合结束时，对本随从左边的随从施放自然祝福。"
+gold_desc = "在你的回合结束时，对相邻的随从施放自然祝福。"
+race = Array[int]([7])

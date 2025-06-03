@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://1xbhjfvfh2v5"]
+
+[ext_resource type="Script" uid="uid://st8rxaa3yafd" path="res://all_card/minion/quilboar/忠实的帮凶/忠实的帮凶.gd" id="1_cc03i"]
+
+[node name="忠实的帮凶" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_202"
+name_str = "忠实的帮凶"
+cardType = 0
+lv = 6.0
+atk = 6.0
+hp = 5.0
+desc = "在你的回合
+结束时，对你的队友的所有随从各使用一张<b>鲜血宝石</b>。"
+gold_desc = "在你的回合
+结束时，对你的队友的所有随从各使用2张<b>鲜血宝石</b>。"
+race = Array[int]([9])

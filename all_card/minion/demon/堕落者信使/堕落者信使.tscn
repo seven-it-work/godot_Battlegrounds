@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cey8i476fmdx4"]
+
+[ext_resource type="Script" uid="uid://cuko7wnuxya0l" path="res://all_card/minion/demon/堕落者信使/堕落者信使.gd" id="1_cc03i"]
+
+[node name="堕落者信使" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_121"
+name_str = "堕落者信使"
+desc = "<b>战吼：</b>在本局对战中，你的队伍酒馆中的随从拥有+1/+1。"
+gold_desc = "<b>战吼：</b>在本局对战中，你的队伍酒馆中的随从拥有+2/+2。"
+race = Array[int]([2])
+"是否出现在酒馆" = false

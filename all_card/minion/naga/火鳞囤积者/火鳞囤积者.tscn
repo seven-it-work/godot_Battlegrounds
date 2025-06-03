@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci8oqch3ci3vl"]
+
+[ext_resource type="Script" uid="uid://caayq5y1b5nkw" path="res://all_card/minion/naga/火鳞囤积者/火鳞囤积者.gd" id="1_cc03i"]
+
+[node name="火鳞囤积者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_820"
+name_str = "火鳞囤积者"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 5.0
+desc = "<b>战吼，亡语：</b>获取一张闪亮的戒指。"
+gold_desc = "<b>战吼，亡语：</b>获取2张闪亮的戒指。"
+race = Array[int]([7, 3])

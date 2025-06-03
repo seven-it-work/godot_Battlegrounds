@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ga8mmb6n8uld"]
+
+[ext_resource type="Script" uid="uid://b8xboah81th7" path="res://all_card/minion/murloc/滩涂跳跳鱼/滩涂跳跳鱼.gd" id="1_cc03i"]
+
+[node name="滩涂跳跳鱼" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_117"
+name_str = "滩涂跳跳鱼"
+cardType = 0
+lv = 3.0
+atk = 4.0
+hp = 4.0
+desc = "在本随从被<b>传递</b>后，获得+4/+4。"
+gold_desc = "在本随从被<b>传递</b>后，获得+8/+8。"
+race = Array[int]([6])

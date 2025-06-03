@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://chimludagby8b"]
+
+[ext_resource type="Script" uid="uid://1eyjd7nxfv6m" path="res://all_card/minion/undead/断手被遗忘者/断手被遗忘者.gd" id="1_cc03i"]
+
+[node name="断手被遗忘者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_010"
+name_str = "断手被遗忘者"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 1.0
+desc = "<b>亡语：</b>召唤一只2/1并具有<b>复生</b>的手。"
+gold_desc = "<b>亡语：</b>召唤两只2/1并具有<b>复生</b>的手。"
+race = Array[int]([10])

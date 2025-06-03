@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0o6ulajcq6bp"]
+
+[ext_resource type="Script" uid="uid://eg187dxq52mq" path="res://all_card/minion/beast/丝柔烁光蛾/丝柔烁光蛾.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://rhgr8c8y80py" path="res://all_card/minion/beast/丝柔烁光蛾/dead.gd" id="2_dm6xb"]
+
+[node name="丝柔烁光蛾" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_204"
+name_str = "丝柔烁光蛾"
+desc = "在本随从获得攻击力后，在本局对战中，你的甲虫拥有+2/+2。<b>亡语：</b>召唤一只{0}/{1}的甲虫。"
+gold_desc = "在本随从获得攻击力后，在本局对战中，你的甲虫拥有+4/+4。<b>亡语：</b>召唤两只{0}/{1}的甲虫。"
+race = Array[int]([1])
+"亡语" = [NodePath("Dead")]
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_dm6xb")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

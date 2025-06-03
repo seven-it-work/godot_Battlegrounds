@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cysfrd77vbxn3"]
+
+[ext_resource type="Script" uid="uid://c1ca43tvjcd4d" path="res://all_card/minion/none/瓦里安国王/瓦里安国王.gd" id="1_cc03i"]
+
+[node name="瓦里安国王" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_508"
+name_str = "瓦里安国王"
+cardType = 0
+lv = 7.0
+atk = 9.0
+hp = 9.0
+desc = "当你出售本随从时，<b>发现</b>两个等级6
+的随从。"
+gold_desc = "当你出售本随从时，<b>发现</b>四个等级6
+的随从。"
+race = Array[int]([0])

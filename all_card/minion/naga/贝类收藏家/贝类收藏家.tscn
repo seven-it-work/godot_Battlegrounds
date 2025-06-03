@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://drjiwx1ecgjb1"]
+
+[ext_resource type="Script" uid="uid://f6ee2mduy63c" path="res://all_card/minion/naga/贝类收藏家/贝类收藏家.gd" id="1_cc03i"]
+
+[node name="贝类收藏家" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_002"
+name_str = "贝类收藏家"
+cardType = 0
+lv = 2.0
+atk = 4.0
+hp = 3.0
+desc = "<b>战吼：</b>获取一张铸币牌。"
+gold_desc = "<b>战吼：</b>获取2张铸币牌。"
+race = Array[int]([7])

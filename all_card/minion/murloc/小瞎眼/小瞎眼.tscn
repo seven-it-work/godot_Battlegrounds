@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyi2n2pisirb5"]
+
+[ext_resource type="Script" uid="uid://b8ycv4vgp58vi" path="res://all_card/minion/murloc/小瞎眼/小瞎眼.gd" id="1_cc03i"]
+
+[node name="小瞎眼" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG22_403"
+name_str = "小瞎眼"
+cardType = 0
+lv = 6.0
+atk = 9.0
+hp = 6.0
+desc = "在你的回合结束时，触发一个相邻随从的<b>战吼</b>。"
+gold_desc = "在你的回合结束时，触发相邻随从的<b>战吼</b>。"
+race = Array[int]([6])

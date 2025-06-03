@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7gankpq1w7le"]
+
+[ext_resource type="Script" uid="uid://d1v3ska0kaadk" path="res://all_card/minion/mech/砰砰飞车/砰砰飞车.gd" id="1_cc03i"]
+
+[node name="砰砰飞车" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_021"
+name_str = "砰砰飞车"
+cardType = 0
+lv = 7.0
+atk = 20.0
+hp = 20.0
+desc = "<b>磁力</b>
+<b>复生</b>。<b>圣盾</b>。<b>嘲讽</b>。<b>风怒</b>"
+gold_desc = "<b>磁力</b>
+<b>复生</b>。<b>圣盾</b>。<b>嘲讽</b>。<b>风怒</b>"
+race = Array[int]([5])

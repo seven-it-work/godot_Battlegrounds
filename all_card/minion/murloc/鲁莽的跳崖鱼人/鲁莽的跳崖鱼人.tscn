@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2lvqahwv80n8"]
+
+[ext_resource type="Script" uid="uid://ftbxov53j2vi" path="res://all_card/minion/murloc/鲁莽的跳崖鱼人/鲁莽的跳崖鱼人.gd" id="1_cc03i"]
+
+[node name="鲁莽的跳崖鱼人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_142"
+name_str = "鲁莽的跳崖鱼人"
+cardType = 0
+lv = 3.0
+atk = 4.0
+hp = 1.0
+desc = "<b>复生</b>。在本局对战中，你每触发过一次<b>战吼</b>，便拥有+1攻击力<i>（无论本随从在哪）</i>。"
+gold_desc = "<b>复生</b>。在本局对战中，你每触发过一次<b>战吼</b>，便拥有+2攻击力<i>（无论本随从在哪）</i>。"
+race = Array[int]([6])

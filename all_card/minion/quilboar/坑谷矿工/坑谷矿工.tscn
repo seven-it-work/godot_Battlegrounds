@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://brfbgtw3vmdb2"]
+
+[ext_resource type="Script" uid="uid://conekhff7xyii" path="res://all_card/minion/quilboar/坑谷矿工/坑谷矿工.gd" id="1_cc03i"]
+
+[node name="坑谷矿工" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_320"
+name_str = "坑谷矿工"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 2.0
+desc = "<b>抉择：</b>获取2张
+<b>鲜血宝石</b>；或者随机获取一张消耗1枚铸币的酒馆法术牌。"
+gold_desc = "<b>抉择：</b>获取4张
+<b>鲜血宝石</b>；或者随机获取两张消耗1枚铸币的酒馆法术牌。"
+race = Array[int]([9])

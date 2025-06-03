@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://l0pxk1lfl3dq"]
+
+[ext_resource type="Script" uid="uid://dh10r3o31a1eh" path="res://all_card/minion/pirate/刀剑收藏家/刀剑收藏家.gd" id="1_cc03i"]
+
+[node name="刀剑收藏家" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_817"
+name_str = "刀剑收藏家"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 2.0
+desc = "同时对其攻击目标相邻的随从造成伤害。"
+gold_desc = "同时对其攻击目标相邻的随从造成伤害。"
+race = Array[int]([8])

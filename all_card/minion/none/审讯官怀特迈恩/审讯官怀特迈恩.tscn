@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjfovern320xw"]
+
+[ext_resource type="Script" uid="uid://dc4o6m2egbfqm" path="res://all_card/minion/none/审讯官怀特迈恩/审讯官怀特迈恩.gd" id="1_cc03i"]
+
+[node name="审讯官怀特迈恩" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG24_704"
+name_str = "审讯官怀特迈恩"
+cardType = 0
+lv = 5.0
+atk = 8.0
+hp = 5.0
+desc = "<b>战斗开始时：</b>使一个等级5或更高的敌方随从获得<b>嘲讽</b>，在本场战斗中其受到的伤害翻倍。"
+gold_desc = "<b>战斗开始时：</b>使两个等级5或更高的敌方随从获得<b>嘲讽</b>，在本场战斗中其受到的伤害翻倍。"
+race = Array[int]([0])

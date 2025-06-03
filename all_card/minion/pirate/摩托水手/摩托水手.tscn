@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://becgqatxnk5yn"]
+
+[ext_resource type="Script" uid="uid://dsnfnqhtp57jw" path="res://all_card/minion/pirate/摩托水手/摩托水手.gd" id="1_cc03i"]
+
+[node name="摩托水手" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_207"
+name_str = "摩托水手"
+cardType = 0
+lv = 3.0
+atk = 6.0
+hp = 3.0
+desc = "<b>亡语：</b>你的队伍升级酒馆所需的铸币减少（1）枚。"
+gold_desc = "<b>亡语：</b>你的队伍升级酒馆所需的铸币减少（2）枚。"
+race = Array[int]([8])

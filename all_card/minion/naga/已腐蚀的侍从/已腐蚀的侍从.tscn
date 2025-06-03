@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dglix2rg8oftn"]
+
+[ext_resource type="Script" uid="uid://bk6sqkvddix66" path="res://all_card/minion/naga/已腐蚀的侍从/已腐蚀的侍从.gd" id="1_cc03i"]
+
+[node name="已腐蚀的侍从" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_012"
+name_str = "已腐蚀的侍从"
+cardType = 0
+lv = 4.0
+atk = 2.0
+hp = 2.0
+desc = "<b>战斗开始时：</b>本随从的属性值翻倍。"
+gold_desc = "<b>战斗开始时：</b>本随从的属性值变为三倍。"
+race = Array[int]([7])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://br3ncdl8paffm"]
+
+[ext_resource type="Script" uid="uid://cs2d44g3h0kh5" path="res://all_card/minion/undead/萨莱因铭文师/萨莱因铭文师.gd" id="1_cc03i"]
+
+[node name="萨莱因铭文师" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_208"
+name_str = "萨莱因铭文师"
+cardType = 0
+lv = 4.0
+atk = 4.0
+hp = 4.0
+desc = "在本局对战中，每有一个你的队伍的萨莱因铭文师死亡，便拥有+4/+4<i>（无论本随从在哪）</i>。"
+gold_desc = "在本局对战中，每有一个你的队伍的萨莱因铭文师死亡，便拥有+8/+8<i>（无论本随从在哪）</i>。"
+race = Array[int]([10])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://qlb84eateeb3"]
+
+[ext_resource type="Script" uid="uid://bjl4rdg5jcq35" path="res://all_card/minion/undead/大巫妖克尔苏加德/大巫妖克尔苏加德.gd" id="1_cc03i"]
+
+[node name="大巫妖克尔苏加德" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_308"
+name_str = "大巫妖克尔苏加德"
+cardType = 0
+lv = 6.0
+atk = 10.0
+hp = 8.0
+desc = "在你的回合结束时，消灭本随从左侧的亡灵并再次召唤完全相同的复制。"
+gold_desc = "在你的回合结束时，消灭相邻的亡灵并再次召唤完全相同的复制。"
+race = Array[int]([10])

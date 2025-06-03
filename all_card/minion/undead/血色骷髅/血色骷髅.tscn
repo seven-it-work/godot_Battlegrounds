@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c00po1w5wb14p"]
+
+[ext_resource type="Script" uid="uid://bocowv8os01bs" path="res://all_card/minion/undead/血色骷髅/血色骷髅.gd" id="1_cc03i"]
+
+[node name="血色骷髅" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_022"
+name_str = "血色骷髅"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 1.0
+desc = "<b>复生</b>。<b>亡语：</b>使一个友方亡灵获得+1/+2。"
+gold_desc = "<b>复生</b>。<b>亡语：</b>使一个友方亡灵获得+2/+4。"
+race = Array[int]([10])

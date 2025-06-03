@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://op5ypxbothkm"]
+
+[ext_resource type="Script" uid="uid://dmtkejfoy31v0" path="res://all_card/minion/dragon/护雏的龙希尔/护雏的龙希尔.gd" id="1_cc03i"]
+
+[node name="护雏的龙希尔" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_107"
+name_str = "护雏的龙希尔"
+cardType = 0
+lv = 3.0
+atk = 4.0
+hp = 3.0
+desc = "在你的回合结束时，使你的队友的随从获得+1攻击力。"
+gold_desc = "在你的回合结束时，使你的队友的随从获得+2攻击力。"
+race = Array[int]([3])

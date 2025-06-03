@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://nv0ig3dehve2"]
+
+[ext_resource type="Script" uid="uid://drvwlt3raemhb" path="res://all_card/minion/beast/绿松石飞掠虫/绿松石飞掠虫.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://doau53426d3gw" path="res://all_card/minion/beast/绿松石飞掠虫/dead.gd" id="2_hif4v"]
+
+[node name="绿松石飞掠虫" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_809"
+name_str = "绿松石飞掠虫"
+desc = "<b>亡语：</b>在本局
+对战中，你的甲虫拥有+1/+2。召唤一只{0}/{1}的甲虫。"
+gold_desc = "<b>亡语：</b>在本局
+对战中，你的甲虫拥有+2/+4。召唤两只{0}/{1}的甲虫。"
+race = Array[int]([1])
+"亡语" = [NodePath("Dead")]
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("2_hif4v")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

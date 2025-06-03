@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnec4tti2qx38"]
+
+[ext_resource type="Script" uid="uid://cfn2j58crqhlj" path="res://all_card/minion/dragon/护植绿龙/护植绿龙.gd" id="1_cc03i"]
+
+[node name="护植绿龙" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_008"
+name_str = "护植绿龙"
+cardType = 0
+lv = 4.0
+atk = 4.0
+hp = 8.0
+desc = "在本随从攻击后，触发你最右边的<b>战吼</b>。"
+gold_desc = "在本随从攻击后，触发你最右边的<b>战吼</b>，触发两次。"
+race = Array[int]([3])

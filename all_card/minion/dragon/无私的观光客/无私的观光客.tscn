@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://4htidsh41fst"]
+
+[ext_resource type="Script" uid="uid://bhroxl5uql67h" path="res://all_card/minion/dragon/无私的观光客/无私的观光客.gd" id="1_cc03i"]
+
+[node name="无私的观光客" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_205"
+name_str = "无私的观光客"
+cardType = 0
+lv = 4.0
+atk = 5.0
+hp = 2.0
+desc = "<b>战吼：</b>你的队伍的铸币上限提高（1）枚。"
+gold_desc = "<b>战吼：</b>你的队伍的铸币上限提高（2）枚。"
+race = Array[int]([3])

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4ahvfpeq8jq"]
+
+[ext_resource type="Script" uid="uid://vwspi6grqid" path="res://all_card/minion/none/坎格尔的学徒/坎格尔的学徒.gd" id="1_cc03i"]
+
+[node name="坎格尔的学徒" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_012"
+name_str = "坎格尔的学徒"
+cardType = 0
+lv = 5.0
+atk = 3.0
+hp = 6.0
+desc = "<b>亡语：</b>召唤你本场战斗中最先死亡的
+2个机械。"
+gold_desc = "<b>亡语：</b>召唤你本场战斗中最先死亡的
+4个机械。"
+race = Array[int]([0])

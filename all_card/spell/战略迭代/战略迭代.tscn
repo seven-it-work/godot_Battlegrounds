@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctisek3p7mv7h"]
+
+[ext_resource type="Script" uid="uid://13wgqjpy02xm" path="res://all_card/spell/战略迭代/战略迭代.gd" id="1_cc03i"]
+
+[node name="战略迭代" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_920t"
+name_str = "战略迭代"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "随机获取一张等级1的纳迦牌。"
+gold_desc = "随机获取一张等级1的纳迦牌。"
+race = Array[int]([])

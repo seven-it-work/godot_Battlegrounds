@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://r83nsl4t27g2"]
+
+[ext_resource type="Script" uid="uid://lhl8l0u1dts1" path="res://all_card/minion/mech/狂乱的报警机器人/狂乱的报警机器人.gd" id="1_cc03i"]
+
+[node name="狂乱的报警机器人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_170"
+name_str = "狂乱的报警机器人"
+cardType = 0
+lv = 2.0
+atk = 4.0
+hp = 4.0
+desc = "<b>磁力</b>
+<b>风怒</b>"
+gold_desc = "<b>磁力</b>
+<b>风怒</b>"
+race = Array[int]([5])

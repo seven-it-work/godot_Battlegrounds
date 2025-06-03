@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://yo6is3opqkml"]
+
+[ext_resource type="Script" uid="uid://dyth3usukvrd" path="res://all_card/minion/none/宝藏追寻者伊莉斯/宝藏追寻者伊莉斯.gd" id="1_cc03i"]
+
+[node name="宝藏追寻者伊莉斯" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_353"
+name_str = "宝藏追寻者伊莉斯"
+cardType = 0
+lv = 4.0
+atk = 5.0
+hp = 5.0
+desc = "在你<b>刷新</b>5次后，找到<b>黄金</b>猿！<i>（还剩5次！）</i>"
+gold_desc = "在你<b>刷新</b>5次后，找到两尊<b>黄金</b>猿！<i>（还剩5次！）</i>"
+race = Array[int]([0])

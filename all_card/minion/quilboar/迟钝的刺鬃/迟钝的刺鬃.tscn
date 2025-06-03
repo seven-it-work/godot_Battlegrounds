@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqj20t8bdokwg"]
+
+[ext_resource type="Script" uid="uid://qpnjhcqd11nx" path="res://all_card/minion/quilboar/迟钝的刺鬃/迟钝的刺鬃.gd" id="1_cc03i"]
+
+[node name="迟钝的刺鬃" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_708"
+name_str = "迟钝的刺鬃"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 6.0
+desc = "在你的回合开始时，你的<b>鲜血宝石</b>在本局对战中使随从额外获得+1/+1。"
+gold_desc = "在你的回合开始时，你的<b>鲜血宝石</b>在本局对战中使随从额外获得+2/+2。"
+race = Array[int]([9])

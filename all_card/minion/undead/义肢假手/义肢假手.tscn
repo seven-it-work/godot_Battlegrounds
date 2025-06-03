@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://lb027dvqij48"]
+
+[ext_resource type="Script" uid="uid://5x0mku1wg0mv" path="res://all_card/minion/undead/义肢假手/义肢假手.gd" id="1_cc03i"]
+
+[node name="义肢假手" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_DEEP_015"
+name_str = "义肢假手"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 1.0
+desc = "<b>磁力</b>。<b>复生</b>
+可以<b>磁力吸附</b>在机械或亡灵上。"
+gold_desc = "<b>磁力</b>。<b>复生</b>
+可以<b>磁力吸附</b>在机械或亡灵上。"
+race = Array[int]([10, 5])

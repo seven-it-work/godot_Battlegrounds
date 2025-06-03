@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://csss6jkj65gn6"]
+
+[ext_resource type="Script" uid="uid://csotgb02axrkc" path="res://all_card/minion/none/远行者周卓/远行者周卓.gd" id="1_cc03i"]
+
+[node name="远行者周卓" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_100"
+name_str = "远行者周卓"
+cardType = 0
+lv = 2.0
+atk = 4.0
+hp = 3.0
+desc = "每回合中有1次免费<b>传递</b>。<i>（还剩1次！）</i>"
+gold_desc = "每回合中有2次免费<b>传递</b>。<i>（还剩2次！）</i>"
+race = Array[int]([0])

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://oon85a0e175o"]
+
+[ext_resource type="Script" uid="uid://c45moiygbvsne" path="res://all_card/minion/naga/角逗士/角逗士.gd" id="1_cc03i"]
+
+[node name="角逗士" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_025"
+name_str = "角逗士"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 3.0
+desc = "<b>圣盾</b>
+每当你施放一个法术，获得+1攻击力。"
+gold_desc = "<b>圣盾</b>
+每当你施放一个法术，获得+2攻击力。"
+race = Array[int]([7])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjuvb42feyyw7"]
+
+[ext_resource type="Script" uid="uid://g0j3gub72k53" path="res://all_card/minion/mech/滑油机器人/滑油机器人.gd" id="1_cc03i"]
+
+[node name="滑油机器人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG21_024"
+name_str = "滑油机器人"
+cardType = 0
+lv = 4.0
+atk = 2.0
+hp = 5.0
+desc = "<b>圣盾</b>。在一个友方随从失去<b>圣盾</b>后，使其永久获得+2/+1。"
+gold_desc = "<b>圣盾</b>。在一个友方随从失去<b>圣盾</b>后，使其永久获得+4/+2。"
+race = Array[int]([5])

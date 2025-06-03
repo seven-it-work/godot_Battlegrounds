@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://colkhe8biwtq0"]
+
+[ext_resource type="Script" uid="uid://cq8tl0q8er6xc" path="res://all_card/minion/none/莽神火车王/莽神火车王.gd" id="1_cc03i"]
+
+[node name="莽神火车王" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_318"
+name_str = "莽神火车王"
+cardType = 0
+lv = 5.0
+atk = 6.0
+hp = 2.0
+desc = "<b>亡语：</b>消灭击杀本随从的随从。"
+gold_desc = "<b>亡语：</b>消灭击杀本随从的随从。"
+race = Array[int]([0])

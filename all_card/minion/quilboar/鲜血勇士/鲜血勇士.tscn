@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7831q2he7w2"]
+
+[ext_resource type="Script" uid="uid://b3nkpd4n0fo8" path="res://all_card/minion/quilboar/鲜血勇士/鲜血勇士.gd" id="1_cc03i"]
+
+[node name="鲜血勇士" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_017"
+name_str = "鲜血勇士"
+cardType = 0
+lv = 7.0
+atk = 18.0
+hp = 3.0
+desc = "<b>战吼，亡语：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+1/+1。"
+gold_desc = "<b>战吼，亡语：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+2/+2。"
+race = Array[int]([9])

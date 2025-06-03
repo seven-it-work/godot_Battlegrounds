@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://5n5is1pmjxq5"]
+
+[ext_resource type="Script" uid="uid://dnrr8jwjqd0yf" path="res://all_card/minion/quilboar/作曲鬃师/作曲鬃师.gd" id="1_cc03i"]
+
+[node name="作曲鬃师" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_157"
+name_str = "作曲鬃师"
+cardType = 0
+lv = 6.0
+atk = 3.0
+hp = 10.0
+desc = "<b>复仇（2）：</b>对你的所有野猪人各使用2张<b>鲜血宝石</b>。"
+gold_desc = "<b>复仇（2）：</b>对你的所有野猪人各使用4张<b>鲜血宝石</b>。"
+race = Array[int]([9])

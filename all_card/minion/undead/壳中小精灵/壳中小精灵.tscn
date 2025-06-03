@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdmo2lg0c3d1w"]
+
+[ext_resource type="Script" uid="uid://bmr6bxfb4xbd1" path="res://all_card/minion/undead/壳中小精灵/壳中小精灵.gd" id="1_cc03i"]
+
+[node name="壳中小精灵" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_841"
+name_str = "壳中小精灵"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 4.0
+desc = "<b>战吼：</b>使一个友方随从获得+2生命值。<i>（每有一个在上一场战斗中死亡的友方随从都会提高！）</i>"
+gold_desc = "<b>战吼：</b>使一个友方随从获得+4生命值。<i>（每有一个在上一场战斗中死亡的友方随从都会提高！）</i>"
+race = Array[int]([10])

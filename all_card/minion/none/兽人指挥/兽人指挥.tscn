@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8i2yp8qj77yi"]
+
+[ext_resource type="Script" uid="uid://bu8l1kovbeg3k" path="res://all_card/minion/none/兽人指挥/兽人指挥.gd" id="1_cc03i"]
+
+[node name="兽人指挥" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_119"
+name_str = "兽人指挥"
+cardType = 0
+lv = 3.0
+atk = 4.0
+hp = 4.0
+desc = "<b>战吼：</b>使一个随从获得+{0}/+{1}<i>（在本局对战中，你的队伍每使用过一张兽人指挥都会升级）</i>。"
+gold_desc = "<b>战吼：</b>使一个随从获得+{0}/+{1}<i>（在本局对战中，你的队伍每使用过一张兽人指挥都会升级）</i>。"
+race = Array[int]([0])

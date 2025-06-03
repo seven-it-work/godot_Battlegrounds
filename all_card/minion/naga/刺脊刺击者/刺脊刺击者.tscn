@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://co3jb4naartju"]
+
+[ext_resource type="Script" uid="uid://c31mrgwf8887o" path="res://all_card/minion/naga/刺脊刺击者/刺脊刺击者.gd" id="1_cc03i"]
+
+[node name="刺脊刺击者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_024"
+name_str = "刺脊刺击者"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 8.0
+desc = "每当你施放一个法术，直到下回合，从<b>圣盾</b>，<b>风怒</b>或<b>烈毒</b>中获得一种。"
+gold_desc = "每当你施放一个法术，从<b>圣盾</b>，<b>风怒</b>或<b>烈毒</b>中获得一种。"
+race = Array[int]([7])

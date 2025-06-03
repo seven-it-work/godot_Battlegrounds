@@ -5,10 +5,13 @@
 
 [node name="机变甲虫" type="Node2D" node_paths=PackedStringArray("抉择")]
 script = ExtResource("1_igv4l")
+version = "32.2.4.221850"
 ls_card_id = "BG27_084"
 name_str = "机变甲虫"
 lv = 3
 atk = 2
+desc = "<b>抉择：</b>使一只野兽获得+1/+1和<b>复生</b>；或者+8攻击力。"
+gold_desc = "<b>抉择：</b>使一只野兽获得+2/+2和<b>复生</b>；或者+16攻击力。"
 "抉择" = NodePath("ToChoose")
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 

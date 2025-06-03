@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddfh8u7tjqf4u"]
+
+[ext_resource type="Script" uid="uid://1er3fffpls54" path="res://all_card/minion/undead/缝合回收者/缝合回收者.gd" id="1_cc03i"]
+
+[node name="缝合回收者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_999"
+name_str = "缝合回收者"
+cardType = 0
+lv = 7.0
+atk = 16.0
+hp = 4.0
+desc = "<b>战斗开始时：</b>消灭本随从左边的随从。<b>亡语：</b>召唤被消灭随从的完全相同的复制。<i>（缝合回收者除外。）</i>"
+gold_desc = "<b>战斗开始时：</b>消灭相邻的随从。<b>亡语：</b>召唤被消灭随从的完全相同的复制。<i>（缝合回收者除外。）</i>"
+race = Array[int]([10])

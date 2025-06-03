@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d34cw6b0jnefm"]
+
+[ext_resource type="Script" uid="uid://b4rgf5d8bubcu" path="res://all_card/minion/elemental/聚积风暴/聚积风暴.gd" id="1_cc03i"]
+
+[node name="聚积风暴" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_201"
+name_str = "聚积风暴"
+cardType = 0
+lv = 2.0
+atk = 5.0
+hp = 1.0
+desc = "当你出售
+本随从时，你的队友会获得1枚铸币。<i>（每回合都会升级！）</i>"
+gold_desc = "当你出售
+本随从时，你的队友会获得2枚铸币。<i>（每回合都会升级！）</i>"
+race = Array[int]([4])

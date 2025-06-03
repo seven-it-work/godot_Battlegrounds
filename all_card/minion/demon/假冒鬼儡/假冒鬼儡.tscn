@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1q7lu10x8d5g"]
+
+[ext_resource type="Script" uid="uid://cvwbjny3n05kx" path="res://all_card/minion/demon/假冒鬼儡/假冒鬼儡.gd" id="1_cc03i"]
+
+[node name="假冒鬼儡" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_140"
+name_str = "假冒鬼儡"
+lv = 3
+atk = 1
+desc = "在你的回合结束时，吞食酒馆中的一个随从以获得其属性值。"
+gold_desc = "在你的回合
+结束时，吞食酒馆中的一个随从以获得其双倍属性值。"
+race = Array[int]([2])

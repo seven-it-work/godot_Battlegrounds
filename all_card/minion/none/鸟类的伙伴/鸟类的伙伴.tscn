@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpj8ptcg44pcd"]
+
+[ext_resource type="Script" uid="uid://dk17mnn6n62oa" path="res://all_card/minion/none/鸟类的伙伴/鸟类的伙伴.gd" id="1_cc03i"]
+
+[node name="鸟类的伙伴" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG21_002"
+name_str = "鸟类的伙伴"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 4.0
+desc = "<b>复仇（1）：</b>使你的野兽获得+1/+1。"
+gold_desc = "<b>复仇（1）：</b>使你的野兽获得+2/+2。"
+race = Array[int]([0])

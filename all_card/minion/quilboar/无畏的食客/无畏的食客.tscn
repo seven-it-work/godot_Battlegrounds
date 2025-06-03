@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds06pstgnso8e"]
+
+[ext_resource type="Script" uid="uid://bg2lyv4x4j6p8" path="res://all_card/minion/quilboar/无畏的食客/无畏的食客.gd" id="1_cc03i"]
+
+[node name="无畏的食客" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_123"
+name_str = "无畏的食客"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 5.0
+desc = "<b>抉择：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+1/+1；或者获取4张<b>鲜血宝石</b>。"
+gold_desc = "<b>抉择：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+2/+2；或者获取8张<b>鲜血宝石</b>。"
+race = Array[int]([9])

@@ -4,8 +4,8 @@
 
 [node name="饥饿的钳嘴龟" type="Node2D"]
 script = ExtResource("1_k8yuh")
-ls_card_id="BG26_370"
-
+version = "32.2.4.221850"
+ls_card_id = "BG26_370"
 name_str = "饥饿的钳嘴龟"
 lv = 2
 atk = 4
@@ -15,4 +15,3 @@ desc = "在一只友方野兽死亡后，永久获得
 gold_desc = "在一只友方野兽死亡后，永久获得
 +2生命值。"
 race = Array[int]([1])
-metadata/_custom_type_script = "uid://dkyxu17pu6rrt"

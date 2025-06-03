@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbmpft1dsulrw"]
+
+[ext_resource type="Script" uid="uid://dx5nfqn10ona" path="res://all_card/minion/beast/森林游虫/森林游虫.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://cjp0hupfaylwl" path="res://all_card/minion/beast/森林游虫/roar.gd" id="2_mgtra"]
+[ext_resource type="Script" uid="uid://c6b5g3rbbw8ao" path="res://all_card/minion/beast/森林游虫/dead.gd" id="3_rvrys"]
+
+[node name="森林游虫" type="Node2D" node_paths=PackedStringArray("亡语", "战吼")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_801"
+name_str = "森林游虫"
+desc = "<b>战吼：</b>在本局对战中，你的甲虫拥有+1/+1。
+<b>亡语：</b>召唤一只{0}/{1}的甲虫。"
+gold_desc = "<b>战吼：</b>在本局对战中，你的甲虫拥有+2/+2。
+<b>亡语：</b>召唤两只{0}/{1}的甲虫。"
+race = Array[int]([1])
+"亡语" = [NodePath("Dead")]
+"战吼" = [NodePath("Roar")]
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_mgtra")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("3_rvrys")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

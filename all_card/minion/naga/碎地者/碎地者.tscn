@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1m1njuithok3"]
+
+[ext_resource type="Script" uid="uid://bpm1jxfnaqsx7" path="res://all_card/minion/naga/碎地者/碎地者.gd" id="1_cc03i"]
+
+[node name="碎地者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_035"
+name_str = "碎地者"
+cardType = 0
+lv = 6.0
+atk = 5.0
+hp = 4.0
+desc = "在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（在本局对战中，你每施放4个法术都会提升！）</i>4在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（施放{0}/4个法术即可提升！）</i>"
+gold_desc = "在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（在本局对战中，你每施放4个法术都会提升！）</i>4在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（施放{0}/4个法术即可提升！）</i>"
+race = Array[int]([7])

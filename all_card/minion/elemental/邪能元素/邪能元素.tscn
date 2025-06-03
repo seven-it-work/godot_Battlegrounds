@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyw2qvij1pajc"]
+
+[ext_resource type="Script" uid="uid://be7pryoccy1nx" path="res://all_card/minion/elemental/邪能元素/邪能元素.gd" id="1_cc03i"]
+
+[node name="邪能元素" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_041"
+name_str = "邪能元素"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 3.0
+desc = "<b>战吼：</b>使酒馆中的随从在本局对战中获得+{0}/+{1}。"
+gold_desc = "<b>战吼：</b>
+使酒馆中的随从在本局对战中获得+{0}/+{1}，触发两次。"
+race = Array[int]([4, 2])

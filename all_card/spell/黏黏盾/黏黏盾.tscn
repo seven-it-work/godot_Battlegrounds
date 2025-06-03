@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgpni4coee8js"]
+
+[ext_resource type="Script" uid="uid://tcx2n1ybxjt6" path="res://all_card/spell/黏黏盾/黏黏盾.gd" id="1_cc03i"]
+
+[node name="黏黏盾" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_002t"
+name_str = "黏黏盾"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "使一个随从获得+1/+1和<b>嘲讽</b>。"
+gold_desc = "使一个随从获得+1/+1和<b>嘲讽</b>。"
+race = Array[int]([])

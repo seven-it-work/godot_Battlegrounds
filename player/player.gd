@@ -15,6 +15,7 @@ var 最大战场随从数量:int=7
 ## 回合开始时回调的方法
 var 回合开始时回调的方法:Array[Callable]=[]
 
+#region 全局加成
 # 野兽额外攻击力（哼鸣蜂鸟专属）
 var beat_attack:int=0
 # 甲虫加成(atk,hp)
@@ -25,11 +26,16 @@ var 元素加成:Vector2=Vector2(0,0)
 var 酒馆元素加成:Vector2=Vector2(0,0)
 # 下一次酒馆法术花费减少
 var 下一次酒馆法术花费减少:int=0
+# 暴吼兽王 就是本局召唤过的野兽次数
+var 暴吼兽王加成:int=0;
+#endregion
+
 
 var 当前选中的随从:BaseCard
 
 # 是否战斗中
 var is_fight:bool=false
+var 敌人战斗list:Array[BaseCard]=[]
 
 ## 酒馆信息
 var tavern:Tavern=preload("uid://cwx44t5ob0se1").instantiate()
@@ -40,6 +46,7 @@ var 酒馆的牌变化:bool=false
 var 战场的牌变化:bool=false
 # 手牌的牌变化
 var 手牌的牌变化:bool=false
+
 
 #region 生命周期方法组
 func 回合结束时():
@@ -183,8 +190,9 @@ func add_card_in_bord(card:BaseCard):
 	if get_minion().size()>=最大战场随从数量:
 		print("放不下了")
 		return
-	if beat_attack>0:
-		if card.race.has(BaseCard.RaceEnum.BEAST):
+	if card.race.has(BaseCard.RaceEnum.BEAST):
+		暴吼兽王加成+=1
+		if beat_attack>0:
 			card.属性加成.append(AttributeBonus.create("哼鸣蜂鸟专属",beat_attack,0,"哼鸣蜂鸟专属"))
 	card.触发器_召唤(self)
 	# 如果这里需要选择右方

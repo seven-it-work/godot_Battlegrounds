@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci0onb7fy7f8o"]
+
+[ext_resource type="Script" uid="uid://ulg0fxb61t8i" path="res://all_card/minion/murloc/拜戈尔格国王/拜戈尔格国王.gd" id="1_cc03i"]
+
+[node name="拜戈尔格国王" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_030"
+name_str = "拜戈尔格国王"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 4.0
+desc = "<b>战吼：</b>使你的其他鱼人获得+2/+3。"
+gold_desc = "<b>战吼：</b>使你的其他鱼人获得+4/+6。"
+race = Array[int]([6])

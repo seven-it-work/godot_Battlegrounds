@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bporb12af5o2p"]
+
+[ext_resource type="Script" uid="uid://clriqe08milni" path="res://all_card/minion/none/过路旅客/过路旅客.gd" id="1_cc03i"]
+
+[node name="过路旅客" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_114"
+name_str = "过路旅客"
+cardType = 0
+lv = 1.0
+atk = 2.0
+hp = 2.0
+desc = "每回合中你的队伍第一次<b>传递</b>时，获得+1/+2。"
+gold_desc = "每回合中你的队伍第一次<b>传递</b>时，获得+2/+4。"
+race = Array[int]([0])

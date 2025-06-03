@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://o05m47vcybg8"]
+
+[ext_resource type="Script" uid="uid://dyigk0k16cqtm" path="res://all_card/minion/mech/钢铁猎人/钢铁猎人.gd" id="1_cc03i"]
+
+[node name="钢铁猎人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_170"
+name_str = "钢铁猎人"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 1.0
+desc = "<b>亡语：</b>获取一张尖利箭矢。"
+gold_desc = "<b>亡语：</b>获取2张
+尖利箭矢。"
+race = Array[int]([5])

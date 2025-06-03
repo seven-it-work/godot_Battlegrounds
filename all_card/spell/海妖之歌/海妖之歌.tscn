@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://shcxmxmb56uw"]
+
+[ext_resource type="Script" uid="uid://ggx741xm6kvg" path="res://all_card/spell/海妖之歌/海妖之歌.gd" id="1_cc03i"]
+
+[node name="海妖之歌" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_514t"
+name_str = "海妖之歌"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "选择酒馆中的一个随从<i>（海巫扎尔吉拉除外）</i>，获取一张复制。"
+gold_desc = "选择酒馆中的一个随从<i>（海巫扎尔吉拉除外）</i>，获取一张复制。"
+race = Array[int]([])

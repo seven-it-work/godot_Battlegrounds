@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://kxl3rw7foipo"]
+
+[ext_resource type="Script" uid="uid://jrc7k571xgb4" path="res://all_card/minion/elemental/富饶的基岩/富饶的基岩.gd" id="1_cc03i"]
+
+[node name="富饶的基岩" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_160"
+name_str = "富饶的基岩"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 4.0
+desc = "每2个回合，在回合
+结束时，随机获取一张元素牌。<i>（还剩{0}回合！）</i>2每2个回合，在回合结束时，随机获取一张元素牌。<i>（就是这回合！）</i>"
+gold_desc = "每2个回合，在回合
+结束时，随机获取2张元素牌。<i>（还剩{0}回合！）</i>2每2个回合，在回合结束时，随机获取2张元素牌。<i>（就是这回合！）</i>"
+race = Array[int]([4])

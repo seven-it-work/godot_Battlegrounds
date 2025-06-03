@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp2v0pmcvgv3v"]
+
+[ext_resource type="Script" uid="uid://d1iofc1m7sxxv" path="res://all_card/minion/naga/海巫扎尔吉拉/海巫扎尔吉拉.gd" id="1_cc03i"]
+
+[node name="海巫扎尔吉拉" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_514"
+name_str = "海巫扎尔吉拉"
+cardType = 0
+lv = 7.0
+atk = 4.0
+hp = 5.0
+desc = "<b>塑造法术：</b>选择酒馆中一个不同的随从，获取一张复制。"
+gold_desc = "<b>塑造法术：</b>选择酒馆中一个不同的随从，获取2张复制。"
+race = Array[int]([7])

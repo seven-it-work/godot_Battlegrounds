@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjncpwv7odukk"]
+
+[ext_resource type="Script" uid="uid://cidif6etrpm5h" path="res://all_card/minion/none/沃卡伊卫士/沃卡伊卫士.gd" id="1_cc03i"]
+
+[node name="沃卡伊卫士" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_867"
+name_str = "沃卡伊卫士"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 5.0
+desc = "<b>战斗开始时：</b>
+如果你没有具有<b>圣盾</b>的随从，使相邻的随从获得<b>圣盾</b>。"
+gold_desc = "<b>战斗开始时：</b>
+如果你没有具有<b>圣盾</b>的随从，使相邻的随从获得<b>圣盾</b>。"
+race = Array[int]([0])

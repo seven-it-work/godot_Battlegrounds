@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfca0oo5psorf"]
+
+[ext_resource type="Script" uid="uid://c24jid22aksg4" path="res://all_card/minion/mech/移动投影仪/移动投影仪.gd" id="1_cc03i"]
+
+[node name="移动投影仪" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_175"
+name_str = "移动投影仪"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 8.0
+desc = "每当本随从攻击时，随机获取一张<b>磁力</b>机械牌。"
+gold_desc = "每当本随从攻击时，随机获取2张<b>磁力</b>机械牌。"
+race = Array[int]([5])

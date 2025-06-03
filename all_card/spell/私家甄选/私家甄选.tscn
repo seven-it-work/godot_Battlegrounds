@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dit3xpveoygh1"]
+
+[ext_resource type="Script" uid="uid://bav2soup758lh" path="res://all_card/spell/私家甄选/私家甄选.gd" id="1_cc03i"]
+
+[node name="私家甄选" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_209t"
+name_str = "私家甄选"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "选择一个随从。随机获取一张该类型的不同随从牌，然后<b>传递</b>这张牌。"
+gold_desc = "选择一个随从。随机获取一张该类型的不同随从牌，然后<b>传递</b>这张牌。"
+race = Array[int]([])

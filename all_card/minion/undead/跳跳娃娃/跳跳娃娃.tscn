@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccv6cuw0x0odc"]
+
+[ext_resource type="Script" uid="uid://drgavn2amofeo" path="res://all_card/minion/undead/跳跳娃娃/跳跳娃娃.gd" id="1_cc03i"]
+
+[node name="跳跳娃娃" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_115"
+name_str = "跳跳娃娃"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 4.0
+desc = "在本随从第一次被出售后，<b>传递</b>本随从。0在本随从第一次被出售后，<b>传递</b>本随从。<i>（已出售过！）</i>"
+gold_desc = "在本随从第一次被出售后，<b>传递</b>本随从。0在本随从第一次被出售后，<b>传递</b>本随从。<i>（已出售过！）</i>"
+race = Array[int]([10, 6, 2, 5, 4, 1, 8, 3, 9, 7])

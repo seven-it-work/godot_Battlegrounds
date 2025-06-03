@@ -6,8 +6,8 @@
 
 [node name="BaseCard" node_paths=PackedStringArray("亡语") instance=ExtResource("1_kt7mf")]
 script = ExtResource("2_fakce")
-ls_card_id="BG26_801"
-
+version = "32.2.4.221850"
+ls_card_id = "BG26_801"
 name_str = "重金属双头飞龙"
 lv = 4
 atk = 5

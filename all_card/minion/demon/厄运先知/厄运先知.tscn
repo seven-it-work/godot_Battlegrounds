@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c70usku0glwll"]
+
+[ext_resource type="Script" uid="uid://b1hf4enf8e3ux" path="res://all_card/minion/demon/厄运先知/厄运先知.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://cheg6jnlp72by" path="res://all_card/minion/demon/厄运先知/roar.gd" id="2_r02e8"]
+
+[node name="厄运先知" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_330"
+name_str = "厄运先知"
+desc = "<b>战吼：</b>你购买的下一张酒馆法术牌消耗的铸币减少（1）枚。"
+gold_desc = "<b>战吼：</b>你购买的下一张酒馆法术牌消耗的铸币减少（2）枚。"
+race = Array[int]([2, 7])
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_r02e8")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

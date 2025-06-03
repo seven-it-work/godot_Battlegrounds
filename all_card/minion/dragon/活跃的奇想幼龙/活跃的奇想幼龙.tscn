@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://3n3goolnvkrx"]
+
+[ext_resource type="Script" uid="uid://3467hwg8r07k" path="res://all_card/minion/dragon/活跃的奇想幼龙/活跃的奇想幼龙.gd" id="1_cc03i"]
+
+[node name="活跃的奇想幼龙" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_823"
+name_str = "活跃的奇想幼龙"
+cardType = 0
+lv = 4.0
+atk = 4.0
+hp = 4.0
+desc = "<b>战吼：</b>随机获取一张龙牌。"
+gold_desc = "<b>战吼：</b>随机获取
+2张龙牌。"
+race = Array[int]([3])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://br0syl5qx61de"]
+
+[ext_resource type="Script" uid="uid://dals8t46t5liv" path="res://all_card/minion/elemental/裂地陨星/裂地陨星.gd" id="1_cc03i"]
+
+[node name="裂地陨星" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_843"
+name_str = "裂地陨星"
+cardType = 0
+lv = 4.0
+atk = 4.0
+hp = 6.0
+desc = "在你出售一个元素后，获得+{0}/+{1}。"
+gold_desc = "在你出售一个元素后，获得+{0}/+{1}，触发两次。"
+race = Array[int]([4])

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://4pm2t1n5cukj"]
+
+[ext_resource type="Script" uid="uid://clwwrsb41q1od" path="res://all_card/minion/elemental/铸霜者洛克霍拉/铸霜者洛克霍拉.gd" id="1_cc03i"]
+
+[node name="铸霜者洛克霍拉" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_844"
+name_str = "铸霜者洛克霍拉"
+cardType = 0
+lv = 6.0
+atk = 8.0
+hp = 5.0
+desc = "在你的回合结束时，使你的其他随从获得+{0}/+{1}。"
+gold_desc = "在你的回合
+结束时，使你的其他随从获得+{0}/+{1}，触发两次。"
+race = Array[int]([4])

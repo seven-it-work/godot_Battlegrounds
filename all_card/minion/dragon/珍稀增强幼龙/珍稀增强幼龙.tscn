@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4trkjt374l15"]
+
+[ext_resource type="Script" uid="uid://d34sexfar43wg" path="res://all_card/minion/dragon/珍稀增强幼龙/珍稀增强幼龙.gd" id="1_cc03i"]
+
+[node name="珍稀增强幼龙" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG21_014"
+name_str = "珍稀增强幼龙"
+cardType = 0
+lv = 4.0
+atk = 2.0
+hp = 2.0
+desc = "<b>战斗开始时：</b>使你的龙获得+3/+3。"
+gold_desc = "<b>战斗开始时：</b>使你的龙获得+6/+6。"
+race = Array[int]([3])

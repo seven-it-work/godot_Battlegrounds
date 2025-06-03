@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqs7w4mn0h3je"]
+
+[ext_resource type="Script" uid="uid://2qmncsxnynpr" path="res://all_card/minion/murloc/浊盐远行者/浊盐远行者.gd" id="1_cc03i"]
+
+[node name="浊盐远行者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_335"
+name_str = "浊盐远行者"
+cardType = 0
+lv = 6.0
+atk = 5.0
+hp = 6.0
+desc = "<b>嘲讽</b>。<b>圣盾</b>。在本随从获得属性值后，还会使你手牌中最左边的随从牌获得属性值。"
+gold_desc = "<b>嘲讽</b>。<b>圣盾</b>。在本随从获得属性值后，还会使你手牌中最左边的随从牌获得双倍属性值。"
+race = Array[int]([6])

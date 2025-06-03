@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmiw5varxmvip"]
+
+[ext_resource type="Script" uid="uid://lmawvcnop15e" path="res://all_card/minion/quilboar/宝石走私商/宝石走私商.gd" id="1_cc03i"]
+
+[node name="宝石走私商" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_155"
+name_str = "宝石走私商"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 4.0
+desc = "<b>战吼：</b>对你的所有其他随从各使用一张<b>鲜血宝石</b>。"
+gold_desc = "<b>战吼：</b>对你的所有其他随从各使用2张<b>鲜血宝石</b>。"
+race = Array[int]([9])

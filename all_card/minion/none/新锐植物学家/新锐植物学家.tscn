@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://iyub32xt664f"]
+
+[ext_resource type="Script" uid="uid://4oyg71q5r1is" path="res://all_card/minion/none/新锐植物学家/新锐植物学家.gd" id="1_cc03i"]
+
+[node name="新锐植物学家" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_237"
+name_str = "新锐植物学家"
+cardType = 0
+lv = 2.0
+atk = 3.0
+hp = 4.0
+desc = "<b>抉择：</b>在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+1攻击力；或者+1生命值。"
+gold_desc = "<b>抉择：</b>在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+2攻击力；或者+2生命值。"
+race = Array[int]([0])

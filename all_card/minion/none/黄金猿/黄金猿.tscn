@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1hc2l3nyjab6"]
+
+[ext_resource type="Script" uid="uid://c5ps6wlpsdbe4" path="res://all_card/minion/none/黄金猿/黄金猿.gd" id="1_cc03i"]
+
+[node name="黄金猿" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_353_Gt"
+name_str = "黄金猿"
+cardType = 0
+lv = 1.0
+atk = 6.0
+hp = 6.0
+desc = "<b>嘲讽</b>
+<i>（你找到啦！）</i>"
+gold_desc = "<b>嘲讽</b>
+<i>（你找到啦！）</i>"
+race = Array[int]([0])

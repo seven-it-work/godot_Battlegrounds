@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx0rj3exihov5"]
+
+[ext_resource type="Script" uid="uid://bh3bntl7e8vq" path="res://all_card/minion/undead/死亡管家莫罗斯/死亡管家莫罗斯.gd" id="1_cc03i"]
+
+[node name="死亡管家莫罗斯" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_304"
+name_str = "死亡管家莫罗斯"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 3.0
+desc = "<b><b>复生</b>。亡语：</b>使你的亡灵获得+3/+5。"
+gold_desc = "<b><b>复生</b>。亡语：</b>使你的亡灵获得+6/+10。"
+race = Array[int]([10])

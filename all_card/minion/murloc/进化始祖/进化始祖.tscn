@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8rnesut60aut"]
+
+[ext_resource type="Script" uid="uid://ddojnlr4a1ct3" path="res://all_card/minion/murloc/进化始祖/进化始祖.gd" id="1_cc03i"]
+
+[node name="进化始祖" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_144"
+name_str = "进化始祖"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 2.0
+desc = "<b>抉择：</b>获得+3攻击力和<b>圣盾</b>；或者+3生命值和<b>烈毒</b>。"
+gold_desc = "<b>抉择：</b>获得+6攻击力和<b>圣盾</b>；或者+6生命值和<b>烈毒</b>。"
+race = Array[int]([6])

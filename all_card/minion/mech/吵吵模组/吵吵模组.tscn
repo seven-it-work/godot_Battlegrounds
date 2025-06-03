@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccgidu5by2dva"]
+
+[ext_resource type="Script" uid="uid://g3fepwsk5776" path="res://all_card/minion/mech/吵吵模组/吵吵模组.gd" id="1_cc03i"]
+
+[node name="吵吵模组" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_BOT_911"
+name_str = "吵吵模组"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 4.0
+desc = "<b>磁力</b>
+<b>圣盾</b>
+<b>嘲讽</b>"
+gold_desc = "<b>磁力</b>
+<b>圣盾</b>
+<b>嘲讽</b>"
+race = Array[int]([5])

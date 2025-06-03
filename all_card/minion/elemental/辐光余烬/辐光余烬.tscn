@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0us1f85fd6tg"]
+
+[ext_resource type="Script" uid="uid://dhowipju0nd8v" path="res://all_card/minion/elemental/辐光余烬/辐光余烬.gd" id="1_cc03i"]
+
+[node name="辐光余烬" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_842"
+name_str = "辐光余烬"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 1.0
+desc = "<b>亡语：</b>在本局对战中，你的能使随从获得属性值的元素额外使随从获得+1攻击力。"
+gold_desc = "<b>亡语：</b>在本局对战中，你的能使随从获得属性值的元素额外使随从获得+2攻击力。"
+race = Array[int]([4])

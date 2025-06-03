@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxl7i07n2evr5"]
+
+[ext_resource type="Script" uid="uid://d08tfiej41re" path="res://all_card/minion/elemental/农场热舞旋风/农场热舞旋风.gd" id="1_cc03i"]
+
+[node name="农场热舞旋风" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_162"
+name_str = "农场热舞旋风"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 4.0
+desc = "<b>战吼，亡语：</b>使酒馆中的元素在本局对战中获得+{0}/+{1}。"
+gold_desc = "<b>战吼，亡语：</b>
+使酒馆中的元素在本局对战中获得+{0}/+{1}，触发两次。"
+race = Array[int]([4])

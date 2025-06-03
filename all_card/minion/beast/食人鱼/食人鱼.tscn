@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm2rlac4aa2fb"]
+
+[ext_resource type="Script" uid="uid://d1pttjg0x4q70" path="res://all_card/minion/beast/食人鱼/食人鱼.gd" id="1_cc03i"]
+
+[node name="食人鱼" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_201t"
+name_str = "食人鱼"
+race = Array[int]([1])

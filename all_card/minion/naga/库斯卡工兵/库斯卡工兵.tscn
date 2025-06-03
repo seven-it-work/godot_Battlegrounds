@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://41dd1rv81ymo"]
+
+[ext_resource type="Script" uid="uid://clnj4vfxskfku" path="res://all_card/minion/naga/库斯卡工兵/库斯卡工兵.gd" id="1_cc03i"]
+
+[node name="库斯卡工兵" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_836"
+name_str = "库斯卡工兵"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 2.0
+desc = "<b>亡语：</b>随机获取2张<b>塑造法术</b>的法术牌。"
+gold_desc = "<b>亡语：</b>随机获取4张<b>塑造法术</b>的法术牌。"
+race = Array[int]([7])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7od4o7dghwox"]
+
+[ext_resource type="Script" uid="uid://bdsao44kt30yi" path="res://all_card/minion/undead/千面恶兽诺伊祖/千面恶兽诺伊祖.gd" id="1_cc03i"]
+
+[node name="千面恶兽诺伊祖" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_325"
+name_str = "千面恶兽诺伊祖"
+cardType = 0
+lv = 6.0
+atk = 3.0
+hp = 9.0
+desc = "每当你召唤一个亡灵时，使你的所有亡灵永久获得+2/+1。"
+gold_desc = "每当你召唤一个亡灵时，使你的所有亡灵永久获得+4/+2。"
+race = Array[int]([10])

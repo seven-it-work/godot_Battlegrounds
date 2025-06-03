@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cerndb6onjsxy"]
+
+[ext_resource type="Script" uid="uid://pybotrwiknmw" path="res://all_card/minion/naga/闪鳞纳迦/闪鳞纳迦.gd" id="1_cc03i"]
+
+[node name="闪鳞纳迦" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_008"
+name_str = "闪鳞纳迦"
+cardType = 0
+lv = 5.0
+atk = 4.0
+hp = 6.0
+desc = "<b>嘲讽</b>，<b>塑造法术：</b>直到下个回合，使一个随从获得<b>圣盾</b>。"
+gold_desc = "<b>嘲讽</b>，<b>塑造法术：</b>直到下个回合，使一个随从获得<b>圣盾</b>。"
+race = Array[int]([7])

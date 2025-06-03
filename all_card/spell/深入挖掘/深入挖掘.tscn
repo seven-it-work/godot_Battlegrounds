@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ownqm0rchjjj"]
+
+[ext_resource type="Script" uid="uid://0l5jf0ft6obm" path="res://all_card/spell/深入挖掘/深入挖掘.gd" id="1_cc03i"]
+
+[node name="深入挖掘" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_320t2"
+name_str = "深入挖掘"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "随机获取一张消耗1枚铸币的酒馆法术牌。"
+gold_desc = "随机获取一张消耗1枚铸币的酒馆法术牌。"
+race = Array[int]([])

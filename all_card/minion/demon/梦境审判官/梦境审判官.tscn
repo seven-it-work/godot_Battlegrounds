@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl03iclr168rs"]
+
+[ext_resource type="Script" uid="uid://b4qmpjgkhg1ki" path="res://all_card/minion/demon/梦境审判官/梦境审判官.gd" id="1_cc03i"]
+
+[node name="梦境审判官" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_892"
+name_str = "梦境审判官"
+cardType = 0
+lv = 6.0
+atk = 6.0
+hp = 6.0
+desc = "每当你施放一个酒馆法术，对你的英雄造成1点伤害并使你的恶魔获得+1/+1。"
+gold_desc = "每当你施放一个
+酒馆法术，对你的英雄造成1点伤害并使你的恶魔获得+1/+1，触发两次。"
+race = Array[int]([2])

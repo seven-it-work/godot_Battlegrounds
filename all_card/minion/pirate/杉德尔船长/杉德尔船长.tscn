@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhs8d7cr1talp"]
+
+[ext_resource type="Script" uid="uid://brlxiheigqo4h" path="res://all_card/minion/pirate/杉德尔船长/杉德尔船长.gd" id="1_cc03i"]
+
+[node name="杉德尔船长" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_034"
+name_str = "杉德尔船长"
+cardType = 0
+lv = 7.0
+atk = 7.0
+hp = 7.0
+desc = "<b>战吼：</b>使一个友方随从变为金色。"
+gold_desc = "<b>战吼：</b>使2个友方随从变为金色。"
+race = Array[int]([8])

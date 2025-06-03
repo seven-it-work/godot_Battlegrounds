@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://duhyciy2meuio"]
+
+[ext_resource type="Script" uid="uid://pa74ybifiom6" path="res://all_card/minion/pirate/掘金者/掘金者.gd" id="1_cc03i"]
+
+[node name="掘金者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_066"
+name_str = "掘金者"
+cardType = 0
+lv = 3.0
+atk = 3.0
+hp = 3.0
+desc = "在你的回合结束时，每有一个金色友方随从，便获得+3/+3。"
+gold_desc = "在你的回合结束时，每有一个金色友方随从，便获得+6/+6。"
+race = Array[int]([8])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqobrcsq4w8m2"]
+
+[ext_resource type="Script" uid="uid://drae6t8uklegx" path="res://all_card/minion/quilboar/扛旗野猪人/扛旗野猪人.gd" id="1_cc03i"]
+
+[node name="扛旗野猪人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG20_201"
+name_str = "扛旗野猪人"
+cardType = 0
+lv = 3.0
+atk = 1.0
+hp = 4.0
+desc = "在你的回合结束时，对相邻的随从使用一张<b>鲜血宝石</b>。"
+gold_desc = "在你的回合结束时，对相邻的随从使用2张<b>鲜血宝石</b>。"
+race = Array[int]([9])

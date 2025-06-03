@@ -6,4 +6,5 @@
 script = ExtResource("1_2grrw")
 name_str = "幼龄忠犬"
 atk = 3
+"是否出现在酒馆" = false
 metadata/_custom_type_script = "uid://ctokvpt74qotl"

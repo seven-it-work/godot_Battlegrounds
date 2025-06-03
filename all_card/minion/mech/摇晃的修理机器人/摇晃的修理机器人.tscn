@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://qo57eoj50bf0"]
+
+[ext_resource type="Script" uid="uid://dq8mndevsivyv" path="res://all_card/minion/mech/摇晃的修理机器人/摇晃的修理机器人.gd" id="1_cc03i"]
+
+[node name="摇晃的修理机器人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_173"
+name_str = "摇晃的修理机器人"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 3.0
+desc = "在你的回合结束时，为本随从<b>磁力吸附</b>一个随机<b>磁力</b>机械。"
+gold_desc = "在你的回合结束时，为本随从<b>磁力吸附</b>2个随机<b>磁力</b>机械。"
+race = Array[int]([5])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpk0h1x5vfoml"]
+
+[ext_resource type="Script" uid="uid://badruq52j1cbb" path="res://all_card/minion/demon/迟到的旅行者/迟到的旅行者.gd" id="1_cc03i"]
+
+[node name="迟到的旅行者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_875"
+name_str = "迟到的旅行者"
+cardType = 0
+lv = 5.0
+atk = 3.0
+hp = 6.0
+desc = "当你出售本随从时，获取酒馆中一个酒馆法术的一张复制。"
+gold_desc = "当你出售本随从时，获取酒馆中一个酒馆法术的2张复制。"
+race = Array[int]([2])

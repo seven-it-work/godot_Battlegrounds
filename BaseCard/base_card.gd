@@ -9,6 +9,8 @@ enum CardTypeEnum{
 	SPELL,
 	## 酒馆法术
 	TAVERN,
+	HERO,
+	HERO_POWER
 }
 
 enum RaceEnum{
@@ -39,6 +41,7 @@ enum RaceEnum{
 }
 
 var uuid:String=""
+@export var version:String=""
 @export var ls_card_id:String=""
 @export var name_str:String=""
 @export var show_name_str:bool=true
@@ -93,8 +96,14 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 
 # 出售金额
 @export var sell_coins:int=1
+# 是否为伙伴
+@export var is_companion:bool=false
+@export var 复仇:int=0
+var 复仇计数器:int=0
 
 #region 一些基础属性的获取方法
+func 是否存在亡语()->bool:
+	return 亡语.size()>0
 func get_插画路径()->String:
 	if 插画路径:
 		return 插画路径
@@ -166,6 +175,8 @@ func get_AttributeBonus():
 	return AttributeBonus.create(self.name_str,0,0,self.name_str)
 
 #region 触发器
+func 触发器_攻击后(player:Player,攻击目标:BaseCard):
+	pass
 func 触发器_获得生命值(触发者:BaseCard,num:int,player:Player):
 	pass
 	
@@ -239,6 +250,28 @@ func 触发器_战斗开始时(player:Player):
 	pass
 
 func 触发器_战斗结束后(player:Player):
+	pass
+
+func 触发器_复仇(palyer:Player):
+	pass
+
+func 触发器_其他随从死亡(palyer:Player,死亡随从:BaseCard):
+	复仇计数器-=1
+	if 复仇计数器<=0:
+		复仇计数器=复仇
+		触发器_复仇(palyer)
+	pass
+
+func 触发器_死亡(player:Player,攻击者:BaseCard=null):
+	# 移除自己
+	player.remove_card(self)
+	self.触发器_亡语(攻击者,player)
+	for i in player.get_minion():
+		i.触发器_其他随从死亡(player,self)
+	# 复生
+	if self.复生:
+		var temp=self.duplicate()
+		player.add_card_in_bord(temp)
 	pass
 #endregion
 

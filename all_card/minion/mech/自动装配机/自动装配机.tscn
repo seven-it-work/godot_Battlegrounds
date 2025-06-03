@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx6aofy5gjon"]
+
+[ext_resource type="Script" uid="uid://vphkmr5rw48a" path="res://all_card/minion/mech/自动装配机/自动装配机.gd" id="1_cc03i"]
+
+[node name="自动装配机" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_172"
+name_str = "自动装配机"
+cardType = 0
+lv = 4.0
+atk = 2.0
+hp = 2.0
+desc = "<b>磁力</b>。<b>亡语：</b>召唤一个星元自动机。"
+gold_desc = "<b>磁力</b>。<b>亡语：</b>
+召唤一个金色的星元自动机。"
+race = Array[int]([5])

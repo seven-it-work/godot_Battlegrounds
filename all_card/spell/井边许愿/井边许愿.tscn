@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://da41nhrl0yemb"]
+
+[ext_resource type="Script" uid="uid://4h78juwlheja" path="res://all_card/spell/井边许愿/井边许愿.gd" id="1_cc03i"]
+
+[node name="井边许愿" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_120t"
+name_str = "井边许愿"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "<b>传递</b>一个非金色随从<i>（井边许愿者除外）</i>。"
+gold_desc = "<b>传递</b>一个非金色随从<i>（井边许愿者除外）</i>。"
+race = Array[int]([])

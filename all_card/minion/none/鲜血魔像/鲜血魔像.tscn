@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx8j2ajudcb5i"]
+
+[ext_resource type="Script" uid="uid://dh5b1fgy80u58" path="res://all_card/minion/none/鲜血魔像/鲜血魔像.gd" id="1_cc03i"]
+
+[node name="鲜血魔像" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_MagicItem_442t"
+name_str = "鲜血魔像"
+cardType = 0
+lv = 1.0
+atk = 1.0
+hp = 1.0
+desc = ""
+gold_desc = ""
+race = Array[int]([0])

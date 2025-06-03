@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctkfcktvth3vi"]
+
+[ext_resource type="Script" uid="uid://ca2au1isyi26t" path="res://all_card/minion/mech/星元自动机/星元自动机.gd" id="1_cc03i"]
+
+[node name="星元自动机" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_TTN_401"
+name_str = "星元自动机"
+cardType = 0
+lv = 2.0
+atk = 2.0
+hp = 4.0
+desc = "在本局对战中，你每召唤过一个其他星元自动机，便拥有+3/+2<i>（无论本随从在哪）</i>。"
+gold_desc = "在本局对战中，你每召唤过一个其他星元自动机，便拥有+6/+4<i>（无论本随从在哪）</i>。"
+race = Array[int]([5])

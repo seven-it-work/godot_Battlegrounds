@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://52is0yjk6suw"]
+
+[ext_resource type="Script" uid="uid://c4paiounlyaye" path="res://all_card/minion/none/荒弃魔像/荒弃魔像.gd" id="1_cc03i"]
+
+[node name="荒弃魔像" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_864t"
+name_str = "荒弃魔像"
+cardType = 0
+lv = 1.0
+atk = 6.0
+hp = 6.0
+desc = ""
+gold_desc = ""
+race = Array[int]([0])

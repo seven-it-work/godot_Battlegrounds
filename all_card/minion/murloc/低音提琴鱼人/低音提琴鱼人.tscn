@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2elitqli1joa"]
+
+[ext_resource type="Script" uid="uid://be4cvvnx845hy" path="res://all_card/minion/murloc/低音提琴鱼人/低音提琴鱼人.gd" id="1_cc03i"]
+
+[node name="低音提琴鱼人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_350"
+name_str = "低音提琴鱼人"
+cardType = 0
+lv = 3.0
+atk = 5.0
+hp = 2.0
+desc = "<b>亡语：</b>召唤你手牌中生命值最高的鱼人，其登场仅限本场战斗。"
+gold_desc = "<b>亡语：</b>召唤你
+手牌中生命值最高的2个鱼人，其登场仅限本场战斗。"
+race = Array[int]([6])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://n78dcckx2o13"]
+
+[ext_resource type="Script" uid="uid://tpmlfr4420k1" path="res://all_card/minion/murloc/蛮鱼斥候/蛮鱼斥候.gd" id="1_cc03i"]
+
+[node name="蛮鱼斥候" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_020"
+name_str = "蛮鱼斥候"
+cardType = 0
+lv = 5.0
+atk = 3.0
+hp = 2.0
+desc = "<b>战吼：</b>如果你控制着其他鱼人，<b>发现</b>一张鱼人牌。"
+gold_desc = "<b>战吼：</b>如果你控制着其他鱼人，<b>发现</b>2张鱼人牌。"
+race = Array[int]([6])

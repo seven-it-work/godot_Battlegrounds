@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmyyyyba48qjk"]
+
+[ext_resource type="Script" uid="uid://d4c2u84oyss" path="res://all_card/minion/pirate/佩吉·斯特迪伯/佩吉·斯特迪伯.gd" id="1_cc03i"]
+
+[node name="佩吉·斯特迪伯" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_032"
+name_str = "佩吉·斯特迪伯"
+cardType = 0
+lv = 3.0
+atk = 2.0
+hp = 1.0
+desc = "每当一张卡牌被置入你的手牌，使另一个友方海盗获得+1/+1。"
+gold_desc = "每当一张卡牌被置入你的手牌，使另一个友方海盗获得+2/+2。"
+race = Array[int]([8])

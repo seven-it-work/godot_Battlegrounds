@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dolwvn4882pb7"]
+
+[ext_resource type="Script" uid="uid://2q1tywslg4h3" path="res://all_card/minion/demon/萨格拉斯的勇士/萨格拉斯的勇士.gd" id="1_cc03i"]
+
+[node name="萨格拉斯的勇士" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_016"
+name_str = "萨格拉斯的勇士"
+cardType = 0
+lv = 7.0
+atk = 10.0
+hp = 10.0
+desc = "酒馆中的随从拥有+10/+10。"
+gold_desc = "酒馆中的随从拥有+20/+20。"
+race = Array[int]([2])

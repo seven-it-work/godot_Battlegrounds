@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1c6ueb75pjat"]
+
+[ext_resource type="Script" uid="uid://d116ngmi10gur" path="res://all_card/minion/mech/弹簧林鬼/弹簧林鬼.gd" id="1_cc03i"]
+
+[node name="弹簧林鬼" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_171"
+name_str = "弹簧林鬼"
+cardType = 0
+lv = 3.0
+atk = 4.0
+hp = 2.0
+desc = "<b>磁力</b>。在你的回合结束时，使你的其他机械获得+1攻击力。"
+gold_desc = "<b>磁力</b>。在你的回合结束时，使你的其他机械获得+2攻击力。"
+race = Array[int]([5])

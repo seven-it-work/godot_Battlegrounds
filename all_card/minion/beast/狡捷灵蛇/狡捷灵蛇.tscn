@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://pkd5st5vtrxw"]
+
+[ext_resource type="Script" uid="uid://dqc1w3et2mx6j" path="res://all_card/minion/beast/狡捷灵蛇/狡捷灵蛇.gd" id="1_cc03i"]
+
+[node name="狡捷灵蛇" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_203"
+name_str = "狡捷灵蛇"
+lv = 4.0
+atk = 6.0
+desc = "<b>亡语：</b>你的队友随机获取一张<b>亡语</b>
+随从牌。"
+gold_desc = "<b>亡语：</b>你的队友随机获取2张<b>亡语</b>随从牌。"
+race = Array[int]([1])
+"是否出现在酒馆" = false

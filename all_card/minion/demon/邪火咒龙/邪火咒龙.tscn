@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dici0wa0dlosb"]
+
+[ext_resource type="Script" uid="uid://b3ybt3xq72hia" path="res://all_card/minion/demon/邪火咒龙/邪火咒龙.gd" id="1_cc03i"]
+
+[node name="邪火咒龙" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_821"
+name_str = "邪火咒龙"
+cardType = 0
+lv = 5.0
+atk = 7.0
+hp = 6.0
+desc = "在你的回合结束时，你的能使随从获得属性值的酒馆法术在本局对战中额外获得+1/+1。"
+gold_desc = "在你的回合结束时，你的能使随从获得属性值的酒馆法术在本局对战中额外获得+2/+2。"
+race = Array[int]([2, 3])

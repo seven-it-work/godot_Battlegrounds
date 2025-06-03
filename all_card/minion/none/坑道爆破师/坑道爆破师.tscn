@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://7b58dhfg0dry"]
+
+[ext_resource type="Script" uid="uid://bcn0j6x1usnby" path="res://all_card/minion/none/坑道爆破师/坑道爆破师.gd" id="1_cc03i"]
+
+[node name="坑道爆破师" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_DAL_775"
+name_str = "坑道爆破师"
+cardType = 0
+lv = 4.0
+atk = 3.0
+hp = 7.0
+desc = "<b>嘲讽，亡语：</b>对所有随从造成3点伤害。"
+gold_desc = "<b>嘲讽，亡语：</b>对所有随从造成3点伤害，触发两次。"
+race = Array[int]([0])

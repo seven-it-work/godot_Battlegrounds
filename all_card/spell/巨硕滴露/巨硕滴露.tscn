@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://gj7npmxom8tq"]
+
+[ext_resource type="Script" uid="uid://cyaxs1i08xky" path="res://all_card/spell/巨硕滴露/巨硕滴露.gd" id="1_cc03i"]
+
+[node name="巨硕滴露" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_237t2"
+name_str = "巨硕滴露"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+1生命值。"
+gold_desc = "在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+1生命值。"
+race = Array[int]([])

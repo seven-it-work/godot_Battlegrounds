@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfpjfijwjj148"]
+
+[ext_resource type="Script" uid="uid://cysc337xcm0g1" path="res://all_card/minion/none/救赎者娜拉/救赎者娜拉.gd" id="1_cc03i"]
+
+[node name="救赎者娜拉" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_551"
+name_str = "救赎者娜拉"
+cardType = 0
+lv = 5.0
+atk = 5.0
+hp = 6.0
+desc = "每当你施放一个酒馆法术时，使每个类型的各一个友方随从获得+2/+1。"
+gold_desc = "每当你施放一个酒馆法术时，使每个类型的各一个友方随从获得+4/+2。"
+race = Array[int]([0])

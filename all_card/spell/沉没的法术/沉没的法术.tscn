@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhc85snynywei"]
+
+[ext_resource type="Script" uid="uid://bgd1r5wsqcyq2" path="res://all_card/spell/沉没的法术/沉没的法术.gd" id="1_cc03i"]
+
+[node name="沉没的法术" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_405t"
+name_str = "沉没的法术"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "<b>发现</b>一张酒馆法术牌。"
+gold_desc = "<b>发现</b>一张酒馆法术牌。"
+race = Array[int]([])

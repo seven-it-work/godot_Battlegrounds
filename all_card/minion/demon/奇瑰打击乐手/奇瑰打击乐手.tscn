@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xftpqufhxsn"]
+
+[ext_resource type="Script" uid="uid://c15f6dh31dryy" path="res://all_card/minion/demon/奇瑰打击乐手/奇瑰打击乐手.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://ge0v51koj4ns" path="res://all_card/minion/demon/奇瑰打击乐手/roar.gd" id="2_ppoo1"]
+
+[node name="奇瑰打击乐手" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_525"
+name_str = "奇瑰打击乐手"
+desc = "<b><b>战吼：
+</b>发现</b>一张恶魔牌，对你的英雄造成等同于其等级的伤害。"
+gold_desc = "<b><b>战吼：</b>发现</b>2张恶魔牌，对你的英雄造成等同于其等级的伤害。"
+race = Array[int]([2])
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_ppoo1")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

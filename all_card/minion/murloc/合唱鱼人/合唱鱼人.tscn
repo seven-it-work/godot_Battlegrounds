@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwe4m5ii5vx3g"]
+
+[ext_resource type="Script" uid="uid://5c064sg0u4yg" path="res://all_card/minion/murloc/合唱鱼人/合唱鱼人.gd" id="1_cc03i"]
+
+[node name="合唱鱼人" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_354"
+name_str = "合唱鱼人"
+cardType = 0
+lv = 6.0
+atk = 6.0
+hp = 6.0
+desc = "<b>战斗开始时：</b>获得你手牌中所有随从牌的属性值。"
+gold_desc = "<b>战斗开始时：</b>获得你手牌中所有随从牌的双倍属性值。"
+race = Array[int]([6])

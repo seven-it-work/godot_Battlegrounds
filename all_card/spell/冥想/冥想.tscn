@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6q7wruuvlkiv"]
+
+[ext_resource type="Script" uid="uid://cn7t4d1354bs4" path="res://all_card/spell/冥想/冥想.gd" id="1_cc03i"]
+
+[node name="冥想" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_835t"
+name_str = "冥想"
+cardType = 2
+lv = 0
+atk = 0
+hp = 0
+desc = "在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+1生命值。"
+gold_desc = "在本局对战中，你的能使随从获得属性值的酒馆法术额外获得+1生命值。"
+race = Array[int]([])

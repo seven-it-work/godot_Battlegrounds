@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ttiiuqisahav"]
+
+[ext_resource type="Script" uid="uid://dbv0w0jvbwoot" path="res://all_card/minion/murloc/奔波尔霸/奔波尔霸.gd" id="1_cc03i"]
+
+[node name="奔波尔霸" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG24_012"
+name_str = "奔波尔霸"
+cardType = 0
+lv = 6.0
+atk = 6.0
+hp = 6.0
+desc = "<b>战吼：</b>你每控制一个鱼人，使一个友方鱼人获得+6/+6。"
+gold_desc = "<b>战吼：</b>你每控制一个鱼人，使一个友方鱼人获得+12/+12。"
+race = Array[int]([6])

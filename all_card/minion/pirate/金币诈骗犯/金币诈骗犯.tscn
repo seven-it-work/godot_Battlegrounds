@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbq16htnld7cj"]
+
+[ext_resource type="Script" uid="uid://cf6pm6p8cpuiv" path="res://all_card/minion/pirate/金币诈骗犯/金币诈骗犯.gd" id="1_cc03i"]
+
+[node name="金币诈骗犯" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_826"
+name_str = "金币诈骗犯"
+cardType = 0
+lv = 4.0
+atk = 6.0
+hp = 6.0
+desc = "每当你获取4张海盗牌，你的铸币上限提高1枚。<i>（还剩4张！）</i>"
+gold_desc = "每当你获取4张海盗牌，你的铸币上限提高2枚。<i>（还剩4张！）</i>"
+race = Array[int]([8])

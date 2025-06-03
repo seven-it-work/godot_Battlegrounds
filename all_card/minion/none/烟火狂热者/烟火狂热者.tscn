@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c341jql2smgmx"]
+
+[ext_resource type="Script" uid="uid://btaxdhvkjook4" path="res://all_card/minion/none/烟火狂热者/烟火狂热者.gd" id="1_cc03i"]
+
+[node name="烟火狂热者" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_922"
+name_str = "烟火狂热者"
+cardType = 0
+lv = 4.0
+atk = 5.0
+hp = 5.0
+desc = "每当你获取一个你已有的随从，使你的随从获得+2/+2。"
+gold_desc = "每当你获取一个你已有的随从，使你的随从获得+4/+4。"
+race = Array[int]([0])

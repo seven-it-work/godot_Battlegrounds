@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmj26qj6m1ltk"]
+
+[ext_resource type="Script" uid="uid://5lefiew5ueq6" path="res://all_card/minion/none/热心的沙龙酒保/热心的沙龙酒保.gd" id="1_cc03i"]
+
+[node name="热心的沙龙酒保" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_104"
+name_str = "热心的沙龙酒保"
+cardType = 0
+lv = 2.0
+atk = 3.0
+hp = 4.0
+desc = "<b>战吼：</b>你的队友获取一张铸币牌。"
+gold_desc = "<b>战吼：</b>你的队友获取2张铸币牌。"
+race = Array[int]([0])

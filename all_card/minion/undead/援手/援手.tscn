@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbbuv5c36b1gk"]
+
+[ext_resource type="Script" uid="uid://c0uhcpmnelu58" path="res://all_card/minion/undead/援手/援手.gd" id="1_cc03i"]
+
+[node name="援手" type="Node2D"]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_010t"
+name_str = "援手"
+cardType = 0
+lv = 1.0
+atk = 2.0
+hp = 1.0
+desc = "<b>复生</b>"
+gold_desc = "<b>复生</b>"
+race = Array[int]([10])
