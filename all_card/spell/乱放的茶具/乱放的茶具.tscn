@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxxgwlqr5y8nt"]
+
+[ext_resource type="Script" uid="uid://t5oy5k3tim6n" path="res://all_card/spell/乱放的茶具/乱放的茶具.gd" id="1_fgpxx"]
+
+[node name="乱放的茶具" type="Node2D"]
+script = ExtResource("1_fgpxx")
+version = "32.2.4.221850"
+ls_card_id = "BG28_888"
+name_str = "乱放的茶具"
+lv = 4
+desc = "使每个类型的各一个友方随从获得+3/+3。"
+gold_desc = "使每个类型的各一个友方随从获得+3/+3。"
+cardType = 2
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

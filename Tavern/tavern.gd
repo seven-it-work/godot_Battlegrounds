@@ -51,9 +51,11 @@ func 刷新():
 		pass
 	var card_list=CardsUtils.find_card([
 		#CardsUtils.COMMON_CODITION["是否出现在酒馆"],
-		#CardsUtils.COMMON_CODITION["随从"],
+		CardsUtils.COMMON_CODITION["随从"],
 		#等级限制,
-		CardFindCondition.build("ls_card_id","",CardFindCondition.ConditionEnum.不等于)
+		CardFindCondition.build("version","32.2.4.221850",CardFindCondition.ConditionEnum.等于),
+		CardFindCondition.build("race",BaseCard.RaceEnum.BEAST,CardFindCondition.ConditionEnum.在)
+	
 	])
 	#var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)
 	# 这里是自动下载插画

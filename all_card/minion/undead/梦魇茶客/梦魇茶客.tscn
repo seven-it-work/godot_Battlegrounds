@@ -1,16 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://n2andc72vrf3"]
+[gd_scene load_steps=4 format=3 uid="uid://n2andc72vrf3"]
 
 [ext_resource type="Script" uid="uid://d0u8rb38b1yjx" path="res://all_card/minion/undead/梦魇茶客/梦魇茶客.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://djr2ikrcph7ib" path="res://all_card/minion/undead/梦魇茶客/roar.gd" id="2_wrp74"]
+[ext_resource type="Script" uid="uid://cr3x3uffu8l7e" path="res://all_card/minion/undead/梦魇茶客/dead.gd" id="3_wrp74"]
 
-[node name="梦魇茶客" type="Node2D"]
+[node name="梦魇茶客" type="Node2D" node_paths=PackedStringArray("亡语", "战吼")]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG32_111"
 name_str = "梦魇茶客"
-cardType = 0
-lv = 6.0
-atk = 6.0
-hp = 6.0
+lv = 6
+atk = 6
+hp = 6
 desc = "<b>战吼，亡语：</b>获取一张乱放的茶具。"
 gold_desc = "<b>战吼，亡语：</b>获取2张乱放的茶具。"
 race = Array[int]([10, 6, 2, 5, 4, 1, 8, 3, 9, 7])
+"亡语" = [NodePath("Dead")]
+"战吼" = [NodePath("Roar")]
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_wrp74")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("3_wrp74")
+metadata/_custom_type_script = "uid://cw6hobmojivsi"

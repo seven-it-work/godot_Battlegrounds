@@ -96,6 +96,8 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 
 # 出售金额
 @export var sell_coins:int=1
+# 购买需要金币
+@export var buy_coins:int=3
 # 是否为伙伴
 @export var is_companion:bool=false
 @export var 复仇:int=0
