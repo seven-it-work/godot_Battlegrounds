@@ -96,6 +96,14 @@ func 是否可以升级()->bool:
 
 
 #region ui操作的方法
+func 结束回合():
+	回合结束时()
+	start_fight()
+	pass
+func 结束战斗():
+	end_fight()
+	回合开始时()
+	pass
 func 冻结():
 	if 是否可以冻结():
 		tavern.冻结()
@@ -175,14 +183,143 @@ func player_hp_add(num:int):
 		else:
 			hp+=(temp+armor)
 
-
+func 三连检测():
+	if 手牌.size()+战场中的牌.size()<3:
+		return
+	var group:Dictionary={}
+	for i in 战场中的牌:
+		i.other_data["位置"]="战场中的牌"
+		if group.has(i.name_str):
+			group[i.name_str].list.append(i)
+			group[i.name_str].是否在战场=true
+		else:
+			group[i.name_str]={
+				list=[i],
+				是否在战场=true
+			}
+	for i in 手牌:
+		i.other_data["位置"]="手牌"
+		if group.has(i.name_str):
+			group[i.name_str].list.append(i)
+		else:
+			group[i.name_str]={
+				list=[i],
+				是否在战场=false
+			}
+	# 过滤出可以三连的key
+	var keys=group.keys()
+	for i in keys:
+		if i=="惊喜元素":
+			continue
+		var list=group[i].list
+		if list.size()>=3:
+			continue
+		var temp_card:BaseCard=list.get(0) as BaseCard
+		if temp_card.race.has(BaseCard.RaceEnum.ELEMENTAL):
+			if group.has("惊喜元素"):
+				var 惊喜元素list=group["惊喜元素"].list
+				if list.size()+惊喜元素list.size()>=3:
+					continue
+		group.erase(i)
+	# 排序优先战场的三连（惊喜元素三连需要递归）
+	var 三连list_战场上=group.values().filter(func(a): return a.是否在战场)
+	for dic in 三连list_战场上:
+		var list=dic.list
+		if list.size()>=3:
+			# 进行三连
+			print("获取三连")
+			for i in 3:
+				var tempCard=list.pop_front() as BaseCard
+				group[tempCard.name_str].list.erase(tempCard)
+				if tempCard.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(tempCard)
+				if tempCard.other_data["位置"]=="手牌":
+					手牌.erase(tempCard)
+		elif group.has("惊喜元素") and group.get("惊喜元素").list.size()>0:
+			var tempCard=list.pop_front() as BaseCard
+			if tempCard.name_str=="惊喜元素":
+				continue
+			print("获取三连")
+			# 惊喜元素判断了
+			var 惊喜元素list=group.get("惊喜元素").list
+			for i in 3-惊喜元素list.size():
+				group[tempCard.name_str].list.erase(tempCard)
+				if tempCard.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(tempCard)
+				if tempCard.other_data["位置"]=="手牌":
+					手牌.erase(tempCard)
+			for i in 惊喜元素list:
+				group[i.name_str].list.erase(i)
+				if i.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(i)
+				if i.other_data["位置"]=="手牌":
+					手牌.erase(i)
+			pass
+	var 三连list_纯手牌=group.values().filter(func(a): return !a.是否在战场)
+	for dic in 三连list_纯手牌:
+		var list=dic.list
+		if list.size()>=3:
+			# 进行三连
+			print("获取三连")
+			for i in 3:
+				var tempCard=list.pop_front() as BaseCard
+				group[tempCard.name_str].list.erase(tempCard)
+				if tempCard.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(tempCard)
+				if tempCard.other_data["位置"]=="手牌":
+					手牌.erase(tempCard)
+		elif group.has("惊喜元素") and group.get("惊喜元素").list.size()>0:
+			var tempCard=list.pop_front() as BaseCard
+			if tempCard.name_str=="惊喜元素":
+				continue
+			print("获取三连")
+			# 惊喜元素判断了
+			var 惊喜元素list=group.get("惊喜元素").list
+			for i in 3-惊喜元素list.size():
+				group[tempCard.name_str].list.erase(tempCard)
+				if tempCard.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(tempCard)
+				if tempCard.other_data["位置"]=="手牌":
+					手牌.erase(tempCard)
+			for i in 惊喜元素list:
+				group[i.name_str].list.erase(i)
+				if i.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(i)
+				if i.other_data["位置"]=="手牌":
+					手牌.erase(i)
+			pass
 
 # 卡片添加到手牌中
 func add_card_in_handler(card:BaseCard):
 	if 手牌.size()>=最大手牌数量:
 		return
 	手牌.append(card)
+	# 3连判断
+	if card.cardType==BaseCard.CardTypeEnum.MINION  and !card.is_gold:
+		三连检测()
 	pass
+
+func _is_same_card(三连记录:Dictionary,card:BaseCard,list:Array,key:String):
+	# 获得的牌是惊喜元素
+	
+	for index in list.size():
+		var temp:BaseCard=list.get(index) as BaseCard
+		if temp.is_gold:
+			continue
+		if temp.name_str==card.name_str:
+			三连记录[key].append({
+				index=index,card=temp
+			})
+		elif card.name_str=="惊喜元素" and temp.race.has(BaseCard.RaceEnum.ELEMENTAL):
+			三连记录.惊喜元素数量+=1
+			三连记录[key].append({
+				index=index,card=temp
+			})
+		elif temp.name_str=="惊喜元素" and card.race.has(BaseCard.RaceEnum.ELEMENTAL):
+			三连记录.惊喜元素数量+=1
+			三连记录[key].append({
+				index=index,card=temp
+			})
 
 # 随从添加（分为战斗中和非战斗中）
 func add_card_in_bord(card:BaseCard):

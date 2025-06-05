@@ -2,6 +2,16 @@
 extends Node
 class_name ArrayUtils
 
+static  func group_by(list:Array,key_func:Callable)->Dictionary:
+	var result={}
+	for i in list:
+		var key = key_func.call(i)
+		if result.has(key):
+			result[key].append(i)
+		else:
+			result[key]=[i]
+	return result
+
 static func get_neighboring_data(data ,array:Array)->Array:
 	if array.size()<=1:
 		print("数量小于2，不可能有相邻的")

@@ -12,7 +12,6 @@ static var COMMON_CODITION={
 	)
 }
 
-
 ## 下载网络图片并保存到本地
 ## @param url: 图片下载地址，例如 "https://art.hearthstonejson.com/v1/orig/BG20_GEM.png"
 ## @param save_path: 保存路径，例如 "C:/" 或 "user://images/"

@@ -52,7 +52,14 @@ var uuid:String=""
 @export var atk:int=0;
 @export var show_atk:bool=true
 ## 生命值
-@export var hp:int=1;
+@export var hp:int=1:
+	set(v):
+		hp=v
+		base_hp=v
+		pass
+## 基础生命值(初始化时=生命值)
+@export var base_hp:int=1
+
 @export var show_hp:bool=true
 ## 描述
 @export var desc:String=""
@@ -64,10 +71,12 @@ var uuid:String=""
 @export var 嘲讽:bool=false
 @export var 圣盾:bool=false
 @export var 复生:bool=false
+# 一次性毒
 @export var 剧毒:bool=false
 @export var 风怒:bool=false
+@export var 潜行:bool=false
 
-var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
+var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","潜行"]
 
 # 种族
 @export var race:Array[RaceEnum]=[RaceEnum.NONE]
@@ -75,6 +84,7 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 @export var 限定出现种族:Array[RaceEnum]=[RaceEnum.NONE]
 # 特殊属性
 @export var 超级风怒:bool=false
+# 永久性性毒
 @export var 烈毒:bool=false
 @export var 是否为伙伴:bool=false
 @export var 是否出现在酒馆:bool=true
@@ -102,6 +112,8 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒",]
 @export var is_companion:bool=false
 @export var 复仇:int=0
 var 复仇计数器:int=0
+# 其他自定义扩展属性
+@export var other_data:Dictionary={}
 
 #region 一些基础属性的获取方法
 func 是否存在亡语()->bool:
@@ -132,7 +144,7 @@ func atk_bonus()->int:
 
 ## 获取生命值（包含加成属性）
 func hp_bonus()->int:
-	var result=hp*(2 if is_gold else 1);
+	var result=base_hp*(2 if is_gold else 1);
 	for i in 属性加成:
 		result+=i.hp;
 	return result
@@ -141,6 +153,7 @@ func hp_bonus()->int:
 
 func _init() -> void:
 	self.uuid=UUID.v4()
+
 
 ## 攻击力计算
 func add_atk(trigger:BaseCard,num:int,player:Player):
@@ -165,12 +178,42 @@ func add_hp(trigger:BaseCard,num:int,player:Player):
 		属性加成.append(temp)
 		触发器_获得生命值(trigger,num,player)
 	if num<=0:
+		# todo 触发器_受到攻击
+		if self.圣盾:
+			self.圣盾=false
+			return
 		# 受伤了，减去生命值
-		hp-=num
+		hp+=num
 		触发器_受伤(trigger,num,player)
 		for i in player.get_minion():
 			if i.uuid!=self.uuid:
 				i.触发器_他人受伤(trigger,self,num,player)
+		if trigger.剧毒:
+			self.剧毒=false
+			self.hp=-hp_bonus()
+		if trigger.烈毒:
+			self.hp=-hp_bonus()
+		# 死亡判断
+		if hp_bonus()<=0:
+			# 消灭随从触发
+			# trigger.触发器_消灭随从
+			# 移除自己
+			player.remove_card(self)
+			# 死亡
+			触发器_亡语(trigger,player)
+			# 如果有复生则复生触发
+			if 复生:
+				var new_minion=CardsUtils.find_card([
+					CardFindCondition.build("name_str",name_str,CardFindCondition.ConditionEnum.等于)
+				]).front()
+				if new_minion:
+					new_minion=new_minion.duplicate()
+					new_minion.hp=1
+					new_minion.复生=false
+					player.add_card_in_bord(new_minion)
+				else:
+					print("没有找到",name_str)
+					return
 
 func get_AttributeBonus():
 	# 建议子类实现
@@ -277,14 +320,7 @@ func 触发器_死亡(player:Player,攻击者:BaseCard=null):
 	pass
 #endregion
 
-# 随从死亡时
-func _dead(player:Player,攻击者:BaseCard=null):
-	# 移除自己
-	player.remove_card(self)
-	self.触发器_亡语(攻击者,player)
-	# 如果有复生则复生触发
-	pass
-	
+
 ## add_card_in_bord执行完后调用
 ## 一般是绑定player的信号
 ## 信号如下：召唤信息、card等受伤信号
@@ -295,8 +331,6 @@ func add_card_in_bord_end(player:Player):
 func uuid_eq(other:BaseCard)->bool:
 	return other.uuid==self.uuid
 
-func _ready() -> void:
-	pass
 
 #region 按下相关操作
 

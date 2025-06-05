@@ -4,6 +4,8 @@
 
 [node name="商贩元素" type="Node2D"]
 script = ExtResource("1_py3ot")
+version = "32.2.4.221850"
+ls_card_id = "BGS_115"
 name_str = "商贩元素"
 lv = 2
 atk = 3
