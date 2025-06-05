@@ -10,6 +10,11 @@ desc = "战吼：随机吞食酒馆中的一个随从，获得其属性值。"
 gold_desc = "战吼：随机吞食酒馆中的一个随从，获得其双倍属性值。"
 race = Array[int]([2])
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
+version = "32.2.4.221850"
+ls_card_id = "BG24_009"
+lv = 1
+atk = 1
+hp = 1
 
 [node name="Roar" type="Node" parent="."]
 script = ExtResource("2_xui3l")

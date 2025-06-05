@@ -11,6 +11,10 @@ desc = "亡语：召唤两个1\\/1的骷髅。"
 gold_desc = "亡语：召唤四个1\\/1的骷髅。"
 race = Array[int]([10])
 "亡语" = [NodePath("Dead")]
+version = "32.2.4.221850"
+ls_card_id = "BG28_300"
+lv = 1
+hp = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Dead" type="Node" parent="."]

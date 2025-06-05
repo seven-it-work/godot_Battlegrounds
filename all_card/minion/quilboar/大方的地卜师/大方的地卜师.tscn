@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BGDUO_111"
 name_str = "大方的地卜师"
 cardType = 0
-lv = 2.0
-atk = 1.0
-hp = 1.0
+lv = 2
+atk = 1
+hp = 1
 desc = "<b>亡语：</b>
 你和你的队友各获取一张<b>鲜血宝石</b>。"
 gold_desc = "<b>亡语：</b>

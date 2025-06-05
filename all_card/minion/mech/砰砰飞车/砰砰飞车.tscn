@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG27_021"
 name_str = "砰砰飞车"
 cardType = 0
-lv = 7.0
-atk = 20.0
-hp = 20.0
+lv = 7
+atk = 20
+hp = 20
 desc = "<b>磁力</b>
 <b>复生</b>。<b>圣盾</b>。<b>嘲讽</b>。<b>风怒</b>"
 gold_desc = "<b>磁力</b>

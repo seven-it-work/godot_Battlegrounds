@@ -14,6 +14,8 @@ desc = "亡语：召唤两只0\\/1并具有嘲讽的豹宝宝。"
 gold_desc = "亡语：召唤两只0\\/2并具有嘲讽的豹宝宝。"
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
+lv = 1
+hp = 1
 
 [node name="Dead" type="Node" parent="." index="0"]
 script = ExtResource("2_j3hoc")

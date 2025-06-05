@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG28_595"
 name_str = "生火专家"
 cardType = 0
-lv = 6.0
-atk = 8.0
-hp = 8.0
+lv = 6
+atk = 8
+hp = 8
 desc = "在你的回合结束时，随机获取2张
 酒馆法术牌。"
 gold_desc = "在你的回合结束时，随机获取4张

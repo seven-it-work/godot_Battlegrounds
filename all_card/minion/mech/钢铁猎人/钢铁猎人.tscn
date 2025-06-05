@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG32_170"
 name_str = "钢铁猎人"
 cardType = 0
-lv = 2.0
-atk = 2.0
-hp = 1.0
+lv = 2
+atk = 2
+hp = 1
 desc = "<b>亡语：</b>获取一张尖利箭矢。"
 gold_desc = "<b>亡语：</b>获取2张
 尖利箭矢。"

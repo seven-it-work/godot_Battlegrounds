@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG32_823"
 name_str = "活跃的奇想幼龙"
 cardType = 0
-lv = 4.0
-atk = 4.0
-hp = 4.0
+lv = 4
+atk = 4
+hp = 4
 desc = "<b>战吼：</b>随机获取一张龙牌。"
 gold_desc = "<b>战吼：</b>随机获取
 2张龙牌。"

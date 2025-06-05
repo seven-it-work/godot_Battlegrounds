@@ -13,6 +13,9 @@ gold_desc = "<b>亡语：</b>使你的野兽获得+{0}/+{0}。<b>复仇（1）�
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
 "复仇" = 1
+lv = 5
+atk = 5
+hp = 4
 
 [node name="Dead" type="Node" parent="."]
 script = ExtResource("2_bdkxc")

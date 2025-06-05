@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG_DEEP_015"
 name_str = "义肢假手"
 cardType = 0
-lv = 4.0
-atk = 3.0
-hp = 1.0
+lv = 4
+atk = 3
+hp = 1
 desc = "<b>磁力</b>。<b>复生</b>
 可以<b>磁力吸附</b>在机械或亡灵上。"
 gold_desc = "<b>磁力</b>。<b>复生</b>

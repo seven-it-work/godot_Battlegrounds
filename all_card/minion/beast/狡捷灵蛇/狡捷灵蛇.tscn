@@ -7,8 +7,9 @@ script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BGDUO31_203"
 name_str = "狡捷灵蛇"
-lv = 4.0
-atk = 6.0
+lv = 4
+atk = 6
+hp = 1
 desc = "<b>亡语：</b>你的队友随机获取一张<b>亡语</b>
 随从牌。"
 gold_desc = "<b>亡语：</b>你的队友随机获取2张<b>亡语</b>随从牌。"

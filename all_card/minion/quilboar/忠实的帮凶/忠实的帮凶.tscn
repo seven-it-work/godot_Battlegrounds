@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BGDUO31_202"
 name_str = "忠实的帮凶"
 cardType = 0
-lv = 6.0
-atk = 6.0
-hp = 5.0
+lv = 6
+atk = 6
+hp = 5
 desc = "在你的回合
 结束时，对你的队友的所有随从各使用一张<b>鲜血宝石</b>。"
 gold_desc = "在你的回合

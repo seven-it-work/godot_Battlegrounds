@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG31_178"
 name_str = "招牌计时机"
 cardType = 0
-lv = 4.0
-atk = 1.0
-hp = 5.0
+lv = 4
+atk = 1
+hp = 5
 desc = "在你的回合结束时，随机获取一张酒馆法术牌。"
 gold_desc = "在你的回合结束时，随机获取2张
 酒馆法术牌。"

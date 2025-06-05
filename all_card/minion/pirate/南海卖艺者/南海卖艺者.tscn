@@ -10,6 +10,10 @@ atk = 3
 desc = "战吼：下回合获得1枚铸币。"
 gold_desc = "战吼：下回合获得2枚铸币。"
 "战吼" = [NodePath("Roar")]
+version = "32.2.4.221850"
+ls_card_id = "BG26_135"
+lv = 1
+hp = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Roar" type="Node" parent="."]

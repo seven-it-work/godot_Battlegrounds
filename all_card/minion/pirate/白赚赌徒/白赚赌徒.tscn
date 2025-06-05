@@ -11,4 +11,6 @@ hp = 3
 desc = "出售本随从可以获得3枚铸币。"
 gold_desc = "出售本随从可以获得6枚铸币。"
 race = Array[int]([8])
+version = "32.2.4.221850"
+ls_card_id = "BGS_049"
 metadata/_custom_type_script = "uid://ctokvpt74qotl"

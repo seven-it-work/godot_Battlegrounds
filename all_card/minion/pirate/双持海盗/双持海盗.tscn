@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG31_824"
 name_str = "双持海盗"
 cardType = 0
-lv = 5.0
-atk = 3.0
-hp = 5.0
+lv = 5
+atk = 3
+hp = 5
 desc = "每当你花掉5枚铸币，使两个友方海盗
 获得+4/+4。
 <i>（还剩5枚！）</i>"

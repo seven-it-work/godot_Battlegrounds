@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG28_556"
 name_str = "旱地元素"
 cardType = 0
-lv = 3.0
-atk = 4.0
-hp = 5.0
+lv = 3
+atk = 4
+hp = 5
 desc = "在每次<b>刷新</b>后，酒馆额外提供一张酒馆法术牌。"
 gold_desc = "在每次<b>刷新</b>后，
 酒馆额外提供2张酒馆法术牌。"

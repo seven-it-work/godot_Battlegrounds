@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG26_810"
 name_str = "火药运输工"
 cardType = 0
-lv = 4.0
-atk = 3.0
-hp = 6.0
+lv = 4
+atk = 3
+hp = 6
 desc = "每当你花掉
 5枚铸币，使你的海盗获得+2攻击力。<i>（还剩5枚！）</i>"
 gold_desc = "每当你花掉

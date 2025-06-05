@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BGS_012"
 name_str = "坎格尔的学徒"
 cardType = 0
-lv = 5.0
-atk = 3.0
-hp = 6.0
+lv = 5
+atk = 3
+hp = 6
 desc = "<b>亡语：</b>召唤你本场战斗中最先死亡的
 2个机械。"
 gold_desc = "<b>亡语：</b>召唤你本场战斗中最先死亡的

@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG31_817"
 name_str = "骤落飓风"
 cardType = 0
-lv = 4.0
-atk = 4.0
-hp = 4.0
+lv = 4
+atk = 4
+hp = 4
 desc = "当你出售本随从时，<b>发现</b>
 一个元素并使其获得本随从的属性值。"
 gold_desc = "当你出售本随从时，<b>发现</b>

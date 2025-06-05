@@ -12,6 +12,9 @@ desc = "<b><b>战吼：
 </b>发现</b>一张恶魔牌，对你的英雄造成等同于其等级的伤害。"
 gold_desc = "<b><b>战吼：</b>发现</b>2张恶魔牌，对你的英雄造成等同于其等级的伤害。"
 race = Array[int]([2])
+lv = 4
+atk = 4
+hp = 4
 
 [node name="Roar" type="Node" parent="."]
 script = ExtResource("2_ppoo1")

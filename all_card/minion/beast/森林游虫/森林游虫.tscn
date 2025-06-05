@@ -16,6 +16,9 @@ gold_desc = "<b>战吼：</b>在本局对战中，你的甲虫拥有+2/+2。
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
 "战吼" = [NodePath("Roar")]
+lv = 2
+atk = 3
+hp = 2
 
 [node name="Roar" type="Node" parent="."]
 script = ExtResource("2_mgtra")

@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG27_508"
 name_str = "瓦里安国王"
 cardType = 0
-lv = 7.0
-atk = 9.0
-hp = 9.0
+lv = 7
+atk = 9
+hp = 9
 desc = "当你出售本随从时，<b>发现</b>两个等级6
 的随从。"
 gold_desc = "当你出售本随从时，<b>发现</b>四个等级6

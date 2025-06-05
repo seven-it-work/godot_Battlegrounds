@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BGDUO31_201"
 name_str = "聚积风暴"
 cardType = 0
-lv = 2.0
-atk = 5.0
-hp = 1.0
+lv = 2
+atk = 5
+hp = 1
 desc = "当你出售
 本随从时，你的队友会获得1枚铸币。<i>（每回合都会升级！）</i>"
 gold_desc = "当你出售

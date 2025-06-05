@@ -12,6 +12,10 @@ gold_desc = "圣盾。亡语：召唤一个2\\/2的微型机器人。"
 "圣盾" = true
 race = Array[int]([5])
 "亡语" = [NodePath("Dead")]
+version = "32.2.4.221850"
+ls_card_id = "BG29_611"
+lv = 1
+hp = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Dead" type="Node" parent="."]

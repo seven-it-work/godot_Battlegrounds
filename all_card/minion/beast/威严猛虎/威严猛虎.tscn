@@ -13,6 +13,9 @@ gold_desc = "<b>嘲讽</b>。<b>亡语：</b>使你最右边的野兽永久获�
 "嘲讽" = true
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
+lv = 4
+atk = 5
+hp = 5
 
 [node name="Dead" type="Node" parent="."]
 script = ExtResource("2_8i4dx")

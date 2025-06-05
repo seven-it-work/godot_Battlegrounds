@@ -12,6 +12,9 @@ desc = "战吼：获取一张鲜血宝石。"
 gold_desc = "战吼：获取2张鲜血宝石。"
 race = Array[int]([9])
 "战吼" = [NodePath("Roar")]
+version = "32.2.4.221850"
+lv = 1
+hp = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Roar" type="Node" parent="."]

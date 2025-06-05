@@ -14,6 +14,9 @@ gold_desc = "<b>亡语：</b>在本局
 对战中，你的甲虫拥有+2/+4。召唤两只{0}/{1}的甲虫。"
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
+lv = 4
+atk = 2
+hp = 4
 
 [node name="Dead" type="Node" parent="."]
 script = ExtResource("2_hif4v")

@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG31_170"
 name_str = "狂乱的报警机器人"
 cardType = 0
-lv = 2.0
-atk = 4.0
-hp = 4.0
+lv = 2
+atk = 4
+hp = 4
 desc = "<b>磁力</b>
 <b>风怒</b>"
 gold_desc = "<b>磁力</b>

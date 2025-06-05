@@ -12,6 +12,9 @@ desc = "<b>复仇（3）：</b>在本局对战中，你的甲虫拥有+2/+2。<b
 gold_desc = "<b>复仇（3）：</b>在本局对战中，你的甲虫拥有+4/+4。<b>亡语：</b>召唤两只{0}/{1}的甲虫。"
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
+lv = 5
+atk = 2
+hp = 8
 "复仇" = 3
 
 [node name="Dead" type="Node" parent="."]

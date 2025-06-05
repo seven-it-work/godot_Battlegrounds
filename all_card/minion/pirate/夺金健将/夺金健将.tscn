@@ -11,6 +11,10 @@ desc = "<b>圣盾<\\/b>。<b>战吼：<\\/b>使本随从变为金色。"
 gold_desc = "<b>圣盾<\\/b>。<b>战吼：<\\/b>使本随从变为金色。"
 "圣盾" = true
 "战吼" = [NodePath("Roar")]
+version = "32.2.4.221850"
+ls_card_id = "BG32_236"
+lv = 1
+hp = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Roar" type="Node" parent="."]

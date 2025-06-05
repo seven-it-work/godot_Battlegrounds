@@ -5,6 +5,9 @@
 [node name="催眠机器人" type="Node2D"]
 script = ExtResource("1_ilabm")
 name_str = "催眠机器人"
+version = "32.2.4.221850"
+ls_card_id = "BG26_146"
+lv = 1
 atk = 2
 hp = 2
 desc = "磁力\\n在你的回合结束时，获得+1生命值。"

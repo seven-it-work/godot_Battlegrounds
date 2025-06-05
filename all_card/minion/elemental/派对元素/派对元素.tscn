@@ -5,6 +5,8 @@
 [node name="派对元素" type="Node2D"]
 script = ExtResource("1_vflgo")
 name_str = "派对元素"
+version = "32.2.4.221850"
+ls_card_id = "BGS_120"
 lv = 2
 atk = 3
 hp = 2

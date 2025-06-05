@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG27_025"
 name_str = "角逗士"
 cardType = 0
-lv = 3.0
-atk = 3.0
-hp = 3.0
+lv = 3
+atk = 3
+hp = 3
 desc = "<b>圣盾</b>
 每当你施放一个法术，获得+1攻击力。"
 gold_desc = "<b>圣盾</b>

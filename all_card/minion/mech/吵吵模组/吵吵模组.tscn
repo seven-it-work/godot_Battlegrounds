@@ -8,9 +8,9 @@ version = "32.2.4.221850"
 ls_card_id = "BG_BOT_911"
 name_str = "吵吵模组"
 cardType = 0
-lv = 3.0
-atk = 2.0
-hp = 4.0
+lv = 3
+atk = 2
+hp = 4
 desc = "<b>磁力</b>
 <b>圣盾</b>
 <b>嘲讽</b>"
