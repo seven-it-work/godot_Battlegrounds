@@ -4,12 +4,13 @@ func _process(delta: float) -> void:
 	if Globals and  Globals.main_node and Globals.main_node.player:
 		var tavern:Tavern=Globals.main_node.player.tavern
 		$升级酒馆.text="升级酒馆（%s）"%tavern.升级需要的铸币
+		$铸币.text="铸币（%s/%s）"%[tavern.current_coin,tavern.max_coin]
 		$HBoxContainer/冻结.text="冻结（%s）"%tavern.冻结需要的铸币
 		$HBoxContainer/刷新.text="刷新（%s）"%tavern.刷新需要的铸币
 
 
 func _on_升级酒馆_pressed() -> void:
-	Globals.main_node.player.升级()
+	Globals.main_node.player.升级酒馆()
 	pass # Replace with function body.
 
 

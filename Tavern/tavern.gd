@@ -35,6 +35,13 @@ var 刷新需要的铸币:int=1
 var 出现法术个数:int=1
 
 #region 交互方法
+func 新的开始():
+	lv=1
+	current_coin=4
+	max_coin=4
+	升级需要的铸币=酒馆等级及其初始升级花费金币[lv]
+	刷新()
+	pass
 func 冻结():
 	pass
 
@@ -50,19 +57,19 @@ func 刷新():
 	for i in 出现法术个数:
 		pass
 	var card_list=CardsUtils.find_card([
-		#CardsUtils.COMMON_CODITION["是否出现在酒馆"],
+		CardsUtils.COMMON_CODITION["是否出现在酒馆"],
 		CardsUtils.COMMON_CODITION["随从"],
-		#等级限制,
+		等级限制,
 		CardFindCondition.build("version","32.2.4.221850",CardFindCondition.ConditionEnum.等于),
 		CardFindCondition.build("race",BaseCard.RaceEnum.BEAST,CardFindCondition.ConditionEnum.在)
 	
 	])
-	#var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)
+	var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)
 	# 这里是自动下载插画
 	#card_list=card_list.filter(func(card:BaseCard):
 		#return !FileAccess.file_exists(card.get_插画路径())
 		#)
-	var 随从个数=7
+	#随从个数=7
 	for i in 随从个数:
 		var data=card_list.pick_random()
 		if !data:

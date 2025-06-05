@@ -25,10 +25,11 @@ func _ready() -> void:
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息".player=player
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息".player=player
 	# 酒馆信息加载
-	for i in 7:
-		var temp=preload("uid://q15lwiw1ep3v").instantiate()
-		player.tavern.current_card.append(temp)
-	player.酒馆的牌变化=true
+	player.tavern.新的开始()
+	#for i in 7:
+		#var temp=preload("uid://q15lwiw1ep3v").instantiate()
+		#player.tavern.current_card.append(temp)
+	#player.酒馆的牌变化=true
 	pass
 
 func _process(delta: float) -> void:

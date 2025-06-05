@@ -8,3 +8,4 @@ version = "32.2.4.221850"
 ls_card_id = "BG32_201t"
 name_str = "食人鱼"
 race = Array[int]([1])
+"是否出现在酒馆" = false

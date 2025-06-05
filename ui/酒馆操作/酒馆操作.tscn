@@ -5,6 +5,10 @@
 [node name="VBoxContainer" type="VBoxContainer"]
 script = ExtResource("1_m5if5")
 
+[node name="铸币" type="Label" parent="."]
+layout_mode = 2
+text = "铸币：10/10"
+
 [node name="升级酒馆" type="Button" parent="."]
 layout_mode = 2
 text = "升级酒馆（8）"

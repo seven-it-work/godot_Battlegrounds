@@ -110,11 +110,14 @@ func 冻结():
 	pass
 func 刷新():
 	if 是否可以刷新():
+		# 扣除铸币
+		tavern.current_coin-=tavern.刷新需要的铸币
 		tavern.刷新()
 		酒馆的牌变化=true
 	pass
 func 升级酒馆():
 	if 是否可以升级():
+		tavern.current_coin-=tavern.升级需要的铸币
 		tavern.升级()
 	pass
 func buy_card(card:BaseCard):
