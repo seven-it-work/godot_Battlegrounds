@@ -3,6 +3,7 @@ class_name Player
 
 var 最大手牌数量:int=10
 var 最大战场随从数量:int=7
+@export var name_str:String=""
 ## 血量
 @export var hp:int=30;
 ## 护甲
@@ -34,7 +35,7 @@ var 暴吼兽王加成:int=0;
 var 当前选中的随从:BaseCard
 
 # 是否战斗中
-var is_fight:bool=false
+var fight:Fight
 var 敌人战斗list:Array[BaseCard]=[]
 
 ## 酒馆信息
@@ -67,23 +68,31 @@ func 回合开始时():
 	# 其他开始回合效果触发
 	pass
 
-func start_fight():
-	is_fight=true
+func start_fight(fight:Fight):
+	self.fight=fight
 	战斗中的牌.clear()
-	for i in 战场中的牌:
-		var copy=i.copy()
-		战斗中的牌.append(copy)
+	战斗中的牌.append_array(战场中的牌)
+	for i in 战斗中的牌:
+		i.临时属性加成.clear()
+		i.属性加成.append_array(i.属性加成)
 	for i in 战斗中的牌:
 		i.触发器_战斗开始时(self)
+		if 是否有空位():
+			i.触发器_当在战斗中有空位时(self)
 	for i in 手牌:
 		i.手牌触发器_战斗开始时(self)
 	pass
 
 func end_fight():
+	self.fight=null
 	pass
 #endregion
 
 #region 一些判断
+func 是否有空位()->bool:
+	return get_minion().size()<7
+func is_fight()->bool:
+	return !!fight
 func 是否可以冻结()->bool:
 	return tavern.current_coin >= tavern.冻结需要的铸币
 	
@@ -98,7 +107,7 @@ func 是否可以升级()->bool:
 #region ui操作的方法
 func 结束回合():
 	回合结束时()
-	start_fight()
+	#start_fight()
 	pass
 func 结束战斗():
 	end_fight()
@@ -226,71 +235,50 @@ func 三连检测():
 		group.erase(i)
 	# 排序优先战场的三连（惊喜元素三连需要递归）
 	var 三连list_战场上=group.values().filter(func(a): return a.是否在战场)
-	for dic in 三连list_战场上:
-		var list=dic.list
-		if list.size()>=3:
-			# 进行三连
-			print("获取三连")
-			for i in 3:
-				var tempCard=list.pop_front() as BaseCard
-				group[tempCard.name_str].list.erase(tempCard)
-				if tempCard.other_data["位置"]=="战场中的牌":
-					战场中的牌.erase(tempCard)
-				if tempCard.other_data["位置"]=="手牌":
-					手牌.erase(tempCard)
-		elif group.has("惊喜元素") and group.get("惊喜元素").list.size()>0:
-			var tempCard=list.pop_front() as BaseCard
-			if tempCard.name_str=="惊喜元素":
-				continue
-			print("获取三连")
-			# 惊喜元素判断了
-			var 惊喜元素list=group.get("惊喜元素").list
-			for i in 3-惊喜元素list.size():
-				group[tempCard.name_str].list.erase(tempCard)
-				if tempCard.other_data["位置"]=="战场中的牌":
-					战场中的牌.erase(tempCard)
-				if tempCard.other_data["位置"]=="手牌":
-					手牌.erase(tempCard)
-			for i in 惊喜元素list:
-				group[i.name_str].list.erase(i)
-				if i.other_data["位置"]=="战场中的牌":
-					战场中的牌.erase(i)
-				if i.other_data["位置"]=="手牌":
-					手牌.erase(i)
-			pass
+	_三连(三连list_战场上,group)
 	var 三连list_纯手牌=group.values().filter(func(a): return !a.是否在战场)
-	for dic in 三连list_纯手牌:
+	_三连(三连list_纯手牌,group)
+
+func _三连(三连list:Array,三连group:Dictionary):
+	for dic in 三连list:
 		var list=dic.list
 		if list.size()>=3:
 			# 进行三连
-			print("获取三连")
 			for i in 3:
 				var tempCard=list.pop_front() as BaseCard
-				group[tempCard.name_str].list.erase(tempCard)
+				三连group[tempCard.name_str].list.erase(tempCard)
 				if tempCard.other_data["位置"]=="战场中的牌":
 					战场中的牌.erase(tempCard)
 				if tempCard.other_data["位置"]=="手牌":
 					手牌.erase(tempCard)
-		elif group.has("惊喜元素") and group.get("惊喜元素").list.size()>0:
+			# 获得三连
+			var 三连奖励=preload("uid://b1jj8ag84p6lf").instantiate()
+			三连奖励.奖励等级=mini(tavern.lv+1,6)
+			add_card_in_handler(三连奖励)
+		elif 三连group.has("惊喜元素") and 三连group.get("惊喜元素").list.size()>0:
 			var tempCard=list.pop_front() as BaseCard
 			if tempCard.name_str=="惊喜元素":
 				continue
 			print("获取三连")
 			# 惊喜元素判断了
-			var 惊喜元素list=group.get("惊喜元素").list
+			var 惊喜元素list=三连group.get("惊喜元素").list
 			for i in 3-惊喜元素list.size():
-				group[tempCard.name_str].list.erase(tempCard)
+				三连group[tempCard.name_str].list.erase(tempCard)
 				if tempCard.other_data["位置"]=="战场中的牌":
 					战场中的牌.erase(tempCard)
 				if tempCard.other_data["位置"]=="手牌":
 					手牌.erase(tempCard)
-			for i in 惊喜元素list:
-				group[i.name_str].list.erase(i)
-				if i.other_data["位置"]=="战场中的牌":
-					战场中的牌.erase(i)
-				if i.other_data["位置"]=="手牌":
-					手牌.erase(i)
-			pass
+			var len=惊喜元素list.size()
+			for i in len:
+				var temp=惊喜元素list.pop_front()
+				if temp.other_data["位置"]=="战场中的牌":
+					战场中的牌.erase(temp)
+				if temp.other_data["位置"]=="手牌":
+					手牌.erase(temp)
+			# 获得三连
+			var 三连奖励=preload("uid://b1jj8ag84p6lf").instantiate()
+			三连奖励.奖励等级=mini(tavern.lv+1,6)
+			add_card_in_handler(三连奖励)
 
 # 卡片添加到手牌中
 func add_card_in_handler(card:BaseCard):
@@ -348,6 +336,10 @@ func remove_card(card:BaseCard):
 	if index<0:
 		print("没有找到")
 	get_minion().remove_at(index)
+	# 判断否有空位
+	if 是否有空位():
+		for i in get_minion():
+			i.触发器_当在战斗中有空位时(self)
 	pass
 
 func _find_minion_index(list:Array[BaseCard],card:BaseCard)->int:
@@ -358,7 +350,7 @@ func find_minion(card:BaseCard)->BaseCard:
 
 # 获取战场上的随从（分为战斗中和非战斗中）
 func get_minion()->Array[BaseCard]:
-	if is_fight:
+	if is_fight():
 		return 战斗中的牌
 	return 战场中的牌
 	
@@ -368,33 +360,3 @@ func get_neighboring_minion(card:BaseCard)->Array[BaseCard]:
 	var temp:Array[BaseCard]=[]
 	temp.append_array(ArrayUtils.get_neighboring_data(card,get_minion()))
 	return  temp 
-
-
-func minion_property_func(card:BaseCard,call:Callable,permanently:bool=false):
-	# 战斗中看permanently
-	# 非战斗中就是永久
-	var index=_find_minion_index(get_minion(),card)
-	if index<0:
-		print("没找到")
-	else:
-		var find_card=get_minion().get(index)
-		call.call(find_card)
-	if is_fight:
-		if permanently:
-			index=_find_minion_index(战场中的牌,card)
-			if index<0:
-				print("没找到")
-			else:
-				var find_card=战场中的牌.get(index)
-				call.call(find_card)
-	pass
-
-
-func do_fight(target:Player):
-	# 1、判断先手，谁的随从多谁先手
-	# 2、战斗开始初始化
-	# 3、进行战斗
-	# 4、战斗结果通知
-	pass
-	#if self.战场中的牌.size()>target.战场中的牌.size():
-		#self.start_fight();

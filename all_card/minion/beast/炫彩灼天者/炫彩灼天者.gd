@@ -11,8 +11,6 @@ func 触发器_他人受伤(atkker:BaseCard,injurie_card:BaseCard,num:int,player
 	if list.size()<=0:
 		return
 	var data = list.pick_random()
-	var call_func = func (findCard:BaseCard,player:Player):
-		findCard.add_atk(self,1,player)
-		findCard.add_hp(self,2,player)
-	player.minion_property_func(data,call_func.bind(player),true)
+	data.add_atk(self,1,player,true)
+	data.add_hp(self,2,player,true)
 	pass

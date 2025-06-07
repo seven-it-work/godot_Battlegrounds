@@ -78,7 +78,7 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 	
 
 # 查询
-static func find_card(conditionList:Array[CardFindCondition]):
+static func find_card(conditionList:Array[CardFindCondition])->Array:
 	return Globals.all_card.values().filter(func (card):
 		var all_result:Array[bool]=[]
 		for i in conditionList:

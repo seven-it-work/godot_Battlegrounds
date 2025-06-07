@@ -3,5 +3,5 @@ extends BaseCard
 
 func 触发器_获得攻击力(触发者:BaseCard,num:int,player:Player):
 	super.触发器_获得攻击力(触发者,num,player)
-	player.甲虫+=Vector2(2,2)*2 if is_gold else 1
+	player.甲虫+=Vector2(2.0,2.0)*(2 if is_gold else 1)
 	pass

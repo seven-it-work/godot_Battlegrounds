@@ -1,7 +1,7 @@
 extends Roar
 
 func 战吼(触发者:BaseCard,player:Player,目标对象:BaseCard):
-	if player.is_fight:
+	if player.is_fight():
 		# 战斗中触发不了
 		return
 	print("选中一个")

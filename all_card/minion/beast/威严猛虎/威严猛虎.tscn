@@ -8,14 +8,14 @@ script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG32_202"
 name_str = "威严猛虎"
+lv = 4
+atk = 5
+hp = 5
 desc = "<b>嘲讽</b>。<b>亡语：</b>使你最右边的野兽永久获得+5/+5。"
 gold_desc = "<b>嘲讽</b>。<b>亡语：</b>使你最右边的野兽永久获得+10/+10。"
 "嘲讽" = true
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
-lv = 4
-atk = 5
-hp = 5
 
 [node name="Dead" type="Node" parent="."]
 script = ExtResource("2_8i4dx")

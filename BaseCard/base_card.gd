@@ -52,13 +52,9 @@ var uuid:String=""
 @export var atk:int=0;
 @export var show_atk:bool=true
 ## 生命值
-@export var hp:int=1:
-	set(v):
-		hp=v
-		base_hp=v
-		pass
-## 基础生命值(初始化时=生命值)
-@export var base_hp:int=1
+@export var hp:int=1
+## 当前生命值（用于战斗计算，这个应该改名为受到的伤害）
+@export var current_hp:int=0
 
 @export var show_hp:bool=true
 ## 描述
@@ -101,9 +97,9 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 @export var 插画路径:String=""
 @export var 文件路径:String=""
 @export var 文件名:String=""
-
+# 永久区
 @export var 属性加成:Array[AttributeBonus]=[]
-
+var 临时属性加成:Array[AttributeBonus]=[]
 # 出售金额
 @export var sell_coins:int=1
 # 购买需要金币
@@ -115,9 +111,18 @@ var 复仇计数器:int=0
 # 其他自定义扩展属性
 @export var other_data:Dictionary={}
 
-#region 一些基础属性的获取方法
+#region 一些判断
 func 是否存在亡语()->bool:
 	return 亡语.size()>0
+
+func 是否死亡(player:Player)->bool:
+	return current_hp+hp_bonus(player)<=0
+#endregion
+
+#region 一些基础属性的获取方法
+func get_current_hp(player:Player):
+	return current_hp+hp_bonus(player);
+
 func get_插画路径()->String:
 	if 插画路径:
 		return 插画路径
@@ -127,7 +132,8 @@ func get_插画路径()->String:
 		文件名=temp.get_file().replace("."+temp.get_extension(),"")
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
-func get_desc()->String:
+
+func get_desc(player:Player)->String:
 	var text=""
 	if is_gold:
 		text=gold_desc
@@ -136,17 +142,25 @@ func get_desc()->String:
 	return text
 
 ## 获取攻击力（包含加成属性）
-func atk_bonus()->int:
+func atk_bonus(plyaer:Player)->int:
 	var result=atk*(2 if is_gold else 1);
-	for i in 属性加成:
-		result+=i.atk;
+	if plyaer.is_fight():
+		for i in 临时属性加成:
+			result+=i.atk;
+	else:
+		for i in 属性加成:
+			result+=i.atk;
 	return result
 
 ## 获取生命值（包含加成属性）
-func hp_bonus()->int:
-	var result=base_hp*(2 if is_gold else 1);
-	for i in 属性加成:
-		result+=i.hp;
+func hp_bonus(plyaer:Player)->int:
+	var result=hp*(2 if is_gold else 1);
+	if plyaer.is_fight():
+		for i in 临时属性加成:
+			result+=i.hp;
+	else:
+		for i in 属性加成:
+			result+=i.hp;
 	return result
 
 #endregion
@@ -156,11 +170,15 @@ func _init() -> void:
 
 
 ## 攻击力计算
-func add_atk(trigger:BaseCard,num:int,player:Player):
+func add_atk(trigger:BaseCard,num:int,player:Player,是否永久:bool=false):
 	var temp=trigger.get_AttributeBonus()
 	temp.atk=num
-	属性加成.append(temp)
-	atk+=num
+	临时属性加成.append(temp)
+	if !player.is_fight():
+		属性加成.append(temp)
+	elif  是否永久:
+		属性加成.append(temp)
+
 	if num>0:
 		触发器_获得攻击力(trigger,num,player)
 	pass
@@ -168,14 +186,19 @@ func add_atk(trigger:BaseCard,num:int,player:Player):
 ## 生命值计算
 # source_card 触发卡片
 # num 生命值（>0 加血）
-func add_hp(trigger:BaseCard,num:int,player:Player):
+func add_hp(trigger:BaseCard,num:int,player:Player,是否永久:bool=false):
 	if num==0:
 		return
 	if num>=0:
 		# 加生命值
 		var temp=trigger.get_AttributeBonus()
 		temp.hp=num
-		属性加成.append(temp)
+		临时属性加成.append(temp)
+		if !player.is_fight():
+			属性加成.append(temp)
+		elif  是否永久:
+			属性加成.append(temp)
+
 		触发器_获得生命值(trigger,num,player)
 	if num<=0:
 		# todo 触发器_受到攻击
@@ -183,18 +206,19 @@ func add_hp(trigger:BaseCard,num:int,player:Player):
 			self.圣盾=false
 			return
 		# 受伤了，减去生命值
-		hp+=num
+		current_hp+=num
+		print("%s的%s受到%s点伤害，剩余生命值%s"%[player.name_str,name_str,-num,get_current_hp(player)])
 		触发器_受伤(trigger,num,player)
 		for i in player.get_minion():
 			if i.uuid!=self.uuid:
 				i.触发器_他人受伤(trigger,self,num,player)
 		if trigger.剧毒:
 			self.剧毒=false
-			self.hp=-hp_bonus()
+			self.current_hp=-hp_bonus(player)
 		if trigger.烈毒:
-			self.hp=-hp_bonus()
+			self.current_hp=-hp_bonus(player)
 		# 死亡判断
-		if hp_bonus()<=0:
+		if 是否死亡(player):
 			# 消灭随从触发
 			# trigger.触发器_消灭随从
 			# 移除自己
@@ -207,8 +231,10 @@ func add_hp(trigger:BaseCard,num:int,player:Player):
 					CardFindCondition.build("name_str",name_str,CardFindCondition.ConditionEnum.等于)
 				]).front()
 				if new_minion:
-					new_minion=new_minion.duplicate()
-					new_minion.hp=1
+					new_minion=CardsUtils.find_card([
+						CardFindCondition.build("name_str",new_minion.name_str,CardFindCondition.ConditionEnum.等于)
+					]).get(0).duplicate()
+					new_minion.current_hp=1
 					new_minion.复生=false
 					player.add_card_in_bord(new_minion)
 				else:
@@ -220,6 +246,8 @@ func get_AttributeBonus():
 	return AttributeBonus.create(self.name_str,0,0,self.name_str)
 
 #region 触发器
+func 触发器_当在战斗中有空位时(player:Player):
+	pass
 func 触发器_攻击后(player:Player,攻击目标:BaseCard):
 	pass
 func 触发器_获得生命值(触发者:BaseCard,num:int,player:Player):

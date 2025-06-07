@@ -15,8 +15,6 @@ gold_desc = "嘲讽。亡语：召唤两只{0}\\/{1}的甲虫。"
 race = Array[int]([1])
 "亡语" = [NodePath("Dead")]
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
-lv = 1
-hp = 1
 
 [node name="Dead" type="Node" parent="."]
 script = ExtResource("2_6kb1i")

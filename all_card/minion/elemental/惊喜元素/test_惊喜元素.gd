@@ -20,7 +20,6 @@ func test_三连_2个惊喜_2个战场元素():
 	
 	
 	player.add_card_in_handler(惊喜元素2)
-	# todo 这里用问题
 	pass
 
 func test_三连_1个惊喜_2个战场元素():

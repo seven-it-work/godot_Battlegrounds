@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1jj8ag84p6lf"]
+
+[ext_resource type="Script" uid="uid://wqput7uapvm1" path="res://all_card/spell/三连奖励/三连奖励.gd" id="1_ebvue"]
+
+[node name="三连奖励" type="Node2D"]
+script = ExtResource("1_ebvue")
+ls_card_id = "TB_BaconShop_Triples_01"
+name_str = "三连奖励"
+show_lv = false
+show_atk = false
+show_hp = false
+desc = "<b>发现<\\/b>一个<b>等级0<\\/b>的随从。"
+gold_desc = "<b>发现<\\/b>一个<b>等级0<\\/b>的随从。"
+cardType = 2
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://ctokvpt74qotl"

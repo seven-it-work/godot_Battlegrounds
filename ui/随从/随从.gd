@@ -25,10 +25,10 @@ func _process(delta: float) -> void:
 		$disable.hide()
 	if card:
 		if card.show_atk:
-			$Node/atk/Label.text="%s"%card.atk_bonus();
+			$Node/atk/Label.text="%s"%card.atk_bonus(player);
 			$Node/atk.show()
 		if card.show_hp:
-			$Node/hp/Label.text="%s"%card.hp_bonus();
+			$Node/hp/Label.text="%s"%card.hp_bonus(player);
 			$Node/hp.show()
 
 func initData(card:BaseCard):
