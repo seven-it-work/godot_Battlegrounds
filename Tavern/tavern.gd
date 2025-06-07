@@ -69,7 +69,7 @@ func 刷新():
 	#card_list=card_list.filter(func(card:BaseCard):
 		#return !FileAccess.file_exists(card.get_插画路径())
 		#)
-	#随从个数=7
+	随从个数=7
 	for i in 随从个数:
 		var data=card_list.pick_random()
 		if !data:

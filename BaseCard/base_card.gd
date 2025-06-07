@@ -104,12 +104,16 @@ var 临时属性加成:Array[AttributeBonus]=[]
 @export var sell_coins:int=1
 # 购买需要金币
 @export var buy_coins:int=3
+@export var show_buy_coins:bool=false
 # 是否为伙伴
 @export var is_companion:bool=false
 @export var 复仇:int=0
 var 复仇计数器:int=0
 # 其他自定义扩展属性
 @export var other_data:Dictionary={}
+
+var 冻结:bool=false
+var 触发:bool=false
 
 #region 一些判断
 func 是否存在亡语()->bool:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc1eievj0olyh"]
+
+[ext_resource type="Material" uid="uid://c1evbten1tx6c" path="res://ui/随从/风怒.tres" id="1_xop8k"]
+[ext_resource type="Texture2D" uid="uid://bq502d73j6htf" path="res://asserts/透明背景.png" id="2_xop8k"]
+
+[node name="风怒" type="TextureRect"]
+material = ExtResource("1_xop8k")
+offset_right = 396.0
+offset_bottom = 330.0
+texture = ExtResource("2_xop8k")

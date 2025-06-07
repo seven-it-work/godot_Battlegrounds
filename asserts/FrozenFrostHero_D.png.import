@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd7wrioa8ug0y"
-path="res://.godot/imported/test.png-b9be65b1103a9263ca485522fc4700aa.ctex"
+uid="uid://dusxjgpw15ig3"
+path="res://.godot/imported/FrozenFrostHero_D.png-a8016e29f5d4550457b20a6db20ebfd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/test.png"
-dest_files=["res://.godot/imported/test.png-b9be65b1103a9263ca485522fc4700aa.ctex"]
+source_file="res://asserts/FrozenFrostHero_D.png"
+dest_files=["res://.godot/imported/FrozenFrostHero_D.png-a8016e29f5d4550457b20a6db20ebfd8.ctex"]
 
 [params]
 

@@ -12,6 +12,13 @@ static var COMMON_CODITION={
 	)
 }
 
+static func 合成三连(card1:BaseCard,card2:BaseCard,card3:BaseCard)->BaseCard:
+	var result=card1
+	result.is_gold=true
+	card1.属性加成.append_array(card2.属性加成)
+	card2.属性加成.append_array(card3.属性加成)
+	return result
+
 ## 下载网络图片并保存到本地
 ## @param url: 图片下载地址，例如 "https://art.hearthstonejson.com/v1/orig/BG20_GEM.png"
 ## @param save_path: 保存路径，例如 "C:/" 或 "user://images/"

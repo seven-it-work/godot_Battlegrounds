@@ -59,7 +59,6 @@ theme_override_constants/separation = 5
 alignment = 1
 
 [node name="PanelContainer8" parent="PanelContainer/HBoxContainer/core/酒馆" instance=ExtResource("1_r4ypb")]
-visible = false
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/core"]
@@ -70,24 +69,6 @@ text = "随从"
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
-
-[node name="PanelContainer8" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer9" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer10" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer11" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer12" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer13" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
 
 [node name="PanelContainer14" parent="PanelContainer/HBoxContainer/core/战场" instance=ExtResource("1_r4ypb")]
 layout_mode = 2
@@ -101,25 +82,8 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="PanelContainer8" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer9" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer10" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer11" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer12" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
-[node name="PanelContainer13" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
-layout_mode = 2
-
 [node name="PanelContainer14" parent="PanelContainer/HBoxContainer/core/手牌" instance=ExtResource("1_r4ypb")]
+visible = false
 layout_mode = 2
 
 [node name="操作" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
@@ -137,6 +101,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="技能" type="VBoxContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="PanelContainer" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/技能" instance=ExtResource("1_r4ypb")]

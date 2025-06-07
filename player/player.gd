@@ -200,24 +200,26 @@ func 三连检测():
 		return
 	var group:Dictionary={}
 	for i in 战场中的牌:
-		i.other_data["位置"]="战场中的牌"
-		if group.has(i.name_str):
-			group[i.name_str].list.append(i)
-			group[i.name_str].是否在战场=true
-		else:
-			group[i.name_str]={
-				list=[i],
-				是否在战场=true
+		if i.cardType==BaseCard.CardTypeEnum.MINION:
+			i.other_data["位置"]="战场中的牌"
+			if group.has(i.name_str):
+				group[i.name_str].list.append(i)
+				group[i.name_str].是否在战场=true
+			else:
+				group[i.name_str]={
+					list=[i],
+					是否在战场=true
 			}
 	for i in 手牌:
-		i.other_data["位置"]="手牌"
-		if group.has(i.name_str):
-			group[i.name_str].list.append(i)
-		else:
-			group[i.name_str]={
-				list=[i],
-				是否在战场=false
-			}
+		if i.cardType==BaseCard.CardTypeEnum.MINION:
+			i.other_data["位置"]="手牌"
+			if group.has(i.name_str):
+				group[i.name_str].list.append(i)
+			else:
+				group[i.name_str]={
+					list=[i],
+					是否在战场=false
+				}
 	# 过滤出可以三连的key
 	var keys=group.keys()
 	for i in keys:
@@ -244,16 +246,23 @@ func _三连(三连list:Array,三连group:Dictionary):
 		var list=dic.list
 		if list.size()>=3:
 			# 进行三连
+			var temp三连集合=[]
 			for i in 3:
 				var tempCard=list.pop_front() as BaseCard
+				temp三连集合.append(tempCard)
 				三连group[tempCard.name_str].list.erase(tempCard)
 				if tempCard.other_data["位置"]=="战场中的牌":
 					战场中的牌.erase(tempCard)
+					战场的牌变化=true
 				if tempCard.other_data["位置"]=="手牌":
 					手牌.erase(tempCard)
+					手牌的牌变化=true
 			# 获得三连
 			var 三连奖励=preload("uid://b1jj8ag84p6lf").instantiate()
 			三连奖励.奖励等级=mini(tavern.lv+1,6)
+			# 获取对于金色卡牌
+			var 金卡=CardsUtils.合成三连(temp三连集合[0],temp三连集合[1],temp三连集合[2])
+			add_card_in_handler(金卡)
 			add_card_in_handler(三连奖励)
 		elif 三连group.has("惊喜元素") and 三连group.get("惊喜元素").list.size()>0:
 			var tempCard=list.pop_front() as BaseCard
@@ -261,23 +270,34 @@ func _三连(三连list:Array,三连group:Dictionary):
 				continue
 			print("获取三连")
 			# 惊喜元素判断了
+			var temp三连集合=[]
 			var 惊喜元素list=三连group.get("惊喜元素").list
 			for i in 3-惊喜元素list.size():
+				tempCard=list.pop_front() as BaseCard
+				temp三连集合.append(tempCard)
 				三连group[tempCard.name_str].list.erase(tempCard)
 				if tempCard.other_data["位置"]=="战场中的牌":
 					战场中的牌.erase(tempCard)
+					战场的牌变化=true
 				if tempCard.other_data["位置"]=="手牌":
 					手牌.erase(tempCard)
+					手牌的牌变化=true
 			var len=惊喜元素list.size()
 			for i in len:
 				var temp=惊喜元素list.pop_front()
+				temp三连集合.append(temp)
 				if temp.other_data["位置"]=="战场中的牌":
 					战场中的牌.erase(temp)
+					战场的牌变化=true
 				if temp.other_data["位置"]=="手牌":
 					手牌.erase(temp)
+					手牌的牌变化=true
 			# 获得三连
 			var 三连奖励=preload("uid://b1jj8ag84p6lf").instantiate()
 			三连奖励.奖励等级=mini(tavern.lv+1,6)
+			# 获取对于金色卡牌
+			var 金卡=CardsUtils.合成三连(temp三连集合[0],temp三连集合[1],temp三连集合[2])
+			add_card_in_handler(金卡)
 			add_card_in_handler(三连奖励)
 
 # 卡片添加到手牌中
