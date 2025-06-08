@@ -20,7 +20,7 @@ const 酒馆随从个数={
 # 酒馆中的随从
 var current_card:Array[BaseCard]=[]
 # 当前铸币
-var current_coin:int=4;
+var current_coin:int=3;
 # 最大铸币
 var max_coin:int=0;
 # 铸币上线自动增加剩余次数
@@ -37,8 +37,8 @@ var 出现法术个数:int=1
 #region 交互方法
 func 新的开始():
 	lv=1
-	current_coin=4
-	max_coin=4
+	current_coin=3
+	max_coin=3
 	升级需要的铸币=酒馆等级及其初始升级花费金币[lv]
 	刷新()
 	pass

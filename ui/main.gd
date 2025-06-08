@@ -16,6 +16,7 @@ func _ready() -> void:
 		i.queue_free()
 	# 玩家初始化
 	var player=preload("uid://duyyralberadj").instantiate()
+	player.name_str="测试玩家"
 	self.player=player
 
 	# endtest
@@ -106,5 +107,24 @@ func _on_结束回合_pressed() -> void:
 	# 将当前玩家存储
 	player.结束回合()
 	# 分配ai进行战斗
+	# 判断当前玩家的回合
+	var 当前玩家的回合=player.回合数
+	# 分配对应回合数的ai
+	var path="res://fight_ai/%s"%当前玩家的回合
+	if DirAccess.dir_exists_absolute(path):
+		# 随机一个子文件
+		var file=FileUtis.get_all_files_in_directory(path).pick_random()
+		if file:
+			var target_ai=FileAccess.open(file,FileAccess.READ).get_var(true)
+			# 进入战斗页面
+			$"PanelContainer/战斗ui/fight".init(player,target_ai)
+			$PanelContainer/HBoxContainer.hide()
+			$"PanelContainer/战斗ui".show()
+			return
+		else:
+			print("同样也没有")
+	else:
+		# 当前玩家没有走到过
+		print("没有走过")
+	# 直接进入下一个回合
 	
-	pass # Replace with function body.

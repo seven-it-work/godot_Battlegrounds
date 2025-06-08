@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 			$Node/烈毒.show()
 		elif card.触发:
 			$Node/触发.show()
-		elif card.是否死亡(Globals.main_node.player):
+		elif card.是否存在亡语():
 			$Node/亡语.show()
 			
 			

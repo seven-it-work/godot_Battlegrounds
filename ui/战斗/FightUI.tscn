@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnlu7gobu3x0j"]
+
+[ext_resource type="Script" uid="uid://dmfabggrl6n4m" path="res://ui/战斗/fight_ui.gd" id="1_sviwn"]
+[ext_resource type="PackedScene" uid="uid://dl0ad8ft57aqx" path="res://ui/随从/随从.tscn" id="1_xsnkw"]
+
+[node name="fightUI" type="VBoxContainer"]
+offset_right = 1265.0
+offset_bottom = 704.0
+size_flags_horizontal = 3
+script = ExtResource("1_sviwn")
+
+[node name="敌人" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="PanelContainer8" parent="敌人" instance=ExtResource("1_xsnkw")]
+layout_mode = 2
+
+[node name="玩家" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="PanelContainer8" parent="玩家" instance=ExtResource("1_xsnkw")]
+layout_mode = 2

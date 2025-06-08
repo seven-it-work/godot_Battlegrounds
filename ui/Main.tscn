@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://vff52s2nhxjo"]
+[gd_scene load_steps=10 format=3 uid="uid://vff52s2nhxjo"]
 
 [ext_resource type="Script" uid="uid://xi11pra1l8wb" path="res://ui/main.gd" id="1_3ydky"]
 [ext_resource type="PackedScene" uid="uid://dl0ad8ft57aqx" path="res://ui/随从/随从.tscn" id="1_r4ypb"]
+[ext_resource type="PackedScene" uid="uid://cnlu7gobu3x0j" path="res://ui/战斗/FightUI.tscn" id="3_d1rkh"]
 [ext_resource type="PackedScene" uid="uid://qfp68ky6ai62" path="res://ui/提示信息/手牌提示信息.tscn" id="3_r4ypb"]
 [ext_resource type="PackedScene" uid="uid://1f6hxwdkydct" path="res://ui/提示信息/酒馆提示信息.tscn" id="3_t2vec"]
 [ext_resource type="PackedScene" uid="uid://02fcldhmpil7" path="res://ui/提示信息/战场提示信息.tscn" id="4_sx1v2"]
@@ -38,6 +39,35 @@ offset_right = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_32dmw")
+
+[node name="战斗ui" type="HBoxContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+
+[node name="fight" parent="PanelContainer/战斗ui" instance=ExtResource("3_d1rkh")]
+layout_mode = 2
+
+[node name="操作" type="VBoxContainer" parent="PanelContainer/战斗ui"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/战斗ui/操作"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ydky")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/战斗ui/操作/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/战斗ui/操作/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="PanelContainer/战斗ui/操作/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "结束战斗"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -136,4 +166,4 @@ text = "结束回合"
 [node name="酒馆操作" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer" instance=ExtResource("6_enpfv")]
 layout_mode = 2
 
-[connection signal="pressed" from="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/结束回合" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]
