@@ -17,15 +17,13 @@ func _ready() -> void:
 	# 玩家初始化
 	var player=preload("uid://duyyralberadj").instantiate()
 	self.player=player
-	# test
-	player.buy_card(preload("uid://c84v1i3ulob37").instantiate())
-	player.手牌的牌变化=true
+
 	# endtest
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".player=player
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/战场提示信息".player=player
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/手牌提示信息".player=player
 	# 酒馆信息加载
-	player.tavern.新的开始()
+	player.新的开始()
 	#for i in 7:
 		#var temp=preload("uid://q15lwiw1ep3v").instantiate()
 		#player.tavern.current_card.append(temp)
@@ -102,3 +100,11 @@ func select_card_func(card:CardUi):
 	# 添加提示信息
 	提示信息修改(card)
 	pass
+
+
+func _on_结束回合_pressed() -> void:
+	# 将当前玩家存储
+	player.结束回合()
+	# 分配ai进行战斗
+	
+	pass # Replace with function body.

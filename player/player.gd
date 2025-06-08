@@ -3,6 +3,7 @@ class_name Player
 
 var 最大手牌数量:int=10
 var 最大战场随从数量:int=7
+@export var uuid:String=""
 @export var name_str:String=""
 ## 血量
 @export var hp:int=30;
@@ -14,7 +15,9 @@ var 最大战场随从数量:int=7
 # 酒馆回合（非战斗中）
 @export var 战场中的牌:Array[BaseCard]=[]
 ## 回合开始时回调的方法
-var 回合开始时回调的方法:Array[Callable]=[]
+@export var 回合开始时回调的方法:Array[Callable]=[]
+## 回合数（生成回合数 由玩家选牌到战斗结束才+1）
+@export var 回合数:int=0;
 
 #region 全局加成
 # 野兽额外攻击力（哼鸣蜂鸟专属）
@@ -105,9 +108,15 @@ func 是否可以升级()->bool:
 
 
 #region ui操作的方法
+func 新的开始():
+	tavern.新的开始()
+	酒馆的牌变化=true
+	pass
 func 结束回合():
 	回合结束时()
-	#start_fight()
+	回合数+=1
+	# 将本玩家数据存入
+	FileAccess.open("res://fight_ai/%s/%s_%s.save"%[回合数,name_str,uuid])
 	pass
 func 结束战斗():
 	end_fight()
@@ -131,7 +140,10 @@ func 升级酒馆():
 	pass
 func buy_card(card:BaseCard):
 	# 基础判断
+	
 	# 扣除数据（血量，金币）
+	if tavern.current_coin>=card.buy_coins:
+		tavern.current_coin-=card.buy_coins
 	# 酒馆移除
 	var index=tavern.buy_card(card)
 	酒馆的牌变化=true
@@ -380,3 +392,6 @@ func get_neighboring_minion(card:BaseCard)->Array[BaseCard]:
 	var temp:Array[BaseCard]=[]
 	temp.append_array(ArrayUtils.get_neighboring_data(card,get_minion()))
 	return  temp 
+
+func _ready() -> void:
+	pass

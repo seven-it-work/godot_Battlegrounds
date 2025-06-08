@@ -40,7 +40,7 @@ enum RaceEnum{
 	ALL,
 }
 
-var uuid:String=""
+@export var uuid:String=""
 @export var version:String=""
 @export var ls_card_id:String=""
 @export var name_str:String=""
@@ -99,7 +99,7 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 @export var 文件名:String=""
 # 永久区
 @export var 属性加成:Array[AttributeBonus]=[]
-var 临时属性加成:Array[AttributeBonus]=[]
+@export var 临时属性加成:Array[AttributeBonus]=[]
 # 出售金额
 @export var sell_coins:int=1
 # 购买需要金币
@@ -112,8 +112,8 @@ var 复仇计数器:int=0
 # 其他自定义扩展属性
 @export var other_data:Dictionary={}
 
-var 冻结:bool=false
-var 触发:bool=false
+@export var 冻结:bool=false
+@export var 触发:bool=false
 
 #region 一些判断
 func 是否存在亡语()->bool:

@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 UUID="*res://addons/uuid/uuid.gd"
 Globals="*res://ui/Globals.gd"
 
+[debug]
+
+gdscript/warnings/enable=false
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/unassigned_variable_op_assign=0
+
 [display]
 
 window/size/viewport_width=1280

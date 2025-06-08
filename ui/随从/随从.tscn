@@ -1,6 +1,5 @@
 [gd_scene load_steps=28 format=3 uid="uid://dl0ad8ft57aqx"]
 
-[ext_resource type="StyleBox" uid="uid://cp6amf8rctaor" path="res://ui/随从/随从未选中.tres" id="1_87lop"]
 [ext_resource type="Script" uid="uid://cds0pj04llqmq" path="res://ui/随从/随从.gd" id="1_gdp4a"]
 [ext_resource type="Texture2D" uid="uid://dchclcfqunoba" path="res://asserts/ally_taunt_d.png" id="3_87lop"]
 [ext_resource type="Texture2D" uid="uid://clar74unixt66" path="res://asserts/普通随从.png" id="3_g6qlb"]
@@ -25,6 +24,8 @@
 [ext_resource type="Shader" uid="uid://cgbikd4hfkf5q" path="res://ui/随从/黑白平滑透明.gdshader" id="23_uhgnj"]
 [ext_resource type="Texture2D" uid="uid://dppfgnf6565u3" path="res://asserts/AllyInPlaySummon_Lrg.png" id="24_xrqbi"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25e1t"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h8qk5"]
 shader = ExtResource("23_uhgnj")
 shader_parameter/fade_range = 0.1
@@ -45,7 +46,7 @@ font_size = 13
 custom_minimum_size = Vector2(150, 0)
 offset_right = 180.0
 offset_bottom = 256.0
-theme_override_styles/panel = ExtResource("1_87lop")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_25e1t")
 script = ExtResource("1_gdp4a")
 
 [node name="disable" type="Panel" parent="."]
@@ -147,6 +148,7 @@ expand_mode = 1
 [node name="潜行" type="TextureRect" parent="Node/遮罩"]
 visible = false
 material = ExtResource("10_rkops")
+layout_mode = 0
 offset_left = -52.0
 offset_top = -27.0
 offset_right = 149.0

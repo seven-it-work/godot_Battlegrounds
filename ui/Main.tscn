@@ -129,5 +129,11 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="结束回合" type="Button" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "结束回合"
+
 [node name="酒馆操作" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer" instance=ExtResource("6_enpfv")]
 layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/结束回合" to="." method="_on_button_pressed"]
