@@ -78,13 +78,16 @@ func start_fight(fight:Fight):
 	for i in 战斗中的牌:
 		i.临时属性加成.clear()
 		i.属性加成.append_array(i.属性加成)
+	pass
+
+func 战斗开始时():
 	for i in 战斗中的牌:
 		i.触发器_战斗开始时(self)
 		if 是否有空位():
 			i.触发器_当在战斗中有空位时(self)
 	for i in 手牌:
 		i.手牌触发器_战斗开始时(self)
-	pass
+	
 
 func end_fight():
 	self.fight=null

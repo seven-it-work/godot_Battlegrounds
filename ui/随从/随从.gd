@@ -23,65 +23,64 @@ func _process(delta: float) -> void:
 			select_theme_change(false)
 	else:
 		$disable.hide()
-	if card:
-		if card.show_atk:
-			$Node/攻击力/Label.text="%s"%card.atk_bonus(Globals.main_node.player);
-			$Node/攻击力.show()
-			pass
-		if card.show_hp:
-			$Node/生命值/Label.text="%s"%card.hp_bonus(Globals.main_node.player);
-			$Node/生命值.show()
-			pass
-		if card.show_buy_coins:
-			$Node/金币/Label.text="%s"%card.hp_bonus(Globals.main_node.player);
-			$Node/金币.show()
-			pass
-		
-		if card.show_name_str:
-			$"Node/名称/Label".text=card.name_str
-			$"Node/名称".show()
-		
-		$Node/嘲讽.hide()
-		$Node/金色边框.hide()
-		$Node/普通边框.hide()
-		if card.嘲讽:
-			$Node/嘲讽.show()
-		elif card.is_gold:
-			$Node/金色边框.show()
-		else:
-			$Node/普通边框.show()
-		if card.圣盾:
-			$Node/圣盾.show()
-		else:
-			$Node/圣盾.hide()
-		if card.冻结:
-			$Node/冻结.show()
-		else:
-			$Node/冻结.hide()
-		if card.风怒 or  card.超级风怒:
-			$Node/遮罩/风怒.show()
-		else:
-			$Node/遮罩/风怒.hide()
-		if card.潜行:
-			$Node/遮罩/潜行.show()
-		else:
-			$Node/遮罩/潜行.hide()
-		$Node/剧毒.hide()
-		$Node/烈毒.hide()
-		$Node/触发.hide()
-		$Node/亡语.hide()
-		if card.剧毒:
-			$Node/剧毒.show()
-		elif card.烈毒:
-			$Node/烈毒.show()
-		elif card.触发:
-			$Node/触发.show()
-		elif card.是否存在亡语():
-			$Node/亡语.show()
+	if Globals.main_node and Globals.main_node.player:
+		if card:
+			if card.show_atk:
+				$Node/攻击力/Label.text="%s"%card.atk_bonus(Globals.main_node.player);
+				$Node/攻击力.show()
+				pass
+			if card.show_hp:
+				$Node/生命值/Label.text="%s"%card.hp_bonus(Globals.main_node.player);
+				$Node/生命值.show()
+				pass
+			if card.show_buy_coins:
+				$Node/金币/Label.text="%s"%card.hp_bonus(Globals.main_node.player);
+				$Node/金币.show()
+				pass
 			
+			if card.show_name_str:
+				$"Node/名称/Label".text=card.name_str
+				$"Node/名称".show()
 			
-			
-			
+			$Node/嘲讽.hide()
+			$Node/金色边框.hide()
+			$Node/普通边框.hide()
+			if card.嘲讽:
+				$Node/嘲讽.show()
+			elif card.is_gold:
+				$Node/金色边框.show()
+			else:
+				$Node/普通边框.show()
+			if card.圣盾:
+				$Node/圣盾.show()
+			else:
+				$Node/圣盾.hide()
+			if card.冻结:
+				$Node/冻结.show()
+			else:
+				$Node/冻结.hide()
+			if card.风怒 or  card.超级风怒:
+				$Node/遮罩/风怒.show()
+			else:
+				$Node/遮罩/风怒.hide()
+			if card.潜行:
+				$Node/遮罩/潜行.show()
+			else:
+				$Node/遮罩/潜行.hide()
+			$Node/剧毒.hide()
+			$Node/烈毒.hide()
+			$Node/触发.hide()
+			$Node/亡语.hide()
+			if card.剧毒:
+				$Node/剧毒.show()
+			elif card.烈毒:
+				$Node/烈毒.show()
+			elif card.触发:
+				$Node/触发.show()
+			elif card.是否存在亡语():
+				$Node/亡语.show()
+				
+
 			
 func initData(card:BaseCard):
 	self.card=card

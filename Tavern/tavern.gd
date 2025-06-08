@@ -61,7 +61,7 @@ func 刷新():
 		CardsUtils.COMMON_CODITION["随从"],
 		等级限制,
 		CardFindCondition.build("version","32.2.4.221850",CardFindCondition.ConditionEnum.等于),
-		CardFindCondition.build("race",BaseCard.RaceEnum.BEAST,CardFindCondition.ConditionEnum.在)
+		#CardFindCondition.build("race",BaseCard.RaceEnum.BEAST,CardFindCondition.ConditionEnum.在)
 	
 	])
 	var 随从个数= maxi(酒馆随从个数[lv]-出现法术个数+1,0)

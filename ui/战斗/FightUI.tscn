@@ -9,18 +9,28 @@ offset_bottom = 704.0
 size_flags_horizontal = 3
 script = ExtResource("1_sviwn")
 
-[node name="敌人" type="VBoxContainer" parent="."]
+[node name="敌人" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="PanelContainer8" parent="敌人" instance=ExtResource("1_xsnkw")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="玩家" type="VBoxContainer" parent="."]
+[node name="玩家" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="PanelContainer8" parent="玩家" instance=ExtResource("1_xsnkw")]
+[node name="PanelContainer" parent="玩家" instance=ExtResource("1_xsnkw")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 2
+text = "测试"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
