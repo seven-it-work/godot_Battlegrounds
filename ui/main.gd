@@ -20,8 +20,8 @@ func _ready() -> void:
 	player.name_str="测试玩家"
 	self.player=player
 	
-	var file=FileUtis.get_all_files_in_directory("res://fight_ai/1").pick_random()
-	self.player=FileAccess.open(file,FileAccess.READ).get_var(true)
+	#var file=FileUtis.get_all_files_in_directory("res://fight_ai/1").pick_random()
+	#self.player=FileAccess.open(file,FileAccess.READ).get_var(true)
 
 	# endtest
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".player=player
@@ -133,3 +133,10 @@ func _on_结束回合_pressed() -> void:
 		print("没有走过")
 	# 直接进入下一个回合
 	
+
+
+func _on_结束战斗_pressed() -> void:
+	$"PanelContainer/战斗ui".hide()
+	$PanelContainer/HBoxContainer.show()
+	player.开始回合()
+	pass # Replace with function body.

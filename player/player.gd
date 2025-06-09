@@ -75,6 +75,9 @@ func 回合开始时():
 	tavern.酒馆补充卡片()
 	# 技能复原
 	# 其他开始回合效果触发
+	酒馆的牌变化=true
+	手牌的牌变化=true
+	战场的牌变化=true
 	pass
 
 func start_fight(fight:FightUI):
@@ -377,7 +380,8 @@ func add_card_in_bord(card:BaseCard):
 	card.触发器_召唤(self)
 	# 如果这里需要选择右方
 	get_minion().append(card)
-	fight.刷新(self)
+	if is_fight():
+		fight.刷新(self)
 	for i in get_minion():
 		if i.uuid!=card.uuid:
 			i.触发器_召唤他人(card,self)

@@ -65,7 +65,8 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="PanelContainer/战斗ui/操作/PanelContainer/VBoxContainer"]
+[node name="结束战斗" type="Button" parent="PanelContainer/战斗ui/操作/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "结束战斗"
 
@@ -166,4 +167,5 @@ text = "结束回合"
 [node name="酒馆操作" parent="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer" instance=ExtResource("6_enpfv")]
 layout_mode = 2
 
+[connection signal="pressed" from="PanelContainer/战斗ui/操作/PanelContainer/VBoxContainer/结束战斗" to="." method="_on_结束战斗_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]

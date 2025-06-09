@@ -33,8 +33,15 @@ var 冻结需要的铸币:int=0
 var 刷新需要的铸币:int=1
 
 var 出现法术个数:int=1
+var 是否冻结:bool=false
 
 #region 交互方法
+func 酒馆补充卡片():
+	if 是否冻结:
+		# 补充
+		return
+	else:
+		刷新()
 func 新的开始():
 	lv=1
 	current_coin=3

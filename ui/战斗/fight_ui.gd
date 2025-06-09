@@ -52,7 +52,9 @@ func init(player:Player,target:Player):
 		node.位置=CardUi.PositionEnum.战场
 		$"敌人".add_child(node)
 	await get_tree().create_timer(1.0).timeout
-	do_fight()
+	var result=await do_fight()
+	print(result)
+	Globals.main_node.get_node("PanelContainer/战斗ui/操作/PanelContainer/VBoxContainer/结束战斗").visible=true
 	pass
 
 
