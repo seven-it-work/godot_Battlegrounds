@@ -7,7 +7,6 @@ script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG26_524"
 name_str = "舞蹈王子玛克扎尔"
-cardType = 0
 lv = 4
 atk = 5
 hp = 4

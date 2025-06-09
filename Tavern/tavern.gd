@@ -50,7 +50,9 @@ func 升级():
 	升级需要的铸币=酒馆等级及其初始升级花费金币[lv]
 	pass
 
-func 刷新():
+# todo 搞点参数，比如 消耗生命值法术x张
+## 消耗生命值法术:x
+func 刷新(params:Dictionary={}):
 	current_card.clear()
 	var 等级限制=CardFindCondition.build("lv",lv,CardFindCondition.ConditionEnum.小于等于)
 	# 先刷法术

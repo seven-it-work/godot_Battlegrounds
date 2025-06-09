@@ -7,10 +7,8 @@ script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG26_174"
 name_str = "灵魂回溯者"
-cardType = 0
 lv = 2
 atk = 4
-hp = 1
 desc = "在你的英雄
 受到伤害后，回溯该伤害并使本随从获得
 +1生命值。"

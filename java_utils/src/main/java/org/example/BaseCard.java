@@ -1,23 +1,50 @@
 package org.example;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import lombok.Data;
 
 import java.io.File;
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 @Data
 public class BaseCard {
     private String version = "32.2.4.221850";
+    private String savePath="";
+
     private String strId;
     private String cardType;
     private String nameCN;
     private String text;
+    private String goldText;
     private int tier;
     private int health;
     private int attack;
-    private List<String> minionTypes;
+    private int manaCost;
+    private List<String> minionTypes=new ArrayList<>();
+    private Boolean showLv=true;
+    private Boolean showAtk=true;
+    private Boolean showHp=true;
+    private int buyCoins=3;
+    private Boolean showBuyCoins=false;
+    private Boolean 是否出现在酒馆=true;
+    private Boolean 是否为伙伴=false;
+    private BaseCard upgradeCard;
+
+    public JSONObject toJson(){
+        JSONObject entries = JSONUtil.parseObj(this);
+        entries.set("cardType",CardTypeEnum.valueOf(cardType.toUpperCase()).ordinal());
+        entries.set("minionTypes",minionTypes.stream().map((str)->RaceEnum.valueOf(str.toUpperCase()).ordinal()).collect(Collectors.toList()));
+        if(upgradeCard!=null){
+            entries.set("goldText",upgradeCard.text.replace("\n",""));
+        }else {
+            entries.set("goldText",text.replace("\n",""));
+        }
+        return entries;
+    }
 
     /**
      * 从 .tscn 文件路径解析出 BaseCard 对象

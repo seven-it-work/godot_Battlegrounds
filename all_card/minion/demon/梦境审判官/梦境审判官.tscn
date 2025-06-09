@@ -7,7 +7,6 @@ script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG32_892"
 name_str = "梦境审判官"
-cardType = 0
 lv = 6
 atk = 6
 hp = 6

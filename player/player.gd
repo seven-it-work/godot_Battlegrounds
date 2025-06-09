@@ -32,6 +32,12 @@ var 酒馆元素加成:Vector2=Vector2(0,0)
 var 下一次酒馆法术花费减少:int=0
 # 暴吼兽王 就是本局召唤过的野兽次数
 var 暴吼兽王加成:int=0;
+# 酒馆随从加成
+var 酒馆随从加成:Vector2=Vector2(0,0)
+# 酒馆随从临时
+var 酒馆随从临时:Vector2=Vector2(0,0)
+# 刷新消耗生命值次数
+var 刷新消耗生命值次数:int=0
 #endregion
 
 
@@ -212,7 +218,7 @@ func player_hp_add(num:int):
 	else:
 		var temp=num
 		for i in self.get_minion():
-			temp=i.触发器_玩家受伤(num)
+			temp=i.触发器_玩家受伤(self,num)
 			pass
 		if temp>=0:
 			return

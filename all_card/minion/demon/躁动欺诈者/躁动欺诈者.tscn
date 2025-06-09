@@ -5,6 +5,8 @@
 
 [node name="躁动欺诈者" type="Node2D" node_paths=PackedStringArray("亡语")]
 script = ExtResource("1_wea0y")
+version = "32.2.4.221850"
+ls_card_id = "BG21_006"
 name_str = "躁动欺诈者"
 lv = 2
 atk = 3
@@ -13,8 +15,6 @@ desc = "<b>亡语：<\\/b>使另一个友方随从获得本随从的生命值上
 gold_desc = "<b>亡语：<\\/b>使另一个友方随从获得本随从的生命值上限，触发两次。"
 race = Array[int]([2])
 "亡语" = [NodePath("Dead")]
-version = "32.2.4.221850"
-ls_card_id = "BG21_006"
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Dead" type="Node" parent="."]

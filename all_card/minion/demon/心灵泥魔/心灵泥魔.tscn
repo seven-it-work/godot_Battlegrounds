@@ -1,16 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwhu8bfgut7y"]
+[gd_scene load_steps=3 format=3 uid="uid://cwhu8bfgut7y"]
 
 [ext_resource type="Script" uid="uid://b6m3txcrpced" path="res://all_card/minion/demon/心灵泥魔/心灵泥魔.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://yo6nlnno52oq" path="res://all_card/minion/demon/心灵泥魔/roar.gd" id="2_381cq"]
 
 [node name="心灵泥魔" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG23_357"
 name_str = "心灵泥魔"
-cardType = 0
 lv = 2
 atk = 3
 hp = 2
 desc = "<b>战吼：</b>选择一个友方恶魔，使其吞食酒馆中的一个随从，获得其属性值。"
 gold_desc = "<b>战吼：</b>选择一个友方恶魔，使其吞食酒馆中的一个随从，获得其双倍属性值。"
 race = Array[int]([2])
+need_select_target = true
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_381cq")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8erugj0qly8r"]
+[gd_scene load_steps=3 format=3 uid="uid://c8erugj0qly8r"]
 
 [ext_resource type="Script" uid="uid://cr4b21pl60hgw" path="res://all_card/minion/demon/跳跳魔犬/跳跳魔犬.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://bshfap5f7s8yj" path="res://all_card/minion/demon/跳跳魔犬/roar.gd" id="2_osoan"]
 
 [node name="跳跳魔犬" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG32_893"
 name_str = "跳跳魔犬"
-cardType = 0
 lv = 4
 atk = 4
 hp = 5
 desc = "<b>战吼：</b><b>刷新</b>酒馆，使其中额外加入一张消耗生命值而非铸币的酒馆法术牌。"
 gold_desc = "<b>战吼：</b><b>刷新</b>酒馆，使其中额外加入2张消耗生命值而非铸币的酒馆法术牌。"
 race = Array[int]([2])
+
+[node name="Roar" type="Node" parent="."]
+script = ExtResource("2_osoan")
+metadata/_custom_type_script = "uid://d1tqc85g21hw6"

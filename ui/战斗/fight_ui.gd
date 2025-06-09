@@ -78,13 +78,14 @@ func minion_fight(attacker:Dictionary,defender:Dictionary):
 		return
 	# 攻击放随从攻击
 	var attacker_minion:CardUi=attacker.随从ui.front() as CardUi
-	await mionion_do_attack(attacker_minion,attacker,defender)
-	if attacker_minion.card.风怒:
+	if is_instance_valid(attacker_minion):
 		await mionion_do_attack(attacker_minion,attacker,defender)
-	if attacker_minion.card.超级风怒:
+	if is_instance_valid(attacker_minion) and  attacker_minion.card.风怒:
+		await mionion_do_attack(attacker_minion,attacker,defender)
+	if  is_instance_valid(attacker_minion) and  attacker_minion.card.超级风怒:
 		await mionion_do_attack(attacker_minion,attacker,defender)
 		await mionion_do_attack(attacker_minion,attacker,defender)
-		
+
 func mionion_do_attack(attacker_minion:CardUi,attacker:Dictionary,defender:Dictionary):
 	if attacker_minion.card.hp_bonus(attacker.player)<=0:
 		print("没血了，不能继续攻击了")
@@ -111,6 +112,18 @@ func 生命计算(attacker:Dictionary,attacker_minion:CardUi,defender:Dictionary
 	attacker_minion.card.add_hp(defender_minion.card,-defender_minion.card.atk_bonus(attacker.player),attacker.player)
 	# 防御方
 	defender_minion.card.add_hp(attacker_minion.card,-attacker_minion.card.atk_bonus(defender.player),defender.player)
+	
+	if attacker_minion.card.是否死亡(attacker.player):
+		print("%s死亡，进行移除"%attacker_minion.card.name_str)
+		attacker_minion.hide()
+		attacker.随从ui=attacker.随从ui.filter(func(card:CardUi): return card.visible)
+		attacker_minion.free()
+		
+	if defender_minion.card.是否死亡(defender.player):
+		print("%s死亡，进行移除"%defender_minion.card.name_str)
+		defender_minion.hide()
+		defender.随从ui=defender.随从ui.filter(func(card:CardUi): return card.visible)
+		defender_minion.free()
 	pass
 
 
@@ -134,10 +147,7 @@ func move_panel_to_panel(a: PanelContainer, b: PanelContainer, duration: float =
 	tween.tween_property(a, "global_position", target_pos, duration)
 	tween.parallel().tween_property(a, "size", target_size, duration)
 	
-	print("执行中")
 	await tween.finished
-	
-	print("执行动画over")
 
 func start_animation_sequence(panel_a,panel_b):
 	var  original_position = panel_a.global_position

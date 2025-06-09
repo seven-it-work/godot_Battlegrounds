@@ -28,8 +28,8 @@ func 触发器_出售(player:Player):
 	super.触发器_出售(player)
 	pass
 
-func 触发器_玩家受伤(num:int)->int:
-	num=super.触发器_玩家受伤(num)
+func 触发器_玩家受伤(palyer:Player,num:int)->int:
+	num=super.触发器_玩家受伤(palyer,num)
 	return num
 
 func 触发器_使用其他卡牌(使用的卡牌:BaseCard,player:Player,目标卡片:BaseCard):

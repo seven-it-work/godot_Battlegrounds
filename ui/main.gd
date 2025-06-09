@@ -15,9 +15,13 @@ func _ready() -> void:
 	for i in $PanelContainer/HBoxContainer/core/手牌.get_children():
 		i.queue_free()
 	# 玩家初始化
+	# 本地加载
 	var player=preload("uid://duyyralberadj").instantiate()
 	player.name_str="测试玩家"
 	self.player=player
+	
+	var file=FileUtis.get_all_files_in_directory("res://fight_ai/1").pick_random()
+	self.player=FileAccess.open(file,FileAccess.READ).get_var(true)
 
 	# endtest
 	$"PanelContainer/HBoxContainer/操作/PanelContainer/VBoxContainer/提示信息/酒馆提示信息".player=player
@@ -116,6 +120,7 @@ func _on_结束回合_pressed() -> void:
 		var file=FileUtis.get_all_files_in_directory(path).pick_random()
 		if file:
 			var target_ai=FileAccess.open(file,FileAccess.READ).get_var(true)
+			target_ai.name_str="AI_"+target_ai.name_str
 			# 进入战斗页面
 			$"PanelContainer/战斗ui/fight".init(player,target_ai)
 			$PanelContainer/HBoxContainer.hide()
