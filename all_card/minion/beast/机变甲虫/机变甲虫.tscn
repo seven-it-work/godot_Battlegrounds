@@ -13,7 +13,6 @@ atk = 2
 desc = "<b>抉择：</b>使一只野兽获得+1/+1和<b>复生</b>；或者+8攻击力。"
 gold_desc = "<b>抉择：</b>使一只野兽获得+2/+2和<b>复生</b>；或者+16攻击力。"
 "抉择" = NodePath("ToChoose")
-hp = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="ToChoose" type="Node" parent="."]

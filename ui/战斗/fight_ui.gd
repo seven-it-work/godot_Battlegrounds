@@ -1,28 +1,52 @@
 extends VBoxContainer
+class_name FightUI
 
-var 敌人:Player
-var 玩家:Player
+var 敌人:Dictionary
+var 玩家:Dictionary
 
 func _ready() -> void:
 	# 随机一个子文件
 	pass
 
+func 刷新(player:Player):
+	if player==敌人.player:
+		for i in $"敌人".get_children():
+			i.free()
+		for i in 敌人.player.战斗中的牌:
+			var node=preload("uid://dl0ad8ft57aqx").instantiate()
+			node.initData(i)
+			node.位置=CardUi.PositionEnum.战场
+			$"敌人".add_child(node)
+		self.敌人={player=player,随从ui=$"敌人"}
+		return
+	
+	if player==玩家.player:
+		for i in $"玩家".get_children():
+			i.free()
+		for i in 玩家.player.战斗中的牌:
+			var node=preload("uid://dl0ad8ft57aqx").instantiate()
+			node.initData(i)
+			node.位置=CardUi.PositionEnum.战场
+			$"玩家".add_child(node)
+		self.玩家={player=player,随从ui=$"玩家"}
+	pass
+
 func init(player:Player,target:Player):
-	self.玩家=player
-	self.敌人=target
+	self.玩家={player=player,随从ui=$"玩家"}
+	self.敌人={player=target,随从ui=$"敌人"}
 	# ui初始化
 	for i in $"敌人".get_children():
 		i.free()
 	for i in $"玩家".get_children():
 		i.free()
-	self.玩家.start_fight(Fight.new())
-	self.敌人.start_fight(Fight.new())
-	for i in 玩家.战斗中的牌:
+	self.玩家.player.start_fight(self)
+	self.敌人.player.start_fight(self)
+	for i in 玩家.player.战斗中的牌:
 		var node=preload("uid://dl0ad8ft57aqx").instantiate()
 		node.initData(i)
 		node.位置=CardUi.PositionEnum.战场
 		$"玩家".add_child(node)
-	for i in 敌人.战斗中的牌:
+	for i in 敌人.player.战斗中的牌:
 		var node=preload("uid://dl0ad8ft57aqx").instantiate()
 		node.initData(i)
 		node.位置=CardUi.PositionEnum.战场
@@ -37,35 +61,35 @@ func do_fight():
 	var attacker:Dictionary
 	var defender:Dictionary
 	# 判断先手,谁的怪多 谁先手
-	if 玩家.get_minion().size()==敌人.get_minion().size():
+	if 玩家.player.get_minion().size()==敌人.player.get_minion().size():
 		if randi_range(0,1)==0:
-			attacker={player=玩家,随从ui=$"玩家".get_children()}
-			defender={player=敌人,随从ui=$"敌人".get_children()}
+			attacker=玩家
+			defender=敌人
 		else:
-			attacker={player=敌人,随从ui=$"敌人".get_children()}
-			defender={player=玩家,随从ui=$"玩家".get_children()}
-	elif 玩家.get_minion().size()>敌人.get_minion().size():
-		attacker={player=玩家,随从ui=$"玩家".get_children()}
-		defender={player=敌人,随从ui=$"敌人".get_children()}
+			attacker=敌人
+			defender=玩家
+	elif 玩家.player.get_minion().size()>敌人.player.get_minion().size():
+		attacker=玩家
+		defender=敌人
 	else:
-		attacker={player=敌人,随从ui=$"敌人".get_children()}
-		defender={player=玩家,随从ui=$"玩家".get_children()}
+		attacker=敌人
+		defender=玩家
 	# 进入战斗模式
 	attacker.player.战斗开始时()
 	defender.player.战斗开始时()
 	# 开始战斗计算
 	for i in 100:
 		# 都没有随从平局
-		if attacker.随从ui.size()<=0 and defender.随从ui.size()<=0:
+		if attacker.随从ui.get_children().size()<=0 and defender.随从ui.get_children().size()<=0:
 			return {"是否平局":true}
 		# 退出条件1 （任意一方数量为0）
-		if attacker.随从ui.size()<=0:
+		if attacker.随从ui.get_children().size()<=0:
 			return {"输家":attacker,"赢家":defender,"是否平局":false}
-		if defender.随从ui.size()<=0:
+		if defender.随从ui.get_children().size()<=0:
 			return {"输家":defender,"赢家":attacker,"是否平局":false}
 		# 退出条件2 双方的攻击力总和为0
-		var attacker_atk_sum=attacker.随从ui.map(func(cardUi:CardUi): return cardUi.card.atk_bonus(attacker.player)).reduce(func(accum, number): return accum + number,0)
-		var defender_atk_sum=defender.随从ui.map(func(cardUi:CardUi): return cardUi.card.atk_bonus(defender.player)).reduce(func(accum, number): return accum + number,0)
+		var attacker_atk_sum=attacker.随从ui.get_children().map(func(cardUi:CardUi): return cardUi.card.atk_bonus(attacker.player)).reduce(func(accum, number): return accum + number,0)
+		var defender_atk_sum=defender.随从ui.get_children().map(func(cardUi:CardUi): return cardUi.card.atk_bonus(defender.player)).reduce(func(accum, number): return accum + number,0)
 		if attacker_atk_sum == defender_atk_sum and attacker_atk_sum==0:
 			return {"是否平局":true}
 		await minion_fight(attacker,defender)
@@ -74,10 +98,10 @@ func do_fight():
 	pass
 	
 func minion_fight(attacker:Dictionary,defender:Dictionary):
-	if attacker.随从ui.size()<=0:
+	if attacker.随从ui.get_children().size()<=0:
 		return
 	# 攻击放随从攻击
-	var attacker_minion:CardUi=attacker.随从ui.front() as CardUi
+	var attacker_minion:CardUi=attacker.随从ui.get_children().front() as CardUi
 	if is_instance_valid(attacker_minion):
 		await mionion_do_attack(attacker_minion,attacker,defender)
 	if is_instance_valid(attacker_minion) and  attacker_minion.card.风怒:
@@ -90,15 +114,17 @@ func mionion_do_attack(attacker_minion:CardUi,attacker:Dictionary,defender:Dicti
 	if attacker_minion.card.hp_bonus(attacker.player)<=0:
 		print("没血了，不能继续攻击了")
 		return
+	if attacker_minion.card.atk_bonus(attacker.player)<=0:
+		return
 	# 目标查询（查询嘲讽）
-	var list_嘲讽=defender.随从ui.filter(func(cardUi:CardUi): return cardUi.card.嘲讽)
+	var list_嘲讽=defender.随从ui.get_children().filter(func(cardUi:CardUi): return cardUi.card.嘲讽)
 	if list_嘲讽.size()>0:
 		# 随机选一个
 		var defender_minion:CardUi=list_嘲讽.pick_random() as CardUi
 		await 生命计算(attacker,attacker_minion,defender,defender_minion)
 		return
 	# 目标查询（忽略掉潜行的）
-	var list_minion=defender.随从ui.filter(func(cardUi:CardUi): return !cardUi.card.潜行)
+	var list_minion=defender.随从ui.get_children().filter(func(cardUi:CardUi): return !cardUi.card.潜行)
 	if list_minion.size()>0:
 		# 随机选一个
 		var defender_minion:CardUi=list_minion.pick_random() as CardUi
@@ -109,21 +135,20 @@ func 生命计算(attacker:Dictionary,attacker_minion:CardUi,defender:Dictionary
 	print("%s的%s对%s的%s进行攻击"%[attacker.player.name_str,attacker_minion.card.name_str,defender.player.name_str,defender_minion.card.name_str])
 	await  start_animation_sequence(attacker_minion,defender_minion)
 	# 攻击方生命值
-	attacker_minion.card.add_hp(defender_minion.card,-defender_minion.card.atk_bonus(attacker.player),attacker.player)
-	# 防御方
-	defender_minion.card.add_hp(attacker_minion.card,-attacker_minion.card.atk_bonus(defender.player),defender.player)
+	var attacker_card=attacker_minion.card
+	var defender_card=defender_minion.card
 	
-	if attacker_minion.card.是否死亡(attacker.player):
-		print("%s死亡，进行移除"%attacker_minion.card.name_str)
-		attacker_minion.hide()
-		attacker.随从ui=attacker.随从ui.filter(func(card:CardUi): return card.visible)
-		attacker_minion.free()
+	attacker_card.add_hp(defender_card,-defender_card.atk_bonus(attacker.player),attacker.player)
+	# 防御方
+	defender_card.add_hp(attacker_card,-attacker_card.atk_bonus(defender.player),defender.player)
+	
+	if attacker_card.是否死亡(attacker.player):
+		print("%s死亡，进行移除"%attacker_card.name_str)
+		刷新(attacker.player)
 		
-	if defender_minion.card.是否死亡(defender.player):
-		print("%s死亡，进行移除"%defender_minion.card.name_str)
-		defender_minion.hide()
-		defender.随从ui=defender.随从ui.filter(func(card:CardUi): return card.visible)
-		defender_minion.free()
+	if defender_card.是否死亡(defender.player):
+		print("%s死亡，进行移除"%defender_card.name_str)
+		刷新(defender.player)
 	pass
 
 
@@ -197,7 +222,6 @@ func shake_panel(panel: Node, duration: float, strength: float, frequency: float
 		tween.tween_property(panel, "global_position", 
 							original_pos, 
 							shake_duration * 0.6).set_ease(Tween.EASE_IN)
-
 	
 	await tween.finished
 

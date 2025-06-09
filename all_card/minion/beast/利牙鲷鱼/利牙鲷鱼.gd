@@ -16,5 +16,10 @@ func 触发器_当在战斗中有空位时(player:Player):
 				食人鱼.atk=3
 				食人鱼.hp=1
 				player.add_card_in_bord(食人鱼)
-				player.fight.mionion_do_attack(食人鱼,player,player.fight.get_敌人(player))
+				
+				var node=preload("uid://dl0ad8ft57aqx").instantiate()
+				node.initData(食人鱼)
+				node.位置=CardUi.PositionEnum.战场
+				
+				player.fight.mionion_do_attack(node,player.fight.玩家,player.fight.敌人)
 	pass

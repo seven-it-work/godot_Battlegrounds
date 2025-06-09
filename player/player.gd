@@ -44,7 +44,7 @@ var 刷新消耗生命值次数:int=0
 var 当前选中的随从:BaseCard
 
 # 是否战斗中
-var fight:Fight
+var fight:FightUI
 var 敌人战斗list:Array[BaseCard]=[]
 
 ## 酒馆信息
@@ -77,7 +77,7 @@ func 回合开始时():
 	# 其他开始回合效果触发
 	pass
 
-func start_fight(fight:Fight):
+func start_fight(fight:FightUI):
 	self.fight=fight
 	战斗中的牌.clear()
 	战斗中的牌.append_array(战场中的牌)
@@ -377,6 +377,7 @@ func add_card_in_bord(card:BaseCard):
 	card.触发器_召唤(self)
 	# 如果这里需要选择右方
 	get_minion().append(card)
+	fight.刷新(self)
 	for i in get_minion():
 		if i.uuid!=card.uuid:
 			i.触发器_召唤他人(card,self)
