@@ -1,6 +1,6 @@
 extends BaseDragableCard
 
-
+@onready var area1=$Area2D
 func _ready():
 	#drag_handle_texture_rect.button_down.connect(start_drag)
 	pass

@@ -10,12 +10,14 @@ var dragable := false
 
 ## 开始拖拽
 func start_drag():
+#	这里就没有用
 	dragable = true
 	modulate.a = 0.9 
 	drag_started.emit()
 
 ## 结束拖拽
 func stop_drag():
+#	这里就没有用
 	dragable = false
 	modulate.a = 1
 	drag_stoped.emit()

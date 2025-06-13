@@ -10,18 +10,23 @@ class_name DraggableCardComponent extends HBoxContainer
 ## 拖拽时的阴影
 @export var _shadow_panel_packed_scene:PackedScene =preload("uid://kk3f145b1ybm")
 
+@export var 脱离区域禁止排序:bool=true
+
+var 检测区域:Rect2
+
+
 var _draged_card:BaseDragableCard
 var _drag_offset := Vector2.ZERO
 var _previous_index :int
 var _shadow_panel:Panel
 
-var 准备购买的卡片:BaseDragableCard
+signal 开始拖拽
+signal 停止拖拽
 
-# 拖拽在外边的信号
-signal draged_out(draged_card:BaseDragableCard)
-
-func 准备购买(card:BaseDragableCard):
-	准备购买的卡片=card
+func 获取拖拽区域()->Rect2:
+	if 检测区域:
+		return 检测区域
+	return get_global_rect()
 
 func _ready():
 	clear_cards()
@@ -32,10 +37,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if not event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-			if 准备购买的卡片:
-				print("购买")
-			else:
-				_stop_drag()
+			_stop_drag()
 
 ## Interface
 func clear_cards():
@@ -58,7 +60,6 @@ func remove_card(value:BaseDragableCard):
 func get_cards():
 	return get_children().filter(func(x): return x is BaseDragableCard)
 
-## Utils
 func _remove_all_place_holder():
 	for child in get_children():
 		if child is PlaceHolderPanel:
@@ -84,17 +85,20 @@ func _get_active_holder_index():
 	if actives:
 		return actives[0].get_index()/2
 
+
 func _auto_change_place_holder_size():
 	if not _draged_card:
 		return 
 	var mp = get_global_mouse_position()
-	if mp.y>get_rect().size.y+get_rect().position.y:
-		draged_out.emit(_draged_card)
-		return
-	if mp.y<get_rect().size.y+get_rect().position.y-_draged_card.size.y:
-		draged_out.emit(_draged_card)
-		return
 	var height = _draged_card.size.x*0.5
+	
+	if 获取拖拽区域().has_point(mp):
+		#print("鼠标在区域内")
+		pass
+	else:
+		#print("鼠标不在了")
+		if 脱离区域禁止排序:
+			return
 	for holder:PlaceHolderPanel in _get_place_holders():
 		var rect = holder.get_global_rect()
 		if abs(mp.x - rect.position.x) <= height or abs(mp.x - rect.end.x) <= height:
@@ -107,17 +111,19 @@ func _auto_change_place_holder_size():
 				holder.change_size(place_holder_min_size, place_holder_duration)
 
 func _start_drag(value:BaseDragableCard):
+	#print("开始排序")
 	_draged_card = value
 	if not _draged_card:
 		return 
+	
+	开始拖拽.emit()
 	_drag_offset = _draged_card.global_position-get_global_mouse_position()
 	
-	#_draged_card.start_drag()
 	_previous_index = _draged_card.get_index()
 	remove_card(_draged_card)
 	_add_place_holder()
 	get_tree().root.add_child(_draged_card)
-	#
+	
 	_shadow_panel = _shadow_panel_packed_scene.instantiate()
 	_draged_card.add_child(_shadow_panel)
 	_shadow_panel.show_behind_parent = true
@@ -129,8 +135,11 @@ func _draging():
 	_auto_change_place_holder_size()
 
 func _stop_drag():
+	#print("停止排序")
 	if not _draged_card:
 		return 
+	停止拖拽.emit(_draged_card)
+	
 	var index = _get_active_holder_index()
 	if index == null:
 		index = _previous_index
@@ -138,7 +147,6 @@ func _stop_drag():
 	_remove_all_place_holder()
 	add_card(_draged_card)
 	move_child(_draged_card, index)
-	#_draged_card.stop_drag()
 	_draged_card = null
 	_shadow_panel.queue_free()
 	

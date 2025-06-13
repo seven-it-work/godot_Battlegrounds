@@ -1,31 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuxr34apq5d86"]
+[gd_scene load_steps=3 format=3 uid="uid://cuxr34apq5d86"]
 
 [ext_resource type="Script" uid="uid://bq5664rbfkm8g" path="res://demo/example/main.gd" id="1_oapen"]
-[ext_resource type="PackedScene" uid="uid://krjo2scs8jyl" path="res://demo/DraggableCardComponent.tscn" id="2_yr78l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr78l"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.898039, 0.792157, 0.101961, 0)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tb1b"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.905882, 0.745098, 0.345098, 0)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[ext_resource type="PackedScene" uid="uid://d08ofac08h5mu" path="res://demo/example/容器.tscn" id="2_3tb1b"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -49,21 +25,9 @@ text = "展示信息栏"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Tavern" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="Tavern" parent="HBoxContainer/VBoxContainer" instance=ExtResource("2_3tb1b")]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_yr78l")
 
-[node name="Cards" parent="HBoxContainer/VBoxContainer/Tavern" instance=ExtResource("2_yr78l")]
+[node name="CardList" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("可以拖入的容器") instance=ExtResource("2_3tb1b")]
 layout_mode = 2
-size_flags_vertical = 3
-place_holder_min_size = Vector2(4, 100)
-
-[node name="CardList" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_3tb1b")
-
-[node name="Cards" parent="HBoxContainer/VBoxContainer/CardList" instance=ExtResource("2_yr78l")]
-layout_mode = 2
-size_flags_vertical = 3
+"可以拖入的容器" = NodePath("../Tavern")
