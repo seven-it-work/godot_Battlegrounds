@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt52loyn3qou"]
+[gd_scene load_steps=3 format=3 uid="uid://d05onlpnc8dpx"]
 
-[ext_resource type="Script" uid="uid://ck717f1637gbf" path="res://demo/测试碰撞/拖拽容器.gd" id="1_dul7w"]
+[ext_resource type="Script" uid="uid://ck717f1637gbf" path="res://2.0/ui/拖拽容器.gd" id="1_dul7w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dul7w"]
 resource_local_to_scene = true

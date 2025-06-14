@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="lu_shi"
-run/main_scene="uid://c26h65o4wej4l"
+run/main_scene="uid://dyranlbex6vhj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 UUID="*res://addons/uuid/uuid.gd"
 Globals="*res://ui/Globals.gd"
-"全局属性"="*res://demo/测试碰撞/全局属性.gd"
+"全局属性"="*res://2.0/ui/全局属性.gd"
 
 [debug]
 
@@ -37,6 +37,10 @@ window/stretch/aspect="keep_width"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[global_group]
+
+"选中分组"=""
 
 [rendering]
 

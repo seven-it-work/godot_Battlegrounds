@@ -108,7 +108,7 @@ func _添加插槽(插槽大小:Vector2,是否处理拖入其他的容器:bool=t
 		_清理插槽()
 		var list=$MarginContainer/HBoxContainer.get_children()
 		for index in list.size()+1:
-			var place_holder = preload("res://demo/测试碰撞/插槽.tscn").instantiate()
+			var place_holder = preload("uid://cpteykjyr0m8l").instantiate()
 			$MarginContainer/HBoxContainer.add_child(place_holder)
 			$MarginContainer/HBoxContainer.move_child(place_holder, index*2)
 			if index == _previous_index:

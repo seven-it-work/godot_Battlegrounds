@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ihduousqny8e" path="res://asserts/StarIcon.png" id="16_1f2i1"]
 [ext_resource type="Texture2D" uid="uid://bm6jtu0xkh656" path="res://asserts/GoldCoin.png" id="17_1f2i1"]
 [ext_resource type="Texture2D" uid="uid://djvrpfdm3gedr" path="res://asserts/名字边框.png" id="20_dp53y"]
-[ext_resource type="Shader" path="res://ui/随从/黑白平滑透明.gdshader" id="23_uhgnj"]
+[ext_resource type="Shader" uid="uid://cgbikd4hfkf5q" path="res://ui/随从/黑白平滑透明.gdshader" id="23_uhgnj"]
 [ext_resource type="Texture2D" uid="uid://dppfgnf6565u3" path="res://asserts/AllyInPlaySummon_Lrg.png" id="24_xrqbi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25e1t"]

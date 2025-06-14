@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnghru1y3gwri"]
-
-[ext_resource type="Script" uid="uid://bldk01c7e06wi" path="res://demo/测试碰撞/箭头.gd" id="1_80tnw"]
-
-[node name="箭头" type="Node2D"]
-script = ExtResource("1_80tnw")
