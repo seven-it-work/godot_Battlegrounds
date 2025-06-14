@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/楚先生/楚先生.gd" id="1_cc03i"]
+
+[node name="楚先生" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_HERO_104_Buddy"
+name_str = "楚先生"
+lv = 5
+show_lv = true
+atk = 6
+show_atk = true
+hp = 6
+show_hp = true
+desc = "每回合一次：在你<b>传递</b>一个随从后，获取一张它的原始版复制<i>（<b>伙伴</b>除外）</i>。"
+gold_desc = "每回合一次：在你<b>传递</b>一个随从后，获取2张它的原始版复制<i>（<b>伙伴</b>除外）</i>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([0])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

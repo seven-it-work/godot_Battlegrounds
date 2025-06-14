@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/日蚀伊利达雷/日蚀伊利达雷.gd" id="1_cc03i"]
+
+[node name="日蚀伊利达雷" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_08_Buddy"
+name_str = "日蚀伊利达雷"
+lv = 2
+show_lv = true
+atk = 6
+show_atk = true
+hp = 3
+show_hp = true
+desc = "你的第一个攻击的
+随从拥有仅在一次攻击中有效的“攻击时<b>免疫</b>”。"
+gold_desc = "你的前两个攻击的随从拥有仅在一次攻击中有效的“攻击时<b>免疫</b>”。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([0])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

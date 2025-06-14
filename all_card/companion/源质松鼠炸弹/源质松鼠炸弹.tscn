@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/源质松鼠炸弹/源质松鼠炸弹.gd" id="1_cc03i"]
+
+[node name="源质松鼠炸弹" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_17_Buddy"
+name_str = "源质松鼠炸弹"
+lv = 4
+show_lv = true
+atk = 4
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>亡语：</b>在本场战斗中每有一个你的机械死亡，随机对一个敌方随从造成2点伤害。"
+gold_desc = "<b>亡语：</b>在本场战斗中每有一个你的机械死亡，随机对一个敌方随从造成4点伤害。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([5])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

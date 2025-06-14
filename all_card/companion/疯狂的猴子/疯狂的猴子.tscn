@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/疯狂的猴子/疯狂的猴子.gd" id="1_cc03i"]
+
+[node name="疯狂的猴子" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_38_Buddy"
+name_str = "疯狂的猴子"
+lv = 2
+show_lv = true
+atk = 4
+show_atk = true
+hp = 4
+show_hp = true
+desc = "在你喂给随从香蕉后，使其获得+1/+1。"
+gold_desc = "在你喂给随从香蕉后，使其获得+2/+2。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([1])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

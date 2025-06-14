@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/垂滴的蜡烛巨龙/垂滴的蜡烛巨龙.gd" id="1_cc03i"]
+
+[node name="垂滴的蜡烛巨龙" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_HERO_305_Buddy"
+name_str = "垂滴的蜡烛巨龙"
+lv = 4
+show_lv = true
+atk = 7
+show_atk = true
+hp = 5
+show_hp = true
+desc = "<b><b>战吼：</b>刷新</b>酒馆，使其中的随从变为每个对手的战队中等级最高的随从。"
+gold_desc = "<b><b>战吼：</b>刷新</b>酒馆，使其中的随从变为每个对手的战队中等级最高的随从。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([4,3])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

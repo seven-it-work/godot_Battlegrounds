@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/狂暴的选手/狂暴的选手.gd" id="1_cc03i"]
+
+[node name="狂暴的选手" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_67_Buddy"
+name_str = "狂暴的选手"
+lv = 5
+show_lv = true
+atk = 5
+show_atk = true
+hp = 4
+show_hp = true
+desc = "在你使用“变废为宝”后，获得等同于被移除随从等级的铸币。"
+gold_desc = "在你使用“变废为宝”后，获得等同于被移除随从等级两倍的铸币。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([0])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

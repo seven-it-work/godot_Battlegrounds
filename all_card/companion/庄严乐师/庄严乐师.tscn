@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/庄严乐师/庄严乐师.gd" id="1_cc03i"]
+
+[node name="庄严乐师" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_HERO_102_Buddy"
+name_str = "庄严乐师"
+lv = 3
+show_lv = true
+atk = 4
+show_atk = true
+hp = 3
+show_hp = true
+desc = "在你对一个随从使用你的英雄技能后，使其获得本随从一半的攻击力。<i>（下回合切换为生命值！）</i>0在你对一个随从使用你的英雄技能后，使其获得本随从一半的生命值。<i>（下回合切换为攻击力！）</i>"
+gold_desc = "在你对一个随从使用你的英雄技能后，使其获得本随从的攻击力。<i>（下回合切换为生命值！）</i>0在你对一个随从使用你的英雄技能后，使其获得本随从的生命值。<i>（下回合切换为攻击力！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([10])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

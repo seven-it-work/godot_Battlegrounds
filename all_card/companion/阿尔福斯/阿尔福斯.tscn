@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/阿尔福斯/阿尔福斯.gd" id="1_cc03i"]
+
+[node name="阿尔福斯" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_22_Buddy"
+name_str = "阿尔福斯"
+lv = 3
+show_lv = true
+atk = 6
+show_atk = true
+hp = 3
+show_hp = true
+desc = "在一个友方随从<b>复生</b>后，使其获得本随从的攻击力。"
+gold_desc = "在一个友方随从<b>复生</b>后，使其获得本随从的双倍攻击力。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([10,1])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

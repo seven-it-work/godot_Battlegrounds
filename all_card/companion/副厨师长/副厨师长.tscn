@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/副厨师长/副厨师长.gd" id="1_cc03i"]
+
+[node name="副厨师长" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG21_HERO_020_Buddy"
+name_str = "副厨师长"
+lv = 2
+show_lv = true
+atk = 2
+show_atk = true
+hp = 5
+show_hp = true
+desc = "每个回合你可以额外使用一次英雄技能。"
+gold_desc = "每个回合你可以额外使用2次英雄技能。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([6])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String json= FileUtil.readString("D:/devSoft/godot/Godot_v4.3-stable_win64/godot_Battlegrounds/资料/32.2.4.221850/get_full_cards.json",  "UTF-8");
+        String json= FileUtil.readString("E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\资料\\32.2.4.221850\\get_full_cards.json",  "UTF-8");
         JSONObject entries = JSONUtil.parseObj(json);
         JSONArray jsonArray = entries.getJSONObject("data").getJSONArray("minion");
         List<BaseCard> list = jsonArray.toList(BaseCard.class);

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/强化医疗机/强化医疗机.gd" id="1_cc03i"]
+
+[node name="强化医疗机" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG24_HERO_204_Buddy"
+name_str = "强化医疗机"
+lv = 1
+show_lv = true
+atk = 2
+show_atk = true
+hp = 2
+show_hp = true
+desc = "酒馆中具有<b>嘲讽</b>，<b>复生</b>，<b>风怒</b>或<b>圣盾</b>的随从，每有其中一种效果，便拥有+2/+2。"
+gold_desc = "酒馆中具有<b>嘲讽</b>，<b>复生</b>，<b>风怒</b>或<b>圣盾</b>的随从，每有其中一种效果，便拥有+4/+4。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([5])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

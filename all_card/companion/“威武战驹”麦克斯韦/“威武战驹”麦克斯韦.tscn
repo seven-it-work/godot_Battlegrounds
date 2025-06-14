@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/“威武战驹”麦克斯韦/“威武战驹”麦克斯韦.gd" id="1_cc03i"]
+
+[node name="“威武战驹”麦克斯韦" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_40_Buddy"
+name_str = "“威武战驹”麦克斯韦"
+lv = 4
+show_lv = true
+atk = 1
+show_atk = true
+hp = 1
+show_hp = true
+desc = "当你出售本随从时，获取一张你的英雄技能对应的<b>伙伴</b>。"
+gold_desc = "当你出售本随从时，获取2张你的英雄技能对应的<b>伙伴</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([1])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

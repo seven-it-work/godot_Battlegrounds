@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/炽手百夫长/炽手百夫长.gd" id="1_cc03i"]
+
+[node name="炽手百夫长" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "TB_BaconShop_HERO_60_Buddy"
+name_str = "炽手百夫长"
+lv = 4
+show_lv = true
+atk = 7
+show_atk = true
+hp = 5
+show_hp = true
+desc = "在“翠绿魔珠”触发后，使你手牌中和场上的随从获得+1/+1。"
+gold_desc = "在“翠绿魔珠”触发后，使你手牌中和场上的随从获得+2/+2。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([0])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

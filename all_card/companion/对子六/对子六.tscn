@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/对子六/对子六.gd" id="1_cc03i"]
+
+[node name="对子六" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_HERO_400_Buddy"
+name_str = "对子六"
+lv = 6
+show_lv = true
+atk = 6
+show_atk = true
+hp = 6
+show_hp = true
+desc = "在你的回合开始时，投一枚6面骰。<b>发现</b>一张等级对应点数的酒馆法术牌。"
+gold_desc = "在你的回合开始时，投两枚6面骰，<b>发现</b>等级分别对应点数的两张酒馆法术牌。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([5])
+是否出现在酒馆 = false
+是否为伙伴 = true
+

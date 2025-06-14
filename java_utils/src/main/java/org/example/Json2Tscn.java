@@ -13,12 +13,13 @@ import java.util.List;
  * json 转 tscn
  */
 public class Json2Tscn {
+    static String workPath="E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\";
 
-   static String savePath="D:\\github\\godot\\lu_shi\\all_card\\";
+   static String savePath=workPath+"all_card\\";
 
     public static void main(String[] args) {
         // System.out.println(CardTypeEnum.MINION.ordinal());
-        String jsonPath="D:\\github\\godot\\lu_shi\\资料\\32.2.4.221850\\get_full_cards.json";
+        String jsonPath=workPath+"资料\\32.2.4.221850\\get_full_cards.json";
 
         伙伴随从(jsonPath);
     }
@@ -28,7 +29,7 @@ public class Json2Tscn {
         JSONArray jsonArray = JSONUtil.parseObj(FileUtil.readString(jsonPath,StandardCharsets.UTF_8)).getJSONObject("data").getJSONArray("companion");
         List<BaseCard> list = jsonArray.toList(BaseCard.class);
         // 将BaseCard转换对应tscn
-        String s = FileUtil.readString("D:\\github\\godot\\lu_shi\\java_utils\\src\\main\\java\\org\\example\\Tscn模板.txt",
+        String s = FileUtil.readString(workPath+"java_utils\\src\\main\\java\\org\\example\\Tscn模板.txt",
             StandardCharsets.UTF_8);
         for (BaseCard baseCard : list) {
             // 额外设置
@@ -47,7 +48,7 @@ public class Json2Tscn {
             System.out.println("写入tscn");
             FileUtil.writeString(tscn,savePath+baseCard.getSavePath()+".tscn",StandardCharsets.UTF_8);
             System.out.println("写入gd");
-            FileUtil.writeString(FileUtil.readString("D:\\github\\godot\\lu_shi\\java_utils\\src\\main\\java\\org\\example\\gd模板.txt",
+            FileUtil.writeString(FileUtil.readString(workPath+"java_utils\\src\\main\\java\\org\\example\\gd模板.txt",
                 StandardCharsets.UTF_8),savePath+baseCard.getSavePath()+".gd",StandardCharsets.UTF_8);
         }
     }
@@ -57,7 +58,7 @@ public class Json2Tscn {
         JSONArray jsonArray = JSONUtil.parseObj(FileUtil.readString(jsonPath,StandardCharsets.UTF_8)).getJSONObject("data").getJSONArray("tavern");
         List<BaseCard> list = jsonArray.toList(BaseCard.class);
         // 将BaseCard转换对应tscn
-        String s = FileUtil.readString("D:\\github\\godot\\lu_shi\\java_utils\\src\\main\\java\\org\\example\\Tscn模板.txt",
+        String s = FileUtil.readString(workPath+"java_utils\\src\\main\\java\\org\\example\\Tscn模板.txt",
             StandardCharsets.UTF_8);
         for (BaseCard baseCard : list) {
             // 额外设置
@@ -74,7 +75,7 @@ public class Json2Tscn {
             System.out.println("写入tscn");
             FileUtil.writeString(tscn,savePath+baseCard.getSavePath()+".tscn",StandardCharsets.UTF_8);
             System.out.println("写入gd");
-            FileUtil.writeString(FileUtil.readString("D:\\github\\godot\\lu_shi\\java_utils\\src\\main\\java\\org\\example\\gd模板.txt",
+            FileUtil.writeString(FileUtil.readString(workPath+"java_utils\\src\\main\\java\\org\\example\\gd模板.txt",
                 StandardCharsets.UTF_8),savePath+baseCard.getSavePath()+".gd",StandardCharsets.UTF_8);
         }
     }

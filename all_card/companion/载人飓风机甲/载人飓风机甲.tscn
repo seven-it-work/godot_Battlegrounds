@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/companion/载人飓风机甲/载人飓风机甲.gd" id="1_cc03i"]
+
+[node name="载人飓风机甲" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG21_HERO_030_Buddy"
+name_str = "载人飓风机甲"
+lv = 6
+show_lv = true
+atk = 6
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>战斗开始时：</b>复制所有其他友方随从的<b>亡语</b><i>（载人飓风机甲除外）</i>。"
+gold_desc = "<b>战斗开始时：</b>复制所有其他友方随从的<b>亡语</b>，复制两次<i>（载人飓风机甲除外）</i>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins =  false
+race = Array[int]([5])
+是否出现在酒馆 = false
+是否为伙伴 = true
+
