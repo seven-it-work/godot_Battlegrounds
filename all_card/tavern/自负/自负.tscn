@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/tavern/自负/自负.gd" id="1_cc03i"]
+
+[node name="自负" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_884"
+name_str = "自负"
+lv = 3
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "如果你在你下一场战斗中获胜，获得3枚铸币。如果平局，获得1枚。"
+gold_desc = "如果你在你下一场战斗中获胜，获得3枚铸币。如果平局，获得1枚。"
+cardType = 3
+buy_coins = 3
+show_buy_coins =  true
+race = Array[int]([])
+是否出现在酒馆 = true
+是否为伙伴 = false
+

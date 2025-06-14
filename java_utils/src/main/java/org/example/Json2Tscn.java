@@ -21,7 +21,7 @@ public class Json2Tscn {
         // System.out.println(CardTypeEnum.MINION.ordinal());
         String jsonPath=workPath+"资料\\32.2.4.221850\\get_full_cards.json";
 
-        伙伴随从(jsonPath);
+        酒馆法术(jsonPath);
     }
 
     private static void 伙伴随从(String jsonPath) {

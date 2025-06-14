@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://all_card/tavern/大声申辩/大声申辩.gd" id="1_cc03i"]
+
+[node name="大声申辩" type="Node2D" ]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_800"
+name_str = "大声申辩"
+lv = 2
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "获取你上一个
+对手的战队中一个随机随从的一张
+原始版复制。"
+gold_desc = "获取你上一个对手的战队中一个随机随从的一张原始版复制。"
+cardType = 3
+buy_coins = 3
+show_buy_coins =  true
+race = Array[int]([])
+是否出现在酒馆 = true
+是否为伙伴 = false
+
