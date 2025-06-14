@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt52loyn3qou"]
+[gd_scene load_steps=3 format=3 uid="uid://bt52loyn3qou"]
 
 [ext_resource type="Script" uid="uid://ck717f1637gbf" path="res://demo/测试碰撞/拖拽容器.gd" id="1_dul7w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dul7w"]
+resource_local_to_scene = true
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.603922)
 
 [node name="拖拽容器" type="Control"]
 layout_mode = 3
@@ -9,12 +17,22 @@ mouse_filter = 2
 script = ExtResource("1_dul7w")
 
 [node name="Panel" type="Panel" parent="."]
+z_index = -1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dul7w")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4

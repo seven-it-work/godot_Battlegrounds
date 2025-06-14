@@ -8,18 +8,35 @@ var draging_card:DragCard
 var _previous_index :int=-1
 var 插槽大小:Vector2=Vector2(0,0)
 
+signal 拖拽开始
+signal 拖拽结束
+
 func _process(delta: float) -> void:
+	$Panel.size=size
 	if draging_card:
 		自动调整插槽(draging_card.size)
 		pass
 
+func 可以拖入边框颜色效果():
+	var style = $Panel.get_theme_stylebox("panel") as StyleBoxFlat
+	style.border_color=Color(0.753, 0.569, 0.059, 0.6)
+	$Panel.add_theme_stylebox_override("panel",style)
+	pass
+
+func 恢复边框颜色效果():
+	var style = $Panel.get_theme_stylebox("panel") as StyleBoxFlat
+	style.border_color=Color(0.8, 0.8, 0.8, 0.6)
+	$Panel.add_theme_stylebox_override("panel",style)
+	pass
+
 func 添加卡片(card:DragCard):
-	$HBoxContainer.add_child(card)
+	$MarginContainer/HBoxContainer.add_child(card)
 	card.拖拽开始.connect(_拖拽开始.bind(card))
 	card.拖拽结束.connect(_拖拽结束.bind(card))
 	pass
 
 func _拖拽结束(card):
+	拖拽结束.emit(card)
 	var index=_获取激活的插槽()
 	if index==null:
 		# 判断有没有移动到其他区域
@@ -48,8 +65,8 @@ func _拖拽结束(card):
 			# 位置确定
 			if card.get_parent():
 				card.get_parent().remove_child(card)
-			$HBoxContainer.add_child(card)
-			$HBoxContainer.move_child(card,index)
+			$MarginContainer/HBoxContainer.add_child(card)
+			$MarginContainer/HBoxContainer.move_child(card,index)
 		else:
 			_回归原位(card)
 	_拖拽结束的后续清理()
@@ -63,8 +80,8 @@ func _回归原位(card):
 		card.get_parent().remove_child(card)
 	if _previous_index<0:
 		_previous_index=0
-	$HBoxContainer.add_child(card)
-	$HBoxContainer.move_child(card,_previous_index)
+	$MarginContainer/HBoxContainer.add_child(card)
+	$MarginContainer/HBoxContainer.move_child(card,_previous_index)
 	pass
 
 func _拖拽结束的后续清理(是否处理拖入其他的容器:bool=true):
@@ -75,24 +92,25 @@ func _拖拽结束的后续清理(是否处理拖入其他的容器:bool=true):
 	if 是否处理拖入其他的容器:
 		for i in 拖入其他的容器:
 			i._拖拽结束的后续清理(false)
+			i.恢复边框颜色效果()
 
 func _拖拽开始(card):
+	拖拽开始.emit(card)
 	#print("拖拽。。1")
 	draging_card=card
-	draging_card.reparent(self)
-	print("draging_card.get_index()",draging_card.get_index())
 	_previous_index = draging_card.get_index()
+	draging_card.reparent(self)
 	_添加插槽(draging_card.size)
 	pass
 
 func _添加插槽(插槽大小:Vector2,是否处理拖入其他的容器:bool=true):
 	if 是否可以排序:
 		_清理插槽()
-		var list=$HBoxContainer.get_children()
+		var list=$MarginContainer/HBoxContainer.get_children()
 		for index in list.size()+1:
 			var place_holder = preload("res://demo/测试碰撞/插槽.tscn").instantiate()
-			$HBoxContainer.add_child(place_holder)
-			$HBoxContainer.move_child(place_holder, index*2)
+			$MarginContainer/HBoxContainer.add_child(place_holder)
+			$MarginContainer/HBoxContainer.move_child(place_holder, index*2)
 			if index == _previous_index:
 				place_holder.custom_minimum_size = 插槽大小*0.8
 			else:
@@ -100,10 +118,11 @@ func _添加插槽(插槽大小:Vector2,是否处理拖入其他的容器:bool=t
 	if 是否处理拖入其他的容器:
 		for i in 拖入其他的容器:
 			i._添加插槽(插槽大小,false)
+			i.可以拖入边框颜色效果()
 
 
 func 获取插槽():
-	return $HBoxContainer.get_children().filter(func(x): return x is Slot)
+	return $MarginContainer/HBoxContainer.get_children().filter(func(x): return x is Slot)
 
 func 自动调整插槽(插槽大小:Vector2,是否处理拖入其他的容器:bool=true):
 	var mp = get_global_mouse_position()
@@ -131,7 +150,7 @@ func _获取激活的插槽():
 		return actives[0].get_index()/2
 
 func _清理插槽(是否处理拖入其他的容器:bool=true):
-	var list=$HBoxContainer.get_children()
+	var list=$MarginContainer/HBoxContainer.get_children()
 	for child in list:
 		if child is Slot:
 			child.queue_free()

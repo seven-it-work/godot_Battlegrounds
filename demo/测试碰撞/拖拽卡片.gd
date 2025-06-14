@@ -2,7 +2,7 @@ extends Control
 class_name DragCard
 
 @onready var label:=$Label
-
+var 是否为拖拽箭头:bool=false
 var _is_draging:bool=false
 var _drag_offset
 
