@@ -10,3 +10,8 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		if event.is_pressed() and event.button_mask==MOUSE_BUTTON_LEFT:
 			start_drag()
+
+func 更新容器(容器:容器区域):
+	print("更新容器")
+	self.reparent(容器.cards)
+	pass

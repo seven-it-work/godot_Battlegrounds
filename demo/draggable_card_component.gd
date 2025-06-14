@@ -91,7 +91,6 @@ func _auto_change_place_holder_size():
 		return 
 	var mp = get_global_mouse_position()
 	var height = _draged_card.size.x*0.5
-	
 	if 获取拖拽区域().has_point(mp):
 		#print("鼠标在区域内")
 		pass

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c26h65o4wej4l"]
+
+[ext_resource type="Script" uid="uid://cwwix0yxmixws" path="res://demo/测试碰撞/main.gd" id="1_iisum"]
+[ext_resource type="PackedScene" uid="uid://bt52loyn3qou" path="res://demo/测试碰撞/拖拽容器.tscn" id="1_uwh54"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iisum")
+
+[node name="拖拽容器" parent="." node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
+offset_right = 1278.0
+offset_bottom = 183.0
+"拖入其他的容器" = [NodePath("../拖拽容器3")]
+
+[node name="拖拽容器2" parent="." node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
+offset_top = 289.0
+offset_right = 1278.0
+offset_bottom = 469.0
+"拖入其他的容器" = [NodePath("../拖拽容器")]
+"是否可以排序" = true
+
+[node name="拖拽容器3" parent="." node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
+offset_left = 6.0
+offset_top = 508.0
+offset_right = 1284.0
+offset_bottom = 691.0
+"拖入其他的容器" = [NodePath("../拖拽容器2")]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34vra44np5jq"]
+
+[ext_resource type="Script" uid="uid://cgblxqxhauon2" path="res://demo/测试碰撞/插槽.gd" id="1_jfh80"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfh80"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[node name="插槽" type="PanelContainer"]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfh80")
+script = ExtResource("1_jfh80")

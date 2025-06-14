@@ -6,5 +6,4 @@ func _ready():
 		var card = preload("uid://dr3w1srvxktsy").instantiate()
 		$HBoxContainer/VBoxContainer/Tavern/Cards.add_card(card)
 		$HBoxContainer/VBoxContainer/CardList/Cards.add_card(preload("uid://dr3w1srvxktsy").instantiate())
-
 	pass

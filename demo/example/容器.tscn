@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d08ofac08h5mu"]
+[gd_scene load_steps=6 format=3 uid="uid://d08ofac08h5mu"]
 
 [ext_resource type="Script" uid="uid://f5b2uree4ccw" path="res://demo/example/容器.gd" id="1_pmehb"]
 [ext_resource type="PackedScene" uid="uid://krjo2scs8jyl" path="res://demo/DraggableCardComponent.tscn" id="1_sm6y0"]
@@ -18,6 +18,10 @@ corner_radius_bottom_left = 10
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yr78l"]
 size = Vector2(1058, 312)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmehb"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0.329412)
+
 [node name="CardList" type="PanelContainer"]
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3tb1b")
@@ -35,6 +39,8 @@ shape = SubResource("RectangleShape2D_yr78l")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pmehb")
 
 [connection signal="停止拖拽" from="Cards" to="." method="_on_cards_停止拖拽"]
 [connection signal="开始拖拽" from="Cards" to="." method="_on_cards_开始拖拽"]

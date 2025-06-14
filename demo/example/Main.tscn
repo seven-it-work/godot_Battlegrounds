@@ -25,9 +25,14 @@ text = "展示信息栏"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Tavern" parent="HBoxContainer/VBoxContainer" instance=ExtResource("2_3tb1b")]
+[node name="Tavern" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("可以拖入的容器") instance=ExtResource("2_3tb1b")]
 layout_mode = 2
+"可以拖入的容器" = NodePath("../手牌")
 
 [node name="CardList" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("可以拖入的容器") instance=ExtResource("2_3tb1b")]
 layout_mode = 2
 "可以拖入的容器" = NodePath("../Tavern")
+
+[node name="手牌" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("可以拖入的容器") instance=ExtResource("2_3tb1b")]
+layout_mode = 2
+"可以拖入的容器" = NodePath("../CardList")
