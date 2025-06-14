@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://nahvia13mqhu"]
+[gd_scene load_steps=3 format=3 uid="uid://nahvia13mqhu"]
 
 [ext_resource type="Script" uid="uid://bwj0emnmn6gqb" path="res://demo/测试碰撞/拖拽卡片.gd" id="1_3dxpq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dxpq"]
+resource_local_to_scene = true
+bg_color = Color(1, 0.27451, 0.588235, 0.701961)
 
 [node name="拖拽卡片" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -19,11 +23,13 @@ grow_vertical = 2
 script = ExtResource("1_3dxpq")
 
 [node name="Panel" type="Panel" parent="."]
+z_index = -1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3dxpq")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -31,3 +37,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

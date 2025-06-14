@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c26h65o4wej4l"]
+[gd_scene load_steps=4 format=3 uid="uid://c26h65o4wej4l"]
 
 [ext_resource type="Script" uid="uid://cwwix0yxmixws" path="res://demo/测试碰撞/main.gd" id="1_iisum"]
 [ext_resource type="PackedScene" uid="uid://bt52loyn3qou" path="res://demo/测试碰撞/拖拽容器.tscn" id="1_uwh54"]
+[ext_resource type="PackedScene" uid="uid://cnghru1y3gwri" path="res://demo/测试碰撞/箭头.tscn" id="3_d1lde"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -30,3 +31,5 @@ offset_top = 508.0
 offset_right = 1284.0
 offset_bottom = 691.0
 "拖入其他的容器" = [NodePath("../拖拽容器2")]
+
+[node name="箭头" parent="." instance=ExtResource("3_d1lde")]

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 UUID="*res://addons/uuid/uuid.gd"
 Globals="*res://ui/Globals.gd"
+"全局属性"="*res://demo/测试碰撞/全局属性.gd"
 
 [debug]
 
