@@ -10,6 +10,7 @@ var 插槽大小:Vector2=Vector2(0,0)
 
 signal 拖拽开始
 signal 拖拽结束
+signal 拖拽到其他容器
 
 func _process(delta: float) -> void:
 	$Panel.size=size
@@ -54,6 +55,7 @@ func _拖拽结束(card):
 					card.拖拽结束.connect(i._拖拽结束.bind(card))
 					i._拖拽结束(card)
 					_拖拽结束的后续清理()
+					拖拽到其他容器.emit(card,i)
 					return
 		# 回归原位
 		_回归原位(card)

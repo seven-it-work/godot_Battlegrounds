@@ -18,6 +18,7 @@ func _ready() -> void:
 	# 本地加载
 	var player=preload("uid://duyyralberadj").instantiate()
 	player.name_str="测试玩家"
+	player.tavern=$"core/酒馆/Tavern"
 	self.player=player
 	
 	#var file=FileUtis.get_all_files_in_directory("res://fight_ai/1").pick_random()

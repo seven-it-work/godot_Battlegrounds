@@ -7,16 +7,11 @@ func _ready() -> void:
 	
 	var player=preload("uid://duyyralberadj").instantiate()
 	player.name_str="测试玩家"
+	player.tavern=$"core/酒馆/Tavern"
 	self.player=player
+	player.tavern.刷新()
 	
-	for i in 3:
-		var card=preload("uid://dthisa5oinhjm").instantiate()
-		card.baseCard=preload("uid://bd0nd6vjpsrol").instantiate()
-		$"拖拽容器".添加卡片(card)
-		card.label.text="card_1_%s"%i
-		card =preload("uid://dthisa5oinhjm").instantiate()
-		$"拖拽容器2".添加卡片(card)
-		card.label.text="card_2_%s"%i
+
 
 func _process(delta: float) -> void:
 	if 全局属性:

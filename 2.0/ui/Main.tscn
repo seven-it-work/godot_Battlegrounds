@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c26h65o4wej4l"]
+[gd_scene load_steps=9 format=3 uid="uid://c26h65o4wej4l"]
 
 [ext_resource type="Script" uid="uid://cwwix0yxmixws" path="res://2.0/ui/main.gd" id="1_iisum"]
 [ext_resource type="PackedScene" uid="uid://d05onlpnc8dpx" path="res://2.0/ui/拖拽容器.tscn" id="1_uwh54"]
 [ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://2.0/ui/箭头.tscn" id="3_d1lde"]
+[ext_resource type="Script" uid="uid://dk40tcelk7f68" path="res://Tavern/tavern.gd" id="4_4ovwm"]
+[ext_resource type="Script" uid="uid://d04js0ywi0fpn" path="res://2.0/ui/酒馆.gd" id="4_vw2u2"]
+[ext_resource type="Script" uid="uid://4b3k8g3ctuwq" path="res://2.0/ui/战场.gd" id="6_tglqj"]
+[ext_resource type="Script" uid="uid://dlfrcttoso1lc" path="res://2.0/ui/手牌.gd" id="7_k1lu6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwsx2"]
+resource_local_to_scene = true
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.603922)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -13,23 +25,43 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iisum")
 
-[node name="拖拽容器" parent="." node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
+[node name="箭头" parent="." instance=ExtResource("3_d1lde")]
+
+[node name="core" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="酒馆" parent="core" node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
 offset_right = 1278.0
 offset_bottom = 183.0
-"拖入其他的容器" = [NodePath("../拖拽容器3")]
+script = ExtResource("4_vw2u2")
+"拖入其他的容器" = [NodePath("../手牌")]
 
-[node name="拖拽容器2" parent="." node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
+[node name="Panel" parent="core/酒馆" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_nwsx2")
+
+[node name="Tavern" type="Node2D" parent="core/酒馆"]
+script = ExtResource("4_4ovwm")
+metadata/_custom_type_script = "uid://dk40tcelk7f68"
+
+[node name="战场" parent="core" node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
 offset_top = 289.0
 offset_right = 1278.0
 offset_bottom = 469.0
-"拖入其他的容器" = [NodePath("../拖拽容器")]
+script = ExtResource("6_tglqj")
+"拖入其他的容器" = [NodePath("../酒馆")]
 "是否可以排序" = true
 
-[node name="拖拽容器3" parent="." node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
+[node name="手牌" parent="core" node_paths=PackedStringArray("拖入其他的容器") instance=ExtResource("1_uwh54")]
 offset_left = 6.0
 offset_top = 508.0
 offset_right = 1284.0
 offset_bottom = 691.0
-"拖入其他的容器" = [NodePath("../拖拽容器2")]
+script = ExtResource("7_k1lu6")
+"拖入其他的容器" = [NodePath("../战场")]
 
-[node name="箭头" parent="." instance=ExtResource("3_d1lde")]
+[connection signal="酒馆随从变化" from="core/酒馆/Tavern" to="core/酒馆" method="_on_tavern_酒馆随从变化"]
+[connection signal="拖拽到其他容器" from="core/手牌" to="core/手牌" method="_on_拖拽到其他容器"]
+
+[editable path="core/酒馆"]

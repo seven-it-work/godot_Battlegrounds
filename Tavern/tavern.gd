@@ -34,6 +34,7 @@ var 刷新需要的铸币:int=1
 
 var 出现法术个数:int=1
 var 是否冻结:bool=false
+signal 酒馆随从变化
 
 #region 交互方法
 func 酒馆补充卡片():
@@ -86,6 +87,7 @@ func 刷新(params:Dictionary={}):
 			return
 		var dup=data.duplicate()
 		current_card.append(dup)
+	酒馆随从变化.emit()
 	pass
 
 func buy_card(card:BaseCard)->int:
