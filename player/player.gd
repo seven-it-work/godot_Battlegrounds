@@ -1,5 +1,5 @@
 extends Node
-class_name Player
+class_name PlayerTemp
 
 var 最大手牌数量:int=10
 var 最大战场随从数量:int=7
@@ -18,6 +18,7 @@ var 最大战场随从数量:int=7
 @export var 回合开始时回调的方法:Array[Callable]=[]
 ## 回合数（生成回合数 由玩家选牌到战斗结束才+1）
 @export var 回合数:int=0;
+
 
 #region 全局加成
 # 野兽额外攻击力（哼鸣蜂鸟专属）
@@ -194,7 +195,7 @@ func user_card(card:BaseCard,targetCard:BaseCard=null):
 		add_card_in_bord(card)
 		# 战吼触发
 		card.触发器_战吼(self,targetCard)
-	card.触发器_使用(self,targetCard)
+	#card.触发器_使用(self,targetCard)
 	战场的牌变化=true
 	
 	#for i in get_minion():

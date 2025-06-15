@@ -1,15 +1,17 @@
 extends Control
 
-var player:Player
+@onready var player:Player=$Player
 
 func _ready() -> void:
 	Globals.main_node=self
-	
-	var player=preload("uid://duyyralberadj").instantiate()
-	player.name_str="测试玩家"
-	player.tavern=$"core/酒馆/Tavern"
-	self.player=player
-	player.tavern.刷新()
+	#
+	#var player=preload("uid://duyyralberadj").instantiate()
+	#player.name_str="测试玩家"
+	#player.tavern=$"core/酒馆/Tavern"
+	#self.player=player
+	#player.tavern.刷新()
+	player.酒馆刷新()
+	pass
 	
 
 
@@ -21,3 +23,8 @@ func _process(delta: float) -> void:
 		else:
 			$"箭头".hide()
 	pass
+
+
+func _on_刷新_pressed() -> void:
+	player.酒馆刷新()
+	pass # Replace with function body.

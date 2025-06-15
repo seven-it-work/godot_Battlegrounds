@@ -148,7 +148,7 @@ func get_desc(player:Player)->String:
 ## 获取攻击力（包含加成属性）
 func atk_bonus(plyaer:Player)->int:
 	var result=atk*(2 if is_gold else 1);
-	if plyaer.is_fight():
+	if plyaer.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.atk;
 	else:
@@ -159,7 +159,7 @@ func atk_bonus(plyaer:Player)->int:
 ## 获取生命值（包含加成属性）
 func hp_bonus(plyaer:Player)->int:
 	var result=hp*(2 if is_gold else 1);
-	if plyaer.is_fight():
+	if plyaer.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.hp;
 	else:
@@ -178,7 +178,7 @@ func add_atk(trigger:BaseCard,num:int,player:Player,是否永久:bool=false):
 	var temp=trigger.get_AttributeBonus()
 	temp.atk=num
 	临时属性加成.append(temp)
-	if !player.is_fight():
+	if !player.是否在战斗中():
 		属性加成.append(temp)
 	elif  是否永久:
 		属性加成.append(temp)
@@ -198,7 +198,7 @@ func add_hp(trigger:BaseCard,num:int,player:Player,是否永久:bool=false):
 		var temp=trigger.get_AttributeBonus()
 		temp.hp=num
 		临时属性加成.append(temp)
-		if !player.is_fight():
+		if !player.是否在战斗中():
 			属性加成.append(temp)
 		elif  是否永久:
 			属性加成.append(temp)
@@ -305,8 +305,9 @@ func 触发器_战吼(player:Player,targetCard:BaseCard=null):
 	if self.战吼.size()<=0:
 		return
 	for i in self.战吼:
+		print(name_str,"触发战吼")
 		i.战吼(self,player,targetCard)
-		for j in player.get_minion():
+		for j in player.获取战场随从():
 			if j.uuid!=self.uuid:
 				j.触发器_战吼触发监听(self,player)
 	pass

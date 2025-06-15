@@ -5,6 +5,8 @@
 
 [node name="气泡枪手" type="Node2D" node_paths=PackedStringArray("战吼")]
 script = ExtResource("1_ot8nw")
+version = "32.2.4.221850"
+ls_card_id = "BG31_149"
 name_str = "气泡枪手"
 atk = 2
 hp = 3
@@ -12,9 +14,6 @@ desc = "战吼：获得一个随机额外关键词。"
 gold_desc = "战吼：获得2个随机额外关键词。"
 race = Array[int]([6])
 "战吼" = [NodePath("Roar")]
-version = "32.2.4.221850"
-ls_card_id = "BG31_149"
-lv = 1
 metadata/_custom_type_script = "uid://ctokvpt74qotl"
 
 [node name="Roar" type="Node" parent="."]

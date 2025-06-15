@@ -3,6 +3,7 @@ class_name DragContainer
 
 @export var 拖入其他的容器:Array[DragContainer]=[]
 @export var 是否可以排序:bool=false
+@export var 拖入是否添加:bool=true
 
 var draging_card:DragCard
 var _previous_index :int=-1
@@ -14,6 +15,7 @@ signal 拖拽到其他容器
 
 func _process(delta: float) -> void:
 	$Panel.size=size
+	$"MarginContainer".size=size
 	if draging_card:
 		自动调整插槽(draging_card.size)
 		pass
@@ -30,8 +32,12 @@ func 恢复边框颜色效果():
 	$Panel.add_theme_stylebox_override("panel",style)
 	pass
 
-func 添加卡片(card:DragCard):
-	$MarginContainer/HBoxContainer.add_child(card)
+func 添加卡片(card:DragCard,index):
+	if !card.get_parent():
+		$MarginContainer/HBoxContainer.add_child(card)
+	else:
+		card.reparent($MarginContainer/HBoxContainer)
+	$MarginContainer/HBoxContainer.move_child(card,index)
 	card.拖拽开始.connect(_拖拽开始.bind(card))
 	card.拖拽结束.connect(_拖拽结束.bind(card))
 	pass
@@ -53,8 +59,13 @@ func _拖拽结束(card):
 					card.拖拽结束.disconnect(_拖拽结束.bind(card))
 					card.拖拽开始.connect(i._拖拽开始.bind(card))
 					card.拖拽结束.connect(i._拖拽结束.bind(card))
-					i._拖拽结束(card)
+					if i.拖入是否添加:
+						i._拖拽结束(card)
+					else:
+						print("不允许添加")
+						card.hide()
 					_拖拽结束的后续清理()
+					await get_tree().process_frame
 					拖拽到其他容器.emit(card,i)
 					return
 		# 回归原位

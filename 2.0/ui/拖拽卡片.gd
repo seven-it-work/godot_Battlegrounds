@@ -17,7 +17,10 @@ func _ready() -> void:
 	position=$"Node/遮罩".position
 	原有样式=$Panel.get_theme_stylebox("panel") as StyleBoxFlat
 	更新卡牌信息()
+	if baseCard:
+		add_child(baseCard)
 	pass
+
 
 func 更新卡牌信息():
 	if baseCard:
@@ -58,7 +61,7 @@ func 更新卡牌信息():
 			$Node/生命值.show()
 			pass
 		if baseCard.show_buy_coins:
-			$Node/金币/Label.text="%s"%baseCard.hp_bonus(Globals.main_node.player);
+			$Node/金币/Label.text="%s"%baseCard.buy_coins;
 			$Node/金币.show()
 			pass
 		
@@ -103,14 +106,11 @@ func 更新卡牌信息():
 			$Node/触发.show()
 		elif baseCard.是否存在亡语():
 			$Node/亡语.show()
-				
-
-			
-		print("初始化")
 	pass
 
 func _process(delta: float) -> void:
 	$Panel.size=size
+	更新卡牌信息()
 	if _is_draging:
 		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			_is_draging=false

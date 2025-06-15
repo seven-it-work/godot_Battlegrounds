@@ -19,5 +19,5 @@ cardType = 3
 buy_coins = 3
 show_buy_coins = true
 race = Array[int]([])
-"æ¯å¦åºç°å¨éé¦" = true
-"æ¯å¦ä¸ºä¼ä¼´" = false
+是否出现在酒馆 = true
+是否为伙伴 = false
