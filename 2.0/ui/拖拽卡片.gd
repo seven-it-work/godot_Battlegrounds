@@ -5,6 +5,7 @@ class_name DragCard
 @onready var label:=$Label
 var 是否为拖拽箭头:bool=false
 var 是否箭头可以指向自己:bool=false
+var 拖拽时是否添加到容器中:bool=true
 var _is_draging:bool=false
 var _drag_offset
 
@@ -16,14 +17,15 @@ var 原有样式
 func _ready() -> void:
 	position=$"Node/遮罩".position
 	原有样式=$Panel.get_theme_stylebox("panel") as StyleBoxFlat
-	更新卡牌信息()
+	初始化卡牌信息()
 	if baseCard:
 		add_child(baseCard)
 	pass
 
-
-func 更新卡牌信息():
+func 初始化卡牌信息():
 	if baseCard:
+		if [Enum.CardTypeEnum.TAVERN,Enum.CardTypeEnum.SPELL].has(baseCard.cardType):
+			拖拽时是否添加到容器中=false
 		if baseCard.show_name_str:
 			$Node/名称/Label.text=baseCard.name_str if baseCard.name_str else baseCard.name;
 			$Node/名称.show()
@@ -51,7 +53,10 @@ func 更新卡牌信息():
 				$"Node/等级/6级".show()
 			elif baseCard.lv==7:
 				$"Node/等级/7级".show()
-		
+	pass
+
+func 更新卡牌信息():
+	if baseCard:
 		if baseCard.show_atk:
 			$Node/攻击力/Label.text="%s"%baseCard.atk_bonus(Globals.main_node.player);
 			$Node/攻击力.show()

@@ -24,8 +24,6 @@ func 刷新(是否清空冻结随从:bool=false):
 	var 随从个数= maxi(Enum.酒馆随从个数[酒馆等级]-出现法术个数+1,0)
 	var 等级限制=CardFindCondition.build("lv",酒馆等级,CardFindCondition.ConditionEnum.小于等于)
 		# 先刷法术
-	for i in 出现法术个数:
-		pass
 	var card_list=CardsUtils.find_card([
 		CardsUtils.COMMON_CODITION["是否出现在酒馆"],
 		CardsUtils.COMMON_CODITION["随从"],
@@ -42,7 +40,25 @@ func 刷新(是否清空冻结随从:bool=false):
 		var dup=data.duplicate()
 		ui.baseCard=dup
 		添加卡片(ui,-1)
-
+	
+	var 酒馆法术=CardsUtils.find_card([
+		CardsUtils.COMMON_CODITION["是否出现在酒馆"],
+		CardFindCondition.build(
+		"cardType",Enum.CardTypeEnum.TAVERN,CardFindCondition.ConditionEnum.等于
+		),
+		等级限制,
+		CardFindCondition.build("version","32.2.4.221850",CardFindCondition.ConditionEnum.等于),
+	])
+	for i in 出现法术个数:
+		var data=酒馆法术.pick_random()
+		if !data:
+			print("没有法术了")
+			return
+		var ui=preload("uid://dthisa5oinhjm").instantiate()
+		var dup=data.duplicate()
+		ui.baseCard=dup
+		添加卡片(ui,-1)
+		pass
 func _on_tavern_酒馆随从变化() -> void:
 	for i in $MarginContainer/HBoxContainer.get_children():
 		i.queue_free()

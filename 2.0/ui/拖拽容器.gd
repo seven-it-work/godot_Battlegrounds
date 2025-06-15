@@ -38,6 +38,7 @@ func 添加卡片(card:DragCard,index):
 	else:
 		card.reparent($MarginContainer/HBoxContainer)
 	$MarginContainer/HBoxContainer.move_child(card,index)
+	await get_tree().process_frame
 	card.拖拽开始.connect(_拖拽开始.bind(card))
 	card.拖拽结束.connect(_拖拽结束.bind(card))
 	pass
