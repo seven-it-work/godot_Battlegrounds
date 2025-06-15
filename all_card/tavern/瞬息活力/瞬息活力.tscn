@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://ck4x030q3wvxr"]
 
-[ext_resource type="Script" path="res://all_card/tavern/瞬息活力/瞬息活力.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://1ygtx1x5skry" path="res://all_card/tavern/瞬息活力/瞬息活力.gd" id="1_cc03i"]
 
-[node name="瞬息活力" type="Node2D" ]
+[node name="瞬息活力" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_519"
@@ -17,8 +17,7 @@ desc = "<b>战斗开始时：</b>使你的随从获得+{0}/+{1}。"
 gold_desc = "<b>战斗开始时：</b>使你的随从获得+{0}/+{1}。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://c1d2caeeonk2i"]
 
-[ext_resource type="Script" path="res://all_card/companion/基尔里克/基尔里克.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://dhixt6sug0k06" path="res://all_card/companion/基尔里克/基尔里克.gd" id="1_cc03i"]
 
-[node name="基尔里克" type="Node2D" ]
+[node name="基尔里克" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_37_Buddy"
@@ -17,8 +17,7 @@ desc = "<b>嘲讽</b>。<b>亡语：</b>随机获取一张恶魔牌。"
 gold_desc = "<b>嘲讽</b>。<b>亡语：</b>随机获取2张恶魔牌。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([2])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

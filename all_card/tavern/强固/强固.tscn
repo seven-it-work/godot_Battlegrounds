@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://dmbd35r7k3224"]
 
-[ext_resource type="Script" path="res://all_card/tavern/强固/强固.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://blr4poxg40l7w" path="res://all_card/tavern/强固/强固.gd" id="1_cc03i"]
 
-[node name="强固" type="Node2D" ]
+[node name="强固" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_503"
@@ -17,8 +17,7 @@ desc = "使一个随从获得+{1}生命值和<b>嘲讽</b>。0使一个随从获
 gold_desc = "使一个随从获得+{1}生命值和<b>嘲讽</b>。0使一个随从获得+{0}/+{1}和<b>嘲讽</b>。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

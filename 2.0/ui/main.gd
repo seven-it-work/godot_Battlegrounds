@@ -1,12 +1,20 @@
 extends Control
 
+var player:Player
 
 func _ready() -> void:
+	Globals.main_node=self
+	
+	var player=preload("uid://duyyralberadj").instantiate()
+	player.name_str="测试玩家"
+	self.player=player
+	
 	for i in 3:
-		var card=preload("uid://nahvia13mqhu").instantiate()
+		var card=preload("uid://dthisa5oinhjm").instantiate()
+		card.baseCard=preload("uid://bd0nd6vjpsrol").instantiate()
 		$"拖拽容器".添加卡片(card)
 		card.label.text="card_1_%s"%i
-		card =preload("uid://nahvia13mqhu").instantiate()
+		card =preload("uid://dthisa5oinhjm").instantiate()
 		$"拖拽容器2".添加卡片(card)
 		card.label.text="card_2_%s"%i
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c26h65o4wej4l"]
 
-[ext_resource type="Script" path="res://2.0/ui/main.gd" id="1_iisum"]
+[ext_resource type="Script" uid="uid://cwwix0yxmixws" path="res://2.0/ui/main.gd" id="1_iisum"]
 [ext_resource type="PackedScene" uid="uid://d05onlpnc8dpx" path="res://2.0/ui/拖拽容器.tscn" id="1_uwh54"]
 [ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://2.0/ui/箭头.tscn" id="3_d1lde"]
 

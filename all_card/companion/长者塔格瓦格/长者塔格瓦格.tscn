@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://2gyttyhafpl3"]
 
-[ext_resource type="Script" path="res://all_card/companion/长者塔格瓦格/长者塔格瓦格.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://toxfxv4jful5" path="res://all_card/companion/长者塔格瓦格/长者塔格瓦格.gd" id="1_cc03i"]
 
-[node name="长者塔格瓦格" type="Node2D" ]
+[node name="长者塔格瓦格" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_14_Buddy"
@@ -17,8 +17,7 @@ desc = "<b>战斗开始时：</b>如果你控制着4个不同类型的随从，�
 gold_desc = "<b>战斗开始时：</b>如果你控制着4个不同类型的随从，则获得你的随从中最高的攻击力和生命值的双倍。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([0])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

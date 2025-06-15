@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://c3bcagghw4ama"]
 
-[ext_resource type="Script" path="res://all_card/companion/冰嚎，强力猛狼/冰嚎，强力猛狼.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://dhglfej05bo0m" path="res://all_card/companion/冰嚎，强力猛狼/冰嚎，强力猛狼.gd" id="1_cc03i"]
 
-[node name="冰嚎，强力猛狼" type="Node2D" ]
+[node name="冰嚎，强力猛狼" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG20_HERO_100_Buddy"
@@ -17,8 +17,7 @@ desc = "在一个友方随从消灭敌人后，永久获得+1生命值。"
 gold_desc = "在一个友方随从消灭敌人后，永久获得+2生命值。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([1])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

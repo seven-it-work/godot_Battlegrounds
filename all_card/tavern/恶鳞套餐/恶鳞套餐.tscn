@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bavym1tujt0vw"]
 
-[ext_resource type="Script" path="res://all_card/tavern/恶鳞套餐/恶鳞套餐.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://djo64f0ck7tfr" path="res://all_card/tavern/恶鳞套餐/恶鳞套餐.gd" id="1_cc03i"]
 
-[node name="恶鳞套餐" type="Node2D" ]
+[node name="恶鳞套餐" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_606"
@@ -18,8 +18,7 @@ desc = "随机获取3张<b>塑造法术</b>的
 gold_desc = "随机获取3张<b>塑造法术</b>的法术牌。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

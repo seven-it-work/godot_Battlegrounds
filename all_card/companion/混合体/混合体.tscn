@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bgyk7ltirq1y4"]
 
-[ext_resource type="Script" path="res://all_card/companion/混合体/混合体.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://ul4pg0eru2l7" path="res://all_card/companion/混合体/混合体.gd" id="1_cc03i"]
 
-[node name="混合体" type="Node2D" ]
+[node name="混合体" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_33_Buddy"
@@ -17,8 +17,7 @@ desc = "每当你的融合怪获得属性值时，本随从也会获得。"
 gold_desc = "每当你的融合怪获得属性值时，本随从会获得双倍。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
-race = Array[int]([10,6,2,5,4,1,8,3,9,7])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+show_buy_coins = false
+race = Array[int]([10, 6, 2, 5, 4, 1, 8, 3, 9, 7])
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

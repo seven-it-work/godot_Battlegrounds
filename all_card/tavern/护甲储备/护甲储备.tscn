@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://dfl1g0y326c1n"]
 
-[ext_resource type="Script" path="res://all_card/tavern/护甲储备/护甲储备.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://d1uurek3jnepa" path="res://all_card/tavern/护甲储备/护甲储备.gd" id="1_cc03i"]
 
-[node name="护甲储备" type="Node2D" ]
+[node name="护甲储备" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_500"
@@ -17,8 +17,7 @@ desc = "将你的护甲值变为5点。"
 gold_desc = "将你的护甲值变为5点。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

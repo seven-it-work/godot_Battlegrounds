@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bhggb6vyyra4y"]
 
-[ext_resource type="Script" path="res://all_card/companion/瓦尔登的水波勇士/瓦尔登的水波勇士.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://bnsryj1babxcg" path="res://all_card/companion/瓦尔登的水波勇士/瓦尔登的水波勇士.gd" id="1_cc03i"]
 
-[node name="瓦尔登的水波勇士" type="Node2D" ]
+[node name="瓦尔登的水波勇士" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG22_HERO_004_Buddy"
@@ -17,8 +17,7 @@ desc = "好事成霜还会使这两个随从获得等同于你当前等级的属
 gold_desc = "好事成霜还会使这两个随从获得等同于你当前等级的属性值，获得两次。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([4])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

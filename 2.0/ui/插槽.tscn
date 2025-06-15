@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpteykjyr0m8l"]
 
-[ext_resource type="Script" path="res://2.0/ui/插槽.gd" id="1_jfh80"]
+[ext_resource type="Script" uid="uid://cgblxqxhauon2" path="res://2.0/ui/插槽.gd" id="1_jfh80"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfh80"]
 border_width_left = 3

@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://cc0fqur4ym7vh"]
 
-[ext_resource type="Script" path="res://all_card/companion/纳萨诺斯·凋零者/纳萨诺斯·凋零者.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://b8evsub2k48iq" path="res://all_card/companion/纳萨诺斯·凋零者/纳萨诺斯·凋零者.gd" id="1_cc03i"]
 
-[node name="纳萨诺斯·凋零者" type="Node2D" ]
+[node name="纳萨诺斯·凋零者" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG23_HERO_306_Buddy"
@@ -17,8 +17,7 @@ desc = "<b>战吼：</b>移除一个友方随从。使其相邻随从获得其�
 gold_desc = "<b>战吼：</b>移除一个友方随从。使其相邻随从获得其双倍属性值。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([10])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

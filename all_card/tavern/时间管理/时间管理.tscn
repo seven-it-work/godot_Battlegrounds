@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://cnmcjdmli7r0c"]
 
-[ext_resource type="Script" path="res://all_card/tavern/时间管理/时间管理.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://dne0ri3g0i1o4" path="res://all_card/tavern/时间管理/时间管理.gd" id="1_cc03i"]
 
-[node name="时间管理" type="Node2D" ]
+[node name="时间管理" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG31_881"
@@ -17,8 +17,7 @@ desc = "<b>抉择：</b>使你的随从获得+{0}/+{1}；或者在你的下个�
 gold_desc = "<b>抉择：</b>使你的随从获得+{0}/+{1}；或者在你的下个回合开始时，使你的随从获得+{0}/+{1}，触发两次。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

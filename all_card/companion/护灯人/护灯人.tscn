@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://dt0okfoay8elt"]
 
-[ext_resource type="Script" path="res://all_card/companion/护灯人/护灯人.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://cetw4hkx36j0n" path="res://all_card/companion/护灯人/护灯人.gd" id="1_cc03i"]
 
-[node name="护灯人" type="Node2D" ]
+[node name="护灯人" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_75_Buddy"
@@ -17,8 +17,7 @@ desc = "在你的回合结束时，获取2张灯笼火光。灯笼火光可以�
 gold_desc = "在你的回合结束时，获取4张灯笼火光。灯笼火光可以使一个随从获得等同于你当前等级的属性值。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([0])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

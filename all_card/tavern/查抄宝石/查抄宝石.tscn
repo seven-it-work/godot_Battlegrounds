@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bua5pue44hvxp"]
 
-[ext_resource type="Script" path="res://all_card/tavern/查抄宝石/查抄宝石.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://c1g0pq67kuqil" path="res://all_card/tavern/查抄宝石/查抄宝石.gd" id="1_cc03i"]
 
-[node name="查抄宝石" type="Node2D" ]
+[node name="查抄宝石" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_698"
@@ -17,8 +17,7 @@ desc = "对一个友方随从使用2张<b>鲜血宝石</b>并使其偷取相邻�
 gold_desc = "对一个友方随从使用2张<b>鲜血宝石</b>并使其偷取相邻随从的所有<b>鲜血宝石</b>。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

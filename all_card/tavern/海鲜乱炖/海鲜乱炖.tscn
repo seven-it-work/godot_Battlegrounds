@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://d3xq4ft4m1crd"]
 
-[ext_resource type="Script" path="res://all_card/tavern/海鲜乱炖/海鲜乱炖.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://ck2u5mueheigy" path="res://all_card/tavern/海鲜乱炖/海鲜乱炖.gd" id="1_cc03i"]
 
-[node name="海鲜乱炖" type="Node2D" ]
+[node name="海鲜乱炖" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG32_337"
@@ -17,8 +17,7 @@ desc = "使一个随从获得+{0}/+{1}。你的战队中每有一个不同的<b>
 gold_desc = "使一个随从获得+{0}/+{1}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

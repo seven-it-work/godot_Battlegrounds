@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://d4a3f6jqnw7xl"]
 
-[ext_resource type="Script" path="res://all_card/tavern/翻捡零件/翻捡零件.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://bw6opfvhfh77d" path="res://all_card/tavern/翻捡零件/翻捡零件.gd" id="1_cc03i"]
 
-[node name="翻捡零件" type="Node2D" ]
+[node name="翻捡零件" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_600"
@@ -17,8 +17,7 @@ desc = "在你的回合结束时，随机获取一个<b>磁力</b>随从。持�
 gold_desc = "在你的回合结束时，随机获取一个<b>磁力</b>随从。持续3回合。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

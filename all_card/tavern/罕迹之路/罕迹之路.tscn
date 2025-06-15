@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://b1hwaqx0np77y"]
 
-[ext_resource type="Script" path="res://all_card/tavern/罕迹之路/罕迹之路.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://dx0xu7w25b2jb" path="res://all_card/tavern/罕迹之路/罕迹之路.gd" id="1_cc03i"]
 
-[node name="罕迹之路" type="Node2D" ]
+[node name="罕迹之路" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG31_884"
@@ -17,8 +17,7 @@ desc = "<b>抉择：</b>随机获取一张等级6的随从牌；或者随机获�
 gold_desc = "<b>抉择：</b>随机获取一张等级6的随从牌；或者随机获取两张等级5的随从牌。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

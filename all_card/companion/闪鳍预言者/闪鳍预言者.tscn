@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://dqyhafgf8tvrl"]
 
-[ext_resource type="Script" path="res://all_card/companion/闪鳍预言者/闪鳍预言者.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://cat4ox5j0qanp" path="res://all_card/companion/闪鳍预言者/闪鳍预言者.gd" id="1_cc03i"]
 
-[node name="闪鳍预言者" type="Node2D" ]
+[node name="闪鳍预言者" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_55_Buddy"
@@ -17,8 +17,7 @@ desc = "<b>战吼：</b>将酒馆中的随从变形成为相同等级的鱼人�
 gold_desc = "<b>战吼：</b>将酒馆中的随从变形成为高一级的鱼人。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([6])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

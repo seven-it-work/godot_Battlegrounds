@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bdmpkerlb06lf"]
 
-[ext_resource type="Script" path="res://all_card/companion/阴蔽的权贵/阴蔽的权贵.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://bu55vw81b081u" path="res://all_card/companion/阴蔽的权贵/阴蔽的权贵.gd" id="1_cc03i"]
 
-[node name="阴蔽的权贵" type="Node2D" ]
+[node name="阴蔽的权贵" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG24_HERO_100_Buddy"
@@ -17,8 +17,7 @@ desc = "当你出售本随从时，<b>发现</b>一个<b>任务</b>。完成该�
 gold_desc = "当你出售本随从时，<b>发现</b>一个<b>任务</b>。完成该任务即可获取一袋16枚装的铸币。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([0])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

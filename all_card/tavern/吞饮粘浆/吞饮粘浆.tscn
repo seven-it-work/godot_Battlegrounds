@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://csdrtxbiumh34"]
 
-[ext_resource type="Script" path="res://all_card/tavern/吞饮粘浆/吞饮粘浆.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://d0ti78b7y1frp" path="res://all_card/tavern/吞饮粘浆/吞饮粘浆.gd" id="1_cc03i"]
 
-[node name="吞饮粘浆" type="Node2D" ]
+[node name="吞饮粘浆" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_602"
@@ -17,8 +17,7 @@ desc = "在你的回合结束时，使你的龙获得+{0}攻击力。持续3回�
 gold_desc = "在你的回合结束时，使你的龙获得+{0}攻击力。持续3回合。3在你的回合结束时，使你的龙获得+{0}/+{1}。持续3回合。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

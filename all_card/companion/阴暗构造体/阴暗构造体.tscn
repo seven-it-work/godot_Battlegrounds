@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://dw0gn0n0f58dn"]
 
-[ext_resource type="Script" path="res://all_card/companion/阴暗构造体/阴暗构造体.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://btdr0fhmgi1un" path="res://all_card/companion/阴暗构造体/阴暗构造体.gd" id="1_cc03i"]
 
-[node name="阴暗构造体" type="Node2D" ]
+[node name="阴暗构造体" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG25_HERO_103_Buddy"
@@ -17,8 +17,7 @@ desc = "<b>亡语：</b>使另一个友方随从获得本随从的最大属性�
 gold_desc = "<b>亡语：</b>使另一个友方随从获得本随从的最大属性值，触发两次。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([10])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

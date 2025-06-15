@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bjjqkh6r60h64"]
 
-[ext_resource type="Script" path="res://all_card/tavern/顶尖好酒/顶尖好酒.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://bbl0ikkf5fjfk" path="res://all_card/tavern/顶尖好酒/顶尖好酒.gd" id="1_cc03i"]
 
-[node name="顶尖好酒" type="Node2D" ]
+[node name="顶尖好酒" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_849"
@@ -19,8 +19,7 @@ desc = "<b>刷新</b>酒馆，
 gold_desc = "<b>刷新</b>酒馆，使其中变为酒馆法术牌。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

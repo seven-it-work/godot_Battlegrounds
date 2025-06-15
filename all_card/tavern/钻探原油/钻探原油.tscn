@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://bdsrkyr3u7n4f"]
 
-[ext_resource type="Script" path="res://all_card/tavern/钻探原油/钻探原油.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://bet3em14863bf" path="res://all_card/tavern/钻探原油/钻探原油.gd" id="1_cc03i"]
 
-[node name="钻探原油" type="Node2D" ]
+[node name="钻探原油" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_805"
@@ -17,8 +17,7 @@ desc = "你的铸币上限提高1枚。"
 gold_desc = "你的铸币上限提高1枚。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

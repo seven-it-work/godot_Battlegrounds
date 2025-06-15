@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://byjl48ei7ywvu"]
 
-[ext_resource type="Script" path="res://all_card/tavern/腐化糕点/腐化糕点.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://e4mr0tl4vc41" path="res://all_card/tavern/腐化糕点/腐化糕点.gd" id="1_cc03i"]
 
-[node name="腐化糕点" type="Node2D" ]
+[node name="腐化糕点" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "BG28_607"
@@ -17,8 +17,7 @@ desc = "选择一个友方恶魔，使其吞食酒馆中的3个随机随从，�
 gold_desc = "选择一个友方恶魔，使其吞食酒馆中的3个随机随从，获得其属性值。"
 cardType = 3
 buy_coins = 3
-show_buy_coins =  true
+show_buy_coins = true
 race = Array[int]([])
-是否出现在酒馆 = true
-是否为伙伴 = false
-
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false

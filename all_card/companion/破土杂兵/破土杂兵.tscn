@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://damsewg1bbbti"]
 
-[ext_resource type="Script" path="res://all_card/companion/破土杂兵/破土杂兵.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://druxio8j3rpkw" path="res://all_card/companion/破土杂兵/破土杂兵.gd" id="1_cc03i"]
 
-[node name="破土杂兵" type="Node2D" ]
+[node name="破土杂兵" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_25_Buddy"
@@ -17,8 +17,7 @@ desc = "每当你的英雄即将受到伤害时，回溯该伤害并获得等同
 gold_desc = "每当你的英雄即将受到伤害时，回溯该伤害并获得等同于伤害量两倍的属性值。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([10])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

@@ -27,7 +27,7 @@ static func 合成三连(card1:BaseCard,card2:BaseCard,card3:BaseCard)->BaseCard
 static func download_image(image_url: String, save_path_with_filename: String) -> bool:
 	# 创建临时节点来执行下载
 	var downloader = Node.new()
-	Engine.get_main_loop().root.add_child(downloader)
+	Engine.get_main_loop().root.call_deferred("add_child",downloader)
 	
 	# 准备返回结果
 	var success := false
@@ -35,6 +35,7 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 	# 创建HTTP请求
 	var http_request = HTTPRequest.new()
 	downloader.add_child(http_request)
+	await http_request.tree_entered
 	
 	# 使用信号等待下载完成
 	var completed = false

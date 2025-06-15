@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://b6igjbm2jbkei"]
 
-[ext_resource type="Script" path="res://all_card/companion/詹迪斯的学徒/詹迪斯的学徒.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://b334jqhpgio8x" path="res://all_card/companion/詹迪斯的学徒/詹迪斯的学徒.gd" id="1_cc03i"]
 
-[node name="詹迪斯的学徒" type="Node2D" ]
+[node name="詹迪斯的学徒" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_71_Buddy"
@@ -17,8 +17,7 @@ desc = "在你交换随从后，使它们获得等同于你当前等级的属性
 gold_desc = "在你交换随从后，使它们获得等同于你当前等级的属性值，获得两次。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([0])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true

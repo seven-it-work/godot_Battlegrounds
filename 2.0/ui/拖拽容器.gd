@@ -42,7 +42,6 @@ func _拖拽结束(card):
 		# 判断有没有移动到其他区域
 		if 拖入其他的容器.is_empty():
 			_回归原位(card)
-			_拖拽结束的后续清理()
 			return
 		else:
 			# 检查是进入其他容器
@@ -58,30 +57,25 @@ func _拖拽结束(card):
 					return
 		# 回归原位
 		_回归原位(card)
-		_拖拽结束的后续清理()
 		return
 	else:
 		if 是否可以排序:
+			_拖拽结束的后续清理()
 			# 位置确定
-			if card.get_parent():
-				card.get_parent().remove_child(card)
-			$MarginContainer/HBoxContainer.add_child(card)
+			card.reparent($MarginContainer/HBoxContainer)
+			await  get_tree().process_frame
 			$MarginContainer/HBoxContainer.move_child(card,index)
+			return
 		else:
 			_回归原位(card)
-	_拖拽结束的后续清理()
 	pass
 
 func _回归原位(card):
-	# todo 这里有问题 如果非排序，拖拽的_previous_index 还是记忆了不知道为什么 
-	# 初步分析可能是 draging_card.get_index() 获取的还是之前索引不知道为什么
-	print("回归原位",_previous_index)
-	if card.get_parent():
-		card.get_parent().remove_child(card)
-	if _previous_index<0:
-		_previous_index=0
-	$MarginContainer/HBoxContainer.add_child(card)
-	$MarginContainer/HBoxContainer.move_child(card,_previous_index)
+	var index =_previous_index
+	_拖拽结束的后续清理()
+	card.reparent($MarginContainer/HBoxContainer)
+	await  get_tree().process_frame
+	$MarginContainer/HBoxContainer.move_child(card,index)
 	pass
 
 func _拖拽结束的后续清理(是否处理拖入其他的容器:bool=true):
@@ -114,7 +108,7 @@ func _添加插槽(插槽大小:Vector2,是否处理拖入其他的容器:bool=t
 			if index == _previous_index:
 				place_holder.custom_minimum_size = 插槽大小*0.8
 			else:
-				place_holder.custom_minimum_size = Vector2(4,80)
+				place_holder.custom_minimum_size = Vector2(4,size.y)
 	if 是否处理拖入其他的容器:
 		for i in 拖入其他的容器:
 			i._添加插槽(插槽大小,false)
@@ -139,7 +133,7 @@ func 自动调整插槽(插槽大小:Vector2,是否处理拖入其他的容器:b
 		else:
 			if holder.active:
 				holder.active = false
-				holder.change_size(Vector2(4,80), place_holder_duration)
+				holder.change_size(Vector2(4,size.y), place_holder_duration)
 	for i in 拖入其他的容器:
 		if i.是否可以排序:
 			i.自动调整插槽(插槽大小,false)

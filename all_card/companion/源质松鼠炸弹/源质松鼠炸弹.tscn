@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 ]
+[gd_scene load_steps=2 format=3 uid="uid://drnvkbeuylegd"]
 
-[ext_resource type="Script" path="res://all_card/companion/源质松鼠炸弹/源质松鼠炸弹.gd" id="1_cc03i"]
+[ext_resource type="Script" uid="uid://dq8jgffwxjubk" path="res://all_card/companion/源质松鼠炸弹/源质松鼠炸弹.gd" id="1_cc03i"]
 
-[node name="源质松鼠炸弹" type="Node2D" ]
+[node name="源质松鼠炸弹" type="Node2D"]
 script = ExtResource("1_cc03i")
 version = "32.2.4.221850"
 ls_card_id = "TB_BaconShop_HERO_17_Buddy"
@@ -17,8 +17,7 @@ desc = "<b>亡语：</b>在本场战斗中每有一个你的机械死亡，随�
 gold_desc = "<b>亡语：</b>在本场战斗中每有一个你的机械死亡，随机对一个敌方随从造成4点伤害。"
 cardType = 0
 buy_coins = 3
-show_buy_coins =  false
+show_buy_coins = false
 race = Array[int]([5])
-是否出现在酒馆 = false
-是否为伙伴 = true
-
+"æ¯å¦åºç°å¨éé¦" = false
+"æ¯å¦ä¸ºä¼ä¼´" = true
