@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6fj35f7u8l70"]
+
+[ext_resource type="PackedScene" uid="uid://cv76bq2cq4fc6" path="res://拖拽排序容器/拖拽容器.tscn" id="1_vr6i8"]
+[ext_resource type="Script" uid="uid://byewrjfp2u2tt" path="res://拖拽排序容器/排序拖拽容器.gd" id="2_5wd5m"]
+
+[node name="拖拽容器" instance=ExtResource("1_vr6i8")]
+script = ExtResource("2_5wd5m")

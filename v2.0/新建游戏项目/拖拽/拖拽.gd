@@ -4,10 +4,12 @@ class_name DragControl
 @export var 区域:Array[Control]=[]
 var 是否按下拖拽:bool=false
 var _drag_offset
+var 进入的区域:Control
 
 signal 开始拖拽
 signal 结束拖拽
 signal 进入区域(dragControl:DragControl,进入的区域:Control)
+signal 离开区域(dragControl:DragControl,进入的区域:Control)
 
 func _process(delta: float) -> void:
 	custom_minimum_size=$Panel.size
@@ -15,16 +17,28 @@ func _process(delta: float) -> void:
 		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			释放()
 		global_position=get_global_mouse_position()+_drag_offset
+		# 判断是否进入区域，进入的话提交进入区域信号
+		var 仍然在区域中:Array[Control]=[]
+		if 进入的区域:
+			if 进入的区域.get_global_rect().has_point(get_global_mouse_position()):
+				# 仍然在区域中
+				pass
+			else:
+				离开区域.emit(self,进入的区域)
+				进入的区域=null
+		else:
+			for i in 区域:
+				if i.get_global_rect().has_point(get_global_mouse_position()):
+					进入区域.emit(self,i)
+					if 进入的区域:
+						print("已经存在进入区域了，又检测到进入其他区域 即将覆盖。注意！！！不建议区域直接存在重复位置")
+					进入的区域=i
 	pass
 
 func 释放():
 	print("释放")
 	是否按下拖拽=false
 	结束拖拽.emit()
-	# 判断是否进入区域，进入的话提交进入区域信号
-	for i in 区域:
-		if i.get_global_rect().has_point(get_global_mouse_position()):
-			进入区域.emit(self,i)
 	pass
 
 func _on_panel_gui_input(event: InputEvent) -> void:
