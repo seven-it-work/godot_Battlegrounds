@@ -29,8 +29,9 @@ func 冻结随从():
 func 酒馆刷新():
 	酒馆.刷新()
 	pass
-func 获取酒馆随从():
-	pass
+func 获取酒馆随从()->Array:
+	return 酒馆.获取容器中的卡片()
+	
 func 出售随从(card:DragCard):
 	#card.baseCard
 	print("出售随从特性")
@@ -80,9 +81,13 @@ func 召唤随从到战场(card:BaseCard,index:int):
 			i.触发器_召唤他人(card,self)
 	pass
 func 添加卡牌到手牌中(card:BaseCard):
-	var cardUi=preload("uid://dthisa5oinhjm").instantiate()
+	var cardUi=preload("uid://dthisa5oinhjm").instantiate() as DragCard
 	cardUi.baseCard=card
-	手牌.添加卡片(cardUi)
+	# 如果是法术，且需要选择目标
+	if card.need_select_target:
+		cardUi.是否为拖拽箭头=true
+	手牌.添加卡片(cardUi,-1)
+	print("手牌添加成功",cardUi.baseCard.name_str)
 	pass
 
 #region 一些判断

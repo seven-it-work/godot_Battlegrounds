@@ -5,6 +5,7 @@ class_name DragCard
 @onready var label:=$Label
 var 是否为拖拽箭头:bool=false
 var 是否箭头可以指向自己:bool=false
+var 是否可以被选中:bool=true
 var 拖拽时是否添加到容器中:bool=true
 var _is_draging:bool=false
 var _drag_offset
@@ -18,8 +19,8 @@ func _ready() -> void:
 	position=$"Node/遮罩".position
 	原有样式=$Panel.get_theme_stylebox("panel") as StyleBoxFlat
 	初始化卡牌信息()
-	if baseCard:
-		add_child(baseCard)
+	#if baseCard:
+		#add_child(baseCard)
 	pass
 
 func 初始化卡牌信息():
@@ -29,8 +30,10 @@ func 初始化卡牌信息():
 		if baseCard.show_name_str:
 			$Node/名称/Label.text=baseCard.name_str if baseCard.name_str else baseCard.name;
 			$Node/名称.show()
-		if FileAccess.file_exists(baseCard.get_插画路径()):
-			$Node/遮罩/TextureRect.texture=load(baseCard.get_插画路径())
+		#var 插画路径=baseCard.get_插画路径()
+		var 插画路径="res://asserts/StealthDomeShadow_D.png"
+		if FileAccess.file_exists(插画路径):
+			$Node/遮罩/TextureRect.texture=load(插画路径)
 			pass
 		else:
 			if baseCard.ls_card_id:
@@ -116,18 +119,16 @@ func 更新卡牌信息():
 func _process(delta: float) -> void:
 	$Panel.size=size
 	更新卡牌信息()
+	if 全局属性:
+		if 全局属性.箭头相关属性.是否有拖拽箭头:
+			if 是否可以被选中:
+				#print("这里修改为可以被选中的式,还要判断否可以选中自己")
+				pass
 	if _is_draging:
 		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			_is_draging=false
 			if 是否为拖拽箭头:
 				print("没用代码")
-				# 是否存在目标
-				#if 全局属性.箭头相关属性.箭头的结束节点:
-					#print("对xx进行释放")
-					#全局属性.箭头相关属性.箭头的结束节点.样式恢复()
-					#全局属性.箭头相关属性.箭头的结束节点=false
-				#全局属性.箭头相关属性.是否有拖拽箭头=false
-				#样式恢复()
 			else:
 				#print("拖拽结束")
 				拖拽结束.emit()
@@ -140,19 +141,19 @@ func 箭头被作为目标样式():
 	var style = $Panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 	style.bg_color=Color(0.753, 0.169, 0.059, 0.6)
 	$Panel.add_theme_stylebox_override("panel",style)
-	$"Node2D/箭头选中".show()
+	$"Node/箭头选中".show()
 	pass
 
 func 箭头启动样式():
 	var style = $Panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 	style.bg_color=Color(0.753, 0.569, 0.059, 0.6)
 	$Panel.add_theme_stylebox_override("panel",style)
-	$"Node2D/当前操作".show()
+	$"Node/当前操作".show()
 	pass
 
 func 样式恢复():
 	$Panel.add_theme_stylebox_override("panel",原有样式)
-	for i in [$"Node2D/箭头选中",$"Node2D/当前操作"]:
+	for i in [$"Node/箭头选中",$"Node/当前操作"]:
 		i.hide()
 	pass
 
@@ -175,12 +176,11 @@ func _on_gui_input(event: InputEvent) -> void:
 					拖拽开始.emit()
 				pass
 			else:
-				print("是否为拖拽箭头",是否为拖拽箭头)
 				if 是否为拖拽箭头:
 					if 全局属性.箭头相关属性.箭头的结束节点:
-						print("对xx进行释放")
+						Globals.main_node.player.使用卡牌(self,全局属性.箭头相关属性.箭头的结束节点)
 						全局属性.箭头相关属性.箭头的结束节点.样式恢复()
-						全局属性.箭头相关属性.箭头的结束节点=false
+						全局属性.箭头相关属性.箭头的结束节点=null
 					全局属性.箭头相关属性.是否有拖拽箭头=false
 					样式恢复()
 				else:
@@ -193,6 +193,8 @@ func _on_gui_input(event: InputEvent) -> void:
 func _on_mouse_entered() -> void:
 	if 全局属性:
 		if 全局属性.箭头相关属性.是否有拖拽箭头:
+			if !是否可以被选中:
+				return
 			if 全局属性.箭头相关属性.箭头的初始节点==self:
 				if !是否箭头可以指向自己:
 					return
@@ -207,7 +209,6 @@ func _on_mouse_exited() -> void:
 			if 全局属性.箭头相关属性.箭头的初始节点==self:
 				if !是否箭头可以指向自己:
 					return
-			#print("我不作为目标了")
 			样式恢复()
 			全局属性.箭头相关属性.箭头的结束节点=null
 	pass # Replace with function body.

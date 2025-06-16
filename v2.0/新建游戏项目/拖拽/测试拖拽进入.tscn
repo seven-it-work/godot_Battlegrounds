@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://0ntkjkiquaf1"]
+
+[ext_resource type="Script" uid="uid://cb6iojenup7yh" path="res://拖拽/测试拖拽进入.gd" id="1_4gkkk"]
+[ext_resource type="PackedScene" uid="uid://c1wvxhubccoqe" path="res://拖拽/拖拽.tscn" id="1_hcgi4"]
+
+[node name="测试拖拽进入" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4gkkk")
+
+[node name="拖拽" parent="." node_paths=PackedStringArray("区域") instance=ExtResource("1_hcgi4")]
+"区域" = [NodePath("../拖拽2")]
+
+[node name="拖拽2" parent="." node_paths=PackedStringArray("区域") instance=ExtResource("1_hcgi4")]
+offset_left = 204.0
+offset_top = 31.0
+offset_right = 204.0
+offset_bottom = 31.0
+"区域" = [NodePath("../拖拽")]
+
+[connection signal="进入区域" from="拖拽" to="." method="_on_拖拽_进入区域"]

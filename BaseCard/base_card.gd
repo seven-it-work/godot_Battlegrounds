@@ -115,7 +115,11 @@ var 复仇计数器:int=0
 @export var 冻结:bool=false
 @export var 触发:bool=false
 
+var 所在位置:String=""
 #region 一些判断
+func 过滤可以选中数据(card:BaseCard)->bool:
+	return true
+	
 func 是否存在亡语()->bool:
 	return 亡语.size()>0
 

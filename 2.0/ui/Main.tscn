@@ -30,7 +30,6 @@ offset_right = 1240.0
 offset_bottom = 247.0
 script = ExtResource("4_vw2u2")
 "拖入其他的容器" = [NodePath("../手牌")]
-"拖入是否添加" = false
 
 [node name="Tavern" type="Node2D" parent="Player/酒馆"]
 script = ExtResource("4_4ovwm")
@@ -52,6 +51,7 @@ offset_right = 1240.0
 offset_bottom = 672.0
 script = ExtResource("7_k1lu6")
 "拖入其他的容器" = [NodePath("../战场")]
+"是否可以排序" = null
 
 [node name="其他信息" type="Control" parent="Player"]
 layout_mode = 3
@@ -76,6 +76,7 @@ offset_right = 115.0
 offset_bottom = 706.0
 text = "金币"
 
+[connection signal="拖拽到其他容器" from="Player/酒馆" to="Player/酒馆" method="_on_拖拽到其他容器"]
 [connection signal="酒馆随从变化" from="Player/酒馆/Tavern" to="Player/酒馆" method="_on_tavern_酒馆随从变化"]
 [connection signal="拖拽到其他容器" from="Player/战场" to="Player/战场" method="_on_拖拽到其他容器"]
 [connection signal="拖拽到其他容器" from="Player/手牌" to="Player/手牌" method="_on_拖拽到其他容器"]

@@ -67,3 +67,11 @@ func _on_tavern_酒馆随从变化() -> void:
 		卡牌ui.baseCard=i;
 		添加卡片(卡牌ui,-1)
 	pass # Replace with function body.
+
+
+func _on_拖拽到其他容器(card:DragCard,dragContainer) -> void:
+	print("购买成功",card.baseCard.name_str)
+	# 添加手牌
+	Globals.main_node.player.添加卡牌到手牌中(card.baseCard)
+	card.queue_free()
+	pass # Replace with function body.

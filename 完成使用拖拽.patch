@@ -1,0 +1,565 @@
+Subject: [PATCH] 完成使用拖拽
+---
+Index: 2.0/ui/Main.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/Main.tscn b/2.0/ui/Main.tscn
+--- a/2.0/ui/Main.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/Main.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -30,7 +30,6 @@
+ offset_bottom = 247.0
+ script = ExtResource("4_vw2u2")
+ "拖入其他的容器" = [NodePath("../手牌")]
+-"拖入是否添加" = false
+ 
+ [node name="Tavern" type="Node2D" parent="Player/酒馆"]
+ script = ExtResource("4_4ovwm")
+@@ -52,6 +51,7 @@
+ offset_bottom = 672.0
+ script = ExtResource("7_k1lu6")
+ "拖入其他的容器" = [NodePath("../战场")]
++"是否可以排序" = null
+ 
+ [node name="其他信息" type="Control" parent="Player"]
+ layout_mode = 3
+@@ -76,6 +76,7 @@
+ offset_bottom = 706.0
+ text = "金币"
+ 
++[connection signal="拖拽到其他容器" from="Player/酒馆" to="Player/酒馆" method="_on_拖拽到其他容器"]
+ [connection signal="酒馆随从变化" from="Player/酒馆/Tavern" to="Player/酒馆" method="_on_tavern_酒馆随从变化"]
+ [connection signal="拖拽到其他容器" from="Player/战场" to="Player/战场" method="_on_拖拽到其他容器"]
+ [connection signal="拖拽到其他容器" from="Player/手牌" to="Player/手牌" method="_on_拖拽到其他容器"]
+Index: 2.0/ui/main.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/main.gd b/2.0/ui/main.gd
+--- a/2.0/ui/main.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/main.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -20,6 +20,11 @@
+ 		if 全局属性.箭头相关属性.是否有拖拽箭头:
+ 			$"箭头".show()
+ 			$"箭头".update_curve(全局属性.箭头相关属性.箭头初始位置,get_global_mouse_position())
++			var 使用节点=全局属性.箭头相关属性.箭头的初始节点 as DragCard
++			for i in player.获取酒馆随从():
++				i.是否可以被选中=使用节点.baseCard.过滤可以选中数据(i.baseCard)
++			for i in player.获取战场随从():
++				i.是否可以被选中=使用节点.baseCard.过滤可以选中数据(i.baseCard)
+ 		else:
+ 			$"箭头".hide()
+ 	pass
+Index: 2.0/ui/player/player.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/player/player.gd b/2.0/ui/player/player.gd
+--- a/2.0/ui/player/player.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/player/player.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -29,8 +29,9 @@
+ func 酒馆刷新():
+ 	酒馆.刷新()
+ 	pass
+-func 获取酒馆随从():
+-	pass
++func 获取酒馆随从()->Array:
++	return 酒馆.获取容器中的卡片()
++	
+ func 出售随从(card:DragCard):
+ 	#card.baseCard
+ 	print("出售随从特性")
+@@ -80,9 +81,13 @@
+ 			i.触发器_召唤他人(card,self)
+ 	pass
+ func 添加卡牌到手牌中(card:BaseCard):
+-	var cardUi=preload("uid://dthisa5oinhjm").instantiate()
++	var cardUi=preload("uid://dthisa5oinhjm").instantiate() as DragCard
+ 	cardUi.baseCard=card
+-	手牌.添加卡片(cardUi)
++	# 如果是法术，且需要选择目标
++	if card.need_select_target:
++		cardUi.是否为拖拽箭头=true
++	手牌.添加卡片(cardUi,-1)
++	print("手牌添加成功",cardUi.baseCard.name_str)
+ 	pass
+ 
+ #region 一些判断
+Index: 2.0/ui/全局属性.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/全局属性.gd b/2.0/ui/全局属性.gd
+--- a/2.0/ui/全局属性.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/全局属性.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -5,6 +5,7 @@
+ 	箭头初始位置=null,
+ 	箭头的初始节点=null,
+ 	箭头的结束节点=null,
++	拖拽过滤方法=null,
+ }
+ 
+ func 初始拖拽箭头():
+Index: 2.0/ui/拖拽卡片.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/拖拽卡片.gd b/2.0/ui/拖拽卡片.gd
+--- a/2.0/ui/拖拽卡片.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/拖拽卡片.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -5,6 +5,7 @@
+ @onready var label:=$Label
+ var 是否为拖拽箭头:bool=false
+ var 是否箭头可以指向自己:bool=false
++var 是否可以被选中:bool=true
+ var 拖拽时是否添加到容器中:bool=true
+ var _is_draging:bool=false
+ var _drag_offset
+@@ -18,8 +19,8 @@
+ 	position=$"Node/遮罩".position
+ 	原有样式=$Panel.get_theme_stylebox("panel") as StyleBoxFlat
+ 	初始化卡牌信息()
+-	if baseCard:
+-		add_child(baseCard)
++	#if baseCard:
++		#add_child(baseCard)
+ 	pass
+ 
+ func 初始化卡牌信息():
+@@ -29,8 +30,10 @@
+ 		if baseCard.show_name_str:
+ 			$Node/名称/Label.text=baseCard.name_str if baseCard.name_str else baseCard.name;
+ 			$Node/名称.show()
+-		if FileAccess.file_exists(baseCard.get_插画路径()):
+-			$Node/遮罩/TextureRect.texture=load(baseCard.get_插画路径())
++		#var 插画路径=baseCard.get_插画路径()
++		var 插画路径="res://asserts/StealthDomeShadow_D.png"
++		if FileAccess.file_exists(插画路径):
++			$Node/遮罩/TextureRect.texture=load(插画路径)
+ 			pass
+ 		else:
+ 			if baseCard.ls_card_id:
+@@ -116,18 +119,16 @@
+ func _process(delta: float) -> void:
+ 	$Panel.size=size
+ 	更新卡牌信息()
++	if 全局属性:
++		if 全局属性.箭头相关属性.是否有拖拽箭头:
++			if 是否可以被选中:
++				#print("这里修改为可以被选中的式,还要判断否可以选中自己")
++				pass
+ 	if _is_draging:
+ 		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+ 			_is_draging=false
+ 			if 是否为拖拽箭头:
+ 				print("没用代码")
+-				# 是否存在目标
+-				#if 全局属性.箭头相关属性.箭头的结束节点:
+-					#print("对xx进行释放")
+-					#全局属性.箭头相关属性.箭头的结束节点.样式恢复()
+-					#全局属性.箭头相关属性.箭头的结束节点=false
+-				#全局属性.箭头相关属性.是否有拖拽箭头=false
+-				#样式恢复()
+ 			else:
+ 				#print("拖拽结束")
+ 				拖拽结束.emit()
+@@ -140,19 +141,19 @@
+ 	var style = $Panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+ 	style.bg_color=Color(0.753, 0.169, 0.059, 0.6)
+ 	$Panel.add_theme_stylebox_override("panel",style)
+-	$"Node2D/箭头选中".show()
++	$"Node/箭头选中".show()
+ 	pass
+ 
+ func 箭头启动样式():
+ 	var style = $Panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+ 	style.bg_color=Color(0.753, 0.569, 0.059, 0.6)
+ 	$Panel.add_theme_stylebox_override("panel",style)
+-	$"Node2D/当前操作".show()
++	$"Node/当前操作".show()
+ 	pass
+ 
+ func 样式恢复():
+ 	$Panel.add_theme_stylebox_override("panel",原有样式)
+-	for i in [$"Node2D/箭头选中",$"Node2D/当前操作"]:
++	for i in [$"Node/箭头选中",$"Node/当前操作"]:
+ 		i.hide()
+ 	pass
+ 
+@@ -175,12 +176,11 @@
+ 					拖拽开始.emit()
+ 				pass
+ 			else:
+-				print("是否为拖拽箭头",是否为拖拽箭头)
+ 				if 是否为拖拽箭头:
+ 					if 全局属性.箭头相关属性.箭头的结束节点:
+-						print("对xx进行释放")
++						Globals.main_node.player.使用卡牌(self,全局属性.箭头相关属性.箭头的结束节点)
+ 						全局属性.箭头相关属性.箭头的结束节点.样式恢复()
+-						全局属性.箭头相关属性.箭头的结束节点=false
++						全局属性.箭头相关属性.箭头的结束节点=null
+ 					全局属性.箭头相关属性.是否有拖拽箭头=false
+ 					样式恢复()
+ 				else:
+@@ -193,6 +193,8 @@
+ func _on_mouse_entered() -> void:
+ 	if 全局属性:
+ 		if 全局属性.箭头相关属性.是否有拖拽箭头:
++			if !是否可以被选中:
++				return
+ 			if 全局属性.箭头相关属性.箭头的初始节点==self:
+ 				if !是否箭头可以指向自己:
+ 					return
+@@ -207,7 +209,6 @@
+ 			if 全局属性.箭头相关属性.箭头的初始节点==self:
+ 				if !是否箭头可以指向自己:
+ 					return
+-			#print("我不作为目标了")
+ 			样式恢复()
+ 			全局属性.箭头相关属性.箭头的结束节点=null
+ 	pass # Replace with function body.
+Index: 2.0/ui/拖拽容器.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/拖拽容器.gd b/2.0/ui/拖拽容器.gd
+--- a/2.0/ui/拖拽容器.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/拖拽容器.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -3,7 +3,6 @@
+ 
+ @export var 拖入其他的容器:Array[DragContainer]=[]
+ @export var 是否可以排序:bool=false
+-@export var 拖入是否添加:bool=true
+ 
+ var draging_card:DragCard
+ var _previous_index :int=-1
+@@ -32,6 +31,8 @@
+ 	$Panel.add_theme_stylebox_override("panel",style)
+ 	pass
+ 
++func 获取容器中的卡片()->Array:
++	return $MarginContainer/HBoxContainer.get_children()
+ func 添加卡片(card:DragCard,index):
+ 	if !card.get_parent():
+ 		$MarginContainer/HBoxContainer.add_child(card)
+@@ -56,18 +57,9 @@
+ 			var mp = get_global_mouse_position()
+ 			for i in 拖入其他的容器:
+ 				if i.get_global_rect().has_point(mp):
+-					card.拖拽开始.disconnect(_拖拽开始.bind(card))
+-					card.拖拽结束.disconnect(_拖拽结束.bind(card))
+-					card.拖拽开始.connect(i._拖拽开始.bind(card))
+-					card.拖拽结束.connect(i._拖拽结束.bind(card))
+-					if i.拖入是否添加:
+-						i._拖拽结束(card)
+-					else:
+-						print("不允许添加")
+-						card.hide()
+-					_拖拽结束的后续清理()
+-					await get_tree().process_frame
++					# 由外部信号决定是否加入
+ 					拖拽到其他容器.emit(card,i)
++					_拖拽结束的后续清理()
+ 					return
+ 		# 回归原位
+ 		_回归原位(card)
+Index: 2.0/ui/酒馆.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2.0/ui/酒馆.gd b/2.0/ui/酒馆.gd
+--- a/2.0/ui/酒馆.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/2.0/ui/酒馆.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -67,3 +67,11 @@
+ 		卡牌ui.baseCard=i;
+ 		添加卡片(卡牌ui,-1)
+ 	pass # Replace with function body.
++
++
++func _on_拖拽到其他容器(card:DragCard,dragContainer) -> void:
++	print("购买成功",card.baseCard.name_str)
++	# 添加手牌
++	Globals.main_node.player.添加卡牌到手牌中(card.baseCard)
++	card.queue_free()
++	pass # Replace with function body.
+Index: BaseCard/base_card.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BaseCard/base_card.gd b/BaseCard/base_card.gd
+--- a/BaseCard/base_card.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/BaseCard/base_card.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -115,7 +115,11 @@
+ @export var 冻结:bool=false
+ @export var 触发:bool=false
+ 
++var 所在位置:String=""
+ #region 一些判断
++func 过滤可以选中数据(card:BaseCard)->bool:
++	return true
++	
+ func 是否存在亡语()->bool:
+ 	return 亡语.size()>0
+ 
+Index: all_card/minion/murloc/焦渴的流浪者/roar.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/minion/murloc/焦渴的流浪者/roar.gd b/all_card/minion/murloc/焦渴的流浪者/roar.gd
+new file mode 100644
+--- /dev/null	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
++++ b/all_card/minion/murloc/焦渴的流浪者/roar.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -0,0 +1,5 @@
++extends Roar
++
++func 战吼(触发者:BaseCard,player:Player,目标对象:BaseCard):
++	print("对目标释放",目标对象)
++	pass
+Index: all_card/minion/murloc/焦渴的流浪者/roar.gd.uid
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/minion/murloc/焦渴的流浪者/roar.gd.uid b/all_card/minion/murloc/焦渴的流浪者/roar.gd.uid
+new file mode 100644
+--- /dev/null	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
++++ b/all_card/minion/murloc/焦渴的流浪者/roar.gd.uid	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -0,0 +1,1 @@
++uid://cyi8i3cxs4cxx
+Index: all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd b/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd
+--- a/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -79,4 +79,4 @@
+ func 触发器_战斗结束后(player:Player):
+ 	super.触发器_战斗结束后(player)
+ 	pass
+-	
+\ No newline at end of file
++	
+Index: all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.tscn b/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.tscn
+--- a/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -1,16 +1,20 @@
+-[gd_scene load_steps=2 format=3 uid="uid://c6fmhkur44ivw"]
++[gd_scene load_steps=3 format=3 uid="uid://c6fmhkur44ivw"]
+ 
+ [ext_resource type="Script" uid="uid://b1hsxlwgyvwjq" path="res://all_card/minion/murloc/焦渴的流浪者/焦渴的流浪者.gd" id="1_cc03i"]
++[ext_resource type="Script" uid="uid://cyi8i3cxs4cxx" path="res://all_card/minion/murloc/焦渴的流浪者/roar.gd" id="2_1wqdf"]
+ 
+ [node name="焦渴的流浪者" type="Node2D"]
+ script = ExtResource("1_cc03i")
+ version = "32.2.4.221850"
+ ls_card_id = "BG30_756"
+ name_str = "焦渴的流浪者"
+-cardType = 0
+ lv = 2
+ atk = 2
+ hp = 2
+ desc = "<b>战吼：</b>使一个鱼人获得+2/+3和<b>嘲讽</b>。"
+ gold_desc = "<b>战吼：</b>使一个鱼人获得+4/+6和<b>嘲讽</b>。"
+ race = Array[int]([6])
++
++[node name="Roar" type="Node" parent="."]
++script = ExtResource("2_1wqdf")
++metadata/_custom_type_script = "uid://d1tqc85g21hw6"
+Index: all_card/tavern/尖利箭矢/尖利箭矢.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/tavern/尖利箭矢/尖利箭矢.tscn b/all_card/tavern/尖利箭矢/尖利箭矢.tscn
+--- a/all_card/tavern/尖利箭矢/尖利箭矢.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/tavern/尖利箭矢/尖利箭矢.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -7,17 +7,13 @@
+ version = "32.2.4.221850"
+ ls_card_id = "EBG_Spell_014"
+ name_str = "尖利箭矢"
+-lv = 1
+-show_lv = true
+-atk = 0
+ show_atk = false
+ hp = 0
+ show_hp = false
+ desc = "使一个随从获得+{0}攻击力。4使一个随从获得+{0}/+{1}。"
+ gold_desc = "使一个随从获得+{0}攻击力。4使一个随从获得+{0}/+{1}。"
+ cardType = 3
+-buy_coins = 3
+-show_buy_coins = true
+ race = Array[int]([])
+-是否出现在酒馆 = true
+-是否为伙伴 = false
++need_select_target = true
++buy_coins = 1
++show_buy_coins = true
+Index: all_card/tavern/强固/强固.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/tavern/强固/强固.tscn b/all_card/tavern/强固/强固.tscn
+--- a/all_card/tavern/强固/强固.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/tavern/强固/强固.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -7,17 +7,13 @@
+ version = "32.2.4.221850"
+ ls_card_id = "BG28_503"
+ name_str = "强固"
+-lv = 1
+-show_lv = true
+-atk = 0
+ show_atk = false
+ hp = 0
+ show_hp = false
+ desc = "使一个随从获得+{1}生命值和<b>嘲讽</b>。0使一个随从获得+{0}/+{1}和<b>嘲讽</b>。"
+ gold_desc = "使一个随从获得+{1}生命值和<b>嘲讽</b>。0使一个随从获得+{0}/+{1}和<b>嘲讽</b>。"
+ cardType = 3
+-buy_coins = 3
+-show_buy_coins = true
+ race = Array[int]([])
+-是否出现在酒馆 = true
+-是否为伙伴 = false
++need_select_target = true
++buy_coins = 1
++show_buy_coins = true
+Index: all_card/tavern/招募新人/招募新人.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/tavern/招募新人/招募新人.tscn b/all_card/tavern/招募新人/招募新人.tscn
+--- a/all_card/tavern/招募新人/招募新人.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/tavern/招募新人/招募新人.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -14,4 +14,5 @@
+ gold_desc = "随机获取一张等级1的随从牌。"
+ cardType = 3
+ race = Array[int]([])
++buy_coins = 2
+ show_buy_coins = true
+Index: all_card/tavern/附魔链索/附魔链索.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/tavern/附魔链索/附魔链索.tscn b/all_card/tavern/附魔链索/附魔链索.tscn
+--- a/all_card/tavern/附魔链索/附魔链索.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/tavern/附魔链索/附魔链索.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -7,17 +7,12 @@
+ version = "32.2.4.221850"
+ ls_card_id = "BG28_512"
+ name_str = "附魔链索"
+-lv = 1
+-show_lv = true
+-atk = 0
+ show_atk = false
+ hp = 0
+ show_hp = false
+ desc = "随机偷取酒馆中的一个随从。"
+ gold_desc = "随机偷取酒馆中的一个随从。"
+ cardType = 3
+-buy_coins = 3
+-show_buy_coins = true
+ race = Array[int]([])
+-是否出现在酒馆 = true
+-是否为伙伴 = false
++buy_coins = 2
++show_buy_coins = true
+Index: all_card/tavern/香蕉果盘/香蕉果盘.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/tavern/香蕉果盘/香蕉果盘.gd b/all_card/tavern/香蕉果盘/香蕉果盘.gd
+--- a/all_card/tavern/香蕉果盘/香蕉果盘.gd	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/tavern/香蕉果盘/香蕉果盘.gd	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -3,3 +3,6 @@
+ func 触发器_使用(player:Player,目标卡片:BaseCard):
+ 	super.触发器_使用(player,目标卡片)
+ 	pass
++
++func 过滤可以选中数据(card:BaseCard)->bool:
++	return false
+Index: all_card/tavern/香蕉果盘/香蕉果盘.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/all_card/tavern/香蕉果盘/香蕉果盘.tscn b/all_card/tavern/香蕉果盘/香蕉果盘.tscn
+--- a/all_card/tavern/香蕉果盘/香蕉果盘.tscn	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/all_card/tavern/香蕉果盘/香蕉果盘.tscn	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -7,17 +7,13 @@
+ version = "32.2.4.221850"
+ ls_card_id = "BG28_897"
+ name_str = "香蕉果盘"
+-lv = 1
+-show_lv = true
+-atk = 0
+ show_atk = false
+ hp = 0
+ show_hp = false
+ desc = "使一个随从获得+{0}/+{1}。"
+ gold_desc = "使一个随从获得+{0}/+{1}。"
+ cardType = 3
+-buy_coins = 3
+-show_buy_coins = true
+ race = Array[int]([])
+-是否出现在酒馆 = true
+-是否为伙伴 = false
++need_select_target = true
++buy_coins = 1
++show_buy_coins = true
+Index: 想法与计划.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/想法与计划.md b/想法与计划.md
+--- a/想法与计划.md	(revision a18848f9513b048185bf5e0dcafd8d4941c43670)
++++ b/想法与计划.md	(revision 3cc629b8344c82e93678dacf91b9ea91f81cd94c)
+@@ -1,6 +1,24 @@
+-没有完善的卡片：
++# 梳理触发效果
+ 
+-利牙鲷鱼
+-顽强的坐骑
+-奇瑰打击乐手
+-影舞者
++* 战斗开始时
++* 回合结束时
++* 开始回合时
++* 获得攻击力时
++* 他人获取攻击力时
++* 获得生命值时
++* 他人获得生命值时
++* 召唤随从（包括特定随从）
++* 召唤其他时
++* 攻击后
++* 他人攻击后
++* 受到攻击后
++* 他人受到攻击后
++* 受到伤害后
++* 他人受到伤害后
++* 使用时（包括特定）
++* 使用其他时
++* 玩家受伤后
++* 战吼
++* 其他战吼触发
++* 亡语
++* 其他亡语触发
