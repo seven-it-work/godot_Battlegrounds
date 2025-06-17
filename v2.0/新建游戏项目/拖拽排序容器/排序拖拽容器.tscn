@@ -4,4 +4,9 @@
 [ext_resource type="Script" uid="uid://byewrjfp2u2tt" path="res://拖拽排序容器/排序拖拽容器.gd" id="2_5wd5m"]
 
 [node name="拖拽容器" instance=ExtResource("1_vr6i8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 script = ExtResource("2_5wd5m")

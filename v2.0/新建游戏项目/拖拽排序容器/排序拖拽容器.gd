@@ -8,7 +8,6 @@ func _process(delta: float) -> void:
 	if 拖拽中的节点:
 		动态更新插槽()
 
-
 func 动态更新插槽():
 	var mp = get_global_mouse_position()
 	var height = 拖拽中的节点.size.x*0.5
@@ -25,9 +24,9 @@ func 动态更新插槽():
 			if holder.active:
 				holder.active = false
 				holder.change_size(Vector2(4,size.y), place_holder_duration)
-				
 
 func 初始化插槽():
+	print("初始化插槽")
 	var list=$HBoxContainer.get_children()
 	for index in list.size()+1:
 		var temp插槽=插槽.duplicate()
@@ -39,48 +38,21 @@ func 初始化插槽():
 		else:
 			temp插槽.custom_minimum_size = Vector2(4,size.y)
 
-
 func 开始拖拽(拖拽节点):
 	super.开始拖拽(拖拽节点)
 	初始化插槽()
 
-
-func 结束拖拽(拖拽节点:DragControl):
-	拖拽中的节点=拖拽节点
+func 从其他容器中拖入排序():
+	print("从其他容器中拖入排序")
 	var 是否激活插槽=_获取激活的插槽()
 	清理插槽()
 	await get_tree().process_frame
 	if 是否激活插槽==null:
-		if 拖拽节点.进入的区域:
-			if 拖拽节点.进入的区域 is DragSortContainer:
-				是否激活插槽=拖拽节点.进入的区域._获取激活的插槽()
-				if 是否激活插槽==null:
-					回到原来位置()
-				else:
-					断开信号(拖拽节点)
-					拖拽节点.区域.erase(拖拽节点.进入的区域)
-					拖拽节点.进入的区域.清理插槽()
-					await get_tree().process_frame
-					拖拽节点.进入的区域.添加到容器中(拖拽节点,是否激活插槽)
-		else:
-			回到原来位置()
+		print("追加到最后")
+		添加到容器中(拖拽中的节点,-1)
 	else:
-		添加到容器中(拖拽节点,是否激活插槽)
+		添加到容器中(拖拽中的节点,是否激活插槽)
 	拖拽中的节点=null
-
-
-func 进入区域(dragControl:DragControl,进入的区域:Control):
-	super.进入区域(dragControl,进入的区域)
-	if 进入的区域 is DragSortContainer:
-		进入的区域.初始化插槽()
-		pass
-	pass
-
-func 离开区域(dragControl:DragControl,进入的区域:Control):
-	super.离开区域(dragControl,进入的区域)
-	if 进入的区域 is DragSortContainer:
-		进入的区域.清理插槽()
-		pass
 
 func _获取激活的插槽():
 	var actives = 获取插槽().filter(func(x): return x.active)
@@ -91,6 +63,7 @@ func 获取插槽():
 	return $HBoxContainer.get_children().filter(func(x): return x is DragSlot)
 
 func 清理插槽():
+	print("清理插槽")
 	for child in $HBoxContainer.get_children():
 		if child is DragSlot:
 			child.queue_free()

@@ -21,13 +21,14 @@ func _ready():
 		sprite.texture=load("uid://cxkg7pe47u2kp")  #把图片换成箭头1
 		sprite.scale=Vector2(1,1)*(0.2+float(i)/18*0.8) #改变缩放，根据杀戮尖塔，箭头是一节节越来越大的
 		sprite.offset=Vector2(-25,0)  #由于我画的图片中心点在箭头中间，
-		
 	#最后生成终点的箭头，用箭头2的图片
 	var sprite=Sprite2D.new()   
 	add_child(sprite)
 	arrows.append(sprite)
 	sprite.texture=load("uid://cxkg7pe47u2kp")
 	sprite.offset=Vector2(-30,0)
+	
+	
 func update_curve(开始位置,结束位置):
 	var dir = 结束位置 - 开始位置
 	var dist = dir.length()
