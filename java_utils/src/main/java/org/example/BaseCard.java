@@ -32,6 +32,7 @@ public class BaseCard {
     private Boolean showBuyCoins=false;
     private Boolean 是否出现在酒馆=true;
     private Boolean 是否为伙伴=false;
+    private Boolean 是否需要选择目标=false;
     private BaseCard upgradeCard;
 
     public JSONObject toJson(){

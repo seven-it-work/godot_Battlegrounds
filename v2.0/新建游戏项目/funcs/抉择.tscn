@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://25jbymm26se5"]
+
+[ext_resource type="Script" uid="uid://ctm43rxphssr6" path="res://funcs/抉择.gd" id="1_nh57s"]
+[ext_resource type="Script" uid="uid://cqedsw7yw5o1f" path="res://funcs/目标选择器.gd" id="2_7q4gv"]
+[ext_resource type="PackedScene" uid="uid://cq4axk7s106ie" path="res://funcs/抉择选项.tscn" id="3_ffu0b"]
+
+[node name="抉择" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nh57s")
+
+[node name="TargetSelector" type="Node" parent="."]
+script = ExtResource("2_7q4gv")
+metadata/_custom_type_script = "uid://cqedsw7yw5o1f"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="抉择选项" parent="MarginContainer/GridContainer" instance=ExtResource("3_ffu0b")]
+layout_mode = 2
+
+[node name="抉择选项2" parent="MarginContainer/GridContainer" instance=ExtResource("3_ffu0b")]
+layout_mode = 2
+
+[node name="抉择选项3" parent="MarginContainer/GridContainer" instance=ExtResource("3_ffu0b")]
+layout_mode = 2

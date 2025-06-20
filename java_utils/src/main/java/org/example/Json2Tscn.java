@@ -13,9 +13,9 @@ import java.util.List;
  * json 转 tscn
  */
 public class Json2Tscn {
-    static String workPath="E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\";
+    public static String workPath="E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\";
 
-   static String savePath=workPath+"all_card\\";
+    public static String savePath=workPath+"all_card\\";
 
     public static void main(String[] args) {
         // System.out.println(CardTypeEnum.MINION.ordinal());

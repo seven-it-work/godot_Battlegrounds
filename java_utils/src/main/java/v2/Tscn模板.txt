@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://CardData.tscn" id="1_syn4q"]
+[ext_resource type="Script" path="res://all_card/{savePath}.gd" id="1_cc03i"]
+
+[node name="{nameCN}" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "{version}"
+ls_card_id = "{strId}"
+name_str = "{nameCN}"
+lv = {tier}
+show_lv = {showLv}
+atk = {attack}
+show_atk = {showAtk}
+hp = {health}
+show_hp = {showHp}
+desc = "{text}"
+gold_desc = "{goldText}"
+cardType = {cardType}
+buy_coins = {buyCoins}
+show_buy_coins =  {showBuyCoins}
+race = Array[int]({minionTypes})
+是否出现在酒馆 = {是否出现在酒馆}
+是否为伙伴 = {是否为伙伴}
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = {是否需要选择目标}
