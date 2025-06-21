@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 ]
 
-[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://CardData.tscn" id="1_syn4q"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
 [ext_resource type="Script" path="res://all_card/{savePath}.gd" id="1_cc03i"]
 
 [node name="{nameCN}" instance=ExtResource("1_syn4q")]

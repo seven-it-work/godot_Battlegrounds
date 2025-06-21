@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct6ruh1nk05h6"]
+
+[ext_resource type="Script" uid="uid://c3rc2npb3cqiq" path="res://all_card/tavern/点金之触/点金之触.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="点金之触" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+name_str = "点金之触"
+version = "32.2.4.221850"
+ls_card_id = "BG28_830"
+lv = 5
+show_atk = false
+hp = 0
+show_hp = false
+desc = "随机使酒馆中的一个随从变为金色。"
+gold_desc = "随机使酒馆中的一个随从变为金色。"
+cardType = 3
+race = Array[int]([])
+show_buy_coins = true
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dus0lrk4y7746"]
+
+[ext_resource type="Script" uid="uid://cfiakdtddkb2i" path="res://all_card/tavern/乱放的茶具/乱放的茶具.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="乱放的茶具" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+name_str = "乱放的茶具"
+version = "32.2.4.221850"
+ls_card_id = "BG28_888"
+lv = 4
+show_atk = false
+hp = 0
+show_hp = false
+desc = "使每个类型的各一个友方随从获得+{0}/+{1}。"
+gold_desc = "使每个类型的各一个友方随从获得+{0}/+{1}。"
+cardType = 3
+race = Array[int]([])
+show_buy_coins = true
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

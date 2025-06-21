@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://25jbymm26se5"]
+
+[ext_resource type="Script" uid="uid://ctm43rxphssr6" path="res://core/funcs/抉择.gd" id="1_nh57s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gb2ht"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ufgn"]
+
+[node name="抉择" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gb2ht")
+script = ExtResource("1_nh57s")
+
+[node name="隐藏" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -86.0
+offset_top = 139.0
+offset_bottom = 184.0
+text = "隐藏"
+
+[node name="确定" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 23.0
+offset_top = 140.0
+offset_right = 112.0
+offset_bottom = 187.0
+text = "确定"
+
+[node name="MarginContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -573.0
+offset_top = -321.0
+offset_right = 579.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ufgn")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[connection signal="pressed" from="隐藏" to="." method="_on_隐藏_pressed"]
+[connection signal="pressed" from="确定" to="." method="_on_确定_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuxpxje8iycj3"]
+
+[ext_resource type="Script" uid="uid://b284cqk212hw3" path="res://all_card/tavern/主厨甄选/主厨甄选.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+[ext_resource type="Script" uid="uid://hql5epxa7wfy" path="res://all_card/tavern/主厨甄选/使用时是否需要选择目标.gd" id="3_dqffl"]
+
+[node name="主厨甄选" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+name_str = "主厨甄选"
+version = "32.2.4.221850"
+ls_card_id = "BG28_518"
+lv = 2
+show_atk = false
+hp = 0
+show_hp = false
+desc = "选择一个随从。获取相同类型的另一张随从牌。"
+gold_desc = "选择一个随从。获取相同类型的另一张随从牌。"
+cardType = 3
+race = Array[int]([])
+show_buy_coins = true
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+script = ExtResource("3_dqffl")

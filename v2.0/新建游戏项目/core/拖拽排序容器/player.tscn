@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct4nv2st1g85y"]
+
+[ext_resource type="Script" uid="uid://dqitqf0m1vofu" path="res://core/拖拽排序容器/player.gd" id="1_grwd4"]
+[ext_resource type="PackedScene" uid="uid://cv76bq2cq4fc6" path="res://core/拖拽排序容器/拖拽容器.tscn" id="2_8f3me"]
+[ext_resource type="Script" uid="uid://cwyo4qicl4l5x" path="res://core/拖拽排序容器/酒馆.gd" id="3_yor5m"]
+[ext_resource type="Script" uid="uid://diae4i6j02ypk" path="res://core/拖拽排序容器/战场.gd" id="4_sh5nk"]
+[ext_resource type="Script" uid="uid://begh2ao5m7074" path="res://core/拖拽排序容器/手牌.gd" id="5_cjtnc"]
+[ext_resource type="PackedScene" uid="uid://cjvikfqc8kq5c" path="res://core/拖拽箭头/箭头.tscn" id="6_e074q"]
+
+[node name="多个容器测试" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grwd4")
+
+[node name="酒馆" parent="." node_paths=PackedStringArray("区域") instance=ExtResource("2_8f3me")]
+layout_mode = 1
+offset_right = 1142.0
+offset_bottom = 100.0
+script = ExtResource("3_yor5m")
+name_str = "酒馆"
+"区域" = [NodePath("../手牌")]
+
+[node name="战场" parent="." node_paths=PackedStringArray("区域") instance=ExtResource("2_8f3me")]
+layout_mode = 1
+offset_top = 110.0
+offset_right = 500.0
+offset_bottom = 210.0
+script = ExtResource("4_sh5nk")
+"是否可以排序" = true
+name_str = "战场"
+"区域" = [NodePath("../酒馆")]
+
+[node name="手牌" parent="." node_paths=PackedStringArray("区域") instance=ExtResource("2_8f3me")]
+layout_mode = 1
+offset_top = 220.0
+offset_right = 500.0
+offset_bottom = 320.0
+script = ExtResource("5_cjtnc")
+name_str = "手牌"
+"区域" = [NodePath("../战场")]
+
+[node name="箭头" parent="手牌" instance=ExtResource("6_e074q")]
+visible = false
+
+[node name="抉择是否隐藏" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 550.0
+offset_right = 160.0
+offset_bottom = 603.0
+text = "显示"
+
+[connection signal="在其他容器中释放信号" from="酒馆" to="酒馆" method="_on_在其他容器中释放信号"]
+[connection signal="在其他容器中释放信号" from="战场" to="战场" method="_on_在其他容器中释放信号"]
+[connection signal="在其他容器中释放信号" from="手牌" to="手牌" method="_on_在其他容器中释放信号"]
+[connection signal="pressed" from="抉择是否隐藏" to="." method="_on_抉择是否隐藏_pressed"]
+
+[editable path="手牌"]

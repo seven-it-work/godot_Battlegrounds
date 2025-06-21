@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://up7qmwg7cs4n"]
+
+[ext_resource type="Script" uid="uid://c4bjwa4xvvbnh" path="res://all_card/tavern/罕迹之路/罕迹之路.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+[ext_resource type="PackedScene" uid="uid://25jbymm26se5" path="res://core/funcs/抉择.tscn" id="3_fli25"]
+[ext_resource type="PackedScene" uid="uid://cq4axk7s106ie" path="res://core/funcs/抉择选项.tscn" id="4_ov5ga"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ov5ga"]
+resource_local_to_scene = true
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dyy6"]
+resource_local_to_scene = true
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="罕迹之路" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+name_str = "罕迹之路"
+version = "32.2.4.221850"
+ls_card_id = "BG31_884"
+lv = 6
+show_atk = false
+hp = 0
+show_hp = false
+desc = "<b>抉择：</b>随机获取一张等级6的随从牌；或者随机获取两张等级5的随从牌。"
+gold_desc = "<b>抉择：</b>随机获取一张等级6的随从牌；或者随机获取两张等级5的随从牌。"
+cardType = 3
+race = Array[int]([])
+show_buy_coins = true
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false
+
+[node name="抉择" parent="." index="1" instance=ExtResource("3_fli25")]
+visible = false
+layout_mode = 1
+
+[node name="抉择选项" parent="抉择/MarginContainer/GridContainer" index="0" instance=ExtResource("4_ov5ga")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ov5ga")
+
+[node name="抉择选项2" parent="抉择/MarginContainer/GridContainer" index="1" instance=ExtResource("4_ov5ga")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dyy6")
+
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项" to="." method="_on_抉择选项_选择信号"]
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="." method="_on_抉择选项2_选择信号"]
+
+[editable path="抉择"]

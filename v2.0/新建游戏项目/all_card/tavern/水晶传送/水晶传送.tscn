@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcrvi4ybypto2"]
+
+[ext_resource type="Script" uid="uid://bthosfpl4qqii" path="res://all_card/tavern/水晶传送/水晶传送.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="水晶传送" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_244"
+name_str = "水晶传送"
+lv = 5
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "<b>传递</b>一个友方非金色随从。"
+gold_desc = "<b>传递</b>一个友方非金色随从。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

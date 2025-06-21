@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfelvac5333r2"]
+
+[ext_resource type="Script" uid="uid://ds5g5wdu8cip0" path="res://all_card/tavern/预订遗体/预订遗体.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="预订遗体" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_882"
+name_str = "预订遗体"
+lv = 5
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "<b>发现</b>一张<b>亡语</b>随从牌。"
+gold_desc = "<b>发现</b>一张<b>亡语</b>随从牌。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

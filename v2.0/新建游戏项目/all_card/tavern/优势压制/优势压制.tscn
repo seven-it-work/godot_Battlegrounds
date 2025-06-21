@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://buy5htms66jtf"]
+
+[ext_resource type="Script" uid="uid://cnpfa4trhyicj" path="res://all_card/tavern/优势压制/优势压制.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="优势压制" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_573"
+name_str = "优势压制"
+lv = 5
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "<b>战斗开始时：</b>随机将一个敌方随从的生命值变为1。"
+gold_desc = "<b>战斗开始时：</b>随机将一个敌方随从的生命值变为1。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

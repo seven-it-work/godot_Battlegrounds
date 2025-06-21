@@ -1,6 +1,18 @@
 extends Node
 class_name Enums
 
+enum CardTypeEnum{
+	MINION,
+	## 饰品
+	TRINKEt,
+	## 法术
+	SPELL,
+	## 酒馆法术
+	TAVERN,
+	HERO,
+	HERO_POWER
+}
+
 enum CardPosition{
 	酒馆,
 	手牌,
@@ -32,6 +44,4 @@ enum RaceEnum{
 	QUILBOAR,
 	## 亡灵
 	UNDEAD,
-	## 全部
-	ALL,
 }

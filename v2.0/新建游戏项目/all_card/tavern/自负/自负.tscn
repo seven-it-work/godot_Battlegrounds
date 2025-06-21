@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnmhqgrhkxfls"]
+
+[ext_resource type="Script" uid="uid://b5v1hsvedg2br" path="res://all_card/tavern/自负/自负.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="自负" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_884"
+name_str = "自负"
+lv = 3
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "如果你在你下一场战斗中获胜，获得3枚铸币。如果平局，获得1枚。"
+gold_desc = "如果你在你下一场战斗中获胜，获得3枚铸币。如果平局，获得1枚。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

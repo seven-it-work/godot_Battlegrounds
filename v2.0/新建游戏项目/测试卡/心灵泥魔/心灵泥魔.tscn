@@ -1,23 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3a4qbmde2b03"]
 
-[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://CardData.tscn" id="1_8jv5b"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_8jv5b"]
 [ext_resource type="Script" uid="uid://d1bgfbn1ljof0" path="res://测试卡/心灵泥魔/心灵泥魔.gd" id="2_latq3"]
 [ext_resource type="Script" uid="uid://cnk5snth8xy6u" path="res://测试卡/心灵泥魔/roar.gd" id="3_8btgn"]
-[ext_resource type="Script" uid="uid://37s7yf2kxdiw" path="res://测试卡/心灵泥魔/target_selector.gd" id="4_latq3"]
+[ext_resource type="Script" uid="uid://bfqnq2wiqvob" path="res://测试卡/心灵泥魔/使用时是否需要选择目标.gd" id="3_latq3"]
 
 [node name="CardData" instance=ExtResource("1_8jv5b")]
 script = ExtResource("2_latq3")
 name_str = "心灵泥魔"
-cardType = Array[int]([2])
+race = Array[int]([2])
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
-"是否需要选择目标" = false
+script = ExtResource("3_latq3")
 
 [node name="Roar" type="Node" parent="." index="1" node_paths=PackedStringArray("targetSelector")]
 script = ExtResource("3_8btgn")
-targetSelector = NodePath("TargetSelector")
+targetSelector = NodePath("")
 metadata/_custom_type_script = "uid://bus1w068x25rx"
-
-[node name="TargetSelector" type="Node" parent="Roar" index="0"]
-script = ExtResource("4_latq3")
-metadata/_custom_type_script = "uid://cqedsw7yw5o1f"

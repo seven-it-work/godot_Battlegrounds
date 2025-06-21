@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqjbqdhyk0nc1"]
+
+[ext_resource type="Script" uid="uid://6r6sqja3hen5" path="res://all_card/tavern/防御者的仪式/防御者的仪式.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="防御者的仪式" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_825"
+name_str = "防御者的仪式"
+lv = 4
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "使一个友方随从获得+{0}/+{1}
+和<b>嘲讽</b>。"
+gold_desc = "使一个友方随从获得+{0}/+{1}和<b>嘲讽</b>。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

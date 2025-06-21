@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq4axk7s106ie"]
+
+[ext_resource type="Script" uid="uid://ceq84swedqlv0" path="res://core/funcs/抉择选项.gd" id="1_aibij"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10al6"]
+resource_local_to_scene = true
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="抉择选项" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -107.5
+offset_right = 96.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_10al6")
+script = ExtResource("1_aibij")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "ces"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

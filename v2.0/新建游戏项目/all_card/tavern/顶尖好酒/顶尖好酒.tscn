@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://lg5g6its3h36"]
+
+[ext_resource type="Script" uid="uid://d2p1h13fhdvb3" path="res://all_card/tavern/顶尖好酒/顶尖好酒.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="顶尖好酒" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_849"
+name_str = "顶尖好酒"
+lv = 5
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "<b>刷新</b>酒馆，
+使其中变为酒馆
+法术牌。"
+gold_desc = "<b>刷新</b>酒馆，使其中变为酒馆法术牌。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

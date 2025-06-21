@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global.gd"
+Logger="*res://addons/gs_logger/logger.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gs_logger/plugin.cfg")
 
 [rendering]
 

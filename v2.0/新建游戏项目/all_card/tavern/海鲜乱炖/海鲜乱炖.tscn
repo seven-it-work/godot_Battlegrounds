@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq4b0v8xk12sk"]
+
+[ext_resource type="Script" uid="uid://cfggk1sntvegr" path="res://all_card/tavern/海鲜乱炖/海鲜乱炖.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="海鲜乱炖" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_337"
+name_str = "海鲜乱炖"
+lv = 3
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "使一个随从获得+{0}/+{1}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
+gold_desc = "使一个随从获得+{0}/+{1}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

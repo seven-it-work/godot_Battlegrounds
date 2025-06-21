@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://di7jkgab8g1n"]
+
+[ext_resource type="Script" uid="uid://5ds7pjg8u7sd" path="res://all_card/tavern/招募新人/招募新人.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="招募新人" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_504"
+name_str = "招募新人"
+lv = 1
+show_lv = true
+atk = 0
+show_atk = false
+hp = 0
+show_hp = false
+desc = "随机获取一张等级1的随从牌。"
+gold_desc = "随机获取一张等级1的随从牌。"
+cardType = 3
+buy_coins = 3
+show_buy_coins = true
+race = Array[int]([])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

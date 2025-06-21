@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://uo2gx7wimlt8"]
+
+[ext_resource type="Script" uid="uid://cqxl72k8de5mr" path="res://core/拖拽排序容器/插槽.gd" id="1_xfjro"]
+
+[node name="插槽" type="PanelContainer"]
+offset_right = 100.0
+offset_bottom = 107.0
+script = ExtResource("1_xfjro")
