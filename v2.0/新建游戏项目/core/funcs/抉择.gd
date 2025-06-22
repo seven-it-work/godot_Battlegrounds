@@ -20,16 +20,16 @@ func 获取抉择选项()->Array[ChooseOption]:
 	return $MarginContainer/GridContainer.get_children().filter(func(node): return node is ChooseOption)
 
 func 选中样式改变(选项:ChooseOption):
-	if 上一次选项==null:
-		上一次选项=选项
-		上一次选项.样式选中()
+	if self.上一次选项==null:
+		self.上一次选项=选项
+		self.上一次选项.样式选中()
 	else:
 		if 上一次选项==self:
 			pass
 		else:
-			上一次选项.清理选中样式()
-			上一次选项=选项
-			上一次选项.样式选中()
+			self.上一次选项.清理选中样式()
+			self.上一次选项=选项
+			self.上一次选项.样式选中()
 
 
 func _on_隐藏_pressed() -> void:
@@ -40,7 +40,8 @@ func _on_隐藏_pressed() -> void:
 
 
 func _on_确定_pressed() -> void:
-	if 上一次选项:
+	print(self.上一次选项)
+	if self.上一次选项:
 		print("使用成功")
 		self.hide()
 	else:

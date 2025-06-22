@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjhqpg4a8wuqj"]
+[gd_scene load_steps=8 format=3 uid="uid://bjhqpg4a8wuqj"]
 
 [ext_resource type="Script" uid="uid://vq1yoywcx4aa" path="res://all_card/tavern/森林秘宝/森林秘宝.gd" id="1_cc03i"]
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
 [ext_resource type="PackedScene" uid="uid://25jbymm26se5" path="res://core/funcs/抉择.tscn" id="3_t117t"]
+[ext_resource type="Script" uid="uid://d1yw4870a5bl0" path="res://all_card/tavern/森林秘宝/抉择.gd" id="4_1h3k5"]
 [ext_resource type="PackedScene" uid="uid://cq4axk7s106ie" path="res://core/funcs/抉择选项.tscn" id="4_3yk3b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h3k5"]
+resource_local_to_scene = true
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp4up"]
 resource_local_to_scene = true
 draw_center = false
 border_width_left = 5
@@ -35,6 +48,7 @@ show_buy_coins = true
 [node name="抉择" parent="." index="1" instance=ExtResource("3_t117t")]
 visible = false
 layout_mode = 1
+script = ExtResource("4_1h3k5")
 
 [node name="抉择选项" parent="抉择/MarginContainer/GridContainer" index="0" instance=ExtResource("4_3yk3b")]
 layout_mode = 2
@@ -42,9 +56,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1h3k5")
 
 [node name="抉择选项2" parent="抉择/MarginContainer/GridContainer" index="1" instance=ExtResource("4_3yk3b")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1h3k5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sp4up")
 
-[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项" to="." method="_on_抉择选项_选择信号"]
-[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="." method="_on_抉择选项2_选择信号"]
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项" to="抉择" method="_on_抉择选项_选择信号"]
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="抉择" method="_on_抉择选项2_选择信号"]
 
 [editable path="抉择"]

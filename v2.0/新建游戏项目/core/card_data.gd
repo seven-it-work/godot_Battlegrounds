@@ -62,8 +62,8 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 @export var 文件路径:String=""
 @export var 文件名:String=""
 # 永久区
-#@export var 属性加成:Array[AttributeBonus]=[]
-#@export var 临时属性加成:Array[AttributeBonus]=[]
+@export var 属性加成:Array[AttributeBonus]=[]
+@export var 临时属性加成:Array[AttributeBonus]=[]
 # 出售金额
 @export var sell_coins:int=1
 # 购买需要金币
@@ -81,6 +81,20 @@ var 复仇计数器:int=0
 
 func _ready() -> void:
 	print("ready")
+
+func get_插画路径()->String:
+	if 插画路径:
+		return 插画路径
+	if !文件路径:
+		var temp= get_script().resource_path
+		文件路径=temp.get_base_dir()
+		文件名=temp.get_file().replace("."+temp.get_extension(),"")
+	var 默认路径="%s/%s.png"%[文件路径,文件名]
+	return 默认路径
+
+func 是否存在亡语()->bool:
+	#return 亡语.size()>0
+	return false
 
 func 是否属于种族(race:Enums.RaceEnum)->bool:
 	return self.race.has(race)
@@ -116,3 +130,26 @@ func 使用触发(player:Player):
 	pass
 
 #endregion
+
+
+## 获取攻击力（包含加成属性）
+func atk_bonus(plyaer:Player)->int:
+	var result=atk*(2 if is_gold else 1);
+	if plyaer.是否在战斗中():
+		for i in 临时属性加成:
+			result+=i.atk;
+	else:
+		for i in 属性加成:
+			result+=i.atk;
+	return result
+
+## 获取生命值（包含加成属性）
+func hp_bonus(plyaer:Player)->int:
+	var result=hp*(2 if is_gold else 1);
+	if plyaer.是否在战斗中():
+		for i in 临时属性加成:
+			result+=i.hp;
+	else:
+		for i in 属性加成:
+			result+=i.hp;
+	return result

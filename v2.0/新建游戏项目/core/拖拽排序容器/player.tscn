@@ -16,15 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_grwd4")
 
-[node name="抉择是否隐藏" type="Button" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 51.0
-offset_top = 550.0
-offset_right = 160.0
-offset_bottom = 603.0
-text = "显示"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 27.0
@@ -56,10 +47,25 @@ name_str = "手牌"
 
 [node name="箭头" parent="VBoxContainer/手牌" instance=ExtResource("6_e074q")]
 visible = false
+z_index = 3
 
-[connection signal="pressed" from="抉择是否隐藏" to="." method="_on_抉择是否隐藏_pressed"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1274.0
+offset_bottom = 703.0
+
+[node name="抉择是否隐藏" type="Button" parent="Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 550.0
+offset_right = 160.0
+offset_bottom = 603.0
+text = "显示"
+
 [connection signal="在其他容器中释放信号" from="VBoxContainer/酒馆" to="VBoxContainer/酒馆" method="_on_在其他容器中释放信号"]
 [connection signal="在其他容器中释放信号" from="VBoxContainer/战场" to="VBoxContainer/战场" method="_on_在其他容器中释放信号"]
 [connection signal="在其他容器中释放信号" from="VBoxContainer/手牌" to="VBoxContainer/手牌" method="_on_在其他容器中释放信号"]
+[connection signal="pressed" from="Panel/抉择是否隐藏" to="." method="_on_抉择是否隐藏_pressed"]
 
 [editable path="VBoxContainer/手牌"]

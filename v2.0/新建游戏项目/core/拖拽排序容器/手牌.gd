@@ -1,11 +1,5 @@
 extends DragContainer
 
-var 箭头初始节点
-var 点击时的的位置
-var 当前箭头指向区域
-var 箭头可以指向的区域:Array=[]
-var temp其他容器
-var temp拖拽节点
 
 
 var 当前按下的牌:DragControl=null
@@ -13,6 +7,7 @@ var 箭头数据:Dictionary={
 	点击时的的位置=Vector2(),
 	初始节点=null
 }
+var 带抉择的卡牌节点:DragControl
 
 func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -42,12 +37,26 @@ func _process(delta: float) -> void:
 				pass
 			else:
 				箭头数据.初始节点.card_data.使用时是否需要选择目标.目标对象=箭头数据.get("结束节点")
-				if 箭头数据.初始节点.card_data and 箭头数据.初始节点.card_data.是否为法术():
+				var 抉择节点=箭头数据.初始节点.card_data.获取抉择节点()
+				if 抉择节点!=null:
+					带抉择的卡牌节点=箭头数据.初始节点
+					var 抉择ui=抉择节点.duplicate()
+					Global.main_node.add_child(抉择ui)
+					Global.main_node.抉择节点=抉择ui
+					抉择ui.show()
+					Global.main_node.所有的拖拽禁用或者开启(false)
+				elif  箭头数据.初始节点.card_data and 箭头数据.初始节点.card_data.是否为法术():
 					箭头数据.初始节点.hide()
 					箭头数据.初始节点.queue_free()
 				else:
 					# 可能是决策 也可能是战吼
-					print("抉择 还是 战吼")
+					if 箭头数据.初始节点.card_data.是否有战吼():
+						箭头数据.初始节点.card_data.获取战吼节点().战吼目标=箭头数据.初始节点.card_data.使用时是否需要选择目标.目标对象
+						Global.main_node.战场.进入的区域进行释放(箭头数据.初始节点)
+						使用触发(箭头数据.初始节点)
+						print("战吼")
+					else:
+						print("抉择")
 					pass
 			箭头数据.clear()
 			Global.main_node.战场.清理插槽()
@@ -62,7 +71,26 @@ func _process(delta: float) -> void:
 				if i.get_global_rect().has_point(get_global_mouse_position()):
 					箭头数据.结束节点=i
 	else:
-		super._process(delta)
+		if Global.main_node and Global.main_node.抉择节点:
+			if !Global.main_node.抉择是否隐藏 and !Global.main_node.抉择节点.visible:
+				print("使用",带抉择的卡牌节点.card_data.name_str)
+				if 带抉择的卡牌节点.card_data and 带抉择的卡牌节点.card_data.是否为法术():
+					带抉择的卡牌节点.hide()
+					带抉择的卡牌节点.queue_free()
+				else:
+					Global.main_node.战场.进入的区域进行释放(带抉择的卡牌节点)
+					使用触发(带抉择的卡牌节点)
+					Global.main_node.战场.清理插槽()
+					Global.main_node.战场.释放的清理操作()
+					释放的清理操作()
+					
+				带抉择的卡牌节点=null
+				Global.main_node.抉择节点.queue_free()
+				Global.main_node.抉择节点=null
+			else:
+				print("等等抉择选中")
+		else:
+			super._process(delta)
 	
 func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragContainer) -> void:
 	if 拖拽.card_data:
@@ -85,11 +113,9 @@ func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragC
 			return
 		var 抉择节点=拖拽.card_data.获取抉择节点()
 		if 抉择节点!=null:
-			print("抉择处理")
 			var 抉择ui=抉择节点.duplicate()
 			Global.main_node.add_child(抉择ui)
-			print(Global.main_node.size)
-			#抉择ui.size=Global.main_node.size
+			Global.main_node.抉择节点=抉择ui
 			抉择ui.show()
 			Global.main_node.所有的拖拽禁用或者开启(false)
 			return
