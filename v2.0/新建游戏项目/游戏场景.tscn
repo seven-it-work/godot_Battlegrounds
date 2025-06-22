@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4uagsaum6yak"]
+
+[ext_resource type="PackedScene" uid="uid://c1wvxhubccoqe" path="res://core/拖拽/拖拽.tscn" id="1_6xnqn"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽排序容器/player.tscn" id="2_myshr"]
+
+[node name="游戏场景" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fight" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 583.0
+offset_right = 1255.0
+offset_bottom = 583.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="fight"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -525.0
+offset_right = 1194.0
+offset_bottom = -345.0
+
+[node name="拖拽" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽2" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽3" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽4" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽5" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽6" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽7" parent="fight/HBoxContainer" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="fight"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = -226.0
+offset_right = 1192.0
+offset_bottom = -46.0
+
+[node name="拖拽" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽2" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽3" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽4" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽5" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽6" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="拖拽7" parent="fight/HBoxContainer2" instance=ExtResource("1_6xnqn")]
+layout_mode = 2
+"是否可以拖拽" = false
+
+[node name="player" parent="." instance=ExtResource("2_myshr")]
+layout_mode = 1
