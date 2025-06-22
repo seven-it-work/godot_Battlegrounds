@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://byy0afibnjwb4"
+path="res://.godot/imported/StealthDomeShadow_D.png-3c5e6992a68c8b52c29520440c7c1e7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/StealthDomeShadow_D.png"
+dest_files=["res://.godot/imported/StealthDomeShadow_D.png-3c5e6992a68c8b52c29520440c7c1e7f.ctex"]
 
 [params]
 

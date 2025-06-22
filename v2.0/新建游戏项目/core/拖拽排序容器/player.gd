@@ -1,9 +1,9 @@
 extends Control
 class_name Player
 
-@onready var 酒馆:DragContainer=$"酒馆"
-@onready var 战场:DragContainer=$"战场"
-@onready var 手牌:DragContainer=$"手牌"
+@onready var 酒馆:DragContainer=$"VBoxContainer/酒馆"
+@onready var 战场:DragContainer=$"VBoxContainer/战场"
+@onready var 手牌:DragContainer=$"VBoxContainer/手牌"
 
 var 抉择是否隐藏:bool=false
 var 抉择节点
@@ -35,18 +35,18 @@ func _ready() -> void:
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://bjhqpg4a8wuqj").instantiate()
 		drag.add_child(drag.card_data)
-		$"酒馆".添加到容器中(drag,-1)
+		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 		#drag.label.text="j_%s"%i
 	for i in 2 :
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
 		drag.add_child(drag.card_data)
-		$"酒馆".添加到容器中(drag,-1)
+		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	for i in 2 :
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://cuxpxje8iycj3").instantiate()
 		drag.add_child(drag.card_data)
-		$"酒馆".添加到容器中(drag,-1)
+		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 		#drag.label.text="j_%s"%i
 	#for i in 3 :
 		#var drag=preload("uid://c1wvxhubccoqe").instantiate()

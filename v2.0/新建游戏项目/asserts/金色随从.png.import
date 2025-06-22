@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://c10a754r60flq"
+path="res://.godot/imported/金色随从.png-f5b613f93043e752e81baee541be1b46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/金色随从.png"
+dest_files=["res://.godot/imported/金色随从.png-f5b613f93043e752e81baee541be1b46.ctex"]
 
 [params]
 

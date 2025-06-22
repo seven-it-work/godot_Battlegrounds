@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://b4cj6mpk3xk1n"
+path="res://.godot/imported/Deathrattle_Skull.png-1e0c5efd6ba3fae1c666872d6f43c50c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/Deathrattle_Skull.png"
+dest_files=["res://.godot/imported/Deathrattle_Skull.png-1e0c5efd6ba3fae1c666872d6f43c50c.ctex"]
 
 [params]
 

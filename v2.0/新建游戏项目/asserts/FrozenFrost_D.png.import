@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://130ebk1vfcbx"
+path="res://.godot/imported/FrozenFrost_D.png-cb7b4adc31f860f90abbfb991bd46d0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/FrozenFrost_D.png"
+dest_files=["res://.godot/imported/FrozenFrost_D.png-cb7b4adc31f860f90abbfb991bd46d0a.ctex"]
 
 [params]
 

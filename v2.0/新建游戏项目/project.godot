@@ -20,6 +20,14 @@ config/icon="res://icon.svg"
 Global="*res://Global.gd"
 Logger="*res://addons/gs_logger/logger.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=4
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gs_logger/plugin.cfg")

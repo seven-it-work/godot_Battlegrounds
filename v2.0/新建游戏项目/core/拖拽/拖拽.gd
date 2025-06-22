@@ -15,7 +15,7 @@ func 是否可以拖拽判断()->bool:
 	return 是否可以拖拽 and 容器中是否可以拖拽
 
 func _process(delta: float) -> void:
-	custom_minimum_size=$Panel.size
+	$Panel.size=custom_minimum_size
 	var 链接=get_signal_connection_list("结束拖拽")
 	if card_data:
 		label.text=card_data.name_str

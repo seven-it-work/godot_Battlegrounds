@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://cnxrf7b5ni8mu"
+path="res://.godot/imported/操作.png-4c20dc32d67a2cf61421bb586f68c9fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/操作.png"
+dest_files=["res://.godot/imported/操作.png-4c20dc32d67a2cf61421bb586f68c9fa.ctex"]
 
 [params]
 

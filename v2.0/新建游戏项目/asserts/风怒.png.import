@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://blxr2sildhwcn"
+path="res://.godot/imported/风怒.png-aa63718bff500e788cf0512fbee91e13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/风怒.png"
+dest_files=["res://.godot/imported/风怒.png-aa63718bff500e788cf0512fbee91e13.ctex"]
 
 [params]
 

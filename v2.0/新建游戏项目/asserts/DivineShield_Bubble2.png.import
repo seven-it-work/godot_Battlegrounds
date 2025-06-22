@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vmixkt78ydb"
-path="res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"
+uid="uid://gd3h0dhj8e1y"
+path="res://.godot/imported/DivineShield_Bubble2.png-313be6e24f869543a53eeef329e3b56c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/箭头.png"
-dest_files=["res://.godot/imported/箭头.png-433d5877d414e74b14ad9c0728fcf169.ctex"]
+source_file="res://asserts/DivineShield_Bubble2.png"
+dest_files=["res://.godot/imported/DivineShield_Bubble2.png-313be6e24f869543a53eeef329e3b56c.ctex"]
 
 [params]
 
