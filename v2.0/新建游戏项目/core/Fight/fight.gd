@@ -32,4 +32,6 @@ func 开始战斗(玩家:Player,敌人:Player):
 	# todo 进入战斗模式（包括战斗的计算信息）
 
 func _process(delta: float) -> void:
+	if 当前攻击者:
+		
 	pass
