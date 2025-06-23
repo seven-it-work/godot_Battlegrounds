@@ -144,7 +144,7 @@ func 使用触发(player:Player):
 ## 获取攻击力（包含加成属性）
 func atk_bonus(plyaer:Player)->int:
 	var result=atk*(2 if is_gold else 1);
-	if plyaer.是否在战斗中():
+	if plyaer.是否在战斗中:
 		for i in 临时属性加成:
 			result+=i.atk;
 	else:
@@ -155,7 +155,7 @@ func atk_bonus(plyaer:Player)->int:
 ## 获取生命值（包含加成属性）
 func hp_bonus(plyaer:Player)->int:
 	var result=hp*(2 if is_gold else 1);
-	if plyaer.是否在战斗中():
+	if plyaer.是否在战斗中:
 		for i in 临时属性加成:
 			result+=i.hp;
 	else:
@@ -176,7 +176,7 @@ func atk_process(触发卡:DragControl,num:int,player:Player,是否永久:bool=f
 	var temp=触发卡.card_data.get_AttributeBonus()
 	temp.atk=num
 	临时属性加成.append(temp)
-	if !player.是否在战斗中():
+	if !player.是否在战斗中:
 		属性加成.append(temp)
 	elif  是否永久:
 		属性加成.append(temp)
@@ -193,7 +193,7 @@ func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是�
 		var temp=触发随从.card_data.get_AttributeBonus()
 		temp.hp=生命值加成
 		临时属性加成.append(temp)
-		if !player.是否在战斗中():
+		if !player.是否在战斗中:
 			属性加成.append(temp)
 		elif  是否永久:
 			属性加成.append(temp)
@@ -219,7 +219,7 @@ func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是�
 		# 死亡判断
 		if 是否死亡(player):
 			# 移除自己
-			player.remove_card(self)
+			player.战斗随从死亡(self)
 			# 死亡
 			#触发器_亡语(trigger,player)
 			# 如果有复生则复生触发

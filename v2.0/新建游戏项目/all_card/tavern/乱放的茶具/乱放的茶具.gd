@@ -1,11 +1,7 @@
 extends CardData
 
 func 使用触发(player:Player):
-	# 获取player 战场中的所有随从
-	# 按照随从的种族
-	if $"使用时是否需要选择目标".目标对象:
-		print("todo 待开发主厨甄选或者种族类型相同的随从",$"使用时是否需要选择目标".目标对象.card_data.race)
-	pass
+	buff_one_of_each_type(player)
 
 
 func buff_one_of_each_type(player:Player) -> void:
@@ -33,6 +29,7 @@ func buff_one_of_each_type(player:Player) -> void:
 				break
 
 func 加成方法(minion:DragControl,player:Player):
-	minion.card_data.atk_process(minion,3,player)
-	minion.card_data.hp_process(minion,3,player)
+	var 合计加成=AttributeBonus.计算总和(player.法术加成)
+	minion.card_data.atk_process(minion,3+合计加成.atk,player)
+	minion.card_data.hp_process(minion,3+合计加成.hp,player)
 	pass

@@ -14,8 +14,7 @@ atk = 0
 show_atk = false
 hp = 0
 show_hp = false
-desc = "<b>刷新</b>酒馆，
-使其中变为等级5的牌。"
+desc = "<b>刷新</b>酒馆，使其中变为等级5的牌。"
 gold_desc = "<b>刷新</b>酒馆，使其中变为等级5的牌。"
 cardType = 3
 buy_coins = 3

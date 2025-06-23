@@ -8,12 +8,13 @@
 [node name="CardData" instance=ExtResource("1_8jv5b")]
 script = ExtResource("2_latq3")
 name_str = "心灵泥魔"
+atk = 2
+hp = 3
 race = Array[int]([2])
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 script = ExtResource("3_latq3")
 
-[node name="Roar" type="Node" parent="." index="1" node_paths=PackedStringArray("targetSelector")]
+[node name="Roar" type="Node" parent="." index="1"]
 script = ExtResource("3_8btgn")
-targetSelector = NodePath("")
 metadata/_custom_type_script = "uid://bus1w068x25rx"

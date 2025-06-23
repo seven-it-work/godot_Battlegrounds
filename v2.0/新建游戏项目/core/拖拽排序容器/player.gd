@@ -7,6 +7,8 @@ class_name Player
 
 var 抉择是否隐藏:bool=false
 var 抉择节点:Choose
+var 战斗中的牌:Array[DragControl]=[]
+var 是否在战斗中:bool=false
 
 #region 一些特定的属性
 var 优势压制:bool=false
@@ -14,10 +16,9 @@ var 分享关爱:bool=false
 var 吞饮粘浆:CardData=null
 
 var 元素酒馆加成:Array[AttributeBonus]=[]
+var 法术加成:Array[AttributeBonus]=[]
 #endregion
 
-func 是否在战斗中()->bool:
-	return false
 
 func _process(delta: float) -> void:
 	$"Panel".visible=抉择是否隐藏
@@ -27,11 +28,23 @@ func 获取所有的牌()->Array[DragControl]:
 	all.append_array(手牌.获取所有节点())
 	return all
 
+func 进入战斗模式():
+	是否在战斗中=true
+	战斗中的牌.clear()
+	for i in 战场.获取所有节点():
+		战斗中的牌.append(i.duplicate())
+
 func 获取战斗中的牌()->Array[DragControl]:
-	return []
+	if 是否在战斗中:
+		return 战斗中的牌
+	Logger.error("不在战斗中，进行新的战斗牌复制")
+	战斗中的牌.clear()
+	for i in 战场.获取所有节点():
+		战斗中的牌.append(i.duplicate())
+	return 战斗中的牌
 
 func 获取战场和酒馆中的牌()->Array[DragControl]:
-	var all=[]
+	var all:Array[DragControl]=[]
 	all.append_array(酒馆.获取所有节点())
 	all.append_array(战场.获取所有节点())
 	return all
@@ -45,21 +58,21 @@ func 所有的拖拽禁用或者开启(是否开启:bool):
 
 func _ready() -> void:
 	Global.main_node=self
-	for i in 2 :
-		var drag=preload("uid://c1wvxhubccoqe").instantiate()
-		drag.card_data=preload("uid://bjhqpg4a8wuqj").instantiate()
-		drag.add_child(drag.card_data)
-		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
-	for i in 2 :
-		var drag=preload("uid://c1wvxhubccoqe").instantiate()
-		drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
-		drag.add_child(drag.card_data)
-		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
-	for i in 2 :
-		var drag=preload("uid://c1wvxhubccoqe").instantiate()
-		drag.card_data=preload("uid://cuxpxje8iycj3").instantiate()
-		drag.add_child(drag.card_data)
-		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
+	#for i in 2 :
+		#var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		#drag.card_data=preload("uid://bjhqpg4a8wuqj").instantiate()
+		#drag.add_child(drag.card_data)
+		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
+	#for i in 2 :
+		#var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		#drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
+		#drag.add_child(drag.card_data)
+		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
+	#for i in 2 :
+		#var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		#drag.card_data=preload("uid://cuxpxje8iycj3").instantiate()
+		#drag.add_child(drag.card_data)
+		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	pass
 
 func 获取当前酒馆等级()->int:
@@ -76,4 +89,9 @@ func 添加到手牌(card:CardData):
 	dragControl.card_data=card
 	dragControl.add_child(card)
 	手牌.添加到容器中(dragControl,-1)
+	pass
+
+
+
+func 刷新酒馆(条件:Array[CardFindCondition]=[]):
 	pass

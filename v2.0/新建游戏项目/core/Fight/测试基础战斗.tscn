@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://btcckudp08t2"]
+
+[ext_resource type="Script" uid="uid://bao7v1sv2sgjx" path="res://core/Fight/测试基础战斗.gd" id="1_0gwqm"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽排序容器/player.tscn" id="2_72dkv"]
+[ext_resource type="PackedScene" uid="uid://batjwfujq44uj" path="res://core/Fight/fight.tscn" id="3_un2au"]
+
+[node name="测试基础战斗" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0gwqm")
+
+[node name="玩家" parent="." instance=ExtResource("2_72dkv")]
+visible = false
+layout_mode = 1
+
+[node name="敌人" parent="." instance=ExtResource("2_72dkv")]
+visible = false
+layout_mode = 1
+
+[node name="fight" parent="." instance=ExtResource("3_un2au")]
+
+[connection signal="战斗结束" from="fight" to="." method="_on_fight_战斗结束"]
