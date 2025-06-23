@@ -1,27 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwmax42chcv3w"]
+[gd_scene load_steps=4 format=3 uid="uid://cwmax42chcv3w"]
 
 [ext_resource type="Script" uid="uid://78p2wmbyeyp6" path="res://all_card/tavern/哈缪尔遗失的法杖/哈缪尔遗失的法杖.gd" id="1_cc03i"]
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+[ext_resource type="Script" uid="uid://dexsjf53lgyd2" path="res://all_card/tavern/哈缪尔遗失的法杖/使用时是否需要选择目标.gd" id="3_4dfpo"]
 
 [node name="哈缪尔遗失的法杖" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "哈缪尔遗失的法杖"
 version = "32.2.4.221850"
 ls_card_id = "EBG_Spell_038"
-name_str = "哈缪尔遗失的法杖"
 lv = 6
-show_lv = true
-atk = 0
 show_atk = false
 hp = 0
 show_hp = false
 desc = "选择一个随从。<b>刷新</b>酒馆，使其中的牌变为该类型的随从。"
 gold_desc = "选择一个随从。<b>刷新</b>酒馆，使其中的牌变为该类型的随从。"
 cardType = 3
-buy_coins = 3
-show_buy_coins = true
 race = Array[int]([])
-"æ¯å¦åºç°å¨éé¦" = true
-"æ¯å¦ä¸ºä¼ä¼´" = false
+show_buy_coins = true
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
-"是否需要选择目标" = true
+script = ExtResource("3_4dfpo")

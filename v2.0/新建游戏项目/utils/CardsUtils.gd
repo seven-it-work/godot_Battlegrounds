@@ -1,16 +1,21 @@
 extends Node
 class_name CardsUtils
-#static var COMMON_CODITION={
-	#"是否出现在酒馆":CardFindCondition.build(
-		#"是否出现在酒馆",true,CardFindCondition.ConditionEnum.等于
-	#),
-	#"随从":CardFindCondition.build(
-		#"cardType",BaseCard.CardTypeEnum.MINION,CardFindCondition.ConditionEnum.等于
-	#),
-	#"法术":CardFindCondition.build(
-		#"cardType",BaseCard.CardTypeEnum.SPELL,CardFindCondition.ConditionEnum.等于
-	#)
-#}
+
+class COMMON_CODITION:
+	static var 出现在酒馆=CardFindCondition.build(
+		"是否出现在酒馆",true,CardFindCondition.ConditionEnum.等于
+	)
+	static var 随从=CardFindCondition.build(
+		"cardType",Enums.CardTypeEnum.MINION,CardFindCondition.ConditionEnum.等于
+	)
+	static var 法术=CardFindCondition.build(
+		"cardType",Enums.CardTypeEnum.SPELL,CardFindCondition.ConditionEnum.等于
+	)
+	
+	static func 低于当前等级(player:Player)->CardFindCondition:
+		return CardFindCondition.build(
+		"lv",player.获取当前酒馆等级(),CardFindCondition.ConditionEnum.小于等于
+	)
 #
 #static func 合成三连(card1:BaseCard,card2:BaseCard,card3:BaseCard)->BaseCard:
 	#var result=card1
@@ -86,37 +91,37 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 	
 
 # 查询
-#static func find_card(conditionList:Array[CardFindCondition])->Array:
-	#return Globals.all_card.values().filter(func (card):
-		#var all_result:Array[bool]=[]
-		#for i in conditionList:
-			#var re=false
-			#if i.key in card:
-				#match i.判断:
-					#CardFindCondition.ConditionEnum.大于:
-						#re=(card[i.key]>i.value)
-					#CardFindCondition.ConditionEnum.等于:
-						#re=(card[i.key]==i.value)
-					#CardFindCondition.ConditionEnum.小于:
-						#re=(card[i.key]<i.value)
-					#CardFindCondition.ConditionEnum.大于等于:
-						#re=(card[i.key]>=i.value)
-					#CardFindCondition.ConditionEnum.小于等于:
-						#re=(card[i.key]<=i.value)
-					#CardFindCondition.ConditionEnum.不等于:
-						#re=(card[i.key]!=i.value)
-					#CardFindCondition.ConditionEnum.在:
-						#re=(card[i.key].has(i.value))
-					#CardFindCondition.ConditionEnum.不在:
-						#re=(!card[i.key].has(i.value))
-					#_:
-						#pass
-			#if !re and i.且或:
-				#return false
-			#all_result.append(re)
-		#return all_result.any(func(b): return b)
-		#)
-	#pass
+static func find_card(conditionList:Array[CardFindCondition])->Array:
+	return Global.all_card.values().filter(func (card:CardData):
+		var all_result:Array[bool]=[]
+		for i in conditionList:
+			var re=false
+			if i.key in card:
+				match i.判断:
+					CardFindCondition.ConditionEnum.大于:
+						re=(card[i.key]>i.value)
+					CardFindCondition.ConditionEnum.等于:
+						re=(card[i.key]==i.value)
+					CardFindCondition.ConditionEnum.小于:
+						re=(card[i.key]<i.value)
+					CardFindCondition.ConditionEnum.大于等于:
+						re=(card[i.key]>=i.value)
+					CardFindCondition.ConditionEnum.小于等于:
+						re=(card[i.key]<=i.value)
+					CardFindCondition.ConditionEnum.不等于:
+						re=(card[i.key]!=i.value)
+					CardFindCondition.ConditionEnum.在:
+						re=(card[i.key].has(i.value))
+					CardFindCondition.ConditionEnum.不在:
+						re=(!card[i.key].has(i.value))
+					_:
+						pass
+			if !re and i.且或:
+				return false
+			all_result.append(re)
+		return all_result.any(func(b): return b)
+		)
+	pass
 
 # 递归扫描目录及子目录
 static func scan_scenes_recursive(base_path: String, current_path: String = "",scene_dict:Dictionary = {}):

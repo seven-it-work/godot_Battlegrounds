@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bloy205nn0svf"]
+[gd_scene load_steps=4 format=3 uid="uid://bloy205nn0svf"]
 
 [ext_resource type="Script" uid="uid://br2lw4chrvjto" path="res://all_card/tavern/大地母亲之眼/大地母亲之眼.gd" id="1_cc03i"]
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+[ext_resource type="Script" uid="uid://bh2k1qa050dv" path="res://all_card/tavern/大地母亲之眼/使用时是否需要选择目标.gd" id="3_6nhpg"]
 
 [node name="大地母亲之眼" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
@@ -17,3 +18,6 @@ gold_desc = "选择一个等级4或以下的友方随从，将其变为金色。
 cardType = 3
 race = Array[int]([])
 show_buy_coins = true
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+script = ExtResource("3_6nhpg")

@@ -26,13 +26,13 @@ func buff_one_of_each_type(player:Player) -> void:
 			func(t): return not buffed_types.has(t)
 		)
 		if unbuffed_types.size() > 0:
-			# todo 这里是加成方法
-			加成方法()
+			加成方法(minion,player)
 			buffed_types[unbuffed_types[0]] = true  # 只标记第一个可用类型
 			# 提前终止：所有类型都已覆盖
 			if buffed_types.size() == Enums.RaceEnum.size() - 1:
 				break
 
-func 加成方法():
-	print("加成方法")
+func 加成方法(minion:DragControl,player:Player):
+	minion.card_data.atk_process(minion,3,player)
+	minion.card_data.hp_process(minion,3,player)
 	pass

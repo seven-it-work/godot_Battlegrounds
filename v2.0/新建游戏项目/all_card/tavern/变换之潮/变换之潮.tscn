@@ -5,23 +5,15 @@
 
 [node name="变换之潮" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "变换之潮"
 version = "32.2.4.221850"
 ls_card_id = "BG32_815"
-name_str = "变换之潮"
 lv = 4
-show_lv = true
-atk = 0
 show_atk = false
 hp = 0
 show_hp = false
 desc = "使一个随从获得+{0}/+{1}。如果该随从是纳迦，再使其获得+{0}/+{1}。"
 gold_desc = "使一个随从获得+{0}/+{1}。如果该随从是纳迦，再使其获得+{0}/+{1}。"
 cardType = 3
-buy_coins = 3
-show_buy_coins = true
 race = Array[int]([])
-"æ¯å¦åºç°å¨éé¦" = true
-"æ¯å¦ä¸ºä¼ä¼´" = false
-
-[node name="使用时是否需要选择目标" parent="." index="0"]
-"是否需要选择目标" = false
+show_buy_coins = true

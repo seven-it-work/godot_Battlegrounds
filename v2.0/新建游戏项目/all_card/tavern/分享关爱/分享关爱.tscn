@@ -5,23 +5,18 @@
 
 [node name="分享关爱" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "分享关爱"
 version = "32.2.4.221850"
 ls_card_id = "BG31_889"
-name_str = "分享关爱"
 lv = 7
-show_lv = true
-atk = 0
 show_atk = false
 hp = 0
 show_hp = false
 desc = "<b>战斗开始时：</b>你最左边的随从会获得等同于距其最近的敌方随从的属性值。"
 gold_desc = "<b>战斗开始时：</b>你最左边的随从会获得等同于距其最近的敌方随从的属性值。"
 cardType = 3
-buy_coins = 3
-show_buy_coins = true
 race = Array[int]([])
-"æ¯å¦åºç°å¨éé¦" = true
-"æ¯å¦ä¸ºä¼ä¼´" = false
+show_buy_coins = true
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false

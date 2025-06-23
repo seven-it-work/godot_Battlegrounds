@@ -8,18 +8,29 @@ class_name Player
 var 抉择是否隐藏:bool=false
 var 抉择节点:Choose
 
+#region 一些特定的属性
+var 优势压制:bool=false
+var 分享关爱:bool=false
+var 吞饮粘浆:CardData=null
+
+var 元素酒馆加成:Array[AttributeBonus]=[]
+#endregion
+
 func 是否在战斗中()->bool:
 	return false
 
 func _process(delta: float) -> void:
 	$"Panel".visible=抉择是否隐藏
 
-func 获取所有的牌():
+func 获取所有的牌()->Array[DragControl]:
 	var all=获取战场和酒馆中的牌()
 	all.append_array(手牌.获取所有节点())
 	return all
 
-func 获取战场和酒馆中的牌():
+func 获取战斗中的牌()->Array[DragControl]:
+	return []
+
+func 获取战场和酒馆中的牌()->Array[DragControl]:
 	var all=[]
 	all.append_array(酒馆.获取所有节点())
 	all.append_array(战场.获取所有节点())
@@ -51,9 +62,18 @@ func _ready() -> void:
 		$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	pass
 
+func 获取当前酒馆等级()->int:
+	return 1;
 
 func _on_抉择是否隐藏_pressed() -> void:
 	抉择是否隐藏=false
 	if 抉择节点:
 		抉择节点.show()
 	pass # Replace with function body.
+
+func 添加到手牌(card:CardData):
+	var dragControl:DragControl=preload("uid://c1wvxhubccoqe").instantiate()
+	dragControl.card_data=card
+	dragControl.add_child(card)
+	手牌.添加到容器中(dragControl,-1)
+	pass

@@ -92,15 +92,24 @@ func get_插画路径()->String:
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
 
+#region 判断方法
+func 是否能够使用(player:Player)->bool:
+	return true
+
 func 是否存在亡语()->bool:
 	#return 亡语.size()>0
 	return false
+
+func 是否死亡(player:Player)->bool:
+	return current_hp+hp_bonus(player)<=0
 
 func 是否属于种族(race:Enums.RaceEnum)->bool:
 	return self.race.has(race)
 
 func 是否为法术()->bool:
 	return [Enums.CardTypeEnum.SPELL,Enums.CardTypeEnum.TAVERN].has(self.cardType)
+
+#endregion
 
 func 获取抉择节点()->Choose:
 	var list= get_children().filter(func(x): return x is Choose)
@@ -153,3 +162,81 @@ func hp_bonus(plyaer:Player)->int:
 		for i in 属性加成:
 			result+=i.hp;
 	return result
+
+# 加成描述
+func get_AttributeBonus():
+	# 建议子类实现
+	return AttributeBonus.create(self.name_str,0,0,self.name_str)
+
+#region 属性加成
+## 攻击力
+func atk_process(触发卡:DragControl,num:int,player:Player,是否永久:bool=false):
+	if num==0:
+		return
+	var temp=触发卡.card_data.get_AttributeBonus()
+	temp.atk=num
+	临时属性加成.append(temp)
+	if !player.是否在战斗中():
+		属性加成.append(temp)
+	elif  是否永久:
+		属性加成.append(temp)
+	#if num>0:
+		#触发器_获得攻击力(trigger,num,player)
+	pass
+	
+## 生命值处理
+func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是否永久:bool=false):
+	if 生命值加成==0:
+		return
+	if 生命值加成>=0:
+		# 生命加成
+		var temp=触发随从.card_data.get_AttributeBonus()
+		temp.hp=生命值加成
+		临时属性加成.append(temp)
+		if !player.是否在战斗中():
+			属性加成.append(temp)
+		elif  是否永久:
+			属性加成.append(temp)
+		#触发器_获得生命值(trigger,num,player)
+	else:
+		# todo 触发器_受到攻击
+		if self.圣盾:
+			self.圣盾=false
+			return
+		# 受伤了，减去生命值
+		if 触发随从.card_data.剧毒:
+			触发随从.card_data.剧毒=false
+			# todo 剧毒消失触发器
+			生命值加成=-hp_bonus(player)
+		if 触发随从.card_data.烈毒:
+			生命值加成=-hp_bonus(player)
+		current_hp+=生命值加成
+		#触发器_受伤(trigger,num,player)
+		for i in player.获取所有的牌():
+			if i.card_data.uuid!=self.uuid:
+				#i.触发器_他人受伤(trigger,self,num,player)
+				pass
+		# 死亡判断
+		if 是否死亡(player):
+			# 移除自己
+			player.remove_card(self)
+			# 死亡
+			#触发器_亡语(trigger,player)
+			# 如果有复生则复生触发
+			#if 复生:
+				#var new_minion=CardsUtils.find_card([
+					#CardFindCondition.build("name_str",name_str,CardFindCondition.ConditionEnum.等于)
+				#]).front()
+				#if new_minion:
+					#new_minion=CardsUtils.find_card([
+						#CardFindCondition.build("name_str",new_minion.name_str,CardFindCondition.ConditionEnum.等于)
+					#]).get(0).duplicate()
+					#new_minion.current_hp=1
+					#new_minion.复生=false
+					#player.add_card_in_bord(new_minion)
+				#else:
+					#print("没有找到",name_str)
+					#return
+
+	pass
+#engregion
