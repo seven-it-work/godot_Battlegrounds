@@ -9,6 +9,7 @@ var 抉择是否隐藏:bool=false
 var 抉择节点:Choose
 var 战斗中的牌:Array[DragControl]=[]
 var 是否在战斗中:bool=false
+var fight:Fight
 
 #region 一些特定的属性
 var 优势压制:bool=false
@@ -18,7 +19,6 @@ var 吞饮粘浆:CardData=null
 var 元素酒馆加成:Array[AttributeBonus]=[]
 var 法术加成:Array[AttributeBonus]=[]
 #endregion
-
 
 func _process(delta: float) -> void:
 	$"Panel".visible=抉择是否隐藏
@@ -91,7 +91,16 @@ func 添加到手牌(card:CardData):
 	手牌.添加到容器中(dragControl,-1)
 	pass
 
-
+func 战斗随从死亡(card_data:CardData):
+	var parent=card_data.get_parent()
+	if parent is DragControl:
+		parent.hide()
+		战斗中的牌.erase(parent)
+		parent.queue_free()
+		pass
+	else:
+		Logger.error("错误类型，请检查")
+	pass
 
 func 刷新酒馆(条件:Array[CardFindCondition]=[]):
 	pass

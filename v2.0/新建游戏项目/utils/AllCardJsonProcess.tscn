@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://o528epai5m3x"]
-
-[ext_resource type="Script" uid="uid://cgc77rahdlr0" path="res://utils/all_card_json_process.gd" id="1_85few"]
-
-[node name="AllCardJsonProcess" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_85few")

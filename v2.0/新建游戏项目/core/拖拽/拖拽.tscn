@@ -70,6 +70,7 @@ offset_bottom = 11.0
 [node name="当前操作" type="TextureRect" parent="Node"]
 visible = false
 material = SubResource("ShaderMaterial_hg3kr")
+layout_mode = 0
 offset_left = -34.0
 offset_top = -22.0
 offset_right = 220.0
@@ -80,6 +81,7 @@ expand_mode = 1
 [node name="箭头选中" type="TextureRect" parent="Node"]
 visible = false
 material = SubResource("ShaderMaterial_hg3kr")
+layout_mode = 0
 offset_left = -34.0
 offset_top = -24.0
 offset_right = 221.0
@@ -88,6 +90,7 @@ texture = ExtResource("4_xvyer")
 expand_mode = 1
 
 [node name="普通边框" type="TextureRect" parent="Node"]
+layout_mode = 0
 offset_left = -4.0
 offset_top = -8.0
 offset_right = 179.0
@@ -97,6 +100,7 @@ expand_mode = 1
 
 [node name="金色边框" type="TextureRect" parent="Node"]
 visible = false
+layout_mode = 0
 offset_left = -3.0
 offset_top = -4.0
 offset_right = 180.0
@@ -106,6 +110,7 @@ expand_mode = 1
 
 [node name="嘲讽" type="TextureRect" parent="Node"]
 visible = false
+layout_mode = 0
 offset_left = -8.0
 offset_top = -4.0
 offset_right = 190.0
@@ -114,6 +119,7 @@ texture = ExtResource("7_wxm75")
 expand_mode = 1
 
 [node name="主框架" type="TextureRect" parent="Node"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
 offset_right = 173.0
@@ -124,6 +130,7 @@ expand_mode = 1
 [node name="圣盾" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_right = 180.0
 offset_bottom = 180.0
 texture = ExtResource("9_gm5nd")
@@ -131,6 +138,7 @@ expand_mode = 1
 
 [node name="遮罩" type="TextureRect" parent="Node"]
 clip_children = 2
+layout_mode = 0
 offset_left = 41.0
 offset_top = 14.0
 offset_right = 141.0
@@ -170,6 +178,7 @@ expand_mode = 1
 [node name="冻结" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 36.0
 offset_top = 14.0
 offset_right = 145.0
@@ -182,6 +191,7 @@ flip_v = true
 [node name="剧毒" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 73.0
 offset_top = 144.0
 offset_right = 109.0
@@ -192,6 +202,7 @@ expand_mode = 1
 [node name="烈毒" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 78.0
 offset_top = 143.0
 offset_right = 103.0
@@ -202,6 +213,7 @@ expand_mode = 1
 [node name="触发" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 78.0
 offset_top = 144.0
 offset_right = 103.0
@@ -212,6 +224,7 @@ expand_mode = 1
 [node name="亡语" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 71.0
 offset_top = 133.0
 offset_right = 110.0
@@ -222,6 +235,7 @@ expand_mode = 1
 [node name="攻击力" type="TextureRect" parent="Node"]
 visible = false
 z_index = 2
+layout_mode = 0
 offset_left = -2.0
 offset_top = 96.0
 offset_right = 91.0
@@ -248,6 +262,7 @@ vertical_alignment = 1
 [node name="生命值" type="TextureRect" parent="Node"]
 visible = false
 z_index = 2
+layout_mode = 0
 offset_left = 94.0
 offset_top = 99.0
 offset_right = 187.0
@@ -274,6 +289,7 @@ vertical_alignment = 1
 [node name="等级" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 120.0
 offset_top = 3.0
 offset_right = 167.0
@@ -556,6 +572,7 @@ expand_mode = 1
 [node name="金币" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 34.0
 offset_top = 8.0
 offset_right = 62.0
@@ -582,6 +599,7 @@ vertical_alignment = 1
 [node name="名称" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 16.0
 offset_top = 97.0
 offset_right = 165.0

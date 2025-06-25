@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+UUID="*res://addons/uuid/uuid.gd"
 Global="*res://Global.gd"
 Logger="*res://addons/gs_logger/logger.gd"
 
@@ -30,7 +31,7 @@ window/handheld/orientation=4
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gs_logger/plugin.cfg")
+enabled=PackedStringArray("res://addons/gs_logger/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [rendering]
 

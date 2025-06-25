@@ -81,7 +81,14 @@ var 复仇计数器:int=0
 
 func _ready() -> void:
 	print("ready")
-
+func _init() -> void:
+	self.uuid=UUID.v4()
+func get_desc(player:Player,otherJson:Dictionary={})->String:
+	var playerJson:Dictionary=JsonUtils.obj_2_json(player)
+	playerJson.assign(otherJson)
+	if is_gold:
+		return StrUtils.自定义format(gold_desc,playerJson)
+	return StrUtils.自定义format(desc,playerJson)
 func get_插画路径()->String:
 	if 插画路径:
 		return 插画路径

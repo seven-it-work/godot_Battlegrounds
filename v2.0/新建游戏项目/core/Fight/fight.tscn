@@ -12,72 +12,72 @@ offset_right = 1255.0
 offset_bottom = 583.0
 script = ExtResource("1_78hah")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="敌人随从" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 50.0
 offset_top = -525.0
 offset_right = 1194.0
 offset_bottom = -345.0
 
-[node name="拖拽" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽2" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽2" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽3" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽3" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽4" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽4" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽5" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽5" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽6" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽6" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽7" parent="HBoxContainer" instance=ExtResource("1_nqbw0")]
+[node name="拖拽7" parent="敌人随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="玩家随从" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 48.0
 offset_top = -226.0
 offset_right = 1192.0
 offset_bottom = -46.0
 
-[node name="拖拽" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽2" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽2" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽3" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽3" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽4" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽4" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽5" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽5" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽6" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽6" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false
 
-[node name="拖拽7" parent="HBoxContainer2" instance=ExtResource("1_nqbw0")]
+[node name="拖拽7" parent="玩家随从" instance=ExtResource("1_nqbw0")]
 layout_mode = 2
 "是否可以拖拽" = false

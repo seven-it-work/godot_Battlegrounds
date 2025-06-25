@@ -1,6 +1,7 @@
 extends Control
 class_name DragControl
 
+@export var uuid:String
 @export var 是否可以拖拽:bool=true
 @export var 容器中是否可以拖拽:bool=true
 @export var card_data:CardData
@@ -113,6 +114,7 @@ func _process(delta: float) -> void:
 	更新卡牌信息()
 	var 链接=get_signal_connection_list("结束拖拽")
 	if card_data:
+		uuid=card_data.uuid
 		label.text=card_data.name_str
 	if 是否可以拖拽判断():
 		if 是否按下拖拽:

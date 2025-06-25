@@ -5,6 +5,7 @@ func _ready() -> void:
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
 		drag.add_child(drag.card_data)
+		drag.uuid=drag.card_data.uuid
 		$"玩家".战场.添加到容器中(drag,-1)
 	
 	
@@ -12,6 +13,7 @@ func _ready() -> void:
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://cirqyt3sqmpq8").instantiate()
 		drag.add_child(drag.card_data)
+		drag.uuid=drag.card_data.uuid
 		$"敌人".战场.添加到容器中(drag,-1)
 		
 	$fight.开始战斗($"玩家",$"敌人")
