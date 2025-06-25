@@ -39,3 +39,45 @@ func 执行(player:Player):
 		pass
 	pass
 	#<b>战斗开始时：</b>你最左边的随从会获得等同于距其最近的敌方随从的属性值。
+
+# 返回某个 `品` 的最近 `物` 列表
+func find_nearest_wu(wu_list: Array, pin_list: Array, target_pin) -> Array:
+	var nearest_wu_list = []
+
+	# 检查输入合法性
+	if wu_list.is_empty() or pin_list.is_empty() or not target_pin in pin_list:
+		return nearest_wu_list
+
+	var wu_count = wu_list.size()
+	var pin_count = pin_list.size()
+	var target_index = pin_list.find(target_pin)
+
+	# 判断是否错位
+	var is_misaligned = (wu_count % 2) != (pin_count % 2)
+
+	if is_misaligned:
+		# 错位情况：品位于物的中间位置
+		# 计算最近的物索引
+		var wu_index = (target_index * 2 + 1) / 2  # 相当于 target_index + 0.5
+
+		# 最近的物可能是 floor(wu_index) 和 ceil(wu_index)
+		var lower_index = floor(wu_index)
+		var upper_index = ceil(wu_index)
+
+		if lower_index >= 0 and lower_index < wu_count:
+			nearest_wu_list.append(wu_list[lower_index])
+		if upper_index >= 0 and upper_index < wu_count and upper_index != lower_index:
+			nearest_wu_list.append(wu_list[upper_index])
+	else:
+		# 对齐情况：品和物直接上下对齐
+		var wu_index = target_index
+		if wu_index >= 0 and wu_index < wu_count:
+			nearest_wu_list.append(wu_list[wu_index])
+
+		# 检查左右相邻的物（如果有）
+		if wu_index - 1 >= 0:
+			nearest_wu_list.append(wu_list[wu_index - 1])
+		if wu_index + 1 < wu_count:
+			nearest_wu_list.append(wu_list[wu_index + 1])
+
+	return nearest_wu_list

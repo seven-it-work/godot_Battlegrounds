@@ -261,3 +261,75 @@ func _move_panel_to_panel(a, b, duration: float = 0.5) -> void:
 	tween.parallel().tween_property(a, "size", target_size, duration)
 	
 	await tween.finished
+
+
+
+# ai实现
+var a_minions: Array  # 玩家A的随从列表
+var b_minions: Array  # 玩家B的随从列表
+var current_attacker: int = 0  # 当前攻击方（0=A, 1=B）
+var a_attack_index: int = 0	# A的当前攻击位置
+var b_attack_index: int = 0	# B的当前攻击位置
+
+# 初始化战斗
+func start_combat(a_minions_arr: Array, b_minions_arr: Array):
+	a_minions = a_minions_arr.duplicate()
+	b_minions = b_minions_arr.duplicate()
+	current_attacker = 0  # A先手
+	a_attack_index = 0
+	b_attack_index = 0
+
+# 执行单次攻击
+func execute_attack():
+	if a_minions.is_empty() or b_minions.is_empty():
+		return false  # 战斗结束
+	
+	var attacker_list = a_minions if current_attacker == 0 else b_minions
+	var defender_list = b_minions if current_attacker == 0 else a_minions
+	var attack_index = a_attack_index if current_attacker == 0 else b_attack_index
+	
+	# 寻找可攻击的随从（攻击力>0）
+	var attacker = null
+	var start_index = attack_index
+	while true:
+		if attack_index >= attacker_list.size():
+			attack_index = 0
+			if attack_index == start_index:
+				return false  # 没有可攻击的随从
+		
+		attacker = attacker_list[attack_index]
+		if attacker.attack > 0:  # 假设随从有 attack 属性
+			break
+		attack_index += 1
+	
+	# 选择目标（默认攻击第一个随从）
+	var defender = defender_list[0] if not defender_list.is_empty() else null
+	if not defender:
+		return false
+	
+	# 执行攻击
+	defender.health -= attacker.attack
+	attacker.health -= defender.attack
+	
+	# 移除死亡的随从
+	if defender.health <= 0:
+		defender_list.remove_at(defender_list.find(defender))
+	if attacker.health <= 0:
+		attacker_list.remove_at(attacker_list.find(attacker))
+	
+	# 更新攻击位置
+	if current_attacker == 0:
+		a_attack_index = (attack_index + 1) % a_minions.size() if not a_minions.is_empty() else 0
+	else:
+		b_attack_index = (attack_index + 1) % b_minions.size() if not b_minions.is_empty() else 0
+	
+	# 切换攻击方
+	current_attacker = 1 - current_attacker
+	return true
+
+# 示例：运行战斗直到结束
+func simulate_combat():
+	while execute_attack():
+		print("A Minions: ", a_minions)
+		print("B Minions: ", b_minions)
+	print("Combat ended!")
