@@ -3,6 +3,7 @@ class_name Choose
 
 @onready var 抉择选项ui=$MarginContainer
 var 上一次选项:ChooseOption=null
+var player:Player
 
 func 是否需要选择目标()->bool:
 	var target=get_node("TargetSelector")
@@ -43,6 +44,7 @@ func _on_确定_pressed() -> void:
 	print(self.上一次选项)
 	if self.上一次选项:
 		print("使用成功")
+		上一次选项.执行方法(player,get_parent())
 		self.hide()
 	else:
 		print("没有选择")

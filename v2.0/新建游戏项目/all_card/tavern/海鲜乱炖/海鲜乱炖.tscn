@@ -5,23 +5,15 @@
 
 [node name="海鲜乱炖" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "海鲜乱炖"
 version = "32.2.4.221850"
 ls_card_id = "BG32_337"
-name_str = "海鲜乱炖"
 lv = 3
-show_lv = true
-atk = 0
 show_atk = false
 hp = 0
 show_hp = false
-desc = "使一个随从获得+{0}/+{1}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
-gold_desc = "使一个随从获得+{0}/+{1}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
+desc = "使一个随从获得+${法术攻击值}/+${法术生命值}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
+gold_desc = "使一个随从获得+${法术攻击值}/+${法术生命值}。你的战队中每有一个不同的<b>额外关键词</b>，重复一次。"
 cardType = 3
-buy_coins = 3
-show_buy_coins = true
 race = Array[int]([])
-"是否出现在酒馆" = true
-"是否为伙伴" = false
-
-[node name="使用时是否需要选择目标" parent="." index="0"]
-"是否需要选择目标" = false
+show_buy_coins = true

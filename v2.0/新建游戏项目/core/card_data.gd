@@ -29,6 +29,8 @@ class_name CardData
 @export var is_gold:bool=false
 # 属性
 @export var 嘲讽:bool=false
+# 这个属性受（搞怪裤影响）
+@export var 是否被取消嘲讽:bool=false
 @export var 圣盾:bool=false
 @export var 复生:bool=false
 # 一次性毒
@@ -68,6 +70,7 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 @export var sell_coins:int=1
 # 购买需要金币
 @export var buy_coins:int=3
+@export var 购买是否消耗生命值:bool=false
 @export var show_buy_coins:bool=false
 # 是否为伙伴
 @export var is_companion:bool=false
@@ -99,6 +102,21 @@ func get_插画路径()->String:
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
 
+func 获取额外属性个数()->int:
+	var count=0;
+	if self.嘲讽:
+		count+=1
+	if self.圣盾:
+		count+=1
+	if self.复生:
+		count+=1
+	if self.剧毒:
+		count+=1
+	if self.风怒:
+		count+=1
+	if self.潜行:
+		count+=1
+	return count
 #region 判断方法
 func 是否能够使用(player:Player)->bool:
 	return true
@@ -171,11 +189,18 @@ func hp_bonus(plyaer:Player)->int:
 	return result
 
 # 加成描述
-func get_AttributeBonus():
+func get_AttributeBonus()->AttributeBonus:
 	# 建议子类实现
 	return AttributeBonus.create(self.name_str,0,0,self.name_str)
 
 #region 属性加成
+func 属性添加(player:Player,属性:AttributeBonus,是否永久:bool=false):
+	临时属性加成.append(属性)
+	if !player.是否在战斗中:
+		属性加成.append(属性)
+	elif  是否永久:
+		属性加成.append(属性)
+
 ## 攻击力
 func atk_process(触发卡:DragControl,num:int,player:Player,是否永久:bool=false):
 	if num==0:

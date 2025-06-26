@@ -5,12 +5,10 @@
 
 [node name="恶鳞套餐" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "恶鳞套餐"
 version = "32.2.4.221850"
 ls_card_id = "BG28_606"
-name_str = "恶鳞套餐"
 lv = 4
-show_lv = true
-atk = 0
 show_atk = false
 hp = 0
 show_hp = false
@@ -18,11 +16,8 @@ desc = "随机获取3张<b>塑造法术</b>的
 法术牌。"
 gold_desc = "随机获取3张<b>塑造法术</b>的法术牌。"
 cardType = 3
-buy_coins = 3
-show_buy_coins = true
 race = Array[int]([])
-"是否出现在酒馆" = true
-"是否为伙伴" = false
+show_buy_coins = true
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false

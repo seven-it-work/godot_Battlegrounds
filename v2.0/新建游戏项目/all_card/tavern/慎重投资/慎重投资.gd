@@ -1,1 +1,4 @@
 extends CardData
+
+func 使用触发(player:Player):
+	player.下回合开始时额外获得金币数量+=2

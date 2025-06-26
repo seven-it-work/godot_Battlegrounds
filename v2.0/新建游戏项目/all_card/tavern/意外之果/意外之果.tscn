@@ -5,23 +5,17 @@
 
 [node name="意外之果" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "意外之果"
 version = "32.2.4.221850"
 ls_card_id = "BG28_966"
-name_str = "意外之果"
-lv = 1
-show_lv = true
-atk = 0
 show_atk = false
 hp = 0
 show_hp = false
 desc = "使酒馆中的随从获得+{0}/+{1}。"
 gold_desc = "使酒馆中的随从获得+{0}/+{1}。"
 cardType = 3
-buy_coins = 3
-show_buy_coins = true
 race = Array[int]([])
-"是否出现在酒馆" = true
-"是否为伙伴" = false
+show_buy_coins = true
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false
