@@ -126,7 +126,7 @@ func 是否存在亡语()->bool:
 	return false
 
 func 是否死亡(player:Player)->bool:
-	return current_hp+hp_bonus(player)<=0
+	return hp_bonus(player)<=0
 
 func 是否属于种族(race:Enums.RaceEnum)->bool:
 	return self.race.has(race)
@@ -169,7 +169,7 @@ func 使用触发(player:Player):
 ## 获取攻击力（包含加成属性）
 func atk_bonus(plyaer:Player)->int:
 	var result=atk*(2 if is_gold else 1);
-	if plyaer.是否在战斗中:
+	if plyaer.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.atk;
 	else:
@@ -180,13 +180,14 @@ func atk_bonus(plyaer:Player)->int:
 ## 获取生命值（包含加成属性）
 func hp_bonus(plyaer:Player)->int:
 	var result=hp*(2 if is_gold else 1);
-	if plyaer.是否在战斗中:
+	if plyaer.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.hp;
 	else:
 		for i in 属性加成:
 			result+=i.hp;
-	return result
+	var 生命=result+current_hp
+	return 生命
 
 # 加成描述
 func get_AttributeBonus()->AttributeBonus:
@@ -196,7 +197,7 @@ func get_AttributeBonus()->AttributeBonus:
 #region 属性加成
 func 属性添加(player:Player,属性:AttributeBonus,是否永久:bool=false):
 	临时属性加成.append(属性)
-	if !player.是否在战斗中:
+	if !player.是否在战斗中():
 		属性加成.append(属性)
 	elif  是否永久:
 		属性加成.append(属性)
@@ -208,7 +209,7 @@ func atk_process(触发卡:DragControl,num:int,player:Player,是否永久:bool=f
 	var temp=触发卡.card_data.get_AttributeBonus()
 	temp.atk=num
 	临时属性加成.append(temp)
-	if !player.是否在战斗中:
+	if !player.是否在战斗中():
 		属性加成.append(temp)
 	elif  是否永久:
 		属性加成.append(temp)
@@ -225,7 +226,7 @@ func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是�
 		var temp=触发随从.card_data.get_AttributeBonus()
 		temp.hp=生命值加成
 		临时属性加成.append(temp)
-		if !player.是否在战斗中:
+		if !player.是否在战斗中():
 			属性加成.append(temp)
 		elif  是否永久:
 			属性加成.append(temp)
@@ -251,7 +252,7 @@ func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是�
 		# 死亡判断
 		if 是否死亡(player):
 			# 移除自己
-			player.战斗随从死亡(self)
+			player.随从死亡(self)
 			# 死亡
 			#触发器_亡语(trigger,player)
 			# 如果有复生则复生触发

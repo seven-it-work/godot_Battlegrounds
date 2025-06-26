@@ -11,8 +11,6 @@ class_name Player
 #endregion
 var 抉择是否隐藏:bool=false
 var 抉择节点:Choose
-var 战斗中的牌:Array[DragControl]=[]
-var 是否在战斗中:bool=false
 var fight:Fight
 var 上一个对手:Player
 
@@ -38,20 +36,8 @@ func 获取所有的牌()->Array[DragControl]:
 	all.append_array(手牌.获取所有节点())
 	return all
 
-func 进入战斗模式():
-	是否在战斗中=true
-	战斗中的牌.clear()
-	for i in 战场.获取所有节点():
-		战斗中的牌.append(i.duplicate())
-
-func 获取战斗中的牌()->Array[DragControl]:
-	if 是否在战斗中:
-		return 战斗中的牌
-	Logger.error("不在战斗中，进行新的战斗牌复制")
-	战斗中的牌.clear()
-	for i in 战场.获取所有节点():
-		战斗中的牌.append(i.duplicate())
-	return 战斗中的牌
+func 进入战斗模式(fight:Fight):
+	self.fight=fight
 
 func 获取战场和酒馆中的牌()->Array[DragControl]:
 	var all:Array[DragControl]=[]
@@ -85,6 +71,9 @@ func _ready() -> void:
 		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	pass
 
+func 是否在战斗中()->bool:
+	return self.fight!=null
+
 func 获取当前酒馆等级()->int:
 	return 1;
 
@@ -97,12 +86,11 @@ func _on_抉择是否隐藏_pressed() -> void:
 func 添加到手牌(card:CardData):
 	手牌.添加到容器中(Global.创建新卡片(card),-1)
 
-func 战斗随从死亡(card_data:CardData):
+func 随从死亡(card_data:CardData):
 	var parent=card_data.get_parent()
 	if parent is DragControl:
 		parent.hide()
-		战斗中的牌.erase(parent)
-		parent.queue_free()
+		print("死亡随从进行隐藏")
 		pass
 	else:
 		Logger.error("错误类型，请检查")

@@ -1,17 +1,19 @@
 extends Control
 
 func _ready() -> void:
-	for i in 2:
+	for i in 6:
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
+		drag.card_data.hp=9
 		drag.add_child(drag.card_data)
 		drag.uuid=drag.card_data.uuid
 		$"玩家".战场.添加到容器中(drag,-1)
 	
 	
-	for i in 2:
+	for i in 6:
 		var drag=preload("uid://c1wvxhubccoqe").instantiate()
 		drag.card_data=preload("uid://cirqyt3sqmpq8").instantiate()
+		drag.card_data.hp=9
 		drag.add_child(drag.card_data)
 		drag.uuid=drag.card_data.uuid
 		$"敌人".战场.添加到容器中(drag,-1)

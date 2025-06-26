@@ -4,6 +4,17 @@ class_name Fight
 var 玩家:攻击对象
 var 敌人:攻击对象
 
+func _ready() -> void:
+	pass
+
+func 获取自己战场中的牌(player:Player)->Array:
+	if player==玩家.player:
+		return $"玩家随从".get_children().filter(func(node:Control): return node.visible)
+	if player==敌人.player:
+		return $"敌人随从".get_children().filter(func(node:Control): return node.visible)
+	Logger.error("获取错误，该player不在这个fight中")
+	return []
+
 func 获取敌人(player:Player)->Player:
 	if player==玩家.player:
 		return 敌人.player
@@ -24,7 +35,6 @@ var 不能攻击的玩家个数:int=0;
 # 播放动画中
 var 是否在播放动画:bool=false
 
-
 var 是否战斗完成标志:bool=false
 # 如果 造成伤害=0 则认为是平局
 signal 战斗结束(胜利者:攻击对象,失败者:攻击对象,造成伤害:int)
@@ -44,51 +54,31 @@ func 开始战斗(玩家:Player,敌人:Player):
 		当前攻击者=self.玩家
 	else:
 		当前攻击者=self.敌人
-	玩家.进入战斗模式()
-	敌人.进入战斗模式()
+	_初始化战斗中的牌(玩家,$"玩家随从")
+	_初始化战斗中的牌(敌人,$"敌人随从")
+	玩家.进入战斗模式(self)
+	敌人.进入战斗模式(self)
+	await get_tree().process_frame
+	战斗运算()
 
-func 动态处理ui与战斗中的牌对应关系():
-	if 敌人:
-		for i in 敌人.player.获取战斗中的牌().size():
-			var ui中的牌=$"敌人随从".get_child(i)
-			var 战斗中的牌=敌人.player.获取战斗中的牌().get(i)
-			if ui中的牌.uuid!=战斗中的牌.uuid:
-				# 准备清理重新处理
-				_重新处理ui($"敌人随从",敌人.player.获取战斗中的牌())
-				pass
-	if 玩家:
-		for i in 玩家.player.获取战斗中的牌().size():
-			var ui中的牌=$"玩家随从".get_child(i)
-			var 战斗中的牌=玩家.player.获取战斗中的牌().get(i)
-			if ui中的牌.uuid!=战斗中的牌.uuid:
-				# 准备清理重新处理
-				_重新处理ui($"玩家随从",玩家.player.获取战斗中的牌())
-				pass
-	pass
-
-func _重新处理ui(ui:HBoxContainer,list:Array):
-	print("_重新处理ui")
-	for i in ui.get_children():
-		i.queue_free()
-	for i in list:
-		var newNode=i.duplicate()
-		ui.add_child(newNode)
-	pass
-
-func _process(delta: float) -> void:
-	if 是否战斗完成标志:
-		return
-	动态处理ui与战斗中的牌对应关系()
-	if 是否在播放动画:
-		# 动画处理
-		pass
-	else:
+# todo 存在问题，为什么动画每次的 当前攻击随从 都是第一个呢？
+func 战斗运算():
+	while true:
+		for i in $"玩家随从".get_children():
+			if !i.visible:
+				i.queue_free()
+		for i in $"敌人随从".get_children():
+			if !i.visible:
+				i.queue_free()
+		await get_tree().process_frame
+		if 是否战斗完成标志:
+			return
 		if 不能攻击的玩家个数>=2:
 			# 平局
 			战斗结束.emit(null,null,0)
 		else:
 			if 当前攻击者:
-				var 所有的牌=当前攻击者.player.获取战斗中的牌()
+				var 所有的牌=获取自己战场中的牌(当前攻击者.player)
 				var 防御者=玩家 if 当前攻击者==敌人 else 敌人
 				if 所有的牌.size()<=0:
 					战斗结束.emit(防御者,当前攻击者,_伤害计算(防御者))
@@ -97,16 +87,16 @@ func _process(delta: float) -> void:
 				# 遍历获取轮到随从攻击
 				var 攻击随从:DragControl=null
 				var 临时索引位置=当前攻击者.当前攻击随从的索引;
-				# todo 这里用ai处理一下
-				# 炉石酒馆中随从攻击的逻辑：一个数组中有很多随从，随从按从左到右依次攻击。如果攻击力为0则跳过让下一个行攻击。如果轮了一圈仍然没有找到可以发起攻击的随从则认为没有可攻击的随从了。
-				# 你要实现1、选择出可以攻击的随从。2、记录好攻击的位置当下一轮攻击时，进行依次处理。
-				#给你举个例子 A玩家有 [a,b,c,d]4个随从 B玩家有[1,2,3,4,5]个随从，A的a攻击B的1 A的a死亡了就移除了 A还剩[b,c,d] B的1攻击A的b B的1死亡了 A的b死亡了。该A的c攻击B的4,B的4死亡了。B的2 攻击 A的d
-				# B的2死亡了，B还剩[3,5]，A的d攻击B的3，B的3死亡了。B的5攻击A的cA的c死亡了，A的d攻击B的5，B的5攻击A的d 两个都是为了。这样一个逻辑。
 				while true:
+					if 当前攻击者.当前攻击随从的索引 >= 所有的牌.size()-1:
+						当前攻击者.当前攻击随从的索引=0
+						if 当前攻击者.当前攻击随从的索引 == 临时索引位置:
+							Logger.error("没有随从可用了")
+							return  # 没有可攻击的随从
 					var 随从=所有的牌.get(当前攻击者.当前攻击随从的索引)
 					if 随从==null:
 						if 当前攻击者.当前攻击随从的索引 >= 所有的牌.size()-1:
-							当前攻击者.当前攻击随从的索引=0
+							Logger.error("错误索引？")
 							continue
 					var 攻击力=随从.card_data.atk_bonus(当前攻击者.player)
 					if 攻击力>0:
@@ -115,11 +105,6 @@ func _process(delta: float) -> void:
 						break
 					else:
 						当前攻击者.当前攻击随从的索引+=1
-					if 当前攻击者.当前攻击随从的索引 >= 所有的牌.size()-1:
-						当前攻击者.当前攻击随从的索引=0
-					if 临时索引位置==当前攻击者.当前攻击随从的索引:
-						# 轮转一圈了都没有
-						break
 				for i in 所有的牌:
 					var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
 					if 攻击力>0:
@@ -132,38 +117,46 @@ func _process(delta: float) -> void:
 				else:
 					# 随机进行攻击
 					不能攻击的玩家个数=0;
-					_随从进行攻击(攻击随从,当前攻击者,防御者)
+					await _随从进行攻击(攻击随从,当前攻击者,防御者)
 					if 攻击随从.card_data.风怒:
-						_随从进行攻击(攻击随从,当前攻击者,防御者)
+						await _随从进行攻击(攻击随从,当前攻击者,防御者)
 					if 攻击随从.card_data.超级风怒:
-						_随从进行攻击(攻击随从,当前攻击者,防御者)
-						_随从进行攻击(攻击随从,当前攻击者,防御者)
+						await _随从进行攻击(攻击随从,当前攻击者,防御者)
+						await _随从进行攻击(攻击随从,当前攻击者,防御者)
 					当前攻击者=防御者
-	pass
+		
+func _初始化战斗中的牌(player:Player,box:HBoxContainer):
+	for i in box.get_children():
+		i.queue_free()
+	for i in player.战场.获取所有节点():
+		var newNode=i.duplicate()
+		box.add_child(newNode)
+
 
 func _随从进行攻击(攻击随从:DragControl,攻击者:攻击对象,防御者:攻击对象):
 	if 攻击随从.card_data.hp_bonus(攻击者.player)<=0:
 		print("没血了，不能继续攻击了")
 		return
 	# 目标查询（查询嘲讽）
-	var list_嘲讽=防御者.player.获取战斗中的牌().filter(func(card:DragControl): return card.card_data.嘲讽)
+	var list_嘲讽=获取自己战场中的牌(防御者.player).filter(func(card:DragControl): return card.card_data.嘲讽)
 	if list_嘲讽.size()>0:
 		# 随机选一个
 		var defender_minion:DragControl=list_嘲讽.pick_random() as DragControl
 		生命计算(攻击随从,攻击者,defender_minion,防御者)
 		return
 	# 目标查询（忽略掉潜行的）
-	var list_minion=防御者.player.获取战斗中的牌().filter(func(card:DragControl): return !card.card_data.潜行)
+	var list_minion=获取自己战场中的牌(防御者.player).filter(func(card:DragControl): return !card.card_data.潜行)
 	if list_minion.size()>0:
 		# 随机选一个
 		var defender_minion:DragControl=list_minion.pick_random() as DragControl
-		生命计算(攻击随从,攻击者,defender_minion,防御者)
+		await  生命计算(攻击随从,攻击者,defender_minion,防御者)
 		return
 	print("对方貌似没有随从了")
 
 func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:DragControl,防御者:攻击对象):
 	Logger.debug("%s对%s进行攻击"%[攻击随从.card_data.name_str,防御随从.card_data.name_str])
 	await start_animation_sequence(攻击随从,防御随从)
+	print("动画播放完成，进行数据计算")
 	# 攻击方生命值-
 	攻击随从.card_data.hp_process(防御随从,-防御随从.card_data.atk_bonus(防御者.player),攻击者.player)
 	# 防御方
@@ -172,15 +165,17 @@ func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:D
 func _伤害计算(胜利者:攻击对象)->int:
 	return 10
 
-
 ## 移动动画
 func move_to_target(panel: Node, target: Node, duration: float) -> void:
 	var tween = create_tween().set_parallel(true)
 	tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
-	tween.tween_property(panel, "global_position", target.global_position, duration)
+	print(panel.global_position,target.global_position)
+	if panel.global_position.y>target.global_position.y:
+		tween.tween_property(panel, "global_position", Vector2(target.global_position.x,target.global_position.y+target.size.y), duration)
+	else:
+		tween.tween_property(panel, "global_position", Vector2(target.global_position.x,target.global_position.y-target.size.y), duration)
 	tween.tween_property(panel, "size", target.size, duration)
-	
 	await tween.finished
 
 ## 抖动动画
@@ -224,10 +219,12 @@ func return_to_original(panel: Node,original_position,original_size, duration: f
 	await tween.finished
 
 func start_animation_sequence(panel_a,panel_b):
-	print("播放攻击动画")
 	是否在播放动画=true
 	var original_position = panel_a.global_position
 	var original_size = panel_a.size
+	#var parent=panel_a.get_parent()
+	#var index= panel_a.get_index()
+	#panel_a.reparent(self)
 	# 1. 移动到目标位置
 	await move_to_target(panel_a, panel_b, 0.5)
 	
@@ -236,100 +233,8 @@ func start_animation_sequence(panel_a,panel_b):
 	
 	# 3. 返回原位
 	await return_to_original(panel_a,original_position,original_size, 0.4)
+	#panel_a.reparent(parent)
+	#parent.move_child(panel_a,index)
+	#await get_tree().process_frame
 	print("播放完成")
 	是否在播放动画=false
-
-
-func _move_panel_to_panel(a, b, duration: float = 0.5) -> void:
-	# 创建 Tween 动画
-	var tween = create_tween()
-	
-	# 设置动画过渡效果和缓动类型
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.set_ease(Tween.EASE_OUT)
-	
-	# 记录初始属性
-	var start_pos = a.global_position
-	var start_size = a.size
-	
-	# 计算目标位置（将 a 移动到 b 的位置）
-	var target_pos = b.global_position
-	var target_size = b.size
-	
-	# 设置动画
-	tween.tween_property(a, "global_position", target_pos, duration)
-	tween.parallel().tween_property(a, "size", target_size, duration)
-	
-	await tween.finished
-
-
-
-# ai实现
-var a_minions: Array  # 玩家A的随从列表
-var b_minions: Array  # 玩家B的随从列表
-var current_attacker: int = 0  # 当前攻击方（0=A, 1=B）
-var a_attack_index: int = 0	# A的当前攻击位置
-var b_attack_index: int = 0	# B的当前攻击位置
-
-# 初始化战斗
-func start_combat(a_minions_arr: Array, b_minions_arr: Array):
-	a_minions = a_minions_arr.duplicate()
-	b_minions = b_minions_arr.duplicate()
-	current_attacker = 0  # A先手
-	a_attack_index = 0
-	b_attack_index = 0
-
-# 执行单次攻击
-func execute_attack():
-	if a_minions.is_empty() or b_minions.is_empty():
-		return false  # 战斗结束
-	
-	var attacker_list = a_minions if current_attacker == 0 else b_minions
-	var defender_list = b_minions if current_attacker == 0 else a_minions
-	var attack_index = a_attack_index if current_attacker == 0 else b_attack_index
-	
-	# 寻找可攻击的随从（攻击力>0）
-	var attacker = null
-	var start_index = attack_index
-	while true:
-		if attack_index >= attacker_list.size():
-			attack_index = 0
-			if attack_index == start_index:
-				return false  # 没有可攻击的随从
-		
-		attacker = attacker_list[attack_index]
-		if attacker.attack > 0:  # 假设随从有 attack 属性
-			break
-		attack_index += 1
-	
-	# 选择目标（默认攻击第一个随从）
-	var defender = defender_list[0] if not defender_list.is_empty() else null
-	if not defender:
-		return false
-	
-	# 执行攻击
-	defender.health -= attacker.attack
-	attacker.health -= defender.attack
-	
-	# 移除死亡的随从
-	if defender.health <= 0:
-		defender_list.remove_at(defender_list.find(defender))
-	if attacker.health <= 0:
-		attacker_list.remove_at(attacker_list.find(attacker))
-	
-	# 更新攻击位置
-	if current_attacker == 0:
-		a_attack_index = (attack_index + 1) % a_minions.size() if not a_minions.is_empty() else 0
-	else:
-		b_attack_index = (attack_index + 1) % b_minions.size() if not b_minions.is_empty() else 0
-	
-	# 切换攻击方
-	current_attacker = 1 - current_attacker
-	return true
-
-# 示例：运行战斗直到结束
-func simulate_combat():
-	while execute_attack():
-		print("A Minions: ", a_minions)
-		print("B Minions: ", b_minions)
-	print("Combat ended!")

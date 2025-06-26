@@ -104,6 +104,7 @@ func 更新卡牌信息():
 			$Node/触发.show()
 		elif card_data.是否存在亡语():
 			$Node/亡语.show()
+		await get_tree().process_frame
 	pass
 
 func _ready() -> void:
