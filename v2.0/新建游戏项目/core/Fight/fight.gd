@@ -64,6 +64,9 @@ func 开始战斗(玩家:Player,敌人:Player):
 # todo 存在问题，为什么动画每次的 当前攻击随从 都是第一个呢？
 func 战斗运算():
 	while true:
+		if 是否在播放动画:
+			await get_tree().create_timer(1.0).timeout
+			continue
 		for i in $"玩家随从".get_children():
 			if !i.visible:
 				i.queue_free()
@@ -165,8 +168,11 @@ func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:D
 func _伤害计算(胜利者:攻击对象)->int:
 	return 10
 
+#region 动画方法
+
 ## 移动动画
 func move_to_target(panel: Node, target: Node, duration: float) -> void:
+	是否在播放动画=true
 	var tween = create_tween().set_parallel(true)
 	tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
@@ -177,9 +183,25 @@ func move_to_target(panel: Node, target: Node, duration: float) -> void:
 		tween.tween_property(panel, "global_position", Vector2(target.global_position.x,target.global_position.y-target.size.y), duration)
 	tween.tween_property(panel, "size", target.size, duration)
 	await tween.finished
+	是否在播放动画=false
+
+## 溶解动画
+func 溶解动画(panel: Node):
+	是否在播放动画=true
+	# 1. 创建ShaderMaterial并设置基础参数
+	var material = ShaderMaterial.new()
+	material.shader = preload("uid://1a5gj0smhewv")  # 加载你的溶解Shader
+	material.set_shader_parameter("dissolve_amount", 0.0)  # 初始未溶解
+	panel.material = material
+	var tween = create_tween()
+	tween.tween_property(material, "shader_parameter/dissolve_amount", 1.0, 2.0)
+	await tween.finished
+	是否在播放动画=false
+
 
 ## 抖动动画
 func shake_panel(panel: Node, duration: float, strength: float, frequency: float) -> void:
+	是否在播放动画=true
 	var original_pos = panel.global_position
 	var tween = create_tween()
 	
@@ -206,6 +228,7 @@ func shake_panel(panel: Node, duration: float, strength: float, frequency: float
 							shake_duration * 0.6).set_ease(Tween.EASE_IN)
 	
 	await tween.finished
+	是否在播放动画=false
 
 
 ## 返回原位动画
@@ -238,3 +261,5 @@ func start_animation_sequence(panel_a,panel_b):
 	#await get_tree().process_frame
 	print("播放完成")
 	是否在播放动画=false
+
+#endregion

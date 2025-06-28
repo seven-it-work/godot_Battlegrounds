@@ -89,6 +89,9 @@ func 添加到手牌(card:CardData):
 func 随从死亡(card_data:CardData):
 	var parent=card_data.get_parent()
 	if parent is DragControl:
+		# 2. 播放抖动动画
+		await fight.溶解动画(parent)
+		# 播放死亡动画
 		parent.hide()
 		print("死亡随从进行隐藏")
 		pass

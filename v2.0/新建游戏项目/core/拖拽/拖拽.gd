@@ -107,6 +107,7 @@ func 更新卡牌信息():
 		await get_tree().process_frame
 	pass
 
+
 func _ready() -> void:
 	初始化卡牌信息()
 

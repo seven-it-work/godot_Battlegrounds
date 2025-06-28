@@ -1,7 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://c1wvxhubccoqe"]
+[gd_scene load_steps=30 format=3 uid="uid://do8ek6iw7tisd"]
 
 [ext_resource type="Script" uid="uid://c3qeu8eupy8ht" path="res://core/拖拽/拖拽.gd" id="1_8tuv6"]
+[ext_resource type="Shader" uid="uid://cja4k5iubiu0e" path="res://core/拖拽/拖拽.gdshader" id="1_bx23s"]
 [ext_resource type="Shader" uid="uid://b3h8hktpdssqm" path="res://asserts/黑白平滑透明.gdshader" id="2_2we3p"]
+[ext_resource type="Script" uid="uid://dhr0niclrdmuj" path="res://core/拖拽/node.gd" id="2_bx23s"]
 [ext_resource type="Texture2D" uid="uid://cnxrf7b5ni8mu" path="res://asserts/操作.png" id="3_bx23s"]
 [ext_resource type="Texture2D" uid="uid://d3lcrygqx6j7l" path="res://asserts/箭头选中.png" id="4_xvyer"]
 [ext_resource type="Texture2D" uid="uid://clar74unixt66" path="res://asserts/普通随从.png" id="5_t7d7c"]
@@ -24,6 +26,27 @@
 [ext_resource type="Texture2D" uid="uid://bm6jtu0xkh656" path="res://asserts/GoldCoin.png" id="22_lshrf"]
 [ext_resource type="Texture2D" uid="uid://djvrpfdm3gedr" path="res://asserts/名字边框.png" id="23_irnik"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvyer"]
+shader = ExtResource("1_bx23s")
+shader_parameter/time_factor = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/oneshot = true
+shader_parameter/init_size = 0.1
+shader_parameter/init_interval = 0.2
+shader_parameter/init_offset = 0.1
+shader_parameter/init_num = 5.0
+shader_parameter/init_direction = Vector2(0, 0)
+shader_parameter/rnd_direction_factor = Vector2(1, 1)
+shader_parameter/rnd_size_factor = Vector2(1, 1)
+shader_parameter/rnd_rotate_factor = 0.0
+shader_parameter/rnd_rotate_offset = 0.0
+shader_parameter/angle_velocity_min = 0.0
+shader_parameter/angle_velocity_max = 0.0
+shader_parameter/expand_factor = Vector2(1, 1)
+shader_parameter/expand_offset = Vector2(0, 0)
+shader_parameter/bounce_thresh = 1.0
+shader_parameter/bounce_factor = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hg3kr"]
 shader = ExtResource("2_2we3p")
 shader_parameter/fade_range = 0.1
@@ -41,6 +64,7 @@ shadow_color = Color(0, 0, 0, 1)
 font_size = 13
 
 [node name="拖拽" type="Control"]
+material = SubResource("ShaderMaterial_xvyer")
 custom_minimum_size = Vector2(160, 180)
 layout_mode = 3
 anchors_preset = 0
@@ -56,20 +80,24 @@ offset_right = 45.0
 offset_bottom = 55.0
 
 [node name="Panel" type="Panel" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 
 [node name="Node" type="Control" parent="."]
+use_parent_material = true
 anchors_preset = 0
 offset_left = -11.0
 offset_top = 11.0
 offset_right = -11.0
 offset_bottom = 11.0
+script = ExtResource("2_bx23s")
 
 [node name="当前操作" type="TextureRect" parent="Node"]
 visible = false
 material = SubResource("ShaderMaterial_hg3kr")
+use_parent_material = true
 layout_mode = 0
 offset_left = -34.0
 offset_top = -22.0
@@ -81,6 +109,7 @@ expand_mode = 1
 [node name="箭头选中" type="TextureRect" parent="Node"]
 visible = false
 material = SubResource("ShaderMaterial_hg3kr")
+use_parent_material = true
 layout_mode = 0
 offset_left = -34.0
 offset_top = -24.0
@@ -90,6 +119,7 @@ texture = ExtResource("4_xvyer")
 expand_mode = 1
 
 [node name="普通边框" type="TextureRect" parent="Node"]
+use_parent_material = true
 layout_mode = 0
 offset_left = -4.0
 offset_top = -8.0
@@ -100,6 +130,7 @@ expand_mode = 1
 
 [node name="金色边框" type="TextureRect" parent="Node"]
 visible = false
+use_parent_material = true
 layout_mode = 0
 offset_left = -3.0
 offset_top = -4.0
@@ -110,6 +141,7 @@ expand_mode = 1
 
 [node name="嘲讽" type="TextureRect" parent="Node"]
 visible = false
+use_parent_material = true
 layout_mode = 0
 offset_left = -8.0
 offset_top = -4.0
@@ -119,6 +151,7 @@ texture = ExtResource("7_wxm75")
 expand_mode = 1
 
 [node name="主框架" type="TextureRect" parent="Node"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 8.0
 offset_top = 6.0
@@ -130,6 +163,7 @@ expand_mode = 1
 [node name="圣盾" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 180.0
@@ -138,6 +172,7 @@ expand_mode = 1
 
 [node name="遮罩" type="TextureRect" parent="Node"]
 clip_children = 2
+use_parent_material = true
 layout_mode = 0
 offset_left = 41.0
 offset_top = 14.0
@@ -147,6 +182,7 @@ texture = ExtResource("10_7bso3")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="Node/遮罩"]
+use_parent_material = true
 layout_mode = 0
 offset_left = -28.0
 offset_top = -6.0
@@ -157,6 +193,7 @@ texture = ExtResource("11_263yi")
 
 [node name="风怒" type="TextureRect" parent="Node/遮罩"]
 visible = false
+use_parent_material = true
 layout_mode = 0
 offset_left = -52.0
 offset_top = -27.0
@@ -167,6 +204,7 @@ expand_mode = 1
 
 [node name="潜行" type="TextureRect" parent="Node/遮罩"]
 visible = false
+use_parent_material = true
 layout_mode = 0
 offset_left = -52.0
 offset_top = -27.0
@@ -178,6 +216,7 @@ expand_mode = 1
 [node name="冻结" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 36.0
 offset_top = 14.0
@@ -191,6 +230,7 @@ flip_v = true
 [node name="剧毒" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 73.0
 offset_top = 144.0
@@ -202,6 +242,7 @@ expand_mode = 1
 [node name="烈毒" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 78.0
 offset_top = 143.0
@@ -213,6 +254,7 @@ expand_mode = 1
 [node name="触发" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 78.0
 offset_top = 144.0
@@ -224,6 +266,7 @@ expand_mode = 1
 [node name="亡语" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 71.0
 offset_top = 133.0
@@ -235,6 +278,7 @@ expand_mode = 1
 [node name="攻击力" type="TextureRect" parent="Node"]
 visible = false
 z_index = 2
+use_parent_material = true
 layout_mode = 0
 offset_left = -2.0
 offset_top = 96.0
@@ -244,6 +288,7 @@ texture = ExtResource("18_hif64")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Node/攻击力"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -262,6 +307,7 @@ vertical_alignment = 1
 [node name="生命值" type="TextureRect" parent="Node"]
 visible = false
 z_index = 2
+use_parent_material = true
 layout_mode = 0
 offset_left = 94.0
 offset_top = 99.0
@@ -271,6 +317,7 @@ texture = ExtResource("19_f2k7x")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Node/生命值"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -289,6 +336,7 @@ vertical_alignment = 1
 [node name="等级" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 120.0
 offset_top = 3.0
@@ -300,6 +348,7 @@ expand_mode = 1
 [node name="1级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = -3.0
 offset_top = 2.0
@@ -311,6 +360,7 @@ expand_mode = 1
 [node name="2级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = -1.0
 offset_top = -4.0
@@ -321,6 +371,7 @@ expand_mode = 1
 
 [node name="2级" type="TextureRect" parent="Node/等级/2级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 16.0
 offset_right = 31.0
@@ -331,6 +382,7 @@ expand_mode = 1
 [node name="3级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
@@ -341,6 +393,7 @@ expand_mode = 1
 
 [node name="3级2" type="TextureRect" parent="Node/等级/3级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_right = 30.0
@@ -350,6 +403,7 @@ expand_mode = 1
 
 [node name="3级" type="TextureRect" parent="Node/等级/3级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 10.0
 offset_right = 30.0
@@ -360,6 +414,7 @@ expand_mode = 1
 [node name="4级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = -1.0
 offset_right = 18.0
@@ -369,6 +424,7 @@ expand_mode = 1
 
 [node name="4级" type="TextureRect" parent="Node/等级/4级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_right = 29.0
@@ -378,6 +434,7 @@ expand_mode = 1
 
 [node name="4级2" type="TextureRect" parent="Node/等级/4级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_top = 15.0
@@ -388,6 +445,7 @@ expand_mode = 1
 
 [node name="4级3" type="TextureRect" parent="Node/等级/4级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 15.0
 offset_right = 18.0
@@ -398,6 +456,7 @@ expand_mode = 1
 [node name="5级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = -1.0
 offset_right = 17.0
@@ -407,6 +466,7 @@ expand_mode = 1
 
 [node name="5级" type="TextureRect" parent="Node/等级/5级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_right = 28.0
@@ -416,6 +476,7 @@ expand_mode = 1
 
 [node name="5级2" type="TextureRect" parent="Node/等级/5级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_top = 11.0
@@ -426,6 +487,7 @@ expand_mode = 1
 
 [node name="5级3" type="TextureRect" parent="Node/等级/5级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 11.0
 offset_right = 17.0
@@ -435,6 +497,7 @@ expand_mode = 1
 
 [node name="5级4" type="TextureRect" parent="Node/等级/5级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 21.0
@@ -446,6 +509,7 @@ expand_mode = 1
 [node name="6级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 1.0
 offset_top = -2.0
@@ -456,6 +520,7 @@ expand_mode = 1
 
 [node name="6级" type="TextureRect" parent="Node/等级/6级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 23.0
 offset_right = 15.0
@@ -465,6 +530,7 @@ expand_mode = 1
 
 [node name="6级2" type="TextureRect" parent="Node/等级/6级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 11.0
 offset_right = 15.0
@@ -474,6 +540,7 @@ expand_mode = 1
 
 [node name="6级3" type="TextureRect" parent="Node/等级/6级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 10.0
 offset_right = 25.0
@@ -483,6 +550,7 @@ expand_mode = 1
 
 [node name="6级4" type="TextureRect" parent="Node/等级/6级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 10.0
 offset_top = 11.0
@@ -493,6 +561,7 @@ expand_mode = 1
 
 [node name="6级5" type="TextureRect" parent="Node/等级/6级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 10.0
 offset_top = 23.0
@@ -504,6 +573,7 @@ expand_mode = 1
 [node name="7级" type="TextureRect" parent="Node/等级"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 1.0
 offset_top = -2.0
@@ -514,6 +584,7 @@ expand_mode = 1
 
 [node name="6级" type="TextureRect" parent="Node/等级/7级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_right = 26.0
@@ -523,6 +594,7 @@ expand_mode = 1
 
 [node name="6级2" type="TextureRect" parent="Node/等级/7级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 9.0
 offset_right = 15.0
@@ -532,6 +604,7 @@ expand_mode = 1
 
 [node name="6级3" type="TextureRect" parent="Node/等级/7级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_top = 9.0
@@ -542,6 +615,7 @@ expand_mode = 1
 
 [node name="6级4" type="TextureRect" parent="Node/等级/7级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_top = 18.0
 offset_right = 15.0
@@ -551,6 +625,7 @@ expand_mode = 1
 
 [node name="6级6" type="TextureRect" parent="Node/等级/7级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 5.0
 offset_top = 26.0
@@ -561,6 +636,7 @@ expand_mode = 1
 
 [node name="6级5" type="TextureRect" parent="Node/等级/7级"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 11.0
 offset_top = 18.0
@@ -572,6 +648,7 @@ expand_mode = 1
 [node name="金币" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 34.0
 offset_top = 8.0
@@ -581,6 +658,7 @@ texture = ExtResource("22_lshrf")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Node/金币"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -599,6 +677,7 @@ vertical_alignment = 1
 [node name="名称" type="TextureRect" parent="Node"]
 visible = false
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 16.0
 offset_top = 97.0

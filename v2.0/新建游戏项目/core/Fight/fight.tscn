@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://batjwfujq44uj"]
 
 [ext_resource type="Script" uid="uid://dk1n7svarf6d5" path="res://core/Fight/fight.gd" id="1_78hah"]
-[ext_resource type="PackedScene" uid="uid://c1wvxhubccoqe" path="res://core/拖拽/拖拽.tscn" id="1_nqbw0"]
+[ext_resource type="PackedScene" uid="uid://do8ek6iw7tisd" path="res://core/拖拽/拖拽.tscn" id="1_nqbw0"]
 
 [node name="fight" type="Control"]
 layout_mode = 3
