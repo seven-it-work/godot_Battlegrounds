@@ -189,12 +189,9 @@ func move_to_target(panel: Node, target: Node, duration: float) -> void:
 func 溶解动画(panel: Node):
 	是否在播放动画=true
 	# 1. 创建ShaderMaterial并设置基础参数
-	var material = ShaderMaterial.new()
-	material.shader = preload("uid://1a5gj0smhewv")  # 加载你的溶解Shader
-	material.set_shader_parameter("dissolve_amount", 0.0)  # 初始未溶解
-	panel.material = material
+	panel.material.set_shader_parameter("progress", 0.0)  # 初始未溶解
 	var tween = create_tween()
-	tween.tween_property(material, "shader_parameter/dissolve_amount", 1.0, 2.0)
+	tween.tween_property(panel.material, "shader_parameter/progress", 1.0, 2.0)
 	await tween.finished
 	是否在播放动画=false
 

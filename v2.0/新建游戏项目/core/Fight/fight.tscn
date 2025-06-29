@@ -1,7 +1,117 @@
-[gd_scene load_steps=3 format=3 uid="uid://batjwfujq44uj"]
+[gd_scene load_steps=19 format=3 uid="uid://batjwfujq44uj"]
 
 [ext_resource type="Script" uid="uid://dk1n7svarf6d5" path="res://core/Fight/fight.gd" id="1_78hah"]
 [ext_resource type="PackedScene" uid="uid://do8ek6iw7tisd" path="res://core/拖拽/拖拽.tscn" id="1_nqbw0"]
+[ext_resource type="Shader" uid="uid://cqsitoaeqyby5" path="res://core/拖拽/溶解.tres" id="3_ra7al"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xvyer"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7d7c"]
+noise = SubResource("FastNoiseLite_xvyer")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clmlu"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pld71"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twh5f"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3ukw"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iv3co"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6fons"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vne1k"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p5yp"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gohrh"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55wl1"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0j7ls"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flwrx"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4fox"]
+resource_local_to_scene = true
+shader = ExtResource("3_ra7al")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
 
 [node name="fight" type="Control"]
 layout_mode = 3
@@ -21,26 +131,32 @@ offset_bottom = -387.0
 alignment = 1
 
 [node name="拖拽" parent="敌人随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_clmlu")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽2" parent="敌人随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_pld71")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽4" parent="敌人随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_twh5f")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽5" parent="敌人随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_a3ukw")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽6" parent="敌人随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_iv3co")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽7" parent="敌人随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_6fons")
 layout_mode = 2
 "是否可以拖拽" = false
 
@@ -53,29 +169,36 @@ offset_bottom = 112.0
 alignment = 1
 
 [node name="拖拽" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_vne1k")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽2" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_8p5yp")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽3" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_gohrh")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽4" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_55wl1")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽5" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_0j7ls")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽6" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_flwrx")
 layout_mode = 2
 "是否可以拖拽" = false
 
 [node name="拖拽7" parent="玩家随从" instance=ExtResource("1_nqbw0")]
+material = SubResource("ShaderMaterial_u4fox")
 layout_mode = 2
 "是否可以拖拽" = false

@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://do8ek6iw7tisd"]
+[gd_scene load_steps=32 format=3 uid="uid://do8ek6iw7tisd"]
 
 [ext_resource type="Script" uid="uid://c3qeu8eupy8ht" path="res://core/拖拽/拖拽.gd" id="1_8tuv6"]
-[ext_resource type="Shader" uid="uid://cja4k5iubiu0e" path="res://core/拖拽/拖拽.gdshader" id="1_bx23s"]
+[ext_resource type="Shader" uid="uid://cqsitoaeqyby5" path="res://core/拖拽/溶解.tres" id="1_xvyer"]
 [ext_resource type="Shader" uid="uid://b3h8hktpdssqm" path="res://asserts/黑白平滑透明.gdshader" id="2_2we3p"]
-[ext_resource type="Script" uid="uid://dhr0niclrdmuj" path="res://core/拖拽/node.gd" id="2_bx23s"]
 [ext_resource type="Texture2D" uid="uid://cnxrf7b5ni8mu" path="res://asserts/操作.png" id="3_bx23s"]
 [ext_resource type="Texture2D" uid="uid://d3lcrygqx6j7l" path="res://asserts/箭头选中.png" id="4_xvyer"]
 [ext_resource type="Texture2D" uid="uid://clar74unixt66" path="res://asserts/普通随从.png" id="5_t7d7c"]
@@ -26,26 +25,20 @@
 [ext_resource type="Texture2D" uid="uid://bm6jtu0xkh656" path="res://asserts/GoldCoin.png" id="22_lshrf"]
 [ext_resource type="Texture2D" uid="uid://djvrpfdm3gedr" path="res://asserts/名字边框.png" id="23_irnik"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvyer"]
-shader = ExtResource("1_bx23s")
-shader_parameter/time_factor = 0.0
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xvyer"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7d7c"]
+noise = SubResource("FastNoiseLite_xvyer")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7d7c"]
+resource_local_to_scene = true
+shader = ExtResource("1_xvyer")
 shader_parameter/progress = 0.0
-shader_parameter/oneshot = true
-shader_parameter/init_size = 0.1
-shader_parameter/init_interval = 0.2
-shader_parameter/init_offset = 0.1
-shader_parameter/init_num = 5.0
-shader_parameter/init_direction = Vector2(0, 0)
-shader_parameter/rnd_direction_factor = Vector2(1, 1)
-shader_parameter/rnd_size_factor = Vector2(1, 1)
-shader_parameter/rnd_rotate_factor = 0.0
-shader_parameter/rnd_rotate_offset = 0.0
-shader_parameter/angle_velocity_min = 0.0
-shader_parameter/angle_velocity_max = 0.0
-shader_parameter/expand_factor = Vector2(1, 1)
-shader_parameter/expand_offset = Vector2(0, 0)
-shader_parameter/bounce_thresh = 1.0
-shader_parameter/bounce_factor = 1.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_t7d7c")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bx23s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hg3kr"]
 shader = ExtResource("2_2we3p")
@@ -64,7 +57,7 @@ shadow_color = Color(0, 0, 0, 1)
 font_size = 13
 
 [node name="拖拽" type="Control"]
-material = SubResource("ShaderMaterial_xvyer")
+material = SubResource("ShaderMaterial_t7d7c")
 custom_minimum_size = Vector2(160, 180)
 layout_mode = 3
 anchors_preset = 0
@@ -73,17 +66,19 @@ offset_bottom = 180.0
 script = ExtResource("1_8tuv6")
 
 [node name="Label" type="Label" parent="."]
+use_parent_material = true
 layout_mode = 0
-offset_left = 5.0
-offset_top = 32.0
-offset_right = 45.0
-offset_bottom = 55.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 27.0
 
 [node name="Panel" type="Panel" parent="."]
 use_parent_material = true
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bx23s")
 
 [node name="Node" type="Control" parent="."]
 use_parent_material = true
@@ -92,7 +87,6 @@ offset_left = -11.0
 offset_top = 11.0
 offset_right = -11.0
 offset_bottom = 11.0
-script = ExtResource("2_bx23s")
 
 [node name="当前操作" type="TextureRect" parent="Node"]
 visible = false
@@ -687,6 +681,7 @@ texture = ExtResource("23_irnik")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Node/名称"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

@@ -12,7 +12,7 @@ func 获取原始版卡片(name_str:String)->CardData:
 
 
 func 创建新卡片(cardData:CardData)->DragControl:
-	var drag=preload("uid://c1wvxhubccoqe").instantiate()
+	var drag=preload("uid://do8ek6iw7tisd").instantiate()
 	drag.card_data=cardData
 	drag.add_child(cardData)
 	return drag

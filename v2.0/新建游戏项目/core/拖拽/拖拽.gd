@@ -111,6 +111,7 @@ func 更新卡牌信息():
 func _ready() -> void:
 	初始化卡牌信息()
 
+
 func _process(delta: float) -> void:
 	$Panel.size=custom_minimum_size
 	更新卡牌信息()

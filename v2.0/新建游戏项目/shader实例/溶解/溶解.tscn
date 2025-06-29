@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0of7fheph65i"]
+
+[ext_resource type="Shader" uid="uid://cmwvi8xktgr34" path="res://shader实例/溶解/溶解.tres" id="1_e3ghb"]
+[ext_resource type="Texture2D" uid="uid://cxkg7pe47u2kp" path="res://icon.svg" id="1_qruj1"]
+[ext_resource type="Shader" uid="uid://bfjums0uto0jw" path="res://shader实例/溶解/溶解.gdshader" id="3_22ml7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4ossf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2p6gn"]
+noise = SubResource("FastNoiseLite_4ossf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ml7"]
+shader = ExtResource("1_e3ghb")
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_2p6gn")
+shader_parameter/edge_color = Color(0.766265, 0.620177, 0.0761685, 1)
+shader_parameter/edge_width = 0.2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_22ml7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ossf"]
+noise = SubResource("FastNoiseLite_22ml7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ossf"]
+shader = ExtResource("3_22ml7")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_4ossf")
+shader_parameter/progress = 0.503
+shader_parameter/edge_width = 0.2
+shader_parameter/edge_color = Color(0.670712, 0.506905, 0.0641563, 1)
+
+[node name="溶解" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+material = SubResource("ShaderMaterial_22ml7")
+anchors_preset = 0
+offset_right = 54.0
+offset_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_qruj1")
+
+[node name="Control2" type="Control" parent="."]
+material = SubResource("ShaderMaterial_4ossf")
+layout_mode = 3
+anchors_preset = 0
+offset_left = 188.0
+offset_top = 2.0
+offset_right = 242.0
+offset_bottom = 50.0
+
+[node name="TextureRect" type="TextureRect" parent="Control2"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_qruj1")

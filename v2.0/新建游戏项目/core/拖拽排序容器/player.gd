@@ -55,17 +55,17 @@ func 所有的拖拽禁用或者开启(是否开启:bool):
 func _ready() -> void:
 	Global.main_node=self
 	#for i in 2 :
-		#var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		#var drag=preload("uid://do8ek6iw7tisd").instantiate()
 		#drag.card_data=preload("uid://bjhqpg4a8wuqj").instantiate()
 		#drag.add_child(drag.card_data)
 		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	#for i in 2 :
-		#var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		#var drag=preload("uid://do8ek6iw7tisd").instantiate()
 		#drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
 		#drag.add_child(drag.card_data)
 		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	#for i in 2 :
-		#var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		#var drag=preload("uid://do8ek6iw7tisd").instantiate()
 		#drag.card_data=preload("uid://cuxpxje8iycj3").instantiate()
 		#drag.add_child(drag.card_data)
 		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)

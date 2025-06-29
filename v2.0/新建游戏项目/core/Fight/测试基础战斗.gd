@@ -2,7 +2,7 @@ extends Control
 
 func _ready() -> void:
 	for i in 6:
-		var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		var drag=preload("uid://do8ek6iw7tisd").instantiate()
 		drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
 		drag.add_child(drag.card_data)
 		drag.uuid=drag.card_data.uuid
@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 	
 	for i in 6:
-		var drag=preload("uid://c1wvxhubccoqe").instantiate()
+		var drag=preload("uid://do8ek6iw7tisd").instantiate()
 		drag.card_data=preload("uid://cirqyt3sqmpq8").instantiate()
 		drag.add_child(drag.card_data)
 		drag.uuid=drag.card_data.uuid
