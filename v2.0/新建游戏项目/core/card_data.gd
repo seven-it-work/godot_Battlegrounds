@@ -82,6 +82,8 @@ var 复仇计数器:int=0
 @export var 冻结:bool=false
 @export var 触发:bool=false
 
+var 是否攻击过:bool=false
+
 func _ready() -> void:
 	print("ready")
 func _init() -> void:

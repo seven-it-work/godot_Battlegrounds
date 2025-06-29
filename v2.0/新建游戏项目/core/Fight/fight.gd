@@ -46,7 +46,7 @@ func 获取敌人(player:Player)->Player:
 
 class 攻击对象:
 	var player:Player
-	var 当前攻击随从的索引:int=0
+	var 当前攻击的随从:DragControl
 	func _init(player:Player) -> void:
 		self.player=player
 	
@@ -109,44 +109,45 @@ func 战斗运算():
 					当前攻击者=null
 					return
 				# 遍历获取轮到随从攻击
-				var 攻击随从:DragControl=null
-				var 临时索引位置=当前攻击者.当前攻击随从的索引;
-				while true:
-					if 当前攻击者.当前攻击随从的索引 >= 所有的牌.size()-1:
-						当前攻击者.当前攻击随从的索引=0
-						if 当前攻击者.当前攻击随从的索引 == 临时索引位置:
-							Logger.error("没有随从可用了")
-							return  # 没有可攻击的随从
-					var 随从=所有的牌.get(当前攻击者.当前攻击随从的索引)
-					if 随从==null:
-						if 当前攻击者.当前攻击随从的索引 >= 所有的牌.size()-1:
-							Logger.error("错误索引？")
-							continue
-					var 攻击力=随从.card_data.atk_bonus(当前攻击者.player)
-					if 攻击力>0:
-						攻击随从=随从
-						当前攻击者.当前攻击随从的索引+=1
-						break
+				if 当前攻击者.当前攻击的随从==null:
+					for i in 所有的牌:
+						var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
+						if 攻击力>0:
+							当前攻击者.当前攻击的随从=i
+							break
+				else:
+					var index=当前攻击者.当前攻击的随从.get_index()
+					当前攻击者.当前攻击的随从=null
+					if index>=所有的牌.size()-1:
+						# 重头开始
+						for i in 所有的牌:
+							var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
+							if 攻击力>0:
+								当前攻击者.当前攻击的随从=i
+								break
 					else:
-						当前攻击者.当前攻击随从的索引+=1
-				for i in 所有的牌:
-					var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
-					if 攻击力>0:
-						攻击随从=i
-						break
-				if 攻击随从==null:
+						for tempIndex in 所有的牌.size():
+							if tempIndex<=index:
+								continue
+							var i = 所有的牌.get(tempIndex)
+							var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
+							if 攻击力>0:
+								当前攻击者.当前攻击的随从=i
+								break
+						
+				if 当前攻击者.当前攻击的随从==null:
 					# 攻击力都是0不能进行攻击了
 					不能攻击的玩家个数+=1
 					当前攻击者=防御者
 				else:
 					# 随机进行攻击
 					不能攻击的玩家个数=0;
-					await _随从进行攻击(攻击随从,当前攻击者,防御者)
-					if 攻击随从.card_data.风怒:
-						await _随从进行攻击(攻击随从,当前攻击者,防御者)
-					if 攻击随从.card_data.超级风怒:
-						await _随从进行攻击(攻击随从,当前攻击者,防御者)
-						await _随从进行攻击(攻击随从,当前攻击者,防御者)
+					await _随从进行攻击(当前攻击者.当前攻击的随从,当前攻击者,防御者)
+					if 当前攻击者.当前攻击的随从.card_data.风怒:
+						await _随从进行攻击(当前攻击者.当前攻击的随从,当前攻击者,防御者)
+					if 当前攻击者.当前攻击的随从.card_data.超级风怒:
+						await _随从进行攻击(当前攻击者.当前攻击的随从,当前攻击者,防御者)
+						await _随从进行攻击(当前攻击者.当前攻击的随从,当前攻击者,防御者)
 					当前攻击者=防御者
 		
 func _初始化战斗中的牌(player:Player,box:HBoxContainer):
