@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqjlkmcejh5vi"]
+
+[ext_resource type="Script" uid="uid://cnbteenf1r2qd" path="res://all_card/minion/beast/利牙鲷鱼/test_利牙鲷鱼.gd" id="1_8iihp"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽排序容器/player.tscn" id="2_u4sc8"]
+[ext_resource type="PackedScene" uid="uid://batjwfujq44uj" path="res://core/Fight/fight.tscn" id="3_f4844"]
+
+[node name="test_利牙鲷鱼" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8iihp")
+
+[node name="玩家" parent="." instance=ExtResource("2_u4sc8")]
+visible = false
+layout_mode = 1
+
+[node name="敌人" parent="." instance=ExtResource("2_u4sc8")]
+visible = false
+layout_mode = 1
+
+[node name="fight" parent="." instance=ExtResource("3_f4844")]
+
+[connection signal="战斗结束" from="fight" to="." method="_on_fight_战斗结束"]

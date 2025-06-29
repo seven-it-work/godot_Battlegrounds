@@ -182,6 +182,9 @@ func 触发器_亡语触发监听(触发随从:CardData,亡语随从:CardData,pl
 	
 func 触发器_回合结束时():
 	pass
+	
+func 触发器_战斗开始时(player:Player):
+	pass
 #endregion
 
 

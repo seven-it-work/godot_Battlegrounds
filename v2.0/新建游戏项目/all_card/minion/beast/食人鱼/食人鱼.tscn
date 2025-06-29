@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfsudmwqdq6nv"]
+
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_7pkhu"]
+
+[node name="食人鱼" instance=ExtResource("1_7pkhu")]
+name_str = "食人鱼"
+version = "32.2.4.221850"
+ls_card_id = "BG32_201t"
+atk = 3
+race = Array[int]([1])
+"是否出现在酒馆" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false
