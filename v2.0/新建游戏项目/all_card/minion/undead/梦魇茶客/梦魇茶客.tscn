@@ -20,8 +20,8 @@ cardType = 0
 buy_coins = 3
 show_buy_coins = false
 race = Array[int]([10, 6, 2, 5, 4, 1, 8, 3, 9, 7])
-"æ¯å¦åºç°å¨éé¦" = true
-"æ¯å¦ä¸ºä¼ä¼´" = false
+是否出现在酒馆 = true
+是否为伙伴 = false
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false
