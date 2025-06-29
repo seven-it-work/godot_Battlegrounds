@@ -170,7 +170,7 @@ func 触发器_亡语(触发随从:CardData,player:Player):
 		return
 	for i in self.亡语:
 		i.亡语(触发随从,player)
-		for j in player.get_minion():
+		for j in player.获取战场中的牌():
 			if j.uuid!=self.uuid:
 				j.触发器_亡语触发监听(触发随从,self,player)
 	pass
@@ -269,7 +269,7 @@ func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否�
 		# 死亡判断
 		if 是否死亡(player):
 			# 移除自己
-			player.随从死亡(self)
+			await player.随从死亡(self)
 			# 死亡
 			触发器_亡语(触发随从,player)
 			# 如果有复生则复生触发

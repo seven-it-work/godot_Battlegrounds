@@ -7,6 +7,26 @@ var 敌人:攻击对象
 func _ready() -> void:
 	pass
 
+func 添加新牌到战场(player:Player,card:DragControl,index:int):
+	var node
+	if player==玩家.player:
+		node=$"玩家随从"
+	if player==敌人.player:
+		node=$"敌人随从"
+	if node==null:
+		Logger.error("获取错误，该player不在这个fight中")
+		return
+	if node.get_children().filter(func(node:Control): return node.visible).size() >=7:
+		print("随从太多了,放不下")
+		return
+	
+	if card.get_parent():
+		card.reparent(node)
+	else:
+		node.add_child(card)
+	node.move_child(card,index)
+	await get_tree().process_frame
+
 func 获取自己战场中的牌(player:Player)->Array:
 	if player==玩家.player:
 		return $"玩家随从".get_children().filter(func(node:Control): return node.visible)
@@ -14,6 +34,7 @@ func 获取自己战场中的牌(player:Player)->Array:
 		return $"敌人随从".get_children().filter(func(node:Control): return node.visible)
 	Logger.error("获取错误，该player不在这个fight中")
 	return []
+
 
 func 获取敌人(player:Player)->Player:
 	if player==玩家.player:

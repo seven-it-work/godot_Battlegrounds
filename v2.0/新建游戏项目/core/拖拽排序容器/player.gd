@@ -68,21 +68,6 @@ func 所有的拖拽禁用或者开启(是否开启:bool):
 
 func _ready() -> void:
 	Global.main_node=self
-	#for i in 2 :
-		#var drag=preload("uid://do8ek6iw7tisd").instantiate()
-		#drag.card_data=preload("uid://bjhqpg4a8wuqj").instantiate()
-		#drag.add_child(drag.card_data)
-		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
-	#for i in 2 :
-		#var drag=preload("uid://do8ek6iw7tisd").instantiate()
-		#drag.card_data=preload("uid://b3a4qbmde2b03").instantiate()
-		#drag.add_child(drag.card_data)
-		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
-	#for i in 2 :
-		#var drag=preload("uid://do8ek6iw7tisd").instantiate()
-		#drag.card_data=preload("uid://cuxpxje8iycj3").instantiate()
-		#drag.add_child(drag.card_data)
-		#$"VBoxContainer/酒馆".添加到容器中(drag,-1)
 	pass
 
 func 是否在战斗中()->bool:
@@ -97,8 +82,21 @@ func _on_抉择是否隐藏_pressed() -> void:
 		抉择节点.show()
 	pass # Replace with function body.
 
+func 获取战场中的牌()->Array:
+	if 是否在战斗中():
+		return fight.获取自己战场中的牌(self).map(func(card:DragControl): return card.card_data)
+	else:
+		return 战场.获取所有节点().map(func(card:DragControl): return card.card_data)
+
 func 添加到手牌(card:CardData):
 	手牌.添加到容器中(Global.创建新卡片(card),-1)
+
+
+func 添加随从(card:CardData,index:int):
+	if 是否在战斗中():
+		fight.添加新牌到战场(self,Global.创建新卡片(card),index)
+	else:
+		战场.添加到容器中(Global.创建新卡片(card),index)
 
 func 随从死亡(card_data:CardData):
 	var parent=card_data.get_parent()
