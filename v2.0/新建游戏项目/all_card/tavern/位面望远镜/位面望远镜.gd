@@ -1,12 +1,12 @@
 extends CardData
 
 func 使用触发(player:Player):
-	var 战场上的牌=player.战场.获取所有节点().filter(func(card:DragControl): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
+	var 战场上的牌=player.战场.获取所有节点().filter(func(card:CardData): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
 	if 战场上的牌.is_empty():
 		return
 	# 整理出来，让种族最多的进行选择
 	var 种族数量:Dictionary={}
-	for i:DragControl in 战场上的牌:
+	for i:CardData in 战场上的牌:
 		for j in i.card_data.race:
 			var count=种族数量.get_or_add(j,0)
 			种族数量.set(j,count+1)

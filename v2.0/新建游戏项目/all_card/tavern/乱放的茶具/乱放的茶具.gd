@@ -15,10 +15,10 @@ func buff_one_of_each_type(player:Player) -> void:
 	var minions_sorted = []  # 按类型数量排序后的随从
 	# 1. 过滤掉无类型随从，并按类型数量从少到多排序
 	minions_sorted = allied_minions.filter(
-		func(card:DragControl): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE)
+		func(card:CardData): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE)
 	)
 	minions_sorted.sort_custom(
-		func(a:DragControl, b:DragControl): return a.card_data.race.size() < b.card_data.race.size()
+		func(a:CardData, b:CardData): return a.card_data.race.size() < b.card_data.race.size()
 	)
 	
 	# 2. 按顺序处理（类型少的优先）
@@ -33,7 +33,7 @@ func buff_one_of_each_type(player:Player) -> void:
 			if buffed_types.size() == Enums.RaceEnum.size() - 1:
 				break
 
-func 加成方法(minion:DragControl,player:Player):
+func 加成方法(minion:CardData,player:Player):
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	minion.card_data.atk_process(minion,3+合计加成.atk,player)
 	minion.card_data.hp_process(minion,3+合计加成.hp,player)

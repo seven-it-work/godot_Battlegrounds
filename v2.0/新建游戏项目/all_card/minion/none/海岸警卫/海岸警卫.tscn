@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://btoixkvsymsqx"]
+
+[ext_resource type="Script" uid="uid://bw6ljenla378x" path="res://all_card/minion/none/海岸警卫/海岸警卫.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="海岸警卫" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_827"
+name_str = "海岸警卫"
+lv = 5
+show_lv = true
+atk = 4
+show_atk = true
+hp = 4
+show_hp = true
+desc = "当你出售
+本随从时，<b>刷新</b>酒馆，使其中变为海盗，然后偷取一个。"
+gold_desc = "当你出售本随从时，<b>刷新</b>酒馆，使其中变为海盗，然后偷取两个。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

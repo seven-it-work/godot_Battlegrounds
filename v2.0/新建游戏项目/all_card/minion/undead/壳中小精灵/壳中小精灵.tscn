@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cccr1kosblxnv"]
+
+[ext_resource type="Script" uid="uid://bf4nct4tlnpi4" path="res://all_card/minion/undead/壳中小精灵/壳中小精灵.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="壳中小精灵" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_841"
+name_str = "壳中小精灵"
+lv = 5
+show_lv = true
+atk = 4
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>战吼：</b>使一个友方随从获得+2生命值。<i>（每有一个在上一场战斗中死亡的友方随从都会提高！）</i>"
+gold_desc = "<b>战吼：</b>使一个友方随从获得+4生命值。<i>（每有一个在上一场战斗中死亡的友方随从都会提高！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

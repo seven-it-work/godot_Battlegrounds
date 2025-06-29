@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2vjjsoltclri"]
+
+[ext_resource type="Script" uid="uid://cpt27ga78xp6o" path="res://all_card/minion/pirate/顽砂猎头/顽砂猎头.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="顽砂猎头" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_822"
+name_str = "顽砂猎头"
+lv = 4
+show_lv = true
+atk = 5
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>战吼：</b>获取一张掠夺者合约。"
+gold_desc = "<b>战吼：</b>获取2张掠夺者合约。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([8])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

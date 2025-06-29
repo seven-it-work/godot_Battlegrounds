@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgcah1iu55p3y"]
+
+[ext_resource type="Script" uid="uid://b40h02ytoxvb8" path="res://all_card/minion/murloc/鳛芙的学徒/鳛芙的学徒.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="鳛芙的学徒" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_332"
+name_str = "鳛芙的学徒"
+lv = 5
+show_lv = true
+atk = 4
+show_atk = true
+hp = 4
+show_hp = true
+desc = "在你的回合结束时，获得+4/+4和一个随机<b>额外关键词</b>。"
+gold_desc = "在你的回合结束时，获得+8/+8和两个随机<b>额外关键词</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([6])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

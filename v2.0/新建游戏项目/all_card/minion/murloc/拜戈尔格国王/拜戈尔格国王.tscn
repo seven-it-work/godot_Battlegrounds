@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://boaixtiga1ucu"]
+
+[ext_resource type="Script" uid="uid://cnkhb0q4fnvnn" path="res://all_card/minion/murloc/拜戈尔格国王/拜戈尔格国王.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="拜戈尔格国王" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_030"
+name_str = "拜戈尔格国王"
+lv = 4
+show_lv = true
+atk = 3
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>战吼：</b>使你的其他鱼人获得+2/+3。"
+gold_desc = "<b>战吼：</b>使你的其他鱼人获得+4/+6。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([6])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

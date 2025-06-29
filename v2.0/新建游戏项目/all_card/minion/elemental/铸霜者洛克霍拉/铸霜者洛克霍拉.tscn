@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cphjqdkhdp7qm"]
+
+[ext_resource type="Script" uid="uid://dc41hcft1mvbc" path="res://all_card/minion/elemental/铸霜者洛克霍拉/铸霜者洛克霍拉.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="铸霜者洛克霍拉" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_844"
+name_str = "铸霜者洛克霍拉"
+lv = 6
+show_lv = true
+atk = 8
+show_atk = true
+hp = 5
+show_hp = true
+desc = "在你的回合结束时，使你的其他随从获得+{0}/+{1}。"
+gold_desc = "在你的回合结束时，使你的其他随从获得+{0}/+{1}，触发两次。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([4])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

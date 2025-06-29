@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctdmdw7a0k2gn"]
+
+[ext_resource type="Script" uid="uid://dabojq8f7putj" path="res://all_card/minion/none/宝藏追寻者伊莉斯/宝藏追寻者伊莉斯.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="宝藏追寻者伊莉斯" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_353"
+name_str = "宝藏追寻者伊莉斯"
+lv = 4
+show_lv = true
+atk = 5
+show_atk = true
+hp = 5
+show_hp = true
+desc = "在你<b>刷新</b>5次后，找到<b>黄金</b>猿！<i>（还剩5次！）</i>"
+gold_desc = "在你<b>刷新</b>5次后，找到两尊<b>黄金</b>猿！<i>（还剩5次！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b40fw3w30qnt7"]
+
+[ext_resource type="Script" uid="uid://dq52hy4lw1f1f" path="res://all_card/minion/quilboar/睡梦织棘者/睡梦织棘者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="睡梦织棘者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_433"
+name_str = "睡梦织棘者"
+lv = 4
+show_lv = true
+atk = 2
+show_atk = true
+hp = 8
+show_hp = true
+desc = "<b>复仇（4）：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+1生命值。<i>（下回合切换为攻击力！）</i>"
+gold_desc = "<b>复仇（4）：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+2生命值。<i>（下回合切换为攻击力！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([9])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

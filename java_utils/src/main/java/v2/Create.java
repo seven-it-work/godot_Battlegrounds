@@ -9,6 +9,7 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 
 import org.example.BaseCard;
+import org.example.RaceEnum;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Create {
     public static String savePath=workPath+"v2.0\\新建游戏项目\\all_card\\";
 
     public static void main(String[] args) {
-        酒馆法术("E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\资料\\32.2.4.221850\\get_full_cards.json");
+        随从("E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\资料\\32.2.4.221850\\get_full_cards.json");
     }
     private static void 随从(String jsonPath) {
         // 过滤出想要的数组
@@ -39,8 +40,12 @@ public class Create {
             baseCard.set是否出现在酒馆(true);
             baseCard.set是否为伙伴(false);
 
-
-            baseCard.setSavePath(StrUtil.format("tavern/{nameCN}/{nameCN}", baseCard.toJson()));
+            String type= RaceEnum.NONE.toString();
+            List<String> minionTypes = baseCard.getMinionTypes();
+            if(!minionTypes.isEmpty()) {
+                type=minionTypes.get(0);
+            }
+            baseCard.setSavePath(StrUtil.format("minion/"+type+"/{nameCN}/{nameCN}", baseCard.toJson()));
 
             String tscn = StrUtil.format(s, baseCard.toJson());
             System.out.println("-----------------------------");

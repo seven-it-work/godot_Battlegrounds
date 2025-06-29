@@ -139,5 +139,5 @@ func 使用触发(使用卡片:DragControl):
 	使用卡片.card_data.使用触发(Global.main_node)
 	for i:DragControl in Global.main_node.获取所有的牌():
 		if i!=使用卡片:
-			i.card_data.使用触发监听(Global.main_node,使用卡片)
+			i.card_data.使用触发监听(Global.main_node,使用卡片.card_data)
 	pass

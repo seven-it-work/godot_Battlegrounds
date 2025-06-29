@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clurlnso3urhr"]
+
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+[ext_resource type="Script" uid="uid://b2igwd6ith2g4" path="res://all_card/minion/beast/甲虫/甲虫.gd" id="2_ri3xf"]
+
+[node name="甲虫" instance=ExtResource("1_syn4q")]
+script = ExtResource("2_ri3xf")
+name_str = "甲虫"
+version = "32.2.4.221850"
+ls_card_id = "BG28_603t"
+atk = 2
+hp = 2
+race = Array[int]([1])
+"是否出现在酒馆" = false

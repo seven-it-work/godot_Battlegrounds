@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://corrrsc1toi4y"]
+
+[ext_resource type="Script" uid="uid://bp5wehsoerby3" path="res://all_card/minion/demon/假冒鬼儡/假冒鬼儡.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="假冒鬼儡" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_140"
+name_str = "假冒鬼儡"
+lv = 3
+show_lv = true
+atk = 1
+show_atk = true
+hp = 1
+show_hp = true
+desc = "在你的回合结束时，吞食酒馆中的一个随从以获得其属性值。"
+gold_desc = "在你的回合结束时，吞食酒馆中的一个随从以获得其双倍属性值。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([2])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

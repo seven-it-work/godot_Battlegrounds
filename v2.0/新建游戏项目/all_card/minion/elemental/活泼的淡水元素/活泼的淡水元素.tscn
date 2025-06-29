@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtfr0ip7skma"]
+
+[ext_resource type="Script" uid="uid://pymnxh51c5dg" path="res://all_card/minion/elemental/活泼的淡水元素/活泼的淡水元素.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="活泼的淡水元素" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_110"
+name_str = "活泼的淡水元素"
+lv = 4
+show_lv = true
+atk = 6
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>亡语：</b>你和你的队友各获得两次消耗为（0）枚铸币的<b>刷新</b>。"
+gold_desc = "<b>亡语：</b>你和你的队友各获得四次消耗为（0）枚铸币的<b>刷新</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([4])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

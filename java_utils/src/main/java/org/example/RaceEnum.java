@@ -1,6 +1,6 @@
 package org.example;
 
-enum RaceEnum{
+public enum RaceEnum{
 	NONE,
 	BEAST,
 	DEMON,

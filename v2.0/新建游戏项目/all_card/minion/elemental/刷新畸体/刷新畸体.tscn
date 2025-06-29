@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt8f02lggrxxr"]
+
+[ext_resource type="Script" uid="uid://c7tukvbnkobwm" path="res://all_card/minion/elemental/刷新畸体/刷新畸体.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="刷新畸体" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_116"
+name_str = "刷新畸体"
+lv = 4
+show_lv = true
+atk = 4
+show_atk = true
+hp = 5
+show_hp = true
+desc = "<b>战吼：</b>获得2次消耗为（0）枚铸币的<b>刷新</b>。"
+gold_desc = "<b>战吼：</b>获得4次消耗为（0）枚铸币的<b>刷新</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([4])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

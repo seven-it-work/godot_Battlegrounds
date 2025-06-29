@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b48enf2qp71b6"]
+
+[ext_resource type="Script" uid="uid://cakrppbduf0rq" path="res://all_card/minion/quilboar/坑谷矿工/坑谷矿工.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="坑谷矿工" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_320"
+name_str = "坑谷矿工"
+lv = 2
+show_lv = true
+atk = 2
+show_atk = true
+hp = 2
+show_hp = true
+desc = "<b>抉择：</b>获取2张
+<b>鲜血宝石</b>；或者随机获取一张消耗1枚铸币的酒馆法术牌。"
+gold_desc = "<b>抉择：</b>获取4张<b>鲜血宝石</b>；或者随机获取两张消耗1枚铸币的酒馆法术牌。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([9])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

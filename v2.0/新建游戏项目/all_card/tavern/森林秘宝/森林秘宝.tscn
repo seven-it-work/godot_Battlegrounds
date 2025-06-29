@@ -21,10 +21,10 @@ corner_radius_bottom_left = 5
 resource_name = "抉择选项1"
 script/source = "extends ChooseOption
 
-func get_desc(card:DragControl,player:Player,otherJson:Dictionary={})->String:
+func get_desc(card:CardData,player:Player,otherJson:Dictionary={})->String:
 	return StrUtils.自定义format(描述,card.card_data._描述json(player,otherJson))
 
-func 执行方法(player:Player,card:DragControl):
+func 执行方法(player:Player,card:CardData):
 	card.card_data.执行抉择选项1(player)
 "
 
@@ -44,10 +44,10 @@ corner_radius_bottom_left = 5
 resource_name = "抉择选项2"
 script/source = "extends ChooseOption
 
-func get_desc(card:DragControl,player:Player,otherJson:Dictionary={})->String:
+func get_desc(card:CardData,player:Player,otherJson:Dictionary={})->String:
 	return StrUtils.自定义format(描述,card.card_data._描述json(player,otherJson))
 
-func 执行方法(player:Player,card:DragControl):
+func 执行方法(player:Player,card:CardData):
 	card.card_data.执行抉择选项2(player)
 "
 

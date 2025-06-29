@@ -19,7 +19,7 @@ func 执行(player:Player):
 	#在你的回合结束时，使你的龙获得+{0}攻击力。持续3回合。3在你的回合结束时，使你的龙获得+{0}/+{1}。持续3回合。
 	var list=player.战场.获取所有节点()
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
-	for i:DragControl in list:
+	for i:CardData in list:
 		if i.card_data.是否属于种族(Enums.RaceEnum.DRAGON):
 			i.card_data.atk_process(self.get_parent(),3+合计加成.atk,player)
 			i.card_data.hp_process(self.get_parent(),0+合计加成.hp,player)

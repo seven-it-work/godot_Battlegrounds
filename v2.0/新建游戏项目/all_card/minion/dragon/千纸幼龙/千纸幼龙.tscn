@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf82hwr100x8o"]
+
+[ext_resource type="Script" uid="uid://blnyfodp6x33g" path="res://all_card/minion/dragon/千纸幼龙/千纸幼龙.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="千纸幼龙" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_810"
+name_str = "千纸幼龙"
+lv = 2
+show_lv = true
+atk = 2
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>战斗开始时：</b>使你最左边的龙获得+1/+2和<b>风怒</b>。"
+gold_desc = "<b>战斗开始时：</b>使你最左边的两条龙获得+1/+2和<b>风怒</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([3])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

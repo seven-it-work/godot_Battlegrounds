@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bomlfpo3t1jbx"]
+
+[ext_resource type="Script" uid="uid://bsk5m6t2s2x5c" path="res://all_card/minion/none/牛头人灵魂行者/牛头人灵魂行者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="牛头人灵魂行者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_866"
+name_str = "牛头人灵魂行者"
+lv = 4
+show_lv = true
+atk = 7
+show_atk = true
+hp = 5
+show_hp = true
+desc = "每回合中，你有1个酒馆法术会施放两次。<i>（还剩1个！）</i>"
+gold_desc = "每回合中，你有1个酒馆法术会施放三次。<i>（还剩1个！）</i>2每回合中，你有1个酒馆法术会施放三次。<i>（还剩0个！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cieyil4mt483a"]
+
+[ext_resource type="Script" uid="uid://hsr182x8wgdo" path="res://all_card/minion/none/红衣纳迪娜/红衣纳迪娜.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="红衣纳迪娜" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_040"
+name_str = "红衣纳迪娜"
+lv = 6
+show_lv = true
+atk = 8
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>亡语：</b>使3条友方的龙获得<b>圣盾</b>。"
+gold_desc = "<b>亡语：</b>使6条友方的龙获得<b>圣盾</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

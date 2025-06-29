@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://brtre1vqxpw5q"]
+
+[ext_resource type="Script" uid="uid://dvx8fvjwr0t35" path="res://all_card/minion/murloc/海床搜捡者/海床搜捡者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="海床搜捡者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_206"
+name_str = "海床搜捡者"
+lv = 4
+show_lv = true
+atk = 2
+show_atk = true
+hp = 6
+show_hp = true
+desc = "在你的回合结束时，你的队伍中每有一个不同的<b>额外关键词</b>，使你的队伍的随从获得+1攻击力。"
+gold_desc = "在你的回合结束时，你的队伍中每有一个不同的<b>额外关键词</b>，使你的队伍的随从获得+2攻击力。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([6])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

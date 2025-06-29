@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5spnhao5uwa"]
+
+[ext_resource type="Script" uid="uid://d2a3ynq48um0s" path="res://all_card/minion/pirate/夺金健将/夺金健将.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="夺金健将" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_236"
+name_str = "夺金健将"
+lv = 1
+show_lv = true
+atk = 1
+show_atk = true
+hp = 1
+show_hp = true
+desc = "<b>圣盾</b>。<b>战吼：</b>使本随从变为金色。"
+gold_desc = "<b>圣盾</b>。<b>战吼：</b>使本随从变为金色。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([8])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

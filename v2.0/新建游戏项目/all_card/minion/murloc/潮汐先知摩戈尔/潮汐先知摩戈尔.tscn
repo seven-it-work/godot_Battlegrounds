@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt1ljfaff02si"]
+
+[ext_resource type="Script" uid="uid://d0288tejwof2f" path="res://all_card/minion/murloc/潮汐先知摩戈尔/潮汐先知摩戈尔.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="潮汐先知摩戈尔" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_513"
+name_str = "潮汐先知摩戈尔"
+lv = 7
+show_lv = true
+atk = 1
+show_atk = true
+hp = 10
+show_hp = true
+desc = "<b><b>剧毒</b>。</b>每当本随从攻击并消灭一个随从时，使你手牌中的一张随从牌获得被消灭随从的最大属性值。"
+gold_desc = "<b><b>剧毒</b>。</b>每当本随从攻击并消灭一个随从时，使你手牌中的一张随从牌获得被消灭随从的双倍最大属性值。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([6])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

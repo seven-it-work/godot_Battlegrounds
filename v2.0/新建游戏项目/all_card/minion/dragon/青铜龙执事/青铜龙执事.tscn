@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjd2ss26reuew"]
+
+[ext_resource type="Script" uid="uid://cjmy4jpvt0qpm" path="res://all_card/minion/dragon/青铜龙执事/青铜龙执事.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="青铜龙执事" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_824"
+name_str = "青铜龙执事"
+lv = 5
+show_lv = true
+atk = 10
+show_atk = true
+hp = 2
+show_hp = true
+desc = "<b>战吼，亡语：</b>
+使你的其他龙获得+10攻击力。"
+gold_desc = "<b>战吼，亡语：</b>使你的其他龙获得+20攻击力。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([3])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

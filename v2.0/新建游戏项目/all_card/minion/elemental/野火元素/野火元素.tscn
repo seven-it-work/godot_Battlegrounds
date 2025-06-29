@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfkpe0lt2ma4w"]
+
+[ext_resource type="Script" uid="uid://0m70whfkng2q" path="res://all_card/minion/elemental/野火元素/野火元素.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="野火元素" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_126"
+name_str = "野火元素"
+lv = 3
+show_lv = true
+atk = 6
+show_atk = true
+hp = 3
+show_hp = true
+desc = "在本随从攻击并消灭一个随从后，对一个相邻的随从造成超过目标生命值的伤害。"
+gold_desc = "在本随从攻击并消灭一个随从后，对相邻的随从均造成超过目标生命值的伤害。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([4])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

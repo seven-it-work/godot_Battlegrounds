@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbmrpulojgndr"]
+
+[ext_resource type="Script" uid="uid://bapqrn33ik3v0" path="res://all_card/minion/mech/砰砰博士的怪物/砰砰博士的怪物.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="砰砰博士的怪物" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_176"
+name_str = "砰砰博士的怪物"
+lv = 6
+show_lv = true
+atk = 2
+show_atk = true
+hp = 2
+show_hp = true
+desc = "<b>磁力</b>。在本局对战中你每<b>磁力吸附</b>过一次，便拥有+2/+2<i>（无论本随从在哪）</i>。"
+gold_desc = "<b>磁力</b>。在本局对战中你每<b>磁力吸附</b>过一次，便拥有+4/+4<i>（无论本随从在哪）</i>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([5])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

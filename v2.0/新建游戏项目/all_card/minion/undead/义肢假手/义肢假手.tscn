@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2walxv7gc1ds"]
+
+[ext_resource type="Script" uid="uid://cdewbj47we3v7" path="res://all_card/minion/undead/义肢假手/义肢假手.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="义肢假手" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG_DEEP_015"
+name_str = "义肢假手"
+lv = 4
+show_lv = true
+atk = 3
+show_atk = true
+hp = 1
+show_hp = true
+desc = "<b>磁力</b>。<b>复生</b>
+可以<b>磁力吸附</b>在机械或亡灵上。"
+gold_desc = "<b>磁力</b>。<b>复生</b>可以<b>磁力吸附</b>在机械或亡灵上。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10, 5])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

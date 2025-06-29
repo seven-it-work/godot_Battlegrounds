@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqo4rpwgxdwy"]
+
+[ext_resource type="Script" uid="uid://cycxdbu7r5ktw" path="res://all_card/minion/demon/奇瑰打击乐手/奇瑰打击乐手.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="奇瑰打击乐手" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_525"
+name_str = "奇瑰打击乐手"
+lv = 4
+show_lv = true
+atk = 4
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b><b>战吼：
+</b>发现</b>一张恶魔牌，对你的英雄造成等同于其等级的伤害。"
+gold_desc = "<b><b>战吼：</b>发现</b>2张恶魔牌，对你的英雄造成等同于其等级的伤害。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([2])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -55,7 +55,7 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 ## 是否使用时是否需要选中目标
 @export var need_select_target:bool=false
 
-#@export var 亡语:Array[Dead]=[]
+@export var 亡语:Array[Dead]=[]
 @export var 战吼:Array[Roar]=[]
 #@export var 抉择:ToChoose
 
@@ -122,8 +122,7 @@ func 是否能够使用(player:Player)->bool:
 	return true
 
 func 是否存在亡语()->bool:
-	#return 亡语.size()>0
-	return false
+	return 亡语.size()>0
 
 func 是否死亡(player:Player)->bool:
 	return hp_bonus(player)<=0
@@ -156,13 +155,31 @@ func 是否有战吼()->bool:
 
 
 #region 触发相关
-func 使用触发监听(player:Player,使用的卡片:DragControl):
+func 使用触发监听(player:Player,使用的卡片:CardData):
 	print(name_str,"使用触发监听")
 
 func 使用触发(player:Player):
 	print(name_str,"使用触发")
 	pass
 
+func 触发器_获得攻击力(触发者:CardData,num:int,player:Player):
+	pass
+
+func 触发器_亡语(触发随从:CardData,player:Player):
+	if !是否存在亡语():
+		return
+	for i in self.亡语:
+		i.亡语(触发随从,player)
+		for j in player.get_minion():
+			if j.uuid!=self.uuid:
+				j.触发器_亡语触发监听(触发随从,self,player)
+	pass
+	
+func 触发器_亡语触发监听(触发随从:CardData,亡语随从:CardData,player:Player):
+	pass
+	
+func 触发器_回合结束时():
+	pass
 #endregion
 
 
@@ -203,7 +220,7 @@ func 属性添加(player:Player,属性:AttributeBonus,是否永久:bool=false):
 		属性加成.append(属性)
 
 ## 攻击力
-func atk_process(触发卡:DragControl,num:int,player:Player,是否永久:bool=false):
+func atk_process(触发卡:CardData,num:int,player:Player,是否永久:bool=false):
 	if num==0:
 		return
 	var temp=触发卡.card_data.get_AttributeBonus()
@@ -218,12 +235,12 @@ func atk_process(触发卡:DragControl,num:int,player:Player,是否永久:bool=f
 	pass
 	
 ## 生命值处理
-func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是否永久:bool=false):
+func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否永久:bool=false):
 	if 生命值加成==0:
 		return
 	if 生命值加成>=0:
 		# 生命加成
-		var temp=触发随从.card_data.get_AttributeBonus()
+		var temp=触发随从.get_AttributeBonus()
 		temp.hp=生命值加成
 		临时属性加成.append(temp)
 		if !player.是否在战斗中():
@@ -237,11 +254,11 @@ func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是�
 			self.圣盾=false
 			return
 		# 受伤了，减去生命值
-		if 触发随从.card_data.剧毒:
-			触发随从.card_data.剧毒=false
+		if 触发随从.剧毒:
+			触发随从.剧毒=false
 			# todo 剧毒消失触发器
 			生命值加成=-hp_bonus(player)
-		if 触发随从.card_data.烈毒:
+		if 触发随从.烈毒:
 			生命值加成=-hp_bonus(player)
 		current_hp+=生命值加成
 		#触发器_受伤(trigger,num,player)
@@ -254,7 +271,7 @@ func hp_process(触发随从:DragControl,生命值加成:int,player:Player,是�
 			# 移除自己
 			player.随从死亡(self)
 			# 死亡
-			#触发器_亡语(trigger,player)
+			触发器_亡语(触发随从,player)
 			# 如果有复生则复生触发
 			#if 复生:
 				#var new_minion=CardsUtils.find_card([

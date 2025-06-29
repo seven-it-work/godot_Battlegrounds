@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cas346ie5hkvu"]
+
+[ext_resource type="Script" uid="uid://clq55jqgtf1jd" path="res://all_card/minion/mech/催眠机器人/催眠机器人.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="催眠机器人" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+name_str = "催眠机器人"
+version = "32.2.4.221850"
+ls_card_id = "BG26_146"
+atk = 2
+hp = 2
+desc = "<b>磁力</b>
+在你的回合结束时，获得+1生命值。"
+gold_desc = "<b>磁力</b>在你的回合结束时，获得+2生命值。"
+race = Array[int]([5])
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

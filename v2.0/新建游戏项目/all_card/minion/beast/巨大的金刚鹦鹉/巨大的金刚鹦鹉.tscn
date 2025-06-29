@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5w34er40dgo"]
+
+[ext_resource type="Script" uid="uid://c0ntf7knpaodw" path="res://all_card/minion/beast/巨大的金刚鹦鹉/巨大的金刚鹦鹉.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="巨大的金刚鹦鹉" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_078"
+name_str = "巨大的金刚鹦鹉"
+lv = 3
+show_lv = true
+atk = 4
+show_atk = true
+hp = 3
+show_hp = true
+desc = "在本随从攻击后，触发你最左边的<b>亡语</b><i>（本随从的除外）</i>。"
+gold_desc = "在本随从攻击后，触发你最左边的<b>亡语</b><i>（本随从的除外）</i>，触发两次。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([1])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

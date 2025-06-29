@@ -20,3 +20,9 @@ func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragC
 func 购买触发():
 	print("购买触发")
 	pass
+
+
+func 清除全部():
+	for i in $HBoxContainer.get_children():
+		i.queue_free()
+	pass

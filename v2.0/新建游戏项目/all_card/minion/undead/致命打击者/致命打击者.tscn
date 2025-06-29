@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://n84jnmnmfem"]
+
+[ext_resource type="Script" uid="uid://cb18yjhg244lh" path="res://all_card/minion/undead/致命打击者/致命打击者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="致命打击者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_835"
+name_str = "致命打击者"
+lv = 6
+show_lv = true
+atk = 7
+show_atk = true
+hp = 7
+show_hp = true
+desc = "<b>复仇（4）：</b>随机获取一张亡灵牌。<b>亡语：</b>从你的手牌中召唤它，其登场仅限本场战斗。"
+gold_desc = "<b>复仇（4）：</b>随机获取2张亡灵牌。<b>亡语：</b>从你的手牌中召唤它们，其登场仅限本场战斗。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

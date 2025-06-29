@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="新建游戏项目"
-run/main_scene="uid://btcckudp08t2"
+run/main_scene="uid://b4uagsaum6yak"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

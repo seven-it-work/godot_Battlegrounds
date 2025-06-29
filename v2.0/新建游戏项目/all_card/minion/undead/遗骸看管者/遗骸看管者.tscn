@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdp35jkq77ked"]
+
+[ext_resource type="Script" uid="uid://c4ufqdkee1gat" path="res://all_card/minion/undead/遗骸看管者/遗骸看管者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="遗骸看管者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_125"
+name_str = "遗骸看管者"
+lv = 3
+show_lv = true
+atk = 3
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>亡语：</b>召唤三个1/1的骷髅。"
+gold_desc = "<b>亡语：</b>召唤六个1/1的骷髅。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

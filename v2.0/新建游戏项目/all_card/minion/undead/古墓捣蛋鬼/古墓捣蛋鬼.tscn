@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1yy4ngvlvmu6"]
+
+[ext_resource type="Script" uid="uid://ccjqlh1teteyg" path="res://all_card/minion/undead/古墓捣蛋鬼/古墓捣蛋鬼.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="古墓捣蛋鬼" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG30_129"
+name_str = "古墓捣蛋鬼"
+lv = 5
+show_lv = true
+atk = 6
+show_atk = true
+hp = 10
+show_hp = true
+desc = "每当你即将召唤随从且你的战队放不下时，使你的亡灵永久获得+2/+2。"
+gold_desc = "每当你即将召唤随从且你的战队放不下时，使你的亡灵永久获得+4/+4。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

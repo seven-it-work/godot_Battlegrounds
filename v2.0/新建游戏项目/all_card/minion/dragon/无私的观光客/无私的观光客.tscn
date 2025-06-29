@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtvd6p0eyv6sc"]
+
+[ext_resource type="Script" uid="uid://bl48hnrjc1w1n" path="res://all_card/minion/dragon/无私的观光客/无私的观光客.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="无私的观光客" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_205"
+name_str = "无私的观光客"
+lv = 4
+show_lv = true
+atk = 5
+show_atk = true
+hp = 2
+show_hp = true
+desc = "<b>战吼：</b>你的队伍的铸币上限提高（1）枚。"
+gold_desc = "<b>战吼：</b>你的队伍的铸币上限提高（2）枚。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([3])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

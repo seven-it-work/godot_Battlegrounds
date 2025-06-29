@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmnvffkhecbo1"]
+
+[ext_resource type="Script" uid="uid://dl66huv6mb68u" path="res://all_card/minion/quilboar/腐化的棘刺野猪人/腐化的棘刺野猪人.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="腐化的棘刺野猪人" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_431"
+name_str = "腐化的棘刺野猪人"
+lv = 4
+show_lv = true
+atk = 5
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>亡语：</b>召唤一个属性值等同于本随从的<b>鲜血宝石</b>的魔像。"
+gold_desc = "<b>亡语：</b>召唤2个属性值等同于本随从的<b>鲜血宝石</b>的魔像。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([9])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

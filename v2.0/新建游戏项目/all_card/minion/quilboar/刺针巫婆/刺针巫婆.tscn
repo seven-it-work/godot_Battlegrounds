@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ctxhoevoq1"]
+
+[ext_resource type="Script" uid="uid://dm72ssoe6ffgl" path="res://all_card/minion/quilboar/刺针巫婆/刺针巫婆.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="刺针巫婆" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_432"
+name_str = "刺针巫婆"
+lv = 6
+show_lv = true
+atk = 5
+show_atk = true
+hp = 4
+show_hp = true
+desc = "你在战斗中的<b>鲜血宝石</b>使随从获得的属性值变为两倍。"
+gold_desc = "你在战斗中的<b>鲜血宝石</b>使随从获得的属性值变为三倍。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([9])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

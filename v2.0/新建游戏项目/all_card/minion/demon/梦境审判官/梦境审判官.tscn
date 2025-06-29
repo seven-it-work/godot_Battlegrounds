@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://14sl0fg7m1h2"]
+
+[ext_resource type="Script" uid="uid://4fwcjvjocqxw" path="res://all_card/minion/demon/梦境审判官/梦境审判官.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="梦境审判官" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_892"
+name_str = "梦境审判官"
+lv = 6
+show_lv = true
+atk = 6
+show_atk = true
+hp = 6
+show_hp = true
+desc = "每当你施放一个酒馆法术，对你的英雄造成1点伤害并使你的恶魔获得+1/+1。"
+gold_desc = "每当你施放一个酒馆法术，对你的英雄造成1点伤害并使你的恶魔获得+1/+1，触发两次。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([2])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

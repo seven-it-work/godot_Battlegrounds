@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://blnm8jdh44t7j"]
+
+[ext_resource type="Script" uid="uid://cmgx0tmfeb6em" path="res://all_card/minion/naga/深海钓客/深海钓客.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="深海钓客" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_004"
+name_str = "深海钓客"
+lv = 1
+show_lv = true
+atk = 2
+show_atk = true
+hp = 2
+show_hp = true
+desc = "<b>塑造法术：</b>直到下个回合，使一个随从获得+2生命值和<b>嘲讽</b>。"
+gold_desc = "<b>塑造法术：</b>直到下个回合，使一个随从获得+4生命值和<b>嘲讽</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([7])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

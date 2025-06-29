@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发监听(player:Player,使用的卡片:DragControl):
+func 使用触发监听(player:Player,使用的卡片:CardData):
 	super.使用触发监听(player,使用的卡片)
 	if 使用的卡片.card_data.所在位置==Enums.CardPosition.战场:
 		if 使用的卡片.card_data.是否属于种族(Enums.RaceEnum.DEMON):

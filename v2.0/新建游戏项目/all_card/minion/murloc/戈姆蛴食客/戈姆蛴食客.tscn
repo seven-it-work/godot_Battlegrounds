@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c80a3tl38mb3i"]
+
+[ext_resource type="Script" uid="uid://5di3fjws5u50" path="res://all_card/minion/murloc/戈姆蛴食客/戈姆蛴食客.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="戈姆蛴食客" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_336"
+name_str = "戈姆蛴食客"
+lv = 4
+show_lv = true
+atk = 4
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>嘲讽</b>。<b>战吼，亡语：</b>获取一张海鲜乱炖。"
+gold_desc = "<b>嘲讽</b>。<b>战吼，亡语：</b>获取2张海鲜乱炖。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([6])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

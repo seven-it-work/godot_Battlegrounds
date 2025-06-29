@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci1nn651dhcja"]
+
+[ext_resource type="Script" uid="uid://b0v5unudhs3o2" path="res://all_card/minion/pirate/双持海盗/双持海盗.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="双持海盗" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_824"
+name_str = "双持海盗"
+lv = 5
+show_lv = true
+atk = 3
+show_atk = true
+hp = 5
+show_hp = true
+desc = "每当你花掉5枚铸币，使两个友方海盗
+获得+4/+4。
+<i>（还剩5枚！）</i>"
+gold_desc = "每当你花掉5枚铸币，使两个友方海盗获得+8/+8。<i>（还剩5枚！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([8])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

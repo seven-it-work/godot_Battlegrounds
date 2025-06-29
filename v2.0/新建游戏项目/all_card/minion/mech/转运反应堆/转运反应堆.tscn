@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cujar4rvhyrv8"]
+
+[ext_resource type="Script" uid="uid://35aha7q3r03g" path="res://all_card/minion/mech/转运反应堆/转运反应堆.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="转运反应堆" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO31_211"
+name_str = "转运反应堆"
+lv = 6
+show_lv = true
+atk = 1
+show_atk = true
+hp = 1
+show_hp = true
+desc = "<b>磁力</b>。在本局对战中，你的队伍每<b>传递</b>过一次，便拥有+1/+1<i>（无论本随从在哪）。</i>"
+gold_desc = "<b>磁力</b>。在本局对战中，你的队伍每<b>传递</b>过一次，便拥有+2/+2<i>（无论本随从在哪）。</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([5])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

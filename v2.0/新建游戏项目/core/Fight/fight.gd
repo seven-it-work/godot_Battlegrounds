@@ -161,9 +161,9 @@ func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:D
 	await start_animation_sequence(攻击随从,防御随从)
 	print("动画播放完成，进行数据计算")
 	# 攻击方生命值-
-	攻击随从.card_data.hp_process(防御随从,-防御随从.card_data.atk_bonus(防御者.player),攻击者.player)
+	攻击随从.card_data.hp_process(防御随从.card_data,-防御随从.card_data.atk_bonus(防御者.player),攻击者.player)
 	# 防御方
-	防御随从.card_data.hp_process(攻击随从,-攻击随从.card_data.atk_bonus(攻击者.player),防御者.player)
+	防御随从.card_data.hp_process(攻击随从.card_data,-攻击随从.card_data.atk_bonus(攻击者.player),防御者.player)
 
 func _伤害计算(胜利者:攻击对象)->int:
 	return 10

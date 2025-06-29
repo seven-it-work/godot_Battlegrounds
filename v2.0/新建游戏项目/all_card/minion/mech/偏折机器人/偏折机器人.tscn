@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cywgefoq55uji"]
+
+[ext_resource type="Script" uid="uid://b1bhanpcxoxe0" path="res://all_card/minion/mech/偏折机器人/偏折机器人.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="偏折机器人" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_071"
+name_str = "偏折机器人"
+lv = 3
+show_lv = true
+atk = 3
+show_atk = true
+hp = 2
+show_hp = true
+desc = "<b>圣盾</b>
+在战斗阶段中，每当你召唤一个机械，便获得+2攻击力和<b>圣盾</b>。"
+gold_desc = "<b>圣盾</b>在战斗阶段中，每当你召唤一个机械，便获得+4攻击力和<b>圣盾</b>。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([5])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

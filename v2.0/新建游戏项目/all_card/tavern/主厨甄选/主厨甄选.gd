@@ -4,7 +4,7 @@ extends CardData
 func 使用触发(player:Player):
 	if $"使用时是否需要选择目标".目标对象==null:
 		# 随机选择目标（战场和酒馆）
-		var 所有list=player.获取战场和酒馆中的牌().filter(func(card:DragControl): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
+		var 所有list=player.获取战场和酒馆中的牌().filter(func(card:CardData): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
 		if 所有list.is_empty():
 			Logger.debug("没有任何型，无法中")
 			return

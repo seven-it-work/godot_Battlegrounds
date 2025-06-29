@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4uagsaum6yak"]
+[gd_scene load_steps=4 format=3 uid="uid://b4uagsaum6yak"]
 
+[ext_resource type="Script" uid="uid://l8i184heu1c8" path="res://游戏场景.gd" id="1_cw67j"]
 [ext_resource type="PackedScene" uid="uid://batjwfujq44uj" path="res://core/Fight/fight.tscn" id="1_myshr"]
 [ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽排序容器/player.tscn" id="2_myshr"]
 
@@ -10,9 +11,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cw67j")
 
 [node name="fight" parent="." instance=ExtResource("1_myshr")]
+visible = false
 
 [node name="player" parent="." instance=ExtResource("2_myshr")]
-visible = false
 layout_mode = 1

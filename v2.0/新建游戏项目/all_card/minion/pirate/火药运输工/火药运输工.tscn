@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdt1a6tj8wv3m"]
+
+[ext_resource type="Script" uid="uid://ypugdpm5e1r5" path="res://all_card/minion/pirate/火药运输工/火药运输工.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="火药运输工" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_810"
+name_str = "火药运输工"
+lv = 4
+show_lv = true
+atk = 3
+show_atk = true
+hp = 6
+show_hp = true
+desc = "每当你花掉
+5枚铸币，使你的海盗获得+2攻击力。<i>（还剩5枚！）</i>"
+gold_desc = "每当你花掉5枚铸币，使你的海盗获得+4攻击力。<i>（还剩5枚！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([8])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

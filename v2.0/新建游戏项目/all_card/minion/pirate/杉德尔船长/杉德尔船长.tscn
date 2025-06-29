@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjv1cu26oosso"]
+
+[ext_resource type="Script" uid="uid://dk8v8gx2anvq1" path="res://all_card/minion/pirate/杉德尔船长/杉德尔船长.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="杉德尔船长" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG25_034"
+name_str = "杉德尔船长"
+lv = 7
+show_lv = true
+atk = 7
+show_atk = true
+hp = 7
+show_hp = true
+desc = "<b>战吼：</b>使一个友方随从变为金色。"
+gold_desc = "<b>战吼：</b>使2个友方随从变为金色。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([8])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

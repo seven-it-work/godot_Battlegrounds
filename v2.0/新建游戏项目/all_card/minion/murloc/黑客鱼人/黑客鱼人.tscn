@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://di0a43oewrvd0"]
+
+[ext_resource type="Script" uid="uid://bdyxr6u53tiv4" path="res://all_card/minion/murloc/黑客鱼人/黑客鱼人.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="黑客鱼人" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_148"
+name_str = "黑客鱼人"
+lv = 5
+show_lv = true
+atk = 5
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>战吼：</b>使你的其他随从获得+{0}/+{1}。<i>（你的战队中每有一个不同的<b>额外关键词</b>都会提升！）</i>"
+gold_desc = "<b>战吼：</b>使你的其他随从获得+{0}/+{1}。<i>（你的战队中每有一个不同的<b>额外关键词</b>都会提升！）</i>"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([6])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

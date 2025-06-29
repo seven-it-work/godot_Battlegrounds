@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg8mf0qg2kr1o"]
+
+[ext_resource type="Script" uid="uid://dmfuy6rftcdq4" path="res://all_card/minion/undead/墓后解说员/墓后解说员.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="墓后解说员" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGDUO_112"
+name_str = "墓后解说员"
+lv = 4
+show_lv = true
+atk = 2
+show_atk = true
+hp = 7
+show_hp = true
+desc = "<b>复仇（3）：</b>你的队友获取一张其多数随从的类型的随从牌。"
+gold_desc = "<b>复仇（3）：</b>你的队友获取2张其多数随从的类型的随从牌。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

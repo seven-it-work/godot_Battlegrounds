@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://og3of2mcnhnn"]
+
+[ext_resource type="Script" uid="uid://bx3q3um5kl0n8" path="res://all_card/minion/undead/死亡管家莫罗斯/死亡管家莫罗斯.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="死亡管家莫罗斯" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_304"
+name_str = "死亡管家莫罗斯"
+lv = 5
+show_lv = true
+atk = 5
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b><b>复生</b>。亡语：</b>使你的亡灵获得+3/+5。"
+gold_desc = "<b><b>复生</b>。亡语：</b>使你的亡灵获得+6/+10。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([10])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

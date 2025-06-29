@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cijfl1ggvm3sr"]
+
+[ext_resource type="Script" uid="uid://qlqe6mj5kxuy" path="res://all_card/minion/naga/熔岩潜伏者/熔岩潜伏者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="熔岩潜伏者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG23_009"
+name_str = "熔岩潜伏者"
+lv = 2
+show_lv = true
+atk = 2
+show_atk = true
+hp = 5
+show_hp = true
+desc = "每回合对本随从使用的第一张<b>塑造法术</b>的法术牌永久有效。"
+gold_desc = "每回合对本随从使用的前两张<b>塑造法术</b>的法术牌永久有效。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([7])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

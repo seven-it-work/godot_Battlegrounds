@@ -20,7 +20,7 @@ func _on_抉择选项2_选择信号(选项: ChooseOption) -> void:
 	$"抉择".选中样式改变(选项)
 	pass # Replace with function body.
 
-func 决战执行方法(player:Player,card:DragControl):
+func 决战执行方法(player:Player,card:CardData):
 	for i in player.战场.获取所有节点():
 		var cardData= i.card_data as CardData
 		var 合计加成=AttributeBonus.计算总和(player.法术加成)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6omb4smgyil7"]
+
+[ext_resource type="Script" uid="uid://mmv17fppqixn" path="res://all_card/minion/elemental/温和的灯神/温和的灯神.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="温和的灯神" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BGS_121"
+name_str = "温和的灯神"
+lv = 6
+show_lv = true
+atk = 4
+show_atk = true
+hp = 5
+show_hp = true
+desc = "<b>嘲讽</b>
+<b>战吼，亡语：</b>随机获取一张元素牌。"
+gold_desc = "<b>嘲讽</b>。<b>战吼，亡语：</b>随机获取2张元素牌。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([4])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

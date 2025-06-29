@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvg476tdk0dd2"]
+
+[ext_resource type="Script" uid="uid://dtw6m82l4hooc" path="res://all_card/minion/none/达卡莱附魔师/达卡莱附魔师.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="达卡莱附魔师" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG26_ICC_901"
+name_str = "达卡莱附魔师"
+lv = 5
+show_lv = true
+atk = 1
+show_atk = true
+hp = 5
+show_hp = true
+desc = "你的回合结束效果会触发两次。"
+gold_desc = "你的回合结束效果会触发三次。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

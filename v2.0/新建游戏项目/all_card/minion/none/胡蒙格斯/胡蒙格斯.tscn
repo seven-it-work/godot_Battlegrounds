@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://wise225qtixa"]
+
+[ext_resource type="Script" uid="uid://2m0ux16yui0g" path="res://all_card/minion/none/胡蒙格斯/胡蒙格斯.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="胡蒙格斯" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG32_341"
+name_str = "胡蒙格斯"
+lv = 4
+show_lv = true
+atk = 5
+show_atk = true
+hp = 5
+show_hp = true
+desc = "<b>圣盾</b>。你的能使随从获得属性值的酒馆法术额外获得+1/+2。"
+gold_desc = "<b>圣盾</b>。你的能使随从获得属性值的酒馆法术额外获得+2/+4。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpwhopeyjosbs"]
+
+[ext_resource type="Script" uid="uid://caq7lsbcl1x7l" path="res://all_card/minion/demon/躁动欺诈者/躁动欺诈者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="躁动欺诈者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG21_006"
+name_str = "躁动欺诈者"
+lv = 2
+show_lv = true
+atk = 3
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b>亡语：</b>使另一个友方随从获得本随从的生命值上限。"
+gold_desc = "<b>亡语：</b>使另一个友方随从获得本随从的生命值上限，触发两次。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([2])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

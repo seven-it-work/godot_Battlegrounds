@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://j0vp3x86gcbd"]
+
+[ext_resource type="Script" uid="uid://cgcm78mvmfj24" path="res://all_card/minion/demon/厄运先知/厄运先知.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="厄运先知" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG31_330"
+name_str = "厄运先知"
+lv = 1
+show_lv = true
+atk = 2
+show_atk = true
+hp = 1
+show_hp = true
+desc = "<b>战吼：</b>你购买的下一张酒馆法术牌消耗的铸币减少（1）枚。"
+gold_desc = "<b>战吼：</b>你购买的下一张酒馆法术牌消耗的铸币减少（2）枚。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([2, 7])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

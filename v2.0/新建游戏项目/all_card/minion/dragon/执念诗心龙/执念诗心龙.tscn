@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://rf7eu51j34he"]
+
+[ext_resource type="Script" uid="uid://d0cmjnot7pdir" path="res://all_card/minion/dragon/执念诗心龙/执念诗心龙.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="执念诗心龙" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG29_813"
+name_str = "执念诗心龙"
+lv = 4
+show_lv = true
+atk = 2
+show_atk = true
+hp = 3
+show_hp = true
+desc = "<b><b>圣盾</b>。</b>相邻的龙可永久保留战斗阶段受到的你的附加效果。"
+gold_desc = "<b><b>圣盾</b>。</b>相邻的龙在战斗阶段受到的你的附加效果翻倍，并可永久保留。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([3])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://sx1d8if3m7qy"]
+
+[ext_resource type="Script" uid="uid://b5n1xlfald11f" path="res://all_card/minion/demon/萨格拉斯的勇士/萨格拉斯的勇士.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="萨格拉斯的勇士" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG27_016"
+name_str = "萨格拉斯的勇士"
+lv = 7
+show_lv = true
+atk = 10
+show_atk = true
+hp = 10
+show_hp = true
+desc = "酒馆中的随从拥有+10/+10。"
+gold_desc = "酒馆中的随从拥有+20/+20。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([2])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlmkoh6p72w1i"]
+
+[ext_resource type="Script" uid="uid://yx3uo4b0xlbf" path="res://all_card/minion/none/竞技表演者/竞技表演者.gd" id="1_cc03i"]
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+
+[node name="竞技表演者" instance=ExtResource("1_syn4q")]
+script = ExtResource("1_cc03i")
+version = "32.2.4.221850"
+ls_card_id = "BG28_550"
+name_str = "竞技表演者"
+lv = 5
+show_lv = true
+atk = 3
+show_atk = true
+hp = 4
+show_hp = true
+desc = "<b>战吼：</b><b>发现</b>一张酒馆法术牌。"
+gold_desc = "<b>战吼：</b><b>发现</b>2张酒馆法术牌。"
+cardType = 0
+buy_coins = 3
+show_buy_coins = false
+race = Array[int]([0])
+"æ¯å¦åºç°å¨éé¦" = true
+"æ¯å¦ä¸ºä¼ä¼´" = false
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false
