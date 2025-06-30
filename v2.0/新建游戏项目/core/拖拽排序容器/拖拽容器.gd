@@ -12,7 +12,7 @@ var 拖拽中的节点
 @export var 区域:Array[DragContainer]=[]
 
 var 进入区域:DragContainer=null
-var 其他区域来的节点
+var 其他区域来的节点:DragControl
 
 signal 进入容器信号(拖拽:DragControl,进入的容器:DragContainer)
 signal 离开容器信号(拖拽:DragControl,离开的容器:DragContainer)
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	$HBoxContainer.size=size
 	$Panel.size=size
 	if 是否可以拖拽:
-		if 其他区域来的节点:
+		if 其他区域来的节点 and 其他区域来的节点.是否可以拖拽:
 			if 是否可以排序:
 				动态更新插槽(其他区域来的节点)
 		if 拖拽中的节点:
@@ -72,7 +72,7 @@ func 进入的区域进行释放(节点:DragControl):
 
 func 节点进入区域(节点:DragControl):
 	#print(name_str,"节点进入容器了")
-	if 是否可以排序:
+	if 是否可以排序 and 节点.是否可以拖拽判断():
 		初始化插槽(节点)
 	其他区域来的节点=节点
 	pass
@@ -122,7 +122,7 @@ func 回到原来位置():
 	拖拽中的节点.reparent($HBoxContainer)
 	$HBoxContainer.move_child(拖拽中的节点, 拖拽时原有索引)
 
-func 开始拖拽(拖拽节点):
+func 开始拖拽(拖拽节点:DragControl):
 	if !是否可以拖拽:
 		#print(name_str,"不允许拖拽")
 		return
@@ -130,7 +130,7 @@ func 开始拖拽(拖拽节点):
 	拖拽中的节点=拖拽节点
 	拖拽时原有索引=拖拽节点.get_index()
 	拖拽节点.reparent(self)
-	if 是否可以排序:
+	if 是否可以排序 and 拖拽节点.是否可以拖拽判断():
 		初始化插槽(拖拽节点)
 	pass
 
@@ -170,11 +170,6 @@ func 新建信号(拖拽节点):
 		拖拽节点.结束拖拽.connect(结束拖拽.bind(拖拽节点))
 
 func 断开信号(拖拽节点:DragControl):
-	#print(name_str,"断开信号")
-	#for i in 拖拽节点.get_signal_connection_list("开始拖拽"):
-		#i.signal.disconnect(i.callable)
-	#for i in 拖拽节点.get_signal_connection_list("结束拖拽"):
-		#i.signal.disconnect(i.callable)
 	if 拖拽节点.开始拖拽.is_connected(开始拖拽):
 		拖拽节点.开始拖拽.disconnect(开始拖拽)
 	if 拖拽节点.结束拖拽.is_connected(结束拖拽):

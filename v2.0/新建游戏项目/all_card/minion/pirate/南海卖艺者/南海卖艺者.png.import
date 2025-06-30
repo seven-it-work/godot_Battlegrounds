@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddd5mm4exob0o"
-path="res://.godot/imported/card_data.png-fb527172fc7a5854a7b20987abee96b2.ctex"
+uid="uid://rx1a1cw3o7ff"
+path="res://.godot/imported/南海卖艺者.png-b8e5d5e78b00014e4bfc48b3cc320d2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://core/card_data.png"
-dest_files=["res://.godot/imported/card_data.png-fb527172fc7a5854a7b20987abee96b2.ctex"]
+source_file="res://all_card/minion/pirate/南海卖艺者/南海卖艺者.png"
+dest_files=["res://.godot/imported/南海卖艺者.png-b8e5d5e78b00014e4bfc48b3cc320d2a.ctex"]
 
 [params]
 

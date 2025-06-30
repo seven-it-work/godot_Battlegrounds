@@ -12,8 +12,13 @@ var 带抉择的卡牌节点:DragControl
 func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if Global.main_node and Global.main_node.手牌:
-			for i in Global.main_node.手牌.获取所有节点(true):
+			for i:DragControl in Global.main_node.手牌.获取所有节点(true):
 				if i.get_global_rect().has_point(get_global_mouse_position()):
+					if !i.card_data.是否能够使用(Global.main_node):
+						i.是否可以拖拽=false
+						print("不能使用")
+						return
+					i.是否可以拖拽=true
 					Logger.debug("找到了当前按下的牌:"+i.card_data.name_str)
 					当前按下的牌=i
 					# 如果当前按下的牌是法术，则禁止目标排序
@@ -46,6 +51,7 @@ func _process(delta: float) -> void:
 					抉择ui.show()
 					Global.main_node.所有的拖拽禁用或者开启(false)
 				elif  箭头数据.初始节点.card_data and 箭头数据.初始节点.card_data.是否为法术():
+					使用触发(箭头数据.初始节点)
 					箭头数据.初始节点.hide()
 					箭头数据.初始节点.queue_free()
 				else:
@@ -100,6 +106,7 @@ func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragC
 			if 所有节点.is_empty():
 				# 空置处理
 				if 拖拽.card_data and 拖拽.card_data.是否为法术():
+					Logger.debug("使用的是法术:%s"%拖拽.card_data.name_str)
 					拖拽.hide()
 					拖拽.queue_free()
 				else:
