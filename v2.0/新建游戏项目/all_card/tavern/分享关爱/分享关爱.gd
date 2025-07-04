@@ -4,7 +4,7 @@ func 使用触发():
 	player.分享关爱=true
 	pass
 
-func 是否能够使用(player:Player)->bool:
+func 是否能够使用()->bool:
 	return !player.分享关爱
 
 

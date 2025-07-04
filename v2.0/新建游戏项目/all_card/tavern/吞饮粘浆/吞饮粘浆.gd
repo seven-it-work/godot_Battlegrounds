@@ -6,7 +6,7 @@ func 使用触发():
 	super.使用触发(player)
 	player.吞饮粘浆=self
 
-func 是否能够使用(player:Player)->bool:
+func 是否能够使用()->bool:
 	return player.吞饮粘浆==null
 
 func get_desc(otherJson:Dictionary={})->String:

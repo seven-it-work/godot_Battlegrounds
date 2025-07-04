@@ -1,6 +1,6 @@
 extends CardData
 
-func 是否能够使用(player:Player)->bool:
+func 是否能够使用()->bool:
 	return !player.优势压制
 
 func 使用触发():

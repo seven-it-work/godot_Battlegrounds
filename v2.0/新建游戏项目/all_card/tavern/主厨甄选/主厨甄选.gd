@@ -1,6 +1,6 @@
 extends CardData
 
-func 是否能够使用(player:Player)->bool:
+func 是否能够使用()->bool:
 	var 所有list=player.获取战场和酒馆中的牌().filter(func(card:DragControl): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
 	return !所有list.is_empty()
 
