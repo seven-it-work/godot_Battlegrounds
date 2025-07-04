@@ -21,4 +21,4 @@ func 亡语(攻击者:CardData,player:Player):
 	var 属性=亡语者.get_AttributeBonus()
 	属性.atk+=baseAtk*(2 if 亡语者.is_gold else 1)
 	属性.hp+=baseHp*(2 if 亡语者.is_gold else 1)
-	最右边的野兽.属性添加(亡语者,player,属性,true)
+	最右边的野兽.属性添加(亡语者,属性,true)

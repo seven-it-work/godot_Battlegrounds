@@ -92,7 +92,7 @@ func 获取战场中的牌()->Array:
 		return 战场.获取所有节点().map(func(card:DragControl): return card.card_data)
 
 func 添加到手牌(card:CardData):
-	手牌.添加到容器中(Global.创建新卡片(card),-1)
+	手牌.添加到容器中(Global.创建新卡片(card,self),-1)
 
 
 func 添加随从(card:CardData,index:int):
@@ -100,16 +100,19 @@ func 添加随从(card:CardData,index:int):
 		if !fight.是否有空位(self):
 			return
 		_检查到召唤随从(card)
-		fight.添加新牌到战场(self,Global.创建新卡片(card),index)
+		fight.添加新牌到战场(self,Global.创建新卡片(card,self),index)
 	else:
 		if 战场.是否有空位():
 			_检查到召唤随从(card)
-			战场.添加到容器中(Global.创建新卡片(card),index)
+			战场.添加到容器中(Global.创建新卡片(card,self),index)
 
 func _检查到召唤随从(card:CardData):
 	if card.是否属于种族(Enums.RaceEnum.BEAST):
 		暴吼兽王_野兽召唤个数+=1
-	card.触发器_召唤(self)
+	card.触发器_召唤()
+	for i:CardData in 获取战场中的牌():
+		if i.uuid!=card.uuid:
+			i.触发器_召唤其他随从(card)
 	pass
 
 func 随从死亡(card_data:CardData):
@@ -151,5 +154,5 @@ func 刷新酒馆(条件:Array[CardFindCondition]=[]):
 			print("没有随从了")
 			return
 		var dup=data.duplicate()
-		酒馆.添加到容器中(Global.创建新卡片(dup),-1)
+		酒馆.添加到容器中(Global.创建新卡片(dup,self),-1)
 	pass

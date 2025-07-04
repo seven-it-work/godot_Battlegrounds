@@ -7,4 +7,4 @@ func 亡语(攻击者:CardData,player:Player):
 			var 属性=亡语者.get_AttributeBonus()
 			属性.atk=亡语者.temp_atk
 			属性.hp=亡语者.temp_hp
-			i.属性添加(亡语者,player,属性)
+			i.属性添加(亡语者,属性)

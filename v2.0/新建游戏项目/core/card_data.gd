@@ -83,12 +83,14 @@ var 复仇计数器:int=-1
 @export var 触发:bool=false
 
 var 是否攻击过:bool=false
+# 所属的玩家
+@export var player:Player
 
 func _ready() -> void:
 	print("ready")
 func _init() -> void:
 	self.uuid=UUID.v4()
-func get_desc(player:Player,otherJson:Dictionary={})->String:
+func get_desc(otherJson:Dictionary={})->String:
 	var playerJson:Dictionary=JsonUtils.obj_2_json(player)
 	playerJson.assign(otherJson)
 	if is_gold:
@@ -122,14 +124,14 @@ func 获取额外属性个数()->int:
 		count+=1
 	return count
 #region 判断方法
-func 是否能够使用(player:Player)->bool:
+func 是否能够使用()->bool:
 	return true
 
 func 是否存在亡语()->bool:
 	return 亡语.size()>0
 
-func 是否死亡(player:Player)->bool:
-	return hp_bonus(player)<=0
+func 是否死亡()->bool:
+	return hp_bonus()<=0
 
 func 是否属于种族(race:Enums.RaceEnum)->bool:
 	return self.race.has(race)
@@ -159,78 +161,85 @@ func 是否有战吼()->bool:
 
 
 #region 触发相关
-func 使用触发监听(player:Player,使用的卡片:CardData):
+func 使用触发监听(使用的卡片:CardData):
 	print(name_str,"使用触发监听")
 
-func 使用触发(player:Player):
+func 使用触发():
 	print(name_str,"使用触发")
 	pass
-func 触发器_复仇(player:Player):
+func 触发器_复仇():
 	pass
 
-func 触发器_其他随从死亡(player:Player,死亡随从:CardData):
+func 触发器_死亡移除前(触发者:CardData):
+	pass
+
+func 触发器_其他随从死亡(死亡随从:CardData):
 	if 复仇>0:
 		if 复仇计数器==-1:
 			复仇计数器=复仇
 		复仇计数器-=1;
 		if 复仇计数器==0:
 			复仇计数器=复仇
-			触发器_复仇(player)
+			触发器_复仇()
 	pass
 
-func 触发器_获得攻击力(触发者:CardData,num:int,player:Player):
+func 触发器_获得攻击力(触发者:CardData,num:int,):
 	pass
 
-func 触发器_亡语(触发随从:CardData,player:Player):
+func 触发器_亡语(触发随从:CardData):
 	if !是否存在亡语():
 		return
 	for i in self.亡语:
-		await i.执行亡语(触发随从,player)
+		await i.执行亡语(触发随从)
 		for j in player.获取战场中的牌():
 			if j.uuid!=self.uuid:
-				await j.触发器_亡语触发监听(触发随从,self,player)
+				await j.触发器_亡语触发监听(触发随从,self)
 	pass
 	
-func 触发器_亡语触发监听(触发随从:CardData,亡语随从:CardData,player:Player):
+func 触发器_亡语触发监听(触发随从:CardData,亡语随从:CardData,):
 	pass
 	
 func 触发器_回合结束时():
 	pass
 	
-func 触发器_战斗开始时(player:Player):
+func 触发器_战斗开始时():
 	pass
 
-func 触发器_攻击后(player:Player,被攻击者:CardData):
+func 触发器_攻击后(被攻击者:CardData):
 	pass
 	
-func 触发器_召唤(player:Player):
+func 触发器_召唤():
+	pass
+
+func 触发器_召唤其他随从(其他随从:CardData):
 	pass
 #endregion
 
 
 ## 获取攻击力（包含加成属性）
-func atk_bonus(plyaer:Player)->int:
+func atk_bonus()->int:
 	var result=atk*(2 if is_gold else 1);
-	if 是否属于种族(Enums.RaceEnum.BEAST):
-		result+=AttributeBonus.计算总和(plyaer.野兽加成).atk
-	if ls_card_id=="BG31_361":
-		result+=3*获取是否为金色的倍率()*plyaer.暴吼兽王_野兽召唤个数
-	if plyaer.是否在战斗中():
-		for i in 临时属性加成:
-			result+=i.atk;
-	else:
-		for i in 属性加成:
-			result+=i.atk;
+	if player:
+		if 是否属于种族(Enums.RaceEnum.BEAST):
+			result+=AttributeBonus.计算总和(player.野兽加成).atk
+		if ls_card_id=="BG31_361":
+			result+=3*获取是否为金色的倍率()*player.暴吼兽王_野兽召唤个数
+		if player.是否在战斗中():
+			for i in 临时属性加成:
+				result+=i.atk;
+		else:
+			for i in 属性加成:
+				result+=i.atk;
 	return result
 
 ## 获取生命值（包含加成属性）
-func hp_bonus(plyaer:Player)->int:
+func hp_bonus()->int:
 	var result=hp*(2 if is_gold else 1);
 	if 是否属于种族(Enums.RaceEnum.BEAST):
-		result+=AttributeBonus.计算总和(plyaer.野兽加成).hp
+		result+=AttributeBonus.计算总和(player.野兽加成).hp
 	if ls_card_id=="BG31_361":
-		result+=2*获取是否为金色的倍率()*plyaer.暴吼兽王_野兽召唤个数
-	if plyaer.是否在战斗中():
+		result+=2*获取是否为金色的倍率()*player.暴吼兽王_野兽召唤个数
+	if player.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.hp;
 	else:
@@ -245,9 +254,9 @@ func get_AttributeBonus()->AttributeBonus:
 	return AttributeBonus.create(self.name_str,0,0,self.name_str)
 
 #region 属性加成
-func 属性添加(触发卡片:CardData,player:Player,属性:AttributeBonus,是否永久:bool=false):
+func 属性添加(触发卡片:CardData,属性:AttributeBonus,是否永久:bool=false):
 	if 属性.atk>0:
-		触发器_获得攻击力(触发卡片,属性.atk,player)
+		触发器_获得攻击力(触发卡片,属性.atk)
 	临时属性加成.append(属性)
 	if !player.是否在战斗中():
 		属性加成.append(属性)
@@ -263,7 +272,7 @@ func 属性添加(触发卡片:CardData,player:Player,属性:AttributeBonus,是�
 		属性加成.append(属性)
 
 ## 生命值处理
-func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否永久:bool=false):
+func hp_process(触发随从:CardData,生命值加成:int,是否永久:bool=false):
 	if 生命值加成==0:
 		return
 	if 生命值加成>=0:
@@ -285,9 +294,9 @@ func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否�
 		if 触发随从.剧毒:
 			触发随从.剧毒=false
 			# todo 剧毒消失触发器
-			生命值加成=-hp_bonus(player)
+			生命值加成=-hp_bonus()
 		if 触发随从.烈毒:
-			生命值加成=-hp_bonus(player)
+			生命值加成=-hp_bonus()
 		current_hp+=生命值加成
 		#触发器_受伤(trigger,num,player)
 		for i in player.获取所有的牌():
@@ -295,14 +304,15 @@ func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否�
 				#i.触发器_他人受伤(trigger,self,num,player)
 				pass
 		# 死亡判断
-		if 是否死亡(player):
+		if 是否死亡():
+			await 触发器_死亡移除前(触发随从)
 			# 移除自己
 			await player.随从死亡(self)
 			# 死亡
 			for j in player.获取战场中的牌():
 				if j.uuid!=self.uuid:
-					j.触发器_其他随从死亡(player,self)
-			await 触发器_亡语(触发随从,player)
+					j.触发器_其他随从死亡(self)
+			await 触发器_亡语(触发随从)
 			# 如果有复生则复生触发
 			#if 复生:
 				#var new_minion=CardsUtils.find_card([

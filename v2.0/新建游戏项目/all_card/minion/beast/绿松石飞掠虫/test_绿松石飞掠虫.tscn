@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvpeclnw600pa"]
+
+[ext_resource type="Script" uid="uid://baq5beft43d7" path="res://all_card/minion/beast/绿松石飞掠虫/test_绿松石飞掠虫.gd" id="1_8xty8"]
+[ext_resource type="PackedScene" uid="uid://btcckudp08t2" path="res://core/Fight/测试基础战斗.tscn" id="2_q8kia"]
+
+[node name="Test绿松石飞掠虫" type="Node"]
+script = ExtResource("1_8xty8")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="测试基础战斗" parent="." instance=ExtResource("2_q8kia")]

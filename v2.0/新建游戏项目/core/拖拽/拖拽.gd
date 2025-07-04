@@ -49,13 +49,14 @@ func 初始化卡牌信息():
 	pass
 
 func 更新卡牌信息():
-	if card_data:
+	if card_data and card_data.player:
 		if card_data.show_atk:
-			$Node/攻击力/Label.text="%s"%card_data.atk_bonus(Global.main_node);
+			# todo 里Global.main_node 有问题，会导致敌人的也触发
+			$Node/攻击力/Label.text="%s"%card_data.atk_bonus();
 			$Node/攻击力.show()
 			pass
 		if card_data.show_hp:
-			$Node/生命值/Label.text="%s"%card_data.hp_bonus(Global.main_node);
+			$Node/生命值/Label.text="%s"%card_data.hp_bonus();
 			$Node/生命值.show()
 			pass
 		if card_data.show_buy_coins:
@@ -114,7 +115,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Panel.size=custom_minimum_size
-	更新卡牌信息()
+	if visible:
+		更新卡牌信息()
 	var 链接=get_signal_connection_list("结束拖拽")
 	if card_data:
 		uuid=card_data.uuid

@@ -13,7 +13,7 @@ func _描述json(player:Player,otherJson:Dictionary={})->Dictionary:
 	otherJson.set("法术生命值2",base_hp2+合计加成.hp)
 	return otherJson
 
-func get_desc(player:Player,otherJson:Dictionary={})->String:
+func get_desc(otherJson:Dictionary={})->String:
 	return super.get_desc(player,_描述json(player,otherJson))
 
 func 使用触发(player:Player):
@@ -34,7 +34,7 @@ func 执行抉择选项1(player:Player):
 		var attri=get_AttributeBonus()
 		attri.atk=base_atk1+合计加成.atk
 		attri.hp=base_hp1+合计加成.hp
-		cardData.属性添加(self,player,attri)
+		cardData.属性添加(self,attri)
 	pass
 
 func 执行抉择选项2(player:Player):
@@ -44,4 +44,4 @@ func 执行抉择选项2(player:Player):
 		var attri=get_AttributeBonus()
 		attri.atk=base_atk2+合计加成.atk
 		attri.hp=base_hp2+合计加成.hp
-		cardData.属性添加(self,player,attri)
+		cardData.属性添加(self,attri)

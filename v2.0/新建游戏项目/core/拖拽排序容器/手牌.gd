@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		if Global.main_node and Global.main_node.手牌:
 			for i:DragControl in Global.main_node.手牌.获取所有节点(true):
 				if i.get_global_rect().has_point(get_global_mouse_position()):
-					if !i.card_data.是否能够使用(Global.main_node):
+					if !i.card_data.是否能够使用():
 						i.是否可以拖拽=false
 						print("不能使用")
 						return
@@ -144,8 +144,8 @@ func 添加到手牌触发():
 
 func 使用触发(使用卡片:DragControl):
 	print("使用触发")
-	使用卡片.card_data.使用触发(Global.main_node)
+	使用卡片.card_data.使用触发()
 	for i:DragControl in Global.main_node.获取所有的牌():
 		if i!=使用卡片:
-			i.card_data.使用触发监听(Global.main_node,使用卡片.card_data)
+			i.card_data.使用触发监听(使用卡片.card_data)
 	pass

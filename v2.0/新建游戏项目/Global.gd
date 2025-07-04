@@ -11,9 +11,14 @@ func 获取原始版卡片(name_str:String)->CardData:
 	Logger.error("没有叫[%s]的卡片"%name_str)
 	return null
 
+func copyDragCard(dragCard:DragControl)->DragControl:
+	var newNode=dragCard.duplicate() as DragControl
+	newNode.card_data.player=dragCard.card_data.player
+	return newNode
 
-func 创建新卡片(cardData:CardData)->DragControl:
+func 创建新卡片(cardData:CardData,player:Player)->DragControl:
 	var drag=preload("uid://do8ek6iw7tisd").instantiate()
+	cardData.player=player
 	drag.card_data=cardData
 	drag.add_child(cardData)
 	return drag

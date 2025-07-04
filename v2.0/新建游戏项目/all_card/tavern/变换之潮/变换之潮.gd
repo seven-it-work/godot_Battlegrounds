@@ -1,5 +1,5 @@
 extends CardData
-func get_desc(player:Player,otherJson:Dictionary={})->String:
+func get_desc(otherJson:Dictionary={})->String:
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	otherJson.set("法术攻击值",3+合计加成.atk)
 	otherJson.set("法术生命值",3+合计加成.hp)
@@ -14,9 +14,9 @@ func 使用触发(player:Player):
 		var 属性=get_AttributeBonus()
 		属性.atk=3+合计加成.atk
 		属性.hp=3+合计加成.hp
-		cardData.属性添加(self,player,属性)
+		cardData.属性添加(self,属性)
 		if cardData.是否属于种族(Enums.RaceEnum.NAGA):
 			属性=get_AttributeBonus()
 			属性.atk=3+合计加成.atk
 			属性.hp=3+合计加成.hp
-			cardData.属性添加(self,player,属性)
+			cardData.属性添加(self,属性)

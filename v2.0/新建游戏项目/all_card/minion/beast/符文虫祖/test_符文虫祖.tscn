@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcmeswcr2ixpv"]
+
+[ext_resource type="Script" uid="uid://berj2yo42qs5a" path="res://all_card/minion/beast/符文虫祖/test_符文虫祖.gd" id="1_okg1v"]
+[ext_resource type="PackedScene" uid="uid://btcckudp08t2" path="res://core/Fight/测试基础战斗.tscn" id="2_1bak4"]
+
+[node name="Test符文虫祖" type="Node"]
+script = ExtResource("1_okg1v")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="测试基础战斗" parent="." instance=ExtResource("2_1bak4")]

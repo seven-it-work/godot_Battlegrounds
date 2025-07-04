@@ -1,6 +1,6 @@
 extends CardData
 
-func get_desc(player:Player,otherJson:Dictionary={})->String:
+func get_desc(otherJson:Dictionary={})->String:
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	otherJson.set("法术攻击值",4+合计加成.atk)
 	otherJson.set("法术生命值",0+合计加成.hp)
@@ -14,4 +14,4 @@ func 使用触发(player:Player):
 		var attri=get_AttributeBonus()
 		attri.atk=4+合计加成.atk
 		attri.hp=0+合计加成.hp
-		cardData.属性添加(self,player,attri)
+		cardData.属性添加(self,attri)

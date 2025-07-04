@@ -181,7 +181,7 @@ func _获取攻击随从(当前攻击者:攻击对象,所有的牌):
 	# 遍历获取轮到随从攻击
 	if 当前攻击者.当前攻击的随从==null:
 		for i in 所有的牌:
-			var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
+			var 攻击力=i.card_data.atk_bonus()
 			if 攻击力>0:
 				当前攻击者.当前攻击的随从=i
 				break
@@ -191,7 +191,7 @@ func _获取攻击随从(当前攻击者:攻击对象,所有的牌):
 		if index>=所有的牌.size()-1:
 			# 重头开始
 			for i in 所有的牌:
-				var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
+				var 攻击力=i.card_data.atk_bonus()
 				if 攻击力>0:
 					当前攻击者.当前攻击的随从=i
 					break
@@ -200,7 +200,7 @@ func _获取攻击随从(当前攻击者:攻击对象,所有的牌):
 				if tempIndex<=index:
 					continue
 				var i = 所有的牌.get(tempIndex)
-				var 攻击力=i.card_data.atk_bonus(当前攻击者.player)
+				var 攻击力=i.card_data.atk_bonus()
 				if 攻击力>0:
 					当前攻击者.当前攻击的随从=i
 					break
@@ -213,11 +213,11 @@ func _初始化战斗中的牌(player:Player,box:HBoxContainer):
 		box.add_child(newNode)
 	await get_tree().process_frame
 	for i in box.get_children():
-		i.card_data.触发器_战斗开始时(player)
+		i.card_data.触发器_战斗开始时()
 
 
 func _随从进行攻击(攻击随从:DragControl,攻击者:攻击对象,防御者:攻击对象):
-	if 攻击随从.card_data.hp_bonus(攻击者.player)<=0:
+	if 攻击随从.card_data.hp_bonus()<=0:
 		print("没血了，不能继续攻击了")
 		return
 	# 目标查询（查询嘲讽）
@@ -240,11 +240,11 @@ func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:D
 	Logger.debug("%s对%s进行攻击"%[攻击随从.card_data.name_str,防御随从.card_data.name_str])
 	await start_animation_sequence(攻击随从,防御随从)
 	print("动画播放完成，进行数据计算")
-	await 攻击随从.card_data.触发器_攻击后(攻击者.player,防御随从.card_data)
+	await 攻击随从.card_data.触发器_攻击后(防御随从.card_data)
 	# 攻击方生命值-
-	攻击随从.card_data.hp_process(防御随从.card_data,-防御随从.card_data.atk_bonus(防御者.player),攻击者.player)
+	攻击随从.card_data.hp_process(防御随从.card_data,-防御随从.card_data.atk_bonus())
 	# 防御方
-	防御随从.card_data.hp_process(攻击随从.card_data,-攻击随从.card_data.atk_bonus(攻击者.player),防御者.player)
+	防御随从.card_data.hp_process(攻击随从.card_data,-攻击随从.card_data.atk_bonus())
 
 func _伤害计算(胜利者:攻击对象)->int:
 	return 10

@@ -26,7 +26,7 @@ func 添加到战场触发(拖拽节点:DragControl):
 	pass
 
 func 战吼触发(拖拽节点:DragControl):
-	拖拽节点.card_data.获取战吼节点().执行战吼(self.player)
+	拖拽节点.card_data.获取战吼节点().执行战吼()
 	pass
 
 func 战吼触发监听(战吼节点:DragControl,监听节点:DragControl):

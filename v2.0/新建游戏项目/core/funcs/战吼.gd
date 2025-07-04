@@ -4,6 +4,6 @@ class_name Roar
 @export var 执行战吼卡片:CardData
 var 战吼目标:DragControl=null
 
-func 执行战吼(player:Player):
+func 执行战吼():
 	print("执行战吼")
 	pass
