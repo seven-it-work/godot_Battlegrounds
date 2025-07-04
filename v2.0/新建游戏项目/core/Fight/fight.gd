@@ -4,10 +4,13 @@ class_name Fight
 var 玩家:攻击对象
 var 敌人:攻击对象
 
+var 战斗结束后调用的方法合集:Array[Callable]=[]
+
 func _ready() -> void:
 	pass
 
 func 添加新牌到战场(player:Player,card:DragControl,index:int):
+	是否在播放动画=true
 	var node
 	if player==玩家.player:
 		node=$"玩家随从"
@@ -15,9 +18,11 @@ func 添加新牌到战场(player:Player,card:DragControl,index:int):
 		node=$"敌人随从"
 	if node==null:
 		Logger.error("获取错误，该player不在这个fight中")
+		是否在播放动画=false
 		return
 	if !是否有空位(player):
 		print("随从太多了,放不下")
+		是否在播放动画=false
 		return
 	
 	if card.get_parent():
@@ -26,6 +31,7 @@ func 添加新牌到战场(player:Player,card:DragControl,index:int):
 		node.add_child(card)
 	node.move_child(card,min(index,node.get_children().size()-1))
 	await get_tree().process_frame
+	是否在播放动画=false
 
 func 获取自己战场中的牌(player:Player)->Array:
 	if player==玩家.player:
@@ -96,6 +102,14 @@ func 开始战斗(玩家:Player,敌人:Player):
 	await get_tree().process_frame
 	战斗运算()
 
+func 战斗结束方法(胜利者:攻击对象,失败者:攻击对象,造成伤害:int):
+	for i in 战斗结束后调用的方法合集:
+		i.call()
+	胜利者.player.fight=null
+	失败者.player.fight=null
+	战斗结束.emit(胜利者,失败者,造成伤害)
+	pass
+
 func 战斗运算():
 	while true:
 		if 是否在播放动画:
@@ -112,13 +126,13 @@ func 战斗运算():
 			return
 		if 不能攻击的玩家个数>=2:
 			# 平局
-			战斗结束.emit(null,null,0)
+			战斗结束方法(null,null,0)
 		else:
 			if 当前攻击者:
 				var 所有的牌=获取自己战场中的牌(当前攻击者.player)
 				var 防御者=玩家 if 当前攻击者==敌人 else 敌人
 				if 所有的牌.size()<=0:
-					战斗结束.emit(防御者,当前攻击者,_伤害计算(防御者))
+					战斗结束方法(防御者,当前攻击者,_伤害计算(防御者))
 					当前攻击者=null
 					return
 				
@@ -209,7 +223,7 @@ func _随从进行攻击(攻击随从:DragControl,攻击者:攻击对象,防御�
 	if list_嘲讽.size()>0:
 		# 随机选一个
 		var defender_minion:DragControl=list_嘲讽.pick_random() as DragControl
-		生命计算(攻击随从,攻击者,defender_minion,防御者)
+		await 生命计算(攻击随从,攻击者,defender_minion,防御者)
 		return
 	# 目标查询（忽略掉潜行的）
 	var list_minion=获取自己战场中的牌(防御者.player).filter(func(card:DragControl): return !card.card_data.潜行)
@@ -224,6 +238,7 @@ func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:D
 	Logger.debug("%s对%s进行攻击"%[攻击随从.card_data.name_str,防御随从.card_data.name_str])
 	await start_animation_sequence(攻击随从,防御随从)
 	print("动画播放完成，进行数据计算")
+	await 攻击随从.card_data.触发器_攻击后(攻击者.player,防御随从.card_data)
 	# 攻击方生命值-
 	攻击随从.card_data.hp_process(防御随从.card_data,-防御随从.card_data.atk_bonus(防御者.player),攻击者.player)
 	# 防御方

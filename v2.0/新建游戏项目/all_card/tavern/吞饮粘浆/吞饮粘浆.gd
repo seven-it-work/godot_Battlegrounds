@@ -21,5 +21,7 @@ func 执行(player:Player):
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	for i:CardData in list:
 		if i.card_data.是否属于种族(Enums.RaceEnum.DRAGON):
-			i.card_data.atk_process(self.get_parent(),3+合计加成.atk,player)
-			i.card_data.hp_process(self.get_parent(),0+合计加成.hp,player)
+			var 属性=get_AttributeBonus()
+			属性.atk=3+合计加成.atk
+			属性.hp=0+合计加成.atk
+			i.cardData.属性添加(self,player,属性)

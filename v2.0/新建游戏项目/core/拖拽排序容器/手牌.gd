@@ -27,7 +27,8 @@ func _process(delta: float) -> void:
 							j.是否可以排序=false
 	else:
 		for j in 区域:
-			j.是否可以排序=true
+			if j:
+				j.是否可以排序=true
 		当前按下的牌=null
 	
 	if $"箭头".visible:

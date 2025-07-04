@@ -75,7 +75,7 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 # 是否为伙伴
 @export var is_companion:bool=false
 @export var 复仇:int=0
-var 复仇计数器:int=0
+var 复仇计数器:int=-1
 # 其他自定义扩展属性
 @export var other_data:Dictionary={}
 
@@ -103,6 +103,8 @@ func get_插画路径()->String:
 		文件名=temp.get_file().replace("."+temp.get_extension(),"")
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
+func 获取是否为金色的倍率()->int:
+	return 2 if is_gold else 1;
 
 func 获取额外属性个数()->int:
 	var count=0;
@@ -163,6 +165,18 @@ func 使用触发监听(player:Player,使用的卡片:CardData):
 func 使用触发(player:Player):
 	print(name_str,"使用触发")
 	pass
+func 触发器_复仇(player:Player):
+	pass
+
+func 触发器_其他随从死亡(player:Player,死亡随从:CardData):
+	if 复仇>0:
+		if 复仇计数器==-1:
+			复仇计数器=复仇
+		复仇计数器-=1;
+		if 复仇计数器==0:
+			复仇计数器=复仇
+			触发器_复仇(player)
+	pass
 
 func 触发器_获得攻击力(触发者:CardData,num:int,player:Player):
 	pass
@@ -171,10 +185,10 @@ func 触发器_亡语(触发随从:CardData,player:Player):
 	if !是否存在亡语():
 		return
 	for i in self.亡语:
-		i.亡语(触发随从,player)
+		await i.亡语(触发随从,player)
 		for j in player.获取战场中的牌():
 			if j.uuid!=self.uuid:
-				j.触发器_亡语触发监听(触发随从,self,player)
+				await j.触发器_亡语触发监听(触发随从,self,player)
 	pass
 	
 func 触发器_亡语触发监听(触发随从:CardData,亡语随从:CardData,player:Player):
@@ -185,12 +199,22 @@ func 触发器_回合结束时():
 	
 func 触发器_战斗开始时(player:Player):
 	pass
+
+func 触发器_攻击后(player:Player,被攻击者:CardData):
+	pass
+	
+func 触发器_召唤(player:Player):
+	pass
 #endregion
 
 
 ## 获取攻击力（包含加成属性）
 func atk_bonus(plyaer:Player)->int:
 	var result=atk*(2 if is_gold else 1);
+	if 是否属于种族(Enums.RaceEnum.BEAST):
+		result+=AttributeBonus.计算总和(plyaer.野兽加成).atk
+	if ls_card_id=="BG31_361":
+		result+=3*获取是否为金色的倍率()*plyaer.暴吼兽王_野兽召唤个数
 	if plyaer.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.atk;
@@ -202,6 +226,10 @@ func atk_bonus(plyaer:Player)->int:
 ## 获取生命值（包含加成属性）
 func hp_bonus(plyaer:Player)->int:
 	var result=hp*(2 if is_gold else 1);
+	if 是否属于种族(Enums.RaceEnum.BEAST):
+		result+=AttributeBonus.计算总和(plyaer.野兽加成).hp
+	if ls_card_id=="BG31_361":
+		result+=2*获取是否为金色的倍率()*plyaer.暴吼兽王_野兽召唤个数
 	if plyaer.是否在战斗中():
 		for i in 临时属性加成:
 			result+=i.hp;
@@ -217,28 +245,23 @@ func get_AttributeBonus()->AttributeBonus:
 	return AttributeBonus.create(self.name_str,0,0,self.name_str)
 
 #region 属性加成
-func 属性添加(player:Player,属性:AttributeBonus,是否永久:bool=false):
+func 属性添加(触发卡片:CardData,player:Player,属性:AttributeBonus,是否永久:bool=false):
+	if 属性.atk>0:
+		触发器_获得攻击力(触发卡片,属性.atk,player)
 	临时属性加成.append(属性)
 	if !player.是否在战斗中():
 		属性加成.append(属性)
-	elif  是否永久:
+	elif 是否永久:
+		# 还要给原来随从添加
+		var list=player.战场.获取所有节点().filter(func(card:DragControl): return card.card_data.uuid==uuid)
+		if list.is_empty():
+			print("战场中找不到，无法进行属性永久加成")
+		else:
+			print("战场中进行属性永久加成。数量：",list.size())
+			for i in list:
+				i.card_data.属性加成.append(属性)
 		属性加成.append(属性)
 
-## 攻击力
-func atk_process(触发卡:CardData,num:int,player:Player,是否永久:bool=false):
-	if num==0:
-		return
-	var temp=触发卡.card_data.get_AttributeBonus()
-	temp.atk=num
-	临时属性加成.append(temp)
-	if !player.是否在战斗中():
-		属性加成.append(temp)
-	elif  是否永久:
-		属性加成.append(temp)
-	#if num>0:
-		#触发器_获得攻击力(trigger,num,player)
-	pass
-	
 ## 生命值处理
 func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否永久:bool=false):
 	if 生命值加成==0:
@@ -276,7 +299,10 @@ func hp_process(触发随从:CardData,生命值加成:int,player:Player,是否�
 			# 移除自己
 			await player.随从死亡(self)
 			# 死亡
-			触发器_亡语(触发随从,player)
+			for j in player.获取战场中的牌():
+				if j.uuid!=self.uuid:
+					j.触发器_其他随从死亡(player,self)
+			await 触发器_亡语(触发随从,player)
 			# 如果有复生则复生触发
 			#if 复生:
 				#var new_minion=CardsUtils.find_card([

@@ -35,6 +35,8 @@ func buff_one_of_each_type(player:Player) -> void:
 
 func 加成方法(minion:CardData,player:Player):
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
-	minion.card_data.atk_process(minion,3+合计加成.atk,player)
-	minion.card_data.hp_process(minion,3+合计加成.hp,player)
+	var 属性=get_AttributeBonus()
+	属性.atk=3+合计加成.atk
+	属性.hp=3+合计加成.hp
+	minion.属性添加(minion,player,属性)
 	pass

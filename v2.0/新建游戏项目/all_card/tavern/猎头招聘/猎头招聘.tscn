@@ -5,23 +5,6 @@
 
 [node name="猎头招聘" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
-version = "32.2.4.221850"
-ls_card_id = "BG28_GIL_836"
-name_str = "猎头招聘"
-lv = 5
-show_lv = true
-atk = 0
-show_atk = false
-hp = 0
-show_hp = false
-desc = "<b>发现</b>一张<b>战吼</b>随从牌。"
-gold_desc = "<b>发现</b>一张<b>战吼</b>随从牌。"
-cardType = 3
-buy_coins = 3
-show_buy_coins = true
-race = Array[int]([])
-"是否出现在酒馆" = true
-"是否为伙伴" = false
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false

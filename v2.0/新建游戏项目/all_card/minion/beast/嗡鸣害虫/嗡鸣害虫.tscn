@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
 [ext_resource type="Script" uid="uid://brrdaqttqv5d4" path="res://all_card/minion/beast/嗡鸣害虫/dead.gd" id="3_xo8s3"]
 
-[node name="嗡鸣害虫" instance=ExtResource("1_syn4q")]
+[node name="嗡鸣害虫" node_paths=PackedStringArray("亡语") instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
 name_str = "嗡鸣害虫"
 version = "32.2.4.221850"
@@ -14,10 +14,12 @@ desc = "<b>嘲讽</b>。<b>亡语：</b>召唤一只{0}/{1}的甲虫。"
 gold_desc = "<b>嘲讽</b>。<b>亡语：</b>召唤两只{0}/{1}的甲虫。"
 "嘲讽" = true
 race = Array[int]([1])
+"亡语" = [NodePath("Dead")]
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false
 
-[node name="Dead" type="Node" parent="." index="1"]
+[node name="Dead" type="Node" parent="." index="1" node_paths=PackedStringArray("亡语者")]
 script = ExtResource("3_xo8s3")
+"亡语者" = NodePath("..")
 metadata/_custom_type_script = "uid://b3v6ut3mpold6"

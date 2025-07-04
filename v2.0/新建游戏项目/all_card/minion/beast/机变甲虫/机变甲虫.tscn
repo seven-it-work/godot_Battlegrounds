@@ -5,23 +5,14 @@
 
 [node name="机变甲虫" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "机变甲虫"
 version = "32.2.4.221850"
 ls_card_id = "BG27_084"
-name_str = "机变甲虫"
 lv = 3
-show_lv = true
 atk = 2
-show_atk = true
-hp = 1
-show_hp = true
 desc = "<b>抉择：</b>使一只野兽获得+1/+1和<b>复生</b>；或者+8攻击力。"
 gold_desc = "<b>抉择：</b>使一只野兽获得+2/+2和<b>复生</b>；或者+16攻击力。"
-cardType = 0
-buy_coins = 3
-show_buy_coins = false
 race = Array[int]([1])
-是否出现在酒馆 = true
-是否为伙伴 = false
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false

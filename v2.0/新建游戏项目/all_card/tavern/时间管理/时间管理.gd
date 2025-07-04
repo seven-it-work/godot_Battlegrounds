@@ -27,4 +27,4 @@ func 决战执行方法(player:Player,card:CardData):
 		var attri=card.card_data.get_AttributeBonus()
 		attri.atk=base_atk+合计加成.atk
 		attri.hp=base_hp+合计加成.hp
-		cardData.属性添加(player,attri)
+		cardData.属性添加(self,player,attri)

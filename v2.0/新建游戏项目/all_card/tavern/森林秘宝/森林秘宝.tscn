@@ -82,7 +82,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sp4up")
 script = SubResource("GDScript_1h3k5")
 "描述" = "使你的随从获得+${法术攻击值2}/+${法术生命值2}"
 
-[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项1" to="." method="_on_抉择选项1_选择信号"]
-[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="." method="_on_抉择选项2_选择信号"]
-
 [editable path="抉择"]

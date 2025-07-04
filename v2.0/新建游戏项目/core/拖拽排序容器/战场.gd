@@ -7,12 +7,14 @@ func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragC
 	拖拽.queue_free()
 	pass # Replace with function body.
 
+func 是否有空位()->bool:
+	return $"HBoxContainer".get_children().size()<7
+
 func 添加到容器中(拖拽节点:DragControl,index):
-	# todo 判断是否还能继续添加，不能添加就丢弃了
-	拖拽节点.card_data.所在位置=Enums.CardPosition.战场
-	添加到战场触发(拖拽节点)
-	super.添加到容器中(拖拽节点,index)
-	pass
+	if 是否有空位():
+		拖拽节点.card_data.所在位置=Enums.CardPosition.战场
+		添加到战场触发(拖拽节点)
+		super.添加到容器中(拖拽节点,index)
 
 func 添加到战场触发(拖拽节点:DragControl):
 	print("添加到战场触发")

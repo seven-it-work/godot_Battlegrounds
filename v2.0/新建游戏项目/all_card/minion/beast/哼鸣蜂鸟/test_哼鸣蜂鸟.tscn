@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5c7tmhjch1lr"]
+
+[ext_resource type="Script" uid="uid://bgagfekp0pva" path="res://all_card/minion/beast/哼鸣蜂鸟/test_哼鸣蜂鸟.gd" id="1_kqqj4"]
+[ext_resource type="PackedScene" uid="uid://btcckudp08t2" path="res://core/Fight/测试基础战斗.tscn" id="1_spxbu"]
+
+[node name="Test哼鸣蜂鸟" type="Node"]
+script = ExtResource("1_kqqj4")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="测试基础战斗" parent="." instance=ExtResource("1_spxbu")]
+
+[connection signal="战斗结束信号" from="测试基础战斗" to="." method="_on_测试基础战斗_战斗结束信号"]
+
+[editable path="测试基础战斗"]

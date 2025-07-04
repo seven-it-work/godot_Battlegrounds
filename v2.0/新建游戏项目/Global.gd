@@ -2,7 +2,8 @@ extends Node
 
 var main_node:Player
 # key=文件名(也就是name_str) value=cardData
-var all_card:Dictionary=CardsUtils.scan_scenes_recursive("res://all_card/")
+#var all_card:Dictionary=CardsUtils.scan_scenes_recursive("res://all_card/")
+var all_card:Dictionary={}
 
 func 获取原始版卡片(name_str:String)->CardData:
 	if all_card.has(name_str):

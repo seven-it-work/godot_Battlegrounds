@@ -17,4 +17,4 @@ func 使用触发(player:Player):
 		var attri=get_AttributeBonus()
 		attri.atk=base_atk+合计加成.atk
 		attri.hp=base_hp+合计加成.hp
-		cardData.属性添加(player,attri)
+		cardData.属性添加(self,player,attri)

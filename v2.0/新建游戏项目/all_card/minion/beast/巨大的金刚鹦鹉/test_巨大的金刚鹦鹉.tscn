@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqholvv8n00d4"]
+
+[ext_resource type="Script" uid="uid://ce0japo2stgqv" path="res://all_card/minion/beast/巨大的金刚鹦鹉/test_巨大的金刚鹦鹉.gd" id="1_j23yr"]
+[ext_resource type="PackedScene" uid="uid://btcckudp08t2" path="res://core/Fight/测试基础战斗.tscn" id="2_70jf0"]
+
+[node name="Test巨大的金刚鹦鹉" type="Node"]
+script = ExtResource("1_j23yr")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="测试基础战斗" parent="." instance=ExtResource("2_70jf0")]

@@ -40,6 +40,8 @@ var 上一个对手:Player
 @export var 法术加成:Array[AttributeBonus]=[]
 @export var 亡灵加成:Array[AttributeBonus]=[]
 @export var 甲虫加成:Array[AttributeBonus]=[]
+@export var 野兽加成:Array[AttributeBonus]=[]
+@export var 暴吼兽王_野兽召唤个数:int=0
 #endregion
 
 func _process(delta: float) -> void:
@@ -82,6 +84,7 @@ func _on_抉择是否隐藏_pressed() -> void:
 		抉择节点.show()
 	pass # Replace with function body.
 
+## 返回CardData
 func 获取战场中的牌()->Array:
 	if 是否在战斗中():
 		return fight.获取自己战场中的牌(self).map(func(card:DragControl): return card.card_data)
@@ -94,9 +97,20 @@ func 添加到手牌(card:CardData):
 
 func 添加随从(card:CardData,index:int):
 	if 是否在战斗中():
+		if !fight.是否有空位(self):
+			return
+		_检查到召唤随从(card)
 		fight.添加新牌到战场(self,Global.创建新卡片(card),index)
 	else:
-		战场.添加到容器中(Global.创建新卡片(card),index)
+		if 战场.是否有空位():
+			_检查到召唤随从(card)
+			战场.添加到容器中(Global.创建新卡片(card),index)
+
+func _检查到召唤随从(card:CardData):
+	if card.是否属于种族(Enums.RaceEnum.BEAST):
+		暴吼兽王_野兽召唤个数+=1
+	card.触发器_召唤(self)
+	pass
 
 func 随从死亡(card_data:CardData):
 	var parent=card_data.get_parent()

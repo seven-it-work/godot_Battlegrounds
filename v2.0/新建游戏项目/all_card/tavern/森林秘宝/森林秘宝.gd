@@ -34,7 +34,7 @@ func 执行抉择选项1(player:Player):
 		var attri=get_AttributeBonus()
 		attri.atk=base_atk1+合计加成.atk
 		attri.hp=base_hp1+合计加成.hp
-		cardData.属性添加(player,attri)
+		cardData.属性添加(self,player,attri)
 	pass
 
 func 执行抉择选项2(player:Player):
@@ -44,4 +44,4 @@ func 执行抉择选项2(player:Player):
 		var attri=get_AttributeBonus()
 		attri.atk=base_atk2+合计加成.atk
 		attri.hp=base_hp2+合计加成.hp
-		cardData.属性添加(player,attri)
+		cardData.属性添加(self,player,attri)

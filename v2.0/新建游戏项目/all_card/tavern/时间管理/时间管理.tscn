@@ -65,7 +65,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7r4n6")
 script = ExtResource("6_xwbul")
 "描述" = "在你的下个回合开始时，使你的随从获得+${法术攻击值}/+${法术生命值}，触发两次"
 
-[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项1" to="." method="_on_抉择选项_选择信号"]
-[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="." method="_on_抉择选项2_选择信号"]
-
 [editable path="抉择"]
