@@ -5,23 +5,15 @@
 
 [node name="洞穴多头蛇" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "洞穴多头蛇"
 version = "32.2.4.221850"
 ls_card_id = "BG_LOOT_078"
-name_str = "洞穴多头蛇"
 lv = 4
-show_lv = true
 atk = 2
-show_atk = true
 hp = 4
-show_hp = true
 desc = "同时对其攻击目标相邻的随从造成伤害。"
 gold_desc = "同时对其攻击目标相邻的随从造成伤害。"
-cardType = 0
-buy_coins = 3
-show_buy_coins = false
 race = Array[int]([1])
-是否出现在酒馆 = true
-是否为伙伴 = false
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false

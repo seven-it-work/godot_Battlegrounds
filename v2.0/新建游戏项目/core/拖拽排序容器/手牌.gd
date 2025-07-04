@@ -1,6 +1,6 @@
 extends DragContainer
 
-
+@export var player:Player
 
 var 当前按下的牌:DragControl=null
 var 箭头数据:Dictionary={
@@ -95,7 +95,8 @@ func _process(delta: float) -> void:
 				Global.main_node.抉择节点.queue_free()
 				Global.main_node.抉择节点=null
 			else:
-				print("等等抉择选中")
+				#print("等等抉择选中")
+				pass
 		else:
 			super._process(delta)
 	
@@ -121,10 +122,9 @@ func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragC
 			return
 		var 抉择节点=拖拽.card_data.获取抉择节点()
 		if 抉择节点!=null:
-			var 抉择ui=抉择节点.duplicate()
-			Global.main_node.add_child(抉择ui)
-			Global.main_node.抉择节点=抉择ui
-			抉择ui.show()
+			#Global.main_node.add_child(抉择节点)
+			Global.main_node.抉择节点=抉择节点
+			抉择节点.show()
 			Global.main_node.所有的拖拽禁用或者开启(false)
 			return
 	Logger.debug("进入容器了")

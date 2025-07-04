@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4kxo43rvgi7x"]
+
+[ext_resource type="Script" uid="uid://2vmyb3kp28co" path="res://all_card/minion/beast/洞穴多头蛇/test_洞穴多头蛇.gd" id="1_33rai"]
+[ext_resource type="PackedScene" uid="uid://btcckudp08t2" path="res://core/Fight/测试基础战斗.tscn" id="2_t4dw7"]
+
+[node name="Test洞穴多头蛇" type="Node"]
+script = ExtResource("1_33rai")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="测试基础战斗" parent="." instance=ExtResource("2_t4dw7")]

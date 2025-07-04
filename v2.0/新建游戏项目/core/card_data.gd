@@ -185,7 +185,7 @@ func 触发器_亡语(触发随从:CardData,player:Player):
 	if !是否存在亡语():
 		return
 	for i in self.亡语:
-		await i.亡语(触发随从,player)
+		await i.执行亡语(触发随从,player)
 		for j in player.获取战场中的牌():
 			if j.uuid!=self.uuid:
 				await j.触发器_亡语触发监听(触发随从,self,player)

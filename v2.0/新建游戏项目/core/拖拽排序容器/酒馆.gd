@@ -1,5 +1,7 @@
 extends DragContainer
 
+@export var player:Player
+
 func 结束拖拽(拖拽节点:DragControl):
 	super.结束拖拽(拖拽节点)
 	var 链接=拖拽节点.get_signal_connection_list("结束拖拽")

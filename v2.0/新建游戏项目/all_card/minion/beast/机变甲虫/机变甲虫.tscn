@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://b812lc203e882"]
+[gd_scene load_steps=9 format=3 uid="uid://b812lc203e882"]
 
 [ext_resource type="Script" uid="uid://kku2y6wdvive" path="res://all_card/minion/beast/机变甲虫/机变甲虫.gd" id="1_cc03i"]
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
+[ext_resource type="PackedScene" uid="uid://25jbymm26se5" path="res://core/funcs/抉择.tscn" id="3_3s4ib"]
+[ext_resource type="PackedScene" uid="uid://cq4axk7s106ie" path="res://core/funcs/抉择选项.tscn" id="4_up7ih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnf8"]
+resource_local_to_scene = true
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="GDScript" id="GDScript_up7ih"]
+script/source = "extends ChooseOption
+func 执行方法(player:Player,card:CardData):
+	card.card_data.执行抉择选项1(player)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up7ih"]
+resource_local_to_scene = true
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="GDScript" id="GDScript_0tnf8"]
+script/source = "extends ChooseOption
+func 执行方法(player:Player,card:CardData):
+	card.card_data.执行抉择选项1(player)
+"
 
 [node name="机变甲虫" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
@@ -14,5 +52,23 @@ desc = "<b>抉择：</b>使一只野兽获得+1/+1和<b>复生</b>；或者+8攻
 gold_desc = "<b>抉择：</b>使一只野兽获得+2/+2和<b>复生</b>；或者+16攻击力。"
 race = Array[int]([1])
 
-[node name="使用时是否需要选择目标" parent="." index="0"]
-"是否需要选择目标" = false
+[node name="抉择" parent="." index="1" instance=ExtResource("3_3s4ib")]
+visible = false
+layout_mode = 0
+
+[node name="抉择选项1" parent="抉择/MarginContainer/GridContainer" index="0" instance=ExtResource("4_up7ih")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tnf8")
+script = SubResource("GDScript_up7ih")
+"描述" = "使一只野兽获得+1/+1和<b>复生</b>"
+
+[node name="抉择选项2" parent="抉择/MarginContainer/GridContainer" index="1" instance=ExtResource("4_up7ih")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_up7ih")
+script = SubResource("GDScript_0tnf8")
+"描述" = "使一只野兽获得+8攻击力"
+
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项1" to="." method="_on_抉择选项1_选择信号"]
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="." method="_on_抉择选项2_选择信号"]
+
+[editable path="抉择"]

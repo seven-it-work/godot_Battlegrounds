@@ -23,27 +23,30 @@ offset_top = 31.0
 offset_right = 1255.0
 offset_bottom = 685.0
 
-[node name="酒馆" parent="VBoxContainer" node_paths=PackedStringArray("区域") instance=ExtResource("2_8f3me")]
+[node name="酒馆" parent="VBoxContainer" node_paths=PackedStringArray("player", "区域") instance=ExtResource("2_8f3me")]
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 script = ExtResource("3_yor5m")
+player = NodePath("../..")
 name_str = "酒馆"
-"区域" = [null]
+"区域" = [NodePath("../手牌")]
 
-[node name="战场" parent="VBoxContainer" node_paths=PackedStringArray("区域") instance=ExtResource("2_8f3me")]
+[node name="战场" parent="VBoxContainer" node_paths=PackedStringArray("player", "区域") instance=ExtResource("2_8f3me")]
 custom_minimum_size = Vector2(10, 180)
 layout_mode = 2
 script = ExtResource("4_sh5nk")
+player = NodePath("../..")
 "是否可以排序" = true
 name_str = "战场"
-"区域" = [null]
+"区域" = [NodePath("../酒馆")]
 
-[node name="手牌" parent="VBoxContainer" node_paths=PackedStringArray("区域") instance=ExtResource("2_8f3me")]
+[node name="手牌" parent="VBoxContainer" node_paths=PackedStringArray("player", "区域") instance=ExtResource("2_8f3me")]
 custom_minimum_size = Vector2(10, 180)
 layout_mode = 2
 script = ExtResource("5_cjtnc")
+player = NodePath("../..")
 name_str = "手牌"
-"区域" = [null]
+"区域" = [NodePath("../战场")]
 
 [node name="箭头" parent="VBoxContainer/手牌" instance=ExtResource("6_e074q")]
 visible = false
@@ -65,6 +68,8 @@ offset_bottom = 603.0
 text = "显示"
 
 [connection signal="在其他容器中释放信号" from="VBoxContainer/酒馆" to="VBoxContainer/酒馆" method="_on_在其他容器中释放信号"]
+[connection signal="在其他容器中释放信号" from="VBoxContainer/战场" to="VBoxContainer/战场" method="_on_在其他容器中释放信号"]
+[connection signal="在其他容器中释放信号" from="VBoxContainer/手牌" to="VBoxContainer/手牌" method="_on_在其他容器中释放信号"]
 [connection signal="pressed" from="Panel/抉择是否隐藏" to="." method="_on_抉择是否隐藏_pressed"]
 
 [editable path="VBoxContainer/手牌"]

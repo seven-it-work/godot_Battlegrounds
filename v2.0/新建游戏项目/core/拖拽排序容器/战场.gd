@@ -1,5 +1,5 @@
 extends DragContainer
-
+@export var player:Player
 func _on_在其他容器中释放信号(拖拽: DragControl, 其他容器: DragContainer) -> void:
 	拖拽.hide()
 	断开信号(拖拽)
@@ -20,13 +20,13 @@ func 添加到战场触发(拖拽节点:DragControl):
 	print("添加到战场触发")
 	if 拖拽节点.card_data.是否有战吼():
 		战吼触发(拖拽节点)
-		for i in Global.main_node.获取所有的牌():
+		for i in self.player.获取所有的牌():
 			if i!=拖拽节点:
 				战吼触发监听(拖拽节点,i)
 	pass
 
 func 战吼触发(拖拽节点:DragControl):
-	拖拽节点.card_data.获取战吼节点().执行战吼(Global.main_node)
+	拖拽节点.card_data.获取战吼节点().执行战吼(self.player)
 	pass
 
 func 战吼触发监听(战吼节点:DragControl,监听节点:DragControl):

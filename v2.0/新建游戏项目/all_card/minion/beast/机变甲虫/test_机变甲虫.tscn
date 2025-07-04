@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b654w18l0acoy"]
+
+[ext_resource type="Script" uid="uid://d0iita1ql6lwr" path="res://all_card/minion/beast/机变甲虫/test_机变甲虫.gd" id="1_i7nv0"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽排序容器/player.tscn" id="2_i7nv0"]
+
+[node name="Test机变甲虫" type="Node"]
+script = ExtResource("1_i7nv0")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="player" parent="." instance=ExtResource("2_i7nv0")]
+
+[editable path="player"]
+[editable path="player/VBoxContainer/手牌"]

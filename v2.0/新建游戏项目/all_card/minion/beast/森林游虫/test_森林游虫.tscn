@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmjfxpm6j32gl"]
+
+[ext_resource type="Script" uid="uid://b25awf2x7tthq" path="res://all_card/minion/beast/森林游虫/test_森林游虫.gd" id="1_7mjwc"]
+[ext_resource type="PackedScene" uid="uid://btcckudp08t2" path="res://core/Fight/测试基础战斗.tscn" id="2_s0wuw"]
+
+[node name="Test森林游虫" type="Node"]
+script = ExtResource("1_7mjwc")
+metadata/_custom_type_script = "uid://ddq6vp4g0teb2"
+
+[node name="测试基础战斗" parent="." instance=ExtResource("2_s0wuw")]

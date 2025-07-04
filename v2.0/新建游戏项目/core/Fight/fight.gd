@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass
 
 func 添加新牌到战场(player:Player,card:DragControl,index:int):
-	是否在播放动画=true
+	播放动画队列.append("添加新牌到战场")
 	var node
 	if player==玩家.player:
 		node=$"玩家随从"
@@ -18,11 +18,11 @@ func 添加新牌到战场(player:Player,card:DragControl,index:int):
 		node=$"敌人随从"
 	if node==null:
 		Logger.error("获取错误，该player不在这个fight中")
-		是否在播放动画=false
+		播放动画队列.pop_front()
 		return
 	if !是否有空位(player):
 		print("随从太多了,放不下")
-		是否在播放动画=false
+		播放动画队列.pop_front()
 		return
 	
 	if card.get_parent():
@@ -31,7 +31,7 @@ func 添加新牌到战场(player:Player,card:DragControl,index:int):
 		node.add_child(card)
 	node.move_child(card,min(index,node.get_children().size()-1))
 	await get_tree().process_frame
-	是否在播放动画=false
+	播放动画队列.pop_front()
 
 func 获取自己战场中的牌(player:Player)->Array:
 	if player==玩家.player:
@@ -71,12 +71,14 @@ var 当前攻击者:攻击对象
 # 一般是0~1 如果>=2 说明2个玩家都不能攻击，则为平局
 var 不能攻击的玩家个数:int=0;
 # 播放动画中
-var 是否在播放动画:bool=false
+var 播放动画队列:Array=[]
 
 var 是否战斗完成标志:bool=false
 # 如果 造成伤害=0 则认为是平局
 signal 战斗结束(胜利者:攻击对象,失败者:攻击对象,造成伤害:int)
 
+func 是否在播放动画()->bool:
+	return !播放动画队列.is_empty()
 
 func 是否有空位(player:Player)->bool:
 	return 获取自己战场中的牌(player).size() < 7
@@ -112,7 +114,7 @@ func 战斗结束方法(胜利者:攻击对象,失败者:攻击对象,造成伤�
 
 func 战斗运算():
 	while true:
-		if 是否在播放动画:
+		if 是否在播放动画():
 			await get_tree().create_timer(1.0).timeout
 			continue
 		for i in $"玩家随从".get_children():
@@ -251,7 +253,7 @@ func _伤害计算(胜利者:攻击对象)->int:
 
 ## 移动动画
 func move_to_target(panel: Node, target: Node, duration: float) -> void:
-	是否在播放动画=true
+	播放动画队列.append("move_to_target")
 	var tween = create_tween().set_parallel(true)
 	tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
@@ -262,22 +264,22 @@ func move_to_target(panel: Node, target: Node, duration: float) -> void:
 		tween.tween_property(panel, "global_position", Vector2(target.global_position.x,target.global_position.y-target.size.y), duration)
 	tween.tween_property(panel, "size", target.size, duration)
 	await tween.finished
-	是否在播放动画=false
+	播放动画队列.pop_front()
 
 ## 溶解动画
 func 溶解动画(panel: Node):
-	是否在播放动画=true
+	播放动画队列.append("溶解动画")
 	# 1. 创建ShaderMaterial并设置基础参数
 	panel.material.set_shader_parameter("progress", 0.0)  # 初始未溶解
 	var tween = create_tween()
 	tween.tween_property(panel.material, "shader_parameter/progress", 1.0, 2.0)
 	await tween.finished
-	是否在播放动画=false
+	播放动画队列.pop_front()
 
 
 ## 抖动动画
 func shake_panel(panel: Node, duration: float, strength: float, frequency: float) -> void:
-	是否在播放动画=true
+	播放动画队列.append("抖动动画")
 	var original_pos = panel.global_position
 	var tween = create_tween()
 	
@@ -304,11 +306,12 @@ func shake_panel(panel: Node, duration: float, strength: float, frequency: float
 							shake_duration * 0.6).set_ease(Tween.EASE_IN)
 	
 	await tween.finished
-	是否在播放动画=false
+	播放动画队列.pop_front()
 
 
 ## 返回原位动画
 func return_to_original(panel: Node,original_position,original_size, duration: float) -> void:
+	播放动画队列.append("return_to_original")
 	var tween = create_tween().set_parallel(true)
 	tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
@@ -316,9 +319,10 @@ func return_to_original(panel: Node,original_position,original_size, duration: f
 	tween.tween_property(panel, "size", original_size, duration)
 	
 	await tween.finished
-
+	播放动画队列.pop_front()
+	
 func start_animation_sequence(panel_a,panel_b):
-	是否在播放动画=true
+	播放动画队列.append("start_animation_sequence")
 	var original_position = panel_a.global_position
 	var original_size = panel_a.size
 	# 1. 移动到目标位置
@@ -329,10 +333,7 @@ func start_animation_sequence(panel_a,panel_b):
 	
 	# 3. 返回原位
 	await return_to_original(panel_a,original_position,original_size, 0.4)
-	#panel_a.reparent(parent)
-	#parent.move_child(panel_a,index)
-	#await get_tree().process_frame
 	print("播放完成")
-	是否在播放动画=false
+	播放动画队列.pop_front()
 
 #endregion
