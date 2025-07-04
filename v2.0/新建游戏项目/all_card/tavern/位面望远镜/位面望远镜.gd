@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发(player:Player):
+func 使用触发():
 	var 战场上的牌=player.战场.获取所有节点().filter(func(card:CardData): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
 	if 战场上的牌.is_empty():
 		return

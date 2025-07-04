@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发(player:Player):
+func 使用触发():
 	super.使用触发(player)
 	var list=_获取酒馆中的随从(player)
 	if list.is_empty():

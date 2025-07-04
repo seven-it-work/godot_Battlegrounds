@@ -9,7 +9,7 @@ func get_desc(otherJson:Dictionary={})->String:
 	otherJson.set("法术生命值",base_hp+合计加成.hp)
 	return super.get_desc(player,otherJson)
 
-func 使用触发(player:Player):
+func 使用触发():
 	for i in player.酒馆.获取所有节点():
 		# 如果目标存在类型
 		var cardData= i.card_data as CardData

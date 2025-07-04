@@ -6,7 +6,7 @@ func get_desc(otherJson:Dictionary={})->String:
 	otherJson.set("法术生命值",0+合计加成.hp)
 	return super.get_desc(player,otherJson)
 
-func 使用触发(player:Player):
+func 使用触发():
 	if $"使用时是否需要选择目标".目标对象:
 		# 如果目标存在类型
 		var cardData= $"使用时是否需要选择目标".目标对象.card_data as CardData

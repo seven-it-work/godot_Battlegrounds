@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发(player:Player):
+func 使用触发():
 	CardsUtils.find_card([
 		CardsUtils.COMMON_CODITION.随从,
 		CardsUtils.COMMON_CODITION.出现在酒馆,

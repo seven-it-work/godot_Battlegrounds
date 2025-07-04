@@ -9,7 +9,7 @@ func get_desc(otherJson:Dictionary={})->String:
 	otherJson.set("法术生命值",base_hp+合计加成.hp)
 	return super.get_desc(player,otherJson)
 
-func 使用触发(player:Player):
+func 使用触发():
 	$"抉择".player=player
 
 func _on_抉择选项_选择信号(选项: ChooseOption) -> void:

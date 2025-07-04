@@ -98,8 +98,6 @@ func 获取所有节点(是否包含拖拽:bool=false)->Array:
 	re.append_array($HBoxContainer.get_children().filter(func(x): return x is DragControl))
 	return  re
 
-
-
 func 删除(拖拽节点:DragControl):
 	#printerr("没有开放")
 	pass

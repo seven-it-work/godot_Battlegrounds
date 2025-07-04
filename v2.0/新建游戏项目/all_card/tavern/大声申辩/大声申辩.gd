@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发(player:Player):
+func 使用触发():
 	super.使用触发(player)
 	if player.上一个对手:
 		var list=player.上一个对手.战场.获取所有节点()

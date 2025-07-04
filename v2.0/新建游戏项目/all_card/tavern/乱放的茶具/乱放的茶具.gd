@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发(player:Player):
+func 使用触发():
 	buff_one_of_each_type(player)
 
 func get_desc(otherJson:Dictionary={})->String:

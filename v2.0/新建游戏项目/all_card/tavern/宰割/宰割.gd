@@ -1,6 +1,6 @@
 extends CardData
 
-func 使用触发(player:Player):
+func 使用触发():
 	super.使用触发(player)
 	if $"使用时是否需要选择目标".目标对象:
 		# 如果目标存在类型

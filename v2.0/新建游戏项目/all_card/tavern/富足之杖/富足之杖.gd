@@ -6,7 +6,7 @@ func get_desc(otherJson:Dictionary={})->String:
 	otherJson.set("法术生命值",1+合计加成.hp)
 	return super.get_desc(player,otherJson)
 	
-func 使用触发(player:Player):
+func 使用触发():
 	super.使用触发(player)
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	var 属性=get_AttributeBonus()

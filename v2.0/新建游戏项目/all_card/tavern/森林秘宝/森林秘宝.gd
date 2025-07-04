@@ -16,7 +16,7 @@ func _描述json(player:Player,otherJson:Dictionary={})->Dictionary:
 func get_desc(otherJson:Dictionary={})->String:
 	return super.get_desc(player,_描述json(player,otherJson))
 
-func 使用触发(player:Player):
+func 使用触发():
 	$"抉择".player=player
 
 func _on_抉择选项1_选择信号(选项: ChooseOption) -> void:
