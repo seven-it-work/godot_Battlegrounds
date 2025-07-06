@@ -22,8 +22,6 @@ const 酒馆随从个数={
 @export var 出现法术个数:int=1;
 
 #endregion
-var 抉择是否隐藏:bool=false
-var 抉择节点:Choose
 var fight:Fight
 var 上一个对手:Player
 
@@ -45,9 +43,9 @@ var 上一个对手:Player
 #endregion
 
 @onready var 遮罩:=$"遮罩"
+@onready var 抉择信息:=$"抉择信息"
 
 func _process(delta: float) -> void:
-	#$"Panel".visible=抉择是否隐藏
 	pass
 
 func 获取所有的牌()->Array[DragControl]:
@@ -73,6 +71,7 @@ func 所有的拖拽禁用或者开启(是否开启:bool):
 func _ready() -> void:
 	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cuxpxje8iycj3").instantiate(),self),-1)
 	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cptuaedglysg3").instantiate(),self),-1)
+	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://bjhqpg4a8wuqj").instantiate(),self),-1)
 	pass
 
 func 是否在战斗中()->bool:
@@ -81,11 +80,7 @@ func 是否在战斗中()->bool:
 func 获取当前酒馆等级()->int:
 	return 1;
 
-func _on_抉择是否隐藏_pressed() -> void:
-	抉择是否隐藏=false
-	if 抉择节点:
-		抉择节点.show()
-	pass # Replace with function body.
+
 
 ## 返回CardData
 func 获取战场中的牌()->Array:
@@ -159,3 +154,10 @@ func 刷新酒馆(条件:Array[CardFindCondition]=[]):
 		var dup=data.duplicate()
 		酒馆.添加到容器(Global.创建新卡片(dup,self),-1)
 	pass
+
+func _on_显示_pressed() -> void:
+	抉择信息.hide()
+	if 手牌.当前拖拽中的卡片.card_data.抉择节点:
+		手牌.当前拖拽中的卡片.card_data.抉择节点.visible=true
+	else:
+		Logger.error("错误了，请检测程序")

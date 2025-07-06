@@ -5,7 +5,7 @@ class_name CardContainer
 @export var 可以拖入的容器:Array[CardContainer] = [] 
 @export var name_str:String
 @onready var container:=$HBoxContainer
-@export var palyer:Player
+@export var player:Player
 
 # 未拖拽 在本容器中 在其他容器中 没在容器中
 var 拖拽卡片的状态:String="未拖拽"

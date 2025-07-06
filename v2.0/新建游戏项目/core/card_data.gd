@@ -57,7 +57,6 @@ var 额外属性:Array[String]=["嘲讽","圣盾","复生","剧毒","风怒","�
 
 @export var 亡语:Array[Dead]=[]
 @export var 战吼:Array[Roar]=[]
-#@export var 抉择:ToChoose
 
 # 插画路径
 @export var 插画路径:String=""
@@ -85,6 +84,7 @@ var 复仇计数器:int=-1
 var 是否攻击过:bool=false
 # 所属的玩家
 @export var player:Player
+@export var 抉择节点:Choose
 
 func _ready() -> void:
 	print("ready")
@@ -144,7 +144,7 @@ func 是否为法术()->bool:
 func 获取抉择节点()->Choose:
 	var list= get_children().filter(func(x): return x is Choose)
 	if list.is_empty():
-		return null;
+		return 抉择节点;
 	return list[0]
 
 #region 战吼相关操作

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbodemci4iucv"]
 
-[ext_resource type="Script" uid="uid://bof8t10sq8xbf" path="res://core/ui/card_container.gd" id="1_l4nx8"]
+[ext_resource type="Script" uid="uid://bof8t10sq8xbf" path="res://core/拖拽ui/card_container.gd" id="1_l4nx8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4nx8"]
 border_width_left = 5
@@ -13,6 +13,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="CardContainer" type="Control"]
+custom_minimum_size = Vector2(1228, 180)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ script = ExtResource("1_l4nx8")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = -1
+custom_minimum_size = Vector2(1228, 180)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

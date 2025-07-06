@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://dwqeyyqxjvxcp"]
 
-[ext_resource type="PackedScene" uid="uid://c73plt2ag03r1" path="res://core/ui/CardUI.tscn" id="1_j0jic"]
-[ext_resource type="Script" uid="uid://b4wevuei5w15j" path="res://core/ui/具体业务/card.gd" id="2_o2chq"]
+[ext_resource type="PackedScene" uid="uid://c73plt2ag03r1" path="res://core/拖拽ui/CardUI.tscn" id="1_j0jic"]
+[ext_resource type="Script" uid="uid://b4wevuei5w15j" path="res://core/拖拽ui/具体业务/card.gd" id="2_o2chq"]
 [ext_resource type="Shader" uid="uid://b3h8hktpdssqm" path="res://asserts/黑白平滑透明.gdshader" id="3_5bapd"]
 [ext_resource type="Texture2D" uid="uid://cnxrf7b5ni8mu" path="res://asserts/操作.png" id="4_mnkf5"]
 [ext_resource type="Texture2D" uid="uid://d3lcrygqx6j7l" path="res://asserts/箭头选中.png" id="5_2acki"]

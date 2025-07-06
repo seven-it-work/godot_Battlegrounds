@@ -34,16 +34,13 @@ func 选中样式改变(选项:ChooseOption):
 
 
 func _on_隐藏_pressed() -> void:
-	Global.main_node.抉择节点=self
-	Global.main_node.抉择是否隐藏=true
 	self.hide()
 	pass # Replace with function body.
 
 
 func _on_确定_pressed() -> void:
-	print(self.上一次选项)
 	if self.上一次选项:
-		print("使用成功")
+		var p=get_parent()
 		上一次选项.执行方法(player,get_parent())
 		self.hide()
 	else:

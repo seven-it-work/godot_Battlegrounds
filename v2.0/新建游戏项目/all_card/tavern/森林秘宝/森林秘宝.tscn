@@ -22,10 +22,10 @@ resource_name = "抉择选项1"
 script/source = "extends ChooseOption
 
 func get_desc(card:CardData,player:Player,otherJson:Dictionary={})->String:
-	return StrUtils.自定义format(描述,card.card_data._描述json(player,otherJson))
+	return StrUtils.自定义format(描述,card._描述json(player,otherJson))
 
 func 执行方法(player:Player,card:CardData):
-	card.card_data.执行抉择选项1(player)
+	card.执行抉择选项1(player)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp4up"]
@@ -45,10 +45,10 @@ resource_name = "抉择选项2"
 script/source = "extends ChooseOption
 
 func get_desc(card:CardData,player:Player,otherJson:Dictionary={})->String:
-	return StrUtils.自定义format(描述,card.card_data._描述json(player,otherJson))
+	return StrUtils.自定义format(描述,card._描述json(player,otherJson))
 
 func 执行方法(player:Player,card:CardData):
-	card.card_data.执行抉择选项2(player)
+	card.执行抉择选项2(player)
 "
 
 [node name="森林秘宝" instance=ExtResource("1_syn4q")]
@@ -81,5 +81,8 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sp4up")
 script = SubResource("GDScript_1h3k5")
 "描述" = "使你的随从获得+${法术攻击值2}/+${法术生命值2}"
+
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项1" to="." method="_on_抉择选项1_选择信号"]
+[connection signal="选择信号" from="抉择/MarginContainer/GridContainer/抉择选项2" to="." method="_on_抉择选项2_选择信号"]
 
 [editable path="抉择"]

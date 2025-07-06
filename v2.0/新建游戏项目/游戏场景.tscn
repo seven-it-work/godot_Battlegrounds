@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l8i184heu1c8" path="res://游戏场景.gd" id="1_cw67j"]
 [ext_resource type="PackedScene" uid="uid://batjwfujq44uj" path="res://core/Fight/fight.tscn" id="1_myshr"]
-[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/ui/具体业务/player.tscn" id="2_myshr"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽ui/具体业务/player.tscn" id="2_myshr"]
 
 [node name="游戏场景" type="Control"]
 layout_mode = 3

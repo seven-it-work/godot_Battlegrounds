@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsxka2pswlo70"]
 
 [ext_resource type="Script" uid="uid://bulkf6gphfsj2" path="res://all_card/tavern/主厨甄选/test_主厨甄选.gd" id="1_lajyk"]
-[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/ui/具体业务/player.tscn" id="2_lajyk"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽ui/具体业务/player.tscn" id="2_lajyk"]
 
 [node name="Test" type="Node"]
 script = ExtResource("1_lajyk")

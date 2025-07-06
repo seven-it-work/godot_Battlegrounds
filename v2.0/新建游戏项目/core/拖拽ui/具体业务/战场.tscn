@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm3q5aa136gyo"]
+
+[ext_resource type="PackedScene" uid="uid://dwjyiaiuitp2i" path="res://core/拖拽ui/CardSortContainer.tscn" id="1_hwnvl"]
+[ext_resource type="Script" uid="uid://cadkut4x24e38" path="res://core/拖拽ui/具体业务/战场.gd" id="2_wvb3a"]
+
+[node name="CardContainer" instance=ExtResource("1_hwnvl")]
+script = ExtResource("2_wvb3a")

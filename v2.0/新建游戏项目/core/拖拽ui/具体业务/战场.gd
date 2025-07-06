@@ -1,4 +1,4 @@
-extends "res://core/ui/card_sort_container.gd"
+extends "res://core/拖拽ui/card_sort_container.gd"
 
 
 func _on_在其他容器中释放() -> void:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://0o1jl42wr8mc"]
 
-[ext_resource type="Script" uid="uid://ckoykt66o64sh" path="res://core/ui/test_card_container.gd" id="1_8uwy3"]
-[ext_resource type="PackedScene" uid="uid://cbodemci4iucv" path="res://core/ui/CardContainer.tscn" id="2_p5i6b"]
-[ext_resource type="PackedScene" uid="uid://c73plt2ag03r1" path="res://core/ui/CardUI.tscn" id="3_lglto"]
+[ext_resource type="Script" uid="uid://ckoykt66o64sh" path="res://core/拖拽ui/test_card_container.gd" id="1_8uwy3"]
+[ext_resource type="PackedScene" uid="uid://cbodemci4iucv" path="res://core/拖拽ui/CardContainer.tscn" id="2_p5i6b"]
+[ext_resource type="PackedScene" uid="uid://c73plt2ag03r1" path="res://core/拖拽ui/CardUI.tscn" id="3_lglto"]
 
 [node name="TestCardContainer" type="Control"]
 layout_mode = 3

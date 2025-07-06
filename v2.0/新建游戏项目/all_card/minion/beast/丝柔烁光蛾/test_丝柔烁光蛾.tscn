@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn0j2njtv3s81"]
 
 [ext_resource type="Script" uid="uid://bncfpt2vpt6ux" path="res://all_card/minion/beast/丝柔烁光蛾/test_丝柔烁光蛾.gd" id="1_83i1l"]
-[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/ui/具体业务/player.tscn" id="2_xv00l"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽ui/具体业务/player.tscn" id="2_xv00l"]
 [ext_resource type="PackedScene" uid="uid://batjwfujq44uj" path="res://core/Fight/fight.tscn" id="3_ltfco"]
 
 [node name="测试基础战斗" type="Control"]
