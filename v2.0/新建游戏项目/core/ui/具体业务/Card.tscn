@@ -1,0 +1,669 @@
+[gd_scene load_steps=28 format=3 uid="uid://dwqeyyqxjvxcp"]
+
+[ext_resource type="PackedScene" uid="uid://c73plt2ag03r1" path="res://core/ui/CardUI.tscn" id="1_j0jic"]
+[ext_resource type="Script" uid="uid://b4wevuei5w15j" path="res://core/ui/具体业务/card.gd" id="2_o2chq"]
+[ext_resource type="Shader" uid="uid://b3h8hktpdssqm" path="res://asserts/黑白平滑透明.gdshader" id="3_5bapd"]
+[ext_resource type="Texture2D" uid="uid://cnxrf7b5ni8mu" path="res://asserts/操作.png" id="4_mnkf5"]
+[ext_resource type="Texture2D" uid="uid://d3lcrygqx6j7l" path="res://asserts/箭头选中.png" id="5_2acki"]
+[ext_resource type="Texture2D" uid="uid://clar74unixt66" path="res://asserts/普通随从.png" id="6_eicxs"]
+[ext_resource type="Texture2D" uid="uid://c10a754r60flq" path="res://asserts/金色随从.png" id="7_13inq"]
+[ext_resource type="Texture2D" uid="uid://dchclcfqunoba" path="res://asserts/ally_taunt_d.png" id="8_rq06e"]
+[ext_resource type="Texture2D" uid="uid://byy0afibnjwb4" path="res://asserts/StealthDomeShadow_D.png" id="9_iwms6"]
+[ext_resource type="Texture2D" uid="uid://gd3h0dhj8e1y" path="res://asserts/DivineShield_Bubble2.png" id="10_3fcub"]
+[ext_resource type="Texture2D" uid="uid://ygnlskliqs0g" path="res://asserts/遮罩.png" id="11_23gh7"]
+[ext_resource type="Texture2D" uid="uid://blxr2sildhwcn" path="res://asserts/风怒.png" id="12_4isjh"]
+[ext_resource type="Texture2D" uid="uid://bq502d73j6htf" path="res://asserts/透明背景.png" id="13_x3faq"]
+[ext_resource type="Texture2D" uid="uid://130ebk1vfcbx" path="res://asserts/FrozenFrost_D.png" id="14_37ab7"]
+[ext_resource type="Texture2D" uid="uid://1bg4strxb7bd" path="res://asserts/剧毒.png" id="15_luanx"]
+[ext_resource type="Texture2D" uid="uid://bc0fcro4xo3cj" path="res://asserts/烈毒.png" id="16_8tut6"]
+[ext_resource type="Texture2D" uid="uid://1es6wyhbv85f" path="res://asserts/闪电.png" id="17_edfj5"]
+[ext_resource type="Texture2D" uid="uid://b4cj6mpk3xk1n" path="res://asserts/Deathrattle_Skull.png" id="18_vj234"]
+[ext_resource type="Texture2D" uid="uid://bxlahxt2eyfbl" path="res://asserts/attacktexture.png" id="19_03iw3"]
+[ext_resource type="Texture2D" uid="uid://dnl6rcp0b3xe2" path="res://asserts/healthtexture.png" id="20_56dax"]
+[ext_resource type="Texture2D" uid="uid://qm5kqrqdq3hy" path="res://asserts/等级旗帜.png" id="21_ow0ok"]
+[ext_resource type="Texture2D" uid="uid://ihduousqny8e" path="res://asserts/StarIcon.png" id="22_1hgag"]
+[ext_resource type="Texture2D" uid="uid://bm6jtu0xkh656" path="res://asserts/GoldCoin.png" id="23_0rus3"]
+[ext_resource type="Texture2D" uid="uid://djvrpfdm3gedr" path="res://asserts/名字边框.png" id="24_dplj6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdcl2"]
+shader = ExtResource("3_5bapd")
+shader_parameter/fade_range = 0.1
+shader_parameter/white_cutoff = 0.85
+shader_parameter/black_cutoff = 0.15
+
+[sub_resource type="LabelSettings" id="LabelSettings_rccpt"]
+resource_local_to_scene = true
+font_size = 22
+outline_size = 3
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_466at"]
+font_size = 13
+
+[node name="CardUi" instance=ExtResource("1_j0jic")]
+custom_minimum_size = Vector2(160, 180)
+script = ExtResource("2_o2chq")
+
+[node name="Node" type="Control" parent="." index="1"]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -11.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = 11.0
+
+[node name="当前操作" type="TextureRect" parent="Node" index="0"]
+visible = false
+material = SubResource("ShaderMaterial_vdcl2")
+use_parent_material = true
+layout_mode = 0
+offset_left = -34.0
+offset_top = -22.0
+offset_right = 220.0
+offset_bottom = 176.0
+texture = ExtResource("4_mnkf5")
+expand_mode = 1
+
+[node name="箭头选中" type="TextureRect" parent="Node" index="1"]
+visible = false
+material = SubResource("ShaderMaterial_vdcl2")
+use_parent_material = true
+layout_mode = 0
+offset_left = -34.0
+offset_top = -24.0
+offset_right = 221.0
+offset_bottom = 176.0
+texture = ExtResource("5_2acki")
+expand_mode = 1
+
+[node name="普通边框" type="TextureRect" parent="Node" index="2"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 179.0
+offset_bottom = 166.0
+texture = ExtResource("6_eicxs")
+expand_mode = 1
+
+[node name="金色边框" type="TextureRect" parent="Node" index="3"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 180.0
+offset_bottom = 170.0
+texture = ExtResource("7_13inq")
+expand_mode = 1
+
+[node name="嘲讽" type="TextureRect" parent="Node" index="4"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 190.0
+offset_bottom = 185.0
+texture = ExtResource("8_rq06e")
+expand_mode = 1
+
+[node name="主框架" type="TextureRect" parent="Node" index="5"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 173.0
+offset_bottom = 159.0
+texture = ExtResource("9_iwms6")
+expand_mode = 1
+
+[node name="圣盾" type="TextureRect" parent="Node" index="6"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 180.0
+texture = ExtResource("10_3fcub")
+expand_mode = 1
+
+[node name="遮罩" type="TextureRect" parent="Node" index="7"]
+clip_children = 2
+use_parent_material = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 14.0
+offset_right = 141.0
+offset_bottom = 150.0
+texture = ExtResource("11_23gh7")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Node/遮罩" index="0"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -28.0
+offset_top = -6.0
+offset_right = 484.0
+offset_bottom = 506.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_4isjh")
+
+[node name="风怒" type="TextureRect" parent="Node/遮罩" index="1"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = -52.0
+offset_top = -27.0
+offset_right = 149.0
+offset_bottom = 184.0
+texture = ExtResource("13_x3faq")
+expand_mode = 1
+
+[node name="潜行" type="TextureRect" parent="Node/遮罩" index="2"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = -52.0
+offset_top = -27.0
+offset_right = 149.0
+offset_bottom = 184.0
+texture = ExtResource("13_x3faq")
+expand_mode = 1
+
+[node name="冻结" type="TextureRect" parent="Node" index="8"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.0
+offset_right = 145.0
+offset_bottom = 154.0
+texture = ExtResource("14_37ab7")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="剧毒" type="TextureRect" parent="Node" index="9"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 73.0
+offset_top = 144.0
+offset_right = 109.0
+offset_bottom = 171.0
+texture = ExtResource("15_luanx")
+expand_mode = 1
+
+[node name="烈毒" type="TextureRect" parent="Node" index="10"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 78.0
+offset_top = 143.0
+offset_right = 103.0
+offset_bottom = 171.0
+texture = ExtResource("16_8tut6")
+expand_mode = 1
+
+[node name="触发" type="TextureRect" parent="Node" index="11"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 78.0
+offset_top = 144.0
+offset_right = 103.0
+offset_bottom = 172.0
+texture = ExtResource("17_edfj5")
+expand_mode = 1
+
+[node name="亡语" type="TextureRect" parent="Node" index="12"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 71.0
+offset_top = 133.0
+offset_right = 110.0
+offset_bottom = 168.0
+texture = ExtResource("18_vj234")
+expand_mode = 1
+
+[node name="攻击力" type="TextureRect" parent="Node" index="13"]
+visible = false
+z_index = 2
+use_parent_material = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = 96.0
+offset_right = 91.0
+offset_bottom = 187.0
+texture = ExtResource("19_03iw3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Node/攻击力" index="0"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.564
+anchor_right = 0.5
+anchor_bottom = 0.564
+offset_left = -50.5
+offset_top = -18.324
+offset_right = 50.5
+offset_bottom = 12.676
+text = "4"
+label_settings = SubResource("LabelSettings_rccpt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="生命值" type="TextureRect" parent="Node" index="14"]
+visible = false
+z_index = 2
+use_parent_material = true
+layout_mode = 0
+offset_left = 94.0
+offset_top = 99.0
+offset_right = 187.0
+offset_bottom = 190.0
+texture = ExtResource("20_56dax")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Node/生命值" index="0"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.564
+anchor_right = 0.5
+anchor_bottom = 0.564
+offset_left = -49.5
+offset_top = -19.324
+offset_right = 51.5
+offset_bottom = 11.676
+text = "4"
+label_settings = SubResource("LabelSettings_rccpt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="等级" type="TextureRect" parent="Node" index="15"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = 3.0
+offset_right = 167.0
+offset_bottom = 44.0
+texture = ExtResource("21_ow0ok")
+expand_mode = 1
+
+[node name="1级" type="TextureRect" parent="Node/等级" index="0"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 32.0
+offset_bottom = 35.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="2级" type="TextureRect" parent="Node/等级" index="1"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 25.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="2级" type="TextureRect" parent="Node/等级/2级" index="0"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 45.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="3级" type="TextureRect" parent="Node/等级" index="2"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 19.0
+offset_bottom = 18.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="3级2" type="TextureRect" parent="Node/等级/3级" index="0"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_right = 30.0
+offset_bottom = 19.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="3级" type="TextureRect" parent="Node/等级/3级" index="1"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 10.0
+offset_right = 30.0
+offset_bottom = 40.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="4级" type="TextureRect" parent="Node/等级" index="3"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = -1.0
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="4级" type="TextureRect" parent="Node/等级/4级" index="0"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_right = 29.0
+offset_bottom = 19.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="4级2" type="TextureRect" parent="Node/等级/4级" index="1"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 15.0
+offset_right = 29.0
+offset_bottom = 34.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="4级3" type="TextureRect" parent="Node/等级/4级" index="2"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 15.0
+offset_right = 18.0
+offset_bottom = 34.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="5级" type="TextureRect" parent="Node/等级" index="4"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 15.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="5级" type="TextureRect" parent="Node/等级/5级" index="0"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_right = 28.0
+offset_bottom = 16.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="5级2" type="TextureRect" parent="Node/等级/5级" index="1"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 28.0
+offset_bottom = 27.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="5级3" type="TextureRect" parent="Node/等级/5级" index="2"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 11.0
+offset_right = 17.0
+offset_bottom = 27.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="5级4" type="TextureRect" parent="Node/等级/5级" index="3"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 6.0
+offset_top = 21.0
+offset_right = 23.0
+offset_bottom = 37.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级" type="TextureRect" parent="Node/等级" index="5"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 16.0
+offset_bottom = 13.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级" type="TextureRect" parent="Node/等级/6级" index="0"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 23.0
+offset_right = 15.0
+offset_bottom = 38.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级2" type="TextureRect" parent="Node/等级/6级" index="1"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 11.0
+offset_right = 15.0
+offset_bottom = 26.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级3" type="TextureRect" parent="Node/等级/6级" index="2"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 10.0
+offset_right = 25.0
+offset_bottom = 15.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级4" type="TextureRect" parent="Node/等级/6级" index="3"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 25.0
+offset_bottom = 26.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级5" type="TextureRect" parent="Node/等级/6级" index="4"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 23.0
+offset_right = 25.0
+offset_bottom = 38.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="7级" type="TextureRect" parent="Node/等级" index="6"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 16.0
+offset_bottom = 13.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级" type="TextureRect" parent="Node/等级/7级" index="0"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_right = 26.0
+offset_bottom = 15.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级2" type="TextureRect" parent="Node/等级/7级" index="1"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 9.0
+offset_right = 15.0
+offset_bottom = 24.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级3" type="TextureRect" parent="Node/等级/7级" index="2"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 26.0
+offset_bottom = 24.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级4" type="TextureRect" parent="Node/等级/7级" index="3"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_top = 18.0
+offset_right = 15.0
+offset_bottom = 33.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级6" type="TextureRect" parent="Node/等级/7级" index="4"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 20.0
+offset_bottom = 41.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="6级5" type="TextureRect" parent="Node/等级/7级" index="5"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 18.0
+offset_right = 26.0
+offset_bottom = 33.0
+texture = ExtResource("22_1hgag")
+expand_mode = 1
+
+[node name="金币" type="TextureRect" parent="Node" index="16"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 34.0
+offset_top = 8.0
+offset_right = 62.0
+offset_bottom = 36.0
+texture = ExtResource("23_0rus3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Node/金币" index="0"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.564
+anchor_right = 0.5
+anchor_bottom = 0.564
+offset_left = -51.5
+offset_top = -17.324
+offset_right = 49.5
+offset_bottom = 13.676
+text = "1"
+label_settings = SubResource("LabelSettings_rccpt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="名称" type="TextureRect" parent="Node" index="17"]
+visible = false
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 97.0
+offset_right = 165.0
+offset_bottom = 128.0
+texture = ExtResource("24_dplj6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Node/名称" index="0"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.564
+anchor_right = 0.5
+anchor_bottom = 0.564
+offset_left = -62.5
+offset_top = -14.484
+offset_right = 63.5
+offset_bottom = 16.516
+text = "奥术守护者卡雷苟斯"
+label_settings = SubResource("LabelSettings_466at")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[connection signal="gui_input" from="Node" to="." method="_on_panel_gui_input"]

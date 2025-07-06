@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbodemci4iucv"]
+
+[ext_resource type="Script" uid="uid://bof8t10sq8xbf" path="res://core/ui/card_container.gd" id="1_l4nx8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4nx8"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CardContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4nx8")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l4nx8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1

@@ -1,9 +1,9 @@
 extends Control
 class_name Player
 
-@onready var 酒馆:DragContainer=$"VBoxContainer/酒馆"
-@onready var 战场:DragContainer=$"VBoxContainer/战场"
-@onready var 手牌:DragContainer=$"VBoxContainer/手牌"
+@onready var 酒馆:CardContainer=$"VBoxContainer/酒馆"
+@onready var 战场:CardContainer=$"VBoxContainer/战场"
+@onready var 手牌:CardContainer=$"VBoxContainer/手牌"
 
 # 酒馆随从个数
 const 酒馆随从个数={
@@ -44,8 +44,11 @@ var 上一个对手:Player
 @export var 暴吼兽王_野兽召唤个数:int=0
 #endregion
 
+@onready var 遮罩:=$"遮罩"
+
 func _process(delta: float) -> void:
-	$"Panel".visible=抉择是否隐藏
+	#$"Panel".visible=抉择是否隐藏
+	pass
 
 func 获取所有的牌()->Array[DragControl]:
 	var all=获取战场和酒馆中的牌()
@@ -55,8 +58,8 @@ func 获取所有的牌()->Array[DragControl]:
 func 进入战斗模式(fight:Fight):
 	self.fight=fight
 
-func 获取战场和酒馆中的牌()->Array[DragControl]:
-	var all:Array[DragControl]=[]
+func 获取战场和酒馆中的牌()->Array[CardUI]:
+	var all:Array[CardUI]=[]
 	all.append_array(酒馆.获取所有节点())
 	all.append_array(战场.获取所有节点())
 	return all
@@ -69,7 +72,12 @@ func 所有的拖拽禁用或者开启(是否开启:bool):
 		i.容器中是否可以拖拽=是否开启
 
 func _ready() -> void:
-	Global.main_node=self
+	for i in 7:
+		var card=preload("uid://dwqeyyqxjvxcp").instantiate()
+		card.card_data=preload("uid://cuxpxje8iycj3").instantiate()
+		card.card_data.player=self
+		card.add_child(card.card_data)
+		$"VBoxContainer/酒馆".添加到容器(card,-1)
 	pass
 
 func 是否在战斗中()->bool:

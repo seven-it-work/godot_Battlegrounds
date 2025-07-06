@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btcckudp08t2"]
 
 [ext_resource type="Script" uid="uid://bao7v1sv2sgjx" path="res://core/Fight/测试基础战斗.gd" id="1_0gwqm"]
-[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/拖拽排序容器/player.tscn" id="2_72dkv"]
+[ext_resource type="PackedScene" uid="uid://ct4nv2st1g85y" path="res://core/ui/具体业务/player.tscn" id="2_72dkv"]
 [ext_resource type="PackedScene" uid="uid://batjwfujq44uj" path="res://core/Fight/fight.tscn" id="3_un2au"]
 
 [node name="测试基础战斗" type="Control"]

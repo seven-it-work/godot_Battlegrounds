@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwjyiaiuitp2i"]
+
+[ext_resource type="PackedScene" uid="uid://cbodemci4iucv" path="res://core/ui/CardContainer.tscn" id="1_i0csr"]
+[ext_resource type="Script" uid="uid://dxve5owm4sbmy" path="res://core/ui/card_sort_container.gd" id="2_010qq"]
+
+[node name="CardContainer" instance=ExtResource("1_i0csr")]
+script = ExtResource("2_010qq")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c73plt2ag03r1"]
+
+[ext_resource type="Script" uid="uid://cq7kdq8oi23ym" path="res://core/ui/card_ui.gd" id="1_dbtio"]
+
+[node name="CardUi" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_dbtio")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
