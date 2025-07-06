@@ -7,10 +7,10 @@ func get_desc(otherJson:Dictionary={})->String:
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	otherJson.set("法术攻击值",3+合计加成.atk)
 	otherJson.set("法术生命值",3+合计加成.hp)
-	return super.get_desc(player,otherJson)
+	return super.get_desc(otherJson)
 
 func buff_one_of_each_type(player:Player) -> void:
-	var allied_minions=player.战场.获取所有节点(true)
+	var allied_minions=player.战场.获取所有节点()
 	var buffed_types = {}  # 已buff的类型
 	var minions_sorted = []  # 按类型数量排序后的随从
 	# 1. 过滤掉无类型随从，并按类型数量从少到多排序

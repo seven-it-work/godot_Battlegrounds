@@ -14,6 +14,7 @@ var 当前拖拽中的卡片:CardUI
 var 是否拖拽中:bool=false
 var 当前拖拽中的卡片的原有索引:int=-1
 var 当前拖入的容器:CardContainer
+var 是否能拖拽标识:bool=true
 
 func 获取所有节点()->Array[CardUI]:
 	var list := [] as Array[CardUI]
@@ -23,6 +24,7 @@ func 获取所有节点()->Array[CardUI]:
 	return list
 
 func 是否能拖拽(是否能:bool):
+	是否能拖拽标识=是否能
 	for i in container.get_children():
 		if i is CardUI:
 			i.是否能拖拽=是否能
@@ -59,7 +61,8 @@ func 获取拖入其他容器的方法操作()->IfElse:
 		_解除信号(当前拖拽中的卡片)
 		当前拖入的容器.添加到容器(当前拖拽中的卡片,-1)
 		拖离其他容器()
-	ifElse.判断失败方法=func(): pass
+		_拖拽结束时的清理动作()
+	ifElse.判断失败方法=func(): _拖拽结束时的清理动作()
 	return ifElse
 
 func _在其他容器中释放前的操作(ifEsle:IfElse):
@@ -75,14 +78,16 @@ func 监听结束拖拽():
 			ifElse.判断失败方法.call()
 	else:
 		回归原位()
+		_拖拽结束时的清理动作()
+	pass
+
+func _拖拽结束时的清理动作():
 	当前拖拽中的卡片=null
 	是否拖拽中=false
 	当前拖拽中的卡片的原有索引=-1
-	pass
 
 func 回归原位():
-	print("回归原位")
-	_add(当前拖拽中的卡片,-1)
+	_add(当前拖拽中的卡片,当前拖拽中的卡片的原有索引)
 
 func _add(cardUi:CardUI,index:int):
 	if cardUi.get_parent():
@@ -119,6 +124,8 @@ func _当前鼠标是否在容器中(cardContainer:CardContainer)->bool:
 func _process(delta: float) -> void:
 	$Panel.size=size
 	$HBoxContainer.size=size
+	if !是否能拖拽标识:
+		return
 	if 当前拖拽中的卡片 and 是否拖拽中:
 		print(name_str,拖拽卡片的状态)
 		if 拖拽卡片的状态=="未拖拽":

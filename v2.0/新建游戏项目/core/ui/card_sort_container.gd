@@ -18,7 +18,11 @@ func 监听开始拖拽(cardUi:CardUI):
 	_初始化卡槽()
 
 func 监听结束拖拽():
-	super.监听结束拖拽()
+	var 激活的索引=_获取激活的插槽()
+	if 激活的索引==null:
+		super.监听结束拖拽()
+	else:
+		_add(当前拖拽中的卡片,激活的索引)
 	_清理卡槽()
 
 func _初始化卡槽():
@@ -64,8 +68,15 @@ func _动态更新插槽():
 func _获取插槽():
 	return $HBoxContainer.get_children().filter(func(x): return x is DragSlot)
 
+func _获取激活的插槽():
+	var actives = _获取插槽().filter(func(x): return x.active)
+	if actives:
+		return actives[0].get_index()/2
+
 func _process(delta: float) -> void:
 	super._process(delta)
+	if !是否能拖拽标识:
+		return
 	if 当前拖拽中的卡片:
 		_动态更新插槽()
 		pass

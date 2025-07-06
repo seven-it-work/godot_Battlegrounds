@@ -13,7 +13,7 @@ func 触发器_战斗开始时():
 				await get_tree().process_frame
 				return
 			else:
-				if self.是否死亡(player):
+				if self.是否死亡():
 					return
 				print("等待")
 				await get_tree().create_timer(0.5).timeout

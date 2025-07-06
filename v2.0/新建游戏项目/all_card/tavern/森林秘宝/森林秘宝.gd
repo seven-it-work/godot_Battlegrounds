@@ -5,7 +5,7 @@ var base_hp1=12;
 var base_atk2=2;
 var base_hp2=2;
 
-func _描述json(player:Player,otherJson:Dictionary={})->Dictionary:
+func _描述json(otherJson:Dictionary={})->Dictionary:
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	otherJson.set("法术攻击值1",base_atk1+合计加成.atk)
 	otherJson.set("法术生命值1",base_hp1+合计加成.hp)
@@ -14,7 +14,7 @@ func _描述json(player:Player,otherJson:Dictionary={})->Dictionary:
 	return otherJson
 
 func get_desc(otherJson:Dictionary={})->String:
-	return super.get_desc(player,_描述json(player,otherJson))
+	return super.get_desc(_描述json(otherJson))
 
 func 使用触发():
 	$"抉择".player=player

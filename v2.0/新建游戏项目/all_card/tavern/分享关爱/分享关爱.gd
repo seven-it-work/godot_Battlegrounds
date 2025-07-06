@@ -1,6 +1,6 @@
 extends CardData
 func 使用触发():
-	super.使用触发(player)
+	super.使用触发()
 	player.分享关爱=true
 	pass
 

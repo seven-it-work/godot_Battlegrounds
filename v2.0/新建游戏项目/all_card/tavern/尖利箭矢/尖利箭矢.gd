@@ -4,7 +4,7 @@ func get_desc(otherJson:Dictionary={})->String:
 	var 合计加成=AttributeBonus.计算总和(player.法术加成)
 	otherJson.set("法术攻击值",4+合计加成.atk)
 	otherJson.set("法术生命值",0+合计加成.hp)
-	return super.get_desc(player,otherJson)
+	return super.get_desc(otherJson)
 
 func 使用触发():
 	if $"使用时是否需要选择目标".目标对象:

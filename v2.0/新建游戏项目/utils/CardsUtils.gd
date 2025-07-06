@@ -30,8 +30,8 @@ class COMMON_CODITION:
 ## @param file_name: 可选，保存的文件名，如果不提供则使用URL中的文件名
 ## @return: 返回保存的完整路径，失败返回空字符串
 static func download_image(image_url: String, save_path_with_filename: String) -> bool:
-	print("临时采用不下载")
-	return false
+	#print("临时采用不下载")
+	#return false
 	# 创建临时节点来执行下载
 	var downloader = Node.new()
 	Engine.get_main_loop().root.call_deferred("add_child",downloader)

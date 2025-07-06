@@ -65,19 +65,14 @@ func 获取战场和酒馆中的牌()->Array[CardUI]:
 	return all
 
 func 所有的拖拽禁用或者开启(是否开启:bool):
-	酒馆.是否可以拖拽=是否开启
-	战场.是否可以拖拽=是否开启
-	手牌.是否可以拖拽=是否开启
-	for i in 获取所有的牌():
-		i.容器中是否可以拖拽=是否开启
+	酒馆.是否能拖拽(是否开启)
+	战场.是否能拖拽(是否开启)
+	手牌.是否能拖拽(是否开启)
+
 
 func _ready() -> void:
-	for i in 7:
-		var card=preload("uid://dwqeyyqxjvxcp").instantiate()
-		card.card_data=preload("uid://cuxpxje8iycj3").instantiate()
-		card.card_data.player=self
-		card.add_child(card.card_data)
-		$"VBoxContainer/酒馆".添加到容器(card,-1)
+	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cuxpxje8iycj3").instantiate(),self),-1)
+	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cptuaedglysg3").instantiate(),self),-1)
 	pass
 
 func 是否在战斗中()->bool:
@@ -100,7 +95,7 @@ func 获取战场中的牌()->Array:
 		return 战场.获取所有节点().map(func(card:DragControl): return card.card_data)
 
 func 添加到手牌(card:CardData):
-	手牌.添加到容器中(Global.创建新卡片(card,self),-1)
+	手牌.添加到容器(Global.创建新卡片(card,self),-1)
 
 
 func 添加随从(card:CardData,index:int):
@@ -112,7 +107,7 @@ func 添加随从(card:CardData,index:int):
 	else:
 		if 战场.是否有空位():
 			_检查到召唤随从(card)
-			战场.添加到容器中(Global.创建新卡片(card,self),index)
+			战场.添加到容器(Global.创建新卡片(card,self),index)
 
 func _检查到召唤随从(card:CardData):
 	if card.是否属于种族(Enums.RaceEnum.BEAST):
@@ -162,5 +157,5 @@ func 刷新酒馆(条件:Array[CardFindCondition]=[]):
 			print("没有随从了")
 			return
 		var dup=data.duplicate()
-		酒馆.添加到容器中(Global.创建新卡片(dup,self),-1)
+		酒馆.添加到容器(Global.创建新卡片(dup,self),-1)
 	pass

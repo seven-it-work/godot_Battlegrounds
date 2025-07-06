@@ -1,7 +1,7 @@
 extends CardData
 
 func 使用触发():
-	super.使用触发(player)
+	super.使用触发()
 	var list=_获取酒馆中的海盗(player)
 	if list.is_empty():
 		return

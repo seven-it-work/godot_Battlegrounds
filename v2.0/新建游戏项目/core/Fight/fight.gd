@@ -9,7 +9,7 @@ var 战斗结束后调用的方法合集:Array[Callable]=[]
 func _ready() -> void:
 	pass
 
-func 添加新牌到战场(player:Player,card:DragControl,index:int):
+func 添加新牌到战场(player:Player,card:Card,index:int):
 	播放动画队列.append("添加新牌到战场")
 	var node
 	if player==玩家.player:
@@ -59,7 +59,7 @@ func 获取敌人(player:Player)->Player:
 
 class 攻击对象:
 	var player:Player
-	var 当前攻击的随从:DragControl
+	var 当前攻击的随从:Card
 	var 当前攻击随从是否是立刻攻击:bool=false
 	# dic card:card, 是否立刻攻击:false
 	var 有空位时召唤对象:Array=[]
@@ -216,27 +216,27 @@ func _初始化战斗中的牌(player:Player,box:HBoxContainer):
 		i.card_data.触发器_战斗开始时()
 
 
-func _随从进行攻击(攻击随从:DragControl,攻击者:攻击对象,防御者:攻击对象):
+func _随从进行攻击(攻击随从:Card,攻击者:攻击对象,防御者:攻击对象):
 	if 攻击随从.card_data.hp_bonus()<=0:
 		print("没血了，不能继续攻击了")
 		return
 	# 目标查询（查询嘲讽）
-	var list_嘲讽=获取自己战场中的牌(防御者.player).filter(func(card:DragControl): return card.card_data.嘲讽)
+	var list_嘲讽=获取自己战场中的牌(防御者.player).filter(func(card:Card): return card.card_data.嘲讽)
 	if list_嘲讽.size()>0:
 		# 随机选一个
-		var defender_minion:DragControl=list_嘲讽.pick_random() as DragControl
+		var defender_minion:Card=list_嘲讽.pick_random() as Card
 		await 生命计算(攻击随从,攻击者,defender_minion,防御者)
 		return
 	# 目标查询（忽略掉潜行的）
-	var list_minion=获取自己战场中的牌(防御者.player).filter(func(card:DragControl): return !card.card_data.潜行)
+	var list_minion=获取自己战场中的牌(防御者.player).filter(func(card:Card): return !card.card_data.潜行)
 	if list_minion.size()>0:
 		# 随机选一个
-		var defender_minion:DragControl=list_minion.pick_random() as DragControl
+		var defender_minion:Card=list_minion.pick_random() as Card
 		await  生命计算(攻击随从,攻击者,defender_minion,防御者)
 		return
 	print("对方貌似没有随从了")
 
-func 生命计算(攻击随从:DragControl,攻击者:攻击对象,防御随从:DragControl,防御者:攻击对象):
+func 生命计算(攻击随从:Card,攻击者:攻击对象,防御随从:Card,防御者:攻击对象):
 	Logger.debug("%s对%s进行攻击"%[攻击随从.card_data.name_str,防御随从.card_data.name_str])
 	await start_animation_sequence(攻击随从,防御随从)
 	print("动画播放完成，进行数据计算")
