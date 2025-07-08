@@ -4,6 +4,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix8hk"]
 resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="CardUi" type="Control"]
 custom_minimum_size = Vector2(50, 50)

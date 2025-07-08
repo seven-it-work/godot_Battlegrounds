@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://brexyui2d5qcb"]
+[gd_scene load_steps=11 format=3 uid="uid://brexyui2d5qcb"]
 
 [ext_resource type="Script" uid="uid://txdr8krmvuhs" path="res://core/点击ui/player.gd" id="1_ap101"]
 [ext_resource type="PackedScene" uid="uid://cbodemci4iucv" path="res://core/拖拽ui/CardContainer.tscn" id="2_qrly3"]
@@ -7,16 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://qfjvvfwtyh76" path="res://core/点击ui/抉择选项.tscn" id="6_i75qc"]
 [ext_resource type="PackedScene" uid="uid://oukjyykdog7f" path="res://core/点击ui/属性.tscn" id="7_67fme"]
 
+[sub_resource type="GDScript" id="GDScript_67fme"]
+script/source = "extends CardContainer
+
+func 添加到容器(cardUi:CardUI,index:int):
+	var card_data=cardUi.card_data as CardData
+	card_data.所在位置=Enums.CardPosition.酒馆
+	super.添加到容器(cardUi,index)
+"
+
 [sub_resource type="GDScript" id="GDScript_i75qc"]
 script/source = "extends \"res://core/拖拽ui/card_sort_container.gd\"
 
 func 添加到容器(cardUi:CardUI,index:int):
 	cardUi.card_data.所在位置=Enums.CardPosition.手牌
-	if cardUi.get_parent():
-		cardUi.reparent(self)
-	else:
-		add_child(cardUi)
-	move_child(cardUi,index)
+	super.添加到容器(cardUi,index)
+"
+
+[sub_resource type="GDScript" id="GDScript_wncpg"]
+script/source = "extends CardContainer
+
+func 添加到容器(cardUi:CardUI,index:int):
+	var card_data=cardUi.card_data as CardData
+	card_data.所在位置=Enums.CardPosition.手牌
+	super.添加到容器(cardUi,index)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4y8f"]
@@ -47,6 +61,7 @@ offset_bottom = 663.0
 
 [node name="酒馆" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_qrly3")]
 layout_mode = 2
+script = SubResource("GDScript_67fme")
 player = NodePath("../..")
 
 [node name="战场" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_i75qc")]
@@ -57,6 +72,7 @@ player = NodePath("../..")
 
 [node name="手牌" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_qrly3")]
 layout_mode = 2
+script = SubResource("GDScript_wncpg")
 player = NodePath("../..")
 
 [node name="Panel" type="Panel" parent="."]

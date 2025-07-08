@@ -21,3 +21,4 @@ show_buy_coins = true
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 script = ExtResource("3_dqffl")
+"是否必须选中目标" = true

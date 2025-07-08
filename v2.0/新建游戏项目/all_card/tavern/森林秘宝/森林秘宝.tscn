@@ -1,9 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjhqpg4a8wuqj"]
+[gd_scene load_steps=11 format=3 uid="uid://bjhqpg4a8wuqj"]
 
 [ext_resource type="Script" uid="uid://vq1yoywcx4aa" path="res://all_card/tavern/森林秘宝/森林秘宝.gd" id="1_cc03i"]
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
 [ext_resource type="PackedScene" uid="uid://25jbymm26se5" path="res://core/funcs/抉择.tscn" id="3_t117t"]
 [ext_resource type="PackedScene" uid="uid://cq4axk7s106ie" path="res://core/funcs/抉择选项.tscn" id="4_3yk3b"]
+
+[sub_resource type="GDScript" id="GDScript_fcd1i"]
+script/source = "extends TargetSelector
+
+func 是否能够作为目标(card:CardUI)->bool:
+	return super.是否能够作为目标(card)
+"
+
+[sub_resource type="GDScript" id="GDScript_sp4up"]
+script/source = "extends Choose
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h3k5"]
 resource_local_to_scene = true
@@ -66,9 +77,14 @@ cardType = 3
 race = Array[int]([])
 show_buy_coins = true
 
+[node name="使用时是否需要选择目标" parent="." index="0"]
+script = SubResource("GDScript_fcd1i")
+"是否必须选中目标" = true
+
 [node name="抉择" parent="." index="1" instance=ExtResource("3_t117t")]
 visible = false
 layout_mode = 1
+script = SubResource("GDScript_sp4up")
 
 [node name="抉择选项1" parent="抉择/MarginContainer/GridContainer" index="0" instance=ExtResource("4_3yk3b")]
 layout_mode = 2

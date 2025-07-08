@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dwqeyyqxjvxcp"]
+[gd_scene load_steps=29 format=3 uid="uid://dwqeyyqxjvxcp"]
 
 [ext_resource type="PackedScene" uid="uid://c73plt2ag03r1" path="res://core/拖拽ui/CardUI.tscn" id="1_j0jic"]
 [ext_resource type="Script" uid="uid://b4wevuei5w15j" path="res://core/拖拽ui/具体业务/card.gd" id="2_o2chq"]
@@ -25,6 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://bm6jtu0xkh656" path="res://asserts/GoldCoin.png" id="23_0rus3"]
 [ext_resource type="Texture2D" uid="uid://djvrpfdm3gedr" path="res://asserts/名字边框.png" id="24_dplj6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wrkh"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vdcl2"]
 shader = ExtResource("3_5bapd")
 shader_parameter/fade_range = 0.1
@@ -44,6 +48,9 @@ font_size = 13
 [node name="CardUi" instance=ExtResource("1_j0jic")]
 custom_minimum_size = Vector2(160, 180)
 script = ExtResource("2_o2chq")
+
+[node name="Panel" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_4wrkh")
 
 [node name="Node" type="Control" parent="." index="1"]
 use_parent_material = true

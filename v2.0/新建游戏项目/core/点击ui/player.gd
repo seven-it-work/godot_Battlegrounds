@@ -74,6 +74,9 @@ func 所有的拖拽禁用或者开启(是否开启:bool):
 	战场.是否能拖拽(是否开启)
 	手牌.是否能拖拽(是否开启)
 
+func _process(delta: float) -> void:
+	_动态更新卡片信息()
+	_动态更新按钮()
 
 func _ready() -> void:
 	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cuxpxje8iycj3").instantiate(),self),-1)
@@ -165,6 +168,9 @@ func 刷新酒馆(条件:Array[CardFindCondition]=[]):
 #region 卡片点击相关
 func 监听点击的卡片(card:CardUI):
 	if 当前点击卡片属于=="选择目标":
+		var card_data=当前的提示的卡片信息.card_data
+		if !card_data.使用时是否需要选择目标.是否能够作为目标(card):
+			return
 		# 当前点击的是目标对象
 		if 当前选中的目标卡片信息:
 			当前选中的目标卡片信息.改变样式()
@@ -204,28 +210,28 @@ func 打卡提示面板(card:Card):
 	$"Panel/卡片信息/ScrollContainer/HBoxContainer/CardUi".初始化卡牌信息()
 	var tempCardData=当前的提示的卡片信息.card_data
 	$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/等级/value".text="%s"%tempCardData.lv
-	
-	if tempCardData.使用时是否需要选择目标.是否需要选择目标:
-		if 当前选中的目标卡片信息==null and 当前点击卡片属于!="选择目标":
-			$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/选择目标".show()
-			$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/取消目标".hide()
-			if tempCardData.使用时是否需要选择目标.是否必须选中目标:
-				$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".show()
-				$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".text="提示：请必须选择目标！"
-			else:
-				$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".show()
-				$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".text="提示：请选择目标！"
+	if tempCardData.所在位置==Enums.CardPosition.手牌:
+		if tempCardData.使用时是否需要选择目标.是否需要选择目标:
+			if 当前选中的目标卡片信息==null and 当前点击卡片属于!="选择目标":
+				$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/选择目标".show()
+				$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/取消目标".hide()
+				if tempCardData.使用时是否需要选择目标.是否必须选中目标:
+					$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".show()
+					$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".text="提示：请必须选择目标！"
+				else:
+					$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".show()
+					$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/Tips".text="提示：请选择目标！"
 				
-	if tempCardData.获取抉择节点():
-		$"Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息".show()
-		var 抉择节点=tempCardData.获取抉择节点()
-		var 抉择容器=$"Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息/ScrollContainer/HBoxContainer"
-		for i in 抉择容器.get_children():
-			i.queue_free()
-		for i in 抉择节点.获取抉择选项():
-			var temp=preload("uid://qfjvvfwtyh76").instantiate()
-			temp.点击信号.connect(_抉择选项点击.bind(i))
-			temp.chooseOption=i
+		if tempCardData.获取抉择节点():
+			$"Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息".show()
+			var 抉择节点=tempCardData.获取抉择节点()
+			var 抉择容器=$"Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息/ScrollContainer/HBoxContainer"
+			for i in 抉择容器.get_children():
+				i.queue_free()
+			for i in 抉择节点.获取抉择选项():
+				var temp=preload("uid://qfjvvfwtyh76").instantiate()
+				temp.点击信号.connect(_抉择选项点击.bind(i))
+				temp.chooseOption=i
 	
 	_动态更新卡片信息()
 	_动态更新按钮()
@@ -241,6 +247,9 @@ func _on_选择目标_pressed() -> void:
 
 func _on_取消目标_pressed() -> void:
 	当前点击卡片属于="提示卡片"
+	if 当前选中的目标卡片信息:
+		当前选中的目标卡片信息.改变样式()
+		当前选中的目标卡片信息=null
 	$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/选择目标".show()
 	$"Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/取消目标".hide()
 
@@ -298,31 +307,26 @@ func _动态更新卡片信息():
 #region 操作按钮交互
 func _on_使用_pressed() -> void:
 	# 特殊校验:
-	var cardData=当前的提示的卡片信息.card_data
 	assert(当前的提示的卡片信息,"当前的提示的卡片信息 必须存在！")
-	if 当前的提示的卡片信息.使用时是否需要选择目标.是否必须选中目标 and 当前的提示的卡片信息.使用时是否需要选择目标.是否需要选择目标:
+	var cardData=当前的提示的卡片信息.card_data as CardData
+	if cardData.使用时是否需要选择目标.是否必须选中目标 and cardData.使用时是否需要选择目标.是否需要选择目标:
 		assert(当前选中的目标卡片信息,"当前选中的目标卡片信息 必须存在！")
-	var 抉择=当前的提示的卡片信息.获取抉择节点()
+	var 抉择=cardData.获取抉择节点()
 	if 抉择:
 		assert(当前选中的抉择选项,"当前选中的抉择选项 必须存在！")
 		#当前选中的抉择选项.执行方法(self,当前的提示的卡片信息)
 	else:
-		当前的提示的卡片信息.使用触发()
+		cardData.使用触发()
 	# 如果是法术牌则消失
 	# 如果是随从牌则加入战场
 	# 清理操作
-	当前的提示的卡片信息=null
-	当前选中的目标卡片信息=null
-	当前的提示的卡片信息=null
-	$"Panel/卡片信息".hide()
+	关闭提示板()
 	$"Panel/操作/VBoxContainer/使用".hide()
 func _on_购买_pressed() -> void:
 	# 扣除金币
-	当前选中的目标卡片信息.reparent($"VBoxContainer/手牌")
+	$"VBoxContainer/手牌".添加到容器(当前的提示的卡片信息,-1)
 	# 清理操作
-	当前的提示的卡片信息=null
-	当前选中的目标卡片信息=null
-	当前的提示的卡片信息=null
+	关闭提示板()
 	$"Panel/操作/VBoxContainer/购买".hide()
 	pass # Replace with function body.
 func _on_出售_pressed() -> void:

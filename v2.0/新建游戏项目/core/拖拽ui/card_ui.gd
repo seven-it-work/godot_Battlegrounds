@@ -56,5 +56,5 @@ func 改变样式(type:String=""):
 		style.bg_color=Color(0.382, 0.583, 1.0)
 		$Panel.add_theme_stylebox_override("panel",style)
 		return
-	style.bg_color=Color(0.6, 0.6, 0.6)
+	style.bg_color=Color(0.6, 0.6, 0.6, 0.0)
 	$Panel.add_theme_stylebox_override("panel",style)
