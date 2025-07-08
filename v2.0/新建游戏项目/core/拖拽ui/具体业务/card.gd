@@ -1,7 +1,7 @@
 extends CardUI
 class_name Card
 
-@export var card_data:Cardata
+@export var card_data:CardData
 
 func 初始化卡牌信息():
 	if card_data:

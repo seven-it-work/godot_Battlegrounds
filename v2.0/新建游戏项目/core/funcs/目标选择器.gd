@@ -2,6 +2,7 @@ extends Node
 class_name TargetSelector
 
 @export var 是否需要选择目标:bool=true
+@export var 是否必须选中目标:bool=false
 var 目标对象:Card=null
 
 func 筛选方法(list:Array[CardUI])->Array[CardUI]:

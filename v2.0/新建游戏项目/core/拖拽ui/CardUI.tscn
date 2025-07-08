@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c73plt2ag03r1"]
+[gd_scene load_steps=3 format=3 uid="uid://c73plt2ag03r1"]
 
 [ext_resource type="Script" uid="uid://cq7kdq8oi23ym" path="res://core/拖拽ui/card_ui.gd" id="1_dbtio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix8hk"]
+resource_local_to_scene = true
 
 [node name="CardUi" type="Control"]
 custom_minimum_size = Vector2(50, 50)
@@ -14,5 +17,6 @@ script = ExtResource("1_dbtio")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ix8hk")
 
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]

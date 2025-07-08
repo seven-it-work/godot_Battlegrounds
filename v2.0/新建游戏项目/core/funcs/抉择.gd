@@ -18,7 +18,11 @@ func 选择目标筛选方法(list:Array)->Array:
 	return list
 
 func 获取抉择选项()->Array[ChooseOption]:
-	return $MarginContainer/GridContainer.get_children().filter(func(node): return node is ChooseOption)
+	var list:Array[ChooseOption]=[]
+	for i in $MarginContainer/GridContainer.get_children():
+		if i is ChooseOption:
+			list.append(i)
+	return list
 
 func 选中样式改变(选项:ChooseOption):
 	if self.上一次选项==null:
@@ -39,10 +43,10 @@ func _on_隐藏_pressed() -> void:
 
 
 func _on_确定_pressed() -> void:
-	if self.上一次选项:
-		var p=get_parent()
-		上一次选项.执行方法(player,get_parent())
-		self.hide()
-	else:
-		print("没有选择")
+	#if self.上一次选项:
+		#var p=get_parent()
+		#上一次选项.执行方法(player,get_parent())
+		#self.hide()
+	#else:
+		#print("没有选择")
 	pass # Replace with function body.

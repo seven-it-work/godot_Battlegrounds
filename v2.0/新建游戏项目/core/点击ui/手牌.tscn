@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://goffw4g3v2e5"]
+
+[ext_resource type="Script" uid="uid://cptwy4hpd0hxf" path="res://core/点击ui/手牌.gd" id="1_rvkw4"]
+
+[node name="手牌" type="HBoxContainer"]
+script = ExtResource("1_rvkw4")

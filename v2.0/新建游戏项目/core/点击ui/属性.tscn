@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://oukjyykdog7f"]
+
+[node name="属性" type="HBoxContainer"]
+
+[node name="名称" type="Label" parent="."]
+layout_mode = 2
+text = "xxxx："
+
+[node name="value" type="Label" parent="."]
+layout_mode = 2
+text = "+100"

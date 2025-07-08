@@ -1,10 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://brexyui2d5qcb"]
+[gd_scene load_steps=9 format=3 uid="uid://brexyui2d5qcb"]
 
 [ext_resource type="Script" uid="uid://txdr8krmvuhs" path="res://core/点击ui/player.gd" id="1_ap101"]
 [ext_resource type="PackedScene" uid="uid://cbodemci4iucv" path="res://core/拖拽ui/CardContainer.tscn" id="2_qrly3"]
-[ext_resource type="PackedScene" uid="uid://dm3q5aa136gyo" path="res://core/拖拽ui/具体业务/战场.tscn" id="3_b4y8f"]
-[ext_resource type="PackedScene" uid="uid://7qveoubwrkri" path="res://core/拖拽ui/具体业务/手牌.tscn" id="4_i75qc"]
+[ext_resource type="PackedScene" uid="uid://dwjyiaiuitp2i" path="res://core/拖拽ui/CardSortContainer.tscn" id="3_i75qc"]
 [ext_resource type="PackedScene" uid="uid://dwqeyyqxjvxcp" path="res://core/拖拽ui/具体业务/Card.tscn" id="5_b4y8f"]
+[ext_resource type="PackedScene" uid="uid://qfjvvfwtyh76" path="res://core/点击ui/抉择选项.tscn" id="6_i75qc"]
+[ext_resource type="PackedScene" uid="uid://oukjyykdog7f" path="res://core/点击ui/属性.tscn" id="7_67fme"]
+
+[sub_resource type="GDScript" id="GDScript_i75qc"]
+script/source = "extends \"res://core/拖拽ui/card_sort_container.gd\"
+
+func 添加到容器(cardUi:CardUI,index:int):
+	cardUi.card_data.所在位置=Enums.CardPosition.手牌
+	if cardUi.get_parent():
+		cardUi.reparent(self)
+	else:
+		add_child(cardUi)
+	move_child(cardUi,index)
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4y8f"]
 border_width_left = 5
@@ -26,31 +39,25 @@ grow_vertical = 2
 script = ExtResource("1_ap101")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 27.0
 offset_top = 9.0
 offset_right = 1255.0
 offset_bottom = 663.0
 
-[node name="酒馆" parent="VBoxContainer" node_paths=PackedStringArray("可以拖入的容器", "player") instance=ExtResource("2_qrly3")]
-custom_minimum_size = Vector2(160, 180)
+[node name="酒馆" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_qrly3")]
 layout_mode = 2
-"可以拖入的容器" = [NodePath("../手牌")]
-name_str = "酒馆"
-player = NodePath("")
+player = NodePath("../..")
 
-[node name="战场" parent="VBoxContainer" node_paths=PackedStringArray("可以拖入的容器", "player") instance=ExtResource("3_b4y8f")]
-custom_minimum_size = Vector2(0, 180)
+[node name="战场" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_i75qc")]
 layout_mode = 2
-"可以拖入的容器" = [NodePath("../酒馆")]
-name_str = "战场"
-player = NodePath("")
+script = SubResource("GDScript_i75qc")
+"是否能拖拽标识" = true
+player = NodePath("../..")
 
-[node name="手牌" parent="VBoxContainer" node_paths=PackedStringArray("可以拖入的容器", "player") instance=ExtResource("4_i75qc")]
-custom_minimum_size = Vector2(0, 180)
+[node name="手牌" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_qrly3")]
 layout_mode = 2
-"可以拖入的容器" = [NodePath("../战场")]
-name_str = "手牌"
-player = NodePath("")
+player = NodePath("../..")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(1228, 190)
@@ -61,8 +68,211 @@ offset_right = 1253.0
 offset_bottom = 747.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_b4y8f")
 
-[node name="CardUi" parent="Panel" instance=ExtResource("5_b4y8f")]
-offset_left = 5.0
-offset_top = 6.0
-offset_right = 165.0
-offset_bottom = 186.0
+[node name="卡片信息" type="PanelContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 1072.0
+offset_bottom = 185.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/卡片信息"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/卡片信息/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CardUi" parent="Panel/卡片信息/ScrollContainer/HBoxContainer" instance=ExtResource("5_b4y8f")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="基本信息" type="VBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="等级" type="HBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息"]
+layout_mode = 2
+
+[node name="名称" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/等级"]
+layout_mode = 2
+text = "等级："
+
+[node name="value" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/等级"]
+layout_mode = 2
+text = "1890"
+
+[node name="生命值" type="HBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息"]
+layout_mode = 2
+
+[node name="名称" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/生命值"]
+layout_mode = 2
+text = "生命值："
+
+[node name="value" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/生命值"]
+layout_mode = 2
+text = "1"
+
+[node name="攻击力" type="HBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息"]
+layout_mode = 2
+
+[node name="名称" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/攻击力"]
+layout_mode = 2
+text = "攻击力："
+
+[node name="value" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/攻击力"]
+layout_mode = 2
+text = "1"
+
+[node name="Tips" type="RichTextLabel" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+text = "提示：xxxxxx"
+
+[node name="空白" type="MarginContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="按钮2" type="HBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息"]
+layout_mode = 2
+
+[node name="关闭" type="Button" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "关闭"
+
+[node name="选择目标" type="Button" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "选择目标"
+
+[node name="取消目标" type="Button" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "取消选择"
+
+[node name="描述" type="RichTextLabel" parent="Panel/卡片信息/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "测试描述一下<br>"
+
+[node name="抉择信息" type="PanelContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/抉择信息/ScrollContainer/HBoxContainer" instance=ExtResource("6_i75qc")]
+layout_mode = 2
+
+[node name="空白" type="MarginContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="生命值" type="PanelContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/生命值"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/生命值/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/生命值/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "生命值"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="属性加成信息" type="VBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/生命值/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="属性" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/生命值/ScrollContainer/VBoxContainer/属性加成信息" instance=ExtResource("7_67fme")]
+layout_mode = 2
+
+[node name="攻击值" type="PanelContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/攻击值"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/攻击值/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/攻击值/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "攻击值"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="属性加成信息" type="VBoxContainer" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/攻击值/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="属性" parent="Panel/卡片信息/ScrollContainer/HBoxContainer/攻击值/ScrollContainer/VBoxContainer/属性加成信息" instance=ExtResource("7_67fme")]
+layout_mode = 2
+
+[node name="操作" type="PanelContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 7.0
+offset_right = 1222.0
+offset_bottom = 183.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/操作"]
+layout_mode = 2
+
+[node name="使用" type="Button" parent="Panel/操作/VBoxContainer"]
+layout_mode = 2
+text = "使用"
+
+[node name="购买" type="Button" parent="Panel/操作/VBoxContainer"]
+layout_mode = 2
+text = "购买"
+
+[node name="出售" type="Button" parent="Panel/操作/VBoxContainer"]
+layout_mode = 2
+text = "出售"
+
+[node name="升级酒馆" type="Button" parent="Panel/操作/VBoxContainer"]
+layout_mode = 2
+text = "升级酒馆"
+
+[node name="刷新酒馆" type="Button" parent="Panel/操作/VBoxContainer"]
+layout_mode = 2
+text = "刷新酒馆"
+
+[node name="结束回合" type="Button" parent="Panel/操作/VBoxContainer"]
+layout_mode = 2
+text = "结束回合"
+
+[connection signal="pressed" from="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/关闭" to="." method="关闭提示板"]
+[connection signal="pressed" from="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/选择目标" to="." method="_on_选择目标_pressed"]
+[connection signal="pressed" from="Panel/卡片信息/ScrollContainer/HBoxContainer/ScrollContainer/基本信息/按钮2/取消目标" to="." method="_on_取消目标_pressed"]
+[connection signal="pressed" from="Panel/操作/VBoxContainer/使用" to="." method="_on_使用_pressed"]
+[connection signal="pressed" from="Panel/操作/VBoxContainer/购买" to="." method="_on_购买_pressed"]
+[connection signal="pressed" from="Panel/操作/VBoxContainer/出售" to="." method="_on_出售_pressed"]
+[connection signal="pressed" from="Panel/操作/VBoxContainer/升级酒馆" to="." method="_on_升级酒馆_pressed"]
+[connection signal="pressed" from="Panel/操作/VBoxContainer/刷新酒馆" to="." method="_on_刷新酒馆_pressed"]
+[connection signal="pressed" from="Panel/操作/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]

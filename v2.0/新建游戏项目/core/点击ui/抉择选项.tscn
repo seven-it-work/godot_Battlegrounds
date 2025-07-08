@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://qfjvvfwtyh76"]
+
+[ext_resource type="Script" uid="uid://dlw87kjxjn8fv" path="res://core/点击ui/抉择选项.gd" id="1_vb6tq"]
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 0)
+script = ExtResource("1_vb6tq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+text = "测试"

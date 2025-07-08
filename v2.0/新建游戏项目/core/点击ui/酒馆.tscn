@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duygkc136xiyd"]
+
+[ext_resource type="Script" uid="uid://bwgj54foenmwf" path="res://core/点击ui/酒馆.gd" id="1_m0clg"]
+
+[node name="酒馆" type="HBoxContainer"]
+script = ExtResource("1_m0clg")

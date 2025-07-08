@@ -107,7 +107,13 @@ func get_插画路径()->String:
 	return 默认路径
 func 获取是否为金色的倍率()->int:
 	return 2 if is_gold else 1;
-
+func 获取加成集合()->Array[AttributeBonus]:
+	var list:Array[AttributeBonus]=[]
+	for i in 属性加成:
+		list.append(i)
+	for i in 临时属性加成:
+		list.append(i)
+	return list
 func 获取额外属性个数()->int:
 	var count=0;
 	if self.嘲讽:

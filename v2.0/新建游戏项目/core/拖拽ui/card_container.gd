@@ -5,6 +5,7 @@ class_name CardContainer
 @export var 可以拖入的容器:Array[CardContainer] = [] 
 @export var name_str:String
 @onready var container:=$HBoxContainer
+@export var 是否能拖拽标识:bool=false
 @export var player:Player
 
 # 未拖拽 在本容器中 在其他容器中 没在容器中
@@ -14,7 +15,7 @@ var 当前拖拽中的卡片:CardUI
 var 是否拖拽中:bool=false
 var 当前拖拽中的卡片的原有索引:int=-1
 var 当前拖入的容器:CardContainer
-var 是否能拖拽标识:bool=true
+
 
 func 获取所有节点()->Array[CardUI]:
 	var list := [] as Array[CardUI]
@@ -24,17 +25,20 @@ func 获取所有节点()->Array[CardUI]:
 	return list
 
 func 是否能拖拽(是否能:bool):
-	是否能拖拽标识=是否能
 	for i in container.get_children():
 		if i is CardUI:
 			i.是否能拖拽=是否能
 
 func _绑定信号(cardUi:CardUI):
+	cardUi.点击.connect(点击监听.bind(cardUi))
 	cardUi.开始拖拽.connect(监听开始拖拽.bind(cardUi))
 	cardUi.结束拖拽.connect(监听结束拖拽.bind())
 	pass
+func 点击监听(cardUi:CardUI):
+	player.监听点击的卡片(cardUi)
 
 func _解除信号(cardUi:CardUI):
+	cardUi.点击.connect(点击监听.bind(cardUi))
 	cardUi.开始拖拽.disconnect(监听开始拖拽.bind(cardUi))
 	cardUi.结束拖拽.disconnect(监听结束拖拽.bind())
 	pass
@@ -124,6 +128,7 @@ func _当前鼠标是否在容器中(cardContainer:CardContainer)->bool:
 func _process(delta: float) -> void:
 	$Panel.size=size
 	$HBoxContainer.size=size
+	是否能拖拽(是否能拖拽标识)
 	if !是否能拖拽标识:
 		return
 	if 当前拖拽中的卡片 and 是否拖拽中:
