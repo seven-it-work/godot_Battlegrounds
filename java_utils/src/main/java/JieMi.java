@@ -9,6 +9,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class JieMi {
+  public static void main(String[] args) {
+    FileUtil.writeBytes(jiemi2(FileUtil.readUtf8String("E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\temp")),
+            "E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\temp.7z");
+  }
   public static byte[] jiemi2(String str) {
     String[] huanHang = str.split("\n");
     ArrayList<Byte> bytes = new ArrayList<>();
