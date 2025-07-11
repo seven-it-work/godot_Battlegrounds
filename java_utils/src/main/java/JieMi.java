@@ -1,163 +1,81 @@
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.text.UnicodeUtil;
-import cn.hutool.core.util.HexUtil;
-import cn.hutool.core.util.StrUtil;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class JieMi {
-  public static void main(String[] args) {
-    FileUtil.writeBytes(jiemi2(FileUtil.readUtf8String("E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\temp")),
-            "E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\temp.7z");
-  }
-  public static byte[] jiemi2(String str) {
-    String[] huanHang = str.split("\n");
-    ArrayList<Byte> bytes = new ArrayList<>();
-    String unicode = customJavaToUnicode(huanHang[0]);
-    String[] hexList = unicode.split("\\\\u");
-
-    for (String s : hexList) {
-      for (String splitEveryTwoChar : splitEveryTwoChars(s)) {
-        byte aByte = hex2Byte(splitEveryTwoChar);
-        bytes.add(aByte);
+  public static byte[] jiemi2(String fileStr) {
+    String prefix = fileStr.substring(0, 1);
+    String data = fileStr.substring(1);
+    String[] split = data.split("");
+    String hex = "";
+    String lastStr = "";
+    for (String s : split) {
+      if (StrUtil.isNotBlank(lastStr)) {
+        lastStr += s;
+      } else {
+        if (s.equals("=")) {
+          lastStr += s;
+        } else {
+          String unicode = UnicodeUtil.toUnicode(s);
+          String tempHex = unicode.replace("\\u", "");
+          if (tempHex.startsWith(prefix)) {
+            String hexTemp = tempHex.substring(1);
+            hex += hexTemp;
+          } else {
+            throw new RuntimeException("错了");
+          }
+        }
       }
     }
-    if (huanHang.length > 1) {
-      unicode = customJavaToUnicode(huanHang[1]);
-      String hex = unicode2Hex(unicode);
-      bytes.add(hex2Byte(hex.substring(0, 2)));
+    int count = StrUtil.count(lastStr, "=");
+    String tempHex = UnicodeUtil.toUnicode(lastStr.replace("=", "")).replace("\\u", "");
+    String h=tempHex.substring(1,3-count+1);
+    hex+=h;
+    List<String> strings = splitStringByLength(hex, 2);
+    byte[] bytes = new byte[strings.size()];
+    for (int i = 0; i < strings.size(); i++) {
+      bytes[i] = hex2Byte(strings.get(i));
     }
-
-    byte[] result = new byte[bytes.size()];
-    for (int i = 0; i < bytes.size(); i++) {
-      result[i] = bytes.get(i);
-    }
-    return result;
-  }
-
-  /**
-   * 将输入的字符串按每两个字符划分成一组，返回字符串列表。
-   *
-   * @param s 输入字符串
-   * @return 字符每两个一组构成的列表
-   * @throws IllegalArgumentException 如果输入为 null 或长度不是偶数
-   */
-  public static List<String> splitEveryTwoChars(String s) {
-    if (s == null) {
-      throw new IllegalArgumentException("输入字符串不能为 null");
-    }
-    if (s.length() % 2 != 0) {
-      throw new IllegalArgumentException("输入字符串的长度必须为偶数");
-    }
-
-    List<String> result = new ArrayList<>();
-    for (int i = 0; i < s.length(); i += 2) {
-      String sub = s.substring(i, i + 2);
-      result.add(sub);
-    }
-
-    return result;
+    return bytes;
   }
 
   public static String jiami2(String file) {
-    StringBuilder stringBuilder = new StringBuilder();
     byte[] bytes = FileUtil.readBytes(file);
-    String tempHex = "";
-    int aCoupleOfPairs = 2;
+    String prefix = RandomUtil.randomString("123456789ABCEF",1);
+    String result = "";
+    String hex = "";
     for (byte aByte : bytes) {
-      String hex = byte2Hex(aByte);
-      if (StrUtil.isBlank(tempHex)) {
-        if (hex.equals("10")) {
-          aCoupleOfPairs = 3;
-        } else {
-          aCoupleOfPairs = 2;
+      hex += byte2Hex(aByte);
+    }
+    System.out.println(hex.toUpperCase());
+    List<String> strings = splitStringByLength(hex, 3);
+    for (String string : strings) {
+      if (string.length() == 3) {
+        String unicode = "\\u" + prefix + string;
+        String str = UnicodeUtil.toString(unicode);
+        if (str.equals("=")) {
+          System.out.println("");
         }
-      }
-      tempHex += hex;
-      if (tempHex.length() == aCoupleOfPairs * 2) {
-        String unicode = hex2Unicode(tempHex);
-        String unicode2Str = customUnicodeToJava(unicode);
-        stringBuilder.append(unicode2Str);
-        tempHex = "";
-      }
-    }
-    if (StrUtil.isNotBlank(tempHex)) {
-      stringBuilder.append("\n").append(unicode2Str(hex2Unicode(tempHex + "00")));
-    }
-    return stringBuilder.toString();
-  }
-
-  public static String customUnicodeToJava(String unicodeStr) {
-    StringBuilder result = new StringBuilder();
-    Pattern pattern = Pattern.compile("\\\\u([0-9a-fA-F]{4,6})");
-    Matcher matcher = pattern.matcher(unicodeStr);
-
-    int lastEnd = 0;
-    while (matcher.find()) {
-      result.append(unicodeStr, lastEnd, matcher.start());
-
-      String hex = matcher.group(1);
-      int codePoint;
-
-      // 补零至最少 4 位
-      while (hex.length() < 4) {
-        hex = "0" + hex;
-      }
-
-      codePoint = Integer.parseInt(hex, 16);
-
-      if (codePoint <= 0xFFFF) {
-        result.append((char) codePoint);
+        result += str;
       } else {
-        char[] surrogates = Character.toChars(codePoint);
-        result.append(surrogates[0]).append(surrogates[1]);
-      }
-      lastEnd = matcher.end();
-    }
-
-    // 添加剩余未匹配的内容
-    result.append(unicodeStr.substring(lastEnd));
-    return result.toString();
-  }
-
-  public static String customJavaToUnicode(String javaStr) {
-    StringBuilder result = new StringBuilder();
-
-    for (int i = 0; i < javaStr.length(); ) {
-      int codePoint = javaStr.codePointAt(i);
-      i += Character.charCount(codePoint);
-
-      if (codePoint <= 0xFFFF) {
-        result.append(String.format("\\u%04x", codePoint));
-      } else {
-        result.append(String.format("\\u%05x", codePoint));
+        String unicode = "\\u" + prefix + string;
+        for (int i = 0; i < 3 - string.length(); i++) {
+          result += "=";
+          unicode += "0";
+        }
+        result += UnicodeUtil.toString(unicode);
       }
     }
-    return result.toString();
+    return prefix + result;
   }
 
-  public static String unicode2Str(String unicode) {
-    if (!unicode.startsWith("\\u")) {
-      throw new RuntimeException("不是unicode马");
+  public static List<String> splitStringByLength(String input, int length) {
+    List<String> result = new ArrayList<>();
+    // 检查输入是否有效
+    if (input == null || input.isEmpty() || length <= 0) {
+      return result;
     }
-    return UnicodeUtil.toString(unicode);
-  }
-
-  public static String unicode2Hex(String unicode) {
-    if (!unicode.startsWith("\\u")) {
-      throw new RuntimeException("不是unicode马");
+    // 按指定长度分割字符串
+    for (int i = 0; i < input.length(); i += length) {
+      int end = Math.min(i + length, input.length());
+      result.add(input.substring(i, end));
     }
-    return unicode.replace("\\u", "");
-  }
-
-  public static String hex2Unicode(String hex) {
-    if (hex.length() < 4) {
-      throw new RuntimeException("非4位，无法转换");
-    }
-    return "\\u" + hex.toLowerCase();
+    return result;
   }
 
   public static String byte2Hex(byte b) {
@@ -165,7 +83,7 @@ public class JieMi {
     if (hex.length() < 2) {
       hex = "0" + hex;
     }
-    return hex;
+    return hex.toUpperCase(Locale.ROOT);
   }
 
   public static byte hex2Byte(String hex) {
@@ -177,4 +95,3 @@ public class JieMi {
     }
     return (byte) i;
   }
-}
