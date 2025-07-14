@@ -88,7 +88,9 @@ func 监听结束拖拽():
 func _拖拽结束时的清理动作():
 	当前拖拽中的卡片=null
 	是否拖拽中=false
+	拖拽卡片的状态=="未拖拽"
 	当前拖拽中的卡片的原有索引=-1
+	await get_tree().process_frame
 
 func 回归原位():
 	_add(当前拖拽中的卡片,当前拖拽中的卡片的原有索引)
@@ -132,7 +134,7 @@ func _process(delta: float) -> void:
 	if !是否能拖拽标识:
 		return
 	if 当前拖拽中的卡片 and 是否拖拽中:
-		print(name_str,拖拽卡片的状态)
+		#print(name_str,拖拽卡片的状态)
 		if 拖拽卡片的状态=="未拖拽":
 			当前拖拽中的卡片=null
 			pass

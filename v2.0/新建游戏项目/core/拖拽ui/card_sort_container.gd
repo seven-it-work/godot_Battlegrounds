@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	if !是否能拖拽标识:
 		return
-	if 当前拖拽中的卡片:
+	print(当前拖拽中的卡片,是否拖拽中)
+	if 当前拖拽中的卡片 and 是否拖拽中:
 		_动态更新插槽()
 		pass

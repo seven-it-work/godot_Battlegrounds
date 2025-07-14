@@ -271,6 +271,7 @@ func _动态更新按钮():
 		$"Panel/操作/VBoxContainer/购买".hide()
 		$"Panel/操作/VBoxContainer/使用".show()
 		$"Panel/操作/VBoxContainer/出售".hide()
+		$"Panel/操作/VBoxContainer/使用".disabled=false
 		if tempCardData.使用时是否需要选择目标.是否需要选择目标 and tempCardData.使用时是否需要选择目标.是否必须选中目标:
 			$"Panel/操作/VBoxContainer/使用".disabled=当前选中的目标卡片信息==null
 		if tempCardData.获取抉择节点():
@@ -319,6 +320,7 @@ func _on_使用_pressed() -> void:
 		cardData.使用触发()
 	# 如果是法术牌则消失
 	# 如果是随从牌则加入战场
+	$"VBoxContainer/战场".添加到容器(cardData.get_parent(),-1)
 	# 清理操作
 	关闭提示板()
 	$"Panel/操作/VBoxContainer/使用".hide()
