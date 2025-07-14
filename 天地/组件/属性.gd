@@ -18,6 +18,7 @@ enum AttributeType{
 
 @onready var progressBar:=$ProgressBar
 @onready var valueLabel:=$"值"
+
 func _process(delta: float) -> void:
 	$Label.text=名称;
 	progressBar.hide()
