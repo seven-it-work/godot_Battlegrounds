@@ -4,11 +4,17 @@ import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class JieMi {
+    public static void main(String[] args) {
+        String file = "E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\java_utils\\";
+        FileUtil.writeBytes(jiemi2(FileUtil.readString(file + "temp.txt", StandardCharsets.UTF_8)), file + "temp.7z");
+    }
+
     public static byte[] jiemi2(String fileStr) {
         String prefix = fileStr.substring(0, 1);
         String data = fileStr.substring(1);

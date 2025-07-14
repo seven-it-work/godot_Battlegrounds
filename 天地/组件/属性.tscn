@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://m15mkhs3g4kp"]
+
+[ext_resource type="Script" uid="uid://dd1bu1tjnx5sm" path="res://组件/属性.gd" id="1_fnpsl"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnpsl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "名称："
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="值" type="Label" parent="."]
+layout_mode = 2
+
+[node name="范围值" type="Label" parent="值"]

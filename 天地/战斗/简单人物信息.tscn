@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnsuw0i6r1vtt"]
+
+[ext_resource type="PackedScene" uid="uid://bluc4bsooadwx" path="res://组件/头像.tscn" id="1_wyt84"]
+[ext_resource type="PackedScene" uid="uid://m15mkhs3g4kp" path="res://组件/属性.tscn" id="2_yaes3"]
+
+[node name="Panel" type="MarginContainer"]
+offset_right = 236.0
+offset_bottom = 116.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="头像2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_wyt84")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_yaes3")]
+layout_mode = 2
+"名称" = "名称"
+
+[node name="HBoxContainer2" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_yaes3")]
+layout_mode = 2
+"名称" = "名称"
+
+[node name="状态" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
