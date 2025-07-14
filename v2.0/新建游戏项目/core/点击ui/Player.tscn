@@ -17,10 +17,10 @@ func 添加到容器(cardUi:CardUI,index:int):
 "
 
 [sub_resource type="GDScript" id="GDScript_i75qc"]
-script/source = "extends \"res://core/拖拽ui/card_sort_container.gd\"
+script/source = "extends SortCardContainer
 
 func 添加到容器(cardUi:CardUI,index:int):
-	cardUi.card_data.所在位置=Enums.CardPosition.手牌
+	cardUi.card_data.所在位置=Enums.CardPosition.战场
 	super.添加到容器(cardUi,index)
 "
 
@@ -62,17 +62,20 @@ offset_bottom = 663.0
 [node name="酒馆" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_qrly3")]
 layout_mode = 2
 script = SubResource("GDScript_67fme")
+name_str = "酒馆"
 player = NodePath("../..")
 
 [node name="战场" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_i75qc")]
 layout_mode = 2
 script = SubResource("GDScript_i75qc")
+name_str = "战场"
 "是否能拖拽标识" = true
 player = NodePath("../..")
 
 [node name="手牌" parent="VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_qrly3")]
 layout_mode = 2
 script = SubResource("GDScript_wncpg")
+name_str = "手牌"
 player = NodePath("../..")
 
 [node name="Panel" type="Panel" parent="."]

@@ -94,28 +94,31 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 
 # 查询
 static func find_card(conditionList:Array[CardFindCondition])->Array:
-	return Global.all_card.values().filter(func (card:CardData):
+	var list= Global.all_card.values().filter(func (card:CardData):
 		var all_result:Array[bool]=[]
 		for i in conditionList:
 			var re=false
 			if i.key in card:
+				var temp属性=card[i.key]
+				if temp属性==null:
+					breakpoint
 				match i.判断:
 					CardFindCondition.ConditionEnum.大于:
-						re=(card[i.key]>i.value)
+						re=(temp属性>i.value)
 					CardFindCondition.ConditionEnum.等于:
-						re=(card[i.key]==i.value)
+						re=(temp属性==i.value)
 					CardFindCondition.ConditionEnum.小于:
-						re=(card[i.key]<i.value)
+						re=(temp属性<i.value)
 					CardFindCondition.ConditionEnum.大于等于:
-						re=(card[i.key]>=i.value)
+						re=(temp属性>=i.value)
 					CardFindCondition.ConditionEnum.小于等于:
-						re=(card[i.key]<=i.value)
+						re=(temp属性<=i.value)
 					CardFindCondition.ConditionEnum.不等于:
-						re=(card[i.key]!=i.value)
+						re=(temp属性!=i.value)
 					CardFindCondition.ConditionEnum.在:
-						re=(card[i.key].has(i.value))
+						re=(temp属性.has(i.value))
 					CardFindCondition.ConditionEnum.不在:
-						re=(!card[i.key].has(i.value))
+						re=(!temp属性.has(i.value))
 					_:
 						pass
 			if !re and i.且或:
@@ -123,7 +126,10 @@ static func find_card(conditionList:Array[CardFindCondition])->Array:
 			all_result.append(re)
 		return all_result.any(func(b): return b)
 		)
-	pass
+	var result=[]
+	for i in list:
+		result.append(i.duplicate())
+	return result
 
 # 递归扫描目录及子目录
 static func scan_scenes_recursive(base_path: String, current_path: String = "",scene_dict:Dictionary = {}):

@@ -1,4 +1,5 @@
 extends CardContainer
+class_name SortCardContainer
 
 @export var 排序的插槽:DragSlot=preload("uid://uo2gx7wimlt8").instantiate()
 var 是否初始卡槽:bool=false
@@ -18,6 +19,7 @@ func 监听开始拖拽(cardUi:CardUI):
 	_初始化卡槽()
 
 func 监听结束拖拽():
+	await get_tree().process_frame
 	var 激活的索引=_获取激活的插槽()
 	if 激活的索引==null:
 		super.监听结束拖拽()
@@ -54,7 +56,7 @@ func _动态更新插槽():
 	## 拖拽时 插槽的动画时间
 	var place_holder_duration :float = 0.2
 	for holder in _获取插槽():
-		var 扩展宽度=当前拖拽中的卡片.size.x/2
+		var 扩展宽度=10
 		var rect = holder.get_global_rect().grow_individual(扩展宽度,0,扩展宽度,0)
 		if rect.has_point(mp):
 			if not holder.active:
@@ -77,7 +79,6 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	if !是否能拖拽标识:
 		return
-	print(当前拖拽中的卡片,是否拖拽中)
-	if 当前拖拽中的卡片 and 是否拖拽中:
+	if 当前拖拽中的卡片 and 当前拖拽中的卡片.是否按下拖拽 and 是否拖拽中:
 		_动态更新插槽()
 		pass

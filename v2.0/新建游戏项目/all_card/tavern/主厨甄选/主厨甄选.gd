@@ -7,7 +7,7 @@ func 是否能够使用()->bool:
 func 使用触发():
 	if $"使用时是否需要选择目标".目标对象==null:
 		# 随机选择目标（战场和酒馆）
-		var 所有list=player.获取战场和酒馆中的牌().filter(func(card:CardData): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
+		var 所有list=player.获取战场和酒馆中的牌().filter(func(card:CardUI): return !card.card_data.是否属于种族(Enums.RaceEnum.NONE))
 		if 所有list.is_empty():
 			Logger.debug("没有任何型，无法中")
 			return
@@ -18,6 +18,8 @@ func 使用触发():
 	if cardData.race.has(Enums.RaceEnum.NONE):
 		Logger.error("错误获取类型，不能获取空类型")
 		return
+	if cardData.race.is_empty():
+		breakpoint
 	var type=cardData.race.pick_random()
 	var 随从型件=CardFindCondition.build(
 			"race",type,CardFindCondition.ConditionEnum.在
@@ -31,7 +33,7 @@ func 使用触发():
 	if 随从list.is_empty():
 		Logger.error("错误了！没有【%s】类型的随从"%type)
 		return
-	var 选择的从随=随从list.pick_random()
+	var 选择的从随=随从list.pick_random() as CardData
 	# 选择一个随从。获取相同类型的另一张随从牌。
 	player.添加到手牌(选择的从随)
 	pass

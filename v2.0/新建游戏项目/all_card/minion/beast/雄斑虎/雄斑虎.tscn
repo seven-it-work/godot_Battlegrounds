@@ -1,27 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxy10hopyu17p"]
+[gd_scene load_steps=4 format=3 uid="uid://cxy10hopyu17p"]
 
 [ext_resource type="Script" uid="uid://bjpg5xo283tr4" path="res://all_card/minion/beast/雄斑虎/雄斑虎.gd" id="1_cc03i"]
 [ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_syn4q"]
 
+[sub_resource type="GDScript" id="GDScript_pp3c0"]
+resource_name = "战吼"
+script/source = "extends Roar
+
+func 执行战吼():
+	执行战吼卡片.player.添加到手牌(preload(\"uid://dvqhig6yvt4wp\").instantiate())
+	pass
+"
+
 [node name="雄斑虎" instance=ExtResource("1_syn4q")]
 script = ExtResource("1_cc03i")
+name_str = "雄斑虎"
 version = "32.2.4.221850"
 ls_card_id = "BG_CFM_315"
-name_str = "雄斑虎"
-lv = 1
-show_lv = true
 atk = 1
-show_atk = true
-hp = 1
-show_hp = true
 desc = "<b>战吼：</b>召唤一头1/1的雌斑虎。"
 gold_desc = "<b>战吼：</b>召唤一头2/2的雌斑虎。"
-cardType = 0
-buy_coins = 3
-show_buy_coins = false
 race = Array[int]([1])
-是否出现在酒馆 = true
-是否为伙伴 = false
 
 [node name="使用时是否需要选择目标" parent="." index="0"]
 "是否需要选择目标" = false
+
+[node name="Roar" type="Node" parent="." index="1"]
+script = SubResource("GDScript_pp3c0")
+metadata/_custom_type_script = "uid://bus1w068x25rx"

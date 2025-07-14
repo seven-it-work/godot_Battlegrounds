@@ -38,9 +38,12 @@ func 点击监听(cardUi:CardUI):
 	player.监听点击的卡片(cardUi)
 
 func _解除信号(cardUi:CardUI):
-	cardUi.点击.connect(点击监听.bind(cardUi))
-	cardUi.开始拖拽.disconnect(监听开始拖拽.bind(cardUi))
-	cardUi.结束拖拽.disconnect(监听结束拖拽.bind())
+	if cardUi.点击.is_connected(点击监听.bind(cardUi)):
+		cardUi.点击.disconnect(点击监听.bind(cardUi))
+	if cardUi.开始拖拽.is_connected(监听开始拖拽.bind(cardUi)):
+		cardUi.开始拖拽.disconnect(监听开始拖拽.bind(cardUi))
+	if cardUi.结束拖拽.is_connected(监听结束拖拽.bind()):
+		cardUi.结束拖拽.disconnect(监听结束拖拽.bind())
 	pass
 
 func 添加到容器(cardUi:CardUI,index:int):
@@ -52,6 +55,7 @@ func 添加到容器(cardUi:CardUI,index:int):
 func 监听开始拖拽(cardUi:CardUI):
 	拖拽卡片的状态="在本容器中"
 	当前拖拽中的卡片的原有索引=cardUi.get_index()
+	print(cardUi.card_data.name_str ,"当前拖拽中的卡片的原有索引",当前拖拽中的卡片的原有索引)
 	# 改变cardUi的父节点
 	当前拖拽中的卡片=cardUi
 	是否拖拽中=true
@@ -93,6 +97,7 @@ func _拖拽结束时的清理动作():
 	await get_tree().process_frame
 
 func 回归原位():
+	print(当前拖拽中的卡片.card_data.name_str ,"回归原位",当前拖拽中的卡片的原有索引)
 	_add(当前拖拽中的卡片,当前拖拽中的卡片的原有索引)
 
 func _add(cardUi:CardUI,index:int):
@@ -133,7 +138,7 @@ func _process(delta: float) -> void:
 	是否能拖拽(是否能拖拽标识)
 	if !是否能拖拽标识:
 		return
-	if 当前拖拽中的卡片 and 是否拖拽中:
+	if 当前拖拽中的卡片 and 当前拖拽中的卡片.是否按下拖拽 and 是否拖拽中:
 		#print(name_str,拖拽卡片的状态)
 		if 拖拽卡片的状态=="未拖拽":
 			当前拖拽中的卡片=null

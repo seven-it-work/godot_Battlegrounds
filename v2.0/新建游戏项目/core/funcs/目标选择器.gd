@@ -12,4 +12,6 @@ func 筛选方法(list:Array[CardUI])->Array[CardUI]:
 func 是否能够作为目标(card:CardUI)->bool:
 	# 默认是随从
 	var card_data=card.card_data as CardData
-	return card_data.cardType==Enums.CardTypeEnum.MINION and (card_data.所在位置==Enums.CardPosition.酒馆 or card_data.所在位置==Enums.CardPosition.战场)
+	var 是否为随从=card_data.cardType==Enums.CardTypeEnum.MINION
+	var 是否在酒馆或者战场=(card_data.所在位置==Enums.CardPosition.酒馆 or card_data.所在位置==Enums.CardPosition.战场)
+	return 是否为随从 and 是否在酒馆或者战场

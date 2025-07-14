@@ -15,9 +15,9 @@ func 判断是否能拖拽()->bool:
 
 func _process(delta: float) -> void:
 	$Panel.size=size
-	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		_end_drag()
 	if 是否按下拖拽:
+		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			_end_drag()
 		_draging()
 
 func _draging():

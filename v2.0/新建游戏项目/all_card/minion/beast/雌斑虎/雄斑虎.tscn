@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvqhig6yvt4wp"]
+
+[ext_resource type="PackedScene" uid="uid://t31chbe0g4c6" path="res://core/CardData.tscn" id="1_uwqxm"]
+
+[node name="雌斑虎" instance=ExtResource("1_uwqxm")]
+name_str = "雌斑虎"
+ls_card_id = "BG_CFM_315t"
+
+[node name="使用时是否需要选择目标" parent="." index="0"]
+"是否需要选择目标" = false

@@ -80,6 +80,8 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cuxpxje8iycj3").instantiate(),self),-1)
+	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cuxpxje8iycj3").instantiate(),self),-1)
+	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cuxpxje8iycj3").instantiate(),self),-1)
 	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://cptuaedglysg3").instantiate(),self),-1)
 	$"VBoxContainer/酒馆".添加到容器(Global.创建新卡片(preload("uid://bjhqpg4a8wuqj").instantiate(),self),-1)
 
@@ -312,20 +314,26 @@ func _on_使用_pressed() -> void:
 	var cardData=当前的提示的卡片信息.card_data as CardData
 	if cardData.使用时是否需要选择目标.是否必须选中目标 and cardData.使用时是否需要选择目标.是否需要选择目标:
 		assert(当前选中的目标卡片信息,"当前选中的目标卡片信息 必须存在！")
+		cardData.使用时是否需要选择目标.目标对象=当前选中的目标卡片信息
 	var 抉择=cardData.获取抉择节点()
 	if 抉择:
 		assert(当前选中的抉择选项,"当前选中的抉择选项 必须存在！")
 		#当前选中的抉择选项.执行方法(self,当前的提示的卡片信息)
 	else:
 		cardData.使用触发()
-	# 如果是法术牌则消失
 	# 如果是随从牌则加入战场
-	$"VBoxContainer/战场".添加到容器(cardData.get_parent(),-1)
+	if cardData.cardType==Enums.CardTypeEnum.MINION:
+		$"VBoxContainer/手牌"._解除信号(当前的提示的卡片信息)
+		$"VBoxContainer/战场".添加到容器(cardData.get_parent(),-1)
+	else:
+		# 如果是法术牌则消失
+		当前的提示的卡片信息.queue_free()
 	# 清理操作
 	关闭提示板()
 	$"Panel/操作/VBoxContainer/使用".hide()
 func _on_购买_pressed() -> void:
 	# 扣除金币
+	$"VBoxContainer/酒馆"._解除信号(当前的提示的卡片信息)
 	$"VBoxContainer/手牌".添加到容器(当前的提示的卡片信息,-1)
 	# 清理操作
 	关闭提示板()
@@ -333,7 +341,7 @@ func _on_购买_pressed() -> void:
 	pass # Replace with function body.
 func _on_出售_pressed() -> void:
 	# 添加金币
-	当前选中的目标卡片信息.queue_free()
+	当前的提示的卡片信息.queue_free()
 	# 清理操作
 	当前的提示的卡片信息=null
 	当前选中的目标卡片信息=null
