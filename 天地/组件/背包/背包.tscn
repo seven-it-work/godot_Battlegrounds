@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcg7wit1d12w"]
+
+[ext_resource type="Script" uid="uid://gwf0mo2ejeoe" path="res://组件/背包/背包.gd" id="1_jhfw0"]
+[ext_resource type="PackedScene" uid="uid://t35t24o6pjjk" path="res://组件/背包/背包Tips.tscn" id="2_lfrl2"]
+[ext_resource type="PackedScene" uid="uid://bcyi123vqud8w" path="res://组件/背包/背包格子.tscn" id="2_tcssy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcssy"]
+resource_local_to_scene = true
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.899258, 0.899258, 0.899258, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfrl2"]
+resource_local_to_scene = true
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.899258, 0.899258, 0.899258, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdhiv"]
+resource_local_to_scene = true
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.899258, 0.899258, 0.899258, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jfh4"]
+resource_local_to_scene = true
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.899258, 0.899258, 0.899258, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[node name="背包" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jhfw0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="tips" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_lfrl2")]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 10
+
+[node name="PanelContainer" parent="ScrollContainer/VBoxContainer/GridContainer" instance=ExtResource("2_tcssy")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tcssy")
+
+[node name="PanelContainer2" parent="ScrollContainer/VBoxContainer/GridContainer" instance=ExtResource("2_tcssy")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lfrl2")
+
+[node name="PanelContainer3" parent="ScrollContainer/VBoxContainer/GridContainer" instance=ExtResource("2_tcssy")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdhiv")
+
+[node name="PanelContainer4" parent="ScrollContainer/VBoxContainer/GridContainer" instance=ExtResource("2_tcssy")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jfh4")

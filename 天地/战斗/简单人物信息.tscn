@@ -1,19 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnsuw0i6r1vtt"]
+[gd_scene load_steps=9 format=3 uid="uid://cnsuw0i6r1vtt"]
 
-[ext_resource type="Shader" uid="uid://bibjvjtkowut8" path="res://战斗/溶解效果.gdshader" id="1_pk3v0"]
+[ext_resource type="Shader" uid="uid://cxx85jck82x8b" path="res://战斗/溶解.gdshader" id="1_pk3v0"]
 [ext_resource type="PackedScene" uid="uid://bluc4bsooadwx" path="res://组件/头像.tscn" id="1_wyt84"]
 [ext_resource type="Script" uid="uid://csrg1rkrgbnti" path="res://战斗/简单人物信息.gd" id="1_yaes3"]
 [ext_resource type="PackedScene" uid="uid://m15mkhs3g4kp" path="res://组件/属性.tscn" id="2_yaes3"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pk3v0"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pk3v0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pk3v0"]
-resource_local_to_scene = true
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tytjg"]
+noise = SubResource("FastNoiseLite_pk3v0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkyal"]
 shader = ExtResource("1_pk3v0")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
+shader_parameter/progress = 0.581
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tytjg")
+shader_parameter/edge_width = 0.092
+shader_parameter/edge_color = Color(0.976419, 0, 0.401135, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaes3"]
 resource_local_to_scene = true
@@ -23,8 +25,7 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [node name="MarginContainer" type="PanelContainer"]
-material = SubResource("ShaderMaterial_pk3v0")
-use_parent_material = true
+material = SubResource("ShaderMaterial_pkyal")
 offset_right = 236.0
 offset_bottom = 116.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yaes3")
@@ -37,7 +38,7 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="头像2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_wyt84")]
+[node name="头像" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_wyt84")]
 layout_mode = 2
 
 [node name="基础属性" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
@@ -52,7 +53,6 @@ metadata/entity_name = "血量"
 [node name="护盾" parent="VBoxContainer/HBoxContainer/基础属性" instance=ExtResource("2_yaes3")]
 layout_mode = 2
 "名称" = "名称"
-value = 0.0
 metadata/entity_name = "护盾"
 
 [node name="状态" type="HBoxContainer" parent="VBoxContainer"]
@@ -61,7 +61,6 @@ layout_mode = 2
 [node name="集气" parent="VBoxContainer" instance=ExtResource("2_yaes3")]
 layout_mode = 2
 "名称" = "集气"
-value = 0.0
 metadata/entity_name = "集气"
 
 [node name="ProgressBar" parent="VBoxContainer/集气" index="1"]
@@ -70,6 +69,7 @@ size_flags_vertical = 4
 show_percentage = false
 
 [node name="范围值" parent="VBoxContainer/集气/值" index="0"]
-layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
 
 [editable path="VBoxContainer/集气"]

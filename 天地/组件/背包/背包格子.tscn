@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcyi123vqud8w"]
+
+[ext_resource type="FontFile" uid="uid://brehngtg3bppe" path="res://资源/fusion-pixel-12px-proportional-zh_hant.ttf" id="1_frsxo"]
+[ext_resource type="Script" uid="uid://bocck4hx1x7e6" path="res://组件/背包/背包格子.gd" id="1_jykjy"]
+[ext_resource type="Texture2D" uid="uid://c6hs5ht1sn3p4" path="res://组件/circle.png" id="2_jykjy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhfw0"]
+resource_local_to_scene = true
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.899258, 0.899258, 0.899258, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfrl2"]
+font = ExtResource("1_frsxo")
+font_size = 10
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(35, 35)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jhfw0")
+script = ExtResource("1_jykjy")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_lfrl2")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_jykjy")
+expand_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

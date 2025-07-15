@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bluc4bsooadwx"]
+[gd_scene load_steps=4 format=3 uid="uid://bluc4bsooadwx"]
 
+[ext_resource type="Script" uid="uid://4filtffuesrl" path="res://组件/头像.gd" id="1_bublr"]
 [ext_resource type="Texture2D" uid="uid://c6hs5ht1sn3p4" path="res://组件/circle.png" id="1_vgpkt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vgpkt"]
@@ -9,13 +10,13 @@ blend_mode = 1
 custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
+script = ExtResource("1_bublr")
 
 [node name="Label" type="Label" parent="."]
 clip_contents = true
 custom_minimum_size = Vector2(50, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "王打错"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1

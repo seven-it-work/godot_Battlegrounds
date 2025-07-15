@@ -2,23 +2,26 @@ extends PanelContainer
 class_name SimplePeopleInfo
 
 @onready var 集气:= $"VBoxContainer/集气"
-@export var player:Player
+@onready var 头像:= $"VBoxContainer/HBoxContainer/头像"
+@export var player:BasePeople
 @export var fight:Fight
 
 func _process(delta: float) -> void:
 	if player and fight:
-		$"VBoxContainer/HBoxContainer/基础属性/血量".max_value=player.hp_max
-		$"VBoxContainer/HBoxContainer/基础属性/血量".value=player.hp_current
+		$"VBoxContainer/HBoxContainer/基础属性/血量".max_value=(player.hp_max)
+		$"VBoxContainer/HBoxContainer/基础属性/血量".value=str(player.hp_current)
 		
-		$"VBoxContainer/HBoxContainer/基础属性/护盾".max_value=player.hd_max
-		$"VBoxContainer/HBoxContainer/基础属性/护盾".value=player.hd_current
-		
+		$"VBoxContainer/HBoxContainer/基础属性/护盾".max_value=(player.hd_max)
+		$"VBoxContainer/HBoxContainer/基础属性/护盾".value=str(player.hd_current)
+		头像.player=player
 		if !fight.是否暂停集气:
-			$"VBoxContainer/集气".value+=player.集气速度
-			if $"VBoxContainer/集气".value>=$"VBoxContainer/集气".max_value:
-				$"VBoxContainer/集气".value=0
+			var tempV=$"VBoxContainer/集气".value.to_float()
+			tempV+=player.集气速度
+			if tempV>=$"VBoxContainer/集气".max_value:
+				tempV=0
 				# 集气完成
 				_集气完成()
+			$"VBoxContainer/集气".value=str(tempV)
 	pass
 
 
@@ -34,12 +37,7 @@ func _集气完成():
 ## 死亡溶解效果
 func _死亡溶解效果():
 	var tween = create_tween()
-	var m=$VBoxContainer.material
-	tween.tween_method(func (value): m.set_shader_parameter("progress", value), 0.0, 1.0, 2.0)
-	tween.finished.connect(queue_free) # 动画完成后删除节点
 	return tween
-
-	
 
 var _initial_position: Vector2  # 初始位置记录
 ## 抖动动画

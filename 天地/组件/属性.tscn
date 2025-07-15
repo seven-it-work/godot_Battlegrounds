@@ -25,3 +25,4 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="范围值" type="Label" parent="值"]
+layout_mode = 0

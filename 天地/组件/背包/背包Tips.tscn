@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://t35t24o6pjjk"]
+
+[ext_resource type="Script" uid="uid://b5vcicpdtdjiu" path="res://组件/背包/背包tips.gd" id="1_6nbhk"]
+[ext_resource type="PackedScene" uid="uid://m15mkhs3g4kp" path="res://组件/属性.tscn" id="1_42tu7"]
+
+[node name="tips" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 50)
+script = ExtResource("1_6nbhk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="属性1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="名称" parent="HBoxContainer/属性1" instance=ExtResource("1_42tu7")]
+layout_mode = 2
+"名称" = "名称"
+attributeType = 2
+
+[node name="稀有度" parent="HBoxContainer/属性1" instance=ExtResource("1_42tu7")]
+layout_mode = 2
+"名称" = "稀有度"
+attributeType = 2
+
+[node name="空白" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="操作" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
