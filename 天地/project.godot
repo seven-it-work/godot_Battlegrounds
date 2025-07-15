@@ -13,6 +13,7 @@ config_version=5
 config/name="天地"
 run/main_scene="uid://b28mo2p4muljx"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,9 +26,10 @@ FancyFade="*res://addons/transitions/FancyFade.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=720
+window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
+window/handheld/orientation=2
 
 [editor_plugins]
 

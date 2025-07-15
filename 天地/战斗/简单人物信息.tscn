@@ -1,38 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnsuw0i6r1vtt"]
+[gd_scene load_steps=6 format=3 uid="uid://cnsuw0i6r1vtt"]
 
-[ext_resource type="Shader" uid="uid://cxx85jck82x8b" path="res://战斗/溶解.gdshader" id="1_pk3v0"]
+[ext_resource type="Material" uid="uid://doe2g0hgeveru" path="res://战斗/简单人物信息.tres" id="1_pk3v0"]
 [ext_resource type="PackedScene" uid="uid://bluc4bsooadwx" path="res://组件/头像.tscn" id="1_wyt84"]
 [ext_resource type="Script" uid="uid://csrg1rkrgbnti" path="res://战斗/简单人物信息.gd" id="1_yaes3"]
 [ext_resource type="PackedScene" uid="uid://m15mkhs3g4kp" path="res://组件/属性.tscn" id="2_yaes3"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pk3v0"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tytjg"]
-noise = SubResource("FastNoiseLite_pk3v0")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkyal"]
-shader = ExtResource("1_pk3v0")
-shader_parameter/progress = 0.581
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_tytjg")
-shader_parameter/edge_width = 0.092
-shader_parameter/edge_color = Color(0.976419, 0, 0.401135, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaes3"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk3v0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MarginContainer" type="PanelContainer"]
-material = SubResource("ShaderMaterial_pkyal")
+material = ExtResource("1_pk3v0")
 offset_right = 236.0
 offset_bottom = 116.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yaes3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pk3v0")
 script = ExtResource("1_yaes3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-use_parent_material = true
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -71,5 +54,10 @@ show_percentage = false
 [node name="范围值" parent="VBoxContainer/集气/值" index="0"]
 offset_right = 1.0
 offset_bottom = 23.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+use_parent_material = true
+layout_mode = 2
+color = Color(0.6, 0.6, 0.6, 1)
 
 [editable path="VBoxContainer/集气"]

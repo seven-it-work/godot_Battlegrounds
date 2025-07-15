@@ -4,18 +4,21 @@ class_name Fight
 @export var 玩家list:Array[BasePeople]=[]
 @export var 敌人list:Array[BasePeople]=[]
 @export var 是否暂停集气:bool=false
+@onready var 玩家容器:=$"PanelContainer/HBoxContainer/玩家"
+@onready var 敌人容器:=$"PanelContainer/HBoxContainer/敌人"
 
 func _process(delta: float) -> void:
 	pass
 
 func _ready() -> void:
+	开始战斗()
 	pass
 
 func 获取敌人(攻击者:SimplePeopleInfo):
-	if $"Panel/玩家".get_children().has(攻击者):
-		return $"Panel/敌人".get_children()
-	if $"Panel/敌人".get_children().has(攻击者):
-		return $"Panel/玩家".get_children()
+	if 玩家容器.get_children().has(攻击者):
+		return 敌人容器.get_children()
+	if 敌人容器.get_children().has(攻击者):
+		return 玩家容器.get_children()
 	return []
 
 func 进行攻击(攻击者:SimplePeopleInfo):
@@ -30,28 +33,24 @@ func 进行攻击(攻击者:SimplePeopleInfo):
 	await _受伤动画.finished
 	await _展示伤害动画.finished
 	if 敌人.player.hp_current<=0:
-		await 敌人._死亡溶解效果()
+		await 敌人._死亡溶解效果().finished
+		敌人.queue_free()
 	pass
 
-func 开始战斗(playerList:Array[BasePeople],enemyList:Array[BasePeople]):
-	for i in playerList:
-		玩家list.append(i)
-	for i in enemyList:
-		敌人list.append(i)
-	
-	for i in $"Panel/玩家".get_children():
+func 开始战斗():
+	for i in 玩家容器.get_children():
 		i.queue_free()
-	for i in $"Panel/敌人".get_children():
+	for i in 敌人容器.get_children():
 		i.queue_free()
 	for i in 玩家list:
 		var 人物信息=preload("uid://cnsuw0i6r1vtt").instantiate()
 		人物信息.player=i
 		人物信息.fight=self
-		$"Panel/玩家".add_child(人物信息)
+		玩家容器.add_child(人物信息)
 		
 	for i in 敌人list:
 		var 人物信息=preload("uid://cnsuw0i6r1vtt").instantiate()
 		人物信息.player=i
 		人物信息.fight=self
-		$"Panel/敌人".add_child(人物信息)
+		敌人容器.add_child(人物信息)
 	pass

@@ -43,11 +43,19 @@ offset_right = 54.0
 offset_bottom = 48.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 use_parent_material = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_qruj1")
+
+[node name="Label" type="Label" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "测试"
 
 [node name="Control2" type="Control" parent="."]
 material = SubResource("ShaderMaterial_4ossf")

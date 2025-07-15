@@ -21,5 +21,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	FancyFade.blurry_noise(fight)
 	var listP:Array[BasePeople]=[player as BasePeople]
 	var listE:Array[BasePeople]=[target as BasePeople]
-	fight.开始战斗(listP,listE)
+	fight.玩家list=listP
+	fight.敌人list=listE
 	pass # Replace with function body.

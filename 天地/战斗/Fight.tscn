@@ -1,148 +1,37 @@
-[gd_scene load_steps=17 format=3 uid="uid://ca3lhe4kkolhq"]
+[gd_scene load_steps=3 format=3 uid="uid://ca3lhe4kkolhq"]
 
-[ext_resource type="PackedScene" uid="uid://cnsuw0i6r1vtt" path="res://战斗/简单人物信息.tscn" id="1_avouf"]
 [ext_resource type="Script" uid="uid://d2m113tma0i4e" path="res://战斗/fight.gd" id="1_f84lf"]
-[ext_resource type="Shader" uid="uid://bibjvjtkowut8" path="res://战斗/溶解效果.gdshader" id="3_n7g7s"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pk3v0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab1ym"]
-resource_local_to_scene = true
-shader = ExtResource("3_n7g7s")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rghp"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5dlv"]
-resource_local_to_scene = true
-shader = ExtResource("3_n7g7s")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62tb1"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7qfr"]
-resource_local_to_scene = true
-shader = ExtResource("3_n7g7s")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu75m"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_di4xo"]
-resource_local_to_scene = true
-shader = ExtResource("3_n7g7s")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pw52"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbx30"]
-resource_local_to_scene = true
-shader = ExtResource("3_n7g7s")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uq86"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iswdy"]
-resource_local_to_scene = true
-shader = ExtResource("3_n7g7s")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pk3v0")
-shader_parameter/progress = 0.381
-shader_parameter/edge_width = 0.046
-shader_parameter/edge_color = Color(1, 0.5, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxt4b"]
-resource_local_to_scene = true
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avouf"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_f84lf")
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 639.0
-offset_bottom = 357.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(720, 1280)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_avouf")
 
-[node name="玩家" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_right = 288.0
-offset_bottom = 194.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="玩家" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 30
 
-[node name="Panel" parent="Panel/玩家" instance=ExtResource("1_avouf")]
-material = SubResource("ShaderMaterial_ab1ym")
+[node name="空白" type="Label" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6rghp")
+size_flags_vertical = 1
 
-[node name="Panel2" parent="Panel/玩家" instance=ExtResource("1_avouf")]
-material = SubResource("ShaderMaterial_a5dlv")
+[node name="敌人" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_62tb1")
-
-[node name="Panel3" parent="Panel/玩家" instance=ExtResource("1_avouf")]
-material = SubResource("ShaderMaterial_a7qfr")
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yu75m")
-
-[node name="敌人" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 349.0
-offset_top = 1.0
-offset_right = 637.0
-offset_bottom = 213.0
+size_flags_horizontal = 3
 theme_override_constants/separation = 30
-
-[node name="Panel" parent="Panel/敌人" instance=ExtResource("1_avouf")]
-material = SubResource("ShaderMaterial_di4xo")
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8pw52")
-
-[node name="Panel2" parent="Panel/敌人" instance=ExtResource("1_avouf")]
-material = SubResource("ShaderMaterial_gbx30")
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3uq86")
-
-[node name="Panel3" parent="Panel/敌人" instance=ExtResource("1_avouf")]
-material = SubResource("ShaderMaterial_iswdy")
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yxt4b")

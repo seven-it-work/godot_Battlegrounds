@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://doe2g0hgeveru"]
+
+[ext_resource type="Shader" uid="uid://cxx85jck82x8b" path="res://战斗/溶解.gdshader" id="1_k6sib"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pk3v0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tytjg"]
+noise = SubResource("FastNoiseLite_pk3v0")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_k6sib")
+shader_parameter/progress = 2.0
+shader_parameter/noiseForce = 0.9
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_tytjg")
+shader_parameter/burnColor = Color(0.917647, 0.258824, 0.211765, 0.580392)
+shader_parameter/borderWidth = 0.1
+shader_parameter/direction = -90.0

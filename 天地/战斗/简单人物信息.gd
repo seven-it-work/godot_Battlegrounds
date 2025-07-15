@@ -6,6 +6,9 @@ class_name SimplePeopleInfo
 @export var player:BasePeople
 @export var fight:Fight
 
+func _ready() -> void:
+	pass
+
 func _process(delta: float) -> void:
 	if player and fight:
 		$"VBoxContainer/HBoxContainer/基础属性/血量".max_value=(player.hp_max)
@@ -37,6 +40,7 @@ func _集气完成():
 ## 死亡溶解效果
 func _死亡溶解效果():
 	var tween = create_tween()
+	tween.tween_method(func(value): material.set_shader_parameter("progress", value), 2.0, -2.0, 2.0)
 	return tween
 
 var _initial_position: Vector2  # 初始位置记录
