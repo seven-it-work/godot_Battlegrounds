@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpiumkgyclrxq"]
+
+[ext_resource type="Script" uid="uid://ccdkvy7t3gd1o" path="res://主场景/基础节点.gd" id="1_f078m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f078m"]
+
+[node name="基础节点" type="Node2D"]
+script = ExtResource("1_f078m")
+
+[node name="节点名称" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="节点额外操作" type="PanelContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f078m")

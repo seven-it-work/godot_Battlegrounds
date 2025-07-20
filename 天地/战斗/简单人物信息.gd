@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		头像.player=player
 		if !fight.是否暂停集气:
 			var tempV=$"VBoxContainer/集气".value.to_float()
-			tempV+=player.集气速度
+			tempV+=player.获取集气速度()
 			if tempV>=$"VBoxContainer/集气".max_value:
 				tempV=0
 				# 集气完成

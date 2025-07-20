@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://xommensqne4b"]
+
+[ext_resource type="Script" uid="uid://dwqltdfrkn2ty" path="res://组件/button进度条.gd" id="1_den77"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klo8j"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lq7g8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlluq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fquf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_den77"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbsx5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ydaf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp875"]
+bg_color = Color(0, 0, 0, 0.509804)
+
+[node name="进度条" type="PanelContainer"]
+clip_contents = true
+offset_right = 104.0
+offset_bottom = 38.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_klo8j")
+script = ExtResource("1_den77")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_lq7g8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlluq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0fquf")
+alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_den77")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nbsx5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0ydaf")
+
+[node name="遮罩" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gp875")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

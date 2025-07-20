@@ -19,7 +19,7 @@ operator = 1
 parameter_name = "noise_tex"
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_up8tj"]
-size = Vector2(329, 164)
+size = Vector2(329, 328)
 title = "visible"
 attached_nodes = PackedInt32Array(8)
 
@@ -30,17 +30,17 @@ linked_parent_graph_frame = 26
 source = 2
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_3vcnj"]
-size = Vector2(329, 164)
+size = Vector2(380, 728)
 title = "tex_color"
 attached_nodes = PackedInt32Array(25)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_20m0k"]
-size = Vector2(769, 744)
+size = Vector2(769, 908)
 title = "edge"
 attached_nodes = PackedInt32Array(9, 10, 11, 12)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_fex15"]
-size = Vector2(329, 164)
+size = Vector2(329, 328)
 title = "glow"
 attached_nodes = PackedInt32Array(13)
 

@@ -1,37 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://b28mo2p4muljx"]
+[gd_scene load_steps=8 format=3 uid="uid://b28mo2p4muljx"]
 
 [ext_resource type="Script" uid="uid://cm7r1ijsgvapf" path="res://主场景/main.gd" id="1_ipglh"]
 [ext_resource type="PackedScene" uid="uid://bvbp5r0mhe3e6" path="res://主场景/MainPlayer.tscn" id="2_7pgpv"]
 [ext_resource type="Script" uid="uid://di28wo5jtpqu5" path="res://对象/人物.gd" id="3_2bnug"]
-[ext_resource type="PackedScene" uid="uid://08misb44i5vh" path="res://主场景/MainMaster.tscn" id="3_s3bb3"]
+[ext_resource type="PackedScene" uid="uid://bccm4wmgcqu36" path="res://主场景/怪物节点.tscn" id="5_0pb7g"]
+[ext_resource type="PackedScene" uid="uid://buni3jgkdn8r6" path="res://主场景/灵力节点.tscn" id="5_rosmi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf552"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bnug"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Main" type="Node2D"]
+position = Vector2(-67, 531)
 script = ExtResource("1_ipglh")
 
 [node name="player" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_7pgpv")]
-position = Vector2(110, 24)
+position = Vector2(-57, -60)
 player = NodePath("BasePeople")
+
+[node name="修炼" parent="player/PanelContainer/VBoxContainer/HBoxContainer/操作" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_wf552")
+
+[node name="打坐" parent="player/PanelContainer/VBoxContainer/HBoxContainer/操作" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_2bnug")
 
 [node name="BasePeople" type="Node" parent="player"]
 script = ExtResource("3_2bnug")
 name_str = "令狐冲"
-"集气速度" = 1.2
+hp_max = 999.0
+hp_current = 999.0
 metadata/_custom_type_script = "uid://di28wo5jtpqu5"
 
-[node name="MainMaster" parent="." node_paths=PackedStringArray("people") instance=ExtResource("3_s3bb3")]
-position = Vector2(31, 27)
-people = NodePath("BasePeople")
+[node name="灵力节点" parent="." instance=ExtResource("5_rosmi")]
+position = Vector2(20, -59)
+"当前灵力值" = 999.0
 
-[node name="BasePeople" type="Node" parent="MainMaster"]
-script = ExtResource("3_2bnug")
-name_str = "🐷"
-metadata/_custom_type_script = "uid://di28wo5jtpqu5"
+[node name="怪物节点" parent="." node_paths=PackedStringArray("怪物列表") instance=ExtResource("5_0pb7g")]
+"怪物列表" = [NodePath("野猪")]
+name_str = "怪1"
 
-[node name="MainMaster2" parent="." node_paths=PackedStringArray("people") instance=ExtResource("3_s3bb3")]
-position = Vector2(439, 53)
-people = NodePath("BasePeople")
-
-[node name="BasePeople" type="Node" parent="MainMaster2"]
+[node name="野猪" type="Node" parent="怪物节点"]
 script = ExtResource("3_2bnug")
 name_str = "野猪"
 metadata/_custom_type_script = "uid://di28wo5jtpqu5"
+
+[editable path="player"]
+[editable path="player/PanelContainer/VBoxContainer/HBoxContainer/操作/修炼"]
+[editable path="player/PanelContainer/VBoxContainer/HBoxContainer/操作/打坐"]

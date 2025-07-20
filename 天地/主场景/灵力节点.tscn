@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://buni3jgkdn8r6"]
+
+[ext_resource type="PackedScene" uid="uid://bpiumkgyclrxq" path="res://主场景/基础节点.tscn" id="1_qo0iv"]
+[ext_resource type="Script" uid="uid://dmkadl6aak8xd" path="res://主场景/灵力节点.gd" id="2_gp875"]
+[ext_resource type="PackedScene" uid="uid://xommensqne4b" path="res://组件/Button进度条.tscn" id="3_5q220"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q220"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="灵力节点" instance=ExtResource("1_qo0iv")]
+script = ExtResource("2_gp875")
+"当前灵力值" = 100.0
+name_str = "灵力"
+
+[node name="节点额外操作" parent="." index="1"]
+visible = false
+
+[node name="吸收" parent="节点额外操作" index="0" instance=ExtResource("3_5q220")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5q220")
+but_text = "吸收灵力"
+
+[connection signal="按钮点击" from="节点额外操作/吸收" to="." method="_on_吸收_按钮点击"]

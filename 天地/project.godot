@@ -29,6 +29,7 @@ FancyFade="*res://addons/transitions/FancyFade.gd"
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 window/handheld/orientation=2
 
 [editor_plugins]

@@ -35,3 +35,26 @@ size_flags_vertical = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 30
+
+[node name="战斗结束" type="VBoxContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+
+[node name="胜利" type="VBoxContainer" parent="PanelContainer/战斗结束"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="打扫战场" type="Button" parent="PanelContainer/战斗结束/胜利"]
+layout_mode = 2
+text = "打扫战场"
+
+[node name="失败" type="VBoxContainer" parent="PanelContainer/战斗结束"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="PanelContainer/战斗结束/失败"]
+layout_mode = 2
+text = "打扫战场"
+
+[connection signal="pressed" from="PanelContainer/战斗结束/胜利/打扫战场" to="." method="_on_打扫战场_pressed"]

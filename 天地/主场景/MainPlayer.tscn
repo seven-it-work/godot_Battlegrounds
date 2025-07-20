@@ -1,6 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvbp5r0mhe3e6"]
+[gd_scene load_steps=9 format=3 uid="uid://bvbp5r0mhe3e6"]
 
 [ext_resource type="Script" uid="uid://cmnqcd687xdu4" path="res://主场景/main_player.gd" id="1_vji1m"]
+[ext_resource type="PackedScene" uid="uid://c8ws4i6eurlib" path="res://主场景/主场景玩家状态.tscn" id="2_gq3no"]
+[ext_resource type="PackedScene" uid="uid://xommensqne4b" path="res://组件/Button进度条.tscn" id="3_5nkv7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf552"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nkv7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmm1q"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1636"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vji1m"]
 size = Vector2(17, 17)
@@ -12,11 +40,66 @@ script = ExtResource("1_vji1m")
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(720, 300)
+offset_left = -362.0
+offset_top = 340.0
+offset_right = 358.0
+offset_bottom = 640.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="状态" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_gq3no")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="操作" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
+[node name="修炼" parent="PanelContainer/VBoxContainer/HBoxContainer/操作" instance=ExtResource("3_5nkv7")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wf552")
+but_text = "修炼"
+
+[node name="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/操作/修炼/HBoxContainer" index="1"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_5nkv7")
+text = "修炼"
+
+[node name="打坐" parent="PanelContainer/VBoxContainer/HBoxContainer/操作" instance=ExtResource("3_5nkv7")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vmm1q")
+"冷却时间" = 80.0
+but_text = "打坐"
+
+[node name="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/操作/打坐/HBoxContainer" index="1"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_k1636")
+text = "打坐"
+
+[node name="突破" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/操作"]
+layout_mode = 2
+text = "突破"
+
+[node name="额外操作" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(8.5, 11.5)
 shape = SubResource("RectangleShape2D_vji1m")
 
+[connection signal="冷却完成" from="PanelContainer/VBoxContainer/HBoxContainer/操作/修炼" to="." method="_on_修炼_冷却完成"]
+[connection signal="按钮点击" from="PanelContainer/VBoxContainer/HBoxContainer/操作/修炼" to="." method="_on_修炼_按钮点击"]
+[connection signal="冷却完成" from="PanelContainer/VBoxContainer/HBoxContainer/操作/打坐" to="." method="_on_打坐_冷却完成"]
+[connection signal="按钮点击" from="PanelContainer/VBoxContainer/HBoxContainer/操作/打坐" to="." method="_on_打坐_按钮点击"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/操作/突破" to="." method="_on_突破_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/操作/修炼"]
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/操作/打坐"]

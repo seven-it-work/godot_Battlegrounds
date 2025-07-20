@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8ws4i6eurlib"]
+
+[ext_resource type="Script" uid="uid://o3w4aydkenyw" path="res://主场景/主场景玩家状态.gd" id="1_76chs"]
+[ext_resource type="PackedScene" uid="uid://bluc4bsooadwx" path="res://组件/头像.tscn" id="1_xf8et"]
+[ext_resource type="PackedScene" uid="uid://m15mkhs3g4kp" path="res://组件/属性.tscn" id="2_76chs"]
+
+[node name="状态" type="HBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_76chs")
+
+[node name="头像" parent="." instance=ExtResource("1_xf8et")]
+layout_mode = 2
+
+[node name="属性对1" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="血量" parent="属性对1" instance=ExtResource("2_76chs")]
+layout_mode = 2
+"名称" = "血量"
+
+[node name="护盾" parent="属性对1" instance=ExtResource("2_76chs")]
+layout_mode = 2
+"名称" = "护盾"
+
+[node name="属性对2" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="灵力" parent="属性对2" instance=ExtResource("2_76chs")]
+layout_mode = 2
+"名称" = "灵力"
+
+[node name="经验" parent="属性对2" instance=ExtResource("2_76chs")]
+layout_mode = 2
+"名称" = "经验"
+
+[node name="属性对3" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="攻击" parent="属性对3" instance=ExtResource("2_76chs")]
+layout_mode = 2
+"名称" = "攻击"
+attributeType = 1
+
+[node name="防御" parent="属性对3" instance=ExtResource("2_76chs")]
+layout_mode = 2
+"名称" = "防御"
+attributeType = 1

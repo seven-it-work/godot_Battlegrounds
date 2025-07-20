@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://08misb44i5vh"]
+[gd_scene load_steps=8 format=3 uid="uid://bccm4wmgcqu36"]
 
-[ext_resource type="Script" uid="uid://bhcey4ryjcorj" path="res://主场景/main_master.gd" id="1_usya1"]
-[ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_tl7r6"]
-[ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_5d5q7"]
+[ext_resource type="PackedScene" uid="uid://bpiumkgyclrxq" path="res://主场景/基础节点.tscn" id="1_h1s51"]
+[ext_resource type="Script" uid="uid://c3flgsq6wuig3" path="res://主场景/怪物节点.gd" id="2_q20xd"]
+[ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_t4kkb"]
+[ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_q20xd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tl7r6"]
-
-[sub_resource type="GDScript" id="GDScript_7mrxc"]
+[sub_resource type="GDScript" id="GDScript_6q0a8"]
 resource_name = "巡逻行为"
 script/source = "extends ActionLeaf
 @export var patrol_points: Path2D
@@ -38,13 +37,13 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	return RUNNING
 "
 
-[sub_resource type="Curve2D" id="Curve2D_7mrxc"]
+[sub_resource type="Curve2D" id="Curve2D_gxd1b"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 197, 11, 0, 0, 0, 0, 109, 62, 0, 0, 0, 0, 27, 53, 0, 0, 0, 0, 3, 5)
 }
 point_count = 4
 
-[sub_resource type="GDScript" id="GDScript_5d5q7"]
+[sub_resource type="GDScript" id="GDScript_01l0m"]
 resource_name = "等待行为"
 script/source = "extends ActionLeaf
 @export var wait_time: float = 2.0
@@ -66,38 +65,32 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	return RUNNING
 "
 
-[node name="MainMaster" type="Node2D"]
-script = ExtResource("1_usya1")
+[node name="怪物节点" node_paths=PackedStringArray("怪物列表") instance=ExtResource("1_h1s51")]
+script = ExtResource("2_q20xd")
+"怪物列表" = []
+name_str = "怪物节点"
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "怪"
+[node name="节点额外操作" parent="." index="1"]
+visible = false
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(10, 10)
-shape = SubResource("RectangleShape2D_tl7r6")
-
-[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
-script = ExtResource("2_tl7r6")
-blackboard = NodePath("@Node@119453")
+[node name="BeehaveTree" type="Node" parent="." index="3" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_t4kkb")
+blackboard = NodePath("@Node@34903")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
-[node name="巡逻" type="Node" parent="BeehaveTree"]
-script = ExtResource("3_5d5q7")
+[node name="巡逻" type="Node" parent="BeehaveTree" index="0"]
+script = ExtResource("3_q20xd")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="移动" type="Node" parent="BeehaveTree/巡逻" node_paths=PackedStringArray("patrol_points")]
-script = SubResource("GDScript_7mrxc")
+[node name="移动" type="Node" parent="BeehaveTree/巡逻" index="0" node_paths=PackedStringArray("patrol_points")]
+script = SubResource("GDScript_6q0a8")
 patrol_points = NodePath("Path2D")
 metadata/_custom_type_script = "uid://cv74jjdrwevpr"
 
-[node name="Path2D" type="Path2D" parent="BeehaveTree/巡逻/移动"]
-curve = SubResource("Curve2D_7mrxc")
+[node name="Path2D" type="Path2D" parent="BeehaveTree/巡逻/移动" index="0"]
+curve = SubResource("Curve2D_gxd1b")
 
-[node name="等待" type="Node" parent="BeehaveTree/巡逻"]
-script = SubResource("GDScript_5d5q7")
+[node name="等待" type="Node" parent="BeehaveTree/巡逻" index="1"]
+script = SubResource("GDScript_01l0m")
 metadata/_custom_type_script = "uid://cv74jjdrwevpr"

@@ -1,6 +1,7 @@
 extends Node2D
 class_name Fight
 
+@export var player:BasePeople
 @export var 玩家list:Array[BasePeople]=[]
 @export var 敌人list:Array[BasePeople]=[]
 @export var 是否暂停集气:bool=false
@@ -8,6 +9,15 @@ class_name Fight
 @onready var 敌人容器:=$"PanelContainer/HBoxContainer/敌人"
 
 func _process(delta: float) -> void:
+	if !$"PanelContainer/战斗结束".visible:
+		if 玩家容器.get_children().is_empty():
+			print("战斗结束了")
+			$"PanelContainer/战斗结束/胜利".show()
+			$"PanelContainer/战斗结束".show()
+		elif 敌人容器.get_children().is_empty():
+			print("战斗结束了")
+			$"PanelContainer/战斗结束/失败".show()
+			$"PanelContainer/战斗结束".show()
 	pass
 
 func _ready() -> void:
@@ -23,6 +33,9 @@ func 获取敌人(攻击者:SimplePeopleInfo):
 
 func 进行攻击(攻击者:SimplePeopleInfo):
 	var 敌人=获取敌人(攻击者).pick_random() as SimplePeopleInfo
+	if 敌人==null:
+		print("战斗结束了")
+		return
 	await 攻击者._攻击动画(敌人).finished
 	var 伤害=randf_range(91,100)
 	敌人.player.hp_current-=伤害;
@@ -54,3 +67,11 @@ func 开始战斗():
 		人物信息.fight=self
 		敌人容器.add_child(人物信息)
 	pass
+
+
+func _on_打扫战场_pressed() -> void:
+	# 回到主世界
+	var mainNode:MainNode=preload("uid://b28mo2p4muljx").instantiate()
+	player.reparent(mainNode)
+	FancyFade.blurry_noise(mainNode)
+	pass # Replace with function body.
