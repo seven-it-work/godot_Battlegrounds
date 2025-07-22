@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch6rsa6hqq0qf"]
+
+[ext_resource type="PackedScene" uid="uid://cj2r04ptpglgd" path="res://背包系统/物品ui.tscn" id="1_h1noa"]
+[ext_resource type="Script" uid="uid://b8vtleb7m2e3l" path="res://背包系统/test/物品.gd" id="2_7qb8o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qb8o"]
+resource_local_to_scene = true
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="物品UI" instance=ExtResource("1_h1noa")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qb8o")
+script = ExtResource("2_7qb8o")
+"名称" = ""
+
+[node name="Label" type="Label" parent="." index="0"]
+layout_mode = 2
+clip_text = true

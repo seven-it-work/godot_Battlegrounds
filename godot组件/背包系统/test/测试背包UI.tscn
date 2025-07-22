@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdvs2n4t24i74"]
+
+[ext_resource type="PackedScene" uid="uid://dep55l7b5wo6g" path="res://背包系统/BackpackUI.tscn" id="1_lj3rp"]
+[ext_resource type="Script" uid="uid://coresji7a2l2i" path="res://背包系统/test/测试背包ui.gd" id="1_xauwp"]
+[ext_resource type="Script" uid="uid://r22oumr73cll" path="res://背包系统/test/信息.gd" id="2_jy3nq"]
+[ext_resource type="PackedScene" uid="uid://ch6rsa6hqq0qf" path="res://背包系统/test/物品.tscn" id="3_lfki4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xauwp"]
+resource_local_to_scene = true
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv8qa"]
+resource_local_to_scene = true
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="测试背包ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xauwp")
+
+[node name="BackpackUi" parent="." instance=ExtResource("1_lj3rp")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1131.0
+offset_bottom = 635.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="信息" parent="BackpackUi/HSplitContainer" index="1"]
+script = ExtResource("2_jy3nq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="物品" parent="SubViewport" instance=ExtResource("3_lfki4")]
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xauwp")
+"名称" = "测试物品1"
+
+[node name="物品2" parent="SubViewport" instance=ExtResource("3_lfki4")]
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yv8qa")
+"名称" = "阿斯顿发顺丰"
+
+[editable path="BackpackUi"]

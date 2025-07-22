@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj2r04ptpglgd"]
+
+[ext_resource type="Script" uid="uid://c8ghem8i1ppri" path="res://背包系统/物品ui.gd" id="1_fgc1i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0upmt"]
+resource_local_to_scene = true
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="物品UI" type="PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+theme_override_styles/panel = SubResource("StyleBoxFlat_0upmt")
+script = ExtResource("1_fgc1i")
+
+[node name="数量" type="Control" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="数量"]
+layout_mode = 0
+offset_right = 13.0
+offset_bottom = 23.0
+text = "1"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

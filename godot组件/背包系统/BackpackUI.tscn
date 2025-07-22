@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://dep55l7b5wo6g"]
+
+[ext_resource type="Script" uid="uid://cierp63a5viff" path="res://背包系统/backpack_ui.gd" id="1_yc25w"]
+[ext_resource type="Script" uid="uid://b1i0rgjjh8x7w" path="res://背包系统/信息.gd" id="3_w354k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc25w"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh4lm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.235294)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.912619, 0.940761, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="BackpackUi" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yc25w")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="ItemUI" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yc25w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/ItemUI"]
+layout_mode = 2
+
+[node name="物品集合" type="GridContainer" parent="HSplitContainer/ItemUI/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 10
+
+[node name="信息" type="PanelContainer" parent="HSplitContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nh4lm")
+script = ExtResource("3_w354k")
+
+[node name="Label" type="Label" parent="HSplitContainer/信息"]
+layout_mode = 2
+text = "这里是信息展示，由你自定义实现。"
+clip_text = true
