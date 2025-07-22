@@ -23,7 +23,7 @@ custom_minimum_size = Vector2(64, 64)
 theme_override_styles/panel = SubResource("StyleBoxFlat_0upmt")
 script = ExtResource("1_fgc1i")
 
-[node name="数量" type="Control" parent="."]
+[node name="数量" type="Panel" parent="."]
 visible = false
 layout_mode = 2
 mouse_filter = 2
