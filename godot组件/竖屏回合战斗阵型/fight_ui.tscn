@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnsc3hcnqgo5r"]
+
+[ext_resource type="Script" uid="uid://dlr086qojssm4" path="res://竖屏回合战斗阵型/fight_ui.gd" id="1_d0ev2"]
+[ext_resource type="PackedScene" uid="uid://ckt1pye1xb11q" path="res://竖屏回合战斗阵型/FightPeopleUI.tscn" id="1_ig3kv"]
+[ext_resource type="PackedScene" uid="uid://b3r6u7ku23ulw" path="res://竖屏回合战斗阵型/蓄力.tscn" id="2_aq1nk"]
+
+[node name="FightUI" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d0ev2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="蓄力队列" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="PanelContainer" parent="HBoxContainer/蓄力队列" instance=ExtResource("2_aq1nk")]
+layout_mode = 0
+offset_right = 60.0
+
+[node name="battlefield" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="EnemyGroup" type="GridContainer" parent="HBoxContainer/battlefield"]
+layout_mode = 2
+columns = 3
+
+[node name="FightPeopleUI" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI2" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI3" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI4" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI5" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI6" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI7" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI8" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI9" parent="HBoxContainer/battlefield/EnemyGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="空白" type="PanelContainer" parent="HBoxContainer/battlefield"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerGroup" type="GridContainer" parent="HBoxContainer/battlefield"]
+layout_mode = 2
+columns = 3
+
+[node name="FightPeopleUI" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI2" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI3" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI4" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI5" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI6" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI7" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI8" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2
+
+[node name="FightPeopleUI9" parent="HBoxContainer/battlefield/PlayerGroup" instance=ExtResource("1_ig3kv")]
+layout_mode = 2

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckt1pye1xb11q"]
+
+[ext_resource type="Script" path="res://竖屏回合战斗阵型/fight_people_ui.gd" id="1_4unu5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lmpp"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="FightPeopleUI" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7lmpp")
+script = ExtResource("1_4unu5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "名称"

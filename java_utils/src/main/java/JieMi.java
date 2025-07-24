@@ -40,9 +40,11 @@ public class JieMi {
             }
         }
         int count = StrUtil.count(lastStr, "=");
-        String tempHex = UnicodeUtil.toUnicode(lastStr.replace("=", "")).replace("\\u", "");
-        String h = tempHex.substring(1, 3 - count + 1);
-        hex += h;
+        if (count > 0) {
+            String tempHex = UnicodeUtil.toUnicode(lastStr.replace("=", "")).replace("\\u", "");
+            String h = tempHex.substring(1, 3 - count + 1);
+            hex += h;
+        }
         List<String> strings = splitStringByLength(hex, 2);
         byte[] bytes = new byte[strings.size()];
         for (int i = 0; i < strings.size(); i++) {

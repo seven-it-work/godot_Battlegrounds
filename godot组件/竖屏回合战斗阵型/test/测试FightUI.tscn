@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq407efuo21j2"]
+
+[ext_resource type="PackedScene" uid="uid://cnsc3hcnqgo5r" path="res://竖屏回合战斗阵型/fight_ui.tscn" id="1_otgtq"]
+[ext_resource type="Script" uid="uid://dx7i43tj7itam" path="res://竖屏回合战斗阵型/test/测试fight_ui.gd" id="1_rqugn"]
+[ext_resource type="Script" uid="uid://fvpq2t8r8pwg" path="res://竖屏回合战斗阵型/entity/FightGroupEntity.gd" id="3_ycbdc"]
+[ext_resource type="Script" uid="uid://bspvkjkm4j311" path="res://竖屏回合战斗阵型/entity/FightEntity.gd" id="4_cyk1q"]
+
+[node name="测试fightUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqugn")
+
+[node name="FightUI" parent="." instance=ExtResource("1_otgtq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+script = null
+
+[node name="FightGroupEntity" type="Node" parent="." node_paths=PackedStringArray("groupIndex")]
+script = ExtResource("3_ycbdc")
+groupIndex = {
+0: NodePath("FightEntity")
+}
+metadata/_custom_type_script = "uid://fvpq2t8r8pwg"
+
+[node name="FightEntity" type="Node" parent="FightGroupEntity"]
+script = ExtResource("4_cyk1q")
+"名称" = "1"
+metadata/_custom_type_script = "uid://bspvkjkm4j311"
+
+[node name="FightGroupEntity2" type="Node" parent="." node_paths=PackedStringArray("groupIndex")]
+script = ExtResource("3_ycbdc")
+groupIndex = {
+1: NodePath("FightEntity")
+}
+metadata/_custom_type_script = "uid://fvpq2t8r8pwg"
+
+[node name="FightEntity" type="Node" parent="FightGroupEntity2"]
+script = ExtResource("4_cyk1q")
+"名称" = "2"
+metadata/_custom_type_script = "uid://bspvkjkm4j311"

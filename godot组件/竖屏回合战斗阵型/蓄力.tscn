@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3r6u7ku23ulw"]
+
+[ext_resource type="Script" path="res://竖屏回合战斗阵型/蓄力.gd" id="1_eln1c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0ev2"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.295867, 0.295867, 0.295866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.791767, 0.782371, 0.929294, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="蓄力" type="PanelContainer"]
+custom_minimum_size = Vector2(60, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d0ev2")
+script = ExtResource("1_eln1c")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
