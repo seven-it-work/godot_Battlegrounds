@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhsl1ejuejq86"]
 
-[ext_resource type="Script" uid="uid://dt473rhsqgeh5" path="res://放置宗门/UI/冷却button.gd" id="1_d7ad8"]
+[ext_resource type="Script" uid="uid://dt473rhsqgeh5" path="res://放置宗门/UI/操作面板/冷却button.gd" id="1_d7ad8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ad8"]
 bg_color = Color(0.6, 0.6, 0.6, 0.65098)

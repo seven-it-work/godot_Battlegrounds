@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://q7x6nnytp6pd"]
+
+[ext_resource type="Script" uid="uid://dgo3iy6sam3xs" path="res://放置宗门/UI/核心面板/人员分配/人员分配.gd" id="1_1rb6b"]
+[ext_resource type="PackedScene" uid="uid://citlmog5mflua" path="res://放置宗门/UI/核心面板/人员分配/人员分配Item.tscn" id="2_s2yk2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2yk2"]
+
+[node name="人员分配" type="PanelContainer"]
+offset_right = 498.0
+offset_bottom = 233.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s2yk2")
+script = ExtResource("1_1rb6b")
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="空闲人数" parent="HBoxContainer/GridContainer" instance=ExtResource("2_s2yk2")]
+layout_mode = 2
+
+[node name="Tips" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Tips"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="名称" type="Label" parent="HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "名称：施工队"
+
+[node name="描述" type="RichTextLabel" parent="HBoxContainer/Tips/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+text = "描述：能够每一个施工人员，建造效率提升0.01%最高不超过70%"

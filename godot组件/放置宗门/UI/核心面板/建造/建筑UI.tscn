@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgn3gr517oeht"]
+
+[ext_resource type="Script" uid="uid://cn17rdtmtt8rr" path="res://放置宗门/UI/核心面板/建造/建筑ui.gd" id="1_4isys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxka3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.756863, 0.756863, 0.756863, 0.619608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(175, 225)
+theme_override_styles/panel = SubResource("StyleBoxFlat_yxka3")
+script = ExtResource("1_4isys")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="名称" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Lv.1 小木屋"
+
+[node name="描述" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "xxxx"
+
+[node name="消耗资源" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/消耗资源"]
+custom_minimum_size = Vector2(82.5, 0)
+layout_mode = 2
+text = "木材：10000"
+
+[node name="构建" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "建造"
+
+[connection signal="pressed" from="VBoxContainer/构建" to="." method="_on_构建_pressed"]

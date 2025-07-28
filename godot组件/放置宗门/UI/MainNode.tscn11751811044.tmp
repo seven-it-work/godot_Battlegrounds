@@ -1,18 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsvqr4ardujl"]
+[gd_scene load_steps=15 format=3 uid="uid://dsvqr4ardujl"]
 
 [ext_resource type="Script" uid="uid://de6v8nlkj5cqg" path="res://放置宗门/UI/main_node.gd" id="1_yla30"]
 [ext_resource type="Script" uid="uid://duu7jc2rbipt0" path="res://放置宗门/entity/zong_men.gd" id="2_hdk05"]
-[ext_resource type="Script" uid="uid://b8mr85g2n22w1" path="res://放置宗门/UI/操作面板/宗主操作.gd" id="2_t5jbs"]
-[ext_resource type="Script" uid="uid://d1d78u0sect1l" path="res://放置宗门/UI/材料面板/材料面板.gd" id="2_yxka3"]
-[ext_resource type="PackedScene" uid="uid://dhsl1ejuejq86" path="res://放置宗门/UI/操作面板/冷却Button.tscn" id="3_ad34k"]
+[ext_resource type="Script" uid="uid://b8mr85g2n22w1" path="res://放置宗门/UI/宗主操作.gd" id="2_t5jbs"]
+[ext_resource type="Script" uid="uid://d1d78u0sect1l" path="res://放置宗门/UI/材料面板.gd" id="2_yxka3"]
+[ext_resource type="PackedScene" uid="uid://dhsl1ejuejq86" path="res://放置宗门/UI/冷却Button.tscn" id="3_ad34k"]
 [ext_resource type="Script" uid="uid://tmalckgynjiu" path="res://放置宗门/entity/people.gd" id="3_miuyq"]
-[ext_resource type="PackedScene" uid="uid://q7x6nnytp6pd" path="res://放置宗门/UI/核心面板/人员分配/人员分配.tscn" id="5_2nmkh"]
-[ext_resource type="PackedScene" uid="uid://bgn3gr517oeht" path="res://放置宗门/UI/核心面板/建造/建筑UI.tscn" id="5_ay4gp"]
-[ext_resource type="Script" uid="uid://c62r2yhaqw4tq" path="res://放置宗门/UI/数据/人员分配数据/施工队.gd" id="8_8wg14"]
+[ext_resource type="PackedScene" uid="uid://q7x6nnytp6pd" path="res://放置宗门/UI/人员分配.tscn" id="5_2nmkh"]
+[ext_resource type="PackedScene" uid="uid://bgn3gr517oeht" path="res://放置宗门/UI/建筑UI.tscn" id="5_ay4gp"]
+[ext_resource type="Script" uid="uid://c62r2yhaqw4tq" path="res://放置宗门/UI/施工队.gd" id="8_8wg14"]
 [ext_resource type="Script" uid="uid://b5l0jsqbd0del" path="res://放置宗门/entity/建筑.gd" id="8_35r14"]
 [ext_resource type="Script" uid="uid://6d3eldidsgch" path="res://放置宗门/entity/消耗资源.gd" id="9_3yc33"]
-[ext_resource type="Script" uid="uid://yxik1cvgile6" path="res://放置宗门/UI/数据/人员分配数据/空闲人员.gd" id="9_8wg14"]
-[ext_resource type="Script" uid="uid://dega3r8av1ver" path="res://放置宗门/UI/数据/人员分配数据/凡人总人数.gd" id="11_lr7dj"]
+[ext_resource type="Script" uid="uid://yxik1cvgile6" path="res://放置宗门/UI/空闲人员.gd" id="9_8wg14"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdk05"]
 content_margin_left = 5.0
@@ -194,11 +193,10 @@ layout_mode = 2
 
 [node name="data" type="Node" parent="."]
 
-[node name="ZongMen" type="Node" parent="data" node_paths=PackedStringArray("凡人总人数", "施工队", "空闲人员", "宗主")]
+[node name="ZongMen" type="Node" parent="data" node_paths=PackedStringArray("施工队", "空闲人员", "宗主")]
 script = ExtResource("2_hdk05")
-"凡人总人数" = NodePath("../默认数据/人员分配数据/凡人总人数")
 "施工队" = NodePath("../默认数据/人员分配数据/施工队")
-"空闲人员" = NodePath("../默认数据/人员分配数据/空闲凡人人数")
+"空闲人员" = NodePath("../默认数据/人员分配数据/空闲人员")
 "宗主" = NodePath("宗主")
 metadata/_custom_type_script = "uid://duu7jc2rbipt0"
 
@@ -212,15 +210,14 @@ metadata/_custom_type_script = "uid://tmalckgynjiu"
 
 [node name="建筑" type="Node" parent="data/默认数据"]
 
-[node name="小木屋" type="Node" parent="data/默认数据/建筑" node_paths=PackedStringArray("消耗资源")]
+[node name="住房" type="Node" parent="data/默认数据/建筑" node_paths=PackedStringArray("消耗资源")]
 script = ExtResource("8_35r14")
-"名称" = "小木屋"
+"名称" = "住房"
 description = "每一间住房，可以提供4人居住"
 "消耗资源" = NodePath("NeedResource")
-"建筑消耗时间" = 1000
 metadata/_custom_type_script = "uid://b5l0jsqbd0del"
 
-[node name="NeedResource" type="Node" parent="data/默认数据/建筑/小木屋"]
+[node name="NeedResource" type="Node" parent="data/默认数据/建筑/住房"]
 script = ExtResource("9_3yc33")
 "木材" = 1000
 metadata/_custom_type_script = "uid://6d3eldidsgch"
@@ -228,18 +225,11 @@ metadata/_custom_type_script = "uid://6d3eldidsgch"
 [node name="人员分配数据" type="Node" parent="data/默认数据"]
 unique_name_in_owner = true
 
-[node name="凡人总人数" type="Node" parent="data/默认数据/人员分配数据"]
-script = ExtResource("11_lr7dj")
-"名称" = "凡人总人数"
+[node name="空闲人员" type="Node" parent="data/默认数据/人员分配数据"]
+script = ExtResource("9_8wg14")
+"名称" = "空闲人员"
 value = 10
 value_max = 10
-disable = true
-disc = "凡人"
-metadata/_custom_type_script = "uid://dogg5bs5ko7wn"
-
-[node name="空闲凡人人数" type="Node" parent="data/默认数据/人员分配数据"]
-script = ExtResource("9_8wg14")
-"名称" = "空闲凡人人数"
 disable = true
 disc = "没有工作，无所事事的闲散人员"
 metadata/_custom_type_script = "uid://dogg5bs5ko7wn"
