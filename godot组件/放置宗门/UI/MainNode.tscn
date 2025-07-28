@@ -1,0 +1,293 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsvqr4ardujl"]
+
+[ext_resource type="Script" uid="uid://de6v8nlkj5cqg" path="res://放置宗门/UI/main_node.gd" id="1_yla30"]
+[ext_resource type="Script" uid="uid://duu7jc2rbipt0" path="res://放置宗门/entity/zong_men.gd" id="2_hdk05"]
+[ext_resource type="Script" uid="uid://b8mr85g2n22w1" path="res://放置宗门/UI/宗主操作.gd" id="2_t5jbs"]
+[ext_resource type="Script" uid="uid://d1d78u0sect1l" path="res://放置宗门/UI/材料面板.gd" id="2_yxka3"]
+[ext_resource type="PackedScene" uid="uid://dhsl1ejuejq86" path="res://放置宗门/UI/冷却Button.tscn" id="3_ad34k"]
+[ext_resource type="Script" uid="uid://tmalckgynjiu" path="res://放置宗门/entity/people.gd" id="3_miuyq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdk05"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miuyq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxka3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.756863, 0.756863, 0.756863, 0.619608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="MainNode" type="Control" node_paths=PackedStringArray("zongMen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yla30")
+zongMen = NodePath("data/ZongMen")
+
+[node name="UI" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdk05")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+
+[node name="材料面板" type="PanelContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_miuyq")
+script = ExtResource("2_yxka3")
+
+[node name="GridContainer" type="GridContainer" parent="UI/VBoxContainer/材料面板"]
+layout_mode = 2
+columns = 4
+
+[node name="木材" type="Label" parent="UI/VBoxContainer/材料面板/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "木材：000"
+
+[node name="凡人数量" type="Label" parent="UI/VBoxContainer/材料面板/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "凡人数量：000/1000"
+
+[node name="操作面板" type="PanelContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_miuyq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/操作面板"]
+layout_mode = 2
+
+[node name="宗主操作" type="GridContainer" parent="UI/VBoxContainer/操作面板/HBoxContainer" node_paths=PackedStringArray("宗主")]
+layout_mode = 2
+script = ExtResource("2_t5jbs")
+"宗主" = NodePath("../../../../../data/ZongMen/宗主")
+
+[node name="自动Tips" type="CheckBox" parent="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作"]
+layout_mode = 2
+text = "未开启自动操作"
+
+[node name="伐木" parent="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作" instance=ExtResource("3_ad34k")]
+layout_mode = 2
+text = "伐木"
+
+[node name="探索" parent="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作" instance=ExtResource("3_ad34k")]
+layout_mode = 2
+text = "探索"
+
+[node name="核心面板" type="PanelContainer" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_miuyq")
+
+[node name="TabBar" type="TabContainer" parent="UI/VBoxContainer/核心面板"]
+layout_mode = 2
+current_tab = 2
+
+[node name="建筑" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "小木屋Lv.1"
+
+[node name="Button" type="Button" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "查看详情"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+text = "小木屋"
+
+[node name="Button" type="Button" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+text = "查看详情"
+
+[node name="Tips" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/Tips"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "名称：小木屋Lv.1"
+
+[node name="Label2" type="RichTextLabel" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/Tips/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "描述：能够容纳xxx个凡人"
+
+[node name="GridContainer" type="GridContainer" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Button" type="Button" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/Tips/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "升级"
+
+[node name="Button2" type="Button" parent="UI/VBoxContainer/核心面板/TabBar/建筑/HBoxContainer/Tips/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "拆除"
+
+[node name="建造" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="UI/VBoxContainer/核心面板/TabBar/建造"]
+layout_mode = 2
+columns = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar/建造/GridContainer"]
+custom_minimum_size = Vector2(175, 225)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yxka3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/建造/GridContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/核心面板/TabBar/建造/GridContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "小木屋"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer/核心面板/TabBar/建造/GridContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "xxxx"
+
+[node name="GridContainer" type="GridContainer" parent="UI/VBoxContainer/核心面板/TabBar/建造/GridContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/核心面板/TabBar/建造/GridContainer/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(82.5, 0)
+layout_mode = 2
+text = "木材：10000"
+
+[node name="人员分配" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/人员分配"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1e+14
+value = 10.0
+prefix = "空闲人数："
+
+[node name="Button" type="Button" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "查看详情"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1e+14
+value = 10.0
+prefix = "施工队："
+
+[node name="Button" type="Button" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+text = "查看详情"
+
+[node name="Tips" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/Tips"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "名称：施工队"
+
+[node name="Label2" type="RichTextLabel" parent="UI/VBoxContainer/核心面板/TabBar/人员分配/HBoxContainer/Tips/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "描述：能够每一个施工人员，建造效率提升0.01%最高不超过70%"
+
+[node name="data" type="Node" parent="."]
+
+[node name="ZongMen" type="Node" parent="data" node_paths=PackedStringArray("宗主")]
+script = ExtResource("2_hdk05")
+"宗主" = NodePath("宗主")
+metadata/_custom_type_script = "uid://duu7jc2rbipt0"
+
+[node name="宗主" type="Node" parent="data/ZongMen" node_paths=PackedStringArray("所在宗门")]
+script = ExtResource("3_miuyq")
+"伐木单位量" = 10
+"所在宗门" = NodePath("..")
+metadata/_custom_type_script = "uid://tmalckgynjiu"
+
+[connection signal="pressed" from="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作/伐木" to="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作" method="_on_伐木_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作/探索" to="UI/VBoxContainer/操作面板/HBoxContainer/宗主操作" method="_on_探索_pressed"]

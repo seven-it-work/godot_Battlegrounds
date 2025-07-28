@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhsl1ejuejq86"]
+
+[ext_resource type="Script" uid="uid://dt473rhsqgeh5" path="res://放置宗门/UI/冷却button.gd" id="1_d7ad8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ad8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.65098)
+
+[node name="冷却button" type="Button"]
+text = "冷却button"
+script = ExtResource("1_d7ad8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7ad8")
