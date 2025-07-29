@@ -4,8 +4,8 @@ class_name SortDragObjContainer
 
 var _插槽是否初始化:bool=false
 
-func _ready() -> void:
-	pass
+func 节点开始拖拽(d:DragObj):
+	super.节点开始拖拽(d)
 
 func 添加到本容器中(d:DragObj,index:int=-1):
 	var active_index=_获取激活的插槽()
@@ -19,6 +19,11 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 
 func 节点拖拽中(d:DragObj):
 	super.节点拖拽中(d)
+	if get_rect().has_point(get_global_mouse_position()):
+		_添加插槽(d)
+	else:
+		_清理插槽()
+		
 	if 拖拽的目标容器:
 		if 拖拽的目标容器 is SortDragObjContainer:
 			if 拖拽的目标容器.get_rect().has_point(get_global_mouse_position()):
