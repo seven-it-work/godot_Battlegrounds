@@ -15,9 +15,25 @@ script = ExtResource("1_fnfv1")
 
 [node name="拖拽" parent="." instance=ExtResource("1_wuyb7")]
 
+[node name="Label" type="Label" parent="拖拽"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1"
+
 [node name="拖拽2" parent="." instance=ExtResource("1_wuyb7")]
 
+[node name="Label" type="Label" parent="拖拽2"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "2"
+
 [node name="拖拽3" parent="." instance=ExtResource("1_wuyb7")]
+
+[node name="Label" type="Label" parent="拖拽3"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "3"
 
 [node name="拖拽容器2" parent="." node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("1_dhuvd")]
 "拖拽的目标容器" = NodePath("../拖拽容器")
