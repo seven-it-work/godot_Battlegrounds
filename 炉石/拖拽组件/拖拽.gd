@@ -26,3 +26,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			_drag_offset = global_position-get_global_mouse_position()
 			pass
 	pass # Replace with function body.
+
+
+func _to_string() -> String:
+	return "name=%s,path=%s,json=%s"%[name,get_path(),JSON.stringify(ObjectUtils.get_exported_properties(self))]
