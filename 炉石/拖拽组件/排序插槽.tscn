@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://l7pqd1a0ewu"]
 
-[ext_resource type="Script" uid="uid://cqc668nfp3l4t" path="res://排序插槽.gd" id="1_tbdes"]
+[ext_resource type="Script" uid="uid://cqc668nfp3l4t" path="res://拖拽组件/排序插槽.gd" id="1_tbdes"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbdes"]
 

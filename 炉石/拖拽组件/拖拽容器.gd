@@ -7,7 +7,7 @@ var _拖拽中的对象:DragObj
 var _拖拽中的对象原有索引:int
 
 func 添加到本容器中(d:DragObj,index:int=-1):
-	print(name,"】添加到本容器中->",d.name,"索引位置:",index)
+	#print(name,"】添加到本容器中->",d.name,"索引位置:",index)
 	if d.get_parent():
 		d.reparent(容器)
 	else:
@@ -18,14 +18,14 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 	pass
 
 func 节点开始拖拽(d:DragObj):
-	print(name,"】节点开始拖拽->",d.name)
+	#print(name,"】节点开始拖拽->",d.name)
 	_拖拽中的对象原有索引=d.get_index()
 	d.reparent(self)
 	_拖拽中的对象=d
 	pass
 	
 func 节点拖拽中(d:DragObj):
-	print(name,"】节点拖拽中->",d.name)
+	#print(name,"】节点拖拽中->",d.name)
 	pass
 
 func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
@@ -37,9 +37,9 @@ func 节点结束拖拽(d:DragObj):
 		print_stack()
 		print(name,"】拖拽错误-->目标容器",拖拽的目标容器.name)
 	if 拖拽的目标容器:
-		if 拖拽的目标容器.get_rect().has_point(get_global_mouse_position()):
+		if 拖拽的目标容器.get_global_rect().has_point(get_global_mouse_position()):
 			添加到其他容器(d,拖拽的目标容器)
-			print(name,"】拖拽的目标容器._结束清理操作->",_拖拽中的对象,"-->目标容器",拖拽的目标容器.name)
+			#print(name,"】拖拽的目标容器._结束清理操作->",_拖拽中的对象,"-->目标容器",拖拽的目标容器.name)
 			拖拽的目标容器._结束清理操作()
 			_结束清理操作()
 			return
@@ -47,7 +47,7 @@ func 节点结束拖拽(d:DragObj):
 	_结束清理操作()
 
 func _结束清理操作():
-	print(name,"】_结束清理操作->",_拖拽中的对象)
+	#print(name,"】_结束清理操作->",_拖拽中的对象)
 	_拖拽中的对象原有索引=-1
 	_拖拽中的对象=null
 

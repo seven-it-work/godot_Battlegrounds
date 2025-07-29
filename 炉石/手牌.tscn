@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjbmwdhqu7a27"]
+
+[ext_resource type="PackedScene" uid="uid://q4pecghgue6t" path="res://拖拽组件/拖拽容器.tscn" id="1_8g1o6"]
+
+[node name="拖拽容器" instance=ExtResource("1_8g1o6")]

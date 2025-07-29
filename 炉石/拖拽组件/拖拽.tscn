@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfuxmx2r8ho2d"]
 
-[ext_resource type="Script" uid="uid://dv3cw3am36da6" path="res://拖拽.gd" id="1_pb6g6"]
+[ext_resource type="Script" uid="uid://dv3cw3am36da6" path="res://拖拽组件/拖拽.gd" id="1_pb6g6"]
 
 [node name="拖拽" type="Control"]
 z_index = 1
