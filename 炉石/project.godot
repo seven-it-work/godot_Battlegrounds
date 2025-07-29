@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="炉石"
+run/main_scene="uid://pbnbjg78u6yt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [rendering]

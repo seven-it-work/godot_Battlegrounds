@@ -1,24 +1,113 @@
-[gd_scene load_steps=7 format=3 uid="uid://pbnbjg78u6yt"]
+[gd_scene load_steps=11 format=3 uid="uid://pbnbjg78u6yt"]
 
 [ext_resource type="Script" uid="uid://d08mngo1shghu" path="res://操作回合.gd" id="1_lrsob"]
-[ext_resource type="PackedScene" uid="uid://t0wcpxr5c1oa" path="res://战场.tscn" id="1_nhqbo"]
+[ext_resource type="PackedScene" uid="uid://t0wcpxr5c1oa" path="res://战场拖拽.tscn" id="1_nhqbo"]
 [ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽组件/拖拽.tscn" id="2_v2jep"]
-[ext_resource type="PackedScene" uid="uid://eaqrtc453uqk" path="res://酒馆.tscn" id="2_xthle"]
-[ext_resource type="PackedScene" uid="uid://bjbmwdhqu7a27" path="res://手牌.tscn" id="3_lrsob"]
+[ext_resource type="PackedScene" uid="uid://eaqrtc453uqk" path="res://酒馆拖拽.tscn" id="2_xthle"]
+[ext_resource type="PackedScene" uid="uid://bjbmwdhqu7a27" path="res://手牌拖拽.tscn" id="3_lrsob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrsob"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="GDScript" id="GDScript_v2jep"]
+resource_name = "酒馆"
+script/source = "extends DragObjContainer
+
+
+func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
+	super.添加到其他容器(拖拽中的对象,拖拽的目标容器)
+	print(\"金币扣除\")
+	print(\"购买成功\")
+	pass
+
+
+func 节点开始拖拽(d:DragObj):
+	super.节点开始拖拽(d)
+	# 高亮目标
+	var p=拖拽的目标容器.get_parent()
+	if p is PanelContainer:
+		var style=p.get_theme_stylebox(\"panel\") as StyleBoxFlat
+		style.border_color=Color(0.975, 0.773, 0.0)
+		p.add_theme_stylebox_override(\"panel\",style)
+	pass
+
+func 节点结束拖拽(d:DragObj):
+	super.节点结束拖拽(d)
+	# 高亮目标
+	var p=拖拽的目标容器.get_parent()
+	if p is PanelContainer:
+		var style=p.get_theme_stylebox(\"panel\") as StyleBoxFlat
+		style.border_color=Color(0.8, 0.8, 0.8)
+		p.add_theme_stylebox_override(\"panel\",style)
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2jep"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpnrc"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="GDScript" id="GDScript_lrsob"]
+resource_name = "手牌拖拽"
+script/source = "extends DragObjContainer
+
+func 节点开始拖拽(d:DragObj):
+	super.节点开始拖拽(d)
+	# 高亮目标
+	var p=拖拽的目标容器.get_parent()
+	if p is PanelContainer:
+		var style=p.get_theme_stylebox(\"panel\") as StyleBoxFlat
+		style.border_color=Color(0.975, 0.773, 0.0)
+		p.add_theme_stylebox_override(\"panel\",style)
+	pass
+
+func 节点结束拖拽(d:DragObj):
+	super.节点结束拖拽(d)
+	# 高亮目标
+	var p=拖拽的目标容器.get_parent()
+	if p is PanelContainer:
+		var style=p.get_theme_stylebox(\"panel\") as StyleBoxFlat
+		style.border_color=Color(0.8, 0.8, 0.8)
+		p.add_theme_stylebox_override(\"panel\",style)
+	pass
+"
 
 [node name="操作回合" type="Control"]
 layout_mode = 3
@@ -43,31 +132,31 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="酒馆" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_lrsob")
 
-[node name="酒馆" parent="PanelContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("2_xthle")]
+[node name="酒馆拖拽" parent="PanelContainer/VBoxContainer/酒馆" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("2_xthle")]
 layout_mode = 2
-"拖拽的目标容器" = NodePath("../../PanelContainer3/手牌")
+script = SubResource("GDScript_v2jep")
+"拖拽的目标容器" = NodePath("../../手牌/手牌拖拽")
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_lrsob")
-
-[node name="战场" parent="PanelContainer/VBoxContainer/PanelContainer2" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("1_nhqbo")]
-layout_mode = 2
-"拖拽的目标容器" = NodePath("../../PanelContainer/酒馆")
-
-[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="战场" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_lrsob")
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2jep")
 
-[node name="手牌" parent="PanelContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("3_lrsob")]
+[node name="战场拖拽" parent="PanelContainer/VBoxContainer/战场" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("1_nhqbo")]
 layout_mode = 2
-"拖拽的目标容器" = NodePath("../../PanelContainer2/战场")
+"拖拽的目标容器" = NodePath("../../酒馆/酒馆拖拽")
 
-[editable path="PanelContainer/VBoxContainer/PanelContainer3/手牌"]
+[node name="手牌" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpnrc")
+
+[node name="手牌拖拽" parent="PanelContainer/VBoxContainer/手牌" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("3_lrsob")]
+layout_mode = 2
+script = SubResource("GDScript_lrsob")
+"拖拽的目标容器" = NodePath("../../战场/战场拖拽")

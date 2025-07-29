@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://t0wcpxr5c1oa"]
+
+[ext_resource type="PackedScene" uid="uid://dtjmwcj1wtenu" path="res://拖拽组件/拖拽排序容器.tscn" id="1_1vokd"]
+
+[sub_resource type="GDScript" id="GDScript_han44"]
+resource_name = "战场拖拽"
+script/source = "extends SortDragObjContainer
+
+func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
+	super.添加到其他容器(拖拽中的对象,拖拽的目标容器)
+	print(\"金币添加\")
+	print(\"售卖触发\")
+
+func 节点开始拖拽(d:DragObj):
+	super.节点开始拖拽(d)
+	# 高亮目标
+	var p=拖拽的目标容器.get_parent()
+	if p is PanelContainer:
+		var style=p.get_theme_stylebox(\"panel\") as StyleBoxFlat
+		style.border_color=Color(0.975, 0.773, 0.0)
+		p.add_theme_stylebox_override(\"panel\",style)
+	pass
+
+func 节点结束拖拽(d:DragObj):
+	super.节点结束拖拽(d)
+	# 高亮目标
+	var p=拖拽的目标容器.get_parent()
+	if p is PanelContainer:
+		var style=p.get_theme_stylebox(\"panel\") as StyleBoxFlat
+		style.border_color=Color(0.8, 0.8, 0.8)
+		p.add_theme_stylebox_override(\"panel\",style)
+	pass
+"
+
+[node name="拖拽容器" instance=ExtResource("1_1vokd")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 495.0
+offset_bottom = 100.0
+grow_horizontal = 1
+grow_vertical = 1
+script = SubResource("GDScript_han44")

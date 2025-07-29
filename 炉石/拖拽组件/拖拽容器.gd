@@ -35,7 +35,9 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 func 节点结束拖拽(d:DragObj):
 	if _拖拽中的对象!=d:
 		print_stack()
-		print(name,"】拖拽错误-->目标容器",拖拽的目标容器.name)
+		printerr(name,"】拖拽错误-->目标容器",拖拽的目标容器.name)
+		print("_拖拽中的对象=",_拖拽中的对象)
+		return
 	if 拖拽的目标容器:
 		if 拖拽的目标容器.get_global_rect().has_point(get_global_mouse_position()):
 			添加到其他容器(d,拖拽的目标容器)

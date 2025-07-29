@@ -13,7 +13,6 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 		index=active_index
 	_清理插槽()
 	await get_tree().process_frame
-	print_stack()
 	super.添加到本容器中(d,index)
 	pass
 
@@ -58,7 +57,6 @@ func _添加插槽(d:DragObj):
 			place_holder.custom_minimum_size = Vector2(4,size.y)
 
 func _获取激活的插槽():
-	print("插槽list",获取插槽())
 	var actives = 获取插槽().filter(func(x): return x.active)
 	if actives:
 		var 插槽索引=actives[0].get_index()
