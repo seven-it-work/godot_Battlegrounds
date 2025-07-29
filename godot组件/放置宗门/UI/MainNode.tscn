@@ -108,10 +108,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_miuyq")
 
 [node name="TabBar" type="TabContainer" parent="UI/VBoxContainer/核心面板"]
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 
 [node name="建筑" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -178,6 +177,7 @@ size_flags_horizontal = 3
 text = "拆除"
 
 [node name="建造" type="PanelContainer" parent="UI/VBoxContainer/核心面板/TabBar"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

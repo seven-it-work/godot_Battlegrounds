@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://jogij2uq0327"]
+
+[ext_resource type="PackedScene" uid="uid://dtjmwcj1wtenu" path="res://拖拽排序容器.tscn" id="1_dhuvd"]
+[ext_resource type="Script" uid="uid://dp3j8h4ru82af" path="res://test_拖拽排序.gd" id="1_fnfv1"]
+[ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽.tscn" id="1_wuyb7"]
+
+[node name="Test拖拽排序" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnfv1")
+
+[node name="拖拽" parent="." instance=ExtResource("1_wuyb7")]
+
+[node name="拖拽2" parent="." instance=ExtResource("1_wuyb7")]
+
+[node name="拖拽3" parent="." instance=ExtResource("1_wuyb7")]
+
+[node name="拖拽容器2" parent="." node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("1_dhuvd")]
+"拖拽的目标容器" = NodePath("../拖拽容器")
+
+[node name="拖拽容器" parent="." node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("1_dhuvd")]
+offset_left = 4.0
+offset_top = 129.0
+offset_right = 499.0
+offset_bottom = 229.0
+"拖拽的目标容器" = NodePath("../拖拽容器2")

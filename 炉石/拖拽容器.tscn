@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4pecghgue6t"]
+
+[ext_resource type="Script" uid="uid://bgoldie8w383b" path="res://拖拽容器.gd" id="1_gsybb"]
+
+[node name="拖拽容器" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 495.0
+offset_bottom = 100.0
+mouse_filter = 2
+script = ExtResource("1_gsybb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 495.0
+offset_bottom = 100.0

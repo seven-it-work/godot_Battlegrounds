@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfuxmx2r8ho2d"]
+
+[ext_resource type="Script" uid="uid://dv3cw3am36da6" path="res://拖拽.gd" id="1_pb6g6"]
+
+[node name="拖拽" type="Control"]
+z_index = 1
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_pb6g6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="PanelContainer" to="." method="_on_gui_input"]

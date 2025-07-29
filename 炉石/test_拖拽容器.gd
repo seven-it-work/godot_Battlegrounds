@@ -1,0 +1,6 @@
+extends Control
+
+func _ready() -> void:
+	$"拖拽容器".添加到本容器中($"拖拽")
+	$"拖拽容器".添加到本容器中($"拖拽2")
+	pass
