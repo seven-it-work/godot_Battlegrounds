@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn05m5gy122f0"]
-
-[ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽组件/拖拽.tscn" id="1_ip20i"]
-[ext_resource type="Script" uid="uid://1vosyw6lgqjt" path="res://炉石卡牌.gd" id="2_7qowc"]
-
-[node name="拖拽" instance=ExtResource("1_ip20i")]
-script = ExtResource("2_7qowc")
-"卡牌类型" = 0

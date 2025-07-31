@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhs4bcgftvec0"]
 
-[ext_resource type="PackedScene" uid="uid://eaqrtc453uqk" path="res://酒馆拖拽.tscn" id="1_sao4s"]
+[ext_resource type="PackedScene" uid="uid://eaqrtc453uqk" path="res://操作回合UI/酒馆拖拽.tscn" id="1_sao4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrsob"]
 content_margin_left = 5.0

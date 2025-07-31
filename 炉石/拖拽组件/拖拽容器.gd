@@ -6,6 +6,16 @@ class_name DragObjContainer
 var _拖拽中的对象:DragObj
 var _拖拽中的对象原有索引:int
 
+func _process(delta: float) -> void:
+	pass
+
+func 获取所有的拖拽象()->Array[DragObj]:
+	var result:Array[DragObj]=[]
+	for i in 容器.get_children():
+		if i is DragObj:
+			result.append(i as DragObj)
+	return result
+
 func 添加到本容器中(d:DragObj,index:int=-1):
 	#print(name,"】添加到本容器中->",d.name,"索引位置:",index)
 	if d.get_parent():
@@ -13,6 +23,7 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 	else:
 		容器.add_child(d)
 	容器.move_child(d,index)
+	print("添加到本容器中:",name)
 	_解除信号(d)
 	_添加信号(d)
 	pass

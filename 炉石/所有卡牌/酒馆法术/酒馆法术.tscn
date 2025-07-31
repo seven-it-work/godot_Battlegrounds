@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8hpdp0sib4kt"]
+
+[ext_resource type="PackedScene" uid="uid://dn05m5gy122f0" path="res://操作回合UI/炉石卡牌.tscn" id="1_423kr"]
+[ext_resource type="Script" uid="uid://csuexj7l3o446" path="res://所有卡牌/酒馆法术/酒馆法术.gd" id="2_a2e4k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2e4k"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="酒馆法术" instance=ExtResource("1_423kr")]
+script = ExtResource("2_a2e4k")
+"卡牌类型" = 1
+
+[node name="PanelContainer" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_a2e4k")

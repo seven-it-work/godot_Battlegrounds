@@ -6,8 +6,14 @@
 resource_name = "战场拖拽"
 script/source = "extends SortDragObjContainer
 
+func 添加到本容器中(d:DragObj,index:int=-1):
+	if d is LuShiCard:
+		d.卡片所在位置=Enums.CardPosition.战场
+	super.添加到本容器中(d,index)
+	
 func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
 	super.添加到其他容器(拖拽中的对象,拖拽的目标容器)
+	# todo 拖拽中的对象的位置更改
 	print(\"金币添加\")
 	print(\"售卖触发\")
 

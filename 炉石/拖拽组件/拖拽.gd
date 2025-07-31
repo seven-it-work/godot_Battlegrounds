@@ -29,4 +29,4 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _to_string() -> String:
-	return "name=%s,path=%s,json=%s"%[name,get_path(),JSON.stringify(ObjectUtils.get_exported_properties(self))]
+	return "objectId=%s,name=%s,path=%s,json=%s"%[self.get_instance_id(),name,get_path(),JSON.stringify(ObjectUtils.get_exported_properties(self))]

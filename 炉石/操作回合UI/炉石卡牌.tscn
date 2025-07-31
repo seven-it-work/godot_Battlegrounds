@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn05m5gy122f0"]
+
+[ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽组件/拖拽.tscn" id="1_ip20i"]
+[ext_resource type="Script" uid="uid://1vosyw6lgqjt" path="res://操作回合UI/炉石卡牌.gd" id="2_7qowc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qowc"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="拖拽" instance=ExtResource("1_ip20i")]
+script = ExtResource("2_7qowc")
+"卡牌类型" = 0
+"卡片所在位置" = 3
+lushi_id = 0
+str_id = ""
+"名称" = ""
+"描述" = ""
+"等级" = 0
+"花费" = 0
+
+[node name="PanelContainer" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qowc")

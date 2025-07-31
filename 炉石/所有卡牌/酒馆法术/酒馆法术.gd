@@ -1,0 +1,2 @@
+extends LuShiCard
+class_name BaseTavernCard
