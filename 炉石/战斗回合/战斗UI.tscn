@@ -29,26 +29,26 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="target" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="敌人随从" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/target"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/敌人随从"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/target/PanelContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/敌人随从/PanelContainer"]
 layout_mode = 2
 text = "g1"
 
-[node name="player" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="玩家随从" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/player"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/玩家随从"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/player/PanelContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/玩家随从/PanelContainer"]
 layout_mode = 2
 text = "g2"

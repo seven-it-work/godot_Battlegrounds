@@ -14,6 +14,10 @@ config/name="炉石"
 run/main_scene="uid://pbnbjg78u6yt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

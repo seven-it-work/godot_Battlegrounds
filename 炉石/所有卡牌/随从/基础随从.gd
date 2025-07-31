@@ -2,12 +2,23 @@ extends LuShiCard
 class_name BaseMinionCard
 ## 种族
 @export var race:Array[Enums.CardRace]=[Enums.CardRace.无]
+## 基础攻击力、生命值
 @export var atk_hp:Vector2=Vector2(0,0)
+## 当前生命值（）
+@export var current_hp:int=0
 @export var 永久属性:Array[AttributeBonus]=[]
 # 开始回合就会清理
 @export var 临时属性:Array[AttributeBonus]=[]
 @export var is_gold:bool=false
 
+func 获取atk_hp()->Vector2:
+	var result:Vector2=atk_hp
+	for i in 永久属性:
+		result+=i.atk_hp
+	for i in 临时属性:
+		result+=i.atk_hp
+	return result
+	
 func 获取属性倍率()->int:
 	if is_gold:
 		return 2
