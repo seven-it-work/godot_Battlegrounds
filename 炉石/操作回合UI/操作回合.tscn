@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://pbnbjg78u6yt"]
+[gd_scene load_steps=16 format=3 uid="uid://pbnbjg78u6yt"]
 
 [ext_resource type="Script" uid="uid://d08mngo1shghu" path="res://操作回合UI/操作回合.gd" id="1_lrsob"]
 [ext_resource type="PackedScene" uid="uid://t0wcpxr5c1oa" path="res://操作回合UI/战场拖拽.tscn" id="1_nhqbo"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bjbmwdhqu7a27" path="res://操作回合UI/手牌拖拽.tscn" id="3_lrsob"]
 [ext_resource type="Script" uid="uid://bao38r334dwrj" path="res://操作回合UI/箭头遮罩.gd" id="6_lpnrc"]
 [ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://操作回合UI/箭头.tscn" id="6_v2jep"]
-[ext_resource type="Script" uid="uid://bjt64uo18y7yn" path="res://player.gd" id="9_ciusw"]
 [ext_resource type="Script" uid="uid://cc4oerpy80n8d" path="res://操作回合UI/抉择遮罩.gd" id="10_j0wil"]
 [ext_resource type="PackedScene" uid="uid://bt3iq3wqhc88f" path="res://操作回合UI/抉择选项UI.tscn" id="12_fsu7u"]
 
@@ -96,6 +95,8 @@ corner_radius_bottom_left = 15
 resource_name = "手牌拖拽"
 script/source = "extends DragObjContainer
 
+@export var player:Player
+
 func 添加到本容器中(d:DragObj,index:int=-1):
 	if d is LuShiCard:
 		d.卡片所在位置=Enums.CardPosition.手牌
@@ -114,7 +115,7 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 				print(\"随从取消使用\")
 				self.添加到本容器中(d,_拖拽中的对象原有索引)
 				pass
-			var list=PlayerOperationUI.操作回合.获取酒馆And战场的牌()
+			var list=player.获取酒馆And战场的牌()
 			if 拖拽中的对象.选择目标对象:
 				var 目标list=拖拽中的对象.选择目标对象.获取选择的目标对象(list)
 				if 目标list.is_empty():
@@ -122,10 +123,10 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 					_使用成功(拖拽中的对象)
 				else:
 					# 展示选择箭头组件
-					PlayerOperationUI.操作回合.箭头遮罩.初始化(拖拽中的对象,目标list,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
+					player.箭头遮罩.初始化(拖拽中的对象,目标list,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
 			elif 拖拽中的对象.抉择:
 				print(\"抉择随从\")
-				PlayerOperationUI.操作回合.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
+				player.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
 				pass
 			else:
 				print(\"随从使用\")
@@ -136,7 +137,7 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 				print(\"法术取消使用\")
 				self.添加到本容器中(d,_拖拽中的对象原有索引)
 				pass
-			var list=PlayerOperationUI.操作回合.获取酒馆And战场的牌()
+			var list=player.获取酒馆And战场的牌()
 			if 拖拽中的对象.选择目标对象:
 				var 目标list=拖拽中的对象.选择目标对象.获取选择的目标对象(list)
 				if 目标list.is_empty():
@@ -144,10 +145,10 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 					法术取消使用.call(拖拽中的对象)
 				else:
 					# 展示选择箭头组件
-					PlayerOperationUI.操作回合.箭头遮罩.初始化(拖拽中的对象,目标list,_使用成功.bind(拖拽中的对象),法术取消使用.bind(拖拽中的对象))
+					player.箭头遮罩.初始化(拖拽中的对象,目标list,_使用成功.bind(拖拽中的对象),法术取消使用.bind(拖拽中的对象))
 			elif 拖拽中的对象.抉择:
 				print(\"抉择法术\")
-				PlayerOperationUI.操作回合.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),法术取消使用.bind(拖拽中的对象))
+				player.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),法术取消使用.bind(拖拽中的对象))
 				pass
 			else:
 				print(\"法术使用\")
@@ -161,7 +162,7 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 
 func _使用成功(d:DragObj):
 	print(\"_使用成功\",d)
-	PlayerOperationUI.操作回合.player.使用卡牌信号.emit(d)
+	player.使用卡牌信号.emit(d)
 	pass
 
 func 节点开始拖拽(d:DragObj):
@@ -199,7 +200,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="操作回合" type="Control" node_paths=PackedStringArray("player")]
+[node name="操作回合" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -207,7 +208,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lrsob")
-player = NodePath("Player")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -249,14 +249,26 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_lpnrc")
 
-[node name="手牌拖拽" parent="PanelContainer/HBoxContainer/VBoxContainer/手牌" node_paths=PackedStringArray("拖拽的目标容器") instance=ExtResource("3_lrsob")]
+[node name="手牌拖拽" parent="PanelContainer/HBoxContainer/VBoxContainer/手牌" node_paths=PackedStringArray("player", "拖拽的目标容器") instance=ExtResource("3_lrsob")]
 layout_mode = 2
 script = SubResource("GDScript_lrsob")
+player = NodePath("../../../../..")
 "拖拽的目标容器" = NodePath("../../战场/战场拖拽")
 
 [node name="Tips" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(144, 0)
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/Tips"]
+layout_mode = 2
+
+[node name="结束回合" type="Button" parent="PanelContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "结束回合"
+
+[node name="加载存档" type="Button" parent="PanelContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "加载存档"
 
 [node name="箭头遮罩" type="Panel" parent="PanelContainer"]
 visible = false
@@ -312,10 +324,8 @@ size_flags_horizontal = 3
 disabled = true
 text = "确定"
 
-[node name="Player" type="Node" parent="."]
-script = ExtResource("9_ciusw")
-metadata/_custom_type_script = "uid://bjt64uo18y7yn"
-
+[connection signal="pressed" from="PanelContainer/HBoxContainer/Tips/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/Tips/VBoxContainer/加载存档" to="." method="_on_加载存档_pressed"]
 [connection signal="gui_input" from="PanelContainer/箭头遮罩" to="PanelContainer/箭头遮罩" method="_on_gui_input"]
 [connection signal="gui_input" from="PanelContainer/抉择遮罩" to="PanelContainer/抉择遮罩" method="_on_gui_input"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/取消" to="PanelContainer/抉择遮罩" method="_on_取消_pressed"]

@@ -11,9 +11,10 @@ class_name LuShiCard
 @export var 描述:String=""
 @export var 等级:int=0
 @export var 花费:int=0
+@export var player:Player
 
 ## 子类自己去实现（会在 添加卡片 这个方法去调用）
-func 信号绑定方法(player:Player):
+func 信号绑定方法():
 	pass
 
 func 是否能够使用()->bool:
@@ -26,7 +27,7 @@ func 获取描述(dic:Dictionary={})->String:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if PlayerOperationUI.操作回合:
+	if player:
 		if get_global_rect().has_point(get_global_mouse_position()):
 			#print("更新Tips:",name)
 			# 调用更新Tips方法

@@ -1,6 +1,6 @@
 extends BaseMinionCard
 
-func 信号绑定方法(player:Player):
+func 信号绑定方法():
 	player.使用卡牌信号.connect(func(使用的卡片:LuShiCard):
 		if self.卡片所在位置==Enums.CardPosition.战场:
 			if self!=使用的卡片:

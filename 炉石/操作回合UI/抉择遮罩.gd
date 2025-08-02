@@ -5,12 +5,14 @@ var 触发的卡片:LuShiCard
 var _当前选中的选项:ChooseOption
 var 使用成功:Callable
 var 取消:Callable
+var player:Player
 
-func 初始化(卡片:LuShiCard,使用成功:Callable,取消:Callable):
+func 初始化(卡片:LuShiCard,使用成功:Callable,取消:Callable,player:Player):
 	self.触发的卡片=卡片
 	self.使用成功=使用成功
 	self.取消=取消
 	self.show()
+	self.player=player
 	for i in 抉择选项容器.get_children():
 		i.queue_free()
 	for i in 触发的卡片.抉择.chooseOption:
@@ -35,14 +37,14 @@ func _on_取消_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_确定_pressed() -> void:
-	var list=PlayerOperationUI.操作回合.获取酒馆And战场的牌()
+	var list=player.获取酒馆And战场的牌()
 	self.hide()
 	if _当前选中的选项.选项卡片.选择目标对象:
 		var 目标list=_当前选中的选项.选项卡片.选择目标对象.获取选择的目标对象(list)
 		if 目标list.is_empty():
 			取消.call()
 		else:
-			PlayerOperationUI.操作回合.箭头遮罩.初始化(触发的卡片,目标list,使用成功,取消)
+			player.初始化(触发的卡片,目标list,使用成功,取消)
 	else:
 		使用成功.call()
 	pass # Replace with function body.

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4kspxj71yo2o"]
+
+[ext_resource type="Script" uid="uid://bsv4fr8ehvdok" path="res://game_view.gd" id="1_hxygj"]
+[ext_resource type="PackedScene" uid="uid://clmf673yj1qjk" path="res://战斗回合/战斗UI.tscn" id="2_lufro"]
+[ext_resource type="PackedScene" uid="uid://pbnbjg78u6yt" path="res://操作回合UI/操作回合.tscn" id="3_npcl7"]
+
+[node name="GameView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hxygj")
+
+[node name="操作回合" parent="." instance=ExtResource("3_npcl7")]
+layout_mode = 1
+
+[node name="战斗ui" parent="." instance=ExtResource("2_lufro")]
+visible = false
+layout_mode = 1

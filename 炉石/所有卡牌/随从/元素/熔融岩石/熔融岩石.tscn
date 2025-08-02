@@ -17,6 +17,7 @@ corner_radius_bottom_left = 5
 [node name="熔融岩石" instance=ExtResource("1_t0ir4")]
 script = ExtResource("2_4qjok")
 race = Array[int]([1])
+current_hp = 0
 lushi_id = 64296
 str_id = "BGS_127"
 "名称" = "熔融岩石"

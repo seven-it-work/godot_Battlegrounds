@@ -4,7 +4,7 @@ class_name BaseMinionCard
 @export var race:Array[Enums.CardRace]=[Enums.CardRace.无]
 ## 基础攻击力、生命值
 @export var atk_hp:Vector2=Vector2(0,0)
-## 当前生命值（）
+## 当前生命值（战斗开始时会进行重置）
 @export var current_hp:int=0
 @export var 永久属性:Array[AttributeBonus]=[]
 # 开始回合就会清理
@@ -26,6 +26,7 @@ func 获取属性倍率()->int:
 
 func 添加加成属性(加成:AttributeBonus,是否永久:bool):
 	print("%s获取属性加成%s，是否为永久:%s"%[名称,加成,是否永久])
+	current_hp+=加成.atk_hp.y
 	if 是否永久:
 		永久属性.append(加成)
 	else:
