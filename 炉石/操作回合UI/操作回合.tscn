@@ -29,7 +29,7 @@ resource_name = "酒馆"
 script/source = "extends DragObjContainer
 
 func 添加到本容器中(d:DragObj,index:int=-1):
-	if d is LuShiCard:
+	if d is CardUI:
 		d.卡片所在位置=Enums.CardPosition.酒馆
 	super.添加到本容器中(d,index)
 	

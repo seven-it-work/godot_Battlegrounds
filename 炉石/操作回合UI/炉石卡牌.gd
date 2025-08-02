@@ -1,29 +1,17 @@
 extends DragObj
-class_name LuShiCard
+class_name CardUI
 
-@export var 卡牌类型:Enums.CardType=Enums.CardType.随从
-@export var 卡片所在位置:Enums.CardPosition=Enums.CardPosition.无
-@export var 抉择:Choose
-@export var 选择目标对象:SelectTarget
-@export var lushi_id:int=0
-@export var str_id:String=""
-@export var 名称:String=""
-@export var 描述:String=""
-@export var 等级:int=0
-@export var 花费:int=0
-@export var player:Player
+@export var cardEntity:CardEntity
 
-## 子类自己去实现（会在 添加卡片 这个方法去调用）
-func 信号绑定方法():
-	pass
+var player:PlayerEntity
 
-func 是否能够使用()->bool:
-	return true
+static func build(cardEntity:CardEntity,player:PlayerEntity)->CardUI:
+	var luShiCard=preload("uid://dn05m5gy122f0").instantiate()
+	luShiCard.cardEntity=cardEntity
+	luShiCard.player=player
+	return luShiCard
 
-func 获取描述(dic:Dictionary={})->String:
-	var tempDic=ObjectUtils.get_exported_properties(self)
-	tempDic.merged(dic,true)
-	return 描述.format(tempDic)
+
 
 func _process(delta: float) -> void:
 	super._process(delta)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy3yv2yd2kdo1"]
+
+[ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽组件/拖拽.tscn" id="1_5b3sr"]
+[ext_resource type="Script" uid="uid://behug4shh45vs" path="res://ui/card_ui.gd" id="2_4yc6j"]
+
+[node name="CardUI" instance=ExtResource("1_5b3sr")]
+script = ExtResource("2_4yc6j")

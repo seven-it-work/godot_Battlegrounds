@@ -1,10 +1,9 @@
 extends Control
-class_name Player
+class_name OperationUI
 
-signal 使用卡牌信号(使用的卡片:LuShiCard)
+@export var player:PlayerEntity
 
-## 元素加成(攻击力/生命值)
-@export var 元素加成:Vector2=Vector2(0,0)
+signal 使用卡牌信号(使用的卡片:CardUI)
 
 @onready var 酒馆:=$"PanelContainer/HBoxContainer/VBoxContainer/酒馆/酒馆拖拽"
 @onready var 战场:=$"PanelContainer/HBoxContainer/VBoxContainer/战场/战场拖拽"
@@ -12,32 +11,58 @@ signal 使用卡牌信号(使用的卡片:LuShiCard)
 @onready var 箭头遮罩:=$"PanelContainer/箭头遮罩"
 @onready var 抉择遮罩:=$"PanelContainer/抉择遮罩"
 
-func 获取酒馆And战场的牌()->Array[LuShiCard]:
-	var result:Array[LuShiCard]=[]
-	for i in 酒馆.获取所有的拖拽象():
-		if i is LuShiCard:
-			result.append(i as LuShiCard)
-	for i in 战场.获取所有的拖拽象():
-		if i is LuShiCard:
-			result.append(i as LuShiCard)
-	return result
+func 初始化(player:PlayerEntity):
+	self.player=player
+	player.添加卡牌信号.connect(_添加卡片.bind())
+	player.删除卡牌信号.connect(_删除卡牌.bind())
+	# UI初始化
+	酒馆
+	pass
 
+func _process(delta: float) -> void:
+	if player:
+		
+		pass
 
-func 添加卡片(d:LuShiCard,cardPosition:Enums.CardPosition):
-	d.player=self
-	d.信号绑定方法()
+func _检查并更新酒馆():
+	#if player:
+		#var 是否重置=false
+		#var luShiCard:Array[LuShiCard]=酒馆.获取所有的拖拽象().filter(func(node): return node is LuShiCard)
+		#for i in luShiCard.size():
+			#if luShiCard.get(i).cardEntity!=player.酒馆.get(i):
+				#pass
+	pass
+
+func _删除卡牌(d:CardEntity,cardPosition:Enums.CardPosition):
 	if cardPosition==Enums.CardPosition.酒馆:
-		酒馆.添加到本容器中(d)
+		酒馆.erase(d)
 		return
 	if cardPosition==Enums.CardPosition.手牌:
-		手牌.添加到本容器中(d)
+		手牌.erase(d)
 		return
 	if cardPosition==Enums.CardPosition.战场:
-		战场.添加到本容器中(d)
+		战场.erase(d)
 		return
-	printerr("错误添加卡片",d,cardPosition)
+	printerr("错误删除卡牌卡片",d,cardPosition)
 	print_stack()
+	pass
 
+
+## 由信号触发，不建议直接调用
+func _添加卡片(d:CardEntity,cardPosition:Enums.CardPosition,index:int):
+	var cardUI=CardUI.build(d,player)
+	if cardPosition==Enums.CardPosition.酒馆:
+		酒馆.添加到本容器中(cardUI)
+		return
+	if cardPosition==Enums.CardPosition.手牌:
+		手牌.添加到本容器中(cardUI)
+		return
+	if cardPosition==Enums.CardPosition.战场:
+		战场.添加到本容器中(cardUI)
+		return
+	printerr("错误添加卡片",cardUI,cardPosition)
+	print_stack()
+	pass
 
 func _on_结束回合_pressed() -> void:
 	# 将当前数据存储

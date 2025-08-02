@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1s2h3xa4m35v"]
+
+[ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://ui/箭头/箭头.tscn" id="1_fce2h"]
+[ext_resource type="Script" uid="uid://cblrggyj4vi76" path="res://ui/操作回合.gd" id="1_w2326"]
+[ext_resource type="PackedScene" uid="uid://q4pecghgue6t" path="res://拖拽组件/拖拽容器.tscn" id="2_8ikki"]
+[ext_resource type="Script" uid="uid://cmguloqe83arq" path="res://ui/酒馆.gd" id="3_ge8vl"]
+[ext_resource type="PackedScene" uid="uid://dtjmwcj1wtenu" path="res://拖拽组件/拖拽排序容器.tscn" id="4_6xkts"]
+[ext_resource type="Script" uid="uid://gkik7v6ljj1h" path="res://ui/战场.gd" id="5_mt46m"]
+[ext_resource type="Script" uid="uid://dmbqmjjyylkkk" path="res://ui/手牌.gd" id="6_icvfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mt46m"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icvfi"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1h12"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0588235)
+
+[node name="操作回合" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w2326")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mt46m")
+
+[node name="酒馆" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer" instance=ExtResource("2_8ikki")]
+layout_mode = 2
+script = ExtResource("3_ge8vl")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mt46m")
+
+[node name="战场" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer2" instance=ExtResource("4_6xkts")]
+layout_mode = 2
+script = ExtResource("5_mt46m")
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mt46m")
+
+[node name="手牌" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("operationUI") instance=ExtResource("2_8ikki")]
+layout_mode = 2
+script = ExtResource("6_icvfi")
+operationUI = NodePath("../../../../..")
+
+[node name="Tips" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(144, 0)
+layout_mode = 2
+
+[node name="箭头遮罩" type="Panel" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icvfi")
+
+[node name="箭头" parent="PanelContainer/箭头遮罩" instance=ExtResource("1_fce2h")]
+
+[node name="抉择遮罩" type="Panel" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d1h12")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/抉择遮罩"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -4.0
+offset_right = 10.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/抉择遮罩/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="操作" type="HBoxContainer" parent="PanelContainer/抉择遮罩/PanelContainer"]
+layout_mode = 2
+
+[node name="取消" type="Button" parent="PanelContainer/抉择遮罩/PanelContainer/操作"]
+layout_mode = 2
+
+[node name="确认" type="Button" parent="PanelContainer/抉择遮罩/PanelContainer/操作"]
+layout_mode = 2

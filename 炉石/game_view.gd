@@ -1,6 +1,8 @@
 extends Control
 class_name GameView
 
+@export var palyer:Player
+
 func _ready() -> void:
 	$"操作回合".添加卡片(preload("uid://cgag5xssn8n0a").instantiate(),Enums.CardPosition.酒馆)
 	$"操作回合".添加卡片(preload("uid://cgag5xssn8n0a").instantiate(),Enums.CardPosition.酒馆)
