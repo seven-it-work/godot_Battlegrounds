@@ -17,6 +17,8 @@ signal 删除卡片信号(
 	cardPosition:Enums.CardPosition,
 )
 
+signal 使用卡牌信号(使用卡牌:CardEntity)
+signal 战吼触发信号(战吼卡牌:CardEntity)
 
 func 获取酒馆And战场的牌()->Array[CardEntity]:
 	var result:Array[CardEntity]=[]
@@ -35,6 +37,8 @@ func 添加卡片(
 	index:int,
 	是否触发信号:bool
 ):
+	print("添加卡牌")
+	d.player=self
 	if 是否触发信号:
 		添加卡片信号.emit(d,cardPosition,index)
 	#d.信号绑定方法()

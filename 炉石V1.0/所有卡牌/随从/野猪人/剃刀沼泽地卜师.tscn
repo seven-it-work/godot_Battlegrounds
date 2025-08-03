@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://x8dgikce8axj"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_vw8pv"]
+
+[sub_resource type="GDScript" id="GDScript_vw8pv"]
+script/source = "extends Roar
+
+## 由子类实现
+func _具体战吼方法接口():
+	print(\"战吼实现\")
+	pass
+"
+
+[node name="剃刀沼泽地卜师" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_vw8pv")
+race = Array[int]([7])
+atk_hp = Vector2(3, 1)
+"glod_描述" = "<b>战吼：<\\/b>获取2张<b>鲜血宝石<\\/b>。"
+"战吼" = [NodePath("Roar")]
+lushi_id = 70143
+str_id = "BG20_100"
+"名称" = "剃刀沼泽地卜师"
+"描述" = "<b>战吼：<\\/b>获取一张<b>鲜血宝石<\\/b>。"
+"等级" = 1
+"花费" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("执行的卡牌")]
+script = SubResource("GDScript_vw8pv")
+"执行的卡牌" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

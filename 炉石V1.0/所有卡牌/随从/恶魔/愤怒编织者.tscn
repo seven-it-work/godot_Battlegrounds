@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxgjlr4xfglel"]
+
+[sub_resource type="GDScript" id="GDScript_chn0s"]
+resource_name = "愤怒编织者"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.使用卡牌信号.connect(_使用信号.bind())
+	pass
+
+func _使用信号(使用的卡牌:CardEntity):
+	if 使用的卡牌!=self:
+		if 卡片所在位置==Enums.CardPosition.战场:
+			if 使用的卡牌 is BaseMinion:
+				if 使用的卡牌.race.has(Enums.CardRace.恶魔):
+					print(\"使用信号触发\")
+					print(使用的卡牌)
+					print(self)
+	pass
+"
+
+[node name="愤怒编织者" type="Node"]
+script = SubResource("GDScript_chn0s")
+"限定类型" = Array[int]([2])
+atk_hp = Vector2(1, 4)
+"glod_描述" = "在你使用一张恶魔牌后，对你的英雄造成1点伤害并获得+2\\/+1，触发两次。"
+lushi_id = 59670
+str_id = "BGS_004"
+"名称" = "愤怒编织者"
+"描述" = "在你使用一张恶魔牌后，对你的英雄造成1点伤害并获得+2\\/+1。"
+"等级" = 1
+"花费" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

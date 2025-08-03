@@ -12,13 +12,20 @@ class_name CardEntity
 @export var 等级:int=0
 @export var 花费:int=0
 
-#region 辅助的一下对象，不能持久化
+#region 持久化辅助对象
+@export var 文件路径:String
+@export var 文件名:String
+
+#region 辅助对象，不能持久化
+var player:Player
 #endregion
 
 
 func _to_string() -> String:
 	return JSON.stringify(ObjectUtils.get_to_string(self))
 
+func 信号绑定():
+	pass
 
 func 是否能够使用()->bool:
 	return true

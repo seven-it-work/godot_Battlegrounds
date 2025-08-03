@@ -18,5 +18,22 @@ enum CardPosition{
 
 enum CardRace{
 	无,
-	元素
+	元素,
+	恶魔,
+	龙,
+	机械,
+	海盗,
+	野兽,
+	野猪人,
+}
+
+enum ConditionEnum{
+	大于,
+	等于,
+	小于,
+	大于等于,
+	小于等于,
+	不等于,
+	在,
+	不在,
 }

@@ -77,6 +77,11 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 
 func _使用成功(cardUI:CardUI):
 	print("_使用成功",cardUI)
+	var cardData=cardUI.cardData
+	if cardData is BaseMinion:
+		for i:Roar in cardData.战吼:
+			i.战吼执行()
+	player.使用卡牌信号.emit(cardUI.cardData)
 	player.删除卡牌(cardUI.cardData,Enums.CardPosition.手牌,false)
 	super.添加到其他容器(cardUI,拖拽的目标容器)
 	

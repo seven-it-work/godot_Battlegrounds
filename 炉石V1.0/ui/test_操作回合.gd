@@ -2,17 +2,13 @@ extends Control
 
 func _ready() -> void:
 	$"操作回合".初始化($Player)
+	CardUtils.游戏初始化加载卡牌([])
 	pass
 
-var test_array:Array=[
-	preload("uid://mrg14rtomoq").instantiate(),
-	preload("uid://ucqd5ywej1vn").instantiate(),
-	CardEntity.new()
-]
-var index=0;
 
 func _on_button_pressed() -> void:
-	var card=test_array.get(index)
-	index=(index+1)%test_array.size()
+	#var card=CardUtils.get_card("愤怒编织者",$Player)
+	#var card=CardUtils.get_card("熔融岩石",$Player)
+	var card=CardUtils.get_card("剃刀沼泽地卜师",$Player)
 	$Player.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
 	pass # Replace with function body.
