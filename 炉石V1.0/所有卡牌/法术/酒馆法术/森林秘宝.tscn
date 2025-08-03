@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ucqd5ywej1vn"]
+
+[ext_resource type="Script" uid="uid://bfiw5rjm0riy2" path="res://所有卡牌/法术/酒馆法术/TavernSpell.gd" id="1_ap0c7"]
+[ext_resource type="Script" uid="uid://dm8wwi7t2cegy" path="res://entity/Choose.gd" id="2_iotjd"]
+[ext_resource type="Script" uid="uid://bvigsfyqo3h7x" path="res://所有卡牌/法术/BaseSpell.gd" id="3_1dwb7"]
+[ext_resource type="Script" uid="uid://dka7i2mq801a1" path="res://entity/SelectTarget.gd" id="4_o1ej2"]
+
+[node name="森林秘宝" type="Node" node_paths=PackedStringArray("抉择")]
+script = ExtResource("1_ap0c7")
+"卡牌类型" = 1
+"抉择" = NodePath("Choose")
+"名称" = "森林秘宝"
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="Choose" type="Node" parent="." node_paths=PackedStringArray("chooseOption")]
+script = ExtResource("2_iotjd")
+chooseOption = [NodePath("BaseSpell"), NodePath("BaseSpell2")]
+metadata/_custom_type_script = "uid://dm8wwi7t2cegy"
+
+[node name="BaseSpell" type="Node" parent="Choose" node_paths=PackedStringArray("选择目标对象")]
+script = ExtResource("3_1dwb7")
+"卡牌类型" = 4
+"选择目标对象" = NodePath("SelectTarget")
+"名称" = "使一个随从获得+{0}\\/+{1}"
+"描述" = "使一个随从获得+{0}\\/+{1}"
+metadata/_custom_type_script = "uid://bvigsfyqo3h7x"
+
+[node name="SelectTarget" type="Node" parent="Choose/BaseSpell"]
+script = ExtResource("4_o1ej2")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"
+
+[node name="BaseSpell2" type="Node" parent="Choose"]
+script = ExtResource("3_1dwb7")
+"卡牌类型" = 4
+"名称" = "使你的随从获得+{2}\\/+{3}"
+"描述" = "使你的随从获得+{2}\\/+{3}"
+metadata/_custom_type_script = "uid://bvigsfyqo3h7x"

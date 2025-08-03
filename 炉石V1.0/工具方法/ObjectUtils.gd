@@ -113,3 +113,10 @@ static func get_exported_properties(obj: Object) -> Dictionary:
 			result[property_name] = value
 	
 	return result
+## 获取通用的to_string打印信息
+static func get_to_string(obj:Object)->Dictionary:
+	var dic=ObjectUtils.get_exported_properties(obj)
+	dic.set("pathInfo", obj.get_path() if obj.is_inside_tree() else null)
+	dic.set("objectId",obj.get_instance_id())
+	dic.set("nameInfo",obj.name)
+	return dic

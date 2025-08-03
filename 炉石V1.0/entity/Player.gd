@@ -69,7 +69,8 @@ func 删除卡牌(
 	pass
 
 func _调整索引(i:int,array:Array)->int:
-		i=i%array.size()
-		if i<0:
-			return i+array.size()
-		return i
+	if array.size()<=0:
+		return 0;
+	while i<0:
+		i+=array.size()
+	return i%array.size()

@@ -13,8 +13,17 @@ func 只添加到容器中(d:DragObj,index:int=-1):
 
 func 添加到本容器中(d:DragObj,index:int=-1):
 	if d is CardUI:
-		player.添加卡片(d.cardData,Enums.CardPosition.战场,index,false)
-		只添加到容器中(d,index)
+		d.cardData.卡片所在位置=Enums.CardPosition.战场
+		var active_index=_获取激活的插槽()
+		if active_index!=null:
+			index=active_index
+		_清理插槽()
+		await get_tree().process_frame
+		player.添加卡片(d.cardData,Enums.CardPosition.战场,index,true)
+	else:
+		printerr("错误了")
+		print_stack()
+		
 	
 func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
 	if 拖拽中的对象 is CardUI:
@@ -25,6 +34,8 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 		printerr("错误了")
 		print_stack()
 
+func _回到原来位置():
+	self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)
 
 func 节点开始拖拽(d:DragObj):
 	super.节点开始拖拽(d)

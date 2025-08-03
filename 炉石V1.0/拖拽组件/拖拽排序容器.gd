@@ -22,7 +22,6 @@ func 节点拖拽中(d:DragObj):
 		_添加插槽(d)
 	else:
 		_清理插槽()
-		
 	if 拖拽的目标容器:
 		if 拖拽的目标容器 is SortDragObjContainer:
 			if 拖拽的目标容器.get_global_rect().has_point(get_global_mouse_position()):

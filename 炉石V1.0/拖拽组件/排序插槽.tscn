@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqc668nfp3l4t" path="res://拖拽组件/排序插槽.gd" id="1_tbdes"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbdes"]
+bg_color = Color(0.817391, 0.529972, 0, 1)
 
 [node name="排序插槽" type="Panel"]
 anchors_preset = 15

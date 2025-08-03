@@ -22,6 +22,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_LEFT:
 			当前状态="拖拽"
+			print(self)
 			开始拖拽.emit()
 			_drag_offset = global_position-get_global_mouse_position()
 			pass
@@ -29,4 +30,6 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _to_string() -> String:
-	return "objectId=%s,name=%s,path=%s,json=%s"%[self.get_instance_id(),name,get_path(),JSON.stringify(ObjectUtils.get_exported_properties(self))]
+	var dic=ObjectUtils.get_to_string(self)
+	dic.set("当前状态",当前状态)
+	return JSON.stringify(dic)

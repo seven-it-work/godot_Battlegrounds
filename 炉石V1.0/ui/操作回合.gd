@@ -8,18 +8,24 @@ class_name OperationUI
 @onready var 箭头遮罩:=$"PanelContainer/箭头遮罩"
 @onready var 抉择遮罩:=$"PanelContainer/抉择遮罩"
 
+func _process(delta: float) -> void:
+	if player:
+		$PanelContainer/HBoxContainer/Tips/VBoxContainer/Label.text=str(player.酒馆.size())
+		$PanelContainer/HBoxContainer/Tips/VBoxContainer/Label2.text=str(player.战场.size())
+		$PanelContainer/HBoxContainer/Tips/VBoxContainer/Label3.text=str(player.手牌.size())
+	pass
 
 func 初始化(player:Player):
 	self.player=player
 	self.player.添加卡片信号.connect(_添加卡片.bind())
 	self.player.删除卡片信号.connect(_删除卡片.bind())
 	
-	初始化容器(player,酒馆)
-	初始化容器(player,战场)
-	初始化容器(player,手牌)
+	_初始化容器(player,酒馆)
+	_初始化容器(player,战场)
+	_初始化容器(player,手牌)
 	pass
 
-func 初始化容器(player:Player,dragObjContainer:DragObjContainer):
+func _初始化容器(player:Player,dragObjContainer:DragObjContainer):
 	dragObjContainer.player=player
 	for i in dragObjContainer.容器.get_children():
 		i.queue_free()
@@ -60,7 +66,11 @@ func _添加卡片(
 	index:int
 ):
 	# 初始ui
-	var cardUI=CardUI.build(d)
+	var cardUI
+	if d.get_parent() is CardUI:
+		cardUI=d.get_parent()
+	else:
+		cardUI=CardUI.build(d)
 	if cardPosition==Enums.CardPosition.酒馆:
 		酒馆.只添加到容器中(cardUI,index)
 		return

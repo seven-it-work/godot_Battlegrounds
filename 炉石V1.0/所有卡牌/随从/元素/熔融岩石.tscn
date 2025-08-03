@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cghmggje02bx7"]
+
+[sub_resource type="GDScript" id="GDScript_b2nas"]
+resource_name = "熔融岩石"
+script/source = "extends BaseMinion
+"
+
+[node name="熔融岩石" type="Node"]
+script = SubResource("GDScript_b2nas")
+atk_hp = Vector2(3, 3)
+"名称" = "熔融岩石"
+"等级" = 1
+"花费" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

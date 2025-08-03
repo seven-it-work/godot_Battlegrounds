@@ -11,11 +11,12 @@ func 只添加到容器中(d:DragObj,index:int=-1):
 		printerr("错误了")
 		print_stack()
 
-
 func 添加到本容器中(d:DragObj,index:int=-1):
 	if d is CardUI:
-		player.添加卡片(d.cardData,Enums.CardPosition.手牌,index,false)
-		只添加到容器中(d,index)
+		player.添加卡片(d.cardData,Enums.CardPosition.手牌,index,true)
+	else:
+		printerr("错误了")
+		print_stack()
 	
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -27,24 +28,24 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 		if 拖拽中的对象.卡牌类型==Enums.CardType.随从:
 			var 随从取消使用=func(d:DragObj):
 				print("随从取消使用")
-				self.只添加到容器中(d,_拖拽中的对象原有索引)
+				self._回到原来位置()
 				pass
 			var list=player.获取酒馆And战场的牌()
 			if 拖拽中的对象.选择目标对象:
 				var 目标list=拖拽中的对象.选择目标对象.获取选择的目标对象(list)
 				if 目标list.is_empty():
 					print("直接使用随从")
-					_使用成功(拖拽中的对象)
+					_使用成功(dragObj)
 				else:
 					# 展示选择箭头组件
-					operationUI.箭头遮罩.初始化(拖拽中的对象,目标list,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
+					operationUI.箭头遮罩.初始化(dragObj,目标list,_使用成功.bind(dragObj),随从取消使用.bind(dragObj))
 			elif 拖拽中的对象.抉择:
 				print("抉择随从")
 				operationUI.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
 				pass
 			else:
 				print("随从使用")
-				_使用成功(拖拽中的对象)
+				_使用成功(dragObj)
 			pass
 		elif [Enums.CardType.酒馆法术,Enums.CardType.法术,Enums.CardType.塑造法术].has(拖拽中的对象.卡牌类型):
 			var 法术取消使用=func(d:DragObj):
@@ -56,17 +57,17 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 				var 目标list=拖拽中的对象.选择目标对象.获取选择的目标对象(list)
 				if 目标list.is_empty():
 					print("法术使用失败，没有目标对象")
-					法术取消使用.call(拖拽中的对象)
+					法术取消使用.call(dragObj)
 				else:
 					# 展示选择箭头组件
-					operationUI.箭头遮罩.初始化(拖拽中的对象,目标list,_使用成功.bind(拖拽中的对象),法术取消使用.bind(拖拽中的对象))
+					operationUI.箭头遮罩.初始化(dragObj,目标list,_使用成功.bind(dragObj),法术取消使用.bind(dragObj))
 			elif 拖拽中的对象.抉择:
 				print("抉择法术")
-				operationUI.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),法术取消使用.bind(拖拽中的对象))
+				operationUI.抉择遮罩.初始化(dragObj,_使用成功.bind(dragObj),法术取消使用.bind(dragObj),player)
 				pass
 			else:
 				print("法术使用")
-				_使用成功(拖拽中的对象)
+				_使用成功(dragObj)
 		else:
 			printerr("展示不支持这个类型的使用。",拖拽中的对象)
 			print_stack()
@@ -74,12 +75,25 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 		printerr("不支持非炉石卡牌:",dragObj)
 		printerr("目标容器：",拖拽的目标容器)
 
-func _使用成功(d:DragObj):
-	print("_使用成功",d)
-	player.删除卡牌(d.cardData,Enums.CardPosition.手牌,false)
-	super.添加到其他容器(d,拖拽的目标容器)
+func _使用成功(cardUI:CardUI):
+	print("_使用成功",cardUI)
+	player.删除卡牌(cardUI.cardData,Enums.CardPosition.手牌,false)
+	super.添加到其他容器(cardUI,拖拽的目标容器)
 	
-	player.使用卡牌信号.emit(d)
+	#player.使用卡牌信号.emit(d)
+	pass
+
+func _回到原来位置():
+	self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)
+
+func 节点拖拽中(d:DragObj):
+	super.节点拖拽中(d)
+	if 拖拽的目标容器:
+		if 拖拽的目标容器 is SortDragObjContainer:
+			if 拖拽的目标容器.get_global_rect().has_point(get_global_mouse_position()):
+				拖拽的目标容器._添加插槽(d)
+			else:
+				拖拽的目标容器._清理插槽()
 	pass
 
 func 节点开始拖拽(d:DragObj):

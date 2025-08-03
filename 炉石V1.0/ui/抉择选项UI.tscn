@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjyr5im2gi512"]
+
+[ext_resource type="Script" uid="uid://bn8v70oykwj0o" path="res://ui/抉择选项UI.gd" id="1_41tmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41tmq"]
+resource_local_to_scene = true
+bg_color = Color(0.27543, 0.243603, 0.255604, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="抉择选项ui" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 200)
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_41tmq")
+script = ExtResource("1_41tmq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
