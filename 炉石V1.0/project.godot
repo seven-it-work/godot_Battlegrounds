@@ -13,7 +13,12 @@ config_version=5
 config/name="炉石V1.0"
 run/main_scene="uid://yhigpfb3k57"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [rendering]
 

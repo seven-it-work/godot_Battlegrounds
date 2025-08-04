@@ -29,4 +29,22 @@ offset_right = 1127.0
 offset_bottom = 249.0
 text = "添加卡牌"
 
+[node name="存档" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 25.0
+offset_right = 1061.0
+offset_bottom = 56.0
+text = "存档"
+
+[node name="读档" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1039.0
+offset_top = 111.0
+offset_right = 1079.0
+offset_bottom = 142.0
+text = "读档"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="存档" to="." method="_on_存档_pressed"]
+[connection signal="pressed" from="读档" to="." method="_on_读档_pressed"]

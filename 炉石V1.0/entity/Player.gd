@@ -4,6 +4,7 @@ class_name Player
 @export var 酒馆:Array[CardEntity]=[]
 @export var 战场:Array[CardEntity]=[]
 @export var 手牌:Array[CardEntity]=[]
+@export var 生命值:int=0
 
 
 signal 添加卡片信号(
@@ -19,6 +20,25 @@ signal 删除卡片信号(
 
 signal 使用卡牌信号(使用卡牌:CardEntity)
 signal 战吼触发信号(战吼卡牌:CardEntity)
+
+func save_json()->Dictionary:
+	var s=get_script()
+	var s1=s.get_path()
+	var dic={
+		#"酒馆"=self.酒馆.map(func(item): return item.save_json()),
+		#"战场"=self.战场.map(func(item): return item.save_json()),
+		#"手牌"=self.手牌.map(func(item): return item.save_json()),
+		#"生命值"=self.生命值,
+	}
+	return dic
+
+func load_json(dic:Dictionary):
+	## 这里就有问题了？我怎么知道是什么对象？
+	self.酒馆=dic.get_or_add("酒馆",[]).map(func(item): return item.save_json())
+	self.战场=dic.get_or_add("战场",[]).map(func(item): return item.save_json())
+	self.手牌=dic.get_or_add("手牌",[]).map(func(item): return item.save_json())
+	self.生命值=dic.get_or_add("生命值",0)
+	pass
 
 func 获取酒馆And战场的牌()->Array[CardEntity]:
 	var result:Array[CardEntity]=[]

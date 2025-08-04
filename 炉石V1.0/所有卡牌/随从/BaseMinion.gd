@@ -16,6 +16,7 @@ class_name BaseMinion
 @export var glod_描述:String=""
 @export var 战吼:Array[Roar]=[]
 
+
 func 是否能够使用()->bool:
 	return true
 

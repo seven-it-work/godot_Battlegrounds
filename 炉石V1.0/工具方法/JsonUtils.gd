@@ -41,8 +41,11 @@ static func obj_2_json(obj):
 	if obj is Array:
 		return obj.map(func(t): return obj_2_json(t))
 
-	if obj is Object && obj.has_method("save_json"):
-		return obj.call("save_json")
+	if obj is Object:
+		if obj.has_method("save_json"):
+			return obj.call("save_json")
+		else:
+			return obj_2_json(ObjectUtils.get_exported_properties(obj))
 	# 如果是字符串，则返回字符串
 	if obj is String:
 		return obj
