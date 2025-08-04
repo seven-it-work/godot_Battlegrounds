@@ -25,6 +25,7 @@ str_id = "BG20_100"
 "花费" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
-[node name="Roar" type="Node" parent="."]
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
 script = SubResource("GDScript_vw8pv")
+"触发卡" = NodePath("..")
 metadata/_custom_type_script = "uid://blqe4sactsx85"

@@ -1,6 +1,8 @@
 extends Node
 class_name Roar
 
+@export var 触发卡:BaseMinion
+
 func 战吼执行():
 	_具体战吼方法接口()
 	var 触发卡片=get_parent() as BaseMinion
