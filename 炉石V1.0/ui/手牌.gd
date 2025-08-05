@@ -22,51 +22,51 @@ func _process(delta: float) -> void:
 	super._process(delta)
 
 func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContainer):
-	print("使用手牌")
+	#print("使用手牌")
 	if dragObj is CardUI:
 		var 拖拽中的对象=dragObj.cardData
 		if 拖拽中的对象.卡牌类型==Enums.CardType.随从:
 			var 随从取消使用=func(d:DragObj):
-				print("随从取消使用")
+				#print("随从取消使用")
 				self._回到原来位置()
 				pass
 			var list=player.获取酒馆And战场的牌()
 			if 拖拽中的对象.选择目标对象:
 				var 目标list=拖拽中的对象.选择目标对象.获取选择的目标对象(list)
 				if 目标list.is_empty():
-					print("直接使用随从")
+					#print("直接使用随从")
 					_使用成功(dragObj)
 				else:
 					# 展示选择箭头组件
 					operationUI.箭头遮罩.初始化(dragObj,目标list,_使用成功.bind(dragObj),随从取消使用.bind(dragObj))
 			elif 拖拽中的对象.抉择:
-				print("抉择随从")
+				#print("抉择随从")
 				operationUI.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
 				pass
 			else:
-				print("随从使用")
+				#print("随从使用")
 				_使用成功(dragObj)
 			pass
 		elif [Enums.CardType.酒馆法术,Enums.CardType.法术,Enums.CardType.塑造法术].has(拖拽中的对象.卡牌类型):
 			var 法术取消使用=func(d:DragObj):
-				print("法术取消使用")
+				#print("法术取消使用")
 				self.只添加到容器中(d,_拖拽中的对象原有索引)
 				pass
 			var list=player.获取酒馆And战场的牌()
 			if 拖拽中的对象.选择目标对象:
 				var 目标list=拖拽中的对象.选择目标对象.获取选择的目标对象(list)
 				if 目标list.is_empty():
-					print("法术使用失败，没有目标对象")
+					#print("法术使用失败，没有目标对象")
 					法术取消使用.call(dragObj)
 				else:
 					# 展示选择箭头组件
 					operationUI.箭头遮罩.初始化(dragObj,目标list,_使用成功.bind(dragObj),法术取消使用.bind(dragObj))
 			elif 拖拽中的对象.抉择:
-				print("抉择法术")
+				#print("抉择法术")
 				operationUI.抉择遮罩.初始化(dragObj,_使用成功.bind(dragObj),法术取消使用.bind(dragObj),player)
 				pass
 			else:
-				print("法术使用")
+				#print("法术使用")
 				_使用成功(dragObj)
 		else:
 			printerr("展示不支持这个类型的使用。",拖拽中的对象)
@@ -76,17 +76,19 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 		printerr("目标容器：",拖拽的目标容器)
 
 func _使用成功(cardUI:CardUI):
-	print("_使用成功",cardUI)
+	player.删除卡牌(cardUI.cardData,Enums.CardPosition.手牌,false)
 	var cardData=cardUI.cardData
 	if cardData is BaseMinion:
 		for i:Roar in cardData.战吼:
 			i.战吼执行()
-	player.使用卡牌信号.emit(cardUI.cardData)
-	player.删除卡牌(cardUI.cardData,Enums.CardPosition.手牌,false)
-	super.添加到其他容器(cardUI,拖拽的目标容器)
-	
-	#player.使用卡牌信号.emit(d)
-	pass
+		super.添加到其他容器(cardUI,拖拽的目标容器)
+		player.使用卡牌信号.emit(cardUI.cardData)
+	elif cardData is BaseSpell:
+		player.使用卡牌信号.emit(cardUI.cardData)
+		cardData.法术使用处理()
+		cardUI.queue_free()
+	else:
+		printerr("卡片类型无法使用",cardData)
 
 func _回到原来位置():
 	self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)

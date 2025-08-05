@@ -5,7 +5,7 @@ var 选项卡片:CardEntity
 signal 点击信号
 
 func 初始化(card:CardEntity):
-	print("初始化选项")
+	#print("初始化选项")
 	选项卡片=card
 	$Label.text=card.名称
 	pass

@@ -12,9 +12,12 @@ class_name BaseMinion
 @export var 永久属性:Array[AttributeBonus]=[]
 # 开始回合就会清理
 @export var 临时属性:Array[AttributeBonus]=[]
-@export var is_gold:bool=false
-@export var glod_描述:String=""
 @export var 战吼:Array[Roar]=[]
+@export var 出售金币:int=1;
+
+@export var 嘲讽:bool=false
+## 特供给一个法术
+@export var 移除嘲讽:bool=false
 
 
 func 是否能够使用()->bool:
@@ -27,7 +30,17 @@ func 获取描述(dic:Dictionary={})->String:
 		return glod_描述.format(tempDic)
 	return 描述.format(tempDic)
 
-func 获取倍率()->int:
-	if is_gold:
-		return 2
-	return 1
+
+func 获取带加成属性()->Vector2:
+	var result=Vector2(atk_hp)
+	for i in 永久属性:
+		result+=i.atk_hp
+	for i in 临时属性:
+		result+=i.atk_hp
+	return result
+
+func 属性加成(data:AttributeBonus,是否永久:bool):
+	if 是否永久:
+		永久属性.append(data)
+	else:
+		临时属性.append(data)

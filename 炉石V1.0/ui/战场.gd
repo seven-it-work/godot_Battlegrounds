@@ -27,9 +27,8 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 	
 func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
 	if 拖拽中的对象 is CardUI:
-		# 这里可以改为方法了，金币扣除的逻辑由这个方法里面去执行
-		player.删除卡牌(拖拽中的对象.cardData,Enums.CardPosition.战场,false)
-		super.添加到其他容器(拖拽中的对象,拖拽的目标容器)
+		player.出售随从(拖拽中的对象.cardData)
+		拖拽中的对象.queue_free()
 	else:
 		printerr("错误了")
 		print_stack()

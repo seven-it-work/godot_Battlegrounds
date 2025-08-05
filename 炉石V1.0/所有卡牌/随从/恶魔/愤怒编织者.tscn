@@ -13,9 +13,13 @@ func _使用信号(使用的卡牌:CardEntity):
 		if 卡片所在位置==Enums.CardPosition.战场:
 			if 使用的卡牌 is BaseMinion:
 				if 使用的卡牌.race.has(Enums.CardRace.恶魔):
-					print(\"使用信号触发\")
-					print(使用的卡牌)
-					print(self)
+					for i in 获取倍率():
+						player.生命值扣除(-1)
+						属性加成(AttributeBonus.build(
+							名称,
+							Vector2(2,1),
+							名称,
+						), true)
 	pass
 "
 
@@ -23,11 +27,11 @@ func _使用信号(使用的卡牌:CardEntity):
 script = SubResource("GDScript_chn0s")
 "限定类型" = Array[int]([2])
 atk_hp = Vector2(1, 4)
-"glod_描述" = "在你使用一张恶魔牌后，对你的英雄造成1点伤害并获得+2\\/+1，触发两次。"
 lushi_id = 59670
 str_id = "BGS_004"
 "名称" = "愤怒编织者"
 "描述" = "在你使用一张恶魔牌后，对你的英雄造成1点伤害并获得+2\\/+1。"
+"glod_描述" = "在你使用一张恶魔牌后，对你的英雄造成1点伤害并获得+2\\/+1，触发两次。"
 "等级" = 1
 "花费" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"

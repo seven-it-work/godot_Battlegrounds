@@ -43,7 +43,9 @@ func _初始化容器(player:Player,所在位置:Enums.CardPosition):
 	temp.player=player
 	for i in temp.容器.get_children():
 		i.queue_free()
-	for i in card_list:
+	for i:CardEntity in card_list:
+		i.player=self.player
+		i.信号绑定()
 		_添加卡片(i,所在位置,-1)
 	pass
 

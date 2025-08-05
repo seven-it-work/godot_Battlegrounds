@@ -5,7 +5,12 @@ class_name Player
 @export var 战场:Array[CardEntity]=[]
 @export var 手牌:Array[CardEntity]=[]
 @export var 生命值:int=0
+@export var 当前金币:int=0
+@export var 开始回合调用方法:Array[Callable]=[]
 
+@export var 元素加强加成:Vector2=Vector2(0,0)
+@export var 元素属性加成:Vector2=Vector2(0,0)
+@export var 鲜血宝石加成:Vector2=Vector2(1,1)
 
 signal 添加卡片信号(
 	d:CardEntity,
@@ -20,25 +25,11 @@ signal 删除卡片信号(
 
 signal 使用卡牌信号(使用卡牌:CardEntity)
 signal 战吼触发信号(战吼卡牌:CardEntity)
+signal 出售随从信号(出售卡牌:CardEntity)
+signal 开始回合信号()
 
-func save_json()->Dictionary:
-	var s=get_script()
-	var s1=s.get_path()
-	var dic={
-		#"酒馆"=self.酒馆.map(func(item): return item.save_json()),
-		#"战场"=self.战场.map(func(item): return item.save_json()),
-		#"手牌"=self.手牌.map(func(item): return item.save_json()),
-		#"生命值"=self.生命值,
-	}
-	return dic
-
-func load_json(dic:Dictionary):
-	## 这里就有问题了？我怎么知道是什么对象？
-	self.酒馆=dic.get_or_add("酒馆",[]).map(func(item): return item.save_json())
-	self.战场=dic.get_or_add("战场",[]).map(func(item): return item.save_json())
-	self.手牌=dic.get_or_add("手牌",[]).map(func(item): return item.save_json())
-	self.生命值=dic.get_or_add("生命值",0)
-	pass
+func 手牌是否满了()->bool:
+	return 手牌.size()>=10;
 
 func 获取酒馆And战场的牌()->Array[CardEntity]:
 	var result:Array[CardEntity]=[]
@@ -57,7 +48,7 @@ func 添加卡片(
 	index:int,
 	是否触发信号:bool
 ):
-	print("添加卡牌")
+	#print("添加卡牌")
 	d.player=self
 	if 是否触发信号:
 		添加卡片信号.emit(d,cardPosition,index)
@@ -98,3 +89,15 @@ func _调整索引(i:int,array:Array)->int:
 	while i<0:
 		i+=array.size()
 	return i%array.size()
+
+
+func 生命值扣除(num:int):
+	生命值-=1;
+	pass
+
+func 出售随从(card:CardEntity):
+	删除卡牌(card,Enums.CardPosition.战场,false)
+	出售随从信号.emit(card)
+	if card is BaseMinion:
+		# 金币获取
+		当前金币+=card.出售金币

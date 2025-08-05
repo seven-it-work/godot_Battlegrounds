@@ -22,7 +22,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_LEFT:
 			当前状态="拖拽"
-			print(self)
+			#print(self)
 			开始拖拽.emit()
 			_drag_offset = global_position-get_global_mouse_position()
 			pass

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://w7syd3ar6kqa"]
+
+[ext_resource type="Script" uid="uid://dka7i2mq801a1" path="res://entity/SelectTarget.gd" id="2_6u6hf"]
+
+[sub_resource type="GDScript" id="GDScript_e2suo"]
+resource_name = "鲜血宝石"
+script/source = "extends BaseSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标=选择目标对象.目标卡片
+	if 目标:
+		if 目标 is BaseMinion:
+			目标.属性加成(AttributeBonus.build(
+				名称,
+				player.鲜血宝石加成,
+				名称,
+			), true)
+	else:
+		# 无目标执行策略
+		pass
+	pass
+"
+
+[node name="鲜血宝石" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_e2suo")
+"卡牌类型" = 2
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 70136
+str_id = "BG20_GEM"
+"名称" = "鲜血宝石"
+"描述" = "使一个随从获得+{0}\\/+{1}。"
+"等级" = 1
+metadata/_custom_type_script = "uid://bvigsfyqo3h7x"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = ExtResource("2_6u6hf")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

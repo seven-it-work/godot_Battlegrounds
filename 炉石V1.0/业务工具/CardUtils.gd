@@ -147,7 +147,7 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 				file.store_buffer(body)
 				file.close()
 				success = true
-				print("图片已保存到: ", save_path_with_filename)
+				#print("图片已保存到: ", save_path_with_filename)
 			else:
 				push_error("无法写入文件: ", save_path_with_filename)
 	)

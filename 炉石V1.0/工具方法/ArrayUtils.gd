@@ -16,7 +16,7 @@ static  func group_by(list:Array,key_func:Callable)->Dictionary:
 ## 获取data相邻的元素
 static func get_neighboring_data(data ,array:Array)->Array:
 	if array.size()<=1:
-		print("数量小于2，不可能有相邻的")
+		#print("数量小于2，不可能有相邻的")
 		return []
 	var index=-1;
 	for i in array.size():
@@ -25,7 +25,7 @@ static func get_neighboring_data(data ,array:Array)->Array:
 			index=i;
 			break
 	if index==-1:
-		print("没有找到对应数据")
+		#print("没有找到对应数据")
 		return []
 	if index==0:
 		return [array.get(index+1)]

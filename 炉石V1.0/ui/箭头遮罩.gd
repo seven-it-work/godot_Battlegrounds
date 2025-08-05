@@ -31,13 +31,14 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
-				print("点击了")
+				#print("点击了")
 				if _选中的卡片:
-					print("选中了")
+					#print("选中了")
+					触发监听的卡片.cardData.选择目标对象.目标卡片=_选中的卡片.cardData
 					使用成功.call()
 				else:
 					取消.call()
-					print("未选中，取消使用了")
+					#print("未选中，取消使用了")
 				# 清理操作
 				for i in 可以选择的卡片:
 					i.get_parent().原始样式()

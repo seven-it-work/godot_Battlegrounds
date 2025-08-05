@@ -25,6 +25,7 @@ enum CardRace{
 	海盗,
 	野兽,
 	野猪人,
+	纳迦,
 }
 
 enum ConditionEnum{

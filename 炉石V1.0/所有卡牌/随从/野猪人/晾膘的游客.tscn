@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://g7y7nshit4g1"]
+
+[sub_resource type="GDScript" id="GDScript_4d7a6"]
+resource_name = "晾膘的游客"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.出售随从信号.connect(_信号.bind())
+	pass
+
+func _信号(出售卡牌:CardEntity):
+	if 出售卡牌==self:
+		for i in 获取倍率()*2:
+			player.添加卡片(
+				CardUtils.get_card(\"鲜血宝石\",player),
+				Enums.CardPosition.手牌,
+				-1,true)
+	pass
+"
+
+[node name="晾膘的游客" type="Node"]
+script = SubResource("GDScript_4d7a6")
+race = Array[int]([7])
+atk_hp = Vector2(2, 3)
+lushi_id = 70147
+str_id = "BG20_301"
+"名称" = "晾膘的游客"
+"描述" = "当你出售本随从时，获取2张<b>鲜血宝石<\\/b>。"
+"glod_描述" = "当你出售本随从时，获取4张<b>鲜血宝石<\\/b>。"
+"等级" = 1
+"花费" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

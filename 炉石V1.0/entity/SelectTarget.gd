@@ -2,6 +2,7 @@ extends Node
 class_name SelectTarget
 
 var _原始卡片:CardEntity
+var 目标卡片:CardEntity
 
 func 获取选择的目标对象(list:Array[CardEntity]):
 	var 过滤list=list\

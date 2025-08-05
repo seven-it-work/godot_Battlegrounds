@@ -9,18 +9,23 @@ class_name CardEntity
 @export var str_id:String=""
 @export var 名称:String=""
 @export var 描述:String=""
-@export var 等级:int=0
+@export var glod_描述:String=""
+@export var 等级:int=3
 @export var 花费:int=0
+@export var is_gold:bool=false
 
 #region 持久化辅助对象
 @export var 文件路径:String
 @export var 文件名:String
-
-#region 辅助对象，不能持久化
-var player:Player
-#endregion
+## 卡牌所属的玩家
+@export var player:Player
 
 
+func 获取倍率()->int:
+	if is_gold:
+		return 2
+	return 1
+	
 func _to_string() -> String:
 	return JSON.stringify(ObjectUtils.get_to_string(self))
 

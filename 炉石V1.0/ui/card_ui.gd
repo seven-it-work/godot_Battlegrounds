@@ -12,7 +12,12 @@ static func build(cardData:CardEntity)->CardUI:
 func _process(delta: float) -> void:
 	super._process(delta)
 	if cardData:
-		$PanelContainer/Label.text=cardData.名称
+		$PanelContainer/VBoxContainer/Label.text=cardData.名称
+		if cardData is BaseMinion:
+			var atk_hp=cardData.获取带加成属性()
+			$"PanelContainer/VBoxContainer/攻击力".text="攻击力:%s"%atk_hp.x
+			$"PanelContainer/VBoxContainer/生命值".text="生命值:%s"%atk_hp.y
+		
 	pass
 
 func 待选择样式():

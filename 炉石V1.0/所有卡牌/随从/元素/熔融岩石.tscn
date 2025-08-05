@@ -13,9 +13,12 @@ func _使用信号(使用的卡牌:CardEntity):
 		if 卡片所在位置==Enums.CardPosition.战场:
 			if 使用的卡牌 is BaseMinion:
 				if 使用的卡牌.race.has(Enums.CardRace.元素):
-					print(\"使用信号触发\")
-					print(使用的卡牌)
-					print(self)
+					for i in 获取倍率():
+						属性加成(AttributeBonus.build(
+							名称,
+							player.元素加强加成+Vector2(0,1),
+							名称,
+						), true)
 	pass
 "
 
@@ -23,11 +26,11 @@ func _使用信号(使用的卡牌:CardEntity):
 script = SubResource("GDScript_b2nas")
 race = Array[int]([1])
 atk_hp = Vector2(3, 3)
-"glod_描述" = "在你使用一张元素牌后，获得+{0}\\/+{1}，触发两次。"
 lushi_id = 64296
 str_id = "BGS_127"
 "名称" = "熔融岩石"
 "描述" = "在你使用一张元素牌后，获得+{0}\\/+{1}。"
+"glod_描述" = "在你使用一张元素牌后，获得+{0}\\/+{1}，触发两次。"
 "等级" = 1
 "花费" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"

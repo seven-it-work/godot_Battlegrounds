@@ -7,7 +7,11 @@ script/source = "extends Roar
 
 ## 由子类实现
 func _具体战吼方法接口():
-	print(\"战吼实现\")
+	for i in 触发卡.获取倍率():
+		触发卡.player.添加卡片(
+			CardUtils.get_card(\"鲜血宝石\",触发卡.player),
+			Enums.CardPosition.手牌,
+			-1,true)
 	pass
 "
 
@@ -15,12 +19,12 @@ func _具体战吼方法接口():
 script = ExtResource("1_vw8pv")
 race = Array[int]([7])
 atk_hp = Vector2(3, 1)
-"glod_描述" = "<b>战吼：<\\/b>获取2张<b>鲜血宝石<\\/b>。"
 "战吼" = [NodePath("Roar")]
 lushi_id = 70143
 str_id = "BG20_100"
 "名称" = "剃刀沼泽地卜师"
 "描述" = "<b>战吼：<\\/b>获取一张<b>鲜血宝石<\\/b>。"
+"glod_描述" = "<b>战吼：<\\/b>获取2张<b>鲜血宝石<\\/b>。"
 "等级" = 1
 "花费" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
