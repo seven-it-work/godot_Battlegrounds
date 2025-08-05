@@ -2,7 +2,7 @@ extends Node
 class_name AttributeBonus
 
 @export var 加成卡片名称:String=""
-@export var atk_hp:Vector2=Vector2(0,0)
+@export var atk_hp:Vector2i=Vector2i(0,0)
 @export var 加成描述:String=""
 
 static func build(

@@ -6,7 +6,7 @@ class_name BaseMinion
 ## 限定类型
 @export var 限定类型:Array[Enums.CardRace]=[]
 ## 基础攻击力、生命值
-@export var atk_hp:Vector2=Vector2(0,0)
+@export var atk_hp:Vector2i=Vector2i(0,0)
 ## 当前生命值（战斗开始时会进行重置）
 @export var current_hp:int=0
 @export var 永久属性:Array[AttributeBonus]=[]
@@ -19,7 +19,6 @@ class_name BaseMinion
 ## 特供给一个法术
 @export var 移除嘲讽:bool=false
 
-
 func 是否能够使用()->bool:
 	return true
 
@@ -31,8 +30,8 @@ func 获取描述(dic:Dictionary={})->String:
 	return 描述.format(tempDic)
 
 
-func 获取带加成属性()->Vector2:
-	var result=Vector2(atk_hp)
+func 获取带加成属性()->Vector2i:
+	var result=Vector2i(atk_hp)
 	for i in 永久属性:
 		result+=i.atk_hp
 	for i in 临时属性:

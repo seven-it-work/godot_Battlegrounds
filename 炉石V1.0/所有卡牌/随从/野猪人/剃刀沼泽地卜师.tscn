@@ -18,7 +18,7 @@ func _具体战吼方法接口():
 [node name="剃刀沼泽地卜师" type="Node" node_paths=PackedStringArray("战吼")]
 script = ExtResource("1_vw8pv")
 race = Array[int]([7])
-atk_hp = Vector2(3, 1)
+atk_hp = Vector2i(3, 1)
 "战吼" = [NodePath("Roar")]
 lushi_id = 70143
 str_id = "BG20_100"

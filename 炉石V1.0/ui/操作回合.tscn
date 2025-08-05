@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1s2h3xa4m35v"]
+[gd_scene load_steps=19 format=3 uid="uid://c1s2h3xa4m35v"]
 
 [ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://ui/箭头/箭头.tscn" id="1_fce2h"]
 [ext_resource type="Script" uid="uid://cblrggyj4vi76" path="res://ui/操作回合.gd" id="1_w2326"]
 [ext_resource type="PackedScene" uid="uid://q4pecghgue6t" path="res://拖拽组件/拖拽容器.tscn" id="2_8ikki"]
 [ext_resource type="Script" uid="uid://cmguloqe83arq" path="res://ui/酒馆.gd" id="3_ge8vl"]
 [ext_resource type="PackedScene" uid="uid://dtjmwcj1wtenu" path="res://拖拽组件/拖拽排序容器.tscn" id="4_6xkts"]
+[ext_resource type="PackedScene" uid="uid://dy3yv2yd2kdo1" path="res://ui/CardUI.tscn" id="4_t82iy"]
 [ext_resource type="Script" uid="uid://gkik7v6ljj1h" path="res://ui/战场.gd" id="5_mt46m"]
 [ext_resource type="Script" uid="uid://dmbqmjjyylkkk" path="res://ui/手牌.gd" id="6_icvfi"]
 [ext_resource type="Script" uid="uid://burftwkvvrpll" path="res://ui/箭头遮罩.gd" id="7_icvfi"]
@@ -111,6 +112,30 @@ layout_mode = 2
 script = ExtResource("3_ge8vl")
 "拖拽的目标容器" = NodePath("../../PanelContainer3/手牌")
 
+[node name="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆" index="0"]
+alignment = 1
+
+[node name="CardUI" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="0" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
+[node name="CardUI2" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="1" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
+[node name="CardUI3" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="2" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
+[node name="CardUI4" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="3" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
+[node name="CardUI5" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="4" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
+[node name="CardUI6" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="5" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
+[node name="CardUI7" parent="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆/HBoxContainer" index="6" instance=ExtResource("4_t82iy")]
+layout_mode = 2
+
 [node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -203,3 +228,5 @@ text = "确定"
 [connection signal="gui_input" from="PanelContainer/箭头遮罩" to="PanelContainer/箭头遮罩" method="_on_gui_input"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/取消" to="PanelContainer/抉择遮罩" method="_on_取消_pressed"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/确认" to="PanelContainer/抉择遮罩" method="_on_确认_pressed"]
+
+[editable path="PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆"]

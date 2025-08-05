@@ -20,7 +20,6 @@ class_name CardEntity
 ## 卡牌所属的玩家
 @export var player:Player
 
-
 func 获取倍率()->int:
 	if is_gold:
 		return 2

@@ -21,7 +21,7 @@ func _信号(出售卡牌:CardEntity):
 [node name="晾膘的游客" type="Node"]
 script = SubResource("GDScript_4d7a6")
 race = Array[int]([7])
-atk_hp = Vector2(2, 3)
+atk_hp = Vector2i(2, 3)
 lushi_id = 70147
 str_id = "BG20_301"
 "名称" = "晾膘的游客"

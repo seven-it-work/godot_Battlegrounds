@@ -26,7 +26,7 @@ func _使用信号(使用的卡牌:CardEntity):
 [node name="愤怒编织者" type="Node"]
 script = SubResource("GDScript_chn0s")
 "限定类型" = Array[int]([2])
-atk_hp = Vector2(1, 4)
+atk_hp = Vector2i(1, 4)
 lushi_id = 59670
 str_id = "BGS_004"
 "名称" = "愤怒编织者"

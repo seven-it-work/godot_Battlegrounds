@@ -8,9 +8,9 @@ class_name Player
 @export var 当前金币:int=0
 @export var 开始回合调用方法:Array[Callable]=[]
 
-@export var 元素加强加成:Vector2=Vector2(0,0)
-@export var 元素属性加成:Vector2=Vector2(0,0)
-@export var 鲜血宝石加成:Vector2=Vector2(1,1)
+@export var 元素加强加成:Vector2i=Vector2i(0,0)
+@export var 元素属性加成:Vector2i=Vector2i(0,0)
+@export var 鲜血宝石加成:Vector2i=Vector2i(1,1)
 
 signal 添加卡片信号(
 	d:CardEntity,

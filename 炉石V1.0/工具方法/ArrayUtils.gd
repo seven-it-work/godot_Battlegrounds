@@ -78,7 +78,6 @@ static func merge(arrays: Array) -> Array:
 static func distinct(arr: Array) -> Array:
 	if is_empty(arr):
 		return []
-	
 	var seen = {}
 	var result = []
 	for item in arr:
@@ -86,6 +85,18 @@ static func distinct(arr: Array) -> Array:
 			seen[item] = true
 			result.append(item)
 	return result
+
+# 原地修改数组，去除重复元素（不保持原始顺序）
+# 原地去重，并保持元素原有顺序
+static func unique_in_place(arr: Array) -> void:
+	var seen = {}
+	var i = 0
+	while i < arr.size():
+		if arr[i] in seen:  # 如果已经存在
+			arr.remove_at(i) # 移除当前元素
+		else:
+			seen[arr[i]] = true  # 记录已存在
+			i += 1              # 只有不删除时才增加索引
 
 ## 反转数组（非原地）
 static func reverse(arr: Array) -> Array:
