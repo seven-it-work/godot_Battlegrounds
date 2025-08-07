@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://mw36rfmhc80k"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_8oa6c"]
+
+[node name="微型机器人" type="Node"]
+script = ExtResource("1_8oa6c")
+race = Array[int]([4])
+atk_hp = Vector2i(1, 1)
+lushi_id = 96810
+str_id = "BG_BOT_312t"
+"名称" = "微型机器人"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

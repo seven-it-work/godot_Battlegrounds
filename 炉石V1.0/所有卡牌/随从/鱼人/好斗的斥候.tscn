@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b84hmql63yq0f"]
+
+[sub_resource type="GDScript" id="GDScript_nhq6f"]
+script/source = "extends BaseMinion
+
+func 战斗开始时():
+	if 卡片所在位置==Enums.CardPosition.手牌:
+		# todo
+		pass
+	pass
+"
+
+[node name="好斗的斥候" type="Node"]
+script = SubResource("GDScript_nhq6f")
+race = Array[int]([10])
+lushi_id = 120677
+str_id = "BG32_330"
+"名称" = "好斗的斥候"
+"描述" = "<b>战斗开始时：<\\/b>如果本随从在你的手牌中，召唤一个它的复制。"
+"glod_描述" = "<b>战斗开始时：<\\/b>如果本随从在你的手牌中，召唤一个它的具有双倍属性值的复制。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

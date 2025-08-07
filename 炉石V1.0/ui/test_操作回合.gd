@@ -10,6 +10,16 @@ func _ready() -> void:
 var index=0
 func _on_button_pressed() -> void:
 	var array=[
+		"尖利箭矢",
+		"厄运先知",
+		"沙丘土著",
+		"沙丘土著",
+		"气泡枪手",
+		"催眠机器人",
+		"催眠机器人",
+		"雄斑虎",
+		"复活的骑兵",
+		"挑食魔犬",
 		"愤怒编织者",
 		"熔融岩石",
 		"剃刀沼泽地卜师",
@@ -34,4 +44,9 @@ func _on_存档_pressed() -> void:
 	var json=JSON.stringify(JsonUtils.obj2Json(player,{}))
 	print(json)
 	temp_json=json
+	pass # Replace with function body.
+
+
+func _on_结束回合_pressed() -> void:
+	player.结束回合()
 	pass # Replace with function body.

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxs5f04veu5yl"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_wfitq"]
+
+[node name="雌斑虎" type="Node"]
+script = ExtResource("1_wfitq")
+race = Array[int]([6])
+atk_hp = Vector2i(1, 1)
+lushi_id = 60054
+str_id = "TB_BaconUps_093t"
+"名称" = "雌斑虎"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

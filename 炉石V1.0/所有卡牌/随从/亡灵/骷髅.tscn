@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d02xoeljyeg6n"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_ax1tk"]
+
+[node name="骷髅" type="Node"]
+script = ExtResource("1_ax1tk")
+race = Array[int]([9])
+atk_hp = Vector2i(1, 1)
+lushi_id = 99629
+str_id = "BG_ICC_026t"
+"名称" = "骷髅"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

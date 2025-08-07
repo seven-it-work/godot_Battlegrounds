@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b31y2t3ikr54l"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_27mq5"]
+
+[node name="错巢龙崽" type="Node"]
+script = ExtResource("1_27mq5")
+race = Array[int]([3])
+atk_hp = Vector2i(2, 1)
+lushi_id = 108873
+str_id = "BG29_814"
+"名称" = "错巢龙崽"
+"描述" = "<b>战斗开始时：<\\/b>获得等同于你当前等级的属性值。"
+"glod_描述" = "<b>战斗开始时：<\\/b>获得等同于你当前等级双倍的属性值。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctfgb5rm7lvqa"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_6s83g"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	触发卡.player.下次购买法术金币减少数量+=1*触发卡.获取倍率()
+"
+
+[node name="厄运先知" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_6s83g")
+race = Array[int]([8, 2])
+atk_hp = Vector2i(2, 1)
+"战吼" = [NodePath("Roar")]
+lushi_id = 117553
+str_id = "BG31_330"
+"名称" = "厄运先知"
+"描述" = "<b>战吼：<\\/b>你购买的下一张酒馆法术牌消耗的铸币减少（1）枚。"
+"glod_描述" = "<b>战吼：<\\/b>你购买的下一张酒馆法术牌消耗的铸币减少（2）枚。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_6s83g")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

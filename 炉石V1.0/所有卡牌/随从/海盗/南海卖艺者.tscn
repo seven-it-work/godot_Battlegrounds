@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7f1oqoggvffd"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_b6y1t"]
+
+[sub_resource type="GDScript" id="GDScript_b6y1t"]
+resource_name = "Roar"
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	触发卡.player.开始回合调用方法.append(func():
+		触发卡.player.当前金币+=1*触发卡.获取倍率()
+	)
+	pass
+"
+
+[node name="南海卖艺者" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_b6y1t")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 1)
+"战吼" = [NodePath("Roar")]
+lushi_id = 98501
+str_id = "BG26_135"
+"名称" = "南海卖艺者"
+"描述" = "<b>战吼：<\\/b>下回合获得1枚铸币。"
+"glod_描述" = "<b>战吼：<\\/b>下回合获得2枚铸币。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_b6y1t")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

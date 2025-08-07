@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://fmgu6af0yvw6"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_wkokx"]
+
+[sub_resource type="GDScript" id="GDScript_wkokx"]
+resource_name = "deathrattle"
+script/source = "extends Deathrattle
+
+## 由子类实现
+func _具体亡语方法接口(攻击者:CardEntity):
+	for i in 2:
+		var card=CardUtils.get_card(\"豹宝宝\",触发卡.player)
+		card.is_gold=触发卡.is_gold
+		触发卡.player.添加卡片(card,Enums.CardPosition.战场,触发卡.player.获取卡片索引(触发卡)+1,true)
+	pass
+"
+
+[node name="魔刃豹" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_wkokx")
+race = Array[int]([6])
+atk_hp = Vector2i(4, 1)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 98831
+str_id = "BG26_800"
+"名称" = "魔刃豹"
+"描述" = "<b>亡语：<\\/b>召唤两只0\\/1并具有<b>嘲讽<\\/b>的豹宝宝。"
+"glod_描述" = "<b>亡语：<\\/b>召唤两只0\\/2并具有<b>嘲讽<\\/b>的豹宝宝。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_wkokx")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

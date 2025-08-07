@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc10gbwopyo78"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_bsc6r"]
+
+[sub_resource type="GDScript" id="GDScript_bsc6r"]
+script/source = "extends Deathrattle
+
+## 由子类实现
+func _具体亡语方法接口(攻击者:CardEntity):
+	for i in 2:
+		var card=CardUtils.get_card(\"微型机器人\",触发卡.player)
+		card.is_gold=触发卡.is_gold
+		触发卡.player.添加卡片(card,Enums.CardPosition.战场,触发卡.player.获取卡片索引(触发卡)+1,true)
+	pass
+"
+
+[node name="拔线机" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_bsc6r")
+race = Array[int]([4])
+atk_hp = Vector2i(1, 1)
+"亡语" = [NodePath("Deathrattle")]
+"圣盾" = true
+lushi_id = 110101
+str_id = "BG29_611"
+"名称" = "拔线机"
+"描述" = "<b>圣盾<\\/b>。<b>亡语：<\\/b>召唤一个1\\/1的微型机器人。"
+"glod_描述" = "<b>圣盾<\\/b>。<b>亡语：<\\/b>召唤一个2\\/2的微型机器人。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_bsc6r")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

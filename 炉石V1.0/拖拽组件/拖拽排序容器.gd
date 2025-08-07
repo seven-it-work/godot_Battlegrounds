@@ -61,6 +61,17 @@ func _获取激活的插槽():
 		var 插槽索引=actives[0].get_index()
 		return 插槽索引/2
 
+## 获取插槽右边的一个卡牌，如果右边没有则返回null
+func 获取插槽右边的卡片()->CardUI:
+	var 索引=_获取激活的插槽()
+	if 索引==null:
+		return null
+	var list=容器.get_children()
+	for i in list.size():
+		if i>索引 and list.get(i) is CardUI:
+			return list.get(i)
+	return null
+
 func 获取插槽():
 	return 容器.get_children().filter(func(x): return x is SortSlot)
 

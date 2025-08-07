@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtbaqo02uonl7"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_qcadd"]
+
+[node name="甲虫" type="Node"]
+script = ExtResource("1_qcadd")
+race = Array[int]([6])
+atk_hp = Vector2i(1, 1)
+lushi_id = 110402
+str_id = "BG28_603t"
+"名称" = "甲虫"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

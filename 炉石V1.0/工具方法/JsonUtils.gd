@@ -57,9 +57,10 @@ static func json2Obj(dic,obj_map:Dictionary[int,Object]):
 					var 数据=json2Obj(value,obj_map)
 					var data=obj.get(key)
 					if data is Array:
-						data.append_array(数据 as Array)
+						data.clear()
+						data.append_array(数据)
 					else:
-						obj.set(key,数据)
+						obj[key]=数据
 			return obj
 		elif dic.has("type"):
 			var re=JSON.to_native(dic,true)

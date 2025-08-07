@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c16cgypw2gw2f"]
+
+[sub_resource type="GDScript" id="GDScript_7yben"]
+resource_name = "瞌睡雏龙"
+script/source = "extends BaseMinion
+
+func 受到攻击触发(攻击者:BaseMinion):
+	属性加成(AttributeBonus.build(
+		名称,
+		Vector2(1*获取倍率(),0),
+		名称,
+	), true)
+"
+
+[node name="瞌睡雏龙" type="Node"]
+script = SubResource("GDScript_7yben")
+race = Array[int]([3])
+atk_hp = Vector2i(0, 4)
+"嘲讽" = true
+lushi_id = 97594
+str_id = "BG24_300"
+"名称" = "瞌睡雏龙"
+"描述" = "<b><b>嘲讽<\\/b><\\/b>。每当本随从受到攻击时，永久获得+1攻击力。"
+"glod_描述" = "<b><b>嘲讽<\\/b><\\/b>。每当本随从受到攻击时，永久获得+2攻击力。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

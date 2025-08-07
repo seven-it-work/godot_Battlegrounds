@@ -81,6 +81,16 @@ func _使用成功(cardUI:CardUI):
 	if cardData is BaseMinion:
 		for i:Roar in cardData.战吼:
 			i.战吼执行()
+		if cardData.是否为磁力:
+			if 拖拽的目标容器 is SortDragObjContainer:
+				var 右边的随从UI=拖拽的目标容器.获取插槽右边的卡片() as CardUI
+				if 右边的随从UI:
+					var 右边的随从=右边的随从UI.cardData
+					if 右边的随从 is BaseMinion and 右边的随从.race.has(Enums.CardRace.机械):
+						右边的随从.添加磁力(cardUI.cardData)
+						player.使用卡牌信号.emit(cardUI.cardData)
+						cardUI.queue_free()
+						return
 		super.添加到其他容器(cardUI,拖拽的目标容器)
 		player.使用卡牌信号.emit(cardUI.cardData)
 	elif cardData is BaseSpell:

@@ -10,9 +10,10 @@ class_name CardEntity
 @export var 名称:String=""
 @export var 描述:String=""
 @export var glod_描述:String=""
-@export var 等级:int=3
-@export var 花费:int=0
+@export var 等级:int=1
+@export var 花费:int=3
 @export var is_gold:bool=false
+@export var 是否出现在酒馆:bool=true
 
 #region 持久化辅助对象
 @export var 文件路径:String
@@ -38,3 +39,6 @@ func 获取描述(dic:Dictionary={})->String:
 	var tempDic=ObjectUtils.get_exported_properties(self)
 	tempDic.merged(dic,true)
 	return 描述.format(tempDic)
+
+func 获取花费()->int:
+	return 花费

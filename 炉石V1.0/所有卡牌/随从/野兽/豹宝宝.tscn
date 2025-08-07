@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4potos6vjvwl"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_y084k"]
+
+[node name="豹宝宝" type="Node"]
+script = ExtResource("1_y084k")
+race = Array[int]([6])
+atk_hp = Vector2i(0, 1)
+"嘲讽" = true
+lushi_id = 98943
+str_id = "BG26_800t"
+"名称" = "豹宝宝"
+"描述" = "<b>嘲讽<\\/b>"
+"glod_描述" = "<b>嘲讽<\\/b>"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://tljh5dfx26jm"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_0l8e1"]
+
+[sub_resource type="GDScript" id="GDScript_0l8e1"]
+resource_name = "Roar"
+script/source = "extends Roar
+
+## 由子类实现
+func _具体战吼方法接口():
+	if 触发卡.player.是否在战斗中():
+		return 
+	var 随从list=触发卡.player.酒馆.filter(func(item): return item is BaseMinion)
+	if 随从list.is_empty():
+		return
+	var 随从=随从list.pick_random() as BaseMinion
+	触发卡.player.删除卡牌(随从,Enums.CardPosition.酒馆,true)
+	触发卡.属性加成(AttributeBonus.build(
+		触发卡.名称,
+		随从.获取带加成属性()*触发卡.获取倍率(),
+		触发卡.名称,
+	), true)
+	pass
+"
+
+[node name="挑食魔犬" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_0l8e1")
+race = Array[int]([2])
+atk_hp = Vector2i(1, 1)
+"战吼" = [NodePath("Roar")]
+lushi_id = 92400
+str_id = "BG24_009"
+"名称" = "挑食魔犬"
+"描述" = "<b>战吼：<\\/b>随机吞食酒馆中的一个随从，获得其属性值。"
+"glod_描述" = "<b>战吼：<\\/b>随机吞食酒馆中的一个随从，获得其双倍属性值。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_0l8e1")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

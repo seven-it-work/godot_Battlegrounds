@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		$"Control/名称/Label".text=cardData.名称
 		$"Control/等级/Label".text=str(cardData.等级)
 		$"Control/金币".visible=cardData.卡片所在位置==Enums.CardPosition.酒馆
-		$"Control/金币/Label".text=str(cardData.花费)
+		$"Control/金币/Label".text=str(cardData.获取花费())
 		if cardData is BaseMinion:
 			if !$"Control/背景图2/种族".visible:
 				ArrayUtils.unique_in_place(cardData.race)

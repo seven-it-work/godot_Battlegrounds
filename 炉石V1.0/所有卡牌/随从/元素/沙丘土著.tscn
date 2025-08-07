@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccnsdicln7t6k"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_ahqen"]
+
+[sub_resource type="GDScript" id="GDScript_ahqen"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	for i in 触发卡.获取倍率():
+		元素工具类.更新元素属性加成(触发卡.player,Vector2i(1,1))
+"
+
+[node name="沙丘土著" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_ahqen")
+race = Array[int]([1])
+atk_hp = Vector2i(3, 2)
+"战吼" = [NodePath("Roar")]
+lushi_id = 116734
+str_id = "BG31_815"
+"名称" = "沙丘土著"
+"描述" = "<b>战吼：<\\/b>使酒馆中的元素在本局对战中获得+{0}\\/+{1}。"
+"glod_描述" = "<b>战吼：<\\/b>\\n使酒馆中的元素在本局对战中获得+{0}\\/+{1}，触发两次。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_ahqen")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

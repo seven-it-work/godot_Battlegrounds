@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cav0onltxwcfr"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_t6ntq"]
+
+[sub_resource type="GDScript" id="GDScript_t6ntq"]
+resource_name = "deathrattle"
+script/source = "extends Deathrattle
+
+## 由子类实现
+func _具体亡语方法接口(攻击者:CardEntity):
+	for i in 2*触发卡.获取倍率():
+		var card=CardUtils.get_card(\"骷髅\",触发卡.player)
+		触发卡.player.添加卡片(card,Enums.CardPosition.战场,触发卡.player.获取卡片索引(触发卡)+1,true)
+	pass
+"
+
+[node name="无害的骨颅" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_t6ntq")
+race = Array[int]([9])
+atk_hp = Vector2i(1, 1)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 104551
+str_id = "BG28_300"
+"名称" = "无害的骨颅"
+"描述" = "<b>亡语：<\\/b>召唤两个1\\/1的骷髅。"
+"glod_描述" = "<b>亡语：<\\/b>召唤四个1\\/1的骷髅。"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_t6ntq")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

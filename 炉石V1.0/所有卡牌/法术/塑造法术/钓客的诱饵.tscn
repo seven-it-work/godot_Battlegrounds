@@ -36,7 +36,6 @@ lushi_id = 83988
 str_id = "BG23_004t"
 "名称" = "钓客的诱饵"
 "描述" = "直到下个回合，使一个随从获得+2生命值和<b>嘲讽<\\/b>。"
-"等级" = 1
 metadata/_custom_type_script = "uid://dn7xma4p426pm"
 
 [node name="SelectTarget" type="Node" parent="."]
