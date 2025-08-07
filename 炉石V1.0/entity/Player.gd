@@ -74,7 +74,6 @@ func 添加卡片(
 	d.player=self
 	if 是否触发信号:
 		添加卡片信号.emit(d,cardPosition,index)
-	d.信号绑定()
 	if cardPosition==Enums.CardPosition.酒馆:
 		元素工具类.元素属性加成(d,self)
 		index=adjust_index(index,酒馆)
