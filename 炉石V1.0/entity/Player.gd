@@ -24,7 +24,7 @@ var fightUI:FightUI
 
 func 重置攻击随从():
 	for i in 战斗中的随从:
-		i.cardData.是否攻击过=false
+		i.是否攻击过=false
 	当前攻击的随从索引=0
 	
 func 战斗初始化(fightUI:FightUI):
@@ -34,8 +34,7 @@ func 战斗初始化(fightUI:FightUI):
 		var 复制=i.duplicate() as BaseMinion
 		复制.current_hp=复制.获取带加成属性().y
 		战场_战斗中的对象映射map.set(复制,i)
-		var temp=BaseCardUI.build(复制)
-		战斗中的随从.append(temp)
+		战斗中的随从.append(复制)
 	重置攻击随从()
 	pass
 	
@@ -109,6 +108,10 @@ func 添加卡片(
 		手牌.insert(adjust_index(index,手牌),d)
 		return
 	if cardPosition==Enums.CardPosition.战场:
+		if 是否在战斗中():
+			d.current_hp=d.获取带加成属性().y
+			战斗中的随从.insert(adjust_index(index,战场),d)
+			return
 		战场.insert(adjust_index(index,战场),d)
 		return
 	printerr("错误添加卡片",d,cardPosition)
@@ -129,7 +132,7 @@ func 删除卡牌(
 		return
 	if cardPosition==Enums.CardPosition.战场:
 		if 是否在战斗中():
-			战斗中的随从.erase(d.get_parent())
+			战斗中的随从.erase(d)
 		else:
 			战场.erase(d)
 		return
@@ -164,6 +167,8 @@ func 获取卡片索引(card:CardEntity)->int:
 	if card.卡片所在位置==Enums.CardPosition.酒馆:
 		return 酒馆.find(card)
 	if card.卡片所在位置==Enums.CardPosition.战场:
+		if 是否在战斗中():
+			return 战斗中的随从.find(card)
 		return 战场.find(card)
 	if card.卡片所在位置==Enums.CardPosition.手牌:
 		return 手牌.find(card)

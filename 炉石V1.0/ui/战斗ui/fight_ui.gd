@@ -17,13 +17,8 @@ signal 战斗结束信号(是否平局:bool,胜利者:Player,失败者:Player)
 func _是否是敌人(player:Player)->bool:
 	return player==敌人
 
-var temp:int=0
 
 func _process(delta: float) -> void:
-	temp+=1
-	if temp==100:
-		temp=0
-		pass
 	## 存在问题。动画和数据不一致。动画没有播放完 已经死亡 free了
 	if 是否正在播放动画:
 		return
@@ -44,12 +39,17 @@ func _战斗处理():
 		当前攻击者=获取敌人(当前攻击者)
 
 func _当前攻击者进行攻击():
+	## 如果当前攻击者的攻击力都为0，则无法进行攻击
+	if 当前攻击者.战斗中的随从.filter(func(item:BaseMinion): return item.获取带加成属性().x>0).size()<=0:
+		return
 	var 攻击者=当前攻击者 as Player
 	var 防御者=获取敌人(当前攻击者)
 	var 攻击随从=_获取攻击随从(攻击者) as BaseMinion
 	if 攻击随从.获取带加成属性().x==0:
 		# 攻击力为0无法攻击
+		print("错误了，不应该选择出攻击为0的随从")
 		return
+	攻击随从.是否攻击过=true
 	if 攻击随从.获取风怒():
 		for i in 2:
 			await _进行攻击(攻击者,防御者,攻击随从)
@@ -77,36 +77,32 @@ func _获取防御随从(player:Player)->BaseMinion:
 	if player.战斗中的随从.is_empty():
 		return null
 	# 排查潜行随从
-	var 随从列表=player.战斗中的随从.filter(func(item:BaseCardUI): return !item.cardData.获取潜行())
+	var 随从列表=player.战斗中的随从.filter(func(item:CardEntity): return !item.获取潜行())
 	if 随从列表.is_empty():
 		return null
 	# 过滤嘲讽从
-	var 嘲讽随从=随从列表.filter(func(item:BaseCardUI): return item.cardData.获取嘲讽())
+	var 嘲讽随从=随从列表.filter(func(item:CardEntity): return item.获取嘲讽())
 	if 嘲讽随从.is_empty():
 		# 随机选择
 		var 结果=随从列表.pick_random()
-		return 结果.cardData
-	return 嘲讽随从.pick_random().cardData
+		return 结果
+	return 嘲讽随从.pick_random()
 
 func _获取攻击随从(player:Player)->BaseMinion:
 	if player.战斗中的随从.is_empty():
 		printerr("错误了")
 		print_stack()
 		return null
-	var temp=player.战斗中的随从.get(player.当前攻击的随从索引) as BaseCardUI
-	if temp.cardData.是否攻击过:
+	var temp=player.战斗中的随从.get(player.当前攻击的随从索引) as BaseMinion
+	if temp.是否攻击过 or temp.获取带加成属性().x<=0:
 		player.当前攻击的随从索引+=1
 		if player.当前攻击的随从索引>=player.战斗中的随从.size():
 			## 重置
 			player.重置攻击随从()
 		return _获取攻击随从(player)
-	return temp.cardData
+	return temp
 
 func _战斗判断():
-	if is_instance_valid(玩家):
-		print("没有")
-	else:
-		print("对象已被释放！")
 	if 玩家.战斗中的随从.is_empty() and 敌人.战斗中的随从.is_empty():
 		print(玩家)
 		print("平局")
@@ -148,17 +144,17 @@ func 开始战斗(player:Player,target:Player):
 	敌人.战斗初始化(self)
 	## ui初始化
 	for i in 敌人容器.get_children():
-		i.free()
-	for i:BaseCardUI in 敌人.战斗中的随从:
-		敌人容器.add_child(i)
-	#for i in 玩家容器.get_children():
-		#i.queue_free()
-	#for i in 玩家.战斗中的随从:
-		#玩家容器.add_child(i)
-	#_判断先手()
+		i.queue_free()
+	for i:CardEntity in 敌人.战斗中的随从:
+		添加卡片(i,Enums.CardPosition.战场,-1,敌人)
+	for i in 玩家容器.get_children():
+		i.queue_free()
+	for i in 玩家.战斗中的随从:
+		添加卡片(i,Enums.CardPosition.战场,-1,玩家)
+	_判断先手()
 	# 战斗开始时
 	await get_tree().create_timer(1).timeout
-	#_战斗状态="战斗中"
+	_战斗状态="战斗中"
 	pass
 
 func _判断先手():
@@ -182,9 +178,9 @@ func 删除卡片(
 ):
 	if cardPosition==Enums.CardPosition.战场:
 		for i in player.战斗中的随从:
-			if i is BaseCardUI:
-				if i.cardData==d:
-					i.queue_free()
+			if i.get_parent() is BaseCardUI:
+				if i==d:
+					i.get_parent().queue_free()
 	return
 	
 	
