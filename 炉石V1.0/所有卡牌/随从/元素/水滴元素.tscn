@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7cdtigkmmrpi"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_7m44q"]
+
+[node name="水滴元素" type="Node"]
+script = ExtResource("1_7m44q")
+race = Array[int]([1])
+atk_hp = Vector2i(3, 3)
+lushi_id = 64040
+str_id = "BGS_115t"
+"名称" = "水滴元素"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

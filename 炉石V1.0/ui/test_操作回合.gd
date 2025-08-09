@@ -10,6 +10,9 @@ func _ready() -> void:
 var index=0
 func _on_button_pressed() -> void:
 	var array=[
+		"派对元素",
+		"商贩元素",
+		"白赚赌徒",
 		"尖利箭矢",
 		"厄运先知",
 		"沙丘土著",

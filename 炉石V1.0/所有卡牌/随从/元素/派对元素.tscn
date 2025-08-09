@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn8674dmab0qa"]
+
+[sub_resource type="GDScript" id="GDScript_6vw17"]
+script/source = "extends BaseMinion
+func 信号绑定():
+	player.使用卡牌信号.connect(信号.bind())
+	pass
+
+func 信号(card:CardEntity):
+	if self.卡片所在位置!=Enums.CardPosition.战场:
+		return
+	if card!=self:
+		var 目标list=player.战场.filter(func(item): 
+			if item==card:
+				return false
+			if item is BaseMinion:
+				if item.race.has(Enums.CardRace.元素):
+					return true
+			return false
+			)
+		if 目标list.is_empty():
+			return
+		for i in 获取倍率():
+			var 目标=目标list.pick_random() as BaseMinion
+			目标.属性加成(AttributeBonus.build(
+				名称,
+				player.元素加强加成+Vector2i(1,1),
+				名称,
+			), true)
+		
+"
+
+[node name="派对元素" type="Node"]
+script = SubResource("GDScript_6vw17")
+race = Array[int]([1])
+atk_hp = Vector2i(3, 2)
+lushi_id = 64056
+str_id = "BGS_120"
+"名称" = "派对元素"
+"描述" = "在你使用一张元素牌后，使一个被使用的元素之外的友方元素获得+{0}\\/+{1}。"
+"glod_描述" = "在你使用一张元素牌后，使一个被使用的元素之外的友方元素获得+{0}\\/+{1}，\\n触发两次。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

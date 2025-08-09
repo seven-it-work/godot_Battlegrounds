@@ -66,6 +66,9 @@ func _删除卡片(
 					i.queue_free()
 		return
 	if cardPosition==Enums.CardPosition.战场:
+		#if player.是否在战斗中():
+			#player.fightUI.删除卡片(player,d)
+		#else:
 		for i in 战场.获取所有的拖拽象():
 			if i is CardUI:
 				if i.cardData==d:
@@ -81,20 +84,29 @@ func _添加卡片(
 	cardPosition:Enums.CardPosition,
 	index:int
 ):
-	# 初始ui
-	var cardUI
-	if d.get_parent() is CardUI:
-		cardUI=d.get_parent()
-	else:
-		cardUI=CardUI.build(d)
 	if cardPosition==Enums.CardPosition.酒馆:
+		# 初始ui
+		var cardUI=_获取CardUI(d)
 		酒馆.只添加到容器中(cardUI,index)
 		return
 	if cardPosition==Enums.CardPosition.手牌:
+		# 初始ui
+		var cardUI=_获取CardUI(d)
 		手牌.只添加到容器中(cardUI,index)
 		return
 	if cardPosition==Enums.CardPosition.战场:
+		#if player.是否在战斗中():
+			#player.fightUI.添加卡片(player,d,index)
+		#else:
+		var cardUI=_获取CardUI(d)
 		战场.只添加到容器中(cardUI,index)
 		return
 	printerr("错误添加卡片",d,cardPosition)
 	print_stack()
+
+func _获取CardUI(d:CardEntity)->CardUI:
+	var cardUI
+	if d.get_parent() is CardUI:
+		return d.get_parent()
+	else:
+		return CardUI.build(d)

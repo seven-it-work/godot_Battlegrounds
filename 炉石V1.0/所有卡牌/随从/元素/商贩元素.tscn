@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvq6sb5rv0p7h"]
+
+[sub_resource type="GDScript" id="GDScript_1pbks"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.出售随从信号.connect(信号.bind())
+	pass
+
+func 信号(card:CardEntity):
+	if card==self:
+		for i in 获取倍率():
+			var temp=CardUtils.get_card(\"水滴元素\",player) as BaseMinion
+			temp.atk_hp=Vector2(3,3)
+			player.添加卡片(temp,Enums.CardPosition.手牌,-1,true)
+"
+
+[node name="商贩元素" type="Node"]
+script = SubResource("GDScript_1pbks")
+race = Array[int]([1])
+atk_hp = Vector2i(3, 3)
+lushi_id = 64038
+str_id = "BGS_115"
+"名称" = "商贩元素"
+"描述" = "当你出售\\n本随从时，获取一张3\\/3的元素牌。"
+"glod_描述" = "当你出售\\n本随从时，获取2张3\\/3的元素牌。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

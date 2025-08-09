@@ -15,6 +15,33 @@ class_name Player
 
 @export var 下次购买法术金币减少数量:int=0
 
+#region 战斗相关属性
+var 战斗中的随从:Array[BaseCardUI]=[]
+var 战场_战斗中的对象映射map:Dictionary[BaseMinion,BaseMinion]={}
+var 当前攻击的随从索引:int=0
+var fightUI:FightUI
+
+func 重置攻击随从():
+	for i in 战斗中的随从:
+		i.cardData.是否攻击过=false
+	当前攻击的随从索引=0
+	
+func 战斗初始化(fightUI:FightUI):
+	self.fightUI=fightUI
+	# 初始化战斗中的随从
+	for i in 战场:
+		var 复制=i.duplicate() as BaseMinion
+		复制.current_hp=复制.获取带加成属性().y
+		战场_战斗中的对象映射map.set(复制,i)
+		var temp=BaseCardUI.build(复制)
+		战斗中的随从.append(temp)
+	重置攻击随从()
+	pass
+	
+func 是否在战斗中()->bool:
+	return fightUI!=null
+#endregion
+
 signal 添加卡片信号(
 	d:CardEntity,
 	cardPosition:Enums.CardPosition,
@@ -47,8 +74,6 @@ func 结束回合():
 	print("结束回合了")
 	pass
 
-func 是否在战斗中()->bool:
-	return false
 
 func 手牌是否满了()->bool:
 	return 手牌.size()>=10;
@@ -102,7 +127,10 @@ func 删除卡牌(
 		手牌.erase(d)
 		return
 	if cardPosition==Enums.CardPosition.战场:
-		战场.erase(d)
+		if 是否在战斗中():
+			战斗中的随从.erase(d.get_parent())
+		else:
+			战场.erase(d)
 		return
 	pass
 

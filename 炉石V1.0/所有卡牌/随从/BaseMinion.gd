@@ -39,6 +39,10 @@ static var 关键词=["嘲讽","复生","圣盾","剧毒","风怒","潜行"]
 @export var 是否已经作为磁力:bool=false
 @export var 已经贴了的磁力:Array[BaseMinion]=[]
 
+#region 战斗相关属性
+var 是否攻击过:bool=false
+#endregion
+
 func 添加磁力(磁力随从:CardEntity):
 	for i in 磁力随从.已经贴了的磁力:
 		添加磁力(i)
@@ -68,6 +72,7 @@ func 添加磁力(磁力随从:CardEntity):
 	pass
 
 func 攻击其他随从(防御者:BaseMinion):
+	player.fightUI.start_animation_sequence(self.get_parent(),防御者.get_parent())
 	防御者.受到攻击(self)
 	var 伤害=防御者.获取带加成属性().x
 	生命扣除(防御者,伤害)
@@ -103,9 +108,13 @@ func 死亡(攻击者:BaseMinion):
 	# 触发亡语
 	for i in 亡语:
 		i.亡语执行(攻击者)
+		# 亡语触发信号
 	# 触发复生
-	pass
-
+	if 获取复生():
+		pass
+		return
+	player.删除卡牌(self,Enums.CardPosition.战场,true)
+	
 #region 子类可以实现的触发方法
 func 受到攻击触发(攻击者:BaseMinion):
 	pass
