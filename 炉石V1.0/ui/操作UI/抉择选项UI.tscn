@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjyr5im2gi512"]
 
-[ext_resource type="Script" uid="uid://bn8v70oykwj0o" path="res://ui/抉择选项UI.gd" id="1_41tmq"]
+[ext_resource type="Script" uid="uid://bn8v70oykwj0o" path="res://ui/操作UI/抉择选项UI.gd" id="1_41tmq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41tmq"]
 resource_local_to_scene = true

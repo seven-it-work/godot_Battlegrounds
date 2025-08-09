@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy3yv2yd2kdo1"]
 
 [ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽组件/拖拽.tscn" id="1_5b3sr"]
-[ext_resource type="Script" uid="uid://behug4shh45vs" path="res://ui/card_ui.gd" id="2_4yc6j"]
-[ext_resource type="PackedScene" uid="uid://b631tye5dlbwf" path="res://ui/炉石卡片样式.tscn" id="3_ey4q1"]
+[ext_resource type="Script" uid="uid://behug4shh45vs" path="res://ui/操作UI/card_ui.gd" id="2_4yc6j"]
+[ext_resource type="PackedScene" uid="uid://b631tye5dlbwf" path="res://ui/操作UI/炉石卡片样式.tscn" id="3_ey4q1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yc6j"]
 resource_local_to_scene = true

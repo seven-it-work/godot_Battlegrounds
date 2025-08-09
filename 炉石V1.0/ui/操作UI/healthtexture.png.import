@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv57g0hel15s8"
-path="res://.godot/imported/attacktexture.png-f47176fc534f6ad51d658a7877d9a091.ctex"
+uid="uid://shhou5cg1j1s"
+path="res://.godot/imported/healthtexture.png-0c5a5e81c085869d00bf973475defc84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/attacktexture.png"
-dest_files=["res://.godot/imported/attacktexture.png-f47176fc534f6ad51d658a7877d9a091.ctex"]
+source_file="res://ui/操作UI/healthtexture.png"
+dest_files=["res://.godot/imported/healthtexture.png-0c5a5e81c085869d00bf973475defc84.ctex"]
 
 [params]
 

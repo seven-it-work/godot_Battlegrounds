@@ -72,7 +72,7 @@ func 添加磁力(磁力随从:CardEntity):
 	pass
 
 func 攻击其他随从(防御者:BaseMinion):
-	player.fightUI.start_animation_sequence(self.get_parent(),防御者.get_parent())
+	await player.fightUI.start_animation_sequence(self.get_parent(),防御者.get_parent())
 	防御者.受到攻击(self)
 	var 伤害=防御者.获取带加成属性().x
 	生命扣除(防御者,伤害)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://shhou5cg1j1s"
-path="res://.godot/imported/healthtexture.png-a3cceb7c22f219a2b583e4db9d09a528.ctex"
+uid="uid://cjyxklwv4r4fd"
+path="res://.godot/imported/GoldCoin.png-ac149e0f7545235fbf3183a5e98acf46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/healthtexture.png"
-dest_files=["res://.godot/imported/healthtexture.png-a3cceb7c22f219a2b583e4db9d09a528.ctex"]
+source_file="res://ui/操作UI/GoldCoin.png"
+dest_files=["res://.godot/imported/GoldCoin.png-ac149e0f7545235fbf3183a5e98acf46.ctex"]
 
 [params]
 

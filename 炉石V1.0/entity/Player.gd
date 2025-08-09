@@ -1,12 +1,12 @@
 extends Node
 class_name Player
 
-@export var 酒馆:Array[CardEntity]=[]
-@export var 战场:Array[CardEntity]=[]
-@export var 手牌:Array[CardEntity]=[]
+@export var 酒馆:Array=[]
+@export var 战场:Array=[]
+@export var 手牌:Array=[]
 @export var 生命值:int=0
 @export var 当前金币:int=0
-@export var 开始回合调用方法:Array[Callable]=[]
+@export var 开始回合调用方法:Array=[]
 ## 影响元素属性加成
 @export var 元素加强加成:Vector2i=Vector2i(0,0)
 @export var 元素属性加成:Vector2i=Vector2i(0,0)
@@ -16,8 +16,9 @@ class_name Player
 @export var 下次购买法术金币减少数量:int=0
 
 #region 战斗相关属性
-var 战斗中的随从:Array[BaseCardUI]=[]
-var 战场_战斗中的对象映射map:Dictionary[BaseMinion,BaseMinion]={}
+## Array[BaseCardUI]
+var 战斗中的随从:Array=[]
+var 战场_战斗中的对象映射map:Dictionary={}
 var 当前攻击的随从索引:int=0
 var fightUI:FightUI
 
@@ -77,8 +78,8 @@ func 结束回合():
 
 func 手牌是否满了()->bool:
 	return 手牌.size()>=10;
-
-func 获取酒馆And战场的牌()->Array[CardEntity]:
+## Array[CardEntity]
+func 获取酒馆And战场的牌()->Array:
 	var result:Array[CardEntity]=[]
 	for i in 酒馆:
 		if i is CardEntity:

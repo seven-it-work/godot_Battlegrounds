@@ -17,7 +17,13 @@ signal 战斗结束信号(是否平局:bool,胜利者:Player,失败者:Player)
 func _是否是敌人(player:Player)->bool:
 	return player==敌人
 
+var temp:int=0
+
 func _process(delta: float) -> void:
+	temp+=1
+	if temp==100:
+		temp=0
+		pass
 	## 存在问题。动画和数据不一致。动画没有播放完 已经死亡 free了
 	if 是否正在播放动画:
 		return
@@ -46,12 +52,12 @@ func _当前攻击者进行攻击():
 		return
 	if 攻击随从.获取风怒():
 		for i in 2:
-			_进行攻击(攻击者,防御者,攻击随从)
+			await _进行攻击(攻击者,防御者,攻击随从)
 	elif 攻击随从.获取超级风怒():
 		for i in 3:
-			_进行攻击(攻击者,防御者,攻击随从)
+			await _进行攻击(攻击者,防御者,攻击随从)
 	else:
-		_进行攻击(攻击者,防御者,攻击随从)
+		await _进行攻击(攻击者,防御者,攻击随从)
 
 func _进行攻击(
 	攻击者:Player,
@@ -65,7 +71,7 @@ func _进行攻击(
 	if 防御随从==null:
 		# 没有防御随从，无法攻击
 		return
-	攻击随从.攻击其他随从(防御随从)
+	await 攻击随从.攻击其他随从(防御随从)
 
 func _获取防御随从(player:Player)->BaseMinion:
 	if player.战斗中的随从.is_empty():
@@ -80,7 +86,7 @@ func _获取防御随从(player:Player)->BaseMinion:
 		# 随机选择
 		var 结果=随从列表.pick_random()
 		return 结果.cardData
-	return 嘲讽随从.pick_random()
+	return 嘲讽随从.pick_random().cardData
 
 func _获取攻击随从(player:Player)->BaseMinion:
 	if player.战斗中的随从.is_empty():
@@ -97,7 +103,12 @@ func _获取攻击随从(player:Player)->BaseMinion:
 	return temp.cardData
 
 func _战斗判断():
+	if is_instance_valid(玩家):
+		print("没有")
+	else:
+		print("对象已被释放！")
 	if 玩家.战斗中的随从.is_empty() and 敌人.战斗中的随从.is_empty():
+		print(玩家)
 		print("平局")
 		_战斗状态="结束了"
 		战斗结束信号.emit(true,null,null)
@@ -122,28 +133,32 @@ func 获取敌人(player:Player)->Player:
 	print_stack()
 	return null
 
-func 开始战斗(player:Player,target:Player):
-	self.玩家=player
-	self.敌人=target
+func _绑定信号(player:Player):
 	if !player.添加卡片信号.is_connected(添加卡片.bind(player)):
 		player.添加卡片信号.connect(添加卡片.bind(player))
 	if !player.删除卡片信号.is_connected(删除卡片.bind(player)):
 		player.删除卡片信号.connect(删除卡片.bind(player))
+
+func 开始战斗(player:Player,target:Player):
+	self.玩家=player
+	self.敌人=target
+	_绑定信号(玩家)
+	_绑定信号(敌人)
 	玩家.战斗初始化(self)
 	敌人.战斗初始化(self)
-	# ui初始化
+	## ui初始化
 	for i in 敌人容器.get_children():
-		i.queue_free()
-	for i in 敌人.战斗中的随从:
+		i.free()
+	for i:BaseCardUI in 敌人.战斗中的随从:
 		敌人容器.add_child(i)
-	for i in 玩家容器.get_children():
-		i.queue_free()
-	for i in 玩家.战斗中的随从:
-		玩家容器.add_child(i)
-	_判断先手()
+	#for i in 玩家容器.get_children():
+		#i.queue_free()
+	#for i in 玩家.战斗中的随从:
+		#玩家容器.add_child(i)
+	#_判断先手()
 	# 战斗开始时
-	await get_tree().process_frame
-	_战斗状态="战斗中"
+	await get_tree().create_timer(1).timeout
+	#_战斗状态="战斗中"
 	pass
 
 func _判断先手():
@@ -207,6 +222,7 @@ func move_to_target(panel: Node, target: Node, duration: float) -> void:
 		tween.tween_property(panel, "global_position", Vector2(target.global_position.x,target.global_position.y-target.size.y), duration)
 	tween.tween_property(panel, "size", target.size, duration)
 	动画播放队列.append(tween)
+	await tween.finished
 
 ## 溶解动画
 func 溶解动画(panel: Node):
@@ -216,6 +232,7 @@ func 溶解动画(panel: Node):
 	tween.tween_property(panel.material, "shader_parameter/progress", 1.0, 2.0)
 	#await tween.finished
 	动画播放队列.append(tween)
+	await tween.finished
 
 
 ## 抖动动画
@@ -246,6 +263,7 @@ func shake_panel(panel: Node, duration: float, strength: float, frequency: float
 							shake_duration * 0.6).set_ease(Tween.EASE_IN)
 	
 	动画播放队列.append(tween)
+	await tween.finished
 
 
 ## 返回原位动画
@@ -257,14 +275,15 @@ func return_to_original(panel: Node,original_position,original_size, duration: f
 	tween.tween_property(panel, "size", original_size, duration)
 	
 	动画播放队列.append(tween)
+	await tween.finished
 	
 func start_animation_sequence(panel_a,panel_b):
 	var original_position = panel_a.global_position
 	var original_size = panel_a.size
 	# 1. 移动到目标位置
-	move_to_target(panel_a, panel_b, 0.5)
+	await move_to_target(panel_a, panel_b, 0.5)
 	# 2. 播放抖动动画
-	shake_panel(panel_b, 0.3, 10.0, 0.8)
+	await shake_panel(panel_b, 0.3, 10.0, 0.8)
 	# 3. 返回原位
-	return_to_original(panel_a,original_position,original_size, 0.4)
+	await return_to_original(panel_a,original_position,original_size, 0.4)
 #endregion

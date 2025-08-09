@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wwynumnyqd06"
-path="res://.godot/imported/名字边框.png-bd3c38720f56c1ead9e37458b4673cab.ctex"
+uid="uid://bv57g0hel15s8"
+path="res://.godot/imported/attacktexture.png-4ef12830b7be139d4aaaf2c91d54917f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/名字边框.png"
-dest_files=["res://.godot/imported/名字边框.png-bd3c38720f56c1ead9e37458b4673cab.ctex"]
+source_file="res://ui/操作UI/attacktexture.png"
+dest_files=["res://.godot/imported/attacktexture.png-4ef12830b7be139d4aaaf2c91d54917f.ctex"]
 
 [params]
 

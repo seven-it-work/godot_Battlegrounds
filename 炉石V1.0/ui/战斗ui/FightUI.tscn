@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dotdr12rv651g"]
 
 [ext_resource type="Script" uid="uid://b455m8v7l78dc" path="res://ui/战斗ui/fight_ui.gd" id="1_psvr3"]
-[ext_resource type="PackedScene" uid="uid://dy3yv2yd2kdo1" path="res://ui/CardUI.tscn" id="1_u7ku7"]
+[ext_resource type="PackedScene" uid="uid://b631tye5dlbwf" path="res://ui/操作UI/炉石卡片样式.tscn" id="2_psvr3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhttf"]
 content_margin_left = 20.0
@@ -45,7 +45,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u7ku7")
 layout_mode = 2
 alignment = 1
 
-[node name="CardUI" parent="PanelContainer/VBoxContainer/PanelContainer/敌人容器" instance=ExtResource("1_u7ku7")]
+[node name="Control" parent="PanelContainer/VBoxContainer/PanelContainer/敌人容器" instance=ExtResource("2_psvr3")]
+layout_mode = 2
+
+[node name="Control2" parent="PanelContainer/VBoxContainer/PanelContainer/敌人容器" instance=ExtResource("2_psvr3")]
 layout_mode = 2
 
 [node name="empty" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
@@ -61,6 +64,3 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u7ku7")
 [node name="玩家容器" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 alignment = 1
-
-[node name="CardUI" parent="PanelContainer/VBoxContainer/PanelContainer2/玩家容器" instance=ExtResource("1_u7ku7")]
-layout_mode = 2

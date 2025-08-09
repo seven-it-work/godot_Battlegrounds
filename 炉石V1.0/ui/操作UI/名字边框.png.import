@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0hcwgopnc5er"
-path="res://.godot/imported/StarIcon.png-0999a607abd3b37541daaa57de421352.ctex"
+uid="uid://wwynumnyqd06"
+path="res://.godot/imported/名字边框.png-b4afc1bfcd5bfcee35abe3155f538184.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/StarIcon.png"
-dest_files=["res://.godot/imported/StarIcon.png-0999a607abd3b37541daaa57de421352.ctex"]
+source_file="res://ui/操作UI/名字边框.png"
+dest_files=["res://.godot/imported/名字边框.png-b4afc1bfcd5bfcee35abe3155f538184.ctex"]
 
 [params]
 
