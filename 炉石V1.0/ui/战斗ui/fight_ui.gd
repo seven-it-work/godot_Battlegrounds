@@ -7,7 +7,7 @@ var 敌人:Player
 ## 未开始 战斗中 结束了
 var _战斗状态:String="未开始"
 var 动画播放队列:Array[Tween]=[]
-var 是否正在播放动画:bool=false
+var 是否正在播放动画:int=0
 
 @onready var 敌人容器:=$"PanelContainer/VBoxContainer/PanelContainer/敌人容器"
 @onready var 玩家容器:=$"PanelContainer/VBoxContainer/PanelContainer2/玩家容器"
@@ -20,13 +20,16 @@ func _是否是敌人(player:Player)->bool:
 
 func _process(delta: float) -> void:
 	## 存在问题。动画和数据不一致。动画没有播放完 已经死亡 free了
-	if 是否正在播放动画:
+	if 是否正在播放动画!=0:
 		return
 	if !动画播放队列.is_empty():
 		var 动画=动画播放队列.pop_front() as Tween
-		是否正在播放动画=true
-		await 动画.finished
-		是否正在播放动画=false
+		if  动画.is_running():
+			是否正在播放动画+=1
+			await 动画.finished
+			是否正在播放动画-=1
+		return
+	if 是否正在删除:
 		return
 	if _战斗状态=="战斗中":
 		_战斗处理()
@@ -146,11 +149,11 @@ func 开始战斗(player:Player,target:Player):
 	for i in 敌人容器.get_children():
 		i.queue_free()
 	for i:CardEntity in 敌人.战斗中的随从:
-		添加卡片(i,Enums.CardPosition.战场,-1,敌人)
+		await 添加卡片(i,Enums.CardPosition.战场,-1,敌人)
 	for i in 玩家容器.get_children():
 		i.queue_free()
 	for i in 玩家.战斗中的随从:
-		添加卡片(i,Enums.CardPosition.战场,-1,玩家)
+		await 添加卡片(i,Enums.CardPosition.战场,-1,玩家)
 	_判断先手()
 	# 战斗开始时
 	await get_tree().create_timer(1).timeout
@@ -170,17 +173,21 @@ func _判断先手():
 		else:
 			当前攻击者=敌人
 
-
+var 是否正在删除:bool=false
 func 删除卡片(
 	d:CardEntity,
 	cardPosition:Enums.CardPosition,
 	player:Player,
 ):
+	是否正在删除=true
+	if 是否正在播放动画!=0:
+		await get_tree().create_timer(1).timeout
+		删除卡片(d,cardPosition,player)
+		return
+	是否正在删除=false
 	if cardPosition==Enums.CardPosition.战场:
-		for i in player.战斗中的随从:
-			if i.get_parent() is BaseCardUI:
-				if i==d:
-					i.get_parent().queue_free()
+		if d.get_parent() is BaseCardUI:
+			d.get_parent().queue_free()
 	return
 	
 	
@@ -198,13 +205,15 @@ func 添加卡片(
 		cardUI=d.get_parent()
 	else:
 		cardUI=BaseCardUI.build(d)
+	var custom_size=cardUI.custom_minimum_size
+	cardUI.custom_minimum_size=Vector2(0,custom_size.y)
 	if _是否是敌人(player):
 		敌人容器.add_child(cardUI)
 		敌人容器.move_child(cardUI,index)
 	else:
 		玩家容器.add_child(cardUI)
 		玩家容器.move_child(cardUI,index)
-
+	await 召唤动画(cardUI,custom_size)
 #region 动画方法
 ## 移动动画
 func move_to_target(panel: Node, target: Node, duration: float) -> void:
@@ -261,6 +270,12 @@ func shake_panel(panel: Node, duration: float, strength: float, frequency: float
 	动画播放队列.append(tween)
 	await tween.finished
 
+## 召唤动画
+func 召唤动画(node:Node,custom_minimum_size:Vector2,duration: float=1):
+	var tween=create_tween()
+	tween.tween_property(node, "custom_minimum_size", custom_minimum_size, duration)
+	动画播放队列.append(tween)
+	await tween.finished
 
 ## 返回原位动画
 func return_to_original(panel: Node,original_position,original_size, duration: float) -> void:

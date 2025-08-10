@@ -7,7 +7,7 @@ resource_name = "deathrattle"
 script/source = "extends Deathrattle
 ## 由子类实现
 func _具体亡语方法接口(攻击者:CardEntity):
-	for i in 2:
+	for i in 触发卡.获取倍率():
 		var card=CardUtils.get_card(\"甲虫\",触发卡.player) as BaseMinion
 		触发卡.player.添加卡片(card,Enums.CardPosition.战场,触发卡.player.获取卡片索引(触发卡)+1,true)
 	pass

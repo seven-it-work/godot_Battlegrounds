@@ -32,6 +32,7 @@ func 战斗初始化(fightUI:FightUI):
 	# 初始化战斗中的随从
 	for i in 战场:
 		var 复制=i.duplicate() as BaseMinion
+		复制.卡片所在位置=Enums.CardPosition.战场
 		复制.current_hp=复制.获取带加成属性().y
 		战场_战斗中的对象映射map.set(复制,i)
 		战斗中的随从.append(复制)
@@ -97,6 +98,7 @@ func 添加卡片(
 ):
 	#print("添加卡牌")
 	d.player=self
+	d.卡片所在位置=cardPosition
 	if 是否触发信号:
 		添加卡片信号.emit(d,cardPosition,index)
 	if cardPosition==Enums.CardPosition.酒馆:
@@ -110,7 +112,7 @@ func 添加卡片(
 	if cardPosition==Enums.CardPosition.战场:
 		if 是否在战斗中():
 			d.current_hp=d.获取带加成属性().y
-			战斗中的随从.insert(adjust_index(index,战场),d)
+			战斗中的随从.insert(index,d)
 			return
 		战场.insert(adjust_index(index,战场),d)
 		return
@@ -168,7 +170,8 @@ func 获取卡片索引(card:CardEntity)->int:
 		return 酒馆.find(card)
 	if card.卡片所在位置==Enums.CardPosition.战场:
 		if 是否在战斗中():
-			return 战斗中的随从.find(card)
+			var index=战斗中的随从.find(card)
+			return index
 		return 战场.find(card)
 	if card.卡片所在位置==Enums.CardPosition.手牌:
 		return 手牌.find(card)
