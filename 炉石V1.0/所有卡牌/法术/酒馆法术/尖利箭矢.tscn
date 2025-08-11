@@ -19,8 +19,11 @@ func 获取描述(dic:Dictionary={})->String:
 script = SubResource("GDScript_4jna7")
 "卡牌类型" = 1
 "选择目标对象" = NodePath("SelectTarget")
+lushi_id = 100596
+str_id = "EBG_Spell_014"
 "名称" = "尖利箭矢"
-"等级" = 1
+"描述" = "使一个随从获得+{0}攻击力。4使一个随从获得+{0}\\/+{1}。"
+"glod_描述" = "使一个随从获得+{0}攻击力。4使一个随从获得+{0}\\/+{1}。"
 "花费" = 1
 metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
 
