@@ -1,6 +1,7 @@
 extends Node
 class_name Player
 
+@export var 酒馆等级:int=1
 @export var 酒馆:Array=[]
 @export var 战场:Array=[]
 @export var 手牌:Array=[]
@@ -16,11 +17,18 @@ class_name Player
 @export var 下次购买法术金币减少数量:int=0
 
 #region 战斗相关属性
-## Array[BaseCardUI]
+## Array[CardEntity]
 var 战斗中的随从:Array=[]
+## key=战场上的随从 value=战斗中的随从
 var 战场_战斗中的对象映射map:Dictionary={}
 var 当前攻击的随从索引:int=0
 var fightUI:FightUI
+
+## Array[CardEntity]
+func 获取战场上的牌()->Array:
+	if 是否在战斗中():
+		return 战斗中的随从
+	return 战场
 
 func 重置攻击随从():
 	for i in 战斗中的随从:
@@ -58,6 +66,7 @@ signal 使用卡牌信号(使用卡牌:CardEntity)
 signal 战吼触发信号(战吼卡牌:CardEntity)
 signal 亡语触发信号(亡语卡牌:CardEntity)
 signal 出售随从信号(出售卡牌:CardEntity)
+signal 随从属性加成信号(加成随从:CardEntity,加成数据:AttributeBonus)
 signal 开始回合信号()
 signal 回合结束信号()
 

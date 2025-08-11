@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://b73jeaomr7h7n"]
+
+[sub_resource type="GDScript" id="GDScript_1dx66"]
+script/source = "extends BaseMinion
+
+@export var 剩余永久塑造法术次数:int=1
+
+
+func 信号绑定():
+	player.使用卡牌信号.connect(_使用卡牌信号.bind())
+	player.开始回合信号.connect(_开始回合信号.bind())
+	pass
+	
+func _开始回合信号():
+	剩余永久塑造法术次数=1*获取倍率()
+	pass
+
+func _使用卡牌信号(使用的卡牌:CardEntity):
+	if 使用的卡牌 is Spellcraft:
+		if 剩余永久塑造法术次数>0:
+			if 使用的卡牌.选择目标对象 and 使用的卡牌.选择目标对象.目标卡片==self :
+				使用的卡牌.是否永久加成=true
+				剩余永久塑造法术次数-=1
+"
+
+[node name="熔岩潜伏者" type="Node"]
+script = SubResource("GDScript_1dx66")
+race = Array[int]([8])
+atk_hp = Vector2i(2, 5)
+lushi_id = 80747
+str_id = "BG23_009"
+"名称" = "熔岩潜伏者"
+"描述" = "每回合对本随从使用的第一张<b>塑造法术<\\/b>的法术牌永久有效。"
+"glod_描述" = "每回合对本随从使用的前两张<b>塑造法术<\\/b>的法术牌永久有效。"
+"等级" = 2
+metadata/_custom_type_script = "uid://bvigsfyqo3h7x"

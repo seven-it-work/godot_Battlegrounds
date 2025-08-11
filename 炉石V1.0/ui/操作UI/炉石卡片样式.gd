@@ -29,7 +29,10 @@ func _process(delta: float) -> void:
 				
 			var 属性=cardData.获取带加成属性()
 			$"SubViewportContainer/SubViewport/攻击力/Label".text=str(属性.x)
-			$"SubViewportContainer/SubViewport/生命值/Label".text=str(属性.y)
+			if cardData.player.是否在战斗中():
+				$"SubViewportContainer/SubViewport/生命值/Label".text=str(cardData.current_hp)
+			else:
+				$"SubViewportContainer/SubViewport/生命值/Label".text=str(属性.y)
 			$"SubViewportContainer/SubViewport/背景图2/描述".text=str(cardData.获取描述())
 		pass
 	pass

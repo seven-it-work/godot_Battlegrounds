@@ -147,12 +147,19 @@ func 获取带加成属性()->Vector2i:
 		result+=player.甲虫加成
 	return result
 
-func 属性加成(data:AttributeBonus,是否永久:bool):
+func 属性加成(data:AttributeBonus,是否永久:bool,随从否在战斗中:bool):
+	if 随从否在战斗中:
+		if player.是否在战斗中():
+			if player.战场_战斗中的对象映射map.has(self):
+				var 战场的随从=player.战场_战斗中的对象映射map.get(self) as BaseMinion
+				战场的随从.属性加成(data,是否永久,false)
+			return
 	current_hp+=data.atk_hp.y
 	if 是否永久:
 		永久属性.append(data)
 	else:
 		临时属性.append(data)
+	player.随从属性加成信号.emit(self,data)
 
 func 获取嘲讽()->bool:
 	if 嘲讽:

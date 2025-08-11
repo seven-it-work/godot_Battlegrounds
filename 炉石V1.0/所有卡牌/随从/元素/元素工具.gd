@@ -14,4 +14,4 @@ static func 元素属性加成(card:CardEntity,player:Player):
 				"元素属性加成",
 				player.元素属性加成,
 				"元素属性加成"
-			),true)
+			),true,player.是否在战斗中())

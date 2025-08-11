@@ -10,6 +10,18 @@ func _ready() -> void:
 var index=0
 func _on_button_pressed() -> void:
 	var array=[
+		"心灵泥魔",
+		"躁动欺诈者",
+		"塔德",
+		"熔岩潜伏者",
+		"深海钓客",
+		"贝类收藏家",
+		"雏龙走私商",
+		"瞌睡雏龙",
+		"晾膘的游客",
+		"挑衅的船工",
+		"野猪预言者",
+		"晾膘的游客",
 		"派对元素",
 		"商贩元素",
 		"白赚赌徒",
@@ -26,8 +38,6 @@ func _on_button_pressed() -> void:
 		"愤怒编织者",
 		"熔融岩石",
 		"剃刀沼泽地卜师",
-		"晾膘的游客",
-		"深海钓客",
 	]
 	var card=CardUtils.get_card(array[index],player)
 	index=(index+1)%array.size()

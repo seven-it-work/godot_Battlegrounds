@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://chwnh44geohkp"]
+
+[sub_resource type="GDScript" id="GDScript_1dpws"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.随从属性加成信号.connect(_使用信号.bind())
+	pass
+
+func _使用信号(卡牌:CardEntity,加成数据:AttributeBonus):
+	if self.卡片所在位置==Enums.CardPosition.战场:
+		if 加成数据.atk_hp.x>0:
+			if 卡牌 is BaseMinion:
+				if 卡牌.卡片所在位置==Enums.CardPosition.战场:
+					if 卡牌.race.has(Enums.CardRace.龙):
+						卡牌.属性加成(AttributeBonus.build(
+							名称,
+							Vector2(0,1*获取倍率()),
+							名称,
+						), true, player.是否在战斗中())
+	pass
+"
+
+[node name="雏龙走私商" type="Node"]
+script = SubResource("GDScript_1dpws")
+"限定类型" = Array[int]([3])
+atk_hp = Vector2i(2, 5)
+lushi_id = 72072
+str_id = "BG21_013"
+"名称" = "雏龙走私商"
+"描述" = "每当一条友方的龙获得攻击力，使其获得+1生命值。"
+"glod_描述" = "每当一条友方的龙获得攻击力，使其获得+2生命值。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

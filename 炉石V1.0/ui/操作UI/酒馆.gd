@@ -25,8 +25,6 @@ func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:Drag
 		printerr("错误了")
 		print_stack()
 
-func _回到原来位置():
-	self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)
 
 func 节点开始拖拽(d:DragObj):
 	super.节点开始拖拽(d)

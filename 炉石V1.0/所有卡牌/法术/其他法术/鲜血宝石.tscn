@@ -15,7 +15,7 @@ func 法术使用处理():
 				名称,
 				player.鲜血宝石加成,
 				名称,
-			), true)
+			), true,false)
 	else:
 		# 无目标执行策略
 		pass
@@ -30,7 +30,6 @@ lushi_id = 70136
 str_id = "BG20_GEM"
 "名称" = "鲜血宝石"
 "描述" = "使一个随从获得+{0}\\/+{1}。"
-"等级" = 1
 metadata/_custom_type_script = "uid://bvigsfyqo3h7x"
 
 [node name="SelectTarget" type="Node" parent="."]

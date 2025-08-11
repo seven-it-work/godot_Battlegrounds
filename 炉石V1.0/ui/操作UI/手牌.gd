@@ -28,7 +28,7 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 		if 拖拽中的对象.卡牌类型==Enums.CardType.随从:
 			var 随从取消使用=func(d:DragObj):
 				#print("随从取消使用")
-				self._回到原来位置()
+				self._回到原来位置(dragObj)
 				pass
 			var list=player.获取酒馆And战场的牌()
 			if 拖拽中的对象.选择目标对象:
@@ -99,9 +99,6 @@ func _使用成功(cardUI:CardUI):
 		cardUI.queue_free()
 	else:
 		printerr("卡片类型无法使用",cardData)
-
-func _回到原来位置():
-	self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)
 
 func 节点拖拽中(d:DragObj):
 	super.节点拖拽中(d)

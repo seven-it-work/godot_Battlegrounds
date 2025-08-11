@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://o4ol87pr488p"]
+
+[sub_resource type="GDScript" id="GDScript_p5fcx"]
+script/source = "extends BaseSpell
+
+func 法术使用处理():
+	player.当前金币+=1
+"
+
+[node name="铸币牌" type="Node"]
+script = SubResource("GDScript_p5fcx")
+"卡牌类型" = 2
+"名称" = "铸币"
+"描述" = "获得1枚铸币。"
+"glod_描述" = "获得1枚铸币。"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://bvigsfyqo3h7x"

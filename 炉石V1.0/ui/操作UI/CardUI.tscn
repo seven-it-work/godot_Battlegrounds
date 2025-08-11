@@ -18,8 +18,14 @@ offset_right = 156.0
 offset_bottom = 217.0
 script = ExtResource("2_4yc6j")
 
-[node name="Control" parent="." index="0" instance=ExtResource("3_ey4q1")]
-layout_mode = 1
-
-[node name="PanelContainer" parent="." index="1"]
+[node name="PanelContainer" parent="." index="0"]
+offset_left = 16.0
+offset_top = 3.0
+offset_right = 16.0
+offset_bottom = 3.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4yc6j")
+
+[node name="Control" parent="." index="1" instance=ExtResource("3_ey4q1")]
+layout_mode = 1
+offset_bottom = 242.0
+mouse_filter = 2

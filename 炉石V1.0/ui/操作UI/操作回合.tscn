@@ -175,20 +175,24 @@ layout_mode = 2
 
 [node name="箭头遮罩" type="Panel" parent="PanelContainer"]
 visible = false
+z_index = 1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_icvfi")
 script = ExtResource("7_icvfi")
 
 [node name="箭头" parent="PanelContainer/箭头遮罩" instance=ExtResource("1_fce2h")]
+z_index = 2
 
 [node name="抉择遮罩" type="Panel" parent="PanelContainer" node_paths=PackedStringArray("操作回合UI")]
 visible = false
+z_index = 1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d1h12")
 script = ExtResource("9_d1h12")
 "操作回合UI" = NodePath("../..")
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/抉择遮罩"]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

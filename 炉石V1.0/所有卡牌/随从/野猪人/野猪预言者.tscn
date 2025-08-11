@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg3dqejttksi8"]
+
+[sub_resource type="GDScript" id="GDScript_q6jd7"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.使用卡牌信号.connect(_使用信号.bind())
+	pass
+
+func _使用信号(使用的卡牌:CardEntity):
+	if 使用的卡牌!=self:
+		if 卡片所在位置==Enums.CardPosition.战场:
+			if 使用的卡牌 is BaseMinion:
+				if 使用的卡牌.race.has(Enums.CardRace.野猪人):
+					for i in 获取倍率():
+						player.添加卡片(
+							CardUtils.get_card(\"鲜血宝石\",player),
+							Enums.CardPosition.手牌,
+							-1,true)
+	pass
+"
+
+[node name="野猪预言者" type="Node"]
+script = SubResource("GDScript_q6jd7")
+"限定类型" = Array[int]([7])
+atk_hp = Vector2i(2, 3)
+"嘲讽" = true
+lushi_id = 70153
+str_id = "BG20_203"
+"名称" = "野猪预言者"
+"描述" = "<b>嘲讽<\\/b>。在你使用一张野猪人后，获取一张<b>鲜血宝石<\\/b>。"
+"glod_描述" = "<b>嘲讽<\\/b>。在你使用一张野猪人后，获取2张<b>鲜血宝石<\\/b>。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

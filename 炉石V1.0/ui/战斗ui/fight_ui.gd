@@ -120,6 +120,13 @@ func _战斗判断():
 		_战斗状态="结束了"
 		战斗结束信号.emit(false,敌人,玩家)
 	else:
+		var 玩家攻击力总和=ArrayUtils.sum(玩家.战斗中的随从.map(func(item:BaseMinion): return item.获取带加成属性().x))
+		var 敌人攻击力总和=ArrayUtils.sum(敌人.战斗中的随从.map(func(item:BaseMinion): return item.获取带加成属性().x))
+		if 玩家攻击力总和==0 and 敌人攻击力总和==0:
+			print("平局")
+			_战斗状态="结束了"
+			战斗结束信号.emit(true,null,null)
+			return
 		# 继续战斗
 		pass
 

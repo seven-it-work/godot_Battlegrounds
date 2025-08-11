@@ -19,7 +19,7 @@ func _使用信号(使用的卡牌:CardEntity):
 							名称,
 							Vector2(2,1),
 							名称,
-						), true)
+						), true,false)
 	pass
 "
 

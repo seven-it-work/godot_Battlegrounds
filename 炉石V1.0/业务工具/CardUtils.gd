@@ -17,10 +17,10 @@ static var COMMON_CODITION={
 		"是否出现在酒馆",true,Enums.ConditionEnum.等于
 	),
 	"随从":CardFindCondition.build(
-		"cardType",Enums.CardType.随从,Enums.ConditionEnum.等于
+		"卡牌类型",Enums.CardType.随从,Enums.ConditionEnum.等于
 	),
 	"法术":CardFindCondition.build(
-		"cardType",Enums.CardType.法术,Enums.ConditionEnum.等于
+		"卡牌类型",Enums.CardType.法术,Enums.ConditionEnum.等于
 	)
 }
 
@@ -44,25 +44,30 @@ static func find_card(conditionList:Array[CardFindCondition])->Array:
 		for i in conditionList:
 			var re=false
 			if i.key in card:
-				match i.判断:
-					Enums.ConditionEnum.大于:
-						re=(card[i.key]>i.value)
-					Enums.ConditionEnum.等于:
-						re=(card[i.key]==i.value)
-					Enums.ConditionEnum.小于:
-						re=(card[i.key]<i.value)
-					Enums.ConditionEnum.大于等于:
-						re=(card[i.key]>=i.value)
-					Enums.ConditionEnum.小于等于:
-						re=(card[i.key]<=i.value)
-					Enums.ConditionEnum.不等于:
-						re=(card[i.key]!=i.value)
-					Enums.ConditionEnum.在:
-						re=(card[i.key].has(i.value))
-					Enums.ConditionEnum.不在:
-						re=(!card[i.key].has(i.value))
-					_:
-						pass
+				var value=card[i.key]
+				if i.key in card:
+					match i.判断:
+						Enums.ConditionEnum.大于:
+							re=(value>i.value)
+						Enums.ConditionEnum.等于:
+							re=(value==i.value)
+						Enums.ConditionEnum.小于:
+							re=(value<i.value)
+						Enums.ConditionEnum.大于等于:
+							re=(value>=i.value)
+						Enums.ConditionEnum.小于等于:
+							re=(value<=i.value)
+						Enums.ConditionEnum.不等于:
+							re=(value!=i.value)
+						Enums.ConditionEnum.在:
+							re=(value.has(i.value))
+						Enums.ConditionEnum.不在:
+							re=(!value.has(i.value))
+						_:
+							pass
+			else:
+				print("不存在key=",i.key)
+				re=false
 			if !re and i.且或:
 				return false
 			all_result.append(re)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs8556g3y72hb"]
+
+[sub_resource type="GDScript" id="GDScript_mw3hc"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.随从属性加成信号.connect(_使用信号.bind())
+	pass
+
+func _使用信号(卡牌:CardEntity,加成数据:AttributeBonus):
+	if 卡牌==self:
+		if 加成数据.atk_hp.x>0:
+			属性加成(AttributeBonus.build(
+				名称,
+				Vector2(0,1*获取倍率()),
+				名称,
+			), true, player.是否在战斗中())
+	pass
+"
+
+[node name="挑衅的船工" type="Node"]
+script = SubResource("GDScript_mw3hc")
+race = Array[int]([5])
+atk_hp = Vector2i(2, 5)
+lushi_id = 72061
+str_id = "BG21_018"
+"名称" = "挑衅的船工"
+"描述" = "每当本随从获得\\n攻击力时，获得+1生命值。"
+"glod_描述" = "每当本随从获得\\n攻击力时，获得+2生命值。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cavojki1ucxjt"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_78k4h"]
+
+[sub_resource type="GDScript" id="GDScript_78k4h"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	for i in 触发卡.获取倍率():
+		触发卡.player.添加卡片(
+			CardUtils.get_card(\"铸币牌\",触发卡.player),
+			Enums.CardPosition.手牌,
+			-1,true)
+	pass
+"
+
+[node name="贝类收藏家" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_78k4h")
+race = Array[int]([8])
+atk_hp = Vector2i(4, 3)
+"战吼" = [NodePath("Roar")]
+lushi_id = 80740
+str_id = "BG23_002"
+"名称" = "贝类收藏家"
+"描述" = "<b>战吼：<\\/b>获取一张铸币牌。"
+"glod_描述" = "<b>战吼：<\\/b>获取2张铸币牌。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_78k4h")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
