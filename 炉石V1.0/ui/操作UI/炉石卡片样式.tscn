@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b631tye5dlbwf"]
 
-[ext_resource type="Texture2D" uid="uid://c3sd82doavyo7" path="res://所有卡牌/法术/其他法术/BG20_GEM.png" id="1_eqw73"]
 [ext_resource type="Script" uid="uid://bub1x6tpig6mk" path="res://ui/操作UI/炉石卡片样式.gd" id="1_t5dsu"]
+[ext_resource type="Texture2D" uid="uid://l15isms6r1ua" path="res://所有卡牌/随从/恶魔/躁动欺诈者.png" id="2_70cmp"]
 [ext_resource type="Texture2D" uid="uid://b0hcwgopnc5er" path="res://ui/操作UI/StarIcon.png" id="2_t5dsu"]
 [ext_resource type="Texture2D" uid="uid://wwynumnyqd06" path="res://ui/操作UI/名字边框.png" id="3_u1hnd"]
 [ext_resource type="Texture2D" uid="uid://cjyxklwv4r4fd" path="res://ui/操作UI/GoldCoin.png" id="4_dtx1b"]
@@ -31,13 +31,12 @@ size = Vector2i(186, 241)
 render_target_update_mode = 4
 
 [node name="背景图" type="TextureRect" parent="SubViewportContainer/SubViewport"]
-visible = false
 custom_minimum_size = Vector2(100, 100)
 offset_left = 19.0
 offset_top = 5.0
 offset_right = 166.0
 offset_bottom = 152.0
-texture = ExtResource("1_eqw73")
+texture = ExtResource("2_70cmp")
 expand_mode = 2
 
 [node name="等级" type="TextureRect" parent="SubViewportContainer/SubViewport"]
@@ -144,7 +143,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="背景图2" type="TextureRect" parent="SubViewportContainer/SubViewport"]
-visible = false
 offset_left = 18.0
 offset_top = 127.0
 offset_right = 168.0

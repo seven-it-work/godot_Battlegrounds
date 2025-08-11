@@ -9,6 +9,7 @@ static func 游戏初始化加载卡牌(加载种族:Array[Enums.CardRace]):
 	var dic=scan_scenes_recursive("res://所有卡牌/")
 	ALL_CARD.clear()
 	for key in dic:
+		下载图片(dic.get(key))
 		ALL_CARD.set(key,dic.get(key) as CardEntity)
 
 
@@ -105,6 +106,18 @@ static func scan_scenes_recursive(base_path: String, current_path: String = "",s
 	return scene_dict
 
 
+static func 下载图片(cardData:CardEntity):
+	var 插画路径=cardData.get_插画路径()
+	if FileAccess.file_exists(插画路径):
+		# 以及存在了
+		pass
+	else:
+		if cardData.str_id:
+			# 尝试下载
+			var image_url="https://art.hearthstonejson.com/v1/orig/%s.png"%cardData.str_id
+			print("尝试下载插画：",image_url)
+			CardUtils.download_image(image_url,cardData.get_插画路径())
+
 ## 下载网络图片并保存到本地
 ## @param url: 图片下载地址，例如 "https://art.hearthstonejson.com/v1/orig/BG20_GEM.png"
 ## @param save_path: 保存路径，例如 "C:/" 或 "user://images/"
@@ -152,7 +165,7 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 				file.store_buffer(body)
 				file.close()
 				success = true
-				#print("图片已保存到: ", save_path_with_filename)
+				print("图片已保存到: ", save_path_with_filename)
 			else:
 				push_error("无法写入文件: ", save_path_with_filename)
 	)

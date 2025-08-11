@@ -40,6 +40,9 @@ func _on_button_pressed() -> void:
 		"剃刀沼泽地卜师",
 	]
 	var card=CardUtils.get_card(array[index],player)
+	if card==null:
+		print("添加错了",index,array[index])
+		return
 	index=(index+1)%array.size()
 	player.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
 	pass # Replace with function body.

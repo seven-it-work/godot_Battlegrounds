@@ -20,6 +20,7 @@ class_name CardEntity
 @export var 文件名:String
 ## 卡牌所属的玩家
 @export var player:Player
+@export var 插画路径:String
 
 func 获取倍率()->int:
 	if is_gold:
@@ -42,3 +43,13 @@ func 获取描述(dic:Dictionary={})->String:
 
 func 获取花费()->int:
 	return 花费
+
+func get_插画路径()->String:
+	if 插画路径:
+		return 插画路径
+	if !文件路径:
+		var temp= get_script().resource_path
+		文件路径=temp.get_base_dir()
+		文件名=temp.get_file().replace("."+temp.get_extension(),"")
+	var 默认路径="%s/%s.png"%[文件路径,文件名]
+	return 默认路径

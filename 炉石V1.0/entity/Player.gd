@@ -105,7 +105,6 @@ func 添加卡片(
 	index:int,
 	是否触发信号:bool
 ):
-	#print("添加卡牌")
 	d.player=self
 	d.卡片所在位置=cardPosition
 	if 是否触发信号:

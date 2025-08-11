@@ -9,8 +9,23 @@ static func build(cardData:CardEntity)->BaseCardUI:
 	temp.add_child(cardData)
 	return temp
 
+var _是否初始:bool=false
+
 func _process(delta: float) -> void:
 	if cardData:
+		if !_是否初始:
+			_是否初始=true
+			var 插画路径=cardData.get_插画路径()
+			if FileAccess.file_exists(插画路径):
+				$"SubViewportContainer/SubViewport/背景图".texture=load(插画路径)
+				pass
+			else:
+				if cardData.str_id:
+					# 尝试下载
+					var image_url="https://art.hearthstonejson.com/v1/orig/%s.png"%cardData.str_id
+					print("尝试下载插画：",image_url)
+					CardUtils.download_image(image_url,cardData.get_插画路径())
+		
 		$"SubViewportContainer/SubViewport/名称/Label".text=cardData.名称
 		$"SubViewportContainer/SubViewport/等级/Label".text=str(cardData.等级)
 		$"SubViewportContainer/SubViewport/金币".visible=cardData.卡片所在位置==Enums.CardPosition.酒馆
