@@ -16,6 +16,7 @@ class_name Player
 @export var 鲜血宝石加成:Vector2i=Vector2i(1,1)
 @export var 甲虫加成:Vector2i=Vector2i(2,2)
 @export var 亡灵加成:Vector2i=Vector2(0,0)
+@export var 野兽加成:Vector2i=Vector2i(0,0)
 
 @export var 下次购买法术金币减少数量:int=0
 
@@ -72,6 +73,7 @@ signal 出售随从信号(出售卡牌:CardEntity)
 signal 随从属性加成信号(加成随从:CardEntity,加成数据:AttributeBonus)
 signal 开始回合信号()
 signal 回合结束信号()
+signal 英雄受伤信号(伤害:int)
 
 func 购买卡片(card:CardEntity):
 	删除卡牌(card,Enums.CardPosition.酒馆,false)

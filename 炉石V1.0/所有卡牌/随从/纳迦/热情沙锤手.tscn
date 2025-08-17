@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://do2ttw1y2rwde"]
+
+[sub_resource type="GDScript" id="GDScript_7k9f1"]
+resource_name = "热情沙锤手"
+script/source = "extends BaseMinion
+
+var 已用次数:int=0
+
+func 信号绑定():
+	player.开始回合信号.connect(_on_新回合开始)
+	player.使用卡牌信号.connect(_on_使用卡牌)
+
+func _on_新回合开始():
+	已用次数 = 1* 获取倍率()  # 每回合重置
+
+func _on_使用卡牌(使用的卡牌:CardEntity):
+	# 检查是否是被塑造法术作用于自己
+	if 使用的卡牌 is Spellcraft and 使用的卡牌.选择目标对象 and 使用的卡牌.选择目标对象.目标卡片 == self:
+		if 已用次数>=1* 获取倍率():
+			return
+		var 复制数量 = 获取倍率()  # 普通卡1个，金色卡2个
+		for i in 复制数量:
+			var 新卡 = CardUtils.get_card(使用的卡牌.名称,player)
+			player.添加卡片(新卡, Enums.CardPosition.手牌, -1, true)
+		已用次数+=1
+"
+
+[node name="热情沙锤手" type="Node"]
+script = SubResource("GDScript_7k9f1")
+race = Array[int]([8])
+atk_hp = Vector2i(3, 4)
+lushi_id = 99054
+str_id = "BG26_505"
+"名称" = "热情沙锤手"
+"描述" = "每回合一次：当<b>塑造法术<\\/b>的法术被用于本随从时，获取它的一张新复制。"
+"glod_描述" = "每回合一次：当<b>塑造法术<\\/b>的法术被用于本随从时，获取它的2张新复制。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

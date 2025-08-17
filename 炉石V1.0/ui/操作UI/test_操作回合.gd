@@ -10,6 +10,8 @@ func _ready() -> void:
 var index=0
 func _on_button_pressed() -> void:
 	var array=[
+		"深海钓客",
+		"热情沙锤手",
 		"烈火飞鱼",
 		"血色骷髅",
 		"死亡群居蛛魔",
