@@ -1,6 +1,8 @@
 extends Node
 class_name Player
 
+static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
+
 @export var 酒馆等级:int=1
 ## 特殊情况下可以变为7
 @export var 最大酒馆等级:int=6
@@ -17,6 +19,9 @@ class_name Player
 @export var 甲虫加成:Vector2i=Vector2i(2,2)
 @export var 亡灵加成:Vector2i=Vector2(0,0)
 @export var 野兽加成:Vector2i=Vector2i(0,0)
+## 每召唤过一个加成+3/2（金色算两次） 如果小于0 不进行计算。
+@export var 星元自动机召唤次数:int=-1
+
 
 @export var 下次购买法术金币减少数量:int=0
 
@@ -44,6 +49,7 @@ func 战斗初始化(fightUI:FightUI):
 	# 初始化战斗中的随从
 	for i in 战场:
 		var 复制=i.duplicate() as BaseMinion
+		复制.是否在战斗中=true
 		复制.卡片所在位置=Enums.CardPosition.战场
 		复制.current_hp=复制.获取带加成属性().y
 		战场_战斗中的对象映射map.set(复制,i)
@@ -74,6 +80,8 @@ signal 随从属性加成信号(加成随从:CardEntity,加成数据:AttributeBo
 signal 开始回合信号()
 signal 回合结束信号()
 signal 英雄受伤信号(伤害:int)
+signal 随从死亡信号(死亡随从:BaseMinion)
+signal 召唤随从信号(召唤随从:BaseMinion)
 
 func 购买卡片(card:CardEntity):
 	删除卡牌(card,Enums.CardPosition.酒馆,false)
@@ -115,7 +123,7 @@ func 添加卡片(
 	if 是否触发信号:
 		添加卡片信号.emit(d,cardPosition,index)
 	if cardPosition==Enums.CardPosition.酒馆:
-		元素工具类.元素属性加成(d,self)
+		元素工具类.元素属性加成(d,self,true,false)
 		index=adjust_index(index,酒馆)
 		酒馆.insert(index,d)
 		return
@@ -123,6 +131,12 @@ func 添加卡片(
 		手牌.insert(adjust_index(index,手牌),d)
 		return
 	if cardPosition==Enums.CardPosition.战场:
+		# 召唤随从信号
+		召唤随从信号.emit(d)
+		# 其他召唤的特殊处理
+		if d.名称=="星元自动机":
+			self.星元自动机召唤次数+=1
+		
 		if 是否在战斗中():
 			d.current_hp=d.获取带加成属性().y
 			战斗中的随从.insert(index,d)
@@ -168,7 +182,8 @@ func adjust_index(index: int, array: Array) -> int:
 
 
 func 生命值扣除(num:int):
-	生命值-=1;
+	生命值-=num;
+	英雄受伤信号.emit(num)
 	pass
 
 func 出售随从(card:CardEntity):

@@ -13,7 +13,7 @@ func _具体亡语方法接口(攻击者:CardEntity):
 		var 目标 = 亡灵列表.pick_random() as BaseMinion
 		var 倍率 = 触发卡.获取倍率()
 		# 应用加成 (普通卡:+1/+2, 金色卡:+2/+4)
-		目标.属性加成(AttributeBonus.build(触发卡.名称,Vector2i(1 * 倍率, 2 * 倍率),触发卡.名称), false, 触发卡.player.是否在战斗中())
+		目标.属性加成(AttributeBonus.build(触发卡.名称,Vector2i(1 * 倍率, 2 * 倍率),触发卡.名称), true, false)
 "
 
 [node name="血色骷髅" type="Node"]

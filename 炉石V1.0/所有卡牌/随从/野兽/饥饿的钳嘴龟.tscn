@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b01wlm46sex2x"]
+
+[sub_resource type="GDScript" id="GDScript_hungry_snapjaw"]
+resource_name = "饥饿的钳嘴龟"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 连接玩家亡语信号
+	player.随从死亡信号.connect(_on_死亡触发)
+
+func _on_死亡触发(死亡卡牌:CardEntity):
+	# 检查自身是否在战场
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 检查死亡的是否是友方野兽
+	if 死亡卡牌 is BaseMinion:
+		if 死亡卡牌.race.has(Enums.CardRace.野兽):
+			# 计算加成值（普通卡+1，金色卡+2）
+			var 加成值 = 获取倍率()
+			
+			# 创建生命值加成
+			var 加成 = AttributeBonus.build(
+				名称, 
+				Vector2i(0, 加成值),  # 只加生命值
+				名称  # 使用卡牌ID作为来源标识
+			)
+			# 应用永久加成
+			属性加成(加成, true, false)
+		
+"
+
+[node name="饥饿的钳嘴龟" type="Node"]
+script = SubResource("GDScript_hungry_snapjaw")
+race = Array[int]([6])
+atk_hp = Vector2i(4, 2)
+lushi_id = 104877
+str_id = "BG26_370"
+"名称" = "饥饿的钳嘴龟"
+"描述" = "在一只友方野兽死亡后，永久获得\\n+1生命值。"
+"glod_描述" = "在一只友方野兽死亡后，永久获得\\n+2生命值。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

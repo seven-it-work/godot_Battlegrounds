@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpjsqggfbjyed"]
+
+[sub_resource type="GDScript" id="GDScript_automaton"]
+resource_name = "星元自动机"
+script/source = "extends BaseMinion
+"
+
+[node name="星元自动机" type="Node"]
+script = SubResource("GDScript_automaton")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 4)
+lushi_id = 108432
+str_id = "BG_TTN_401"
+"名称" = "星元自动机"
+"描述" = "在本局对战中，你每召唤过一个其他星元自动机，便拥有+3\\/+2<i>（无论本随从在哪）<\\/i>。"
+"glod_描述" = "在本局对战中，你每召唤过一个其他星元自动机，便拥有+6\\/+4<i>（无论本随从在哪）<\\/i>。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

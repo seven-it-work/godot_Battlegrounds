@@ -38,6 +38,7 @@ static var 关键词=["嘲讽","复生","圣盾","剧毒","风怒","潜行"]
 @export var 是否为磁力:bool=false
 @export var 是否已经作为磁力:bool=false
 @export var 已经贴了的磁力:Array[BaseMinion]=[]
+@export var 是否在战斗中:bool=false
 
 #region 战斗相关属性
 var 是否攻击过:bool=false
@@ -105,6 +106,8 @@ func 剧毒使用():
 	剧毒=false
 
 func 死亡(攻击者:BaseMinion):
+	# 死亡触发
+	player.随从死亡信号.emit(self)
 	# 触发亡语
 	for i in 亡语:
 		i.亡语执行(攻击者)
@@ -144,13 +147,17 @@ func 获取带加成属性()->Vector2i:
 	# 这里是处理无论在哪里都会影响的属性效果
 	if race.has(Enums.CardRace.亡灵):
 		result+=player.亡灵加成
+	# 星元自动机
+	if self.名称=="星元自动机":
+		if player.星元自动机召唤次数>0:
+			result+=player.星元自动机召唤次数*Player.星元自动机基础加成
 	# 甲虫
 	if self.名称=="甲虫":
 		result+=player.甲虫加成
 	return result
 
-func 属性加成(data:AttributeBonus,是否永久:bool,随从否在战斗中:bool):
-	if 随从否在战斗中:
+func 属性加成(data:AttributeBonus,是否永久:bool,是否添加到原始牌:bool):
+	if 是否添加到原始牌:
 		if player.是否在战斗中():
 			if player.战场_战斗中的对象映射map.has(self):
 				var 战场的随从=player.战场_战斗中的对象映射map.get(self) as BaseMinion

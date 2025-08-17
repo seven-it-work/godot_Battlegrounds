@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://7sslmn6skvhr"]
+
+[ext_resource type="Script" uid="uid://dka7i2mq801a1" path="res://entity/SelectTarget.gd" id="1_hpy05"]
+
+[sub_resource type="GDScript" id="GDScript_slimy_shield"]
+resource_name = "黏黏盾"
+script/source = "extends BaseSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标=选择目标对象.目标卡片
+	if 目标:
+		if 目标 is BaseMinion:
+			# 应用+1/+1加成
+			var 加成 = AttributeBonus.build(名称,Vector2i(1, 1),名称)
+			目标.属性加成(加成, true, false)
+			# 赋予嘲讽
+			目标.嘲讽 = true
+	else:
+		# 无目标执行策略
+		pass
+	pass
+"
+
+[node name="黏黏盾" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_slimy_shield")
+"卡牌类型" = 2
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 105863
+str_id = "BG27_002t"
+"名称" = "黏黏盾"
+"描述" = "使一个随从获得+1\\/+1和<b>嘲讽<\\/b>。"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = ExtResource("1_hpy05")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

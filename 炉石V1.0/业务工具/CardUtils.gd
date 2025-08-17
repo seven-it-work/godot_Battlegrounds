@@ -144,7 +144,7 @@ static func download_image(image_url: String, save_path_with_filename: String) -
 		func(result, response_code, headers, body):
 			completed = true
 			if result != HTTPRequest.RESULT_SUCCESS:
-				push_error("下载失败，错误代码: ", result)
+				push_error(image_url,"[下载失败，错误代码]: ", result)
 				downloader.queue_free()
 				return
 			
