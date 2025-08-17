@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx2tdm3hl2o6h"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_8h2k4"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	# 为玩家所有亡灵单位永久增加攻击力
+	触发卡.player.亡灵加成 += Vector2i(1 * 触发卡.获取倍率(),0)
+"
+
+[node name="死亡群居蛛魔" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_6s83g")
+race = Array[int]([9])
+atk_hp = Vector2i(1, 4)
+"战吼" = [NodePath("Roar")]
+lushi_id = 95267
+str_id = "BG25_011"
+"名称" = "死亡群居蛛魔"
+"描述" = "<b>战吼：<\\/b>在本局对战中，你的亡灵拥有+1攻击力<i>（无论它们在哪）<\\/i>。"
+"glod_描述" = "<b>战吼：<\\/b>在本局对战中，你的亡灵拥有+2攻击力<i>（无论它们在哪）<\\/i>。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_8h2k4")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

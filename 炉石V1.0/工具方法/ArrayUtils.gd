@@ -212,3 +212,17 @@ static func min(arr: Array):
 		if item < min_val:
 			min_val = item
 	return min_val
+
+#----------------------- 选择相关 -----------------------
+static func random_select(input_array: Array, allow_duplicate: bool = true, count: int = 1) -> Array:
+	# 边界情况处理
+	if input_array.is_empty() or count <= 0:
+		return []
+	if allow_duplicate:
+		var result=[]
+		for i in count:
+			result.append(input_array.pick_random())
+		return result
+	else:
+		var shuffle_list=shuffle(input_array)
+		return shuffle_list.slice(0,min(count,input_array.size()))

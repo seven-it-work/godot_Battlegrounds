@@ -2,6 +2,8 @@ extends Node
 class_name Player
 
 @export var 酒馆等级:int=1
+## 特殊情况下可以变为7
+@export var 最大酒馆等级:int=6
 @export var 酒馆:Array=[]
 @export var 战场:Array=[]
 @export var 手牌:Array=[]
@@ -13,6 +15,7 @@ class_name Player
 @export var 元素属性加成:Vector2i=Vector2i(0,0)
 @export var 鲜血宝石加成:Vector2i=Vector2i(1,1)
 @export var 甲虫加成:Vector2i=Vector2i(2,2)
+@export var 亡灵加成:Vector2i=Vector2(0,0)
 
 @export var 下次购买法术金币减少数量:int=0
 

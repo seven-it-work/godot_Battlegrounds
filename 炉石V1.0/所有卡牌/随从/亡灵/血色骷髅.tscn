@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv5hmhrq2hsrg"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_9j4k2"]
+resource_name = "deathrattle"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 随机选择一个友方亡灵
+	var 亡灵列表 = 触发卡.player.获取战场上的牌().filter(func(item:BaseMinion): return item.race.has(Enums.CardRace.亡灵))
+	if 亡灵列表.size() > 0:
+		var 目标 = 亡灵列表.pick_random() as BaseMinion
+		var 倍率 = 触发卡.获取倍率()
+		# 应用加成 (普通卡:+1/+2, 金色卡:+2/+4)
+		目标.属性加成(AttributeBonus.build(触发卡.名称,Vector2i(1 * 倍率, 2 * 倍率),触发卡.名称), false, 触发卡.player.是否在战斗中())
+"
+
+[node name="血色骷髅" type="Node"]
+script = ExtResource("1_6s83g")
+race = Array[int]([9])
+atk_hp = Vector2i(2, 1)
+"复生" = true
+lushi_id = 95280
+str_id = "BG25_022"
+"名称" = "血色骷髅"
+"描述" = "<b>复生<\\/b>。<b>亡语：<\\/b>使一个友方亡灵获得+1\\/+2。"
+"glod_描述" = "<b>复生<\\/b>。<b>亡语：<\\/b>使一个友方亡灵获得+2\\/+4。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="."]
+script = SubResource("GDScript_9j4k2")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

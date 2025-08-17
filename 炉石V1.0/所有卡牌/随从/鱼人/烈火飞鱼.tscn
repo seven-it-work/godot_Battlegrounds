@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c35lqflq3gu8g"]
+
+[sub_resource type="GDScript" id="GDScript_9j4k2"]
+script/source = "extends BaseMinion
+
+func _ready():
+	# 连接玩家的战吼触发信号
+	player.战吼触发信号.connect(_on_战吼触发)
+
+func _on_战吼触发(战吼卡牌:CardEntity):
+	# 当任何战吼触发时，检查是否是自己玩家的战吼
+	if 卡片所在位置==Enums.CardPosition.战场:
+		var 倍率 = 获取倍率()  # 普通卡:+1/+1, 金色卡:+2/+2
+		var 加成 = AttributeBonus.build(名称,Vector2i(倍率, 倍率),名称)
+		属性加成(加成, true, player.是否在战斗中())  # 永久加成，不在战斗中
+"
+
+[node name="烈火飞鱼" type="Node"]
+script = SubResource("GDScript_9j4k2")
+race = Array[int]([10, 3])
+atk_hp = Vector2i(2, 4)
+lushi_id = 97551
+str_id = "BG25_040"
+"名称" = "烈火飞鱼"
+"描述" = "在你触发一个<b>战吼<\\/b>后，获得+1\\/+1。"
+"glod_描述" = "在你触发一个<b>战吼<\\/b>后，获得+2\\/+2。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

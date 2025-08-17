@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://erxmd8pjf65h"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_7k9f1"]
+resource_name = "deathrattle"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 获取所有友方随从（排除自身）
+	var 友方随从 = 触发卡.player.获取战场上的牌().filter(func(item): return item!=触发卡)\\
+		.filter(func(item:BaseMinion): return !item.获取圣盾())
+
+	if 友方随从.size() > 0:
+		# 随机选择目标数量
+		var list=ArrayUtils.random_select(友方随从,false,触发卡.获取倍率())
+		for i in list:
+			i.圣盾 = true
+"
+
+[node name="无私的英雄" type="Node"]
+script = ExtResource("1_6s83g")
+lushi_id = 96769
+str_id = "BG_OG_221"
+"名称" = "无私的英雄"
+"描述" = "<b>亡语：<\\/b>随机使一个友方随从获得<b>圣盾<\\/b>。"
+"glod_描述" = "<b>亡语：<\\/b>随机使两个友方随从获得<b>圣盾<\\/b>。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="."]
+script = SubResource("GDScript_7k9f1")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

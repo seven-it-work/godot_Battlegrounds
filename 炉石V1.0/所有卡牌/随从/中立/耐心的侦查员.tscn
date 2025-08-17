@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://slghihe7ib6e"]
+
+[sub_resource type="GDScript" id="GDScript_3t9v7"]
+script/source = "extends BaseMinion
+
+var 当前发现等级=1
+
+func _ready():
+	# 连接玩家的出售随从信号
+	player.出售随从信号.connect(_on_出售随从)
+	player.回合结束信号.connect(func(): 当前发现等级=min(player.最大酒馆等级,当前发现等级+1))
+
+func _on_出售随从(出售卡牌:CardEntity):
+	if 出售卡牌 == self:
+		var 发现数量 = 获取倍率()  # 普通卡1个，金色卡2个
+		## todo 待处理发现条件
+"
+
+[node name="耐心的侦查员" type="Node"]
+script = SubResource("GDScript_3t9v7")
+lushi_id = 97604
+str_id = "BG24_715"
+"名称" = "耐心的侦查员"
+"描述" = "当你出售本随从时，<b>发现<\\/b>一个等级1的随从。<i>（每回合都会升级！）<\\/i>"
+"glod_描述" = "当你出售本随从时，<b>发现<\\/b>两个等级1的随从。<i>（每回合都会升级！）<\\/i>"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

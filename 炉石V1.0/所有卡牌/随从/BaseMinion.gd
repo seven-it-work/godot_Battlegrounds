@@ -142,6 +142,8 @@ func 获取带加成属性()->Vector2i:
 	for i in 已经贴了的磁力:
 		result+=i.获取带加成属性()
 	# 这里是处理无论在哪里都会影响的属性效果
+	if race.has(Enums.CardRace.亡灵):
+		result+=player.亡灵加成
 	# 甲虫
 	if self.名称=="甲虫":
 		result+=player.甲虫加成
