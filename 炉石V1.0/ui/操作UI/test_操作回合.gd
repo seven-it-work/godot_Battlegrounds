@@ -67,7 +67,7 @@ func _on_读档_pressed() -> void:
 var temp_json=""
 func _on_存档_pressed() -> void:
 	var json=JSON.stringify(JsonUtils.obj2Json(player,{}))
-	print(json)
+	print("存档json=",json)
 	temp_json=json
 	pass # Replace with function body.
 

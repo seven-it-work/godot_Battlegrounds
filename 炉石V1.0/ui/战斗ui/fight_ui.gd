@@ -229,7 +229,6 @@ func move_to_target(panel: Node, target: Node, duration: float) -> void:
 	var tween = create_tween().set_parallel(true)
 	tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
-	print(panel.global_position,target.global_position)
 	if panel.global_position.y>target.global_position.y:
 		tween.tween_property(panel, "global_position", Vector2(target.global_position.x,target.global_position.y+target.size.y), duration)
 	else:
