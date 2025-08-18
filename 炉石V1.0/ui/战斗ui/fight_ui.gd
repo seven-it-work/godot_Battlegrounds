@@ -96,14 +96,16 @@ func _获取攻击随从(player:Player)->BaseMinion:
 		printerr("错误了")
 		print_stack()
 		return null
+	if player.当前攻击的随从索引>=player.战斗中的随从.size():
+		## 重置
+		player.重置攻击随从()
 	var temp=player.战斗中的随从.get(player.当前攻击的随从索引) as BaseMinion
-	if temp.是否攻击过 or temp.获取带加成属性().x<=0:
-		player.当前攻击的随从索引+=1
-		if player.当前攻击的随从索引>=player.战斗中的随从.size():
-			## 重置
-			player.重置攻击随从()
-		return _获取攻击随从(player)
-	return temp
+	if temp:
+		if !temp.是否攻击过:
+			if temp.获取带加成属性().x>0:
+				return temp
+	player.当前攻击的随从索引+=1
+	return _获取攻击随从(player)
 
 func _战斗判断():
 	if 玩家.战斗中的随从.is_empty() and 敌人.战斗中的随从.is_empty():
