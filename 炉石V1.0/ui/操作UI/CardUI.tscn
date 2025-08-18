@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfuxmx2r8ho2d" path="res://拖拽组件/拖拽.tscn" id="1_5b3sr"]
 [ext_resource type="Script" uid="uid://behug4shh45vs" path="res://ui/操作UI/card_ui.gd" id="2_4yc6j"]
-[ext_resource type="PackedScene" uid="uid://b631tye5dlbwf" path="res://ui/操作UI/炉石卡片样式.tscn" id="3_ey4q1"]
+[ext_resource type="PackedScene" uid="uid://b631tye5dlbwf" path="res://ui/操作UI/卡牌样式/炉石卡片样式.tscn" id="3_ey4q1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yc6j"]
 resource_local_to_scene = true
@@ -13,19 +13,24 @@ border_width_right = 5
 border_width_bottom = 5
 
 [node name="CardUI" instance=ExtResource("1_5b3sr")]
-custom_minimum_size = Vector2(156, 217)
-offset_right = 156.0
-offset_bottom = 217.0
+custom_minimum_size = Vector2(129, 157)
+offset_right = 129.0
+offset_bottom = 157.0
 script = ExtResource("2_4yc6j")
 
 [node name="PanelContainer" parent="." index="0"]
-offset_left = 16.0
-offset_top = 3.0
-offset_right = 16.0
-offset_bottom = 3.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 129.0
+offset_bottom = 157.0
+grow_horizontal = 1
+grow_vertical = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_4yc6j")
 
 [node name="Control" parent="." index="1" instance=ExtResource("3_ey4q1")]
 layout_mode = 1
-offset_bottom = 242.0
+offset_left = -19.0
+offset_right = 148.0
+offset_bottom = 167.0
 mouse_filter = 2

@@ -1,6 +1,8 @@
 extends Control
 class_name BaseCardUI
 
+@onready var 背景图:=$"%背景图"
+
 var cardData:CardEntity
 
 static func build(cardData:CardEntity)->BaseCardUI:
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
 			_是否初始=true
 			var 插画路径=cardData.get_插画路径()
 			if FileAccess.file_exists(插画路径):
-				$"SubViewportContainer/SubViewport/背景图".texture=load(插画路径)
+				背景图.texture=load(插画路径)
 				pass
 			else:
 				if cardData.str_id:
@@ -31,16 +33,16 @@ func _process(delta: float) -> void:
 		$"SubViewportContainer/SubViewport/金币".visible=cardData.卡片所在位置==Enums.CardPosition.酒馆
 		$"SubViewportContainer/SubViewport/金币/Label".text=str(cardData.获取花费())
 		if cardData is BaseMinion:
-			if !$"SubViewportContainer/SubViewport/背景图2/种族".visible:
-				ArrayUtils.unique_in_place(cardData.race)
-				ArrayUtils.unique_in_place(cardData.限定类型)
-				var temp_种族:String=""
-				$"SubViewportContainer/SubViewport/背景图2/种族".visible=true
-				for i in cardData.race:
-					if i==0:
-						continue
-					temp_种族+=Enums.CardRace.keys().get(i)+" "
-				$"SubViewportContainer/SubViewport/背景图2/种族".text=temp_种族
+			#if !$"SubViewportContainer/SubViewport/背景图2/种族".visible:
+				#ArrayUtils.unique_in_place(cardData.race)
+				#ArrayUtils.unique_in_place(cardData.限定类型)
+				#var temp_种族:String=""
+				#$"SubViewportContainer/SubViewport/背景图2/种族".visible=true
+				#for i in cardData.race:
+					#if i==0:
+						#continue
+					#temp_种族+=Enums.CardRace.keys().get(i)+" "
+				#$"SubViewportContainer/SubViewport/背景图2/种族".text=temp_种族
 				
 			var 属性=cardData.获取带加成属性()
 			$"SubViewportContainer/SubViewport/攻击力/Label".text=str(属性.x)
@@ -48,6 +50,6 @@ func _process(delta: float) -> void:
 				$"SubViewportContainer/SubViewport/生命值/Label".text=str(cardData.current_hp)
 			else:
 				$"SubViewportContainer/SubViewport/生命值/Label".text=str(属性.y)
-			$"SubViewportContainer/SubViewport/背景图2/描述".text=str(cardData.获取描述())
+			#$"SubViewportContainer/SubViewport/背景图2/描述".text=str(cardData.获取描述())
 		pass
 	pass
