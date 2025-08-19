@@ -92,6 +92,8 @@ static func scan_scenes_recursive(base_path: String, current_path: String = "",s
 				# 递归扫描子目录
 				var new_path = current_path.path_join(file_name) if current_path else file_name
 				scan_scenes_recursive(base_path, new_path,scene_dict)
+		elif file_name.begins_with("test_"):
+			pass
 		elif file_name.ends_with(".tscn"):
 			# 获取不带扩展名的文件名
 			var base_name = file_name.trim_suffix(".tscn")

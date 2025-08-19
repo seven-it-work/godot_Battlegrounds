@@ -33,6 +33,27 @@ func _process(delta: float) -> void:
 		$"SubViewportContainer/SubViewport/金币".visible=cardData.卡片所在位置==Enums.CardPosition.酒馆
 		$"SubViewportContainer/SubViewport/金币/Label".text=str(cardData.获取花费())
 		if cardData is BaseMinion:
+			%"圣盾".visible=cardData.获取圣盾()
+			%"风怒".visible=cardData.获取风怒()
+			%"潜行".visible=cardData.获取潜行()
+			%"金色边框".visible=false
+			%"普通边框".visible=false
+			%"嘲讽边框".visible=false
+			%"金色嘲讽边框".visible=false
+			if cardData.获取嘲讽():
+				if cardData.is_gold:
+					%"金色嘲讽边框".visible=true
+				else:
+					%"嘲讽边框".visible=true
+			else:
+				if cardData.is_gold:
+					%"金色边框".visible=true
+				else:
+					%"普通边框".visible=true
+				
+					
+					
+			
 			#if !$"SubViewportContainer/SubViewport/背景图2/种族".visible:
 				#ArrayUtils.unique_in_place(cardData.race)
 				#ArrayUtils.unique_in_place(cardData.限定类型)

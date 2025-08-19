@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b631tye5dlbwf"]
+[gd_scene load_steps=27 format=3 uid="uid://b631tye5dlbwf"]
 
 [ext_resource type="Script" uid="uid://bub1x6tpig6mk" path="res://ui/操作UI/卡牌样式/炉石卡片样式.gd" id="1_t5dsu"]
 [ext_resource type="Texture2D" uid="uid://l15isms6r1ua" path="res://所有卡牌/随从/恶魔/躁动欺诈者/躁动欺诈者.png" id="2_70cmp"]
@@ -13,9 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://tsvc5gwjugsq" path="res://ui/操作UI/卡牌样式/遮罩.png" id="9_4ghxi"]
 [ext_resource type="Texture2D" uid="uid://d1xm3hfx7jdwx" path="res://ui/操作UI/卡牌样式/嘲讽.png" id="10_ro5ts"]
 [ext_resource type="Texture2D" uid="uid://uox0fhyit3sw" path="res://ui/操作UI/卡牌样式/金色嘲讽.png" id="11_d6ooc"]
+[ext_resource type="Texture2D" uid="uid://bhjgvrimxdfbv" path="res://ui/操作UI/卡牌样式/DivineShield_Bubble2.png" id="11_ei3bx"]
 [ext_resource type="Texture2D" uid="uid://8xiiafak41uy" path="res://ui/操作UI/卡牌样式/StealthDome_old.png" id="11_iavwx"]
 [ext_resource type="Material" uid="uid://clidq0gxrsku5" path="res://ui/操作UI/卡牌样式/风怒.tres" id="11_kvl48"]
 [ext_resource type="Texture2D" uid="uid://b0akxcbiofckh" path="res://ui/操作UI/卡牌样式/透明背景.png" id="12_n3whu"]
+[ext_resource type="Texture2D" uid="uid://w8186acremsx" path="res://ui/操作UI/卡牌样式/闪电.png" id="16_3v8mr"]
+[ext_resource type="Texture2D" uid="uid://c530dak7yfo7i" path="res://ui/操作UI/卡牌样式/烈毒.png" id="17_bha6c"]
+[ext_resource type="Texture2D" uid="uid://bd8ys72aewcq0" path="res://ui/操作UI/卡牌样式/剧毒.png" id="18_07rp1"]
+[ext_resource type="Texture2D" uid="uid://dkn26rarcamvb" path="res://ui/操作UI/卡牌样式/Deathrattle_Skull.png" id="19_vuvjk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d6ooc"]
 font_size = 44
@@ -124,6 +129,8 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="金色边框" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(51, 512)
 offset_left = 22.0
 offset_top = -4.0
@@ -133,6 +140,8 @@ texture = ExtResource("8_n3whu")
 expand_mode = 1
 
 [node name="普通边框" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(51, 512)
 offset_left = 18.0
 offset_top = -4.0
@@ -142,6 +151,8 @@ texture = ExtResource("8_5sgxw")
 expand_mode = 1
 
 [node name="嘲讽边框" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(51, 512)
 offset_left = 20.0
 offset_top = 8.0
@@ -151,6 +162,7 @@ texture = ExtResource("10_ro5ts")
 expand_mode = 1
 
 [node name="金色嘲讽边框" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(51, 512)
 offset_left = 21.0
 offset_top = 22.0
@@ -179,6 +191,7 @@ offset_bottom = 465.0
 texture = ExtResource("2_70cmp")
 
 [node name="风怒" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
+unique_name_in_owner = true
 material = ExtResource("11_kvl48")
 layout_mode = 1
 anchors_preset = -1
@@ -191,7 +204,21 @@ offset_bottom = 437.0
 texture = ExtResource("12_n3whu")
 expand_mode = 1
 
+[node name="圣盾" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.032
+offset_left = -102.64
+offset_top = -18.848
+offset_right = 415.0
+offset_bottom = 478.0
+texture = ExtResource("11_ei3bx")
+expand_mode = 1
+
 [node name="潜行" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.03
@@ -249,7 +276,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="名称" type="TextureRect" parent="SubViewportContainer/SubViewport"]
-z_index = 1
 offset_left = 26.0
 offset_top = 296.0
 offset_right = 525.0
@@ -267,6 +293,51 @@ text = "测试名称"
 label_settings = SubResource("LabelSettings_cha2e")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="闪电" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.032
+offset_left = 309.983
+offset_top = 394.427
+offset_right = 370.333
+offset_bottom = 439.667
+texture = ExtResource("16_3v8mr")
+expand_mode = 1
+
+[node name="烈毒" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.032
+offset_left = 260.983
+offset_top = 391.427
+offset_right = 321.333
+offset_bottom = 436.667
+texture = ExtResource("17_bha6c")
+expand_mode = 1
+
+[node name="剧毒" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.032
+offset_left = 261.65
+offset_top = 392.427
+offset_right = 322.0
+offset_bottom = 437.667
+texture = ExtResource("18_07rp1")
+expand_mode = 1
+
+[node name="亡语" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.032
+offset_left = 206.65
+offset_top = 385.093
+offset_right = 274.0
+offset_bottom = 450.333
+texture = ExtResource("19_vuvjk")
+expand_mode = 1
 
 [node name="生命值" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 z_index = 1

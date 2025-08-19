@@ -2,17 +2,17 @@ extends Control
 class_name OperationUI
 
 @export var player:Player
-@onready var 酒馆:=$"PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/酒馆"
-@onready var 战场:=$"PanelContainer/HBoxContainer/VBoxContainer/PanelContainer2/战场"
-@onready var 手牌:=$"PanelContainer/HBoxContainer/VBoxContainer/PanelContainer3/手牌"
+@onready var 酒馆:=%"酒馆"
+@onready var 战场:=%"战场"
+@onready var 手牌:=%"手牌"
 @onready var 箭头遮罩:=$"PanelContainer/箭头遮罩"
 @onready var 抉择遮罩:=$"PanelContainer/抉择遮罩"
 
 func _process(delta: float) -> void:
 	if player:
-		$PanelContainer/HBoxContainer/Tips/VBoxContainer/Label.text=str(player.酒馆.size())
-		$PanelContainer/HBoxContainer/Tips/VBoxContainer/Label2.text=str(player.战场.size())
-		$PanelContainer/HBoxContainer/Tips/VBoxContainer/Label3.text=str(player.手牌.size())
+		$PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/Label.text=str(player.酒馆.size())
+		$PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/Label2.text=str(player.战场.size())
+		$PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/Label3.text=str(player.手牌.size())
 	pass
 
 func 初始化(player:Player):

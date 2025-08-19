@@ -18,8 +18,10 @@ func _具体亡语方法接口(攻击者:CardEntity):
 			i.圣盾 = true
 "
 
-[node name="无私的英雄" type="Node"]
+[node name="无私的英雄" type="Node" node_paths=PackedStringArray("亡语")]
 script = ExtResource("1_6s83g")
+atk_hp = Vector2i(2, 1)
+"亡语" = [NodePath("Deathrattle")]
 lushi_id = 96769
 str_id = "BG_OG_221"
 "名称" = "无私的英雄"
@@ -28,6 +30,7 @@ str_id = "BG_OG_221"
 "等级" = 2
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
-[node name="Deathrattle" type="Node" parent="."]
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
 script = SubResource("GDScript_7k9f1")
+"触发卡" = NodePath("..")
 metadata/_custom_type_script = "uid://ccf1ijg3n2357"

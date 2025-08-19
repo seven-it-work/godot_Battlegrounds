@@ -9,7 +9,7 @@ func 受到攻击触发(攻击者:BaseMinion):
 		名称,
 		Vector2(1*获取倍率(),0),
 		名称,
-	), true,player.是否在战斗中())
+	), true, true)
 "
 
 [node name="瞌睡雏龙" type="Node"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhwo5s2e7mv2q"]
+
+[ext_resource type="Script" uid="uid://4tl7e8j78wke" path="res://所有卡牌/随从/龙/雏龙走私商/test_雏龙走私商.gd" id="1_bn60f"]
+[ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_7g65v"]
+[ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="3_vigqu"]
+
+[node name="Test雏龙走私商" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn60f")
+
+[node name="FightUi" parent="." instance=ExtResource("2_7g65v")]
+layout_mode = 1
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("3_vigqu")
+metadata/_custom_type_script = "uid://upwxtqaduibs"
+
+[node name="Player2" type="Node" parent="."]
+script = ExtResource("3_vigqu")
+metadata/_custom_type_script = "uid://upwxtqaduibs"

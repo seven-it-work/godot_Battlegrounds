@@ -18,6 +18,7 @@ func _on_出售随从(出售卡牌:CardEntity):
 
 [node name="耐心的侦查员" type="Node"]
 script = SubResource("GDScript_3t9v7")
+atk_hp = Vector2i(1, 1)
 lushi_id = 97604
 str_id = "BG24_715"
 "名称" = "耐心的侦查员"

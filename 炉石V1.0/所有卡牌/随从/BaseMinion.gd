@@ -162,7 +162,6 @@ func 属性加成(data:AttributeBonus,是否永久:bool,是否添加到原始牌
 			if player.战场_战斗中的对象映射map.has(self):
 				var 战场的随从=player.战场_战斗中的对象映射map.get(self) as BaseMinion
 				战场的随从.属性加成(data,是否永久,false)
-			return
 	current_hp+=data.atk_hp.y
 	if 是否永久:
 		永久属性.append(data)
