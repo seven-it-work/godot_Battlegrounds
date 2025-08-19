@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b631tye5dlbwf"]
+[gd_scene load_steps=22 format=3 uid="uid://b631tye5dlbwf"]
 
 [ext_resource type="Script" uid="uid://bub1x6tpig6mk" path="res://ui/操作UI/卡牌样式/炉石卡片样式.gd" id="1_t5dsu"]
 [ext_resource type="Texture2D" uid="uid://l15isms6r1ua" path="res://所有卡牌/随从/恶魔/躁动欺诈者/躁动欺诈者.png" id="2_70cmp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://tsvc5gwjugsq" path="res://ui/操作UI/卡牌样式/遮罩.png" id="9_4ghxi"]
 [ext_resource type="Texture2D" uid="uid://d1xm3hfx7jdwx" path="res://ui/操作UI/卡牌样式/嘲讽.png" id="10_ro5ts"]
 [ext_resource type="Texture2D" uid="uid://uox0fhyit3sw" path="res://ui/操作UI/卡牌样式/金色嘲讽.png" id="11_d6ooc"]
+[ext_resource type="Texture2D" uid="uid://8xiiafak41uy" path="res://ui/操作UI/卡牌样式/StealthDome_old.png" id="11_iavwx"]
 [ext_resource type="Material" uid="uid://clidq0gxrsku5" path="res://ui/操作UI/卡牌样式/风怒.tres" id="11_kvl48"]
 [ext_resource type="Texture2D" uid="uid://b0akxcbiofckh" path="res://ui/操作UI/卡牌样式/透明背景.png" id="12_n3whu"]
 
@@ -170,6 +171,7 @@ expand_mode = 1
 [node name="背景图" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
 offset_left = -106.0
 offset_top = -47.0
 offset_right = 406.0
@@ -187,6 +189,18 @@ offset_top = -2.848
 offset_right = 328.0
 offset_bottom = 437.0
 texture = ExtResource("12_n3whu")
+expand_mode = 1
+
+[node name="潜行" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.032
+offset_left = 9.36
+offset_top = -2.848
+offset_right = 328.0
+offset_bottom = 437.0
+texture = ExtResource("11_iavwx")
 expand_mode = 1
 
 [node name="金币" type="TextureRect" parent="SubViewportContainer/SubViewport"]
