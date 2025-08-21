@@ -141,7 +141,6 @@ expand_mode = 1
 
 [node name="普通边框" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(51, 512)
 offset_left = 18.0
 offset_top = -4.0
@@ -163,6 +162,7 @@ expand_mode = 1
 
 [node name="金色嘲讽边框" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(51, 512)
 offset_left = 21.0
 offset_top = 22.0
@@ -192,6 +192,7 @@ texture = ExtResource("2_70cmp")
 
 [node name="风怒" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("11_kvl48")
 layout_mode = 1
 anchors_preset = -1
@@ -206,6 +207,7 @@ expand_mode = 1
 
 [node name="圣盾" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.03
@@ -219,6 +221,7 @@ expand_mode = 1
 
 [node name="潜行" type="TextureRect" parent="SubViewportContainer/SubViewport/遮罩"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.03
@@ -296,6 +299,7 @@ vertical_alignment = 1
 
 [node name="闪电" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = -1
 anchor_left = -0.03
 anchor_top = -0.032
@@ -307,6 +311,7 @@ texture = ExtResource("16_3v8mr")
 expand_mode = 1
 
 [node name="烈毒" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
 anchors_preset = -1
 anchor_left = -0.03
 anchor_top = -0.032
@@ -318,6 +323,7 @@ texture = ExtResource("17_bha6c")
 expand_mode = 1
 
 [node name="剧毒" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
 anchors_preset = -1
 anchor_left = -0.03
 anchor_top = -0.032
@@ -329,6 +335,7 @@ texture = ExtResource("18_07rp1")
 expand_mode = 1
 
 [node name="亡语" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
 anchors_preset = -1
 anchor_left = -0.03
 anchor_top = -0.032
@@ -340,6 +347,7 @@ texture = ExtResource("19_vuvjk")
 expand_mode = 1
 
 [node name="生命值" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
 z_index = 1
 offset_left = 277.0
 offset_top = 342.0
@@ -361,6 +369,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="攻击力" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
 z_index = 1
 offset_left = 57.0
 offset_top = 332.0

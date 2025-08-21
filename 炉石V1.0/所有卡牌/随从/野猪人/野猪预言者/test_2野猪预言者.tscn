@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dix0un1bja0t4"]
+[gd_scene load_steps=4 format=3 uid="uid://b64k4wvi4kddj"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_vdj7c"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="2_pk0hw"]
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _init_card() -> void:
 	var array=[
-		\"野猪预言者\",
+		\"晾膘的游客\",
 		\"野猪预言者\",
 		\"野猪预言者\",
 	]

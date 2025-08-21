@@ -32,7 +32,11 @@ func _process(delta: float) -> void:
 		$"SubViewportContainer/SubViewport/等级/Label".text=str(cardData.等级)
 		$"SubViewportContainer/SubViewport/金币".visible=cardData.卡片所在位置==Enums.CardPosition.酒馆
 		$"SubViewportContainer/SubViewport/金币/Label".text=str(cardData.获取花费())
+		$"SubViewportContainer/SubViewport/生命值".visible=false
+		$"SubViewportContainer/SubViewport/攻击力".visible=false
 		if cardData is BaseMinion:
+			$"SubViewportContainer/SubViewport/生命值".visible=true
+			$"SubViewportContainer/SubViewport/攻击力".visible=true
 			%"圣盾".visible=cardData.获取圣盾()
 			%"风怒".visible=cardData.获取风怒()
 			%"潜行".visible=cardData.获取潜行()

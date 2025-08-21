@@ -13,7 +13,7 @@ func _出售随从信号(card:CardEntity):
 			CardUtils.COMMON_CODITION[\"是否出现在酒馆\"],
 			CardUtils.COMMON_CODITION[\"随从\"],
 			CardFindCondition.build(\"race\",Enums.CardRace.鱼人,Enums.ConditionEnum.在),
-			CardFindCondition.build(\"等级\",2,Enums.ConditionEnum.小于等于),
+			CardFindCondition.build(\"等级\",player.酒馆等级,Enums.ConditionEnum.小于等于),
 			CardFindCondition.build(\"名称\",名称,Enums.ConditionEnum.不等于),
 		])
 		for i in 获取倍率():
