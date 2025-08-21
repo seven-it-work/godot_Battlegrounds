@@ -75,6 +75,7 @@ func _进行攻击(
 		# 没有防御随从，无法攻击
 		return
 	await 攻击随从.攻击其他随从(防御随从)
+	await get_tree().process_frame
 
 func _获取防御随从(player:Player)->BaseMinion:
 	if player.战斗中的随从.is_empty():
@@ -165,6 +166,10 @@ func 开始战斗(player:Player,target:Player):
 		await 添加卡片(i,Enums.CardPosition.战场,-1,玩家)
 	_判断先手()
 	# 战斗开始时
+	for i in 当前攻击者.获取战场上的牌():
+		(i as BaseMinion).战斗开始时()
+	for i in 获取敌人(当前攻击者).获取战场上的牌():
+		(i as BaseMinion).战斗开始时()
 	await get_tree().create_timer(1).timeout
 	_战斗状态="战斗中"
 	pass
@@ -188,10 +193,11 @@ func 删除卡片(
 	cardPosition:Enums.CardPosition,
 	player:Player,
 ):
+	print("战斗过程中删除卡片 %s"%[d.debug_str()])
 	是否正在删除=true
 	if 是否正在播放动画!=0:
 		await get_tree().create_timer(1).timeout
-		删除卡片(d,cardPosition,player)
+		await 删除卡片(d,cardPosition,player)
 		return
 	是否正在删除=false
 	if cardPosition==Enums.CardPosition.战场:

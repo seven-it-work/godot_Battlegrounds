@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhwo5s2e7mv2q"]
+[gd_scene load_steps=4 format=3 uid="uid://rp76feiblkso"]
 
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_7g65v"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="3_vigqu"]
@@ -8,15 +8,17 @@ script/source = "extends Control
 
 func _ready() -> void:
 	CardUtils.游戏初始化加载卡牌([])
-	$Player.战场.append(CardUtils.get_card(\"瞌睡雏龙\",$Player))
-	$Player.战场.append(CardUtils.get_card(\"雏龙走私商\",$Player))
-	
-	$Player2.战场.append(CardUtils.get_card(\"瞌睡雏龙\",$Player2))
-	$Player2.战场.append(CardUtils.get_card(\"雏龙走私商\",$Player2))
+	$Player.战场.append(CardUtils.get_card(\"厄运先知\",$Player))
+	$Player.战场.append(CardUtils.get_card(\"厄运先知\",$Player))
+	$Player.战场.append(CardUtils.get_card(\"厄运先知\",$Player))
+
+	$Player2.战场.append(CardUtils.get_card(\"厄运先知\",$Player2))
+	$Player2.战场.append(CardUtils.get_card(\"厄运先知\",$Player2))
+	$Player2.战场.append(CardUtils.get_card(\"厄运先知\",$Player2))
 	$FightUi.开始战斗($Player,$Player2)
 "
 
-[node name="Test雏龙走私商" type="Control"]
+[node name="Test厄运先知" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

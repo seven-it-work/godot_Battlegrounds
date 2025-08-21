@@ -3,6 +3,8 @@ class_name Player
 
 static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
 
+@export var 名称:String=""
+
 @export var 酒馆等级:int=1
 ## 特殊情况下可以变为7
 @export var 最大酒馆等级:int=6
@@ -152,6 +154,7 @@ func 删除卡牌(
 	cardPosition:Enums.CardPosition,
 	是否触发信号:bool):
 	if 是否触发信号:
+		print("触发删除信号 %s"%[d.debug_str()])
 		删除卡片信号.emit(d,cardPosition)
 	if cardPosition==Enums.CardPosition.酒馆:
 		酒馆.erase(d)

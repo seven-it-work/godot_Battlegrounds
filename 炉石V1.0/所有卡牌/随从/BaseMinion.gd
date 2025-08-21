@@ -74,17 +74,20 @@ func 添加磁力(磁力随从:CardEntity):
 
 func 攻击其他随从(防御者:BaseMinion):
 	await player.fightUI.start_animation_sequence(self.get_parent(),防御者.get_parent())
-	防御者.受到攻击(self)
+	print("%s 对 %s 进行攻击"%[self.debug_str(),防御者.debug_str()])
+	await 防御者.受到攻击(self)
 	var 伤害=防御者.获取带加成属性().x
-	生命扣除(防御者,伤害)
+	await 生命扣除(防御者,伤害)
 	pass
 
 func 受到攻击(攻击者:BaseMinion):
 	var 伤害=攻击者.获取带加成属性().x
 	if 伤害<=0:
 		return
+	
+	print("%s 受到 %s 攻击"%[self.debug_str(),攻击者.debug_str()])
 	受到攻击触发(攻击者)
-	生命扣除(攻击者,伤害)
+	await 生命扣除(攻击者,伤害)
 	pass
 
 func 生命扣除(攻击者:BaseMinion,扣除值:int):
@@ -95,17 +98,20 @@ func 生命扣除(攻击者:BaseMinion,扣除值:int):
 	if 攻击者.剧毒 or 攻击者.烈毒:
 		if 攻击者.剧毒:
 			攻击者.剧毒使用()
-		死亡(攻击者)
+		await 死亡(攻击者)
 		return
 	current_hp-=扣除值
+	
+	print("%s 对 %s 造成 %s 点伤害"%[攻击者.debug_str(),self.debug_str(), 扣除值])
 	if current_hp<=0:
 		# 死亡
-		死亡(攻击者)
+		await 死亡(攻击者)
 
 func 剧毒使用():
 	剧毒=false
 
 func 死亡(攻击者:BaseMinion):
+	print("%s 死亡"%[self.debug_str()])
 	# 死亡触发
 	player.随从死亡信号.emit(self)
 	# 触发亡语
@@ -116,7 +122,7 @@ func 死亡(攻击者:BaseMinion):
 	if 获取复生():
 		pass
 		return
-	player.删除卡牌(self,Enums.CardPosition.战场,true)
+	await player.删除卡牌(self,Enums.CardPosition.战场,true)
 	
 #region 子类可以实现的触发方法
 func 受到攻击触发(攻击者:BaseMinion):
@@ -201,3 +207,9 @@ func 获取潜行()->bool:
 	if 潜行:
 		return true
 	return 临时关键词.has("潜行")
+
+func debug_str()->String:
+	var 属性=获取带加成属性()
+	if player.是否在战斗中():
+		return "%s的%s(%s/%s)"%[player.名称,名称,属性.x,current_hp]
+	return "%s的%s(%s/%s)"%[player.名称,名称,属性.x,属性.y]

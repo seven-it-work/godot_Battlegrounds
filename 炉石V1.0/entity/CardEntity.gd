@@ -53,3 +53,7 @@ func get_插画路径()->String:
 		文件名=temp.get_file().replace("."+temp.get_extension(),"")
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
+
+
+func debug_str()->String:
+	return "%s的%s"%[player.名称,名称]
