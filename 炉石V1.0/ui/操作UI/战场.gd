@@ -11,6 +11,13 @@ func 只添加到容器中(d:DragObj,index:int=-1):
 		printerr("错误了")
 		print_stack()
 
+func _回到原来位置(拖拽中的对象:DragObj=null):
+	if 拖拽中的对象==null:
+		self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)
+	else:
+		self.只添加到容器中(拖拽中的对象,_拖拽中的对象原有索引)
+	pass
+
 func 添加到本容器中(d:DragObj,index:int=-1):
 	if d is CardUI:
 		d.cardData.卡片所在位置=Enums.CardPosition.战场

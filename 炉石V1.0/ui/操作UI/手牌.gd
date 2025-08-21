@@ -21,6 +21,13 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 func _process(delta: float) -> void:
 	super._process(delta)
 
+func _回到原来位置(拖拽中的对象:DragObj=null):
+	if 拖拽中的对象==null:
+		self.只添加到容器中(_拖拽中的对象,_拖拽中的对象原有索引)
+	else:
+		self.只添加到容器中(拖拽中的对象,_拖拽中的对象原有索引)
+	pass
+
 func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContainer):
 	#print("使用手牌")
 	if dragObj is CardUI:
