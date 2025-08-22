@@ -61,6 +61,11 @@ func 战斗初始化(fightUI:FightUI):
 	
 func 是否在战斗中()->bool:
 	return fightUI!=null
+
+func 战场随从是否满了()->bool:
+	if 是否在战斗中():
+		return 战斗中的随从.size()>=7
+	return 战场.size()>=7
 #endregion
 
 signal 添加卡片信号(
@@ -122,28 +127,46 @@ func 添加卡片(
 ):
 	d.player=self
 	d.卡片所在位置=cardPosition
-	if 是否触发信号:
-		添加卡片信号.emit(d,cardPosition,index)
 	if cardPosition==Enums.CardPosition.酒馆:
+		if 酒馆.size()>=7:
+			print("酒馆满了")
+			return
 		元素工具类.元素属性加成(d,self,true,false)
 		index=adjust_index(index,酒馆)
 		酒馆.insert(index,d)
+		
+		if 是否触发信号:
+			添加卡片信号.emit(d,cardPosition,index)
 		return
 	if cardPosition==Enums.CardPosition.手牌:
+		if 手牌.size()>=10:
+			print("手牌满了")
+			return
 		手牌.insert(adjust_index(index,手牌),d)
+		
+		if 是否触发信号:
+			添加卡片信号.emit(d,cardPosition,index)
 		return
 	if cardPosition==Enums.CardPosition.战场:
-		# 召唤随从信号
-		召唤随从信号.emit(d)
-		# 其他召唤的特殊处理
-		if d.名称=="星元自动机":
-			self.星元自动机召唤次数+=1
+		if 战场随从是否满了():
+			return
+		var 召唤func=func():
+			# 召唤随从信号
+			召唤随从信号.emit(d)
+			# 其他召唤的特殊处理
+			if d.名称=="星元自动机":
+				self.星元自动机召唤次数+=1
+			if 是否触发信号:
+				添加卡片信号.emit(d,cardPosition,index)
+			pass
 		
 		if 是否在战斗中():
 			d.current_hp=d.获取带加成属性().y
-			战斗中的随从.insert(index,d)
+			战斗中的随从.insert(adjust_index(index,战斗中的随从),d)
+			召唤func.call()
 			return
 		战场.insert(adjust_index(index,战场),d)
+		召唤func.call()
 		return
 	printerr("错误添加卡片",d,cardPosition)
 	print_stack()
@@ -197,6 +220,8 @@ func 出售随从(card:CardEntity):
 		当前金币+=card.出售金币
 
 func 获取卡片索引(card:CardEntity)->int:
+	if card.删除前的索引!=null and card.删除前的索引 is int:
+		return card.删除前的索引
 	if card.卡片所在位置==Enums.CardPosition.酒馆:
 		return 酒馆.find(card)
 	if card.卡片所在位置==Enums.CardPosition.战场:

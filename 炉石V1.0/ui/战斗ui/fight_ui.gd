@@ -8,6 +8,7 @@ var 敌人:Player
 var _战斗状态:String="未开始"
 var 动画播放队列:Array[Tween]=[]
 var 是否正在播放动画:int=0
+var _待删除集合:Array=[]
 
 @onready var 敌人容器:=$"PanelContainer/VBoxContainer/PanelContainer/敌人容器"
 @onready var 玩家容器:=$"PanelContainer/VBoxContainer/PanelContainer2/玩家容器"
@@ -35,6 +36,8 @@ func _process(delta: float) -> void:
 		_战斗处理()
 
 func _战斗处理():
+	while !_待删除集合.is_empty():
+		_待删除集合.pop_back().queue_free()
 	_战斗判断()
 	if _战斗状态=="战斗中":
 		_当前攻击者进行攻击()
@@ -166,6 +169,11 @@ func 开始战斗(player:Player,target:Player):
 		await 添加卡片(i,Enums.CardPosition.战场,-1,玩家)
 	_判断先手()
 	# 战斗开始时
+	for i in 当前攻击者.手牌:
+		(i as BaseMinion).战斗开始时()
+	for i in 获取敌人(当前攻击者).手牌:
+		(i as BaseMinion).战斗开始时()
+	
 	for i in 当前攻击者.获取战场上的牌():
 		(i as BaseMinion).战斗开始时()
 	for i in 获取敌人(当前攻击者).获取战场上的牌():
@@ -202,7 +210,8 @@ func 删除卡片(
 	是否正在删除=false
 	if cardPosition==Enums.CardPosition.战场:
 		if d.get_parent() is BaseCardUI:
-			d.get_parent().queue_free()
+			d.get_parent().hide()
+			_待删除集合.append(d.get_parent())
 	return
 	
 	
@@ -303,6 +312,7 @@ func return_to_original(panel: Node,original_position,original_size, duration: f
 	await tween.finished
 	
 func start_animation_sequence(panel_a,panel_b):
+	是否正在播放动画+=1
 	var original_position = panel_a.global_position
 	var original_size = panel_a.size
 	# 1. 移动到目标位置
@@ -311,4 +321,5 @@ func start_animation_sequence(panel_a,panel_b):
 	await shake_panel(panel_b, 0.3, 10.0, 0.8)
 	# 3. 返回原位
 	await return_to_original(panel_a,original_position,original_size, 0.4)
+	是否正在播放动画-=1
 #endregion

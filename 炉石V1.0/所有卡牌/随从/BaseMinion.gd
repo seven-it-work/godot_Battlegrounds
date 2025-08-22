@@ -39,6 +39,7 @@ static var 关键词=["嘲讽","复生","圣盾","剧毒","风怒","潜行"]
 @export var 是否已经作为磁力:bool=false
 @export var 已经贴了的磁力:Array[BaseMinion]=[]
 @export var 是否在战斗中:bool=false
+@export var 删除前的索引=null
 
 #region 战斗相关属性
 var 是否攻击过:bool=false
@@ -112,6 +113,8 @@ func 剧毒使用():
 
 func 死亡(攻击者:BaseMinion):
 	print("%s 死亡"%[self.debug_str()])
+	删除前的索引=player.获取卡片索引(self)
+	await player.删除卡牌(self,Enums.CardPosition.战场,true)
 	# 死亡触发
 	player.随从死亡信号.emit(self)
 	# 触发亡语
@@ -122,7 +125,6 @@ func 死亡(攻击者:BaseMinion):
 	if 获取复生():
 		pass
 		return
-	await player.删除卡牌(self,Enums.CardPosition.战场,true)
 	
 #region 子类可以实现的触发方法
 func 受到攻击触发(攻击者:BaseMinion):

@@ -8,13 +8,25 @@ script/source = "extends Control
 
 func _ready() -> void:
 	CardUtils.游戏初始化加载卡牌([])
-	$Player.战场.append(CardUtils.get_card(\"好斗的斥候\",$Player))
-	$Player.战场.append(CardUtils.get_card(\"好斗的斥候\",$Player))
-	$Player.战场.append(CardUtils.get_card(\"好斗的斥候\",$Player))
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player),Enums.CardPosition.手牌,-1,true)
 
-	$Player2.战场.append(CardUtils.get_card(\"好斗的斥候\",$Player2))
-	$Player2.战场.append(CardUtils.get_card(\"好斗的斥候\",$Player2))
-	$Player2.战场.append(CardUtils.get_card(\"好斗的斥候\",$Player2))
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"好斗的斥候\",$Player2),Enums.CardPosition.手牌,-1,true)
+	
 	$FightUi.开始战斗($Player,$Player2)
 "
 

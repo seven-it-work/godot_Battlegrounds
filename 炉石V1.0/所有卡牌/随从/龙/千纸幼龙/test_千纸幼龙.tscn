@@ -19,11 +19,11 @@ func _ready() -> void:
 
 	$Player2.战场.append(CardUtils.get_card(\"千纸幼龙\",$Player2))
 	
-	var t3=CardUtils.get_card(\"千纸幼龙\",$Player) as BaseMinion
+	var t3=CardUtils.get_card(\"千纸幼龙\",$Player2) as BaseMinion
 	t3.嘲讽=true
 	$Player2.战场.append(t3)
 	
-	var t4=CardUtils.get_card(\"千纸幼龙\",$Player) as BaseMinion
+	var t4=CardUtils.get_card(\"千纸幼龙\",$Player2) as BaseMinion
 	t4.嘲讽=true
 	$Player2.战场.append(t4)
 	$FightUi.开始战斗($Player,$Player2)

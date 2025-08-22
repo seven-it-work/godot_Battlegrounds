@@ -5,14 +5,17 @@ script/source = "extends BaseMinion
 
 func 战斗开始时():
 	if 卡片所在位置==Enums.CardPosition.手牌:
-		# todo
-		pass
-	pass
+		if !player.战场随从是否满了():
+			var copy=self.duplicate()
+			player.添加卡片(copy,Enums.CardPosition.战场,-1,true)
+		else:
+			print(\"队列满了\")
 "
 
 [node name="好斗的斥候" type="Node"]
 script = SubResource("GDScript_nhq6f")
 race = Array[int]([10])
+atk_hp = Vector2i(3, 3)
 lushi_id = 120677
 str_id = "BG32_330"
 "名称" = "好斗的斥候"
