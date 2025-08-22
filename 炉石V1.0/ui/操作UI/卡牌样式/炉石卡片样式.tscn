@@ -390,3 +390,8 @@ text = "999999999"
 label_settings = SubResource("LabelSettings_2i7en")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="object_id" type="Label" parent="SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30

@@ -14,6 +14,8 @@ func _on_死亡触发(死亡卡牌:CardEntity):
 		return
 	# 检查死亡的是否是友方野兽
 	if 死亡卡牌 is BaseMinion:
+		if 死亡卡牌==self:
+			return
 		if 死亡卡牌.race.has(Enums.CardRace.野兽):
 			# 计算加成值（普通卡+1，金色卡+2）
 			var 加成值 = 获取倍率()
@@ -25,7 +27,7 @@ func _on_死亡触发(死亡卡牌:CardEntity):
 				名称  # 使用卡牌ID作为来源标识
 			)
 			# 应用永久加成
-			属性加成(加成, true, false)
+			属性加成(加成, true, true)
 		
 "
 
