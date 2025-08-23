@@ -15,7 +15,7 @@ func 法术使用处理():
 				名称,
 				player.鲜血宝石加成,
 				名称,
-			), true,false)
+			), true)
 	else:
 		# 无目标执行策略
 		pass

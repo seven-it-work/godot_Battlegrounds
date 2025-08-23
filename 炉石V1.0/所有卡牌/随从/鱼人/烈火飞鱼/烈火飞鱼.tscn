@@ -12,7 +12,7 @@ func _on_战吼触发(战吼卡牌:CardEntity):
 	if 卡片所在位置==Enums.CardPosition.战场:
 		var 倍率 = 获取倍率()  # 普通卡:+1/+1, 金色卡:+2/+2
 		var 加成 = AttributeBonus.build(名称,Vector2i(倍率, 倍率),名称)
-		属性加成(加成, true, player.是否在战斗中())  # 永久加成，不在战斗中
+		属性加成(加成, !player.是否在战斗中())  # 永久加成，不在战斗中
 "
 
 [node name="烈火飞鱼" type="Node"]

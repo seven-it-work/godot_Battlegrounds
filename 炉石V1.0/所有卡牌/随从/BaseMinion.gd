@@ -74,7 +74,7 @@ func 添加磁力(磁力随从:CardEntity):
 	pass
 
 func 攻击其他随从(防御者:BaseMinion):
-	await player.fightUI.start_animation_sequence(self.get_parent(),防御者.get_parent())
+	await player.fightUI.start_animation_sequence(self.get_cardUI(),防御者.get_cardUI())
 	print("%s 对 %s 进行攻击"%[self.debug_str(),防御者.debug_str()])
 	await 防御者.受到攻击(self)
 	var 伤害=防御者.获取带加成属性().x
@@ -164,12 +164,7 @@ func 获取带加成属性()->Vector2i:
 		result+=player.甲虫加成
 	return result
 
-func 属性加成(data:AttributeBonus,是否永久:bool,是否添加到原始牌:bool):
-	if 是否添加到原始牌:
-		if player.是否在战斗中():
-			if player.战场_战斗中的对象映射map.has(self):
-				var 战场的随从=player.战场_战斗中的对象映射map.get(self) as BaseMinion
-				战场的随从.属性加成(data,是否永久,false)
+func 属性加成(data:AttributeBonus,是否永久:bool):
 	current_hp+=data.atk_hp.y
 	if 是否永久:
 		永久属性.append(data)

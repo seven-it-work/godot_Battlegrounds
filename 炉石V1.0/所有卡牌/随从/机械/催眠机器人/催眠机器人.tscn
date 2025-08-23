@@ -14,7 +14,7 @@ func _信号():
 				名称,
 				Vector2(0,1*获取倍率()),
 				名称,
-			), true,false)
+			), true)
 "
 
 [node name="催眠机器人" type="Node"]

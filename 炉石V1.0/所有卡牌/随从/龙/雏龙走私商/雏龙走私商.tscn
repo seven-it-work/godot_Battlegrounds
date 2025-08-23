@@ -17,7 +17,7 @@ func _信号(卡牌:CardEntity,加成数据:AttributeBonus):
 							名称,
 							Vector2(0,1*获取倍率()),
 							名称,
-						), true, false)
+						), !player.是否在战斗中())
 	pass
 "
 

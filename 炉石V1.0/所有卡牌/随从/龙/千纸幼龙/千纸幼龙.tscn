@@ -19,9 +19,9 @@ func 战斗开始时():
 			名称
 		)
 		# 应用加成(临时加成，仅限本场战斗)
-		目标龙.属性加成(加成, true, false)
+		目标龙.属性加成(加成, false)
 		# 赋予风怒效果
-		目标龙.风怒 = true
+		目标龙.临时关键词.append(\"风怒\")
 "
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 

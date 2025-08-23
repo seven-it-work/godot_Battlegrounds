@@ -31,7 +31,7 @@ static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
 ## Array[CardEntity]
 var 战斗中的随从:Array=[]
 ## key=战场上的随从 value=战斗中的随从
-var 战场_战斗中的对象映射map:Dictionary={}
+#var 战场_战斗中的对象映射map:Dictionary={}
 var 当前攻击的随从索引:int=0
 var fightUI:FightUI
 
@@ -50,12 +50,10 @@ func 战斗初始化(fightUI:FightUI):
 	self.fightUI=fightUI
 	# 初始化战斗中的随从
 	for i in 战场:
-		var 复制=i.duplicate() as BaseMinion
-		复制.是否在战斗中=true
-		复制.卡片所在位置=Enums.CardPosition.战场
-		复制.current_hp=复制.获取带加成属性().y
-		战场_战斗中的对象映射map.set(复制,i)
-		战斗中的随从.append(复制)
+		i.是否在战斗中=true
+		i.卡片所在位置=Enums.CardPosition.战场
+		i.current_hp=i.获取带加成属性().y
+		战斗中的随从.append(i)
 	重置攻击随从()
 	pass
 	
@@ -131,7 +129,7 @@ func 添加卡片(
 		if 酒馆.size()>=7:
 			print("酒馆满了")
 			return
-		元素工具类.元素属性加成(d,self,true,false)
+		元素工具类.元素属性加成(d,self,true)
 		index=adjust_index(index,酒馆)
 		酒馆.insert(index,d)
 		

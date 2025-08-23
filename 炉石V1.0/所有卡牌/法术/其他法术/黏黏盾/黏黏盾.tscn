@@ -13,7 +13,7 @@ func 法术使用处理():
 		if 目标 is BaseMinion:
 			# 应用+1/+1加成
 			var 加成 = AttributeBonus.build(名称,Vector2i(1, 1),名称)
-			目标.属性加成(加成, true, false)
+			目标.属性加成(加成, true)
 			# 赋予嘲讽
 			目标.嘲讽 = true
 	else:

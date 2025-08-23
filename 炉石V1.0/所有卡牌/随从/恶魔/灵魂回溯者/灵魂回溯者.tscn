@@ -18,7 +18,7 @@ func _on_英雄受伤(伤害值: int):
 	# 增加自身生命值
 	var 加成值 = 获取倍率()  # 普通卡+1，金色卡+2
 	var 加成 = AttributeBonus.build(名称,Vector2i(0, 加成值),名称)  # 只加生命值
-	属性加成(加成, true, player.是否在战斗中())  # 永久加成，不在战斗中
+	属性加成(加成, !player.是否在战斗中())  # 永久加成，不在战斗中
 "
 
 [node name="灵魂回溯者" type="Node"]

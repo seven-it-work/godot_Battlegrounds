@@ -21,6 +21,8 @@ class_name CardEntity
 ## 卡牌所属的玩家
 @export var player:Player
 @export var 插画路径:String
+## CardUI
+var _cardUI
 
 func 获取倍率()->int:
 	if is_gold:
@@ -57,3 +59,8 @@ func get_插画路径()->String:
 
 func debug_str()->String:
 	return "%s的%s"%[player.名称,名称]
+
+func get_cardUI():
+	if _cardUI:
+		return _cardUI
+	return get_parent()

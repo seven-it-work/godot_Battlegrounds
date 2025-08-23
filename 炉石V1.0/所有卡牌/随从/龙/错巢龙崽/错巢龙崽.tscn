@@ -11,7 +11,7 @@ func 战斗开始时():
 		名称
 	)
 	# 应用加成(临时加成，仅限本场战斗)
-	属性加成(加成, true, false)
+	属性加成(加成, false)
 "
 
 [node name="错巢龙崽" type="Node"]

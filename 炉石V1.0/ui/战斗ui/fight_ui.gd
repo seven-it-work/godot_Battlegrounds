@@ -8,7 +8,6 @@ var 敌人:Player
 var _战斗状态:String="未开始"
 var 动画播放队列:Array[Tween]=[]
 var 是否正在播放动画:int=0
-var _待删除集合:Array=[]
 
 @onready var 敌人容器:=$"PanelContainer/VBoxContainer/PanelContainer/敌人容器"
 @onready var 玩家容器:=$"PanelContainer/VBoxContainer/PanelContainer2/玩家容器"
@@ -36,8 +35,6 @@ func _process(delta: float) -> void:
 		_战斗处理()
 
 func _战斗处理():
-	while !_待删除集合.is_empty():
-		_待删除集合.pop_back().queue_free()
 	_战斗判断()
 	if _战斗状态=="战斗中":
 		_当前攻击者进行攻击()
@@ -209,9 +206,9 @@ func 删除卡片(
 		return
 	是否正在删除=false
 	if cardPosition==Enums.CardPosition.战场:
-		if d.get_parent() is BaseCardUI:
-			d.get_parent().hide()
-			_待删除集合.append(d.get_parent())
+		if d.get_cardUI() is BaseCardUI:
+			d.get_cardUI().hide()
+			d.get_cardUI().queue_free()
 	return
 	
 	
@@ -224,11 +221,10 @@ func 添加卡片(
 	if cardPosition!=Enums.CardPosition.战场:
 		return
 	# 初始ui
-	var cardUI
-	if d.get_parent() is BaseCardUI:
-		cardUI=d.get_parent()
-	else:
-		cardUI=BaseCardUI.build(d)
+	var cardUI=preload("uid://b631tye5dlbwf").instantiate()
+	d._cardUI=cardUI
+	cardUI.cardData=d
+	
 	var custom_size=cardUI.custom_minimum_size
 	cardUI.custom_minimum_size=Vector2(0,custom_size.y)
 	if _是否是敌人(player):
