@@ -110,6 +110,10 @@ func _获取CardUI(d:CardEntity)->CardUI:
 
 
 func _on_结束回合_pressed() -> void:
+	# 结束回合前，将战场中的顺序更新
+	player.战场.clear()
+	for i in 战场.获取所有的拖拽象():
+		player.战场.append(i.cardData)
 	结束回合信号.emit()
 	pass # Replace with function body.
 

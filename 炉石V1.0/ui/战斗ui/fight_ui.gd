@@ -70,6 +70,7 @@ func _进行攻击(
 	if 攻击随从.current_hp<=0:
 		# 已经死亡了
 		return
+	攻击随从.攻击过了关键词失效.append("潜行")
 	var 防御随从=_获取防御随从(防御者) as BaseMinion
 	if 防御随从==null:
 		# 没有防御随从，无法攻击

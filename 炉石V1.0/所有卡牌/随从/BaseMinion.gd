@@ -17,6 +17,7 @@ class_name BaseMinion
 @export var 临时属性:Array[AttributeBonus]=[]
 ## 临时关键词
 @export var 临时关键词:Array[String]=[]
+var 攻击过了关键词失效:Array[String]=[]
 @export var 战吼:Array[Roar]=[]
 @export var 亡语:Array[Deathrattle]=[]
 @export var 出售金币:int=1;
@@ -93,8 +94,9 @@ func 受到攻击(攻击者:BaseMinion):
 
 func 生命扣除(攻击者:BaseMinion,扣除值:int):
 	if 获取圣盾():
-		临时关键词.erase("圣盾")
-		self.圣盾=false
+		if 扣除值<=0:
+			return
+		攻击过了关键词失效.append("圣盾")
 		return
 	if 攻击者.剧毒 or 攻击者.烈毒:
 		if 攻击者.剧毒:
@@ -109,7 +111,7 @@ func 生命扣除(攻击者:BaseMinion,扣除值:int):
 		await 死亡(攻击者)
 
 func 剧毒使用():
-	剧毒=false
+	攻击过了关键词失效.append("剧毒")
 
 func 死亡(攻击者:BaseMinion):
 	print("%s 死亡"%[self.debug_str()])
@@ -123,6 +125,7 @@ func 死亡(攻击者:BaseMinion):
 		# 亡语触发信号
 	# 触发复生
 	if 获取复生():
+		攻击过了关键词失效.append("复生")
 		pass
 		return
 	
@@ -173,18 +176,26 @@ func 属性加成(data:AttributeBonus,是否永久:bool):
 	player.随从属性加成信号.emit(self,data)
 
 func 获取嘲讽()->bool:
+	if 攻击过了关键词失效.has("嘲讽"):
+		return false
 	if 嘲讽:
 		return true
 	return 临时关键词.has("嘲讽")
 func 获取复生()->bool:
+	if 攻击过了关键词失效.has("复生"):
+		return false
 	if 复生:
 		return true
 	return 临时关键词.has("复生")
 func 获取圣盾()->bool:
+	if 攻击过了关键词失效.has("圣盾"):
+		return false
 	if 圣盾:
 		return true
 	return 临时关键词.has("圣盾")
 func 获取剧毒()->bool:
+	if 攻击过了关键词失效.has("剧毒"):
+		return false
 	if 剧毒:
 		return true
 	return 临时关键词.has("剧毒")
@@ -201,6 +212,8 @@ func 获取超级风怒()->bool:
 		return true
 	return 临时关键词.has("超级风怒")
 func 获取潜行()->bool:
+	if 攻击过了关键词失效.has("潜行"):
+		return false
 	if 潜行:
 		return true
 	return 临时关键词.has("潜行")
