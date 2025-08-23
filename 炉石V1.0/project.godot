@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="炉石V1.0"
-run/main_scene="res://ui/战斗ui/test_战斗ui.tscn"
+run/main_scene="uid://wahwrfajtle1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

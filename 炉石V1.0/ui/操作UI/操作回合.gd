@@ -7,12 +7,9 @@ class_name OperationUI
 @onready var 手牌:=%"手牌"
 @onready var 箭头遮罩:=$"PanelContainer/箭头遮罩"
 @onready var 抉择遮罩:=$"PanelContainer/抉择遮罩"
+signal 结束回合信号
 
 func _process(delta: float) -> void:
-	if player:
-		$PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/Label.text=str(player.酒馆.size())
-		$PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/Label2.text=str(player.战场.size())
-		$PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/Label3.text=str(player.手牌.size())
 	pass
 
 func 初始化(player:Player):
@@ -110,3 +107,15 @@ func _获取CardUI(d:CardEntity)->CardUI:
 		return d.get_parent()
 	else:
 		return CardUI.build(d)
+
+
+func _on_结束回合_pressed() -> void:
+	结束回合信号.emit()
+	pass # Replace with function body.
+
+
+func _on_刷新酒馆_pressed() -> void:
+	var list=CardUtils.find_card([CardUtils.COMMON_CODITION["是否出现在酒馆"]])
+	var card=CardUtils.get_card(list.pick_random().名称,player)
+	player.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1s2h3xa4m35v"]
+[gd_scene load_steps=20 format=3 uid="uid://c1s2h3xa4m35v"]
 
 [ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://ui/箭头/箭头.tscn" id="1_fce2h"]
 [ext_resource type="Script" uid="uid://cblrggyj4vi76" path="res://ui/操作UI/操作回合.gd" id="1_w2326"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dy3yv2yd2kdo1" path="res://ui/操作UI/CardUI.tscn" id="4_t82iy"]
 [ext_resource type="Script" uid="uid://gkik7v6ljj1h" path="res://ui/操作UI/战场.gd" id="5_mt46m"]
 [ext_resource type="Script" uid="uid://dmbqmjjyylkkk" path="res://ui/操作UI/手牌.gd" id="6_icvfi"]
+[ext_resource type="Texture2D" uid="uid://l15isms6r1ua" path="res://所有卡牌/随从/恶魔/躁动欺诈者/躁动欺诈者.png" id="7_g3xrt"]
 [ext_resource type="Script" uid="uid://burftwkvvrpll" path="res://ui/操作UI/箭头遮罩.gd" id="7_icvfi"]
 [ext_resource type="Script" uid="uid://babela1sji3n7" path="res://ui/操作UI/抉择遮罩.gd" id="9_d1h12"]
 [ext_resource type="PackedScene" uid="uid://bjyr5im2gi512" path="res://ui/操作UI/抉择选项UI.tscn" id="10_uhaqt"]
@@ -172,14 +173,71 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_g3xrt")
+expand_mode = 4
+
+[node name="属性加成" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "xxxxssssxx:+1/+1(临时)"
+
+[node name="种族" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "野兽|野猪人"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="升级酒馆" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "升级酒馆(1)"
+
+[node name="刷新酒馆" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "刷新酒馆(1)"
+
+[node name="结束回合" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "结束回合"
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 179)
@@ -240,6 +298,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_08hnw")
 
 [node name="操作" type="HBoxContainer" parent="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="取消" type="Button" parent="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作"]
@@ -250,6 +309,8 @@ text = "取消"
 layout_mode = 2
 text = "确定"
 
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/刷新酒馆" to="." method="_on_刷新酒馆_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]
 [connection signal="gui_input" from="PanelContainer/箭头遮罩" to="PanelContainer/箭头遮罩" method="_on_gui_input"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/取消" to="PanelContainer/抉择遮罩" method="_on_取消_pressed"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/确认" to="PanelContainer/抉择遮罩" method="_on_确认_pressed"]

@@ -17,6 +17,7 @@ func 战斗开始时():
 [node name="哼鸣蜂鸟" type="Node"]
 script = SubResource("GDScript_5m9v2")
 race = Array[int]([6])
+atk_hp = Vector2i(1, 4)
 lushi_id = 98939
 str_id = "BG26_805"
 "名称" = "哼鸣蜂鸟"
