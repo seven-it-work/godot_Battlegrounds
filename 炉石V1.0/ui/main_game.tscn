@@ -28,3 +28,4 @@ script = ExtResource("4_anwim")
 metadata/_custom_type_script = "uid://upwxtqaduibs"
 
 [connection signal="结束回合信号" from="操作回合" to="." method="_on_操作回合_结束回合信号"]
+[connection signal="战斗结束信号" from="FightUi" to="." method="_on_fight_ui_战斗结束信号"]

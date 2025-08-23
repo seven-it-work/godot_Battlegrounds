@@ -113,25 +113,30 @@ func _战斗判断():
 		print(玩家)
 		print("平局")
 		_战斗状态="结束了"
-		战斗结束信号.emit(true,null,null)
+		战斗结束(true,null,null)
 	elif 玩家.战斗中的随从.is_empty():
 		print("玩家胜利")
 		_战斗状态="结束了"
-		战斗结束信号.emit(false,玩家,敌人)
+		战斗结束(false,玩家,敌人)
 	elif 敌人.战斗中的随从.is_empty():
 		print("敌人胜利")
 		_战斗状态="结束了"
-		战斗结束信号.emit(false,敌人,玩家)
+		战斗结束(false,敌人,玩家)
 	else:
 		var 玩家攻击力总和=ArrayUtils.sum(玩家.战斗中的随从.map(func(item:BaseMinion): return item.获取带加成属性().x))
 		var 敌人攻击力总和=ArrayUtils.sum(敌人.战斗中的随从.map(func(item:BaseMinion): return item.获取带加成属性().x))
 		if 玩家攻击力总和==0 and 敌人攻击力总和==0:
 			print("平局")
 			_战斗状态="结束了"
-			战斗结束信号.emit(true,null,null)
+			战斗结束(true,null,null)
 			return
 		# 继续战斗
 		pass
+
+func 战斗结束(是否平局:bool,胜利者:Player,失败者:Player):
+	玩家.结束战斗()
+	敌人.结束战斗()
+	战斗结束信号.emit(是否平局,胜利者,失败者)
 
 func 获取敌人(player:Player)->Player:
 	if player==玩家:

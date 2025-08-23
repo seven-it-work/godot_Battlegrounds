@@ -64,6 +64,13 @@ func 战场随从是否满了()->bool:
 	if 是否在战斗中():
 		return 战斗中的随从.size()>=7
 	return 战场.size()>=7
+
+func 结束战斗():
+	for i in 战场:
+		i.是否在战斗中=false
+		战斗中的随从.clear()
+	fightUI=null
+	pass
 #endregion
 
 signal 添加卡片信号(

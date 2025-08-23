@@ -16,18 +16,10 @@ func 法术使用处理():
 				名称,
 				Vector2(0,2*获取倍率()),
 				名称,
-			), 是否永久加成,false)
-			目标.嘲讽=true
-			if !是否永久加成:
-				player.开始回合调用方法.append(
-					func():
-						目标.嘲讽=false
-				)
-	else:
-		# 无目标执行策略
-		pass
-	pass
+			), 是否永久加成)
+			目标.临时关键词.append(\"嘲讽\")
 "
+metadata/_custom_type_script = "uid://dn7xma4p426pm"
 
 [node name="钓客的诱饵" type="Node" node_paths=PackedStringArray("选择目标对象")]
 script = SubResource("GDScript_c7gdi")

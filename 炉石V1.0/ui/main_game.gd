@@ -22,3 +22,9 @@ func _on_操作回合_结束回合信号() -> void:
 	
 	$FightUi.开始战斗($Player,敌人)
 	pass # Replace with function body.
+
+
+func _on_fight_ui_战斗结束信号(是否平局: bool, 胜利者: Player, 失败者: Player) -> void:
+	$"操作回合".show()
+	$FightUi.hide()
+	pass # Replace with function body.
