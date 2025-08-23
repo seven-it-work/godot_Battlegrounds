@@ -23,7 +23,7 @@ func _具体亡语方法接口(攻击者:CardEntity):
 script = ExtResource("1_jihpw")
 race = Array[int]([2])
 atk_hp = Vector2i(3, 3)
-"亡语" = [null]
+"亡语" = [NodePath("Deathrattle")]
 lushi_id = 72059
 str_id = "BG21_006"
 "名称" = "躁动欺诈者"

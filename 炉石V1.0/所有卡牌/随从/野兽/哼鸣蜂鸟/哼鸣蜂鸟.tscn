@@ -5,7 +5,7 @@ script/source = "extends BaseMinion
 
 func 战斗开始时():
 	# 获取所有友方野兽(包括自己)
-	var 野兽列表 = player.获取战场上的野兽()
+	var 野兽列表 = player.获取战场上的牌().filter(func(item:BaseMinion): return item.race.has(Enums.CardRace.野兽))
 	var 倍率 = 获取倍率()  # 普通卡:+1攻击力, 金色卡:+2攻击力
 	player.野兽加成+=Vector2i(1*倍率,0)
 	player.开始回合调用方法.append(func():

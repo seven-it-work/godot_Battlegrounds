@@ -73,13 +73,21 @@ func 结束战斗():
 	pass
 #endregion
 
-signal 添加卡片信号(
+signal 操作中添加卡片信号(
 	d:CardEntity,
 	cardPosition:Enums.CardPosition,
 	index:int,
 )
-
-signal 删除卡片信号(
+signal 战斗中添加卡片信号(
+	d:CardEntity,
+	cardPosition:Enums.CardPosition,
+	index:int,
+)
+signal 操作中删除卡片信号(
+	d:CardEntity,
+	cardPosition:Enums.CardPosition,
+)
+signal 战斗中删除卡片信号(
 	d:CardEntity,
 	cardPosition:Enums.CardPosition,
 )
@@ -141,7 +149,10 @@ func 添加卡片(
 		酒馆.insert(index,d)
 		
 		if 是否触发信号:
-			添加卡片信号.emit(d,cardPosition,index)
+			if 是否在战斗中():
+				战斗中添加卡片信号.emit(d,cardPosition,index)
+			else:
+				操作中添加卡片信号.emit(d,cardPosition,index)
 		return
 	if cardPosition==Enums.CardPosition.手牌:
 		if 手牌.size()>=10:
@@ -150,7 +161,10 @@ func 添加卡片(
 		手牌.insert(adjust_index(index,手牌),d)
 		
 		if 是否触发信号:
-			添加卡片信号.emit(d,cardPosition,index)
+			if 是否在战斗中():
+				战斗中添加卡片信号.emit(d,cardPosition,index)
+			else:
+				操作中添加卡片信号.emit(d,cardPosition,index)
 		return
 	if cardPosition==Enums.CardPosition.战场:
 		if 战场随从是否满了():
@@ -162,7 +176,10 @@ func 添加卡片(
 			if d.名称=="星元自动机":
 				self.星元自动机召唤次数+=1
 			if 是否触发信号:
-				添加卡片信号.emit(d,cardPosition,index)
+				if 是否在战斗中():
+					战斗中添加卡片信号.emit(d,cardPosition,index)
+				else:
+					操作中添加卡片信号.emit(d,cardPosition,index)
 			pass
 		
 		if 是否在战斗中():
@@ -183,7 +200,10 @@ func 删除卡牌(
 	是否触发信号:bool):
 	if 是否触发信号:
 		print("触发删除信号 %s"%[d.debug_str()])
-		删除卡片信号.emit(d,cardPosition)
+		if 是否在战斗中():
+			战斗中删除卡片信号.emit(d,cardPosition)
+		else:
+			操作中删除卡片信号.emit(d,cardPosition)
 	if cardPosition==Enums.CardPosition.酒馆:
 		酒馆.erase(d)
 		return

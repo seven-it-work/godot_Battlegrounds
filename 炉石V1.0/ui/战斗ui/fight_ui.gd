@@ -148,10 +148,10 @@ func 获取敌人(player:Player)->Player:
 	return null
 
 func _绑定信号(player:Player):
-	if !player.添加卡片信号.is_connected(添加卡片.bind(player)):
-		player.添加卡片信号.connect(添加卡片.bind(player))
-	if !player.删除卡片信号.is_connected(删除卡片.bind(player)):
-		player.删除卡片信号.connect(删除卡片.bind(player))
+	if !player.战斗中添加卡片信号.is_connected(添加卡片.bind(player)):
+		player.战斗中添加卡片信号.connect(添加卡片.bind(player))
+	if !player.战斗中删除卡片信号.is_connected(删除卡片.bind(player)):
+		player.战斗中删除卡片信号.connect(删除卡片.bind(player))
 
 func 开始战斗(player:Player,target:Player):
 	self.玩家=player
@@ -172,9 +172,11 @@ func 开始战斗(player:Player,target:Player):
 	_判断先手()
 	# 战斗开始时
 	for i in 当前攻击者.手牌:
-		(i as BaseMinion).战斗开始时()
+		if i is BaseMinion:
+			i.战斗开始时()
 	for i in 获取敌人(当前攻击者).手牌:
-		(i as BaseMinion).战斗开始时()
+		if i is BaseMinion:
+			i.战斗开始时()
 	
 	for i in 当前攻击者.获取战场上的牌():
 		(i as BaseMinion).战斗开始时()

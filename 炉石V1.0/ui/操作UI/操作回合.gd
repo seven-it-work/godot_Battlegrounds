@@ -14,8 +14,8 @@ func _process(delta: float) -> void:
 
 func 初始化(player:Player):
 	self.player=player
-	self.player.添加卡片信号.connect(_添加卡片.bind())
-	self.player.删除卡片信号.connect(_删除卡片.bind())
+	self.player.操作中添加卡片信号.connect(_添加卡片.bind())
+	self.player.操作中删除卡片信号.connect(_删除卡片.bind())
 	
 	_初始化容器(player,Enums.CardPosition.酒馆)
 	_初始化容器(player,Enums.CardPosition.手牌)
@@ -103,8 +103,8 @@ func _添加卡片(
 
 func _获取CardUI(d:CardEntity)->CardUI:
 	var cardUI
-	if d.get_parent() is CardUI:
-		return d.get_parent()
+	if d.get_cardUI() is CardUI:
+		return d.get_cardUI()
 	else:
 		return CardUI.build(d)
 
