@@ -3,6 +3,16 @@ class_name Player
 
 static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
 
+static var 等级对应酒馆随从数量={
+	1:3,
+	2:4,
+	3:4,
+	4:5,
+	5:5,
+	6:6,
+	7:6
+}
+
 @export var 名称:String=""
 
 @export var 酒馆等级:int=1
@@ -12,7 +22,10 @@ static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
 @export var 战场:Array=[]
 @export var 手牌:Array=[]
 @export var 生命值:int=0
-@export var 当前金币:int=0
+@export var 当前金币:int=3
+@export var 当前金币上限:int=3
+@export var 最大金币上限:int=10
+
 @export var 开始回合调用方法:Array=[]
 ## 影响元素属性加成
 @export var 元素加强加成:Vector2i=Vector2i(0,0)
@@ -23,6 +36,8 @@ static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
 @export var 野兽加成:Vector2i=Vector2i(0,0)
 ## 每召唤过一个加成+3/2（金色算两次） 如果小于0 不进行计算。
 @export var 星元自动机召唤次数:int=-1
+
+@export var 法术出现数量:int=1
 
 
 @export var 下次购买法术金币减少数量:int=0
@@ -117,6 +132,75 @@ func 结束回合():
 	print("结束回合了")
 	pass
 
+func 开始回合():
+	if 当前金币上限<最大金币上限:
+		当前金币上限+=1
+	当前金币=当前金币上限
+	# 酒馆刷新
+	酒馆刷新(false)
+	# 战场中的临时属性清理
+	for i in 战场:
+		ObjectUtils.free_obj(i.临时属性)
+		ObjectUtils.free_obj(i.临时关键词)
+		ObjectUtils.free_obj(i.攻击过了关键词失效)
+		i.临时属性.clear()
+		i.临时关键词.clear()
+		i.攻击过了关键词失效.clear()
+	pass
+
+func 酒馆刷新(是否强制刷新:bool):
+	var 随从list=CardUtils.find_card([
+		CardUtils.COMMON_CODITION["是否出现在酒馆"],
+		CardUtils.COMMON_CODITION["随从"],
+		CardFindCondition.build("等级",酒馆等级,Enums.ConditionEnum.小于等于)
+	])
+	var 法术list=CardUtils.find_card([
+		CardUtils.COMMON_CODITION["是否出现在酒馆"],
+		CardUtils.COMMON_CODITION["酒馆法术"],
+		CardFindCondition.build("等级",酒馆等级,Enums.ConditionEnum.小于等于)
+	])
+	if 是否强制刷新:
+		for i in 酒馆:
+			i.get_parent().queue_free()
+		酒馆.clear()
+		# 先添加法术
+		for i in 法术出现数量:
+			var card=CardUtils.get_card(法术list.pick_random().名称,self)
+			self.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+		for i in mini(7-法术出现数量,等级对应酒馆随从数量[酒馆等级]):
+			var card=CardUtils.get_card(随从list.pick_random().名称,self)
+			self.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+	else:
+		var 冻结的法术:Array=[]
+		var 冻结的随从:Array=[]
+		# 只清理没有冻结的
+		for i in 酒馆:
+			if i is BaseMinion:
+				if i.是否冻结在酒馆:
+					冻结的随从.append(i)
+					continue
+			if i is TavernSpell:
+				if i.是否冻结在酒馆:
+					冻结的法术.append(i)
+					continue
+			i.get_parent().queue_free()
+		酒馆.clear()
+		# 先添加法术
+		for i in 冻结的法术:
+			酒馆.append(i)
+		if 冻结的法术.size()<法术出现数量:
+			for i in 法术出现数量-冻结的法术.size():
+				var card=CardUtils.get_card(法术list.pick_random().名称,self)
+				self.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+				
+		for i in 冻结的随从:
+			酒馆.append(i)
+		var 还能添加的随从数量=mini(等级对应酒馆随从数量[酒馆等级],7-酒馆.size())
+		if 冻结的随从.size()<还能添加的随从数量:
+			for i in 还能添加的随从数量:
+				var card=CardUtils.get_card(随从list.pick_random().名称,self)
+				self.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+	pass
 
 func 手牌是否满了()->bool:
 	return 手牌.size()>=10;

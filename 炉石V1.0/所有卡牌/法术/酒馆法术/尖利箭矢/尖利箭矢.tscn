@@ -13,6 +13,22 @@ func 获取描述(dic:Dictionary={})->String:
 	}
 	tempDic.merged(dic,true)
 	return super.获取描述(tempDic)
+
+
+## 由子类实现
+func 法术使用处理():
+	var 目标=选择目标对象.目标卡片
+	if 目标:
+		if 目标 is BaseMinion:
+			目标.属性加成(AttributeBonus.build(
+				名称,
+				Vector2(3,0),
+				名称,
+			), true)
+	else:
+		# 无目标执行策略
+		pass
+	pass
 "
 
 [node name="尖利箭矢" type="Node" node_paths=PackedStringArray("选择目标对象")]

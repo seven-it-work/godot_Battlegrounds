@@ -30,7 +30,7 @@ lushi_id = 70136
 str_id = "BG20_GEM"
 "名称" = "鲜血宝石"
 "描述" = "使一个随从获得+{0}\\/+{1}。"
-metadata/_custom_type_script = "uid://bvigsfyqo3h7x"
+"是否出现在酒馆" = false
 
 [node name="SelectTarget" type="Node" parent="."]
 script = ExtResource("2_6u6hf")

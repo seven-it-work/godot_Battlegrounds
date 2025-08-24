@@ -63,9 +63,6 @@ func _删除卡片(
 					i.queue_free()
 		return
 	if cardPosition==Enums.CardPosition.战场:
-		#if player.是否在战斗中():
-			#player.fightUI.删除卡片(player,d)
-		#else:
 		for i in 战场.获取所有的拖拽象():
 			if i is CardUI:
 				if i.cardData==d:
@@ -119,7 +116,5 @@ func _on_结束回合_pressed() -> void:
 
 
 func _on_刷新酒馆_pressed() -> void:
-	var list=CardUtils.find_card([CardUtils.COMMON_CODITION["是否出现在酒馆"]])
-	var card=CardUtils.get_card(list.pick_random().名称,player)
-	player.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+	player.酒馆刷新(true)
 	pass # Replace with function body.

@@ -17,7 +17,10 @@ func 法术使用处理():
 				Vector2(0,2*获取倍率()),
 				名称,
 			), 是否永久加成)
-			目标.临时关键词.append(\"嘲讽\")
+			if 是否永久加成:
+				目标.嘲讽=true
+			else:
+				目标.临时关键词.append(\"嘲讽\")
 "
 metadata/_custom_type_script = "uid://dn7xma4p426pm"
 
@@ -29,6 +32,7 @@ lushi_id = 83988
 str_id = "BG23_004t"
 "名称" = "钓客的诱饵"
 "描述" = "直到下个回合，使一个随从获得+2生命值和<b>嘲讽<\\/b>。"
+"是否出现在酒馆" = false
 metadata/_custom_type_script = "uid://dn7xma4p426pm"
 
 [node name="SelectTarget" type="Node" parent="."]

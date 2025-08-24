@@ -27,4 +27,5 @@ func _on_操作回合_结束回合信号() -> void:
 func _on_fight_ui_战斗结束信号(是否平局: bool, 胜利者: Player, 失败者: Player) -> void:
 	$"操作回合".show()
 	$FightUi.hide()
+	$Player.开始回合()
 	pass # Replace with function body.

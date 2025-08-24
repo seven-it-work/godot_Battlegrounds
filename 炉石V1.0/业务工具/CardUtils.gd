@@ -20,8 +20,8 @@ static var COMMON_CODITION={
 	"随从":CardFindCondition.build(
 		"卡牌类型",Enums.CardType.随从,Enums.ConditionEnum.等于
 	),
-	"法术":CardFindCondition.build(
-		"卡牌类型",Enums.CardType.法术,Enums.ConditionEnum.等于
+	"酒馆法术":CardFindCondition.build(
+		"卡牌类型",Enums.CardType.酒馆法术,Enums.ConditionEnum.等于
 	)
 }
 

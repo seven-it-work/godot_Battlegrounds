@@ -14,6 +14,7 @@ class_name CardEntity
 @export var 花费:int=3
 @export var is_gold:bool=false
 @export var 是否出现在酒馆:bool=true
+@export var 是否冻结在酒馆:bool=false
 
 #region 持久化辅助对象
 @export var 文件路径:String

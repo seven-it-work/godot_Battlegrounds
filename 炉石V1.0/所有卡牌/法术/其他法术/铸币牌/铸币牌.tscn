@@ -14,4 +14,3 @@ script = SubResource("GDScript_p5fcx")
 "描述" = "获得1枚铸币。"
 "glod_描述" = "获得1枚铸币。"
 "是否出现在酒馆" = false
-metadata/_custom_type_script = "uid://bvigsfyqo3h7x"
