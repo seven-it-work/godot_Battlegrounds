@@ -25,6 +25,8 @@ func _process(delta: float) -> void:
 			else:
 				tips.更新当前Tps(i.cardData)
 			pass
+	
+	%"金币Label".text="金币:%s/%s"%[player.当前金币,player.当前金币上限]
 	pass
 
 func 初始化(player:Player):
