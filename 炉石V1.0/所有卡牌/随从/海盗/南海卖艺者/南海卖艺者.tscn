@@ -7,8 +7,9 @@ resource_name = "Roar"
 script/source = "extends Roar
 
 func _具体战吼方法接口():
+	var 获取金币=1*触发卡.获取倍率()
 	触发卡.player.开始回合调用方法.append(func():
-		触发卡.player.当前金币+=1*触发卡.获取倍率()
+		触发卡.player.当前金币+=获取金币
 	)
 	pass
 "

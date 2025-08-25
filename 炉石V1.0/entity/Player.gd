@@ -120,11 +120,11 @@ signal 随从死亡信号(死亡随从:BaseMinion)
 signal 召唤随从信号(召唤随从:BaseMinion)
 
 func 购买卡片(card:CardEntity)->bool:
-	if card.花费>当前金币:
+	var 花费=card.获取花费()
+	if 花费>当前金币:
 		return false
 	删除卡牌(card,Enums.CardPosition.酒馆,false)
 	# 金币扣除
-	var 花费=card.获取花费()
 	if card is TavernSpell:
 		下次购买法术金币减少数量=0
 	花费金币(花费)
