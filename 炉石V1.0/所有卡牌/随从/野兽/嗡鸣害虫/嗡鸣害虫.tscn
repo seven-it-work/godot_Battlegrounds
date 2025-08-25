@@ -22,8 +22,8 @@ atk_hp = Vector2i(1, 1)
 lushi_id = 116240
 str_id = "BG31_803"
 "名称" = "嗡鸣害虫"
-"描述" = "<b>嘲讽<\\/b>。<b>亡语：<\\/b>召唤一只{0}\\/{1}的甲虫。"
-"glod_描述" = "<b>嘲讽<\\/b>。<b>亡语：<\\/b>召唤2只{0}\\/{1}的甲虫。"
+"描述" = "[b]嘲讽[/b]。[b]亡语：[/b]召唤一只{0}/{1}的甲虫。"
+"glod_描述" = "[b]嘲讽[/b]。[b]亡语：[/b]召唤2只{0}/{1}的甲虫。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

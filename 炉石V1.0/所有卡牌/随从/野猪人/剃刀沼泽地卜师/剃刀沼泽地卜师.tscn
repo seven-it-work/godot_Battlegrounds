@@ -23,8 +23,8 @@ atk_hp = Vector2i(3, 1)
 lushi_id = 70143
 str_id = "BG20_100"
 "名称" = "剃刀沼泽地卜师"
-"描述" = "<b>战吼：<\\/b>获取一张<b>鲜血宝石<\\/b>。"
-"glod_描述" = "<b>战吼：<\\/b>获取2张<b>鲜血宝石<\\/b>。"
+"描述" = "[b]战吼：[/b]获取一张[b]鲜血宝石[/b]。"
+"glod_描述" = "[b]战吼：[/b]获取2张[b]鲜血宝石[/b]。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

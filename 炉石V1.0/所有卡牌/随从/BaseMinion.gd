@@ -9,12 +9,6 @@ class_name BaseMinion
 @export var atk_hp:Vector2i=Vector2i(0,0)
 ## 当前生命值（战斗开始时会进行重置）
 @export var current_hp:int=0
-## 永久属性（战斗结束后将其copy给原始从）
-@export var 永久属性:Array[AttributeBonus]=[]:
-	set(value):
-		永久属性 = value
-# 开始回合就会清理
-@export var 临时属性:Array[AttributeBonus]=[]
 ## 临时关键词
 @export var 临时关键词:Array[String]=[]
 var 攻击过了关键词失效:Array[String]=[]
@@ -169,10 +163,7 @@ func 获取带加成属性()->Vector2i:
 
 func 属性加成(data:AttributeBonus,是否永久:bool):
 	current_hp+=data.atk_hp.y
-	if 是否永久:
-		永久属性.append(data)
-	else:
-		临时属性.append(data)
+	super.属性加成(data,是否永久)
 	player.随从属性加成信号.emit(self,data)
 
 func 获取嘲讽()->bool:
@@ -217,6 +208,13 @@ func 获取潜行()->bool:
 	if 潜行:
 		return true
 	return 临时关键词.has("潜行")
+
+func 获取种族str()->String:
+	var str=""
+	for i in race:
+		var name=Enums.CardRace.keys().get(i)
+		str+=name+"|"
+	return str.substr(0,str.length()-1)
 
 func debug_str()->String:
 	var 属性=获取带加成属性()

@@ -5,11 +5,26 @@ class_name OperationUI
 @onready var 酒馆:=%"酒馆"
 @onready var 战场:=%"战场"
 @onready var 手牌:=%"手牌"
+@onready var tips:=%"Tips"
 @onready var 箭头遮罩:=$"PanelContainer/箭头遮罩"
 @onready var 抉择遮罩:=$"PanelContainer/抉择遮罩"
 signal 结束回合信号
 
 func _process(delta: float) -> void:
+	var list=[]
+	list.append_array(酒馆.获取所有的拖拽象())
+	list.append_array(战场.获取所有的拖拽象())
+	list.append_array(手牌.获取所有的拖拽象())
+	for i in list:
+		if i.get_global_rect().has_point(get_global_mouse_position()):
+			if tips.当前Tips==null:
+				tips.更新当前Tps(i.cardData)
+				pass
+			elif tips.当前Tips==i.cardData:
+				pass
+			else:
+				tips.更新当前Tps(i.cardData)
+			pass
 	pass
 
 func 初始化(player:Player):

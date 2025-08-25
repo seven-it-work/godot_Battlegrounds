@@ -19,8 +19,8 @@ atk_hp = Vector2i(1, 1)
 lushi_id = 119996
 str_id = "BG32_236"
 "名称" = "夺金健将"
-"描述" = "<b>圣盾<\\/b>。<b>战吼：<\\/b>使本随从变为金色。"
-"glod_描述" = "<b>圣盾<\\/b>。<b>战吼：<\\/b>使本随从变为金色。"
+"描述" = "[b]圣盾[/b]。[b]战吼：[/b]使本随从变为金色。"
+"glod_描述" = "[b]圣盾[/b]。[b]战吼：[/b]使本随从变为金色。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

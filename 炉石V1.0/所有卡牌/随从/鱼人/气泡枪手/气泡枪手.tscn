@@ -26,8 +26,8 @@ atk_hp = Vector2i(2, 3)
 lushi_id = 116178
 str_id = "BG31_149"
 "名称" = "气泡枪手"
-"描述" = "<b>战吼：<\\/b>获得一个随机<b>额外关键词<\\/b>。"
-"glod_描述" = "<b>战吼：<\\/b>获得2个随机<b>额外关键词<\\/b>。"
+"描述" = "[b]战吼：[/b]获得一个随机[b]额外关键词[/b]。"
+"glod_描述" = "[b]战吼：[/b]获得2个随机[b]额外关键词[/b]。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

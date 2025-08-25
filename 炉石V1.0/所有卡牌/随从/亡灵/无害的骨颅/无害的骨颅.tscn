@@ -22,8 +22,8 @@ atk_hp = Vector2i(1, 1)
 lushi_id = 104551
 str_id = "BG28_300"
 "名称" = "无害的骨颅"
-"描述" = "<b>亡语：<\\/b>召唤两个1\\/1的骷髅。"
-"glod_描述" = "<b>亡语：<\\/b>召唤四个1\\/1的骷髅。"
+"描述" = "[b]亡语：[/b]召唤两个1/1的骷髅。"
+"glod_描述" = "[b]亡语：[/b]召唤四个1/1的骷髅。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

@@ -17,8 +17,8 @@ atk_hp = Vector2i(2, 1)
 lushi_id = 117553
 str_id = "BG31_330"
 "名称" = "厄运先知"
-"描述" = "<b>战吼：<\\/b>你购买的下一张酒馆法术牌消耗的铸币减少（1）枚。"
-"glod_描述" = "<b>战吼：<\\/b>你购买的下一张酒馆法术牌消耗的铸币减少（2）枚。"
+"描述" = "[b]战吼：[/b]你购买的下一张酒馆法术牌消耗的铸币减少（1）枚。"
+"glod_描述" = "[b]战吼：[/b]你购买的下一张酒馆法术牌消耗的铸币减少（2）枚。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

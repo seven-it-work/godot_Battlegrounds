@@ -31,8 +31,8 @@ atk_hp = Vector2i(1, 1)
 lushi_id = 92400
 str_id = "BG24_009"
 "名称" = "挑食魔犬"
-"描述" = "<b>战吼：<\\/b>随机吞食酒馆中的一个随从，获得其属性值。"
-"glod_描述" = "<b>战吼：<\\/b>随机吞食酒馆中的一个随从，获得其双倍属性值。"
+"描述" = "[b]战吼：[/b]随机吞食酒馆中的一个随从，获得其属性值。"
+"glod_描述" = "[b]战吼：[/b]随机吞食酒馆中的一个随从，获得其双倍属性值。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

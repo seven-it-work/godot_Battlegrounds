@@ -23,8 +23,8 @@ atk_hp = Vector2i(1, 1)
 lushi_id = 110101
 str_id = "BG29_611"
 "名称" = "拔线机"
-"描述" = "<b>圣盾<\\/b>。<b>亡语：<\\/b>召唤一个1\\/1的微型机器人。"
-"glod_描述" = "<b>圣盾<\\/b>。<b>亡语：<\\/b>召唤一个2\\/2的微型机器人。"
+"描述" = "[b]圣盾[/b]。[b]亡语：[/b]召唤一个1/1的微型机器人。"
+"glod_描述" = "[b]圣盾[/b]。[b]亡语：[/b]召唤一个2/2的微型机器人。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

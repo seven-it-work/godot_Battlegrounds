@@ -28,8 +28,8 @@ static var COMMON_CODITION={
 static func 合成三连(card1:CardEntity,card2:CardEntity,card3:CardEntity)->CardEntity:
 	var result=card1
 	result.is_gold=true
-	card1.属性加成.append_array(card2.属性加成)
-	card2.属性加成.append_array(card3.属性加成)
+	#card1.属性加成.append_array(card2.属性加成)
+	#card2.属性加成.append_array(card3.属性加成)
 	return result
 
 static func get_card(nameInfo:String,player:Player)->CardEntity:

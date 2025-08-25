@@ -21,8 +21,8 @@ atk_hp = Vector2i(3, 1)
 lushi_id = 98501
 str_id = "BG26_135"
 "名称" = "南海卖艺者"
-"描述" = "<b>战吼：<\\/b>下回合获得1枚铸币。"
-"glod_描述" = "<b>战吼：<\\/b>下回合获得2枚铸币。"
+"描述" = "[b]战吼：[/b]下回合获得1枚铸币。"
+"glod_描述" = "[b]战吼：[/b]下回合获得2枚铸币。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

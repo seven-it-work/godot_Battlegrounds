@@ -15,6 +15,10 @@ class_name CardEntity
 @export var is_gold:bool=false
 @export var 是否出现在酒馆:bool=true
 @export var 是否冻结在酒馆:bool=false
+## 永久属性
+@export var 永久属性:Array[AttributeBonus]=[]
+# 开始回合就会清理
+@export var 临时属性:Array[AttributeBonus]=[]
 
 #region 持久化辅助对象
 @export var 文件路径:String
@@ -57,6 +61,12 @@ func get_插画路径()->String:
 	var 默认路径="%s/%s.png"%[文件路径,文件名]
 	return 默认路径
 
+
+func 属性加成(data:AttributeBonus,是否永久:bool):
+	if 是否永久:
+		永久属性.append(data)
+	else:
+		临时属性.append(data)
 
 func debug_str()->String:
 	return "%s的%s"%[player.名称,名称]

@@ -7,12 +7,12 @@ static func 更新元素属性加成(player:Player,基础值:Vector2i):
 	for i in player.酒馆:
 		元素属性加成(i,player,true)
 
-## todo 这个不知道怎么用
 static func 元素属性加成(card:CardEntity,player:Player,是否永久:bool):
-	if card is BaseMinion:
-		if card.race.has(Enums.CardRace.元素):
-			card.属性加成(AttributeBonus.build(
-				"元素属性加成",
-				player.元素属性加成,
-				"元素属性加成"
-			),是否永久)
+	if player.元素属性加成.x>0 or player.元素属性加成.y>0:
+		if card is BaseMinion:
+			if card.race.has(Enums.CardRace.元素):
+				card.属性加成(AttributeBonus.build(
+					"元素属性加成",
+					player.元素属性加成,
+					"元素属性加成"
+				),是否永久)

@@ -23,8 +23,8 @@ atk_hp = Vector2i(4, 1)
 lushi_id = 98831
 str_id = "BG26_800"
 "名称" = "魔刃豹"
-"描述" = "<b>亡语：<\\/b>召唤两只0\\/1并具有<b>嘲讽<\\/b>的豹宝宝。"
-"glod_描述" = "<b>亡语：<\\/b>召唤两只0\\/2并具有<b>嘲讽<\\/b>的豹宝宝。"
+"描述" = "[b]亡语：[/b]召唤两只0/1并具有[b]嘲讽[/b]的豹宝宝。"
+"glod_描述" = "[b]亡语：[/b]召唤两只0/2并具有[b]嘲讽[/b]的豹宝宝。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

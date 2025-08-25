@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1s2h3xa4m35v"]
+[gd_scene load_steps=22 format=3 uid="uid://c1s2h3xa4m35v"]
 
 [ext_resource type="PackedScene" uid="uid://x5t2wwss6u0g" path="res://ui/箭头/箭头.tscn" id="1_fce2h"]
 [ext_resource type="Script" uid="uid://cblrggyj4vi76" path="res://ui/操作UI/操作回合.gd" id="1_w2326"]
@@ -42,6 +42,42 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="GDScript" id="GDScript_g3xrt"]
+resource_name = "Tips"
+script/source = "extends PanelContainer
+
+var 当前Tips:CardEntity
+
+func _process(delta: float) -> void:
+	pass
+
+func 更新当前Tps(cardData:CardEntity):
+	当前Tips=cardData
+	if 当前Tips:
+		$VBoxContainer/TextureRect.texture=load(当前Tips.get_插画路径())
+		if 当前Tips is BaseMinion:
+			$\"VBoxContainer/种族\".show()
+			$\"VBoxContainer/种族\".text=\"%s\"%[当前Tips.获取种族str()]
+		else:
+			$\"VBoxContainer/种族\".hide()
+		var 描述=当前Tips.获取描述()
+		if 描述:
+			$\"VBoxContainer/描述\".text=描述
+		var 属性加成=\"\"
+		for i:AttributeBonus in 当前Tips.永久属性:
+			属性加成+=\"%s:%s/%s(永久)\\n\"%[i.加成卡片名称,i.atk_hp.x,i.atk_hp.y]
+		for i:AttributeBonus in 当前Tips.临时属性:
+			属性加成+=\"%s:%s/%s(临时)\\n\"%[i.加成卡片名称,i.atk_hp.x,i.atk_hp.y]
+		if StrUtils.is_blank(属性加成):
+			$\"VBoxContainer/属性加成\".hide()
+		else:
+			$\"VBoxContainer/属性加成\".show()
+			$\"VBoxContainer/属性加成\".text=属性加成
+	
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g3xrt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t82iy"]
 resource_local_to_scene = true
@@ -167,8 +203,10 @@ script = ExtResource("5_mt46m")
 theme_override_constants/separation = 30
 
 [node name="Tips" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(144, 0)
 layout_mode = 2
+script = SubResource("GDScript_g3xrt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips"]
 layout_mode = 2
@@ -178,53 +216,36 @@ layout_mode = 2
 texture = ExtResource("7_g3xrt")
 expand_mode = 4
 
-[node name="属性加成" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+[node name="描述" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+bbcode_enabled = true
+scroll_following = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成"]
+[node name="属性加成" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
-
-[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/属性加成/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "xxxxssssxx:+1/+1(临时)"
+bbcode_enabled = true
+scroll_following = true
+autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="种族" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "野兽|野猪人"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g3xrt")
 
 [node name="升级酒馆" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
 layout_mode = 2

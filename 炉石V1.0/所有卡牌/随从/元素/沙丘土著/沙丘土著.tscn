@@ -18,8 +18,8 @@ atk_hp = Vector2i(3, 2)
 lushi_id = 116734
 str_id = "BG31_815"
 "名称" = "沙丘土著"
-"描述" = "<b>战吼：<\\/b>使酒馆中的元素在本局对战中获得+{0}\\/+{1}。"
-"glod_描述" = "<b>战吼：<\\/b>\\n使酒馆中的元素在本局对战中获得+{0}\\/+{1}，触发两次。"
+"描述" = "[b]战吼：[/b]使酒馆中的元素在本局对战中获得+{0}/+{1}。"
+"glod_描述" = "[b]战吼：[/b]\n使酒馆中的元素在本局对战中获得+{0}/+{1}，触发两次。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

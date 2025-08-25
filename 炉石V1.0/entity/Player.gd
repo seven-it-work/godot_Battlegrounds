@@ -25,6 +25,7 @@ static var 等级对应酒馆随从数量={
 @export var 当前金币:int=3
 @export var 当前金币上限:int=3
 @export var 最大金币上限:int=10
+@export var 已经花费的金币:int=0
 
 @export var 开始回合调用方法:Array=[]
 ## 影响元素属性加成
@@ -118,12 +119,19 @@ signal 英雄受伤信号(伤害:int)
 signal 随从死亡信号(死亡随从:BaseMinion)
 signal 召唤随从信号(召唤随从:BaseMinion)
 
-func 购买卡片(card:CardEntity):
+func 购买卡片(card:CardEntity)->bool:
+	if card.花费>当前金币:
+		return false
 	删除卡牌(card,Enums.CardPosition.酒馆,false)
 	# 金币扣除
 	var 花费=card.获取花费()
 	if card is TavernSpell:
 		下次购买法术金币减少数量=0
+	花费金币(花费)
+	return true
+
+func 花费金币(花费:int):
+	已经花费的金币+=花费
 	当前金币-=花费
 	pass
 
@@ -146,6 +154,8 @@ func 开始回合():
 		i.临时属性.clear()
 		i.临时关键词.clear()
 		i.攻击过了关键词失效.clear()
+	for i in 开始回合调用方法:
+		i.call()
 	pass
 
 func 酒馆刷新(是否强制刷新:bool):

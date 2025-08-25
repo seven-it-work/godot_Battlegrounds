@@ -22,8 +22,8 @@ atk_hp = Vector2i(4, 3)
 lushi_id = 80740
 str_id = "BG23_002"
 "名称" = "贝类收藏家"
-"描述" = "<b>战吼：<\\/b>获取一张铸币牌。"
-"glod_描述" = "<b>战吼：<\\/b>获取2张铸币牌。"
+"描述" = "[b]战吼：[/b]获取一张铸币牌。"
+"glod_描述" = "[b]战吼：[/b]获取2张铸币牌。"
 "等级" = 2
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 

@@ -4,6 +4,8 @@ class_name DragObj
 signal 开始拖拽
 signal 拖拽中
 signal 结束拖拽
+signal 鼠标进入信号
+signal 鼠标离开信号
 
 # 空闲\拖拽
 var 当前状态:String="空闲"
@@ -33,3 +35,13 @@ func _to_string() -> String:
 	var dic=ObjectUtils.get_to_string(self)
 	dic.set("当前状态",当前状态)
 	return JSON.stringify(dic)
+
+
+func _on_panel_container_mouse_entered() -> void:
+	鼠标进入信号.emit()
+	pass # Replace with function body.
+
+
+func _on_panel_container_mouse_exited() -> void:
+	鼠标离开信号.emit()
+	pass # Replace with function body.

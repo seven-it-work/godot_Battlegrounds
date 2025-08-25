@@ -22,8 +22,8 @@ atk_hp = Vector2i(1, 1)
 lushi_id = 96758
 str_id = "BG_CFM_315"
 "名称" = "雄斑虎"
-"描述" = "<b>战吼：<\\/b>召唤一头1\\/1的雌斑虎。"
-"glod_描述" = "<b>战吼：<\\/b>召唤一头2\\/2的雌斑虎。"
+"描述" = "[b]战吼：[/b]召唤一头1/1的雌斑虎。"
+"glod_描述" = "[b]战吼：[/b]召唤一头2/2的雌斑虎。"
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]

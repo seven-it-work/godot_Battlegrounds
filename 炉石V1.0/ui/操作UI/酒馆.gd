@@ -26,8 +26,10 @@ func 添加到本容器中(d:DragObj,index:int=-1):
 	
 func 添加到其他容器(拖拽中的对象:DragObj,拖拽的目标容器:DragObjContainer):
 	if 拖拽中的对象 is CardUI:
-		player.购买卡片(拖拽中的对象.cardData)
-		super.添加到其他容器(拖拽中的对象,拖拽的目标容器)
+		if player.购买卡片(拖拽中的对象.cardData):
+			super.添加到其他容器(拖拽中的对象,拖拽的目标容器)
+		else:
+			_回到原来位置(拖拽中的对象)
 	else:
 		printerr("错误了")
 		print_stack()

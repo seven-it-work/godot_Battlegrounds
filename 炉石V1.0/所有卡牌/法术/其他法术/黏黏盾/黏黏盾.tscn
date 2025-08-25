@@ -29,7 +29,7 @@ script = SubResource("GDScript_slimy_shield")
 lushi_id = 105863
 str_id = "BG27_002t"
 "名称" = "黏黏盾"
-"描述" = "使一个随从获得+1\\/+1和<b>嘲讽<\\/b>。"
+"描述" = "使一个随从获得+1/+1和[b]嘲讽[/b]。"
 "是否出现在酒馆" = false
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
