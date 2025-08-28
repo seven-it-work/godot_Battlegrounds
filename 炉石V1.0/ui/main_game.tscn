@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wahwrfajtle1"]
+[gd_scene load_steps=4 format=3 uid="uid://wahwrfajtle1"]
 
 [ext_resource type="Script" uid="uid://bdjtln8hassct" path="res://ui/main_game.gd" id="1_rlgq1"]
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_r686w"]
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="3_anwim"]
-[ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="4_anwim"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3
@@ -16,16 +15,11 @@ script = ExtResource("1_rlgq1")
 
 [node name="操作回合" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_anwim")]
 layout_mode = 1
-player = NodePath("../Player")
+player = NodePath("")
 
 [node name="FightUi" parent="." instance=ExtResource("2_r686w")]
 visible = false
 layout_mode = 1
-
-[node name="Player" type="Node" parent="."]
-script = ExtResource("4_anwim")
-"名称" = "玩家"
-metadata/_custom_type_script = "uid://upwxtqaduibs"
 
 [connection signal="结束回合信号" from="操作回合" to="." method="_on_操作回合_结束回合信号"]
 [connection signal="战斗结束信号" from="FightUi" to="." method="_on_fight_ui_战斗结束信号"]

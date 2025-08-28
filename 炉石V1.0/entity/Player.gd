@@ -1,6 +1,8 @@
 extends Node
 class_name Player
 
+const uuid_util = preload('res://addons/uuid/uuid.gd')
+
 static var 星元自动机基础加成:Vector2i=Vector2i(3,2)
 
 static var 等级对应酒馆随从数量={
@@ -14,7 +16,9 @@ static var 等级对应酒馆随从数量={
 }
 
 @export var 名称:String=""
+@export var uuid:String=""
 
+@export var 回合数:int=1
 @export var 酒馆等级:int=1
 ## 特殊情况下可以变为7
 @export var 最大酒馆等级:int=6
@@ -135,8 +139,28 @@ func 花费金币(花费:int):
 	当前金币-=花费
 	pass
 
+func 存档(是否为玩家存档:bool):
+	# 保存数据
+	var json=JSON.stringify(JsonUtils.obj2Json(self,{}))
+	var path="res://save_data/%s/%s_%s.json"%[回合数,名称,uuid]
+	if 是否为玩家存档:
+		path="res://save_data/存档/%s_%s.json"%[名称,uuid]
+	FileUtils.write_string_to_file(path,json,true)
+
+func 读档()->Player:
+	var path="res://save_data/存档/%s_%s.json"%[名称,uuid]
+	if FileUtils.file_exists(path):
+		var json=FileUtils.read_file_to_string(path)
+		var obj=JsonUtils.json2Obj(JSON.parse_string(json),{})
+		return obj as Player
+	else:
+		printerr("没有存档")
+		return null
+
 func 结束回合():
 	回合结束信号.emit()
+	存档(false)
+	回合数+=1
 	print("结束回合了")
 	pass
 
@@ -351,3 +375,7 @@ func 获取卡片索引(card:CardEntity)->int:
 	if card.卡片所在位置==Enums.CardPosition.手牌:
 		return 手牌.find(card)
 	return -1
+
+func _init() -> void:
+	uuid=uuid_util.v4()
+	pass

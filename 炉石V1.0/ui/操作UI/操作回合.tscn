@@ -265,6 +265,19 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "结束回合"
 
+[node name="存档读档" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+layout_mode = 2
+
+[node name="存档" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/存档读档"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "存档"
+
+[node name="读档" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/存档读档"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "读档"
+
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 179)
 layout_mode = 2
@@ -337,6 +350,8 @@ text = "确定"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/刷新酒馆" to="." method="_on_刷新酒馆_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/存档读档/存档" to="." method="_on_存档_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/存档读档/读档" to="." method="_on_读档_pressed"]
 [connection signal="gui_input" from="PanelContainer/箭头遮罩" to="PanelContainer/箭头遮罩" method="_on_gui_input"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/取消" to="PanelContainer/抉择遮罩" method="_on_取消_pressed"]
 [connection signal="pressed" from="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作/确认" to="PanelContainer/抉择遮罩" method="_on_确认_pressed"]

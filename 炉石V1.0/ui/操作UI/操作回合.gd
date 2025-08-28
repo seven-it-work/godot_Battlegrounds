@@ -128,10 +128,32 @@ func _on_结束回合_pressed() -> void:
 	player.战场.clear()
 	for i in 战场.获取所有的拖拽象():
 		player.战场.append(i.cardData)
-	结束回合信号.emit()
-	pass # Replace with function body.
+	player.结束回合()
+	
+	# 随机选取ai 进行战斗
+	var 敌人=Player.new()
+	敌人.名称="测试敌人"
+	敌人.添加卡片(CardUtils.get_card("魔刃豹",敌人),Enums.CardPosition.战场,-1,true)
+	敌人.添加卡片(CardUtils.get_card("魔刃豹",敌人),Enums.CardPosition.战场,-1,true)
+	敌人.添加卡片(CardUtils.get_card("魔刃豹",敌人),Enums.CardPosition.战场,-1,true)
+	敌人.添加卡片(CardUtils.get_card("魔刃豹",敌人),Enums.CardPosition.战场,-1,true)
+	敌人.添加卡片(CardUtils.get_card("魔刃豹",敌人),Enums.CardPosition.战场,-1,true)
+	敌人.添加卡片(CardUtils.get_card("魔刃豹",敌人),Enums.CardPosition.战场,-1,true)
+	敌人.添加卡片(CardUtils.get_card("饥饿的钳嘴龟",敌人),Enums.CardPosition.战场,-1,true)
+	# 给到父类
+	结束回合信号.emit(敌人)
 
 
 func _on_刷新酒馆_pressed() -> void:
 	player.酒馆刷新(true)
 	pass # Replace with function body.
+
+
+func _on_存档_pressed() -> void:
+	player.存档(true)
+
+
+func _on_读档_pressed() -> void:
+	var player_save_file=player.读档()
+	player.free()
+	初始化(player_save_file)
