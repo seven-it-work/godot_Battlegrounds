@@ -15,6 +15,15 @@ static var 等级对应酒馆随从数量={
 	7:6
 }
 
+static var 升级酒馆金币={
+	1:5,
+	2:7,
+	3:8,
+	4:9,
+	5:11,
+	6:12,
+}
+
 @export var 名称:String=""
 @export var uuid:String=""
 
@@ -22,6 +31,8 @@ static var 等级对应酒馆随从数量={
 @export var 酒馆等级:int=1
 ## 特殊情况下可以变为7
 @export var 最大酒馆等级:int=6
+@export var 升级酒馆需要的金币:int=5
+
 @export var 酒馆:Array=[]
 @export var 战场:Array=[]
 @export var 手牌:Array=[]
@@ -43,6 +54,7 @@ static var 等级对应酒馆随从数量={
 @export var 星元自动机召唤次数:int=-1
 
 @export var 法术出现数量:int=1
+@export var 刷新酒馆消耗金币:int=1
 
 
 @export var 下次购买法术金币减少数量:int=0
@@ -168,6 +180,7 @@ func 开始回合():
 	if 当前金币上限<最大金币上限:
 		当前金币上限+=1
 	当前金币=当前金币上限
+	升级酒馆需要的金币=max(0,升级酒馆需要的金币-1)
 	# 酒馆刷新
 	酒馆刷新(false)
 	# 战场中的临时属性清理
@@ -180,6 +193,20 @@ func 开始回合():
 		i.攻击过了关键词失效.clear()
 	for i in 开始回合调用方法:
 		i.call()
+	pass
+
+func 是否能够手动刷新酒馆()->bool:
+	if 当前金币<刷新酒馆消耗金币:
+		return false
+	return true
+
+func 手动酒馆刷新():
+	if !是否能够手动刷新酒馆():
+		printerr("不能刷新")
+		return
+	# 扣除金币
+	花费金币(刷新酒馆消耗金币)
+	酒馆刷新(true)
 	pass
 
 func 酒馆刷新(是否强制刷新:bool):
@@ -379,3 +406,18 @@ func 获取卡片索引(card:CardEntity)->int:
 func _init() -> void:
 	uuid=uuid_util.v4()
 	pass
+
+func 升级酒馆():
+	if !是否能够升级酒馆():
+		printerr("不能升级酒馆")
+		return
+	花费金币(升级酒馆需要的金币)
+	酒馆等级+=1
+	升级酒馆需要的金币=升级酒馆金币[酒馆等级]
+
+func 是否能够升级酒馆()->bool:
+	if 当前金币<升级酒馆需要的金币:
+		return false
+	if 酒馆等级<=最大酒馆等级:
+		return true
+	return false

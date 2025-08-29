@@ -135,6 +135,10 @@ func _战斗判断():
 		pass
 
 func 战斗结束(是否平局:bool,胜利者:Player,失败者:Player):
+	for i in 敌人容器.get_children():
+		i.queue_free()
+	for i in 玩家容器.get_children():
+		i.queue_free()
 	玩家.结束战斗()
 	敌人.结束战斗()
 	战斗结束信号.emit(是否平局,胜利者,失败者)

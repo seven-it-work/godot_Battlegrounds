@@ -13,9 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rlgq1")
 
-[node name="操作回合" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_anwim")]
+[node name="操作回合" parent="." instance=ExtResource("3_anwim")]
 layout_mode = 1
-player = NodePath("")
 
 [node name="FightUi" parent="." instance=ExtResource("2_r686w")]
 visible = false

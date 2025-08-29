@@ -253,10 +253,12 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="升级酒馆" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "升级酒馆(1)"
 
 [node name="刷新酒馆" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "刷新酒馆(1)"
 
@@ -348,6 +350,7 @@ text = "取消"
 layout_mode = 2
 text = "确定"
 
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/升级酒馆" to="." method="_on_升级酒馆_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/刷新酒馆" to="." method="_on_刷新酒馆_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/结束回合" to="." method="_on_结束回合_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Tips/VBoxContainer/存档读档/存档" to="." method="_on_存档_pressed"]

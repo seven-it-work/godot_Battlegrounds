@@ -5,25 +5,25 @@ class_name FileUtils
 # 复制文件:cite[2]
 static func copy_file(source_path: String, destination_path: String) -> int:
 	if not FileAccess.file_exists(source_path):
-		push_error("Source file does not exist: " + source_path)
+		printerr("Source file does not exist: " + source_path)
 		return ERR_FILE_NOT_FOUND
 
 	var source_file := FileAccess.open(source_path, FileAccess.READ)
 	if not source_file:
-		push_error("Failed to open source file: " + source_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open source file: " + source_path + ", Error: " + str(FileAccess.get_open_error()))
 		return FAILED
 
 	var dest_dir := destination_path.get_base_dir()
 	if not DirAccess.dir_exists_absolute(dest_dir):
 		var err := DirAccess.make_dir_recursive_absolute(dest_dir)
 		if err != OK:
-			push_error("Failed to create destination directory: " + dest_dir)
+			printerr("Failed to create destination directory: " + dest_dir)
 			source_file.close()
 			return err
 
 	var dest_file := FileAccess.open(destination_path, FileAccess.WRITE)
 	if not dest_file:
-		push_error("Failed to open destination file: " + destination_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open destination file: " + destination_path + ", Error: " + str(FileAccess.get_open_error()))
 		source_file.close()
 		return FAILED
 
@@ -37,18 +37,18 @@ static func copy_file(source_path: String, destination_path: String) -> int:
 # 复制目录（递归）:cite[2]
 static func copy_directory(source_dir: String, destination_dir: String) -> int:
 	if not DirAccess.dir_exists_absolute(source_dir):
-		push_error("Source directory does not exist: " + source_dir)
+		printerr("Source directory does not exist: " + source_dir)
 		return ERR_FILE_NOT_FOUND
 
 	# 创建目标目录
 	var err := DirAccess.make_dir_recursive_absolute(destination_dir)
 	if err != OK:
-		push_error("Failed to create destination directory: " + destination_dir)
+		printerr("Failed to create destination directory: " + destination_dir)
 		return err
 
 	var dir := DirAccess.open(source_dir)
 	if not dir:
-		push_error("Failed to open source directory: " + source_dir)
+		printerr("Failed to open source directory: " + source_dir)
 		return FAILED
 
 	dir.list_dir_begin()
@@ -80,12 +80,12 @@ static func delete_directory(path: String) -> int:
 
 	var dir := DirAccess.open(path)
 	if not dir:
-		push_error("Failed to open directory: " + path)
+		printerr("Failed to open directory: " + path)
 		return FAILED
 
 	var err := dir.list_dir_begin()
 	if err != OK:
-		push_error("Failed to list directory: " + path)
+		printerr("Failed to list directory: " + path)
 		return err
 
 	var file_name := dir.get_next()
@@ -99,7 +99,7 @@ static func delete_directory(path: String) -> int:
 		else:
 			err = dir.remove(file_name)
 			if err != OK:
-				push_error("Failed to remove file: " + file_name + " in directory: " + path)
+				printerr("Failed to remove file: " + file_name + " in directory: " + path)
 				return err
 		file_name = dir.get_next()
 
@@ -108,7 +108,7 @@ static func delete_directory(path: String) -> int:
 	# 现在删除空目录本身
 	err = DirAccess.remove_absolute(path)
 	if err != OK:
-		push_error("Failed to remove directory: " + path)
+		printerr("Failed to remove directory: " + path)
 		return err
 
 	return OK
@@ -116,12 +116,12 @@ static func delete_directory(path: String) -> int:
 # 读取文件内容为字符串:cite[2]:cite[3]
 static func read_file_to_string(file_path: String) -> String:
 	if not FileAccess.file_exists(file_path):
-		push_error("File does not exist: " + file_path)
+		printerr("File does not exist: " + file_path)
 		return ""
 
 	var file := FileAccess.open(file_path, FileAccess.READ)
 	if not file:
-		push_error("Failed to open file for reading: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open file for reading: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
 		return ""
 
 	var content := file.get_as_text()
@@ -135,12 +135,12 @@ static func write_string_to_file(file_path: String, content: String, create_dirs
 		if not DirAccess.dir_exists_absolute(dir):
 			var err := DirAccess.make_dir_recursive_absolute(dir)
 			if err != OK:
-				push_error("Failed to create directory: " + dir)
+				printerr("Failed to create directory: " + dir)
 				return err
 
 	var file := FileAccess.open(file_path, FileAccess.WRITE)
 	if not file:
-		push_error("Failed to open file for writing: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open file for writing: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
 		return FAILED
 
 	file.store_string(content)
@@ -153,7 +153,7 @@ static func ensure_directory_exists(dir_path: String):
 		return
 	var err := DirAccess.make_dir_recursive_absolute(dir_path)
 	if err != OK:
-		push_error("Failed to create directory: " + dir_path + ", Error: " + str(err))
+		printerr("Failed to create directory: " + dir_path + ", Error: " + str(err))
 	
 
 
@@ -168,12 +168,12 @@ static func directory_exists(dir_path: String) -> bool:
 # 获取文件大小（字节）:cite[2]
 static func get_file_size(file_path: String) -> int:
 	if not FileAccess.file_exists(file_path):
-		push_error("File does not exist: " + file_path)
+		printerr("File does not exist: " + file_path)
 		return -1
 
 	var file := FileAccess.open(file_path, FileAccess.READ)
 	if not file:
-		push_error("Failed to open file: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open file: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
 		return -1
 
 	var size := file.get_length()
@@ -215,7 +215,7 @@ static func delete_file(file_path: String) -> int:
 
 	var err := DirAccess.remove_absolute(file_path)
 	if err != OK:
-		push_error("Failed to delete file: " + file_path)
+		printerr("Failed to delete file: " + file_path)
 		return err
 
 	return OK
@@ -225,12 +225,12 @@ static func list_files_in_directory(dir_path: String, recursive: bool = false, i
 	var file_list: Array[String] = []
 
 	if not DirAccess.dir_exists_absolute(dir_path):
-		push_error("Directory does not exist: " + dir_path)
+		printerr("Directory does not exist: " + dir_path)
 		return file_list
 
 	var dir := DirAccess.open(dir_path)
 	if not dir:
-		push_error("Failed to open directory: " + dir_path)
+		printerr("Failed to open directory: " + dir_path)
 		return file_list
 
 	dir.list_dir_begin()
@@ -259,12 +259,12 @@ static func list_files_in_directory(dir_path: String, recursive: bool = false, i
 # 读取文件为PackedByteArray:cite[2]
 static func read_file_to_bytes(file_path: String) -> PackedByteArray:
 	if not FileAccess.file_exists(file_path):
-		push_error("File does not exist: " + file_path)
+		printerr("File does not exist: " + file_path)
 		return PackedByteArray()
 
 	var file := FileAccess.open(file_path, FileAccess.READ)
 	if not file:
-		push_error("Failed to open file for reading: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open file for reading: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
 		return PackedByteArray()
 
 	var bytes := file.get_buffer(file.get_length())
@@ -278,12 +278,12 @@ static func write_bytes_to_file(file_path: String, data: PackedByteArray, create
 		if not DirAccess.dir_exists_absolute(dir):
 			var err := DirAccess.make_dir_recursive_absolute(dir)
 			if err != OK:
-				push_error("Failed to create directory: " + dir)
+				printerr("Failed to create directory: " + dir)
 				return err
 
 	var file := FileAccess.open(file_path, FileAccess.WRITE)
 	if not file:
-		push_error("Failed to open file for writing: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
+		printerr("Failed to open file for writing: " + file_path + ", Error: " + str(FileAccess.get_open_error()))
 		return FAILED
 
 	file.store_buffer(data)

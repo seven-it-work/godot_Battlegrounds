@@ -5,6 +5,7 @@ func _ready() -> void:
 	player.名称="玩家"
 	$"操作回合".初始化(player)
 	CardUtils.游戏初始化加载卡牌([])
+	player.酒馆刷新(true)
 	pass
 
 
