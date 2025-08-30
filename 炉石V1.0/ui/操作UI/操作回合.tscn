@@ -339,7 +339,6 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_08hnw")
 
 [node name="操作" type="HBoxContainer" parent="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="取消" type="Button" parent="PanelContainer/抉择遮罩/PanelContainer/VBoxContainer/操作"]

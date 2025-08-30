@@ -48,7 +48,7 @@ func 添加到其他容器(dragObj:DragObj,拖拽的目标容器:DragObjContaine
 					operationUI.箭头遮罩.初始化(dragObj,目标list,_使用成功.bind(dragObj),随从取消使用.bind(dragObj))
 			elif 拖拽中的对象.抉择:
 				#print("抉择随从")
-				operationUI.抉择遮罩.初始化(拖拽中的对象,_使用成功.bind(拖拽中的对象),随从取消使用.bind(拖拽中的对象))
+				operationUI.抉择遮罩.初始化(dragObj,_使用成功.bind(dragObj),随从取消使用.bind(dragObj),player)
 				pass
 			else:
 				#print("随从使用")

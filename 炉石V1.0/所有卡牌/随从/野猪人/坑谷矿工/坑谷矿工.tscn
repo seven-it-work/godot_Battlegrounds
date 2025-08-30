@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://ucqd5ywej1vn"]
+
+[ext_resource type="Script" uid="uid://dm8wwi7t2cegy" path="res://entity/Choose.gd" id="2_iotjd"]
+
+[sub_resource type="GDScript" id="GDScript_rmpnv"]
+script/source = "extends BaseMinion
+"
+
+[sub_resource type="GDScript" id="GDScript_take_gems"]
+resource_name = "挖走宝石"
+script/source = "extends BaseSpell
+
+func 法术使用处理():
+	# 获取鲜血宝石数量(普通卡2张，金色卡4张)
+	var 宝石数量 = 2 * 获取倍率()
+	
+	for i in 宝石数量:
+		var 鲜血宝石 = CardUtils.get_card(\"鲜血宝石\", player)
+		鲜血宝石.is_gold = is_gold
+		player.添加卡片(鲜血宝石, Enums.CardPosition.手牌, -1, true)
+"
+
+[sub_resource type="GDScript" id="GDScript_mine_deeper"]
+resource_name = "深入挖掘"
+script/source = "extends BaseSpell
+
+func 法术使用处理():
+	# 获取酒馆法术数量(普通卡1张，金色卡2张)
+	var 法术数量 = 获取倍率()
+	
+	for i in 法术数量:
+		# 随机获取消耗1枚铸币的酒馆法术牌
+		var 随机list = CardUtils.find_card([
+			CardUtils.COMMON_CODITION[\"酒馆法术\"],
+			CardFindCondition.build(
+				\"花费\",1,Enums.ConditionEnum.等于
+			)
+		])
+		if 随机list.is_empty():
+			printerr(\"没有对应法术\")
+			return
+		var 随机法术=随机list.pick_random() as CardEntity
+		player.添加卡片(CardUtils.get_card(随机法术.名称,player), Enums.CardPosition.手牌, -1, true)
+"
+
+[node name="坑谷矿工" type="Node" node_paths=PackedStringArray("抉择")]
+script = SubResource("GDScript_rmpnv")
+race = Array[int]([7])
+atk_hp = Vector2i(2, 2)
+"抉择" = NodePath("Choose")
+lushi_id = 116182
+str_id = "BG31_320_G"
+"名称" = "坑谷矿工"
+"描述" = "<b>抉择：<\\/b>获取2张\\n<b>鲜血宝石<\\/b>；或者随机获取一张消耗1枚铸币的酒馆法术牌。"
+"glod_描述" = "<b>抉择：<\\/b>获取4张\\n<b>鲜血宝石<\\/b>；或者随机获取两张消耗1枚铸币的酒馆法术牌。"
+"等级" = 2
+
+[node name="Choose" type="Node" parent="." node_paths=PackedStringArray("chooseOption")]
+script = ExtResource("2_iotjd")
+chooseOption = [NodePath("TakeTheGems"), NodePath("MineDeeper")]
+metadata/_custom_type_script = "uid://dm8wwi7t2cegy"
+
+[node name="TakeTheGems" type="Node" parent="Choose"]
+script = SubResource("GDScript_take_gems")
+"卡牌类型" = 4
+str_id = "BG31_320t"
+"名称" = "挖走宝石"
+"描述" = "获取2张\\n<b>鲜血宝石<\\/b>。"
+"glod_描述" = "获取4张\\n<b>鲜血宝石<\\/b>。"
+"是否出现在酒馆" = false
+
+[node name="MineDeeper" type="Node" parent="Choose"]
+script = SubResource("GDScript_mine_deeper")
+"卡牌类型" = 4
+str_id = "BG31_320t2"
+"名称" = "深入挖掘"
+"描述" = "随机获取一张消耗1枚铸币的酒馆法术牌。"
+"glod_描述" = "随机获取两张消耗1枚铸币的酒馆法术牌。"
+"是否出现在酒馆" = false

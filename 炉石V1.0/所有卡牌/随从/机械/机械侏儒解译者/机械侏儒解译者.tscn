@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://erxmd8pjf65h"]
+
+[sub_resource type="GDScript" id="GDScript_interpreter"]
+resource_name = "机械侏儒解译者"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 连接磁力相关信号
+	# todo 需要一个磁力吸附型号
+	#player.磁力吸附信号.connect(_on_磁力吸附)
+	pass
+"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="机械侏儒解译者" type="Node"]
+script = SubResource("GDScript_interpreter")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 4)
+lushi_id = 115678
+str_id = "BG31_177"
+"名称" = "机械侏儒解译者"
+"描述" = "每当一个友方<b>磁力<\\/b>随从被使用或<b>磁力吸附<\\/b>时，使其获得+2\\/+2。"
+"glod_描述" = "每当一个友方<b>磁力<\\/b>随从被使用或<b>磁力吸附<\\/b>时，使其获得+4\\/+4。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

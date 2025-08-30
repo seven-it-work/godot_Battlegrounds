@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d362nv54e8w8y"]
+[gd_scene load_steps=4 format=3 uid="uid://c0v0x7wcv4ygh"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_vdj7c"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="2_pk0hw"]
@@ -18,9 +18,9 @@ func _ready() -> void:
 
 func _init_card() -> void:
 	var array=[
-		\"{name}\",
-		\"{name}\",
-		\"{name}\",
+		\"坑谷矿工\",
+		\"坑谷矿工\",
+		\"坑谷矿工\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)
@@ -31,7 +31,7 @@ func _init_card() -> void:
 	pass # Replace with function body.
 "
 
-[node name="Test{name}2" type="Control"]
+[node name="Test坑谷矿工2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
