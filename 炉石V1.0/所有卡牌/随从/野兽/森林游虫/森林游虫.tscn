@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://erxmd8pjf65h"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_roar"]
+resource_name = "森林游虫战吼"
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	# 计算加成值(普通卡:+1/+1, 金色卡:+2/+2)
+	var 加成值 = 触发卡.获取倍率()
+	# 更新玩家的甲虫全局加成
+	触发卡.player.甲虫加成 += Vector2i(加成值, 加成值)
+"
+
+[sub_resource type="GDScript" id="GDScript_deathrattle"]
+resource_name = "森林游虫亡语"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 计算召唤数量和属性
+	var 召唤数量 = 触发卡.获取倍率()  # 普通卡1只，金色卡2只
+	var 甲虫属性 = Vector2i(2, 2) * 触发卡.获取倍率()  # 普通卡2/2，金色卡4/4
+
+	for i in 召唤数量:
+		var 甲虫 = CardUtils.get_card(\"甲虫\", 触发卡.player) as BaseMinion
+		甲虫.atk_hp = 甲虫属性
+		甲虫.is_gold = 触发卡.is_gold
+
+		# 获取死亡位置索引
+		var 死亡位置 = 触发卡.player.获取卡片索引(触发卡)
+		触发卡.player.添加卡片(甲虫, Enums.CardPosition.战场, 死亡位置, true)
+"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="森林游虫" type="Node" node_paths=PackedStringArray("战吼", "亡语")]
+script = ExtResource("1_6s83g")
+race = Array[int]([6])
+atk_hp = Vector2i(3, 2)
+"战吼" = [NodePath("Roar")]
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 115577
+str_id = "BG31_801"
+"名称" = "森林游虫"
+"描述" = "<b>战吼：<\\/b>在本局对战中，你的甲虫拥有+1\\/+1。\\n<b>亡语：<\\/b>召唤一只{0}\\/{1}的甲虫。"
+"glod_描述" = "<b>战吼：<\\/b>在本局对战中，你的甲虫拥有+2\\/+2。\\n<b>亡语：<\\/b>召唤两只{0}\\/{1}的甲虫。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_deathrattle")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"
