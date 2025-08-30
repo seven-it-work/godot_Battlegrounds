@@ -58,6 +58,7 @@ static var 升级酒馆金币={
 
 
 @export var 下次购买法术金币减少数量:int=0
+@export var 本局对战使用的法术数量:int=0
 
 #region 战斗相关属性
 ## Array[CardEntity]

@@ -101,6 +101,7 @@ func _使用成功(cardUI:CardUI):
 		super.添加到其他容器(cardUI,拖拽的目标容器)
 		player.使用卡牌信号.emit(cardUI.cardData)
 	elif cardData is BaseSpell:
+		player.本局对战使用的法术数量+=1
 		player.使用卡牌信号.emit(cardUI.cardData)
 		cardData.法术使用处理()
 		cardUI.queue_free()

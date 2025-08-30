@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://crghr286qwhlr"]
+
+[ext_resource type="Script" uid="uid://dknlejc4ai7jm" path="res://所有卡牌/法术/塑造法术/奇术师戏法/奇术师戏法.gd" id="1_fl5we"]
+[ext_resource type="Script" uid="uid://dka7i2mq801a1" path="res://entity/SelectTarget.gd" id="2_fl5we"]
+
+[node name="奇术师戏法" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = ExtResource("1_fl5we")
+"卡牌类型" = 3
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 116113
+str_id = "BG31_924_Gt"
+"名称" = "奇术杂耍"
+"描述" = "直到下个回合，使一个随从获得+{atk}/+{hp}。<i>（施放{个数}/4个法术即可提升！）"
+"glod_描述" = "直到下个回合，使一个随从获得+{atk}/+{hp}。<i>（施放{个数}/4个法术即可提升！）"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://dn7xma4p426pm"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = ExtResource("2_fl5we")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

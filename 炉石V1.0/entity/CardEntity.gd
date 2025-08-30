@@ -45,7 +45,7 @@ func 是否能够使用()->bool:
 
 func 获取描述(dic:Dictionary={})->String:
 	var tempDic=ObjectUtils.get_exported_properties(self)
-	tempDic.merged(dic,true)
+	tempDic=tempDic.merged(dic,true)
 	return 描述.format(tempDic)
 
 func 获取花费()->int:
