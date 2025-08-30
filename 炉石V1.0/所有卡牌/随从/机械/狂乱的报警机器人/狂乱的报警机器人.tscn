@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://erxmd8pjf65h"]
+
+[sub_resource type="GDScript" id="GDScript_alarmobot"]
+resource_name = "狂乱的报警机器人"
+script/source = "extends BaseMinion
+"
+
+[node name="狂乱的报警机器人" type="Node"]
+script = SubResource("GDScript_alarmobot")
+race = Array[int]([4])
+atk_hp = Vector2i(4, 4)
+"风怒" = true
+"是否为磁力" = true
+lushi_id = 115664
+str_id = "BG31_170"
+"名称" = "狂乱的报警机器人"
+"描述" = "<b>磁力<\\/b>\\n<b>风怒<\\/b>"
+"glod_描述" = "<b>磁力<\\/b>\\n<b>风怒<\\/b>"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bopuse2uwvujm"]
+[gd_scene load_steps=4 format=3 uid="uid://dhwo5s2e7mv2q"]
 
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_7g65v"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="3_vigqu"]
@@ -9,19 +9,19 @@ script/source = "extends Control
 func _ready() -> void:
 	CardUtils.游戏初始化加载卡牌([])
 
-	$Player.添加卡片(CardUtils.get_card(\"杂耍奇术师\",$Player),Enums.CardPosition.战场,-1,true)
-	$Player.添加卡片(CardUtils.get_card(\"杂耍奇术师\",$Player),Enums.CardPosition.战场,-1,true)
-	$Player.添加卡片(CardUtils.get_card(\"杂耍奇术师\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"狂乱的报警机器人\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"狂乱的报警机器人\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"狂乱的报警机器人\",$Player),Enums.CardPosition.战场,-1,true)
 
 
-	$Player2.添加卡片(CardUtils.get_card(\"杂耍奇术师\",$Player2),Enums.CardPosition.战场,-1,true)
-	$Player2.添加卡片(CardUtils.get_card(\"杂耍奇术师\",$Player2),Enums.CardPosition.战场,-1,true)
-	$Player2.添加卡片(CardUtils.get_card(\"杂耍奇术师\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"狂乱的报警机器人\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"狂乱的报警机器人\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"狂乱的报警机器人\",$Player2),Enums.CardPosition.战场,-1,true)
 
 	$FightUi.开始战斗($Player,$Player2)
 "
 
-[node name="Test杂耍奇术师" type="Control"]
+[node name="Test狂乱的报警机器人" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

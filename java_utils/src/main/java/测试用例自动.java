@@ -7,6 +7,11 @@ import java.util.List;
 
 public class 测试用例自动 {
     public static void main(String[] args) {
+        用例1生成();
+        测试用例自动2.用例2生成();
+    }
+
+    private static void 用例1生成() {
         String path = "E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\godot_Battlegrounds\\炉石V1.0\\所有卡牌";
         List<File> files = FileUtil.loopFiles(path, new FileFilter() {
             @Override
