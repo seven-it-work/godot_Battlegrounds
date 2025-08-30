@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://erxmd8pjf65h"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+[ext_resource type="Script" uid="uid://c4igxegex0l3o" path="res://所有卡牌/随从/鱼人/焦渴的流浪者/select_target.gd" id="2_iekax"]
+
+[sub_resource type="GDScript" id="GDScript_roar"]
+resource_name = "焦渴的流浪者战吼"
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	var 目标=触发卡.选择目标对象.目标卡片
+	if 目标:
+		if 目标 is BaseMinion:
+			# 计算加成值(普通卡:+2/+3, 金色卡:+4/+6)
+			var 攻击加成 = 2 * 触发卡.获取倍率()
+			var 生命加成 = 3 * 触发卡.获取倍率()
+			# 创建属性加成
+			var 加成 = AttributeBonus.build(
+				\"流浪者祝福\",
+				Vector2i(攻击加成, 生命加成),
+				str(触发卡.lushi_id)
+			)
+			# 应用永久加成
+			目标.属性加成(加成, 触发卡.player.是否在战斗中())
+			# 赋予嘲讽效果
+			if 触发卡.player.是否在战斗中():
+				目标.临时关键词.append(\"嘲讽\")
+			else:
+				目标.嘲讽 = true
+	else:
+		# 无目标执行策略
+		pass
+	pass
+"
+
+[node name="焦渴的流浪者" type="Node" node_paths=PackedStringArray("战吼", "选择目标对象")]
+script = ExtResource("1_6s83g")
+race = Array[int]([10])
+atk_hp = Vector2i(2, 2)
+"战吼" = [NodePath("Roar")]
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 117912
+str_id = "BG30_756"
+"名称" = "焦渴的流浪者"
+"描述" = "<b>战吼：<\\/b>使一个鱼人获得+2\\/+3和<b>嘲讽<\\/b>。"
+"glod_描述" = "<b>战吼：<\\/b>使一个鱼人获得+4\\/+6和<b>嘲讽<\\/b>。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = ExtResource("2_iekax")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"
