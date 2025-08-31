@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://erxmd8pjf65h"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_deathrattle"]
+resource_name = "钢铁猎人亡语"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 获取尖利箭矢数量(普通卡1张，金色卡2张)
+	var 箭矢数量 = 触发卡.获取倍率()
+	
+	for i in 箭矢数量:
+		var 尖利箭矢 = CardUtils.get_card(\"尖利箭矢\", 触发卡.player)
+		尖利箭矢.is_gold = 触发卡.is_gold  # 继承金色状态
+		触发卡.player.添加卡片(尖利箭矢, Enums.CardPosition.手牌, -1, true)
+"
+
+[node name="钢铁猎人" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_6s83g")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 1)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 120021
+str_id = "BG32_170"
+"名称" = "钢铁猎人"
+"描述" = "<b>亡语：<\\/b>获取一张尖利箭矢。"
+"glod_描述" = "<b>亡语：<\\/b>获取2张\\n尖利箭矢。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_deathrattle")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

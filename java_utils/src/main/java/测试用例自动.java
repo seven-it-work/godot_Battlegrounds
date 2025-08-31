@@ -9,6 +9,7 @@ public class 测试用例自动 {
     public static void main(String[] args) {
         用例1生成();
         测试用例自动2.用例2生成();
+        测试用例自动3.用例3生成();
     }
 
     private static void 用例1生成() {
