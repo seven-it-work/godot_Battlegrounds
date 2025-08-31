@@ -293,24 +293,14 @@ func 添加卡片(
 		元素工具类.元素属性加成(d,self,true)
 		index=adjust_index(index,酒馆)
 		酒馆.insert(index,d)
-		
-		if 是否触发信号:
-			if 是否在战斗中():
-				战斗中添加卡片信号.emit(d,cardPosition,index)
-			else:
-				操作中添加卡片信号.emit(d,cardPosition,index)
+		操作中添加卡片信号.emit(d,cardPosition,index)
 		return
 	if cardPosition==Enums.CardPosition.手牌:
 		if 手牌.size()>=10:
 			print("手牌满了")
 			return
 		手牌.insert(adjust_index(index,手牌),d)
-		
-		if 是否触发信号:
-			if 是否在战斗中():
-				战斗中添加卡片信号.emit(d,cardPosition,index)
-			else:
-				操作中添加卡片信号.emit(d,cardPosition,index)
+		操作中添加卡片信号.emit(d,cardPosition,index)
 		return
 	if cardPosition==Enums.CardPosition.战场:
 		if 战场随从是否满了():

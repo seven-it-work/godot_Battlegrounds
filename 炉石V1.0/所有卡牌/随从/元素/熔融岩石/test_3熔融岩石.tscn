@@ -8,16 +8,16 @@ script/source = "extends Control
 
 func _ready() -> void:
 	var player=Player.new()
-	player.名称=\"{name}测试用例\"
+	player.名称=\"熔融岩石测试用例\"
 	player.当前金币=999
 	player.当前金币上限=999
 	$\"操作回合\".初始化(player)
 	CardUtils.游戏初始化加载卡牌([])
-	
+
 	var array=[
-		\"{name}\",
-		\"{name}\",
-		\"{name}\",
+		\"熔融岩石\",
+		\"熔融岩石\",
+		\"熔融岩石\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)
