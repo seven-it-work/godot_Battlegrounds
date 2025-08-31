@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://erxmd8pjf65h"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_deathrattle"]
+resource_name = "亮喉督军亡语"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 获取召唤数量和宝石数量(普通卡:2个1/1野猪人+1宝石, 金色卡:2个2/2野猪人+2宝石)
+	var 召唤数量 = 2
+	var 野猪人属性 = Vector2i(1, 1) * 触发卡.获取倍率()
+	var 宝石数量 = 触发卡.获取倍率()
+	
+	# 获取死亡位置索引
+	var 死亡位置 = 触发卡.player.获取卡片索引(触发卡)
+	
+	for i in 召唤数量:
+		# 召唤亮喉士兵
+		var 野猪人 = CardUtils.get_card(\"亮喉士兵\", 触发卡.player) as BaseMinion
+		野猪人.atk_hp = 野猪人属性
+		野猪人.is_gold = 触发卡.is_gold
+		野猪人.嘲讽 = true
+		
+		# 在死亡位置召唤
+		触发卡.player.添加卡片(野猪人, Enums.CardPosition.战场, 死亡位置 + i, true)
+		
+		# 对召唤的野猪人使用鲜血宝石
+		for j in 宝石数量:
+			var 鲜血宝石 = CardUtils.get_card(\"鲜血宝石\", 触发卡.player)
+			鲜血宝石.is_gold = 触发卡.is_gold
+			# 直接应用鲜血宝石效果到野猪人
+			var 加成值 = 触发卡.player.鲜血宝石加成
+			var 加成 = AttributeBonus.build(\"鲜血宝石\", 加成值, str(鲜血宝石.lushi_id))
+			野猪人.属性加成(加成,触发卡.player.是否在战斗中())
+"
+
+[node name="亮喉督军" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_6s83g")
+race = Array[int]([7])
+atk_hp = Vector2i(2, 2)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 120031
+str_id = "BG32_430"
+"名称" = "亮喉督军"
+"描述" = "<b>亡语：<\\/b>召唤两个\\n1\\/1并具有<b>嘲讽<\\/b>的野猪人。对其使用一张<b>鲜血宝石<\\/b>。"
+"glod_描述" = "<b>亡语：<\\/b>召唤两个\\n2\\/2并具有<b>嘲讽<\\/b>的野猪人。对其使用2张<b>鲜血宝石<\\/b>。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_deathrattle")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

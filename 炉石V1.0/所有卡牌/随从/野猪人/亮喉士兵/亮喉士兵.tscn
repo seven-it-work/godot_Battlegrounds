@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://chcsy5choi0b1"]
+
+[sub_resource type="GDScript" id="GDScript_soldier"]
+resource_name = "亮喉士兵"
+script/source = "extends BaseMinion
+
+"
+
+[node name="亮喉士兵" type="Node"]
+script = SubResource("GDScript_soldier")
+race = Array[int]([7])
+atk_hp = Vector2i(1, 1)
+"名称" = "亮喉士兵"
+"描述" = "<b>嘲讽<\\/b>"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
