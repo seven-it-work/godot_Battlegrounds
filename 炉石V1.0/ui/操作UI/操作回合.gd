@@ -140,6 +140,7 @@ func _on_结束回合_pressed() -> void:
 	if list.is_empty():
 		结束回合信号.emit(Player.new())
 		print("没有敌人了")
+		await player.结束回合()
 		return
 	var 选取的文件=list.pick_random()
 	var 敌人=JsonUtils.json2Obj(JSON.parse_string(FileUtils.read_file_to_string(选取的文件)),{}) as Player

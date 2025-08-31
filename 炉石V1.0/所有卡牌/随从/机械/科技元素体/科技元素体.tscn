@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://erxmd8pjf65h"]
+
+[sub_resource type="GDScript" id="GDScript_tech_element"]
+resource_name = "科技元素体"
+script/source = "extends BaseMinion
+
+
+# 重写磁力吸附验证方法
+func 可以吸附到(目标随从: BaseMinion) -> bool:
+	# 检查目标是否是机械或元素
+	for 种族 in 目标随从.race:
+		if 种族 in self.限定类型:
+			return true
+	return false
+"
+
+[node name="科技元素体" type="Node"]
+script = SubResource("GDScript_tech_element")
+race = Array[int]([1, 4])
+"限定类型" = Array[int]([4, 1])
+atk_hp = Vector2i(4, 5)
+"是否为磁力" = true
+lushi_id = 119202
+str_id = "BG31_859"
+"名称" = "科技元素体"
+"描述" = "<b>磁力<\\/b>。可以<b>磁力吸附<\\/b>在机械和元素上。"
+"glod_描述" = "<b>磁力<\\/b>。可以<b>磁力吸附<\\/b>在机械和元素上。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
