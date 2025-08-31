@@ -50,6 +50,7 @@ static var 升级酒馆金币={
 @export var 甲虫加成:Vector2i=Vector2i(2,2)
 @export var 亡灵加成:Vector2i=Vector2(0,0)
 @export var 野兽加成:Vector2i=Vector2i(0,0)
+@export var 酒馆法术加成:Vector2i=Vector2i(0,0)
 ## 每召唤过一个加成+3/2（金色算两次） 如果小于0 不进行计算。
 @export var 星元自动机召唤次数:int=-1
 
