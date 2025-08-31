@@ -8,14 +8,16 @@ script/source = "extends Control
 
 func _ready() -> void:
 	var player=Player.new()
-	player.名称=\"玩家\"
+	player.名称=\"{name}测试用例\"
 	player.当前金币=999
 	player.当前金币上限=999
 	$\"操作回合\".初始化(player)
 	CardUtils.游戏初始化加载卡牌([])
 
 	var array=[
-		\"钓客的诱饵\",
+		\"{name}\",
+		\"{name}\",
+		\"{name}\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)
@@ -55,3 +57,6 @@ layout_mode = 1
 [node name="FightUi" parent="." instance=ExtResource("2_mgoj7")]
 visible = false
 layout_mode = 1
+
+[connection signal="结束回合信号" from="操作回合" to="." method="_on_操作回合_结束回合信号"]
+[connection signal="战斗结束信号" from="FightUi" to="." method="_on_fight_ui_战斗结束信号"]
