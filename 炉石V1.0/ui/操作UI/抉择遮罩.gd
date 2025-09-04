@@ -8,7 +8,7 @@ var _当前选中的选项:ChooseOptionUI
 var 使用成功:Callable
 var 取消:Callable
 var player:Player
-# todo 抉择完善
+
 func 初始化(卡片:CardUI,使用成功:Callable,取消:Callable,player:Player):
 	self.触发的卡片=卡片
 	self.使用成功=使用成功
@@ -48,4 +48,6 @@ func _on_确认_pressed() -> void:
 		else:
 			操作回合UI.箭头遮罩.初始化(触发的卡片,目标list,使用成功,取消)
 	else:
+		_当前选中的选项.选项卡片.player=player
+		_当前选中的选项.选项卡片.法术使用处理()
 		使用成功.call()

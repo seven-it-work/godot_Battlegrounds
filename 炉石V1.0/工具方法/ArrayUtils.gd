@@ -136,7 +136,12 @@ static func last_index_of(arr: Array, item) -> int:
 		if arr[i] == item:
 			return i
 	return -1
-
+	
+# 判断两个数组是否有任意相同元素（是否存在交集）
+static func have_common_elements(array1: Array, array2: Array) -> bool:
+	# 使用 any 方法遍历 array1，检查是否有元素存在于 array2 中
+	return array1.any(func(element): return array2.has(element))
+	
 ## 检查是否包含元素
 static func contains(arr: Array, item) -> bool:
 	return arr.has(item)

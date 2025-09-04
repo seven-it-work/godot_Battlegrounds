@@ -321,7 +321,10 @@ func 添加卡片(
 		
 		if 是否在战斗中():
 			d.current_hp=d.获取带加成属性().y
-			战斗中的随从.insert(adjust_index(index,战斗中的随从),d)
+			print("添加前",战斗中的随从.map(func(c): return c.名称))
+			var 索引=adjust_index(index,战斗中的随从)
+			战斗中的随从.insert(索引,d)
+			print("添加后",战斗中的随从.map(func(c): return c.名称))
 			召唤func.call()
 			return
 		战场.insert(adjust_index(index,战场),d)

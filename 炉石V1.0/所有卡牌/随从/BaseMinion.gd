@@ -31,6 +31,7 @@ static var 关键词=["嘲讽","复生","圣盾","剧毒","风怒","潜行"]
 @export var 潜行:bool=false
 
 @export var 是否为磁力:bool=false
+@export var 磁力可以贴加的种族:Array[Enums.CardRace]=[Enums.CardRace.机械]
 @export var 是否已经作为磁力:bool=false
 @export var 已经贴了的磁力:Array[BaseMinion]=[]
 @export var 是否在战斗中:bool=false
@@ -110,13 +111,14 @@ func 剧毒使用():
 func 死亡(攻击者:BaseMinion):
 	print("%s 死亡"%[self.debug_str()])
 	删除前的索引=player.获取卡片索引(self)
-	await player.删除卡牌(self,Enums.CardPosition.战场,true)
 	# 死亡触发
 	player.随从死亡信号.emit(self)
 	# 触发亡语
 	for i in 亡语:
 		i.亡语执行(攻击者)
 		# 亡语触发信号
+	# 删除卡牌必须在亡语执行完后执行，不然找不到卡牌位置了
+	await player.删除卡牌(self,Enums.CardPosition.战场,true)
 	# 触发复生
 	if 获取复生():
 		攻击过了关键词失效.append("复生")

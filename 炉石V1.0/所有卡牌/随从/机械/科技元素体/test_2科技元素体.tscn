@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctwgyxdhq6aaj"]
+[gd_scene load_steps=4 format=3 uid="uid://372n42n3ellm"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_vdj7c"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="2_pk0hw"]
@@ -21,6 +21,7 @@ func _init_card() -> void:
 		\"科技元素体\",
 		\"科技元素体\",
 		\"科技元素体\",
+		\"商贩元素\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)

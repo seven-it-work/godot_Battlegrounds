@@ -20,6 +20,7 @@ race = Array[int]([1, 4])
 "限定类型" = Array[int]([4, 1])
 atk_hp = Vector2i(4, 5)
 "是否为磁力" = true
+"磁力可以贴加的种族" = Array[int]([4, 1])
 lushi_id = 119202
 str_id = "BG31_859"
 "名称" = "科技元素体"

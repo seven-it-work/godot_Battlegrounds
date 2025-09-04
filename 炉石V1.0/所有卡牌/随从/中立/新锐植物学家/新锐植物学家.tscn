@@ -22,7 +22,7 @@ func 法术使用处理():
 	var 加成值 = 获取倍率()
 	
 	# 更新玩家的酒馆法术攻击加成
-	player.酒馆法术攻击加成 += Vector2i(加成值,0)
+	player.酒馆法术加成 += Vector2i(加成值,0)
 "
 
 [sub_resource type="GDScript" id="GDScript_giant_dewdrop"]
@@ -33,7 +33,7 @@ func 法术使用处理():
 	# 计算加成值(普通卡:+1生命值, 金色卡:+2生命值)
 	var 加成值 = 获取倍率()
 	# 更新玩家的酒馆法术生命加成
-	player.酒馆法术攻击加成 += Vector2i(0,加成值)
+	player.酒馆法术加成 += Vector2i(0,加成值)
 "
 
 [node name="新锐植物学家" type="Node" node_paths=PackedStringArray("抉择")]

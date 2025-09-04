@@ -7,6 +7,10 @@
 script/source = "extends Control
 
 func _ready() -> void:
+	var t=[1,2]
+	t.insert(0,0)
+	print(t)
+	
 	CardUtils.游戏初始化加载卡牌([])
 	$Player.战场.append(CardUtils.get_card(\"无害的骨颅\",$Player))
 	$Player.战场.append(CardUtils.get_card(\"无害的骨颅\",$Player))
@@ -32,8 +36,10 @@ layout_mode = 1
 
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_vigqu")
+"名称" = "玩家1"
 metadata/_custom_type_script = "uid://upwxtqaduibs"
 
 [node name="Player2" type="Node" parent="."]
 script = ExtResource("3_vigqu")
+"名称" = "玩家2"
 metadata/_custom_type_script = "uid://upwxtqaduibs"
