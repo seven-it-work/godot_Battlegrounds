@@ -41,9 +41,9 @@ static var 关键词=["嘲讽","复生","圣盾","剧毒","风怒","潜行"]
 var 是否攻击过:bool=false
 #endregion
 
-func 添加磁力(磁力随从:CardEntity):
+func 添加磁力(磁力随从:CardEntity,是否触发信号:bool):
 	for i in 磁力随从.已经贴了的磁力:
-		添加磁力(i)
+		添加磁力(i,false)
 	if 磁力随从.get_parent():
 		磁力随从.reparent(self)
 	else:
@@ -67,6 +67,8 @@ func 添加磁力(磁力随从:CardEntity):
 	if 磁力随从.潜行:
 		self.潜行=true
 	已经贴了的磁力.append(磁力随从)
+	if 是否触发信号:
+		player.磁力吸附信号.emit(磁力随从)
 	pass
 
 func 攻击其他随从(防御者:BaseMinion):

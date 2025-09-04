@@ -136,6 +136,7 @@ signal 回合结束信号()
 signal 英雄受伤信号(伤害:int)
 signal 随从死亡信号(死亡随从:BaseMinion)
 signal 召唤随从信号(召唤随从:BaseMinion)
+signal 磁力吸附信号(磁力随从:BaseMinion)
 
 func 购买卡片(card:CardEntity)->bool:
 	var 花费=card.获取花费()

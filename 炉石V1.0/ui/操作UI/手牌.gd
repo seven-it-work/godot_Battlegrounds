@@ -94,7 +94,7 @@ func _使用成功(cardUI:CardUI):
 				if 右边的随从UI:
 					var 右边的随从=右边的随从UI.cardData
 					if 右边的随从 is BaseMinion and ArrayUtils.have_common_elements(右边的随从.race,cardData.磁力可以贴加的种族):
-						右边的随从.添加磁力(cardUI.cardData)
+						右边的随从.添加磁力(cardUI.cardData,true)
 						player.使用卡牌信号.emit(cardUI.cardData)
 						cardUI.queue_free()
 						return
