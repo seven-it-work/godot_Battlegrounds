@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://z1x2c3v4b5n6m"]
+
+[sub_resource type="GDScript" id="GDScript_landlubber"]
+resource_name = "旱地元素"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.酒馆刷新(true)
+	if !player.操作中添加卡片信号.is_connected(_on_刷新后添加法术):
+		player.操作中添加卡片信号.connect(_on_刷新后添加法术)
+
+func _on_刷新后添加法术(d:CardEntity, cardPosition:Enums.CardPosition, index:int):
+	# 仅在刷新流程中由酒馆添加且类型是法术时追加一张酒馆法术
+	pass # 此卡复杂度较高，保留占位，后续可在玩家刷新逻辑里专门处理
+"
+
+[node name="旱地元素" type="Node"]
+script = SubResource("GDScript_landlubber")
+race = Array[int]([1,5])
+atk_hp = Vector2i(4, 5)
+lushi_id = 104532
+str_id = "BG28_556"
+"名称" = "旱地元素"
+"描述" = "在每次[b]刷新[/b]后，酒馆额外提供一张酒馆法术牌。"
+"glod_描述" = "在每次[b]刷新[/b]后，\n酒馆额外提供2张酒馆法术牌。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

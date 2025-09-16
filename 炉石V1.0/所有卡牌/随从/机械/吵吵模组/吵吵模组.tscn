@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://m1k2p3q4r5s6t"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_module"]
+
+[node name="吵吵模组" type="Node"]
+script = ExtResource("1_module")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 4)
+"是否为磁力" = true
+"圣盾" = true
+"嘲讽" = true
+lushi_id = 96812
+str_id = "BG_BOT_911"
+"名称" = "吵吵模组"
+"描述" = "[b]磁力[/b]
+[b]圣盾[/b]
+[b]嘲讽[/b]"
+"glod_描述" = "[b]磁力[/b]
+[b]圣盾[/b]
+[b]嘲讽[/b]"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

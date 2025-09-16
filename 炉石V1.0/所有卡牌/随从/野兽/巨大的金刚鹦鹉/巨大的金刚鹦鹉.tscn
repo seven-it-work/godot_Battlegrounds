@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://4e2m2xgqk1y0s"]
+[gd_scene load_steps=2 format=3 uid="uid://cc7jxj0ymmupg"]
 
 [sub_resource type="GDScript" id="GDScript_macaw"]
 resource_name = "巨大的金刚鹦鹉"
@@ -8,7 +8,7 @@ func 攻击其他随从(防御者:BaseMinion):
 	# 先执行正常攻击流程
 	await super.攻击其他随从(防御者)
 	# 攻击后触发最左侧友方亡语（不包含自身）
-	_攻击后触发亡语()
+	await _攻击后触发亡语()
 
 func _攻击后触发亡语():
 	if !player.是否在战斗中():
@@ -18,11 +18,9 @@ func _攻击后触发亡语():
 	var 列表:Array = player.获取战场上的牌()
 	if 列表.is_empty():
 		return
-	# 找到最左侧（索引递增）具有亡语的友方随从，且不是本体
+	# 找到最左侧（索引递增）具有亡语的友方随从
 	var 目标:BaseMinion = null
 	for m in 列表:
-		if m == self:
-			continue
 		if (m as BaseMinion).亡语.size() > 0:
 			目标 = m
 			break
@@ -45,5 +43,3 @@ str_id = "BGS_078"
 "glod_描述" = "在本随从攻击后，触发你最左边的[b]亡语[/b][i]（本随从的除外）[/i]，触发两次。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-

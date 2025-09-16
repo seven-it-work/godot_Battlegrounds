@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://h1j2k3l4m5n6o"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_ballad"]
+
+[sub_resource type="GDScript" id="GDScript_roar_ballad"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	var 提升:int = 触发卡.player.本回合花费的金币 if hasattr(触发卡.player, '本回合花费的金币') else 0
+	提升 = max(1, 提升) * 触发卡.获取倍率()
+	# 选择一个友方海盗
+	var 候选 = 触发卡.player.获取战场上的牌().filter(func(m:BaseMinion): return Enums.CardRace.海盗 in m.race)
+	if 候选.is_empty():
+		return
+	var 目标 = 候选.pick_random() as BaseMinion
+	目标.属性加成(AttributeBonus.build(触发卡.名称, Vector2i(0, 提升), str(触发卡.lushi_id)), true)
+"
+
+[node name="苦情民谣歌手" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_ballad")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 2)
+"战吼" = [NodePath("Roar")]
+lushi_id = 99011
+str_id = "BG26_814"
+"名称" = "苦情民谣歌手"
+"描述" = "[b]战吼：[/b]使一个海盗获得+1生命值。[i]（在本回合中你每花费一枚铸币都会提升！）[/i]"
+"glod_描述" = "[b]战吼：[/b]使一个海盗获得+2生命值。[i]（在本回合中你每花费一枚铸币都会提升！）[/i]"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar_ballad")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
+
+

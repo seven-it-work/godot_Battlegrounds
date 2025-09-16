@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://g1h2j3k4l5m6n"]
+
+[sub_resource type="GDScript" id="GDScript_dracthyr"]
+resource_name = "护雏的龙希尔"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 队友加成留待双人模式支持，这里先对自身玩家随从加成（占位）
+	for m in player.获取战场上的牌():
+		if m != self:
+			(m as BaseMinion).属性加成(AttributeBonus.build(名称, Vector2i(1*获取倍率(),0), str(lushi_id)), true)
+"
+
+[node name="护雏的龙希尔" type="Node"]
+script = SubResource("GDScript_dracthyr")
+race = Array[int]([3])
+atk_hp = Vector2i(4, 3)
+lushi_id = 104545
+str_id = "BGDUO_107"
+"名称" = "护雏的龙希尔"
+"描述" = "在你的回合结束时，使你的队友的随从获得+1攻击力。"
+"glod_描述" = "在你的回合结束时，使你的队友的随从获得+2攻击力。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

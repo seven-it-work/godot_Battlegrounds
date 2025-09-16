@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://q1w2e3r4t5y6u"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_igniter"]
+
+[sub_resource type="GDScript" id="GDScript_roar_igniter"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	for i in 触发卡.获取倍率():
+		for m in 触发卡.player.获取战场上的牌():
+			if m != 触发卡 and (Enums.CardRace.恶魔 in m.race):
+				(m as BaseMinion).属性加成(AttributeBonus.build(触发卡.名称, Vector2i(2,2), str(触发卡.lushi_id)), true)
+		触发卡.player.英雄受伤信号.emit(2)
+"
+
+[node name="鬼火钢琴家" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_igniter")
+race = Array[int]([2])
+atk_hp = Vector2i(4, 4)
+"战吼" = [NodePath("Roar")]
+lushi_id = 99197
+str_id = "BG26_522"
+"名称" = "鬼火钢琴家"
+"描述" = "[b]战吼：[/b]使你的其他恶魔获得+2/+2并对你的英雄造成2点伤害。"
+"glod_描述" = "[b]战吼：[/b]使你的其他恶魔获得+2/+2并对你的英雄造成2点伤害，触发两次。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar_igniter")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
+
+

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://o2m3a5n8c1vz2"]
+
+[sub_resource type="GDScript" id="GDScript_oldcoin"]
+resource_name = "古神铸币"
+script/source = "extends Spellcraft
+
+func 法术使用处理():
+	var 次数 = 获取倍率()
+	player.当前金币 += 次数
+"
+
+[node name="古神铸币" type="Node"]
+script = SubResource("GDScript_oldcoin")
+"卡牌类型" = 4
+"名称" = "古神铸币"
+"描述" = "获得1枚铸币。"
+"glod_描述" = "获得2枚铸币。"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://dknlejc4ai7jm"
+
+

@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1m3k7z0q2vxb"]
+
+[sub_resource type="GDScript" id="GDScript_birdbuddy"]
+resource_name = "鸟类的伙伴"
+script/source = "extends BaseMinion
+var 复仇计数:int = 0
+
+func 战斗开始时():
+	复仇计数 = 0
+	if !player.随从死亡信号.is_connected(_on_友方随从死亡):
+		player.随从死亡信号.connect(_on_友方随从死亡)
+
+func _on_友方随从死亡(死亡随从:BaseMinion):
+	if !player.是否在战斗中():
+		return
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 只统计我方
+	if 死亡随从.player != player:
+		return
+	复仇计数 += 1
+	if 复仇计数 >= 1:
+		复仇计数 = 0
+		_触发复仇增益()
+
+func _触发复仇增益():
+	var 增益 = 1 * 获取倍率()
+	var 加成 = AttributeBonus.build('鸟类的伙伴', Vector2i(增益, 增益), str(lushi_id))
+	for m in player.获取战场上的牌():
+		if Enums.CardRace.野兽 in (m as BaseMinion).race:
+			(m as BaseMinion).属性加成(加成, false)
+"
+
+[node name="鸟类的伙伴" type="Node"]
+script = SubResource("GDScript_birdbuddy")
+race = Array[int]([0])
+atk_hp = Vector2i(2, 4)
+lushi_id = 72055
+str_id = "BG21_002"
+"名称" = "鸟类的伙伴"
+"描述" = "[b]复仇（1）：[/b]使你的野兽获得+1/+1。"
+"glod_描述" = "[b]复仇（1）：[/b]使你的野兽获得+2/+2。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

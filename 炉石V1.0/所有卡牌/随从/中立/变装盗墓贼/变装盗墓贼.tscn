@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://v1b2n3m4c5x6z"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_graverobber"]
+
+[sub_resource type="GDScript" id="GDScript_roar_graverobber"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	var 友方亡灵 = 触发卡.player.获取战场上的牌().filter(func(m:BaseMinion): return Enums.CardRace.亡灵 in m.race)
+	if 友方亡灵.is_empty():
+		return
+	# 选择并消灭一张亡灵
+	var 目标 = 友方亡灵.pick_random() as BaseMinion
+	目标.当前_hp = 0
+	await 目标.死亡(目标)
+	# 获取它的原始版复制（不带临时加成）
+	for i in 触发卡.获取倍率():
+		var copy = CardUtils.get_card(目标.名称, 触发卡.player)
+		触发卡.player.添加卡片(copy, Enums.CardPosition.手牌, -1, true)
+"
+
+[node name="变装盗墓贼" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_graverobber")
+race = Array[int]([0])
+atk_hp = Vector2i(4, 4)
+"战吼" = [NodePath("Roar")]
+lushi_id = 104610
+str_id = "BG28_303"
+"名称" = "变装盗墓贼"
+"描述" = "[b]战吼：[/b]消灭一个友方亡灵以获取一张它的原始版复制。"
+"glod_描述" = "[b]战吼：[/b]消灭一个友方亡灵以获取2张它的原始版复制。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar_graverobber")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
+
+
