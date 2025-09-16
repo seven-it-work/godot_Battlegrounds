@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhwo5s2e7mv2q"]
+[gd_scene load_steps=4 format=3 uid="uid://b5sy5whwaxrmq"]
 
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_7g65v"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="3_vigqu"]

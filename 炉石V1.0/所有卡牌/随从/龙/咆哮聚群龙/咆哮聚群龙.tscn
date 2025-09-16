@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://rr1tt2yy3uu4"]
+
+[sub_resource type="GDScript" id="GDScript_rallier"]
+resource_name = "咆哮聚群龙"
+script/source = "extends BaseMinion
+
+func 战斗开始时():
+	if !player.战斗中添加卡片信号.is_connected(_on_攻击后触发):
+		pass
+
+func _on_攻击后触发(d:CardEntity, cardPosition:Enums.CardPosition, index:int):
+	pass # 占位：攻击后触发在 FightUI 内部流程，后续接入
+"
+
+[node name="咆哮聚群龙" type="Node"]
+script = SubResource("GDScript_rallier")
+race = Array[int]([3])
+atk_hp = Vector2i(2, 6)
+lushi_id = 109806
+str_id = "BG29_816"
+"名称" = "咆哮聚群龙"
+"描述" = "每当一条友方的龙攻击时，使其获得+3/+1。"
+"glod_描述" = "每当一条友方的龙攻击时，使其获得+6/+2。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

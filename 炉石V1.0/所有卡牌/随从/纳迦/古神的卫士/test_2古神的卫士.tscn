@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d362nv54e8w8y"]
+[gd_scene load_steps=4 format=3 uid="uid://dykrirkcet0wh"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_vdj7c"]
 [ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="2_pk0hw"]

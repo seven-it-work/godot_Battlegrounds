@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://blunsu25bb57y"]
+[gd_scene load_steps=4 format=3 uid="uid://b0uy8j2rj1qj2"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_tykny"]
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_mgoj7"]

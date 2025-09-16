@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://mm1nn2bb3vv4"]
+
+[sub_resource type="GDScript" id="GDScript_implicator"]
+resource_name = "假冒鬼儡"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if player.酒馆.is_empty():
+		return
+	var 目标 = player.酒馆.pick_random()
+	if !(目标 is BaseMinion):
+		return
+	var 属性 = (目标 as BaseMinion).获取带加成属性()
+	var 倍率 = 获取倍率()
+	属性 *= 倍率
+	属性加成(AttributeBonus.build(名称, 属性, str(lushi_id)), true)
+	player.删除卡片(目标, Enums.CardPosition.酒馆)
+"
+
+[node name="假冒鬼儡" type="Node"]
+script = SubResource("GDScript_implicator")
+race = Array[int]([2])
+atk_hp = Vector2i(1, 1)
+lushi_id = 108115
+str_id = "BG29_140"
+"名称" = "假冒鬼儡"
+"描述" = "在你的回合结束时，吞食酒馆中的一个随从以获得其属性值。"
+"glod_描述" = "在你的回合\n结束时，吞食酒馆中的一个随从以获得其双倍属性值。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

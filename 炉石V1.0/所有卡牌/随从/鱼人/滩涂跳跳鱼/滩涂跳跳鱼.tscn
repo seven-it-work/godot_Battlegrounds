@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://pp1qq2rr3ss4"]
+
+[sub_resource type="GDScript" id="GDScript_puddleprancer"]
+resource_name = "滩涂跳跳鱼"
+script/source = "extends BaseMinion
+
+func 被传递后增益():
+	var 增益 = 4 * 获取倍率()
+	属性加成(AttributeBonus.build(名称, Vector2i(增益, 增益), str(lushi_id)), true)
+"
+
+[node name="滩涂跳跳鱼" type="Node"]
+script = SubResource("GDScript_puddleprancer")
+race = Array[int]([10])
+atk_hp = Vector2i(4, 4)
+lushi_id = 105646
+str_id = "BGDUO_117"
+"名称" = "滩涂跳跳鱼"
+"描述" = "在本随从被[b]传递[/b]后，获得+4/+4。"
+"glod_描述" = "在本随从被[b]传递[/b]后，获得+8/+8。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+
