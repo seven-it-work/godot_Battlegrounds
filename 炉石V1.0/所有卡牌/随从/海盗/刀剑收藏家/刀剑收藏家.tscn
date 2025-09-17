@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_blade"]
+
+[node name="刀剑收藏家" type="Node"]
+script = ExtResource("1_blade")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 2)
+lushi_id = 99035
+str_id = "BG26_817"
+"名称" = "刀剑收藏家"
+"描述" = "同时对其攻击目标相邻的随从造成伤害。"
+"glod_描述" = "同时对其攻击目标相邻的随从造成伤害。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+func 攻击其他随从(防御者: BaseMinion):
+	await super.攻击其他随从(防御者)
+	await _攻击相邻随从(防御者)
+
+func _攻击相邻随从(防御者: BaseMinion):
+	var 相邻: Array = ArrayUtils.get_neighboring_data(防御者, 防御者.player.获取战场上的牌())
+	var 我方攻击力: int = 获取带加成属性().x
+	for 邻居 in 相邻:
+		await (邻居 as BaseMinion).生命扣除(self, 我方攻击力)
+"

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_narrator"]
+
+[node name="墓后解说员" type="Node"]
+script = ExtResource("1_narrator")
+race = Array[int]([9])
+atk_hp = Vector2i(2, 7)
+var _avenge_count: int = 0
+var _avenge_threshold: int = 3
+DuoGameExclusive = true
+lushi_id = 104959
+str_id = "BGDUO_112"
+"名称" = "墓后解说员"
+"描述" = "<b>复仇（3）：</b>你的队友获取一张其多数随从的类型的随从牌。"
+"glod_描述" = "<b>复仇（3）：</b>你的队友获取2张其多数随从的类型的随从牌。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _avenge_count: int = 0
+var _avenge_threshold: int = 3
+
+func 信号绑定():
+	player.随从死亡信号.connect(_on_随从死亡)
+
+func _on_随从死亡(死亡随从: BaseMinion):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if 死亡随从.player == player: # Only count friendly minion deaths
+		_avenge_count += 1
+		if _avenge_count >= _avenge_threshold:
+			_avenge_count = 0 # Reset for next trigger
+			_trigger_avenge()
+
+func _trigger_avenge():
+	var card_count: int = 1 * 获取倍率() # 1 for normal, 2 for golden
+	# Assuming there's a method to get teammate and give them cards
+	# This is a placeholder implementation
+	print('墓后解说员触发：给队友获取 %d 张多数随从类型的牌' % card_count)
+"

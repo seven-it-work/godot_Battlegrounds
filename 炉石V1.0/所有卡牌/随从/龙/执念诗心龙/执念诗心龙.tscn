@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_poet"]
+
+[node name="执念诗心龙" type="Node"]
+script = ExtResource("1_poet")
+race = Array[int]([3])
+atk_hp = Vector2i(2, 3)
+@export var 圣盾:bool = true
+lushi_id = 108463
+str_id = "BG29_813"
+"名称" = "执念诗心龙"
+"描述" = "<b><b>圣盾</b>。</b>相邻的龙可永久保留战斗阶段受到的你的附加效果。"
+"glod_描述" = "<b><b>圣盾</b>。</b>相邻的龙在战斗阶段受到的你的附加效果翻倍，并可永久保留。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 圣盾:bool = true
+
+func 信号绑定():
+	player.随从属性加成信号.connect(_on_随从属性加成)
+
+func _on_随从属性加成(加成随从: CardEntity, 加成数据: AttributeBonus):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if not (加成随从 is BaseMinion):
+		return
+	if not (Enums.CardRace.龙 in (加成随从 as BaseMinion).race):
+		return
+	# Check if the buffed minion is adjacent
+	var 相邻: Array = ArrayUtils.get_neighboring_data(self, player.获取战场上的牌())
+	if 加成随从 in 相邻:
+		_使相邻龙保留战斗buff(加成随从, 加成数据)
+
+func _使相邻龙保留战斗buff(目标龙: BaseMinion, 加成数据: AttributeBonus):
+	var actual_buff = 加成数据.atk_hp
+	if is_gold:
+		actual_buff *= 2 # Golden version doubles the buff
+	var permanent_bonus = AttributeBonus.build(
+		加成数据.名称 + '_永久',
+		actual_buff,
+		加成数据.唯一标识符 + '_permanent'
+	)
+	目标龙.属性加成(permanent_bonus, true) # Make it permanent
+"

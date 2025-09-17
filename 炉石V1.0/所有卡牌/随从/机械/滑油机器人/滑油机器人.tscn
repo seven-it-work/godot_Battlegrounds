@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_grease"]
+
+[node name="滑油机器人" type="Node"]
+script = ExtResource("1_grease")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 5)
+@export var 圣盾:bool = true
+lushi_id = 72389
+str_id = "BG21_024"
+"名称" = "滑油机器人"
+"描述" = "<b>圣盾</b>。在一个友方随从失去<b>圣盾</b>后，使其永久获得+2/+1。"
+"glod_描述" = "<b>圣盾</b>。在一个友方随从失去<b>圣盾</b>后，使其永久获得+4/+2。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 圣盾:bool = true
+
+func 信号绑定():
+	# Assuming a signal like player.友方随从失去圣盾信号 exists
+	# player.友方随从失去圣盾信号.connect(_on_友方随从失去圣盾)
+	pass
+
+func _on_友方随从失去圣盾(失去圣盾随从: BaseMinion):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	var buff_atk: int = 2 * 获取倍率() # +2 for normal, +4 for golden
+	var buff_hp: int = 1 * 获取倍率() # +1 for normal, +2 for golden
+	var buff_vector: Vector2i = Vector2i(buff_atk, buff_hp)
+	var 加成 = AttributeBonus.build(
+		'滑油机器人加成',
+		buff_vector,
+		str(lushi_id)
+	)
+	失去圣盾随从.属性加成(加成, true) # Permanent buff
+"

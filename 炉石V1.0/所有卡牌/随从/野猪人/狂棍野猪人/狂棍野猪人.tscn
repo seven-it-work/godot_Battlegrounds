@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_bonker"]
+
+[node name="狂棍野猪人" type="Node"]
+script = ExtResource("1_bonker")
+race = Array[int]([7])
+atk_hp = Vector2i(3, 6)
+@export var 风怒:bool = true
+lushi_id = 70173
+str_id = "BG20_104"
+"名称" = "狂棍野猪人"
+"描述" = "<b>风怒</b>。每当本随从攻击时，对你的所有其他随从各使用一张<b>鲜血宝石</b>。"
+"glod_描述" = "<b>风怒</b>。每当本随从攻击时，对你的所有其他随从各使用2张<b>鲜血宝石</b>。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 风怒:bool = true
+
+func 攻击其他随从(防御者: BaseMinion):
+	await super.攻击其他随从(防御者)
+	await _使用鲜血宝石()
+
+func _使用鲜血宝石():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	var gem_count: int = 1 * 获取倍率() # 1 for normal, 2 for golden
+	var other_minions: Array = player.获取战场上的牌().filter(func(m): return m != self)
+	for minion in other_minions:
+		for i in gem_count:
+			var gem = CardUtils.get_card('鲜血宝石', player)
+			gem.is_gold = is_gold
+			# Assuming there's a method to use blood gems on minions
+			# This is a placeholder implementation
+			print('狂棍野猪人触发：对 %s 使用鲜血宝石' % minion.名称)
+"

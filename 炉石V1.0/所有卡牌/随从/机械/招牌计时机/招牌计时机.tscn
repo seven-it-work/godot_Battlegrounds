@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_ticker"]
+
+[node name="招牌计时机" type="Node"]
+script = ExtResource("1_ticker")
+race = Array[int]([4])
+atk_hp = Vector2i(1, 5)
+lushi_id = 115680
+str_id = "BG31_178"
+"名称" = "招牌计时机"
+"描述" = "在你的回合结束时，随机获取一张酒馆法术牌。"
+"glod_描述" = "在你的回合结束时，随机获取2张\n酒馆法术牌。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	var spell_count: int = 1 * 获取倍率() # 1 for normal, 2 for golden
+	for i in spell_count:
+		# Assuming there's a method to get random tavern spells
+		# This is a placeholder implementation
+		print('招牌计时机触发：获取酒馆法术牌')
+		# var spell = CardUtils.get_random_tavern_spell(player)
+		# player.添加卡片(spell, Enums.CardPosition.手牌, -1, true)
+"

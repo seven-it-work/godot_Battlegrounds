@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_courier"]
+
+[node name="火药运输工" type="Node"]
+script = ExtResource("1_courier")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 6)
+var _spent_gold: int = 0
+var _target_gold: int = 5
+lushi_id = 98889
+str_id = "BG26_810"
+"名称" = "火药运输工"
+"描述" = "每当你花掉\n5枚铸币，使你的海盗获得+2攻击力。"
+"glod_描述" = "每当你花掉\n5枚铸币，使你的海盗获得+4攻击力。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _spent_gold: int = 0
+var _target_gold: int = 5
+
+func 信号绑定():
+	# Assuming a signal like player.花费铸币信号 exists
+	# player.花费铸币信号.connect(_on_花费铸币)
+	pass
+
+func _on_花费铸币(花费数量: int):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	_spent_gold += 花费数量
+	if _spent_gold >= _target_gold:
+		_spent_gold = 0
+		_buff_pirates()
+
+func _buff_pirates():
+	var buff_atk: int = 2 * 获取倍率() # +2 for normal, +4 for golden
+	var buff_vector: Vector2i = Vector2i(buff_atk, 0)
+	var pirates: Array = player.获取战场上的牌().filter(func(m): return Enums.CardRace.海盗 in (m as BaseMinion).race)
+	for pirate in pirates:
+		var 加成 = AttributeBonus.build(
+			'火药运输工加成',
+			buff_vector,
+			str(lushi_id)
+		)
+		(pirate as BaseMinion).属性加成(加成, true) # Permanent buff
+"

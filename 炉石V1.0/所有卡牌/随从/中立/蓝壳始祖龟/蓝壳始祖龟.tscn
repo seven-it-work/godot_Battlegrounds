@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_shell"]
+
+[node name="蓝壳始祖龟" type="Node"]
+script = ExtResource("1_shell")
+race = Array[int]([0])
+atk_hp = Vector2i(3, 6)
+lushi_id = 92406
+str_id = "BG24_018"
+"名称" = "蓝壳始祖龟"
+"描述" = "如果你输掉了上一场战斗，出售本随从可以获得5枚铸币。"
+"glod_描述" = "如果你输掉了上一场战斗，出售本随从可以获得10枚铸币。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+func 出售处理():
+	if player.上一场战斗失败:
+		var bonus_gold: int = 5 * 获取倍率() # 5 for normal, 10 for golden
+		player.当前金币 += bonus_gold
+"

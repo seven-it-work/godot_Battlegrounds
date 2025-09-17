@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_bedrock"]
+
+[node name="富饶的基岩" type="Node"]
+script = ExtResource("1_bedrock")
+race = Array[int]([1])
+atk_hp = Vector2i(3, 4)
+lushi_id = 115438
+str_id = "BG30_160"
+"名称" = "富饶的基岩"
+"描述" = "每2个回合，在回合结束时，随机获取一张元素牌。"
+"glod_描述" = "每2个回合，在回合结束时，随机获取2张元素牌。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _turn_counter: int = 0
+
+func 信号绑定():
+	player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	_turn_counter += 1
+	if _turn_counter >= 2:
+		_turn_counter = 0
+		_获取元素牌()
+
+func _获取元素牌():
+	var card_count: int = 1 * 获取倍率() # 1 for normal, 2 for golden
+	for i in card_count:
+		# Assuming player has a method to get random elemental cards
+		# This is a placeholder implementation
+		print('富饶的基岩触发：获取元素牌')
+"

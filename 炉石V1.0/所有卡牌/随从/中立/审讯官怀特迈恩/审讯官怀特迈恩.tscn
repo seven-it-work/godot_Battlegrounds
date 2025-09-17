@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8k8"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/中立/审讯官怀特迈恩/审讯官怀特迈恩.gd" id="1_0k8k8"]
+
+[node name="审讯官怀特迈恩" type="Node2D"]
+script = ExtResource("1_0k8k8")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8k9"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/中立/提图斯·瑞文戴尔/提图斯·瑞文戴尔.gd" id="1_0k8k9"]
+
+[node name="提图斯·瑞文戴尔" type="Node2D"]
+script = ExtResource("1_0k8k9")

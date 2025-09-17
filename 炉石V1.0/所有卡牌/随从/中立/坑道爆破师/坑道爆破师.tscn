@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_blaster"]
+
+[node name="坑道爆破师" type="Node"]
+script = ExtResource("1_blaster")
+race = Array[int]([0])
+atk_hp = Vector2i(3, 7)
+@export var 嘲讽:bool = true
+@export var 亡语:Array[Deathrattle]=[]
+lushi_id = 92880
+str_id = "BG_DAL_775"
+"名称" = "坑道爆破师"
+"描述" = "<b>嘲讽，亡语：</b>对所有随从造成3点伤害。"
+"glod_描述" = "<b>嘲讽，亡语：</b>对所有随从造成3点伤害，触发两次。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 嘲讽:bool = true
+@export var 亡语:Array[Deathrattle]=[]
+
+func _ready():
+	var deathrattle_node = Deathrattle.new()
+	add_child(deathrattle_node)
+	deathrattle_node.触发卡 = self
+	deathrattle_node.script = preload('res://所有卡牌/随从/中立/坑道爆破师/坑道爆破师_Deathrattle.gd')
+	亡语.append(deathrattle_node)
+"

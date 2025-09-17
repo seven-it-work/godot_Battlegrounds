@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_myrmidon"]
+
+[node name="已腐蚀的侍从" type="Node"]
+script = ExtResource("1_myrmidon")
+race = Array[int]([8])
+atk_hp = Vector2i(2, 2)
+lushi_id = 80750
+str_id = "BG23_012"
+"名称" = "已腐蚀的侍从"
+"描述" = "<b>战斗开始时：</b>本随从的属性值翻倍。"
+"glod_描述" = "<b>战斗开始时：</b>本随从的属性值变为三倍。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+func 战斗开始时():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	var multiplier: int = 2 if !is_gold else 3 # 2x for normal, 3x for golden
+	var current_stats = 获取带加成属性()
+	var buff_vector: Vector2i = Vector2i(current_stats.x * (multiplier - 1), current_stats.y * (multiplier - 1))
+	var 加成 = AttributeBonus.build(
+		'已腐蚀的侍从加成',
+		buff_vector,
+		str(lushi_id)
+	)
+	属性加成(加成, false) # Temporary buff in combat
+"

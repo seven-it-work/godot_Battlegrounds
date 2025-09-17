@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_cinder"]
+
+[node name="辐光余烬" type="Node"]
+script = ExtResource("1_cinder")
+race = Array[int]([1])
+atk_hp = Vector2i(3, 1)
+@export var 亡语:Array[Deathrattle]=[]
+lushi_id = 119951
+str_id = "BG32_842"
+"名称" = "辐光余烬"
+"描述" = "<b>亡语：</b>在本局对战中，你的能使随从获得属性值的元素额外使随从获得+1攻击力。"
+"glod_描述" = "<b>亡语：</b>在本局对战中，你的能使随从获得属性值的元素额外使随从获得+2攻击力。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 亡语:Array[Deathrattle]=[]
+
+func _ready():
+	var deathrattle_node = Deathrattle.new()
+	add_child(deathrattle_node)
+	deathrattle_node.触发卡 = self
+	deathrattle_node.script = preload('res://所有卡牌/随从/元素/辐光余烬/辐光余烬_Deathrattle.gd')
+	亡语.append(deathrattle_node)
+"

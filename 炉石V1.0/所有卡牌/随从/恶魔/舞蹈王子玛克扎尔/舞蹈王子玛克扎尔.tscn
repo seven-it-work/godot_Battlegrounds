@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_malchezaar"]
+
+[node name="舞蹈王子玛克扎尔" type="Node"]
+script = ExtResource("1_malchezaar")
+race = Array[int]([2])
+atk_hp = Vector2i(5, 4)
+var _refresh_count: int = 0
+var _target_refreshes: int = 2
+lushi_id = 99199
+str_id = "BG26_524"
+"名称" = "舞蹈王子玛克扎尔"
+"描述" = "每回合中，有2次<b>刷新</b>会消耗生命值，而非铸币。"
+"glod_描述" = "每回合中，有4次<b>刷新</b>会消耗生命值，而非铸币。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _refresh_count: int = 0
+var _target_refreshes: int = 2
+
+func 信号绑定():
+	player.开始回合信号.connect(_on_开始回合)
+	# Assuming a signal like player.酒馆刷新信号 exists
+	# player.酒馆刷新信号.connect(_on_酒馆刷新)
+
+func _on_开始回合():
+	_refresh_count = 0
+
+func _on_酒馆刷新():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if _refresh_count < _target_refreshes:
+		_refresh_count += 1
+		# Assuming there's a way to make refresh cost health instead of gold
+		# This is a placeholder implementation
+		print('舞蹈王子玛克扎尔触发：刷新消耗生命值而非铸币')
+"

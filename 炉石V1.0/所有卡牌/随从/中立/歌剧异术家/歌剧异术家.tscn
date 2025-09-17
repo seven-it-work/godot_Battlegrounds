@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8kc"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/中立/歌剧异术家/歌剧异术家.gd" id="1_0k8kc"]
+
+[node name="歌剧异术家" type="Node2D"]
+script = ExtResource("1_0k8kc")

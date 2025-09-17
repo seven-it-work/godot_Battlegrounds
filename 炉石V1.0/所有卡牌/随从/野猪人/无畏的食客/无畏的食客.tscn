@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_foodie"]
+
+[node name="无畏的食客" type="Node"]
+script = ExtResource("1_foodie")
+race = Array[int]([7])
+atk_hp = Vector2i(3, 5)
+@export var 战吼:Array[Roar]=[]
+lushi_id = 113154
+str_id = "BG30_123"
+"名称" = "无畏的食客"
+"描述" = "<b>抉择：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+1/+1；或者获取4张<b>鲜血宝石</b>。"
+"glod_描述" = "<b>抉择：</b>在本局对战中，你的<b>鲜血宝石</b>使随从额外获得+2/+2；或者获取8张<b>鲜血宝石</b>。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 战吼:Array[Roar]=[]
+
+func _ready():
+	var roar_node = Roar.new()
+	add_child(roar_node)
+	roar_node.触发卡 = self
+	roar_node.script = preload('res://所有卡牌/随从/野猪人/无畏的食客/无畏的食客_Roar.gd')
+	战吼.append(roar_node)
+"

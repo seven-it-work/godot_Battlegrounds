@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_elise"]
+
+[node name="宝藏追寻者伊莉斯" type="Node"]
+script = ExtResource("1_elise")
+race = Array[int]([0])
+atk_hp = Vector2i(5, 5)
+var _refresh_count: int = 0
+var _target_refreshes: int = 5
+lushi_id = 93099
+str_id = "BG23_353"
+"名称" = "宝藏追寻者伊莉斯"
+"描述" = "在你<b>刷新</b>5次后，找到<b>黄金</b>猿！"
+"glod_描述" = "在你<b>刷新</b>5次后，找到两尊<b>黄金</b>猿！"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _refresh_count: int = 0
+var _target_refreshes: int = 5
+
+func 信号绑定():
+	# Assuming a signal like player.酒馆刷新信号 exists
+	# player.酒馆刷新信号.connect(_on_酒馆刷新)
+	pass
+
+func _on_酒馆刷新():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	_refresh_count += 1
+	if _refresh_count >= _target_refreshes:
+		_找到黄金猿()
+
+func _找到黄金猿():
+	var monkey_count: int = 1 * 获取倍率() # 1 for normal, 2 for golden
+	for i in monkey_count:
+		var golden_monkey = CardUtils.get_card('黄金猿', player)
+		golden_monkey.is_gold = true
+		player.添加卡片(golden_monkey, Enums.CardPosition.手牌, -1, true)
+"
