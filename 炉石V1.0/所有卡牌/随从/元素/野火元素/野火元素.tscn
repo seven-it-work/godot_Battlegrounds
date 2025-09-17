@@ -45,3 +45,4 @@ str_id = "BGS_126"
 "glod_描述" = "在本随从攻击并消灭一个随从后，对相邻的随从均造成超过目标生命值的伤害。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+

@@ -43,3 +43,4 @@ str_id = "BGS_078"
 "glod_描述" = "在本随从攻击后，触发你最左边的[b]亡语[/b][i]（本随从的除外）[/i]，触发两次。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
