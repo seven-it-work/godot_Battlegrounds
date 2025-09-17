@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://o1m3k7z0q2vxb"]
+[gd_scene load_steps=2 format=3 uid="uid://dgfhs1882han0"]
 
 [sub_resource type="GDScript" id="GDScript_birdbuddy"]
 resource_name = "鸟类的伙伴"
@@ -33,7 +33,6 @@ func _触发复仇增益():
 
 [node name="鸟类的伙伴" type="Node"]
 script = SubResource("GDScript_birdbuddy")
-race = Array[int]([0])
 atk_hp = Vector2i(2, 4)
 lushi_id = 72055
 str_id = "BG21_002"
@@ -42,6 +41,3 @@ str_id = "BG21_002"
 "glod_描述" = "[b]复仇（1）：[/b]使你的野兽获得+2/+2。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-
-

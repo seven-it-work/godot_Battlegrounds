@@ -1,13 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
 
-[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_shot"]
+[ext_resource type="Script" uid="uid://dc0mchh24nf0r" path="res://所有卡牌/随从/中立/辛多雷直射手/辛多雷直射手.gd" id="1_qg55u"]
 
 [node name="辛多雷直射手" type="Node"]
-script = ExtResource("1_shot")
-race = Array[int]([0])
+script = ExtResource("1_qg55u")
 atk_hp = Vector2i(3, 4)
-@export var 风怒:bool = true
-@export var 圣盾:bool = true
+"圣盾" = true
+"风怒" = true
 lushi_id = 95286
 str_id = "BG25_016"
 "名称" = "辛多雷直射手"
@@ -15,20 +14,3 @@ str_id = "BG25_016"
 "glod_描述" = "<b>风怒</b>，<b>圣盾</b>。每当本随从攻击时，移除目标的<b>复生</b>和<b>嘲讽</b>。"
 "等级" = 4
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-[sub_resource type="GDScript" id="GDScript_1"]
-script/source = "extends BaseMinion
-
-@export var 风怒:bool = true
-@export var 圣盾:bool = true
-
-func 攻击其他随从(防御者: BaseMinion):
-	await super.攻击其他随从(防御者)
-	_移除目标关键词(防御者)
-
-func _移除目标关键词(目标: BaseMinion):
-	if 目标.复生:
-		目标.复生 = false
-	if 目标.嘲讽:
-		目标.嘲讽 = false
-"
