@@ -1,6 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8k8"]
 
-[ext_resource type="Script" path="res://所有卡牌/随从/中立/审讯官怀特迈恩/审讯官怀特迈恩.gd" id="1_0k8k8"]
+[ext_resource type="Script" uid="uid://cn171e0r1lxe5" path="res://所有卡牌/随从/中立/审讯官怀特迈恩/审讯官怀特迈恩.gd" id="1_0k8k8"]
 
 [node name="审讯官怀特迈恩" type="Node2D"]
 script = ExtResource("1_0k8k8")
+atk_hp = Vector2i(8, 5)
+lushi_id = 97072
+str_id = "BG24_704"
+"名称" = "审讯官怀特迈恩"
+"描述" = "<b>战斗开始时：<\\/b>使一个等级5或更高的敌方随从获得<b>嘲讽<\\/b>，在本场战斗中其受到的伤害翻倍。"
+"glod_描述" = "<b>战斗开始时：<\\/b>使两个等级5或更高的敌方随从获得<b>嘲讽<\\/b>，在本场战斗中其受到的伤害翻倍。"
+"等级" = 5

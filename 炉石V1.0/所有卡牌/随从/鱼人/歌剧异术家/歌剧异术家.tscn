@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8qj5x7k8k8kc"]
+
+[ext_resource type="Script" uid="uid://cok8j3hnalxxr" path="res://所有卡牌/随从/鱼人/歌剧异术家/歌剧异术家.gd" id="1_0k8kc"]
+
+[sub_resource type="GDScript" id="GDScript_mpyye"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 给所有鱼人烈毒
+	var friendly_murlocs = 触发卡.player.获取战场上的牌().filter(func(m): return m is BaseMinion and (Enums.CardRace.鱼人 in (m as BaseMinion).race))
+	for murloc in friendly_murlocs:
+		(murloc as BaseMinion).烈毒 = true
+"
+
+[node name="歌剧异术家" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_0k8kc")
+race = Array[int]([10])
+atk_hp = Vector2i(5, 2)
+"亡语" = [NodePath("Deathrattle")]
+"烈毒" = true
+lushi_id = 101316
+str_id = "BG26_888"
+"名称" = "歌剧异术家"
+"描述" = "<b>烈毒<\\/b>。<b>亡语：<\\/b>使一个友方鱼人获得<b>烈毒<\\/b>。"
+"glod_描述" = "<b>烈毒<\\/b>。<b>亡语：<\\/b>使2个友方鱼人获得<b>烈毒<\\/b>。"
+"等级" = 5
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_mpyye")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

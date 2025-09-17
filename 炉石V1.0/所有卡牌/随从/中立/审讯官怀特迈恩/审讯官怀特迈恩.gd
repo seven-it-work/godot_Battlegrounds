@@ -10,5 +10,5 @@ func 战斗开始时():
 		if minion is BaseMinion:
 			(minion as BaseMinion).嘲讽 = true
 			# 双倍伤害效果通过修改伤害计算实现
-			# 这里假设有一个属性来标记双倍伤害
+			# todo 这里假设有一个属性来标记双倍伤害
 			(minion as BaseMinion).双倍伤害 = true

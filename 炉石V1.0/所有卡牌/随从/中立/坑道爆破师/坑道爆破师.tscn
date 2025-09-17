@@ -1,13 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+[gd_scene load_steps=3 format=3 uid="uid://b5x464niotexu"]
 
-[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_blaster"]
+[sub_resource type="GDScript" id="GDScript_gaxsh"]
+script/source = "extends BaseMinion
+"
 
-[node name="坑道爆破师" type="Node"]
-script = ExtResource("1_blaster")
-race = Array[int]([0])
+[sub_resource type="GDScript" id="GDScript_0o5k4"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	var damage: int = 3
+	var times: int = 1 * 触发卡.获取倍率() # 1 for normal, 2 for golden
+	
+	for i in times:
+		# Damage all minions on battlefield
+		var all_minions: Array = []
+		all_minions.append_array(触发卡.player.获取战场上的牌())
+		# Assuming there's a way to get opponent's minions
+		# all_minions.append_array(触发卡.player.对手.获取战场上的牌())
+		
+		for minion in all_minions:
+			if minion != 触发卡: # Don't damage self
+				await (minion as BaseMinion).生命扣除(触发卡, damage)
+"
+
+[node name="坑道爆破师" type="Node" node_paths=PackedStringArray("亡语")]
+script = SubResource("GDScript_gaxsh")
 atk_hp = Vector2i(3, 7)
-@export var 嘲讽:bool = true
-@export var 亡语:Array[Deathrattle]=[]
+"亡语" = [NodePath("Deathrattle")]
+"嘲讽" = true
 lushi_id = 92880
 str_id = "BG_DAL_775"
 "名称" = "坑道爆破师"
@@ -16,16 +36,7 @@ str_id = "BG_DAL_775"
 "等级" = 4
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
-[sub_resource type="GDScript" id="GDScript_1"]
-script/source = "extends BaseMinion
-
-@export var 嘲讽:bool = true
-@export var 亡语:Array[Deathrattle]=[]
-
-func _ready():
-	var deathrattle_node = Deathrattle.new()
-	add_child(deathrattle_node)
-	deathrattle_node.触发卡 = self
-	deathrattle_node.script = preload('res://所有卡牌/随从/中立/坑道爆破师/坑道爆破师_Deathrattle.gd')
-	亡语.append(deathrattle_node)
-"
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_0o5k4")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

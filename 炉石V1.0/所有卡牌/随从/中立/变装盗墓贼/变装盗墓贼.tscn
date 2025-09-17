@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://v1b2n3m4c5x6z"]
+[gd_scene load_steps=3 format=3 uid="uid://cpapps1ui5le6"]
 
 [ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_graverobber"]
 
@@ -21,7 +21,7 @@ func _具体战吼方法接口():
 
 [node name="变装盗墓贼" type="Node" node_paths=PackedStringArray("战吼")]
 script = ExtResource("1_graverobber")
-race = Array[int]([0])
+"限定类型" = Array[int]([9])
 atk_hp = Vector2i(4, 4)
 "战吼" = [NodePath("Roar")]
 lushi_id = 104610
@@ -36,6 +36,3 @@ metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 script = SubResource("GDScript_roar_graverobber")
 "触发卡" = NodePath("..")
 metadata/_custom_type_script = "uid://blqe4sactsx85"
-
-
-

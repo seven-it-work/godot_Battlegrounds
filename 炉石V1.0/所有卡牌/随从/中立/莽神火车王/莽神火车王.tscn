@@ -1,7 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqj8q8q8q8q8q"]
+[gd_scene load_steps=3 format=3 uid="uid://bqj8q8q8q8q8q"]
 
-[ext_resource type="Script" path="res://所有卡牌/随从/中立/莽神火车王/莽神火车王.gd" id="1_0"]
+[ext_resource type="Script" uid="uid://ky22djvsqsdq" path="res://所有卡牌/随从/中立/莽神火车王/莽神火车王.gd" id="1_0"]
 
-[node name="莽神火车王" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_xc1s1"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# Assuming the killer is stored in the minion's _killer variable
+	if 攻击者:
+		# Destroy the killer
+		await 攻击者.生命扣除(触发卡, 攻击者.current_hp) # Destroy the killer
+		print(\"莽神火车王触发亡语：消灭击杀者\")
+"
+
+[node name="莽神火车王" type="Node2D" node_paths=PackedStringArray("亡语")]
 script = ExtResource("1_0")
+atk_hp = Vector2i(2, 6)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 90425
+str_id = "BG23_318"
+"名称" = "莽神火车王"
+"描述" = "<b>亡语：<\\/b>消灭击杀本随从的随从。"
+"glod_描述" = "<b>亡语：<\\/b>消灭击杀本随从的随从。"
+"等级" = 5
 
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_xc1s1")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

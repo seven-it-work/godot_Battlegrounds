@@ -1,7 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqj8q8q8q8q8q"]
 
-[ext_resource type="Script" path="res://所有卡牌/随从/中立/布莱恩·铜须/布莱恩·铜须.gd" id="1_0"]
+[ext_resource type="Script" uid="uid://dyx4ob7u8cjqv" path="res://所有卡牌/随从/中立/布莱恩·铜须/布莱恩·铜须.gd" id="1_0"]
 
 [node name="布莱恩·铜须" type="Node2D"]
 script = ExtResource("1_0")
-
+atk_hp = Vector2i(2, 4)
+lushi_id = 96786
+str_id = "BG_LOE_077"
+"名称" = "布莱恩·铜须"
+"描述" = "你的<b>战吼<\\/b>会触发\\n两次。"
+"glod_描述" = "你的<b>战吼<\\/b>会触发\\n三次。"
+"等级" = 5
