@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8kw"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/海盗/双持海盗/双持海盗.gd" id="1_0k8kw"]
+
+[node name="双持海盗" type="Node2D"]
+script = ExtResource("1_0k8kw")
