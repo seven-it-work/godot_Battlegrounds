@@ -16,7 +16,7 @@ public class 测试用例自动 {
         用例1生成();
         json处理();
         测试用例自动2.用例2生成();
-        测试用例自动3.用例3生成();
+        检查();
     }
 
     private static void 检查(){
@@ -24,7 +24,7 @@ public class 测试用例自动 {
         List<File> test = FileUtil.loopFiles(checkPath, new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                return !pathname.getName().startsWith("test_");
+                return !pathname.getName().startsWith("test_") && pathname.getName().endsWith(".tscn");
             }
         });
         test.forEach(file->{
@@ -40,8 +40,11 @@ public class 测试用例自动 {
                         hasJson=true;
                     }
                 }
-                if(!hasTscn&&!hasJson){
-
+//                if(!hasTscn){
+//                    System.out.println("缺失文件tscn:"+file.getPath());
+//                }
+                if(!hasJson){
+                    System.out.println("缺失文件 json:"+file.getPath());
                 }
             }
         });

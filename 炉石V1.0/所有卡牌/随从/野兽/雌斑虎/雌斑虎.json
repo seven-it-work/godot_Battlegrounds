@@ -1,0 +1,42 @@
+{
+  "id": 96759,
+  "strId": "BG_CFM_315t",
+  "cardType": "minion",
+  "name": "Tabbycat",
+  "nameCN": "雌斑虎",
+  "text": "",
+  "mechanics": [],
+  "referencedTags": [],
+  "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG_CFM_315t_battlegroundsImage.png",
+  "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG_CFM_315t_cardArtFromHsJson256x.png",
+  "tier": 1,
+  "health": 1,
+  "attack": 1,
+  "minionTypes": [
+    "beast"
+  ],
+  "minionTypesCN": [
+    "野兽"
+  ],
+  "upgradeCard": {
+    "id": 60054,
+    "strId": "TB_BaconUps_093t",
+    "cardType": "minion",
+    "name": "Tabbycat",
+    "nameCN": "雌斑虎",
+    "text": "",
+    "mechanics": [],
+    "referencedTags": [],
+    "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/TB_BaconUps_093t_imageFromBlizzardSb.png",
+    "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/TB_BaconUps_093t_cardArtFromHsJson256x.png",
+    "tier": 1,
+    "health": 2,
+    "attack": 2,
+    "minionTypes": [
+      "beast"
+    ],
+    "minionTypesCN": [
+      "野兽"
+    ]
+  }
+}
