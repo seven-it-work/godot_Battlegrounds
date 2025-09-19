@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://erxmd8pjf65h"]
+
+[sub_resource type="GDScript" id="GDScript_piranha"]
+resource_name = "食人鱼"
+script/source = "extends BaseMinion
+"
+
+[node name="食人鱼" type="Node"]
+script = SubResource("GDScript_piranha")
+race = Array[int]([6])
+atk_hp = Vector2i(3, 1)
+lushi_id = 120404
+str_id = "BG32_201_Gt"
+"名称" = "食人鱼"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

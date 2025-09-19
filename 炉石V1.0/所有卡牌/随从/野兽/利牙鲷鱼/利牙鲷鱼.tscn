@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://erxmd8pjf65h"]
+
+[sub_resource type="GDScript" id="GDScript_snapper"]
+resource_name = "利牙鲷鱼"
+script/source = "extends BaseMinion
+var 是否召唤:bool=false
+
+func 战斗开始时():
+	if player.战场随从是否满了():
+		player.随从死亡信号.connect(随从死亡时.bind())
+	await _检查空位并召唤()
+
+func 随从死亡时(死亡随从:BaseMinion):
+	# 当有随从死亡时，检查是否有空位
+	await _检查空位并召唤()
+
+func _检查空位并召唤():
+	if not player.是否在战斗中():
+		return
+	if 是否召唤:
+		return
+	# 获取当前战斗中的随从数量
+	var 当前随从数量 = player.战斗中的随从.size()
+	var 最大随从数量 = 7  # 战场最大随从数
+	
+	if 当前随从数量 < 最大随从数量:
+		# 计算召唤数量(普通卡1只，金色卡2只)
+		var 召唤数量 = 获取倍率()
+		var 空位数量 = 最大随从数量 - 当前随从数量
+		召唤数量 = min(召唤数量, 空位数量)
+		
+		for i in 召唤数量:
+			await _召唤食人鱼并攻击()
+
+func _召唤食人鱼并攻击():
+	是否召唤=true
+	# 召唤食人鱼
+	var 食人鱼 = CardUtils.get_card(\"食人鱼\", player) as BaseMinion
+	食人鱼.is_gold = is_gold  # 继承金色状态
+	
+	# 设置食人鱼属性(普通卡:3/1, 金色卡:6/2)
+	if is_gold:
+		食人鱼.atk_hp = Vector2i(6, 2)
+	else:
+		食人鱼.atk_hp = Vector2i(3, 1)
+	
+	# 添加到战斗中的随从
+	var 索引=player.获取卡片索引(self)
+	await player.添加卡片(食人鱼,Enums.CardPosition.战场,索引,true)
+	食人鱼.卡片所在位置 = Enums.CardPosition.战场
+	食人鱼.current_hp = 食人鱼.atk_hp.y
+	
+	# 立即攻击
+	await player.fightUI.立即攻击(player, player.fightUI.获取敌人(player),食人鱼)
+"
+
+[node name="利牙鲷鱼" type="Node"]
+script = SubResource("GDScript_snapper")
+race = Array[int]([6])
+atk_hp = Vector2i(3, 3)
+lushi_id = 120397
+str_id = "BG32_201"
+"名称" = "利牙鲷鱼"
+"描述" = "当你在战斗中有空位时，召唤一只3\\/1的野兽并使其立即攻击。"
+"glod_描述" = "当你在战斗中有空位时，召唤两只3\\/1的野兽并使其立即攻击。"
+"等级" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

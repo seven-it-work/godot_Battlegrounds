@@ -19,6 +19,7 @@ func _是否是敌人(player:Player)->bool:
 
 
 func _process(delta: float) -> void:
+	await get_tree().create_timer(1).timeout
 	## 存在问题。动画和数据不一致。动画没有播放完 已经死亡 free了
 	if 是否正在播放动画!=0:
 		return
@@ -62,6 +63,15 @@ func _当前攻击者进行攻击():
 	else:
 		await _进行攻击(攻击者,防御者,攻击随从)
 
+func 立即攻击(
+	攻击者:Player,
+	防御者:Player,
+	攻击随从:BaseMinion,):
+	是否正在播放动画+=1
+	await _进行攻击(攻击者,防御者,攻击随从)
+	是否正在播放动画-=1
+	pass
+
 func _进行攻击(
 	攻击者:Player,
 	防御者:Player,
@@ -74,9 +84,9 @@ func _进行攻击(
 	var 防御随从=_获取防御随从(防御者) as BaseMinion
 	if 防御随从==null:
 		# 没有防御随从，无法攻击
+		是否正在播放动画-=1
 		return
 	await 攻击随从.攻击其他随从(防御随从)
-	await get_tree().process_frame
 
 func _获取防御随从(player:Player)->BaseMinion:
 	if player.战斗中的随从.is_empty():
@@ -175,21 +185,19 @@ func 开始战斗(player:Player,target:Player):
 	for i in 玩家.战斗中的随从:
 		await 添加卡片(i,Enums.CardPosition.战场,-1,玩家)
 	_判断先手()
+	_战斗状态="战斗中"
 	# 战斗开始时
 	for i in 当前攻击者.手牌:
 		if i is BaseMinion:
-			i.战斗开始时()
+			await i.战斗开始时()
 	for i in 获取敌人(当前攻击者).手牌:
 		if i is BaseMinion:
-			i.战斗开始时()
+			await i.战斗开始时()
 	
 	for i in 当前攻击者.获取战场上的牌():
-		(i as BaseMinion).战斗开始时()
+		await (i as BaseMinion).战斗开始时()
 	for i in 获取敌人(当前攻击者).获取战场上的牌():
-		(i as BaseMinion).战斗开始时()
-	await get_tree().create_timer(1).timeout
-	_战斗状态="战斗中"
-	pass
+		await (i as BaseMinion).战斗开始时()
 
 func _判断先手():
 	# 判断先手
