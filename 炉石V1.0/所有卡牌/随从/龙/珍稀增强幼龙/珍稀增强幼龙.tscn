@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_drake"]
+
+[node name="珍稀增强幼龙" type="Node"]
+script = ExtResource("1_drake")
+race = Array[int]([3])
+atk_hp = Vector2i(2, 2)
+lushi_id = 72073
+str_id = "BG21_014"
+"名称" = "珍稀增强幼龙"
+"描述" = "<b>战斗开始时：</b>使你的龙获得+3/+3。"
+"glod_描述" = "<b>战斗开始时：</b>使你的龙获得+6/+6。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+func 战斗开始时():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	var buff_value: int = 3 * 获取倍率() # +3 for normal, +6 for golden
+	var buff_vector: Vector2i = Vector2i(buff_value, buff_value)
+	var friendly_dragons: Array = player.获取战场上的牌().filter(func(m): return Enums.CardRace.龙 in (m as BaseMinion).race)
+	for dragon in friendly_dragons:
+		var 加成 = AttributeBonus.build(
+			'珍稀增强幼龙加成',
+			buff_vector,
+			str(lushi_id)
+		)
+		(dragon as BaseMinion).属性加成(加成, false) # Temporary buff in combat
+"

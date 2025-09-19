@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://df0x2phq8vmme"]
+
+[sub_resource type="GDScript" id="GDScript_wildfire"]
+resource_name = "野火元素"
+script/source = "extends BaseMinion
+
+func 攻击其他随从(防御者:BaseMinion):
+	# 预先记录目标信息
+	var 目标玩家:Player = 防御者.player
+	var 目标索引:int = 目标玩家.获取卡片索引(防御者)
+	var 目标当前生命:int = 防御者.current_hp
+	var 目标有圣盾:bool = 防御者.获取圣盾()
+	var 攻击力:int = 获取带加成属性().x
+	# 先执行正常攻击
+	await super.攻击其他随从(防御者)
+	# 仅当目标被消灭且存在溢出伤害时触发
+	if 目标有圣盾:
+		return
+	if 攻击力<=0:
+		return
+	var 溢出:int = max(0, 攻击力 - 目标当前生命)
+	if 溢出<=0:
+		return
+	# 计算相邻随从（以目标为基准）
+	var 相邻: Array = ArrayUtils.get_neighboring_data(防御者,目标玩家.获取战场上的牌())
+	if 相邻.is_empty():
+		return
+	# 普通：随机一个；金卡：两个都打
+	if 获取倍率() == 1:
+		var 受击 = 相邻.pick_random() as BaseMinion
+		await 受击.生命扣除(self, 溢出)
+	else:
+		for m in 相邻:
+			await (m as BaseMinion).生命扣除(self, 溢出)
+"
+
+[node name="野火元素" type="Node"]
+script = SubResource("GDScript_wildfire")
+race = Array[int]([1])
+atk_hp = Vector2i(6, 3)
+lushi_id = 64189
+str_id = "BGS_126"
+"名称" = "野火元素"
+"描述" = "在本随从攻击并消灭一个随从后，对一个相邻的随从造成超过目标生命值的伤害。"
+"glod_描述" = "在本随从攻击并消灭一个随从后，对相邻的随从均造成超过目标生命值的伤害。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+

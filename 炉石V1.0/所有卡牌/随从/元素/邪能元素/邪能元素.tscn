@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://y1z2x3w4v5u6t"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_fe"]
+
+[sub_resource type="GDScript" id="GDScript_roar_fe"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	for i in 触发卡.获取倍率():
+		for m in 触发卡.player.酒馆:
+			if m is BaseMinion:
+				m.属性加成(AttributeBonus.build(触发卡.名称, Vector2i({atk},{hp}), str(触发卡.lushi_id)), true)
+"
+
+[node name="邪能元素" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_fe")
+race = Array[int]([1, 2])
+atk_hp = Vector2i(3, 3)
+"战吼" = [NodePath("Roar")]
+lushi_id = 97553
+str_id = "BG25_041"
+"名称" = "邪能元素"
+"描述" = "[b]战吼：[/b]使酒馆中的随从在本局对战中获得+{0}/+{1}。"
+"glod_描述" = "[b]战吼：[/b]\n使酒馆中的随从在本局对战中获得+{0}/+{1}，触发两次。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar_fe")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"
+
+
+

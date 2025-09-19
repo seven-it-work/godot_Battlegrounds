@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8l1"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/野兽/符文虫祖/符文虫祖.gd" id="1_0k8l1"]
+
+[node name="符文虫祖" type="Node2D"]
+script = ExtResource("1_0k8l1")

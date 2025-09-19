@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://w6e2y1tqbf1xz"]
+
+[sub_resource type="GDScript" id="GDScript_tarecgosa"]
+resource_name = "泰蕾苟萨"
+script/source = "extends BaseMinion
+
+func 战斗开始时():
+	# 在战斗阶段，后续临时加成将被永久记录
+	临时关键词.append('战斗增益可保留')
+
+func 属性加成(data:AttributeBonus,是否永久:bool):
+	# 战斗中：将临时加成也当作永久保存；金卡翻倍加成
+	var 实际是否永久 = 是否永久 or player.是否在战斗中()
+	var 加成数据 = data
+	if is_gold and player.是否在战斗中():
+		加成数据 = AttributeBonus.build(data.name, data.atk_hp * 2, data.key)
+	super.属性加成(加成数据, 实际是否永久)
+"
+
+[node name="泰蕾苟萨" type="Node"]
+script = SubResource("GDScript_tarecgosa")
+race = Array[int]([3])
+atk_hp = Vector2i(5, 5)
+lushi_id = 72062
+str_id = "BG21_015"
+"名称" = "泰蕾苟萨"
+"描述" = "本随从可永久保留战斗阶段受到的你的附加效果。"
+"glod_描述" = "本随从战斗阶段受到的你的附加效果翻倍，并可永久保留。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+
+

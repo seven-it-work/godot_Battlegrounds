@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://k9m8n7b6v5c4x"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_bassgill"]
+
+[sub_resource type="GDScript" id="GDScript_death_bassgill"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	var 次数 = 触发卡.获取倍率() # 1 或 2
+	var 索引 = 触发卡.删除前的索引
+	var 手牌鱼人 = 触发卡.player.手牌.filter(func(c): return c is BaseMinion and (Enums.CardRace.鱼人 in (c as BaseMinion).race))
+	if 手牌鱼人.is_empty():
+		return
+	# 选择生命值最高的（若有多个，取任意）
+	手牌鱼人.sort_custom(func(a,b): return (a as BaseMinion).获取带加成属性().y > (b as BaseMinion).获取带加成属性().y)
+	for i in 次数:
+		var 目标 = 手牌鱼人[ min(i, 手牌鱼人.size()-1) ] as BaseMinion
+		var copy = CardUtils.get_card(目标.名称, 触发卡.player) as BaseMinion
+		copy.is_gold = 目标.is_gold
+		copy.current_hp = copy.获取带加成属性().y
+		触发卡.player.添加卡片(copy, Enums.CardPosition.战场, 索引, true)
+"
+
+[node name="低音提琴鱼人" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_bassgill")
+race = Array[int]([10])
+atk_hp = Vector2i(5, 2)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 98926
+str_id = "BG26_350"
+"名称" = "低音提琴鱼人"
+"描述" = "[b]亡语：[/b]召唤你手牌中生命值最高的鱼人，其登场仅限本场战斗。"
+"glod_描述" = "[b]亡语：[/b]召唤你\n手牌中生命值最高的2个鱼人，其登场仅限本场战斗。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_death_bassgill")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"
+
+
+

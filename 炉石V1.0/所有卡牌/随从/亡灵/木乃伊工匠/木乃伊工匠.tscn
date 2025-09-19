@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://nn1mm2bb3cc4"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_mummifier"]
+
+[sub_resource type="GDScript" id="GDScript_death_mummifier"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	var 次数:int = 触发卡.获取倍率() # 1 或 2
+	var 友方亡灵 = 触发卡.player.获取战场上的牌().filter(func(m:BaseMinion): return m != 触发卡 and (Enums.CardRace.亡灵 in m.race))
+	if 友方亡灵.is_empty():
+		return
+	for i in 次数:
+		var 目标 = 友方亡灵.pick_random() as BaseMinion
+		目标.复生 = true
+"
+
+[node name="木乃伊工匠" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_mummifier")
+race = Array[int]([9])
+atk_hp = Vector2i(5, 2)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 108992
+str_id = "BG28_309"
+"名称" = "木乃伊工匠"
+"描述" = "[b]亡语：[/b]使一个不同的友方亡灵获得[b]复生[/b]。"
+"glod_描述" = "[b]亡语：[/b]使2个不同的友方亡灵获得[b]复生[/b]。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_death_mummifier")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"
+
+
+

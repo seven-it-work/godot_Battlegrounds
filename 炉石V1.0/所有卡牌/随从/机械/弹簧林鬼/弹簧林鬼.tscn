@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_spriggan"]
+
+[node name="弹簧林鬼" type="Node"]
+script = ExtResource("1_spriggan")
+race = Array[int]([4])
+atk_hp = Vector2i(4, 2)
+@export var 是否为磁力:bool = true
+@export var 磁力可以贴加的种族:Array[Enums.CardRace] = [Enums.CardRace.机械]
+lushi_id = 120023
+str_id = "BG32_171"
+"名称" = "弹簧林鬼"
+"描述" = "<b>磁力</b>。在你的回合结束时，使你的其他机械获得+1攻击力。"
+"glod_描述" = "<b>磁力</b>。在你的回合结束时，使你的其他机械获得+2攻击力。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 是否为磁力:bool = true
+@export var 磁力可以贴加的种族:Array[Enums.CardRace] = [Enums.CardRace.机械]
+
+func 信号绑定():
+	player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	var buff_value: int = 1 * 获取倍率() # +1 for normal, +2 for golden
+	var buff_vector: Vector2i = Vector2i(buff_value, 0)
+	var other_mechs: Array = player.获取战场上的牌().filter(func(m): return m != self and (Enums.CardRace.机械 in (m as BaseMinion).race))
+	for mech in other_mechs:
+		var 加成 = AttributeBonus.build(
+			'弹簧林鬼加成',
+			buff_vector,
+			str(lushi_id)
+		)
+		(mech as BaseMinion).属性加成(加成, true) # Permanent buff
+"

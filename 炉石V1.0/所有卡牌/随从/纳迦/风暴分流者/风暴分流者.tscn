@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8km"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/纳迦/风暴分流者/风暴分流者.gd" id="1_0k8km"]
+
+[node name="风暴分流者" type="Node2D"]
+script = ExtResource("1_0k8km")

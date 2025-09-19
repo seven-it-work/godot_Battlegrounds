@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_hand"]
+
+[node name="义肢假手" type="Node"]
+script = ExtResource("1_hand")
+race = Array[int]([9, 4])
+atk_hp = Vector2i(3, 1)
+@export var 是否为磁力:bool = true
+@export var 磁力可以贴加的种族:Array[Enums.CardRace] = [Enums.CardRace.机械, Enums.CardRace.亡灵]
+@export var 复生:bool = true
+lushi_id = 112364
+str_id = "BG_DEEP_015"
+"名称" = "义肢假手"
+"描述" = "<b>磁力</b>。<b>复生</b>\n可以<b>磁力吸附</b>在机械或亡灵上。"
+"glod_描述" = "<b>磁力</b>。<b>复生</b>\n可以<b>磁力吸附</b>在机械或亡灵上。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 是否为磁力:bool = true
+@export var 磁力可以贴加的种族:Array[Enums.CardRace] = [Enums.CardRace.机械, Enums.CardRace.亡灵]
+@export var 复生:bool = true
+"

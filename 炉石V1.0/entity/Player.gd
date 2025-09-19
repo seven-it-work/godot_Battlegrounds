@@ -62,7 +62,7 @@ static var 升级酒馆金币={
 @export var 本局对战使用的法术数量:int=0
 
 #region 战斗相关属性
-## Array[CardEntity]
+## Array[CardEntity] （就是战场中的随从）
 var 战斗中的随从:Array=[]
 ## key=战场上的随从 value=战斗中的随从
 #var 战场_战斗中的对象映射map:Dictionary={}

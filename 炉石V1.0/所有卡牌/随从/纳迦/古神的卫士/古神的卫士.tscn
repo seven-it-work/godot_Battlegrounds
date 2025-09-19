@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://0z0x3l1m7a2v9"]
+
+[sub_resource type="GDScript" id="GDScript_warden"]
+resource_name = "古神的卫士"
+script/source = "extends BaseMinion
+var timer:Timer
+
+func 信号绑定():
+	player.开始回合信号.connect(_信号.bind(self))
+	player.使用卡牌信号.connect(_信号.bind())
+	pass
+
+func _信号(使用卡牌:CardEntity):
+	if 使用卡牌==self:
+		if 卡片所在位置==Enums.CardPosition.战场:
+			if 使用卡牌 is BaseMinion:
+				# 每3秒检查一次手牌是否有空位，否则立即发放塑造法术
+				if player.手牌是否满了():
+					var timer=Timer.new()
+					add_child(timer)
+					timer.timeout.connect(_获取塑造法术.bind())
+					timer.start(3)
+					self.timer=timer
+				else:
+					_获取塑造法术()
+
+func _获取塑造法术():
+	if player.手牌是否满了():
+		return
+	var card=CardUtils.get_card('古神铸币',player)
+	card.is_gold=self.is_gold
+	player.添加卡片(card,Enums.CardPosition.手牌,-1,true)
+	if timer:
+		timer.stop()
+		timer.queue_free()
+"
+
+[node name="古神的卫士" type="Node"]
+script = SubResource("GDScript_warden")
+race = Array[int]([8])
+atk_hp = Vector2i(2, 2)
+lushi_id = 65660
+str_id = "BGS_200"
+"名称" = "古神的卫士"
+"描述" = "[b]塑造法术：[/b]获得1枚铸币。"
+"glod_描述" = "[b]塑造法术：[/b]获得2枚铸币。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+
+

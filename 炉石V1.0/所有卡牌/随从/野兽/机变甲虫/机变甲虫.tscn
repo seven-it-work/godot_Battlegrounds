@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://jj1kk2ll3mm4"]
+
+[ext_resource type="Script" uid="uid://bfiw5rjm0riy2" path="res://所有卡牌/法术/酒馆法术/TavernSpell.gd" id="1_ts"]
+[ext_resource type="Script" uid="uid://dm8wwi7t2cegy" path="res://entity/Choose.gd" id="2_choose"]
+
+[sub_resource type="GDScript" id="GDScript_scarab_root"]
+script/source = "extends BaseMinion
+"
+
+[sub_resource type="GDScript" id="GDScript_choose_scarab"]
+resource_name = "选择目标"
+script/source = "extends SelectTarget
+"
+
+[sub_resource type="GDScript" id="GDScript_spell_a"]
+resource_name = "抉择1"
+script/source = "extends BaseSpell
+
+func 法术使用处理():
+	var 目标=选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion and (Enums.CardRace.野兽 in 目标.race):
+		var v=1*获取倍率()
+		目标.属性加成(AttributeBonus.build(名称, Vector2i(v,v), 名称), false)
+		(目标 as BaseMinion).复生=true
+"
+
+[sub_resource type="GDScript" id="GDScript_spell_b"]
+resource_name = "抉择2"
+script/source = "extends BaseSpell
+
+func 法术使用处理():
+	var 目标=选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion and (Enums.CardRace.野兽 in 目标.race):
+		var v=8*获取倍率()
+		目标.属性加成(AttributeBonus.build(名称, Vector2i(v,0), 名称), false)
+"
+
+[node name="机变甲虫" type="Node" node_paths=PackedStringArray("抉择")]
+script = SubResource("GDScript_scarab_root")
+race = Array[int]([6])
+atk_hp = Vector2i(2, 1)
+"抉择" = NodePath("Choose")
+lushi_id = 108909
+str_id = "BG27_084"
+"名称" = "机变甲虫"
+"描述" = "[b]抉择：[/b]使一只野兽获得+1/+1和[b]复生[/b]；或者+8攻击力。"
+"glod_描述" = "[b]抉择：[/b]使一只野兽获得+2/+2和[b]复生[/b]；或者+16攻击力。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Choose" type="Node" parent="." node_paths=PackedStringArray("chooseOption")]
+script = ExtResource("2_choose")
+chooseOption = [NodePath("BaseSpell"), NodePath("BaseSpell2")]
+metadata/_custom_type_script = "uid://dm8wwi7t2cegy"
+
+[node name="BaseSpell" type="Node" parent="Choose" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_spell_a")
+"卡牌类型" = 4
+"选择目标对象" = NodePath("SelectTarget")
+"名称" = "+1/+1与复生"
+"描述" = "+1/+1与复生"
+"是否出现在酒馆" = false
+
+[node name="SelectTarget" type="Node" parent="Choose/BaseSpell"]
+script = SubResource("GDScript_choose_scarab")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"
+
+[node name="BaseSpell2" type="Node" parent="Choose"]
+script = SubResource("GDScript_spell_b")
+"卡牌类型" = 4
+"名称" = "+8攻击力"
+"描述" = "+8攻击力"
+"是否出现在酒馆" = false
+
+
+

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://u7i8o9p0a1s2d"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_scourfin"]
+
+[sub_resource type="GDScript" id="GDScript_death_scourfin"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	var buff:int = 5 * 触发卡.获取倍率()
+	var 手牌随从 = 触发卡.player.手牌.filter(func(c): return c is BaseMinion)
+	if 手牌随从.is_empty():
+		return
+	var 目标 = 手牌随从.pick_random() as BaseMinion
+	目标.属性加成(AttributeBonus.build(触发卡.名称, Vector2i(buff, buff), str(触发卡.lushi_id)), true)
+"
+
+[node name="寻宝鱼人" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_scourfin")
+race = Array[int]([10])
+atk_hp = Vector2i(3, 3)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 100930
+str_id = "BG26_360"
+"名称" = "寻宝鱼人"
+"描述" = "[b]亡语：[/b]随机使你手牌中的一张随从牌获得+5/+5。"
+"glod_描述" = "[b]亡语：[/b]随机使你手牌中的一张随从牌获得+10/+10。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_death_scourfin")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"
+
+
+

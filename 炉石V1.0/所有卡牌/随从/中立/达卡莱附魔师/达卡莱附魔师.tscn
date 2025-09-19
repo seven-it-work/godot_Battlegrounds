@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8kb"]
+
+[ext_resource type="Script" uid="uid://b2sivtfywah0e" path="res://所有卡牌/随从/中立/达卡莱附魔师/达卡莱附魔师.gd" id="1_0k8kb"]
+
+[node name="达卡莱附魔师" type="Node2D"]
+script = ExtResource("1_0k8kb")
+atk_hp = Vector2i(1, 5)
+lushi_id = 101314
+str_id = "BG26_ICC_901"
+"名称" = "达卡莱附魔师"
+"描述" = "你的回合结束效果会触发两次。"
+"glod_描述" = "你的回合结束效果会触发三次。"
+"等级" = 5

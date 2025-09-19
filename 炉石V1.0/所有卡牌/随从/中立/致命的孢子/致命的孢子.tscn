@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_spore"]
+
+[node name="致命的孢子" type="Node"]
+script = ExtResource("1_spore")
+atk_hp = Vector2i(1, 1)
+"剧毒" = true
+lushi_id = 65031
+str_id = "BGS_131"
+"名称" = "致命的孢子"
+"描述" = "[b]烈毒[/b]"
+"glod_描述" = "[b]烈毒[/b]"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+

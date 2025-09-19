@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_headhunter"]
+
+[node name="顽砂猎头" type="Node"]
+script = ExtResource("1_headhunter")
+race = Array[int]([5])
+atk_hp = Vector2i(5, 3)
+@export var 战吼:Array[Roar]=[]
+lushi_id = 115597
+str_id = "BG31_822"
+"名称" = "顽砂猎头"
+"描述" = "<b>战吼：</b>获取一张掠夺者合约。"
+"glod_描述" = "<b>战吼：</b>获取2张掠夺者合约。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+@export var 战吼:Array[Roar]=[]
+
+func _ready():
+	var roar_node = Roar.new()
+	add_child(roar_node)
+	roar_node.触发卡 = self
+	roar_node.script = preload('res://所有卡牌/随从/海盗/顽砂猎头/顽砂猎头_Roar.gd')
+	战吼.append(roar_node)
+"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqj8q8q8q8q8q"]
+
+[ext_resource type="Script" uid="uid://fg5fhvaoycjw" path="res://所有卡牌/随从/中立/坎格尔的学徒/坎格尔的学徒.gd" id="1_0"]
+
+[sub_resource type="GDScript" id="GDScript_qbqec"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# Assuming player.获取最先死亡的机械() exists to get the first dead mechs
+	# For now, we'll simulate by getting random mechs
+	var mechs_to_summon: int = 2
+	if 触发卡.is_gold:
+		mechs_to_summon = 4 # Golden version summons 4 mechs
+
+	for i in mechs_to_summon:
+		#todo 这里要去拿最先死亡的随从
+		#var dead_mech = player.获取最先死亡的机械() # Placeholder for getting first dead mech
+		#if dead_mech:
+			 #Summon the mech to the battlefield
+			#player.添加卡片(dead_mech, Enums.CardPosition.战场, -1, true) # Summon to battlefield
+			#print(\"坎格尔的学徒触发亡语：召唤最先死亡的机械\")
+		pass
+"
+
+[node name="坎格尔的学徒" type="Node2D" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_0")
+"限定类型" = Array[int]([4])
+atk_hp = Vector2i(3, 6)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 59935
+str_id = "BGS_012"
+"名称" = "坎格尔的学徒"
+"描述" = "<b>亡语：<\\/b>召唤你本场战斗中最先死亡的\\n2个机械。"
+"glod_描述" = "<b>亡语：<\\/b>召唤你本场战斗中最先死亡的\\n4个机械。"
+"等级" = 5
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_qbqec")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

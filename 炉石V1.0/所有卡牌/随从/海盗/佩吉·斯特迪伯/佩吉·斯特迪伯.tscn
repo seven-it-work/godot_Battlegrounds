@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://s7t8u9v0w1x2y"]
+
+[sub_resource type="GDScript" id="GDScript_peggy"]
+resource_name = "佩吉·斯特迪伯"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	if !player.操作中添加卡片信号.is_connected(_on_有牌入手):
+		player.操作中添加卡片信号.connect(_on_有牌入手)
+
+func _on_有牌入手(d:CardEntity, cardPosition:Enums.CardPosition, index:int):
+	if cardPosition != Enums.CardPosition.手牌:
+		return
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 选择另一个友方海盗
+	var 候选 = player.获取战场上的牌().filter(func(m:BaseMinion): return m != self and (Enums.CardRace.海盗 in m.race))
+	if 候选.is_empty():
+		return
+	var 目标 = 候选.pick_random() as BaseMinion
+	var 增益 = 1 * 获取倍率()
+	目标.属性加成(AttributeBonus.build('佩吉·斯特迪伯', Vector2i(增益, 增益), str(lushi_id)), false)
+"
+
+[node name="佩吉·斯特迪伯" type="Node"]
+script = SubResource("GDScript_peggy")
+race = Array[int]([5])
+atk_hp = Vector2i(2, 1)
+lushi_id = 97535
+str_id = "BG25_032"
+"名称" = "佩吉·斯特迪伯"
+"描述" = "每当一张卡牌被置入你的手牌，使另一个友方海盗获得+1/+1。"
+"glod_描述" = "每当一张卡牌被置入你的手牌，使另一个友方海盗获得+2/+2。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+
+

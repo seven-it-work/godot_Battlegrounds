@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddjsf8sud20g3"]
+
+[ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_7g65v"]
+[ext_resource type="Script" uid="uid://upwxtqaduibs" path="res://entity/Player.gd" id="3_vigqu"]
+
+[sub_resource type="GDScript" id="GDScript_yeaej"]
+script/source = "extends Control
+
+func _ready() -> void:
+	CardUtils.游戏初始化加载卡牌([])
+
+	$Player.添加卡片(CardUtils.get_card(\"古神的卫士\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"古神的卫士\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"古神的卫士\",$Player),Enums.CardPosition.战场,-1,true)
+
+
+	$Player2.添加卡片(CardUtils.get_card(\"古神的卫士\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"古神的卫士\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"古神的卫士\",$Player2),Enums.CardPosition.战场,-1,true)
+
+	$FightUi.开始战斗($Player,$Player2)
+"
+
+[node name="Test古神的卫士" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_yeaej")
+
+[node name="FightUi" parent="." instance=ExtResource("2_7g65v")]
+layout_mode = 1
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("3_vigqu")
+metadata/_custom_type_script = "uid://upwxtqaduibs"
+
+[node name="Player2" type="Node" parent="."]
+script = ExtResource("3_vigqu")
+metadata/_custom_type_script = "uid://upwxtqaduibs"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8l9"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/鱼人/鳛芙的学徒/鳛芙的学徒.gd" id="1_0k8l9"]
+
+[node name="鳛芙的学徒" type="Node2D"]
+script = ExtResource("1_0k8l9")

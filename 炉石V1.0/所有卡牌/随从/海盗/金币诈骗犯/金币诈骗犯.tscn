@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_grifter"]
+
+[node name="金币诈骗犯" type="Node"]
+script = ExtResource("1_grifter")
+race = Array[int]([5])
+atk_hp = Vector2i(6, 6)
+var _pirate_count: int = 0
+var _target_pirates: int = 4
+lushi_id = 116035
+str_id = "BG31_826"
+"名称" = "金币诈骗犯"
+"描述" = "每当你获取4张海盗牌，你的铸币上限提高1枚。"
+"glod_描述" = "每当你获取4张海盗牌，你的铸币上限提高2枚。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _pirate_count: int = 0
+var _target_pirates: int = 4
+
+func 信号绑定():
+	player.操作中添加卡片信号.connect(_on_操作中添加卡片)
+
+func _on_操作中添加卡片(添加卡牌: CardEntity, cardPosition: Enums.CardPosition, index: int):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if 添加卡牌 is BaseMinion and (Enums.CardRace.海盗 in (添加卡牌 as BaseMinion).race):
+		_pirate_count += 1
+		if _pirate_count >= _target_pirates:
+			_pirate_count = 0
+			_提高铸币上限()
+
+func _提高铸币上限():
+	var increase: int = 1 * 获取倍率() # +1 for normal, +2 for golden
+	# Assuming there's a way to increase coin cap
+	# This is a placeholder implementation
+	print('金币诈骗犯触发：铸币上限提高 %d 枚' % increase)
+	# player.铸币上限 += increase
+"

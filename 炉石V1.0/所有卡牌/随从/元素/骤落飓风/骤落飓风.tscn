@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_tornado"]
+
+[node name="骤落飓风" type="Node"]
+script = ExtResource("1_tornado")
+race = Array[int]([1])
+atk_hp = Vector2i(4, 4)
+lushi_id = 116738
+str_id = "BG31_817"
+"名称" = "骤落飓风"
+"描述" = "当你出售本随从时，<b>发现</b>\n一个元素并使其获得本随从的属性值。"
+"glod_描述" = "当你出售本随从时，<b>发现</b>\n2个元素并使其获得本随从的属性值。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.出售随从信号.connect(_on_出售随从)
+
+func _on_出售随从(出售随从: BaseMinion):
+	if 出售随从 != self:
+		return
+	_发现元素并给予属性()
+
+func _发现元素并给予属性():
+	var discover_count: int = 1 * 获取倍率() # 1 for normal, 2 for golden
+	var my_stats = 获取带加成属性()
+	for i in discover_count:
+		# Assuming there's a method to discover elemental cards
+		# This is a placeholder implementation
+		print('骤落飓风触发：发现元素并给予属性值 %s' % str(my_stats))
+		# var element = CardUtils.discover_elemental_card(player)
+		# if element:
+		# 	var 加成 = AttributeBonus.build('骤落飓风属性', my_stats, str(lushi_id))
+		# 	element.属性加成(加成, true)
+"

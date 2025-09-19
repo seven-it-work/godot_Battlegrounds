@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x464niotexu"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_explorer"]
+
+[node name="星眸探险者" type="Node"]
+script = ExtResource("1_explorer")
+race = Array[int]([5])
+atk_hp = Vector2i(5, 5)
+lushi_id = 119984
+str_id = "BG32_230"
+"名称" = "星眸探险者"
+"描述" = "每两个回合，在回合开始时，使一个相邻的等级2的随从变为金色。"
+"glod_描述" = "每两个回合，在回合开始时，使相邻的等级2的随从变为金色。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends BaseMinion
+
+var _turn_counter: int = 0
+
+func 信号绑定():
+	player.开始回合信号.connect(_on_开始回合)
+
+func _on_开始回合():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	_turn_counter += 1
+	if _turn_counter >= 2:
+		_turn_counter = 0
+		_使相邻等级2随从变金色()
+
+func _使相邻等级2随从变金色():
+	var 相邻: Array = ArrayUtils.get_neighboring_data(self, player.获取战场上的牌())
+	if 相邻.is_empty():
+		return
+	var 等级2随从: Array = 相邻.filter(func(m): return (m as BaseMinion).等级 == 2)
+	if 等级2随从.is_empty():
+		return
+	var 目标随从 = 等级2随从.pick_random()
+	if 目标随从:
+		(目标随从 as BaseMinion).is_gold = true
+"

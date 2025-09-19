@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnbvcxzasd123"]
+
+[sub_resource type="GDScript" id="GDScript_watcher"]
+resource_name = "漂浮观察者"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	if !player.英雄受伤信号.is_connected(_on_英雄受伤):
+		player.英雄受伤信号.connect(_on_英雄受伤)
+
+func _on_英雄受伤(伤害:int):
+	# 仅在自己的回合（非战斗中）且本体在战场时触发
+	if player.是否在战斗中():
+		return
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if 伤害 <= 0:
+		return
+	var 增益:int = 2 * 获取倍率()
+	属性加成(AttributeBonus.build(名称, Vector2i(增益, 增益), str(lushi_id)), true)
+"
+
+[node name="漂浮观察者" type="Node"]
+script = SubResource("GDScript_watcher")
+race = Array[int]([2])
+atk_hp = Vector2i(4, 4)
+lushi_id = 105208
+str_id = "BG_GVG_100"
+"名称" = "漂浮观察者"
+"描述" = "每当你的英雄在你的回合受到伤害，便获得+2/+2。"
+"glod_描述" = "每当你的英雄在你的回合受到伤害，便获得+4/+4。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+
+

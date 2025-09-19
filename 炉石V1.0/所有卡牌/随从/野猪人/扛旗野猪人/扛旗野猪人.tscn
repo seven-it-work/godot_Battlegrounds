@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0b9rj2y7nq4s"]
+
+[sub_resource type="GDScript" id="GDScript_bannerboar"]
+resource_name = "扛旗野猪人"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 查找相邻随从
+	var 列表:Array = player.获取战场上的牌()
+	var 相邻:Array = ArrayUtils.get_neighboring_data(self, 列表)
+	if 相邻.is_empty():
+		return
+	var 次数:int = 获取倍率()
+	for 目标 in 相邻:
+		for i in 次数:
+			var 加成 = AttributeBonus.build(
+				'鲜血宝石',
+				player.鲜血宝石加成,
+				str(lushi_id)
+			)
+			(目标 as BaseMinion).属性加成(加成, true)
+"
+
+[node name="扛旗野猪人" type="Node"]
+script = SubResource("GDScript_bannerboar")
+race = Array[int]([7])
+atk_hp = Vector2i(1, 4)
+lushi_id = 70144
+str_id = "BG20_201"
+"名称" = "扛旗野猪人"
+"描述" = "在你的回合结束时，对相邻的随从使用一张[b]鲜血宝石[/b]。"
+"glod_描述" = "在你的回合结束时，对相邻的随从使用2张[b]鲜血宝石[/b]。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+
+

@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://ihgrywcagss2"]
+
+[sub_resource type="GDScript" id="GDScript_deflectobot"]
+resource_name = "偏折机器人"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 战斗阶段监听我方召唤随从
+	if !player.召唤随从信号.is_connected(_on_我方召唤随从):
+		player.召唤随从信号.connect(_on_我方召唤随从)
+
+func _on_我方召唤随从(召唤随从:BaseMinion):
+	# 仅战斗中、且本体在战场上时生效
+	if !player.是否在战斗中():
+		return
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 仅当召唤的是机械
+	if !(Enums.CardRace.机械 in 召唤随从.race):
+		return
+	# 获得临时攻击力与圣盾
+	var 攻击提升:int = 2 * 获取倍率()
+	var 加成 = AttributeBonus.build(
+		'偏折机器人充能',
+		Vector2i(攻击提升, 0),
+		str(lushi_id)
+	)
+	属性加成(加成, false)
+	圣盾 = true
+"
+
+[node name="偏折机器人" type="Node"]
+script = SubResource("GDScript_deflectobot")
+race = Array[int]([4])
+atk_hp = Vector2i(3, 2)
+"圣盾" = true
+lushi_id = 61930
+str_id = "BGS_071"
+"名称" = "偏折机器人"
+"描述" = "[b]圣盾[/b]
+在战斗阶段中，每当你召唤一个机械，便获得+2攻击力和[b]圣盾[/b]。"
+"glod_描述" = "[b]圣盾[/b]
+在战斗阶段中，每当你召唤一个机械，便获得+4攻击力和[b]圣盾[/b]。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b9u2k4y0m3nsp"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_handless"]
+
+[sub_resource type="GDScript" id="GDScript_death_handless"]
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	var 次数:int = 触发卡.获取倍率() # 普通1，金卡2
+	var 索引 = 触发卡.删除前的索引
+	for i in 次数:
+		var hand = CardUtils.get_card('援手', 触发卡.player) as BaseMinion
+		hand.is_gold = 触发卡.is_gold
+		hand.atk_hp = Vector2i(2,1) * 触发卡.获取倍率()
+		hand.复生 = true
+		触发卡.player.添加卡片(hand, Enums.CardPosition.战场, 索引, true)
+"
+
+[node name="断手被遗忘者" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_handless")
+race = Array[int]([9])
+atk_hp = Vector2i(2, 1)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 95265
+str_id = "BG25_010"
+"名称" = "断手被遗忘者"
+"描述" = "[b]亡语：[/b]召唤一只2/1并具有[b]复生[/b]的手。"
+"glod_描述" = "[b]亡语：[/b]召唤两只2/1并具有[b]复生[/b]的手。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_death_handless")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"
+
+
+

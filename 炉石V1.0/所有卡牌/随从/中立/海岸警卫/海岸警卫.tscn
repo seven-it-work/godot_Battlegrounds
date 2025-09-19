@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8ky"]
+
+[ext_resource type="Script" uid="uid://b4sf0w35chxnc" path="res://所有卡牌/随从/中立/海岸警卫/海岸警卫.gd" id="1_0k8ky"]
+
+[node name="海岸警卫" type="Node2D"]
+script = ExtResource("1_0k8ky")
+"限定类型" = Array[int]([5])
+atk_hp = Vector2i(4, 4)
+lushi_id = 116476
+str_id = "BG31_827"
+"名称" = "海岸警卫"
+"描述" = "当你出售\\n本随从时，<b>刷新<\\/b>酒馆，使其中变为海盗，然后偷取一个。"
+"glod_描述" = "当你出售\\n本随从时，<b>刷新<\\/b>酒馆，使其中变为海盗，然后偷取两个。"
+"等级" = 5

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqj8q8q8q8q8q"]
+
+[ext_resource type="Script" path="res://所有卡牌/随从/亡灵/噬渊施法者/噬渊施法者.gd" id="1_0"]
+
+[node name="噬渊施法者" type="Node2D"]
+script = ExtResource("1_0")
+

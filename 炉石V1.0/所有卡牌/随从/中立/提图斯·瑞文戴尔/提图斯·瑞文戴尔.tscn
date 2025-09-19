@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qj5x7k8k8la"]
+
+[ext_resource type="Script" uid="uid://ogr5ob82wbw" path="res://所有卡牌/随从/中立/提图斯·瑞文戴尔/提图斯·瑞文戴尔.gd" id="1_0k8k9"]
+
+[node name="提图斯·瑞文戴尔" type="Node2D"]
+script = ExtResource("1_0k8k9")
+atk_hp = Vector2i(1, 7)
+lushi_id = 97408
+str_id = "BG25_354"
+"名称" = "提图斯·瑞文戴尔"
+"描述" = "你的<b>亡语<\\/b>额外触发一次。"
+"glod_描述" = "你的<b>亡语<\\/b>额外触发两次。"
+"等级" = 5
