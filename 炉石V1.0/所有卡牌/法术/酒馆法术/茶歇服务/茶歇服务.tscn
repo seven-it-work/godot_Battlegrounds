@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jf62"]
+
+[sub_resource type="GDScript" id="GDScript_tea"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	# 刷新酒馆，使其中变为等级5的牌
+	player.设置酒馆等级过滤(5)
+	player.刷新酒馆()
+	print(\"茶歇服务：刷新酒馆，显示等级5的牌\")
+"
+
+[node name="茶歇服务" type="Node"]
+script = SubResource("GDScript_tea")
+"卡牌类型" = 1
+lushi_id = 120608
+str_id = "BG32_811"
+"名称" = "茶歇服务"
+"描述" = "[b]刷新[/b]酒馆，\\n使其中变为等级5的牌。"
+"花费" = 3
+"等级" = 5
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"

@@ -30,7 +30,8 @@ script/source = "extends SelectTarget
 func 获取选择的目标对象(list:Array):
 	var 过滤list=list\\
 		.filter(func(item:CardEntity): return item is BaseMinion)\\
-		.filter(func(item:BaseMinion): return item.race.has(Enums.CardRace.恶魔))
+		.filter(func(item:BaseMinion): return item.race.has(Enums.CardRace.恶魔))\\
+		.filter(func(item:BaseMinion): return item.卡片所在位置==Enums.CardPosition.战场)
 	return 过滤list
 "
 

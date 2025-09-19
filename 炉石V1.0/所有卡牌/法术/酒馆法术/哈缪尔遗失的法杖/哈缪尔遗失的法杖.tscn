@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp1a3ioon3m3d"]
+
+[sub_resource type="GDScript" id="GDScript_8b7ny"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标 = 选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion:
+		# 刷新酒馆，使其中的牌变为该类型的随从
+		var 随从种族 = 目标.race
+		player.设置酒馆种族过滤(随从种族)
+		player.刷新酒馆()
+		print(\"哈缪尔遗失的法杖：刷新酒馆，显示 \", 随从种族, \" 种族随从\")
+"
+
+[sub_resource type="GDScript" id="GDScript_bmo4p"]
+script/source = "extends SelectTarget
+
+func 获取选择的目标对象(list:Array):
+	var 过滤list=list\\
+		.filter(func(item:CardEntity): return item.卡牌类型==Enums.CardType.随从)\\
+		.filter(func(item:BaseMinion): 
+			var raceList=[Enums.CardRace.元素,
+			Enums.CardRace.恶魔,
+			Enums.CardRace.龙,
+			Enums.CardRace.机械,
+			Enums.CardRace.海盗,
+			Enums.CardRace.野兽,
+			Enums.CardRace.野猪人,
+			Enums.CardRace.纳迦,
+			Enums.CardRace.亡灵,
+			Enums.CardRace.鱼人,]
+			for i in raceList:
+				if item.race.has(i):
+					return true
+			return false
+			)
+	return 过滤list
+"
+
+[node name="哈缪尔遗失的法杖" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_8b7ny")
+"卡牌类型" = 1
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 100911
+str_id = "EBG_Spell_038"
+"名称" = "哈缪尔遗失的法杖"
+"描述" = "选择一个随从。[b]刷新[/b]酒馆，使其中的牌变为该类型的随从。"
+"等级" = 6
+"花费" = 2
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = SubResource("GDScript_bmo4p")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

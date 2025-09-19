@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5s5"]
+
+[sub_resource type="GDScript" id="GDScript_choose"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	# 抉择：随机获取一张等级6的随从牌；或者随机获取两张等级5的随从牌
+	# 这里需要实现抉择逻辑，让玩家选择
+	player.显示抉择([
+		{\"名称\": \"通往高处\", \"描述\": \"随机获取一张等级6的随从牌\", \"效果\": \"get_level6\"},
+		{\"名称\": \"通往低处\", \"描述\": \"随机获取两张等级5的随从牌\", \"效果\": \"get_level5\"}
+	])
+	print(\"罕迹之路：显示抉择选项\")
+"
+
+[node name="罕迹之路" type="Node"]
+script = SubResource("GDScript_choose")
+"卡牌类型" = 1
+lushi_id = 117592
+str_id = "BG31_884"
+"名称" = "罕迹之路"
+"描述" = "[b]抉择：[/b]随机获取一张等级6的随从牌；或者随机获取两张等级5的随从牌。"
+"花费" = 4
+"等级" = 6
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"

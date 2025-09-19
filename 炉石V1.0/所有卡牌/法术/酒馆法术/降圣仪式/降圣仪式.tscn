@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5s1"]
+
+[sub_resource type="GDScript" id="GDScript_discover"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	# 发现一个等级7的随从
+	var 等级7随从列表 = CardUtils.find_card([
+		CardUtils.COMMON_CODITION.随从,
+		CardFindCondition.build(\"等级\", 7, Enums.ConditionEnum.等于)
+	])
+	
+	if !等级7随从列表.is_empty():
+		var 发现的随从 = 等级7随从列表.pick_random() as CardEntity
+		var 随从卡 = CardUtils.get_card(发现的随从.名称, player)
+		player.添加卡片(随从卡, Enums.CardPosition.手牌, -1, true)
+		print(\"降圣仪式：发现等级7随从 \", 发现的随从.名称)
+"
+
+[node name="降圣仪式" type="Node"]
+script = SubResource("GDScript_discover")
+"卡牌类型" = 1
+lushi_id = 119718
+str_id = "BG31_896"
+"名称" = "降圣仪式"
+"描述" = "[b]发现[/b]一个等级7的随从。"
+"花费" = 5
+"等级" = 7
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"

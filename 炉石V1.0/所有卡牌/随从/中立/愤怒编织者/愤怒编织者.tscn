@@ -14,7 +14,7 @@ func _使用信号(使用的卡牌:CardEntity):
 			if 使用的卡牌 is BaseMinion:
 				if 使用的卡牌.race.has(Enums.CardRace.恶魔):
 					for i in 获取倍率():
-						player.生命值扣除(-1)
+						player.生命值扣除(1)
 						属性加成(AttributeBonus.build(
 							名称,
 							Vector2(2,1),

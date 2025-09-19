@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nvyjpr8jf66"]
+
+[sub_resource type="GDScript" id="GDScript_cupcakes"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标 = 选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion and Enums.CardRace.恶魔 in 目标.race:
+		# 使恶魔吞食酒馆中的3个随机随从
+		var 酒馆随从 = player.酒馆.filter(func(item): return item is BaseMinion)
+		var 吞食数量 = min(3, 酒馆随从.size())
+		
+		for i in 吞食数量:
+			if 酒馆随从.is_empty():
+				break
+			var 被吞食的随从 = 酒馆随从.pick_random() as BaseMinion
+			var 属性值 = 被吞食的随从.获取带加成属性()
+			
+			# 删除被吞食的随从
+			player.删除卡牌(被吞食的随从, Enums.CardPosition.酒馆, true)
+			酒馆随从.erase(被吞食的随从)
+			
+			# 恶魔获得属性值
+			目标.属性加成(AttributeBonus.build(
+				名称,
+				属性值,
+				名称
+			), true)
+			
+			print(\"腐化糕点：\", 目标.名称, \" 吞食了 \", 被吞食的随从.名称)
+"
+
+[sub_resource type="GDScript" id="GDScript_select"]
+script/source = "extends SelectTarget
+
+func 获取选择的目标对象(list:Array):
+	return list.filter(func(item:CardEntity): 
+		return item.卡牌类型==Enums.CardType.随从 and Enums.CardRace.恶魔 in item.race
+	)
+"
+
+[node name="腐化糕点" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_cupcakes")
+"卡牌类型" = 1
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 110407
+str_id = "BG28_607"
+"名称" = "腐化糕点"
+"描述" = "选择一个友方恶魔，使其吞食酒馆中的3个随机随从，获得其属性值。"
+"花费" = 4
+"等级" = 5
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = SubResource("GDScript_select")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

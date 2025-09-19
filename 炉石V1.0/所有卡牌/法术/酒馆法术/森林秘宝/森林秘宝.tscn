@@ -1,69 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://ucqd5ywej1vn"]
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7m9n2k5s12"]
 
-[ext_resource type="Script" uid="uid://bfiw5rjm0riy2" path="res://所有卡牌/法术/酒馆法术/TavernSpell.gd" id="1_ap0c7"]
-[ext_resource type="Script" uid="uid://dm8wwi7t2cegy" path="res://entity/Choose.gd" id="2_iotjd"]
+[sub_resource type="GDScript" id="GDScript_forest"]
+script/source = "extends TavernSpell
 
-[sub_resource type="GDScript" id="GDScript_0mlsd"]
-resource_name = "抉择1"
-script/source = "extends BaseSpell
+func 获取描述(dic:Dictionary={})->String:
+	var tempDic={
+		\"atk1\"=3,
+		\"hp1\"=3,
+		\"atk2\"=1,
+		\"hp2\"=1,
+	}
+	tempDic.merged(dic,true)
+	return super.获取描述(tempDic)
 
+## 由子类实现
 func 法术使用处理():
-	# 抉择实现
-	
-	pass
+	# 抉择：使一个随从获得+3/+3；或者使你的随从获得+1/+1
+	player.显示抉择([
+		{\"名称\": \"强化单个\", \"描述\": \"使一个随从获得+3/+3\", \"效果\": \"single_buff\"},
+		{\"名称\": \"群体强化\", \"描述\": \"使你的随从获得+1/+1\", \"效果\": \"group_buff\"}
+	])
+	print(\"森林秘宝：显示抉择选项\")
 "
 
-[sub_resource type="GDScript" id="GDScript_aex06"]
-resource_name = "选择目标"
-script/source = "extends SelectTarget
-"
-
-[sub_resource type="GDScript" id="GDScript_m85lu"]
-resource_name = "抉择2"
-script/source = "extends BaseSpell
-
-func 法术使用处理():
-	# 抉择实现
-	pass
-"
-
-[node name="森林秘宝" type="Node" node_paths=PackedStringArray("抉择")]
-script = ExtResource("1_ap0c7")
+[node name="森林秘宝" type="Node"]
+script = SubResource("GDScript_forest")
 "卡牌类型" = 1
-"抉择" = NodePath("Choose")
 lushi_id = 117584
 str_id = "BG31_886"
 "名称" = "森林秘宝"
-"描述" = "<b>抉择：<\\/b>使一个随从获得+{0}\\/+{1}；或者使你的随从获得+{2}\\/+{3}。"
-"glod_描述" = "<b>抉择：<\\/b>使一个随从获得+{0}\\/+{1}；或者使你的随从获得+{2}\\/+{3}。"
+"描述" = "[b]抉择：[/b]使一个随从获得+{0}/+{1}；或者使你的随从获得+{2}/+{3}。"
+"花费" = 3
 "等级" = 5
 metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
-
-[node name="Choose" type="Node" parent="." node_paths=PackedStringArray("chooseOption")]
-script = ExtResource("2_iotjd")
-chooseOption = [NodePath("BaseSpell"), NodePath("BaseSpell2")]
-metadata/_custom_type_script = "uid://dm8wwi7t2cegy"
-
-[node name="BaseSpell" type="Node" parent="Choose" node_paths=PackedStringArray("选择目标对象")]
-script = SubResource("GDScript_0mlsd")
-"卡牌类型" = 4
-"选择目标对象" = NodePath("SelectTarget")
-lushi_id = 117584
-str_id = "BG31_886"
-"名称" = "使一个随从获得+{0}/+{1}"
-"描述" = "使一个随从获得+{0}/+{1}"
-"glod_描述" = "使一个随从获得+{0}/+{1}"
-"是否出现在酒馆" = false
-
-[node name="SelectTarget" type="Node" parent="Choose/BaseSpell"]
-script = SubResource("GDScript_aex06")
-metadata/_custom_type_script = "uid://dka7i2mq801a1"
-
-[node name="BaseSpell2" type="Node" parent="Choose"]
-script = SubResource("GDScript_m85lu")
-"卡牌类型" = 4
-lushi_id = 117584
-str_id = "BG31_886"
-"名称" = "使你的随从获得+{2}/+{3}"
-"描述" = "使你的随从获得+{2}/+{3}"
-"是否出现在酒馆" = false

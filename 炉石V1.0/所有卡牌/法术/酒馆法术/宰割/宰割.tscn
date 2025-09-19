@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nvyjpr8jf65"]
+
+[sub_resource type="GDScript" id="GDScript_butcher"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标 = 选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion and Enums.CardRace.亡灵 in 目标.race:
+		# 消灭一个友方亡灵
+		var 等级 = 目标.等级
+		player.删除卡牌(目标, Enums.CardPosition.战场, true)
+		
+		# 在本局对战中，你的亡灵额外拥有等同于该随从等级的攻击力
+		player.亡灵额外攻击力 += 等级
+		print(\"宰割：消灭亡灵 \", 目标.名称, \"，亡灵获得+\", 等级, \" 攻击力\")
+"
+
+[sub_resource type="GDScript" id="GDScript_select"]
+script/source = "extends SelectTarget
+
+func 获取选择的目标对象(list:Array):
+	return list.filter(func(item:CardEntity): 
+		return item.卡牌类型==Enums.CardType.随从 and Enums.CardRace.亡灵 in item.race
+	)
+"
+
+[node name="宰割" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_butcher")
+"卡牌类型" = 1
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 110412
+str_id = "BG28_604"
+"名称" = "宰割"
+"描述" = "消灭一个友方亡灵。在本局对战中，你的亡灵额外拥有等同于该随从等级的攻击力。"
+"花费" = 2
+"等级" = 5
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = SubResource("GDScript_select")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

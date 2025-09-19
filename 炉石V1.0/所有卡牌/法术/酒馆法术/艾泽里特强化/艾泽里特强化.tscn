@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5s6"]
+
+[sub_resource type="GDScript" id="GDScript_azerite"]
+script/source = "extends TavernSpell
+
+func 获取描述(dic:Dictionary={})->String:
+	var tempDic={
+		\"atk\"=2,
+		\"hp\"=2,
+	}
+	tempDic.merged(dic,true)
+	return super.获取描述(tempDic)
+
+## 由子类实现
+func 法术使用处理():
+	# 使你的随从获得+2/+2
+	var 战队随从 = player.获取战场上的牌().filter(func(item): return item is BaseMinion)
+	
+	for 随从 in 战队随从:
+		随从.属性加成(AttributeBonus.build(
+			名称,
+			Vector2i(2, 2),
+			名称
+		), true)
+	
+	print(\"艾泽里特强化：所有随从获得+2/+2\")
+"
+
+[node name="艾泽里特强化" type="Node"]
+script = SubResource("GDScript_azerite")
+"卡牌类型" = 1
+lushi_id = 109232
+str_id = "BG28_169"
+"名称" = "艾泽里特强化"
+"描述" = "使你的随从获得+{0}/+{1}。"
+"花费" = 4
+"等级" = 6
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"

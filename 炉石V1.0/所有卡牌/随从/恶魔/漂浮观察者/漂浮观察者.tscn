@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://mnbvcxzasd123"]
+[gd_scene load_steps=2 format=3 uid="uid://13akr8i3rfss"]
 
 [sub_resource type="GDScript" id="GDScript_watcher"]
 resource_name = "漂浮观察者"
@@ -31,6 +31,3 @@ str_id = "BG_GVG_100"
 "glod_描述" = "每当你的英雄在你的回合受到伤害，便获得+4/+4。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-
-

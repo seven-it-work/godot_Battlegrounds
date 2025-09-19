@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7nan2k5ta"]
+
+[sub_resource type="GDScript" id="GDScript_eyes"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标 = 选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion:
+		# 检查随从等级是否4或以下
+		if 目标.等级 <= 4:
+			# 将随从变为金色
+			目标.is_gold = true
+			print(\"大地母亲之眼：\", 目标.名称, \" 变为金色\")
+		else:
+			print(\"大地母亲之眼：目标随从等级超过4，无法使用\")
+"
+
+[sub_resource type="GDScript" id="GDScript_select"]
+script/source = "extends SelectTarget
+
+func 获取选择的目标对象(list:Array):
+	return list.filter(func(item:CardEntity): 
+		return item.卡牌类型==Enums.CardType.随从 and item.等级 <= 4
+	)
+"
+
+[node name="大地母亲之眼" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_eyes")
+"卡牌类型" = 1
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 100601
+str_id = "EBG_Spell_017"
+"名称" = "大地母亲之眼"
+"描述" = "选择一个等级4或以下的友方随从，将其变为金色。"
+"花费" = 4
+"等级" = 6
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = SubResource("GDScript_select")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

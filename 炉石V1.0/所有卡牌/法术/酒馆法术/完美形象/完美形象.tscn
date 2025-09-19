@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7nan2k5s7"]
+
+[sub_resource type="GDScript" id="GDScript_perfect"]
+script/source = "extends TavernSpell
+
+func 获取描述(dic:Dictionary={})->String:
+	var tempDic={
+		\"atk\"=6,
+		\"hp\"=6,
+	}
+	tempDic.merged(dic,true)
+	return super.获取描述(tempDic)
+
+## 由子类实现
+func 法术使用处理():
+	var 目标 = 选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion:
+		# 将随从的属性值变为6/6
+		var 当前属性 = 目标.获取带加成属性()
+		var 差值 = Vector2i(6 - 当前属性.x, 6 - 当前属性.y)
+		
+		目标.属性加成(AttributeBonus.build(
+			名称,
+			差值,
+			名称
+		), true)
+		
+		print(\"完美形象：\", 目标.名称, \" 属性变为6/6\")
+"
+
+[sub_resource type="GDScript" id="GDScript_select"]
+script/source = "extends SelectTarget
+
+func 获取选择的目标对象(list:Array):
+	return list.filter(func(item:CardEntity): return item.卡牌类型==Enums.CardType.随从)
+"
+
+[node name="完美形象" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_perfect")
+"卡牌类型" = 1
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 104601
+str_id = "BG28_838"
+"名称" = "完美形象"
+"描述" = "将一个随从的属性值变为{0}/{1}。"
+"花费" = 2
+"等级" = 6
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = SubResource("GDScript_select")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

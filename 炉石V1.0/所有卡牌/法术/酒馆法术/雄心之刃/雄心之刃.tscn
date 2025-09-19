@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7nan2k5s2"]
+
+[sub_resource type="GDScript" id="GDScript_blade"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	var 目标 = 选择目标对象.目标卡片
+	if 目标 and 目标 is BaseMinion:
+		# 找到战队中最高的攻击力和生命值
+		var 战队随从 = player.获取战场上的牌().filter(func(item): return item is BaseMinion)
+		if 战队随从.is_empty():
+			return
+		
+		var 最高攻击力 = 0
+		var 最高生命值 = 0
+		
+		for 随从 in 战队随从:
+			var 属性 = 随从.获取带加成属性()
+			最高攻击力 = max(最高攻击力, 属性.x)
+			最高生命值 = max(最高生命值, 属性.y)
+		
+		# 将目标随从的属性变为最高值
+		目标.属性加成(AttributeBonus.build(
+			名称,
+			Vector2i(最高攻击力 - 目标.获取带加成属性().x, 最高生命值 - 目标.获取带加成属性().y),
+			名称
+		), true)
+		
+		print(\"雄心之刃：将 \", 目标.名称, \" 属性变为 \", 最高攻击力, \"/\", 最高生命值)
+"
+
+[sub_resource type="GDScript" id="GDScript_select"]
+script/source = "extends SelectTarget
+
+func 获取选择的目标对象(list:Array):
+	return list.filter(func(item:CardEntity): return item.卡牌类型==Enums.CardType.随从)
+"
+
+[node name="雄心之刃" type="Node" node_paths=PackedStringArray("选择目标对象")]
+script = SubResource("GDScript_blade")
+"卡牌类型" = 1
+"选择目标对象" = NodePath("SelectTarget")
+lushi_id = 119603
+str_id = "BG31_895"
+"名称" = "雄心之刃"
+"描述" = "选择一个随从，将其攻击力与生命值变为与你的战队中最高的数值相同。"
+"花费" = 6
+"等级" = 7
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"
+
+[node name="SelectTarget" type="Node" parent="."]
+script = SubResource("GDScript_select")
+metadata/_custom_type_script = "uid://dka7i2mq801a1"

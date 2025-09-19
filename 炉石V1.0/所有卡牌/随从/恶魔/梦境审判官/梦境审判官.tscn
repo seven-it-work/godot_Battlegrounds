@@ -6,16 +6,16 @@ script/source = "extends BaseMinion
 
 func 信号绑定():
 	# 连接施放酒馆法术信号
-	if !player.施放酒馆法术信号.is_connected(_on_施放酒馆法术):
-		player.施放酒馆法术信号.connect(_on_施放酒馆法术)
+	if !player.使用卡牌信号.is_connected(_on_施放酒馆法术):
+		player.使用卡牌信号.connect(_on_施放酒馆法术)
 
 func _on_施放酒馆法术(法术:CardEntity):
 	# 仅当在战场上时生效
 	if 卡片所在位置 != Enums.CardPosition.战场:
 		return
-	
+	if 法术 is not TavernSpell:
+		return
 	var 倍率 = 获取倍率()  # 普通卡:1次, 金色卡:2次
-	
 	for i in 倍率:
 		# 对英雄造成1点伤害
 		player.生命值扣除(1)

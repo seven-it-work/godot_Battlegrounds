@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5s3"]
+
+[sub_resource type="GDScript" id="GDScript_sharing"]
+script/source = "extends TavernSpell
+
+## 由子类实现
+func 法术使用处理():
+	# 战斗开始时：你最左边的随从会获得等同于距其最近的敌方随从的属性值
+	# 这个效果需要在战斗开始时触发，所以这里只是设置标记
+	player.分享关爱标记 = true
+	print(\"分享关爱：已设置战斗开始时效果\")
+"
+
+[node name="分享关爱" type="Node"]
+script = SubResource("GDScript_sharing")
+"卡牌类型" = 1
+lushi_id = 119599
+str_id = "BG31_889"
+"名称" = "分享关爱"
+"描述" = "[b]战斗开始时：[/b]你最左边的随从会获得等同于距其最近的敌方随从的属性值。"
+"花费" = 2
+"等级" = 7
+metadata/_custom_type_script = "uid://bfiw5rjm0riy2"

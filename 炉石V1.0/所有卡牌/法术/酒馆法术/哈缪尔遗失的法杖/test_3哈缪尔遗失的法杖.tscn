@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dedpo2ortyfd5"]
+
+[ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_tykny"]
+[ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_mgoj7"]
+
+[sub_resource type="GDScript" id="GDScript_3qadc"]
+script/source = "extends Control
+
+func _ready() -> void:
+	var player=Player.new()
+	player.名称=\"哈缪尔遗失的法杖测试用例\"
+	player.当前金币=999
+	player.当前金币上限=999
+	$\"操作回合\".初始化(player)
+	CardUtils.游戏初始化加载卡牌([])
+
+	var array=[
+		\"哈缪尔遗失的法杖\",
+		\"哈缪尔遗失的法杖\",
+		\"哈缪尔遗失的法杖\",
+	]
+	for i in array:
+		var card=CardUtils.get_card(i,player)
+		if card==null:
+			printerr(\"没有该卡牌\",i)
+			return
+		player.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
+	pass
+
+
+func _on_操作回合_结束回合信号(敌人:Player) -> void:
+	$\"操作回合\".hide()
+	$FightUi.show()
+	$FightUi.开始战斗($\"操作回合\".player,敌人)
+	pass # Replace with function body.
+
+
+func _on_fight_ui_战斗结束信号(是否平局: bool, 胜利者: Player, 失败者: Player) -> void:
+	$\"操作回合\".show()
+	$FightUi.hide()
+	$\"操作回合\".player.开始回合()
+	pass # Replace with function body.
+"
+
+[node name="TestGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_3qadc")
+
+[node name="操作回合" parent="." instance=ExtResource("1_tykny")]
+layout_mode = 1
+
+[node name="FightUi" parent="." instance=ExtResource("2_mgoj7")]
+visible = false
+layout_mode = 1
+
+[connection signal="结束回合信号" from="操作回合" to="." method="_on_操作回合_结束回合信号"]
+[connection signal="战斗结束信号" from="FightUi" to="." method="_on_fight_ui_战斗结束信号"]
