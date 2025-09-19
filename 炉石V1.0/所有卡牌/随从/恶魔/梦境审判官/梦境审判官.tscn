@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5p5"]
+
+[sub_resource type="GDScript" id="GDScript_spell_trigger"]
+resource_name = "梦境审判官"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 连接施放酒馆法术信号
+	if !player.施放酒馆法术信号.is_connected(_on_施放酒馆法术):
+		player.施放酒馆法术信号.connect(_on_施放酒馆法术)
+
+func _on_施放酒馆法术(法术:CardEntity):
+	# 仅当在战场上时生效
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	var 倍率 = 获取倍率()  # 普通卡:1次, 金色卡:2次
+	
+	for i in 倍率:
+		# 对英雄造成1点伤害
+		player.生命值扣除(1)
+		print(\"梦境审判官：对英雄造成1点伤害\")
+		
+		# 使恶魔获得+1/+1
+		var 恶魔列表 = player.获取战场上的牌().filter(func(item): return item is BaseMinion and Enums.CardRace.恶魔 in item.race)
+		for 恶魔 in 恶魔列表:
+			var 加成 = AttributeBonus.build(名称, Vector2i(1, 1), 名称)
+			恶魔.属性加成(加成, !player.是否在战斗中())
+		print(\"梦境审判官：恶魔获得+1/+1\")
+"
+
+[node name="梦境审判官" type="Node"]
+script = SubResource("GDScript_spell_trigger")
+race = Array[int]([2])
+atk_hp = Vector2i(6, 6)
+lushi_id = 120664
+str_id = "BG32_892"
+"名称" = "梦境审判官"
+"描述" = "每当你施放一个酒馆法术，对你的英雄造成1点伤害并使你的恶魔获得+1/+1。"
+"glod_描述" = "每当你施放一个\\n酒馆法术，对你的英雄造成1点伤害并使你的恶魔获得+1/+1，触发两次。"
+"等级" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

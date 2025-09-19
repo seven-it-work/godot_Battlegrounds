@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7nan2k5p4"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_base_minion"]
+
+[sub_resource type="GDScript" id="GDScript_deathrattle"]
+resource_name = "影舞者亡语"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 获取富足之杖数量(普通卡1张，金色卡2张)
+	var 倍率 = 触发卡.获取倍率()
+	
+	for i in 倍率:
+		var 富足之杖 = CardUtils.get_card(\"富足之杖\", 触发卡.player)
+		富足之杖.is_gold = 触发卡.is_gold  # 继承金色状态
+		触发卡.player.添加卡片(富足之杖, Enums.CardPosition.手牌, -1, true)
+		print(\"影舞者亡语：获取富足之杖\")
+"
+
+[node name="影舞者" type="Node" node_paths=PackedStringArray("亡语")]
+script = ExtResource("1_base_minion")
+race = Array[int]([2])
+atk_hp = Vector2i(4, 2)
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 120662
+str_id = "BG32_891"
+"名称" = "影舞者"
+"描述" = "[b]亡语：[/b]获取一张富足之杖。"
+"glod_描述" = "[b]亡语：[/b]获取2张富足之杖。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_deathrattle")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

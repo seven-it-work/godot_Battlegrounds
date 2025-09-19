@@ -10,12 +10,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class 测试用例自动 {
-    public static final String PATH="D:\\my_project\\";
+    public static final String PATH="E:\\dev_soft\\Godot_v4.3-stable_win64.exe\\";
 
     public static void main(String[] args) {
         用例1生成();
         json处理();
+        json酒馆法术处理();
         测试用例自动2.用例2生成();
+        测试用例自动3.用例3生成();
         检查();
     }
 
@@ -64,6 +66,19 @@ public class 测试用例自动 {
                 savePath+="\\"+目录+"\\"+nameCN+"\\"+nameCN+".json";
                 FileUtil.writeUtf8String(JSONUtil.toJsonStr(item),savePath);
             }
+        });
+    }
+
+    private static void  json酒馆法术处理(){
+        String path = PATH+"\\godot_Battlegrounds\\资料\\32.2.4.221850\\get_full_cards.json";
+        JSONObject parse = JSONUtil.parseObj(FileUtil.readUtf8String(path));
+        JSONArray jsonArray = parse.getJSONObject("data").getJSONArray("tavern");
+        jsonArray.forEach(item -> {
+            String savePath=PATH+"godot_Battlegrounds\\炉石V1.0\\所有卡牌\\法术\\酒馆法术";
+            JSONObject obj = (JSONObject) item;
+            String nameCN = obj.getStr("nameCN");
+            savePath+="\\"+nameCN+"\\"+nameCN+".json";
+            FileUtil.writeUtf8String(JSONUtil.toJsonStr(item),savePath);
         });
     }
 

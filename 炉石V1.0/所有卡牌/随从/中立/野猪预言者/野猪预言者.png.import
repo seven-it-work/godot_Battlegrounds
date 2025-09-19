@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpy6jn0hls0kg"
-path="res://.godot/imported/野猪预言者.png-59bcdd9ab6a30666bf68eac865f51e20.ctex"
+path="res://.godot/imported/野猪预言者.png-56693888ada8a6b2950b3ac94b27e85d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://所有卡牌/随从/野猪人/野猪预言者/野猪预言者.png"
-dest_files=["res://.godot/imported/野猪预言者.png-59bcdd9ab6a30666bf68eac865f51e20.ctex"]
+source_file="res://所有卡牌/随从/中立/野猪预言者/野猪预言者.png"
+dest_files=["res://.godot/imported/野猪预言者.png-56693888ada8a6b2950b3ac94b27e85d.ctex"]
 
 [params]
 

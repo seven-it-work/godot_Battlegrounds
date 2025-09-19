@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jc62"]
+
+[sub_resource type="GDScript" id="GDScript_turn_end"]
+resource_name = "邪火咒龙"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 连接回合结束信号
+	if !player.回合结束信号.is_connected(_on_回合结束):
+		player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	# 仅当在战场上时生效
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	var 倍率 = 获取倍率()  # 普通卡:+1/+1, 金色卡:+2/+2
+	
+	# 使能使随从获得属性值的酒馆法术在本局对战中额外获得属性
+	player.酒馆法术属性加成 += Vector2i(倍率, 倍率)
+	print(\"邪火咒龙：酒馆法术额外获得+\", 倍率, \"/+\", 倍率)
+"
+
+[node name="邪火咒龙" type="Node"]
+script = SubResource("GDScript_turn_end")
+race = Array[int]([2, 3])  # 恶魔和龙
+atk_hp = Vector2i(7, 6)
+lushi_id = 120299
+str_id = "BG32_821"
+"名称" = "邪火咒龙"
+"描述" = "在你的回合结束时，你的能使随从获得属性值的酒馆法术在本局对战中额外获得+1/+1。"
+"glod_描述" = "在你的回合结束时，你的能使随从获得属性值的酒馆法术在本局对战中额外获得+2/+2。"
+"等级" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

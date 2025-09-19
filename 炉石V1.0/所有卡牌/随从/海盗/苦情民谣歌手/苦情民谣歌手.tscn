@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://h1j2k3l4m5n6o"]
+[gd_scene load_steps=3 format=3 uid="uid://bqceyrmiqwn5"]
 
 [ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_ballad"]
 
@@ -6,8 +6,8 @@
 script/source = "extends Roar
 
 func _具体战吼方法接口():
-	var 提升:int = 触发卡.player.本回合花费的金币 if hasattr(触发卡.player, '本回合花费的金币') else 0
-	提升 = max(1, 提升) * 触发卡.获取倍率()
+	var 提升:int = 触发卡.player.已经花费的金币
+	提升 = max(1, 1+提升) * 触发卡.获取倍率()
 	# 选择一个友方海盗
 	var 候选 = 触发卡.player.获取战场上的牌().filter(func(m:BaseMinion): return Enums.CardRace.海盗 in m.race)
 	if 候选.is_empty():
@@ -20,7 +20,7 @@ func _具体战吼方法接口():
 script = ExtResource("1_ballad")
 race = Array[int]([5])
 atk_hp = Vector2i(3, 2)
-"战吼" = [NodePath("Roar")]
+"战吼" = [null]
 lushi_id = 99011
 str_id = "BG26_814"
 "名称" = "苦情民谣歌手"
@@ -33,6 +33,3 @@ metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 script = SubResource("GDScript_roar_ballad")
 "触发卡" = NodePath("..")
 metadata/_custom_type_script = "uid://blqe4sactsx85"
-
-
-

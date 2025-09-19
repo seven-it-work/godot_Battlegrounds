@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5p6"]
+
+[sub_resource type="GDScript" id="GDScript_tavern_buff"]
+resource_name = "萨格拉斯的勇士"
+script/source = "extends BaseMinion
+
+func _ready():
+	# 为酒馆中的随从提供属性加成
+	var 倍率 = 获取倍率()  # 普通卡:+10/+10, 金色卡:+20/+20
+	player.酒馆加成 += Vector2i(10 * 倍率, 10 * 倍率)
+	print(\"萨格拉斯的勇士：酒馆随从获得+\", 10 * 倍率, \"/+\", 10 * 倍率)
+"
+
+[node name="萨格拉斯的勇士" type="Node"]
+script = SubResource("GDScript_tavern_buff")
+race = Array[int]([2])
+atk_hp = Vector2i(10, 10)
+lushi_id = 103698
+str_id = "BG27_016"
+"名称" = "萨格拉斯的勇士"
+"描述" = "酒馆中的随从拥有+10/+10。"
+"glod_描述" = "酒馆中的随从拥有+20/+20。"
+"等级" = 7
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

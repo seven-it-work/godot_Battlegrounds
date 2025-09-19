@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5p8"]
+
+[sub_resource type="GDScript" id="GDScript_spell_trigger"]
+resource_name = "狂蝠恐惧卫士"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 连接施放酒馆法术信号
+	if !player.施放酒馆法术信号.is_connected(_on_施放酒馆法术):
+		player.施放酒馆法术信号.connect(_on_施放酒馆法术)
+
+func _on_施放酒馆法术(法术:CardEntity):
+	# 仅当在战场上时生效
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 找到另一个友方恶魔
+	var 友方恶魔列表 = player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and item != self and Enums.CardRace.恶魔 in item.race
+	)
+	
+	if 友方恶魔列表.is_empty():
+		return
+	
+	var 目标恶魔 = 友方恶魔列表.pick_random() as BaseMinion
+	var 倍率 = 获取倍率()  # 普通卡:1倍, 金色卡:2倍
+	
+	# 让目标恶魔吞食酒馆中的一个随从
+	var 酒馆随从 = player.酒馆.filter(func(item): return item is BaseMinion)
+	if !酒馆随从.is_empty():
+		var 被吞食的随从 = 酒馆随从.pick_random() as BaseMinion
+		var 属性值 = 被吞食的随从.获取带加成属性() * 倍率
+		
+		# 删除被吞食的随从
+		player.删除卡牌(被吞食的随从, Enums.CardPosition.酒馆, true)
+		
+		# 目标恶魔获得属性值
+		目标恶魔.属性加成(AttributeBonus.build(
+			名称,
+			属性值,
+			名称
+		), true)
+		
+		print(\"狂蝠恐惧卫士：\", 目标恶魔.名称, \" 吞食了 \", 被吞食的随从.名称)
+"
+
+[node name="狂蝠恐惧卫士" type="Node"]
+script = SubResource("GDScript_spell_trigger")
+race = Array[int]([2])
+atk_hp = Vector2i(6, 2)
+lushi_id = 116697
+str_id = "BG31_871"
+"名称" = "狂蝠恐惧卫士"
+"描述" = "在你施放一个酒馆法术后，另一个友方恶魔会吞食\\n酒馆中的一个随从以获得其属性值。"
+"glod_描述" = "在你施放一个酒馆法术后，另一个友方恶魔会吞食酒馆中的一个随从以获得其双倍属性值。"
+"等级" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

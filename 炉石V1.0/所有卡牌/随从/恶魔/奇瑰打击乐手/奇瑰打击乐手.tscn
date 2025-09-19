@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7nan2k5p3"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_base_minion"]
+
+[sub_resource type="GDScript" id="GDScript_dxxcw"]
+script/source = "extends Roar
+
+## 由子类实现
+func _具体战吼方法接口():
+	var list=CardUtils.find_card([
+		CardUtils.COMMON_CODITION.是否出现在酒馆,
+		CardUtils.COMMON_CODITION.随从,
+		CardFindCondition.build(\"race\",Enums.CardRace.恶魔,Enums.ConditionEnum.在),
+		CardFindCondition.build(\"等级\",触发卡.player.酒馆等级,Enums.ConditionEnum.小于等于),
+	])
+	if list.is_empty():
+		return
+	for i in 触发卡.获取倍率():
+		var data=list.pick_random() as CardEntity
+#		受伤
+		触发卡.player.生命值扣除(data.等级)
+		触发卡.player.添加卡片(CardUtils.get_card(data.名称,触发卡.player),Enums.CardPosition.手牌,-1,true)
+	pass
+"
+
+[node name="奇瑰打击乐手" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_base_minion")
+race = Array[int]([2])
+atk_hp = Vector2i(4, 4)
+"战吼" = [NodePath("Roar")]
+lushi_id = 99232
+str_id = "BG26_525"
+"名称" = "奇瑰打击乐手"
+"描述" = "[b]战吼：\\n发现[/b]一张恶魔牌，对你的英雄造成等同于其等级的伤害。"
+"glod_描述" = "[b]战吼：[/b]发现[/b]2张恶魔牌，对你的英雄造成等同于其等级的伤害。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_dxxcw")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

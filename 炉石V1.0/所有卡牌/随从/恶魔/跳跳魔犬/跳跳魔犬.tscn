@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7nan2k5p7"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_base_minion"]
+
+[sub_resource type="GDScript" id="GDScript_battlecry"]
+resource_name = "跳跳魔犬战吼"
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	var 倍率 = 触发卡.获取倍率()  # 普通卡:1张, 金色卡:2张
+	
+	# 刷新酒馆
+	触发卡.player.刷新酒馆()
+	print(\"跳跳魔犬：刷新酒馆\")
+	
+	# 使酒馆中额外加入消耗生命值而非铸币的酒馆法术牌
+	for i in 倍率:
+		# 这里需要实现添加生命值消耗法术的逻辑
+		print(\"跳跳魔犬：添加 \", 倍率, \" 张生命值消耗法术\")
+"
+
+[node name="跳跳魔犬" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_base_minion")
+race = Array[int]([2])
+atk_hp = Vector2i(4, 5)
+"战吼" = [NodePath("Roar")]
+lushi_id = 121054
+str_id = "BG32_893"
+"名称" = "跳跳魔犬"
+"描述" = "[b]战吼：[/b][b]刷新[/b]酒馆，使其中额外加入一张消耗生命值而非铸币的酒馆法术牌。"
+"glod_描述" = "[b]战吼：[/b][b]刷新[/b]酒馆，使其中额外加入2张消耗生命值而非铸币的酒馆法术牌。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_battlecry")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

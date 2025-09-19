@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4p5"]
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7lam2n4p5"]
 
 [sub_resource type="GDScript" id="GDScript_1"]
 resource_name = "迟到的旅行者"
@@ -21,10 +21,10 @@ func _出售信号(出售的卡牌:CardEntity):
 					酒馆法术列表.append(卡牌)
 			
 			if 酒馆法术列表.size() > 0:
-				var 随机法术 = 酒馆法术列表[randi() % 酒馆法术列表.size()]
-				var 复制法术 = CardUtils.get_card(随机法术.名称, 触发卡.player)
-				复制法术.is_gold = 触发卡.is_gold  # 继承金色状态
-				触发卡.player.添加卡片(复制法术, Enums.CardPosition.手牌, -1, true)
+				var 随机法术 = 酒馆法术列表.pick_random()
+				#var 复制法术 = CardUtils.get_card(随机法术.名称, 触发卡.player)
+				#复制法术.is_gold = 触发卡.is_gold  # 继承金色状态
+				#触发卡.player.添加卡片(复制法术, Enums.CardPosition.手牌, -1, true)
 	pass
 "
 

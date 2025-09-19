@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jc63"]
+
+[sub_resource type="GDScript" id="GDScript_turn_end"]
+resource_name = "饥饿的魔蝠"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 连接回合结束信号
+	if !player.回合结束信号.is_connected(_on_回合结束):
+		player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	# 仅当在战场上时生效
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	var 倍率 = 获取倍率()  # 普通卡:1倍, 金色卡:2倍
+	
+	# 获取所有友方恶魔
+	var 友方恶魔列表 = player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and Enums.CardRace.恶魔 in item.race
+	)
+	
+	for 恶魔 in 友方恶魔列表:
+		# 让恶魔吞食酒馆中的一个随从
+		var 酒馆随从 = player.酒馆.filter(func(item): return item is BaseMinion)
+		if !酒馆随从.is_empty():
+			var 被吞食的随从 = 酒馆随从.pick_random() as BaseMinion
+			var 属性值 = 被吞食的随从.获取带加成属性() * 倍率
+			
+			# 删除被吞食的随从
+			player.删除卡牌(被吞食的随从, Enums.CardPosition.酒馆, true)
+			
+			# 恶魔获得属性值
+			恶魔.属性加成(AttributeBonus.build(
+				名称,
+				属性值,
+				名称
+			), true)
+			
+			print(\"饥饿的魔蝠：\", 恶魔.名称, \" 吞食了 \", 被吞食的随从.名称)
+"
+
+[node name="饥饿的魔蝠" type="Node"]
+script = SubResource("GDScript_turn_end")
+race = Array[int]([2])
+atk_hp = Vector2i(9, 5)
+lushi_id = 72067
+str_id = "BG21_005"
+"名称" = "饥饿的魔蝠"
+"描述" = "在你的回合结束时，你的恶魔各吞食酒馆中的一个随从，获得其属性值。"
+"glod_描述" = "在你的回合结束时，你的恶魔各吞食酒馆中的一个随从，获得其双倍属性值。"
+"等级" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

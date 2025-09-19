@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgte5g5pduoi5"
-path="res://.godot/imported/科技元素体.png-4254acb65fea0ffc4f0eaa720e2e3740.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
-source_file="res://所有卡牌/随从/机械/科技元素体/科技元素体.png"
-dest_files=["res://.godot/imported/科技元素体.png-4254acb65fea0ffc4f0eaa720e2e3740.ctex"]
+source_file="res://所有卡牌/随从/元素/科技元素体/科技元素体.png"
 
 [params]
 

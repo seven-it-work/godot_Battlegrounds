@@ -19,7 +19,7 @@ func _on_回合结束():
 	var 倍率 = 获取倍率()
 	属性 *= 倍率
 	属性加成(AttributeBonus.build(名称, 属性, str(lushi_id)), true)
-	player.删除卡片(目标, Enums.CardPosition.酒馆)
+	player.删除卡牌(目标, Enums.CardPosition.酒馆,true)
 "
 
 [node name="假冒鬼儡" type="Node"]
@@ -30,9 +30,7 @@ lushi_id = 108115
 str_id = "BG29_140"
 "名称" = "假冒鬼儡"
 "描述" = "在你的回合结束时，吞食酒馆中的一个随从以获得其属性值。"
-"glod_描述" = "在你的回合\n结束时，吞食酒馆中的一个随从以获得其双倍属性值。"
+"glod_描述" = "在你的回合
+结束时，吞食酒馆中的一个随从以获得其双倍属性值。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-
-

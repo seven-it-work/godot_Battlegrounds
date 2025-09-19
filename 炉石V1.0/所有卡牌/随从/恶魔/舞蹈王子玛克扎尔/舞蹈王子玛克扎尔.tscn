@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7nan2k5qa"]
+
+[sub_resource type="GDScript" id="GDScript_refresh_effect"]
+resource_name = "舞蹈王子玛克扎尔"
+script/source = "extends BaseMinion
+
+func _ready():
+	# 设置每回合的刷新次数
+	var 倍率 = 获取倍率()  # 普通卡:2次, 金色卡:4次
+	player.生命值刷新次数 += 倍率
+	print(\"舞蹈王子玛克扎尔：每回合有 \", 倍率, \" 次刷新消耗生命值\")
+"
+
+[node name="舞蹈王子玛克扎尔" type="Node"]
+script = SubResource("GDScript_refresh_effect")
+race = Array[int]([2])
+atk_hp = Vector2i(5, 4)
+lushi_id = 99199
+str_id = "BG26_524"
+"名称" = "舞蹈王子玛克扎尔"
+"描述" = "每回合中，有2次[b]刷新[/b]会消耗生命值，而非铸币。[i]（还剩2次！）[/i]"
+"glod_描述" = "每回合中，有4次[b]刷新[/b]会消耗生命值，而非铸币。[i]（还剩4次！）[/i]"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
