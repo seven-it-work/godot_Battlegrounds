@@ -15,9 +15,9 @@ var _是否初始:bool=false
 
 func _process(delta: float) -> void:
 	if cardData:
+		$SubViewportContainer/SubViewport/object_id.text=String.num(cardData.get_instance_id())+":"+Enums.CardPosition.find_key(cardData.卡片所在位置)
 		if !_是否初始:
 			_是否初始=true
-			$SubViewportContainer/SubViewport/object_id.text=String.num(cardData.get_instance_id())
 			var 插画路径=cardData.get_插画路径()
 			if FileAccess.file_exists(插画路径):
 				背景图.texture=load(插画路径)

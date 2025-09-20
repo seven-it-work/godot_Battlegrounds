@@ -312,7 +312,7 @@ func 添加卡片(
 ):
 	d.player=self
 	d.卡片所在位置=cardPosition
-	print("添加卡牌：",d._to_string())
+	print("添加卡牌：",Enums.CardPosition.find_key(d.卡片所在位置),d.get_instance_id())
 	if cardPosition==Enums.CardPosition.酒馆:
 		if 酒馆.size()>=7:
 			print("酒馆满了")
