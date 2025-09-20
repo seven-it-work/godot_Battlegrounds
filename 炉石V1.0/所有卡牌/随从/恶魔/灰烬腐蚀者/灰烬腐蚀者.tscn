@@ -20,7 +20,7 @@ func _on_hero_damaged(伤害值: int):
 	if 卡片所在位置!=Enums.CardPosition.战场:
 		return
 	# 回溯该伤害（恢复英雄生命值）
-	player.生命值+=伤害值
+	player.生命值回溯()
 	
 	# 使酒馆中的随从在本回合中获得+1/+1（金色版本+2/+2）
 	var 倍率 = 获取倍率()

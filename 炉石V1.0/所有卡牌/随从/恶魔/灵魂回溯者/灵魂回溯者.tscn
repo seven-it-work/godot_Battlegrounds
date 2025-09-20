@@ -11,10 +11,8 @@ func 信号绑定():
 func _on_英雄受伤(伤害值: int):
 	if 卡片所在位置 != Enums.CardPosition.战场:
 		return
-
 	# 回溯伤害(恢复玩家生命值)
-	player.生命值 += 伤害值
-
+	player.生命值回溯()
 	# 增加自身生命值
 	var 加成值 = 获取倍率()  # 普通卡+1，金色卡+2
 	var 加成 = AttributeBonus.build(名称,Vector2i(0, 加成值),名称)  # 只加生命值
@@ -28,7 +26,11 @@ atk_hp = Vector2i(4, 1)
 lushi_id = 100949
 str_id = "BG26_174"
 "名称" = "灵魂回溯者"
-"描述" = "在你的英雄\n受到伤害后，回溯该伤害并使本随从获得\n+1生命值。"
-"glod_描述" = "在你的英雄\n受到伤害后，回溯该伤害并使本随从获得\n+2生命值。"
+"描述" = "在你的英雄
+受到伤害后，回溯该伤害并使本随从获得
++1生命值。"
+"glod_描述" = "在你的英雄
+受到伤害后，回溯该伤害并使本随从获得
++2生命值。"
 "等级" = 2
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"

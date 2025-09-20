@@ -15,9 +15,11 @@ func _ready() -> void:
 	CardUtils.游戏初始化加载卡牌([])
 
 	var array=[
+		\"愤怒编织者\",
 		\"灵魂回溯者\",
 		\"灵魂回溯者\",
 		\"灵魂回溯者\",
+		\"灰烬腐蚀者\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)

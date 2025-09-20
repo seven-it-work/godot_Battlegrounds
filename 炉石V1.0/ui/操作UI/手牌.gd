@@ -102,8 +102,9 @@ func _使用成功(cardUI:CardUI):
 		player.使用卡牌信号.emit(cardUI.cardData)
 	elif cardData is BaseSpell:
 		player.本局对战使用的法术数量+=1
-		player.使用卡牌信号.emit(cardUI.cardData)
+		# 法术效果先生效，再通知
 		cardData.法术使用处理()
+		player.使用卡牌信号.emit(cardUI.cardData)
 		cardUI.queue_free()
 	else:
 		printerr("卡片类型无法使用",cardData)

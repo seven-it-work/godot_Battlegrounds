@@ -37,6 +37,8 @@ static var 升级酒馆金币={
 @export var 战场:Array=[]
 @export var 手牌:Array=[]
 @export var 生命值:int=0
+# 用于受伤回溯
+@export var 扣除前的生命值:int=0
 @export var 当前金币:int=3
 @export var 当前金币上限:int=3
 @export var 最大金币上限:int=10
@@ -58,7 +60,7 @@ static var 升级酒馆金币={
 
 @export var 法术出现数量:int=1
 @export var 刷新酒馆消耗金币:int=1
-
+var 生命值刷新次数:Array[BaseMinion]=[]
 
 @export var 下次购买法术金币减少数量:int=0
 @export var 本局对战使用的法术数量:int=0
@@ -139,6 +141,7 @@ signal 英雄受伤信号(伤害:int)
 signal 随从死亡信号(死亡随从:BaseMinion)
 signal 召唤随从信号(召唤随从:BaseMinion)
 signal 磁力吸附信号(磁力随从:BaseMinion)
+signal 酒馆刷新信号()
 
 func 购买卡片(card:CardEntity)->bool:
 	var 花费=card.获取花费()
@@ -187,6 +190,8 @@ func 开始回合():
 	当前金币=当前金币上限
 	升级酒馆需要的金币=max(0,升级酒馆需要的金币-1)
 	酒馆随从当前回合加成=Vector2i(0,0)
+	# 重置生命值刷新次数
+	生命值刷新次数.clear()
 	# 酒馆刷新
 	酒馆刷新(false)
 	# 战场中的临时属性清理
@@ -199,6 +204,7 @@ func 开始回合():
 		i.攻击过了关键词失效.clear()
 	for i in 开始回合调用方法:
 		i.call()
+	开始回合信号.emit()
 	pass
 
 func 是否能够手动刷新酒馆()->bool:
@@ -210,9 +216,24 @@ func 手动酒馆刷新():
 	if !是否能够手动刷新酒馆():
 		printerr("不能刷新")
 		return
-	# 扣除金币
-	花费金币(刷新酒馆消耗金币)
+	
+	# 检查是否还有生命值刷新次数
+	if 生命值刷新次数.is_empty():
+		# 扣除金币
+		花费金币(刷新酒馆消耗金币)
+	else:
+		# 消耗生命值刷新次数，不消耗金币
+		var 次数=生命值刷新次数[0].生命值刷新次数
+		if 次数<0:
+			printerr("错误了扣除刷新！这里不应该有这个数据")
+			return
+		生命值刷新次数[0].生命值刷新次数=次数-1
+		if 生命值刷新次数[0].生命值刷新次数<=0:
+			生命值刷新次数.pop_front()
+		生命值扣除(刷新酒馆消耗金币)
+	
 	酒馆刷新(true)
+	酒馆刷新信号.emit()
 	pass
 
 func 酒馆刷新(是否强制刷新:bool):
@@ -291,6 +312,7 @@ func 添加卡片(
 ):
 	d.player=self
 	d.卡片所在位置=cardPosition
+	print("添加卡牌：",d._to_string())
 	if cardPosition==Enums.CardPosition.酒馆:
 		if 酒馆.size()>=7:
 			print("酒馆满了")
@@ -375,8 +397,12 @@ func adjust_index(index: int, array: Array) -> int:
 		index = index % size
 	return index+1
 
+func 生命值回溯():
+	生命值=扣除前的生命值
+	pass
 
 func 生命值扣除(num:int):
+	扣除前的生命值=生命值
 	生命值-=num;
 	英雄受伤信号.emit(num)
 	pass

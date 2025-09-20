@@ -4,11 +4,27 @@
 resource_name = "舞蹈王子玛克扎尔"
 script/source = "extends BaseMinion
 
-func _ready():
+@export var 生命值刷新次数:int=2
+
+func 信号绑定():
+	if !player.开始回合信号.is_connected(_开始回合信号):
+		player.开始回合信号.connect(_开始回合信号)
+		
+	if !player.使用卡牌信号.is_connected(_使用卡牌信号):
+		player.使用卡牌信号.connect(_使用卡牌信号)
+	if 卡片所在位置==Enums.CardPosition.战场:
+		player.生命值刷新次数.append(self)
+
+
+func _使用卡牌信号(使用卡牌:CardEntity):
+	if 使用卡牌==self:
+		生命值刷新次数=2*获取倍率()
+		player.生命值刷新次数.append(self)
+
+func _开始回合信号():
 	# 设置每回合的刷新次数
-	var 倍率 = 获取倍率()  # 普通卡:2次, 金色卡:4次
-	player.生命值刷新次数 += 倍率
-	print(\"舞蹈王子玛克扎尔：每回合有 \", 倍率, \" 次刷新消耗生命值\")
+	生命值刷新次数=2*获取倍率()
+	player.生命值刷新次数.append(self)
 "
 
 [node name="舞蹈王子玛克扎尔" type="Node"]
