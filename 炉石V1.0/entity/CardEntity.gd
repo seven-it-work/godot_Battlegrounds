@@ -63,6 +63,8 @@ func get_插画路径()->String:
 
 
 func 属性加成(data:AttributeBonus,是否永久:bool):
+	if data.atk_hp.x==0 && data.atk_hp.y==0:
+		return
 	if 是否永久:
 		永久属性.append(data)
 	else:

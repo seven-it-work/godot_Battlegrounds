@@ -10,13 +10,24 @@ func _具体战吼方法接口():
 	var 倍率 = 触发卡.获取倍率()  # 普通卡:1张, 金色卡:2张
 	
 	# 刷新酒馆
-	触发卡.player.刷新酒馆()
-	print(\"跳跳魔犬：刷新酒馆\")
-	
-	# 使酒馆中额外加入消耗生命值而非铸币的酒馆法术牌
+	触发卡.player.酒馆刷新(true)
+	# 如果酒馆满了，则移除一个随从，添加一个法术
 	for i in 倍率:
+		if 触发卡.player.酒馆.size()>=7:
+			var remove=触发卡.player.酒馆.pick_random()
+			触发卡.player.删除卡牌(remove,Enums.CardPosition.酒馆,true)
+	# 添加一个法术
+	var 法术list=CardUtils.find_card([
+		CardUtils.COMMON_CODITION[\"是否出现在酒馆\"],
+		CardUtils.COMMON_CODITION[\"酒馆法术\"],
+		CardFindCondition.build(\"等级\",触发卡.player.酒馆等级,Enums.ConditionEnum.小于等于)
+	])
+	for i in 倍率:
+		var card=CardUtils.get_card(法术list.pick_random().名称,触发卡.player) as TavernSpell
+		card.是否扣除的是生命值=true
+		触发卡.player.添加卡片(card,Enums.CardPosition.酒馆,-1,true)
 		# 这里需要实现添加生命值消耗法术的逻辑
-		print(\"跳跳魔犬：添加 \", 倍率, \" 张生命值消耗法术\")
+		print(\"跳跳魔犬：添加 \", card.debug_str())
 "
 
 [node name="跳跳魔犬" type="Node" node_paths=PackedStringArray("战吼")]

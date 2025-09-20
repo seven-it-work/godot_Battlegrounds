@@ -4,11 +4,23 @@
 resource_name = "萨格拉斯的勇士"
 script/source = "extends BaseMinion
 
-func _ready():
-	# 为酒馆中的随从提供属性加成
-	var 倍率 = 获取倍率()  # 普通卡:+10/+10, 金色卡:+20/+20
-	player.酒馆加成 += Vector2i(10 * 倍率, 10 * 倍率)
-	print(\"萨格拉斯的勇士：酒馆随从获得+\", 10 * 倍率, \"/+\", 10 * 倍率)
+func 信号绑定():
+	if !player.使用卡牌信号.is_connected(_使用卡牌信号):
+		player.使用卡牌信号.connect(_使用卡牌信号)
+		
+	if !player.出售随从信号.is_connected(_出售随从信号):
+		player.出售随从信号.connect(_出售随从信号)
+
+
+func _出售随从信号(出售卡牌:CardEntity):
+	if 出售卡牌==self:
+		var 倍率 = 获取倍率() 
+		player.酒馆随从永久加成 -= Vector2i(10 * 倍率, 10 * 倍率)
+
+func _使用卡牌信号(使用卡牌:CardEntity):
+	if 使用卡牌==self:
+		var 倍率 = 获取倍率() 
+		player.酒馆随从永久加成 += Vector2i(10 * 倍率, 10 * 倍率)
 "
 
 [node name="萨格拉斯的勇士" type="Node"]

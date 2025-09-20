@@ -152,6 +152,9 @@ func 购买卡片(card:CardEntity)->bool:
 	if card is TavernSpell:
 		下次购买法术金币减少数量=0
 	花费金币(花费)
+	# 这里要将酒馆加成添加进去
+	card.属性加成(AttributeBonus.build("酒馆加成",酒馆随从永久加成,"酒馆加成"),true)
+	card.属性加成(AttributeBonus.build("酒馆加成",酒馆随从当前回合加成,"酒馆加成"),true)
 	return true
 
 func 花费金币(花费:int):
@@ -438,11 +441,12 @@ func 升级酒馆():
 		return
 	花费金币(升级酒馆需要的金币)
 	酒馆等级+=1
-	升级酒馆需要的金币=升级酒馆金币[酒馆等级]
+	if 酒馆等级<7:
+		升级酒馆需要的金币=升级酒馆金币[酒馆等级]
 
 func 是否能够升级酒馆()->bool:
 	if 当前金币<升级酒馆需要的金币:
 		return false
-	if 酒馆等级<=最大酒馆等级:
+	if 酒馆等级<最大酒馆等级:
 		return true
 	return false

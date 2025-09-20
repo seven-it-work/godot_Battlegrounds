@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://q1w2e3r4t5y6u"]
+[gd_scene load_steps=3 format=3 uid="uid://blbk1u34ldh5s"]
 
 [ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_igniter"]
 
@@ -10,7 +10,7 @@ func _具体战吼方法接口():
 		for m in 触发卡.player.获取战场上的牌():
 			if m != 触发卡 and (Enums.CardRace.恶魔 in m.race):
 				(m as BaseMinion).属性加成(AttributeBonus.build(触发卡.名称, Vector2i(2,2), str(触发卡.lushi_id)), true)
-		触发卡.player.英雄受伤信号.emit(2)
+		触发卡.player.生命值扣除(2)
 "
 
 [node name="鬼火钢琴家" type="Node" node_paths=PackedStringArray("战吼")]
@@ -30,6 +30,3 @@ metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 script = SubResource("GDScript_roar_igniter")
 "触发卡" = NodePath("..")
 metadata/_custom_type_script = "uid://blqe4sactsx85"
-
-
-

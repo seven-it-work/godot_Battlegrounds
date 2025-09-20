@@ -163,6 +163,9 @@ func 获取带加成属性()->Vector2i:
 	# 甲虫
 	if self.名称=="甲虫":
 		result+=player.甲虫加成
+	if self.卡片所在位置==Enums.CardPosition.酒馆:
+		result+=player.酒馆随从永久加成
+		result+=player.酒馆随从当前回合加成
 	return result
 
 func 属性加成(data:AttributeBonus,是否永久:bool):

@@ -17,13 +17,13 @@ func _on_回合结束():
 	var 倍率 = 获取倍率()  # 普通卡:+1/+1, 金色卡:+2/+2
 	
 	# 使能使随从获得属性值的酒馆法术在本局对战中额外获得属性
-	player.酒馆法术属性加成 += Vector2i(倍率, 倍率)
-	print(\"邪火咒龙：酒馆法术额外获得+\", 倍率, \"/+\", 倍率)
+	player.酒馆法术加成 += Vector2i(倍率, 倍率)
+	print(\"邪火咒龙：酒馆法术额外获得+\", player.酒馆法术加成)
 "
 
 [node name="邪火咒龙" type="Node"]
 script = SubResource("GDScript_turn_end")
-race = Array[int]([2, 3])  # 恶魔和龙
+race = Array[int]([2, 3])
 atk_hp = Vector2i(7, 6)
 lushi_id = 120299
 str_id = "BG32_821"
