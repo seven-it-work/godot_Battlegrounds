@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://b18twpgesrm8d"]
+
+[sub_resource type="GDScript" id="GDScript_yhh85"]
+script/source = "extends BaseMinion
+"
+
+[sub_resource type="GDScript" id="GDScript_po1be"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	# 战吼：获取一张掠夺者合约（金色版本获取2张）
+	var 倍率 = 触发卡.获取倍率()
+	
+	for i in 倍率:
+		# 创建掠夺者合约法术
+		var 合约法术 = CardUtils.get_card(\"掠夺者合约\", 触发卡.player)
+		if 合约法术:
+			触发卡.player.添加卡片(合约法术, Enums.CardPosition.手牌, -1, true)
+			print(\"顽砂猎头：获得掠夺者合约\")
+"
+
+[node name="顽砂猎头" type="Node" node_paths=PackedStringArray("战吼")]
+script = SubResource("GDScript_yhh85")
+race = Array[int]([5])
+atk_hp = Vector2i(5, 3)
+"战吼" = [NodePath("Roar")]
+lushi_id = 115597
+str_id = "BG31_822"
+"名称" = "顽砂猎头"
+"描述" = "<b>战吼：</b>获取一张掠夺者合约。"
+"glod_描述" = "<b>战吼：</b>获取2张掠夺者合约。"
+"等级" = 4
+"花费" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_po1be")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxekghgsui3pc"]
+[gd_scene load_steps=4 format=3 uid="uid://cpfmlgrr5msb4"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_tykny"]
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_mgoj7"]
@@ -8,16 +8,16 @@ script/source = "extends Control
 
 func _ready() -> void:
 	var player=Player.new()
-	player.名称=\"掘金者测试用例\"
+	player.名称=\"双持海盗测试用例\"
 	player.当前金币=999
 	player.当前金币上限=999
 	$\"操作回合\".初始化(player)
 	CardUtils.游戏初始化加载卡牌([])
 
 	var array=[
-		\"掘金者\",
-		\"夺金健将\",
-		\"夺金健将\",
+		\"双持海盗\",
+		\"双持海盗\",
+		\"双持海盗\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)

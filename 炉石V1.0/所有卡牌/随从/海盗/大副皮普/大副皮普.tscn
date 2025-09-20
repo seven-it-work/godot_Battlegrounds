@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1nnv1kggw80n"]
+
+[sub_resource type="GDScript" id="GDScript_pip"]
+script/source = "extends BaseMinion
+
+# 大副皮普：本随从仅需2个复制即可变为金色
+# 这个效果需要在合成时触发，重写合成方法
+
+func 合成处理(合成数量: int):
+	# todo 这里需要单独判断了
+	
+	# 大副皮普只需要2个复制就能合成金色
+	if 合成数量 >= 2 and !is_gold:
+		is_gold = true
+		# 金色版本属性翻倍
+		atk_hp = atk_hp * 2
+		print(\"大副皮普：合成金色版本\")
+		return true
+	return false
+"
+
+[node name="大副皮普" type="Node"]
+script = SubResource("GDScript_pip")
+race = Array[int]([5])
+atk_hp = Vector2i(5, 2)
+lushi_id = 93835
+str_id = "BG23_192"
+"名称" = "大副皮普"
+"描述" = "本随从仅需2个复制即可变为金色。"
+"glod_描述" = "<i>（本随从仅需2个复制即变为了金色。）</i>"
+"等级" = 2
+"花费" = 2
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

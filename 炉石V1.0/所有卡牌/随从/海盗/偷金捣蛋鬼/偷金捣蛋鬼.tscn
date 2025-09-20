@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jf67"]
+
+[sub_resource type="GDScript" id="GDScript_rascal"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	if !player.开始回合信号.is_connected(_on_回合开始):
+		player.开始回合信号.connect(_on_回合开始)
+
+func _on_回合开始():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 获得1枚铸币（金色版本2枚）
+	var 基础铸币 = 获取倍率()
+	player.当前金币 += 基础铸币
+	
+	# 每有一个友方金色随从，重复一次
+	var 友方金色随从 = player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and item.is_gold
+	)
+	
+	for 金色随从 in 友方金色随从:
+		player.铸币 += 基础铸币
+	
+	print(\"偷金捣蛋鬼：获得 \", 基础铸币, \" 枚铸币，友方金色随从数量: \", 友方金色随从.size())
+"
+
+[node name="偷金捣蛋鬼" type="Node"]
+script = SubResource("GDScript_rascal")
+race = Array[int]([5])
+atk_hp = Vector2i(5, 6)
+lushi_id = 119988
+str_id = "BG32_232"
+"名称" = "偷金捣蛋鬼"
+"描述" = "在你的回合开始时，获得1枚铸币。每有一个友方金色随从，重复一次。"
+"glod_描述" = "在你的回合开始时，获得2枚铸币。每有一个友方金色随从，重复一次。"
+"等级" = 4
+"花费" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

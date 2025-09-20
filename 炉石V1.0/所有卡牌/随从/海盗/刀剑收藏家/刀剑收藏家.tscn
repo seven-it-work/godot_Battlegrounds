@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsevejhg3shtf"]
+
+[sub_resource type="GDScript" id="GDScript_collector"]
+script/source = "extends BaseMinion
+
+# 刀剑收藏家：同时对其攻击目标相邻的随从造成伤害
+# 这个效果需要在攻击时触发，重写攻击方法
+
+func 攻击其他随从(目标:BaseMinion):
+	# 先执行正常攻击
+	super.攻击其他随从(目标)
+	
+	# 对目标相邻的随从造成伤害
+	var 目标位置 = ArrayUtils.get_neighboring_data(目标,目标.player.获取战场上的牌())
+	for i:BaseMinion in 目标位置:
+		var 伤害值 = 获取带加成属性().x
+		i.受到攻击(self)
+		print(\"刀剑收藏家：对相邻随从 \", i.名称, \" 造成 \", 伤害值, \" 点伤害\")
+"
+
+[node name="刀剑收藏家" type="Node"]
+script = SubResource("GDScript_collector")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 2)
+lushi_id = 99035
+str_id = "BG26_817"
+"名称" = "刀剑收藏家"
+"描述" = "同时对其攻击目标相邻的随从造成伤害。"
+"等级" = 4
+"花费" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

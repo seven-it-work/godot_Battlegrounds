@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgnl4ajjpg1iq"]
+
+[sub_resource type="GDScript" id="GDScript_explorer"]
+script/source = "extends BaseMinion
+
+@export var 回合计数 = 0
+
+func 信号绑定():
+	if !player.开始回合信号.is_connected(_on_回合开始):
+		player.开始回合信号.connect(_on_回合开始)
+
+func _on_回合开始():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	回合计数 += 1
+	
+	# 每两个回合，在回合开始时，使一个相邻的等级2的随从变为金色
+	if 回合计数 >= 2:
+		var 相邻随从 = ArrayUtils.get_neighboring_data(self,player.获取战场上的牌())
+		var 等级2随从 = 相邻随从.filter(func(item): 
+			return item is BaseMinion and item.等级 == 2 and !item.is_gold
+		)
+		
+		if !等级2随从.is_empty():
+			var 目标随从 = 等级2随从.pick_random() as BaseMinion
+			目标随从.is_gold = true
+			目标随从.atk_hp = 目标随从.atk_hp * 2  # 金色版本属性翻倍
+			print(\"星眸探险者：使相邻随从 \", 目标随从.名称, \" 变为金色\")
+		
+		回合计数 = 0  # 重置计数
+"
+
+[node name="星眸探险者" type="Node"]
+script = SubResource("GDScript_explorer")
+race = Array[int]([5])
+atk_hp = Vector2i(5, 5)
+lushi_id = 119984
+str_id = "BG32_230"
+"名称" = "星眸探险者"
+"描述" = "每两个回合，在回合开始时，使一个相邻的等级2的随从变为金色。<i>（还剩{0}回合！）</i>"
+"glod_描述" = "每两个回合，在回合开始时，使相邻的等级2的随从变为金色。<i>（还剩{0}回合！）</i>"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

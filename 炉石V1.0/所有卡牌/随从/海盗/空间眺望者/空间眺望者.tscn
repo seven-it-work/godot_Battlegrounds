@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyeeipfkaf1ms"]
+
+[sub_resource type="GDScript" id="GDScript_spacefarer"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	if !player.随从属性加成信号.is_connected(_on_随从获得属性):
+		player.随从属性加成信号.connect(_on_随从获得属性)
+
+func _on_随从获得属性(加成随从:CardEntity,加成数据:AttributeBonus):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 每当另一个友方海盗获得攻击力时，获得+3生命值
+	if 加成随从 != self and 加成随从 is BaseMinion and Enums.CardRace.海盗 in 加成随从.race and 加成数据.atk_hp.x > 0:
+		var 加成值 = Vector2i(0, 3) * 获取倍率()  # 金色版本+6生命值
+		var 加成 = AttributeBonus.build(名称, 加成值, 名称)
+		属性加成(加成, !player.是否在战斗中())
+		print(\"空间眺望者：友方海盗获得攻击力，自身获得+\", 加成值.y, \" 生命值\")
+"
+
+[node name="空间眺望者" type="Node"]
+script = SubResource("GDScript_spacefarer")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 6)
+lushi_id = 115593
+str_id = "BG31_820"
+"名称" = "空间眺望者"
+"描述" = "每当另一个友方海盗获得攻击力时，获得+3生命值。"
+"glod_描述" = "每当另一个友方海盗获得攻击力时，获得+6生命值。"
+"等级" = 6
+"花费" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

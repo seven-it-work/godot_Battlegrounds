@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmofo3m2qy4gj"]
+
+[sub_resource type="GDScript" id="GDScript_corsair"]
+script/source = "extends BaseMinion
+
+@export var 剩余金币:int=5
+
+func 信号绑定():
+	if !player.花费金币信号.is_connected(_on_花费铸币):
+		player.花费金币信号.connect(_on_花费铸币)
+
+func _on_花费铸币(花费数量: int):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	# 每当你花掉5枚铸币，使两个友方海盗获得+4/+4
+	剩余金币-=花费数量
+	while 剩余金币<=0:
+		var 友方海盗 = player.获取战场上的牌().filter(func(item): 
+			return item is BaseMinion and Enums.CardRace.海盗 in item.race
+		)
+		
+		# 选择两个海盗（如果不足两个则选择所有）
+		var 目标数量 = min(2, 友方海盗.size())
+		for i in 目标数量:
+			var 目标海盗 = 友方海盗[i] as BaseMinion
+			var 加成值 = Vector2i(4, 4) * 获取倍率()  # 金色版本+8/+8
+			var 加成 = AttributeBonus.build(名称, 加成值, 名称)
+			目标海盗.属性加成(加成, !player.是否在战斗中())
+		剩余金币+=5
+		print(\"双持海盗：花费 \", 花费数量, \" 枚铸币，使 \", 目标数量, \" 个友方海盗获得加成\")
+"
+
+[node name="双持海盗" type="Node"]
+script = SubResource("GDScript_corsair")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 5)
+lushi_id = 115708
+str_id = "BG31_824"
+"名称" = "双持海盗"
+"描述" = "每当你花掉5枚铸币，使两个友方海盗\\n获得+4/+4。\\n<i>（还剩5枚！）</i>"
+"glod_描述" = "每当你花掉5枚铸币，使两个友方海盗\\n获得+8/+8。\\n<i>（还剩5枚！）</i>"
+"等级" = 5
+"花费" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

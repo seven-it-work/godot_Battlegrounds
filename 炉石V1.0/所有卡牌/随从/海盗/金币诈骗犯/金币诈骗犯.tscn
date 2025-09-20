@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxxwl4ul2w7jw"]
+
+[sub_resource type="GDScript" id="GDScript_grifter"]
+script/source = "extends BaseMinion
+
+@export var 获取计数 = 0
+
+func 信号绑定():
+	if !player.操作中添加卡片信号.is_connected(_on_获取卡牌):
+		player.操作中添加卡片信号.connect(_on_获取卡牌)
+
+func _on_获取卡牌(
+	d:CardEntity,
+	cardPosition:Enums.CardPosition,
+	index:int,):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if cardPosition!=Enums.CardPosition.手牌:
+		return
+	# 检查是否是海盗牌
+	if d is BaseMinion and Enums.CardRace.海盗 in d.race:
+		获取计数 += 1
+		# 每当你获取4张海盗牌，你的铸币上限提高1枚
+		if 获取计数 >= 4:
+			var 提高数量 = 获取倍率()  # 金色版本提高2枚
+			player.铸币上限 += 提高数量
+			print(\"金币诈骗犯：获取4张海盗牌，铸币上限提高 \", 提高数量, \" 枚\")
+			获取计数 = 0  # 重置计数
+"
+
+[node name="金币诈骗犯" type="Node"]
+script = SubResource("GDScript_grifter")
+race = Array[int]([5])
+atk_hp = Vector2i(6, 6)
+lushi_id = 116035
+str_id = "BG31_826"
+"名称" = "金币诈骗犯"
+"描述" = "每当你获取4张海盗牌，你的铸币上限提高1枚。<i>（还剩4张！）</i>"
+"glod_描述" = "每当你获取4张海盗牌，你的铸币上限提高2枚。<i>（还剩4张！）</i>"
+"等级" = 4
+"花费" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

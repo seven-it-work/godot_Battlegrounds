@@ -142,6 +142,8 @@ signal 随从死亡信号(死亡随从:BaseMinion)
 signal 召唤随从信号(召唤随从:BaseMinion)
 signal 磁力吸附信号(磁力随从:BaseMinion)
 signal 酒馆刷新信号()
+signal 花费金币信号(消费金币数:int)
+signal 购买卡牌信号(购买卡牌:CardEntity)
 
 func 购买卡片(card:CardEntity)->bool:
 	var 花费=card.获取花费()
@@ -152,14 +154,17 @@ func 购买卡片(card:CardEntity)->bool:
 	if card is TavernSpell:
 		下次购买法术金币减少数量=0
 	花费金币(花费)
-	# 这里要将酒馆加成添加进去
-	card.属性加成(AttributeBonus.build("酒馆加成",酒馆随从永久加成,"酒馆加成"),true)
-	card.属性加成(AttributeBonus.build("酒馆加成",酒馆随从当前回合加成,"酒馆加成"),true)
+	if card is BaseMinion:
+		# 这里要将酒馆加成添加进去
+		card.属性加成(AttributeBonus.build("酒馆加成",酒馆随从永久加成,"酒馆加成"),true)
+		card.属性加成(AttributeBonus.build("酒馆加成",酒馆随从当前回合加成,"酒馆加成"),true)
+	购买卡牌信号.emit(card)
 	return true
 
 func 花费金币(花费:int):
 	已经花费的金币+=花费
 	当前金币-=花费
+	花费金币信号.emit(花费)
 	pass
 
 func 存档(是否为玩家存档:bool):

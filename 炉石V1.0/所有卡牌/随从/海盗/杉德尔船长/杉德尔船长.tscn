@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cteeassbicpj0"]
+
+[sub_resource type="GDScript" id="GDScript_sanders"]
+script/source = "extends BaseMinion
+"
+
+[sub_resource type="GDScript" id="GDScript_yo54a"]
+script/source = "extends Roar
+
+# 杉德尔船长：战吼：使一个友方随从变为金色
+# 这个效果需要在召唤时触发
+func _具体战吼方法接口():
+	# 战吼：使一个友方随从变为金色
+	var 友方随从 = 触发卡.player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and item != self and !item.is_gold
+	)
+	var 倍率 =  触发卡.获取倍率()  # 金色版本使2个随从变金色
+	var list=ArrayUtils.random_select(友方随从,false,倍率)
+	for i in list:
+		i.is_gold = true
+		print(\"杉德尔船长：使随从 \", i.名称, \" 变为金色\")
+"
+
+[node name="杉德尔船长" type="Node" node_paths=PackedStringArray("战吼")]
+script = SubResource("GDScript_sanders")
+race = Array[int]([5])
+atk_hp = Vector2i(7, 7)
+"战吼" = [NodePath("Roar")]
+lushi_id = 97539
+str_id = "BG25_034"
+"名称" = "杉德尔船长"
+"描述" = "<b>战吼：</b>使一个友方随从变为金色。"
+"glod_描述" = "<b>战吼：</b>使2个友方随从变为金色。"
+"等级" = 7
+"花费" = 7
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_yo54a")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

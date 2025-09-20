@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfeu0jta02jb4"]
+
+[sub_resource type="GDScript" id="GDScript_seafarer"]
+script/source = "extends BaseMinion
+
+@export var 购买计数 = 0
+
+func 信号绑定():
+	if !player.购买卡牌信号.is_connected(_on_购买卡牌):
+		player.购买卡牌信号.connect(_on_购买卡牌)
+
+func _on_购买卡牌(卡牌:CardEntity):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	if 卡牌 is BaseMinion:
+		购买计数 += 1
+		# 在你购买3张牌后，随机获取一张酒馆法术牌
+		if 购买计数 >= 3:
+			var 酒馆法术列表 = CardUtils.find_card([
+				CardUtils.COMMON_CODITION.酒馆法术,
+				CardUtils.COMMON_CODITION.是否出现在酒馆,
+				CardFindCondition.build(\"等级\",player.酒馆等级,Enums.ConditionEnum.小于等于)
+			])
+			if !酒馆法术列表.is_empty():
+				var 倍率 = 获取倍率()  # 金色版本获取2张
+				for i in 倍率:
+					var 发现的法术 = 酒馆法术列表.pick_random() as CardEntity
+					var 法术卡 = CardUtils.get_card(发现的法术.名称, player)
+					player.添加卡片(法术卡, Enums.CardPosition.手牌, -1, true)
+					print(\"咒缚海员：获得酒馆法术 \", 发现的法术.名称)
+			购买计数 = 0  # 重置计数
+"
+
+[node name="咒缚海员" type="Node"]
+script = SubResource("GDScript_seafarer")
+race = Array[int]([5])
+atk_hp = Vector2i(3, 5)
+lushi_id = 105424
+str_id = "BG28_903"
+"名称" = "咒缚海员"
+"描述" = "在你购买3张牌后，随机获取一张酒馆法术牌。<i>（还剩3张！）</i>"
+"glod_描述" = "在你购买3张牌后，随机获取两张酒馆法术牌。<i>（还剩3张！）</i>"
+"等级" = 5
+"花费" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
