@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jgab"]
+
+[sub_resource type="GDScript" id="GDScript_monster"]
+script/source = "extends BaseMinion
+
+func 获取带加成属性() -> Vector2i:
+	# 在本局对战中你每磁力吸附过一次，便拥有+2/+2
+	var 基础属性 = super.获取带加成属性()
+	var 磁力吸附次数 = player.磁力吸附次数
+	var 加成值 = Vector2i(2, 2) * 获取倍率() * 磁力吸附次数
+	return 基础属性 + 加成值
+"
+
+[node name="砰砰博士的怪物" type="Node"]
+script = SubResource("GDScript_monster")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 2)
+"是否为磁力" = true
+lushi_id = 115676
+str_id = "BG31_176"
+"名称" = "砰砰博士的怪物"
+"描述" = "<b>磁力</b>。在本局对战中你每<b>磁力吸附</b>过一次，便拥有+2/+2<i>（无论本随从在哪）</i>。"
+"glod_描述" = "<b>磁力</b>。在本局对战中你每<b>磁力吸附</b>过一次，便拥有+4/+4<i>（无论本随从在哪）</i>。"
+"等级" = 6
+"花费" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

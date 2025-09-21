@@ -1,0 +1,52 @@
+{
+    "id": 96922,
+    "strId": "BG25_807t",
+    "cardType": "minion",
+    "name": "Rusted Reggie",
+    "nameCN": "铁锈君王",
+    "text": "<b>风怒<\/b>。可以<b>磁力吸附<\/b>在机械<i>和<\/i>恶魔上。",
+    "mechanics": [
+        "MAGNETIC",
+        "WINDFURY"
+    ],
+    "referencedTags": [],
+    "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t_battlegroundsImage.png",
+    "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t_cardArtFromHsJson256x.png",
+    "tier": 1,
+    "health": 5,
+    "attack": 5,
+    "minionTypes": [
+        "mech",
+        "demon"
+    ],
+    "minionTypesCN": [
+        "机械",
+        "恶魔"
+    ],
+    "upgradeCard": {
+        "id": 96929,
+        "strId": "BG25_807t_G",
+        "cardType": "minion",
+        "name": "Rusted Reggie",
+        "nameCN": "铁锈君王",
+        "text": "<b>风怒<\/b>。可以<b>磁力吸附<\/b>在机械<i>和<\/i>恶魔上。",
+        "mechanics": [
+            "MAGNETIC",
+            "WINDFURY"
+        ],
+        "referencedTags": [],
+        "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t_G_battlegroundsImageGold.png",
+        "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t_G_cardArtFromHsJson256x.png",
+        "tier": 1,
+        "health": 10,
+        "attack": 10,
+        "minionTypes": [
+            "mech",
+            "demon"
+        ],
+        "minionTypesCN": [
+            "机械",
+            "恶魔"
+        ]
+    }
+},

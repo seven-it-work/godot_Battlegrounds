@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cialyasnbtax"]
+
+[sub_resource type="GDScript" id="GDScript_magtheridon"]
+script/source = "extends BaseMinion
+"
+
+[node name="终极玛瑟里顿" type="Node"]
+script = SubResource("GDScript_magtheridon")
+race = Array[int]([4, 2])
+atk_hp = Vector2i(1, 10)
+"嘲讽" = true
+"是否为磁力" = true
+"磁力可以贴加的种族" = Array[int]([4, 2])
+lushi_id = 96924
+str_id = "BG25_807t2"
+"名称" = "终极玛瑟里顿"
+"描述" = "<b>嘲讽</b>。可以<b>磁力吸附</b>在机械<i>和</i>恶魔上。"
+"glod_描述" = "<b>嘲讽</b>。可以<b>磁力吸附</b>在机械<i>和</i>恶魔上。"
+"花费" = 1
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

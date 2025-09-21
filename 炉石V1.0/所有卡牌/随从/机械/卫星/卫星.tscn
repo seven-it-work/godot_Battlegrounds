@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceiuxp8ro4xex"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_fblpw"]
+
+[node name="卫星" type="Node"]
+script = ExtResource("1_fblpw")
+race = Array[int]([4])
+lushi_id = 116244
+str_id = "BG31_171t"
+"名称" = "卫星"
+"描述" = "<b>磁力<\\/b>"
+"glod_描述" = "<b>磁力<\\/b>"
+"是否出现在酒馆" = false
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

@@ -4,13 +4,25 @@
 resource_name = "机械侏儒解译者"
 script/source = "extends BaseMinion
 
+var 上一个信号触发对象
+
+
 func 信号绑定():
 	# 连接磁力相关信号
 	player.磁力吸附信号.connect(_on_磁力吸附)
+	player.使用卡牌信号.connect(_on_磁力吸附)
 	pass
 
 func _on_磁力吸附(磁力随从:BaseMinion):
+	if !磁力随从.是否为磁力:
+		return
 	if 卡片所在位置==Enums.CardPosition.战场:
+		if 上一个信号触发对象==null:
+			上一个信号触发对象=磁力随从
+		if 上一个信号触发对象==磁力随从:
+			print(\"已经附件过磁力效果了\")
+			return
+		print(\"加成\")
 		var 加成=2*获取倍率()
 		磁力随从.属性加成(AttributeBonus.build(名称,Vector2i(加成,加成),名称),true)
 "

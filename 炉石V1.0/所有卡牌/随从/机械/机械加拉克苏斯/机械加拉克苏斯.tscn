@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nvyjpr8jf87"]
+
+[sub_resource type="GDScript" id="GDScript_jaraxxus"]
+script/source = "extends BaseMinion
+"
+
+[sub_resource type="GDScript" id="GDScript_roar_jaraxxus"]
+script/source = "extends Roar
+
+func _具体战吼方法接口():
+	# 战吼：随机获取一张磁力机械-恶魔牌（金色版本2张）
+	var 倍率 = 触发卡.获取倍率()
+	var 磁力机械恶魔列表 = CardUtils.find_card([
+		CardUtils.COMMON_CODITION.随从,
+		CardFindCondition.build(\"是否为磁力\", true, Enums.ConditionEnum.等于),
+		CardFindCondition.build(\"race\", Enums.CardRace.机械, Enums.ConditionEnum.在),
+		CardFindCondition.build(\"race\", Enums.CardRace.恶魔, Enums.ConditionEnum.在)
+	])
+	
+	if !磁力机械恶魔列表.is_empty():
+		for i in 倍率:
+			var 发现的随从 = 磁力机械恶魔列表.pick_random() as CardEntity
+			var 随从卡 = CardUtils.get_card(发现的随从.名称, 触发卡.player)
+			if 随从卡:
+				触发卡.player.添加卡片(随从卡, Enums.CardPosition.手牌, -1, true)
+				print(\"机械加拉克苏斯：获得磁力机械恶魔\", 发现的随从.名称)
+"
+
+[node name="机械加拉克苏斯" type="Node" node_paths=PackedStringArray("战吼")]
+script = SubResource("GDScript_jaraxxus")
+race = Array[int]([4, 2])
+atk_hp = Vector2i(3, 15)
+"战吼" = [NodePath("Roar")]
+lushi_id = 95469
+str_id = "BG25_807"
+"名称" = "机械加拉克苏斯"
+"描述" = "<b>战吼：</b>随机获取一张<b>磁力</b>机械-恶魔牌。"
+"glod_描述" = "<b>战吼：</b>随机获取2张<b>磁力</b>机械-恶魔牌。"
+"等级" = 6
+"花费" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_roar_jaraxxus")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://blqe4sactsx85"

@@ -1,0 +1,52 @@
+{
+    "id": 116915,
+    "strId": "BG25_807t4",
+    "cardType": "minion",
+    "name": "Shield of the Legion",
+    "nameCN": "军团之盾",
+    "text": "<b>圣盾<\/b>。可以<b>磁力吸附<\/b>在机械<i>和<\/i>恶魔上。",
+    "mechanics": [
+        "DIVINE_SHIELD",
+        "MAGNETIC"
+    ],
+    "referencedTags": [],
+    "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t4_battlegroundsImage.png",
+    "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t4_cardArtFromHsJson256x.png",
+    "tier": 1,
+    "health": 3,
+    "attack": 7,
+    "minionTypes": [
+        "mech",
+        "demon"
+    ],
+    "minionTypesCN": [
+        "机械",
+        "恶魔"
+    ],
+    "upgradeCard": {
+        "id": 116916,
+        "strId": "BG25_807t4_G",
+        "cardType": "minion",
+        "name": "Shield of the Legion",
+        "nameCN": "军团之盾",
+        "text": "<b>圣盾<\/b>。可以<b>磁力吸附<\/b>在机械<i>和<\/i>恶魔上。",
+        "mechanics": [
+            "DIVINE_SHIELD",
+            "MAGNETIC"
+        ],
+        "referencedTags": [],
+        "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t4_G_battlegroundsImageGold.png",
+        "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t4_G_cardArtFromHsJson256x.png",
+        "tier": 1,
+        "health": 6,
+        "attack": 14,
+        "minionTypes": [
+            "mech",
+            "demon"
+        ],
+        "minionTypesCN": [
+            "机械",
+            "恶魔"
+        ]
+    }
+}

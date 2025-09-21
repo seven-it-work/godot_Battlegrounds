@@ -55,6 +55,7 @@ static var 升级酒馆金币={
 @export var 酒馆法术加成:Vector2i=Vector2i(0,0)
 @export var 酒馆随从永久加成:Vector2i=Vector2i(0,0)
 @export var 酒馆随从当前回合加成:Vector2i=Vector2i(0,0)
+@export var 磁力吸附次数:int=0
 ## 每召唤过一个加成+3/2（金色算两次） 如果小于0 不进行计算。
 @export var 星元自动机召唤次数:int=-1
 
@@ -144,6 +145,7 @@ signal 磁力吸附信号(磁力随从:BaseMinion)
 signal 酒馆刷新信号()
 signal 花费金币信号(消费金币数:int)
 signal 购买卡牌信号(购买卡牌:CardEntity)
+signal 随从失去圣盾信号(失去圣盾随从:CardEntity)
 
 func 购买卡片(card:CardEntity)->bool:
 	var 花费=card.获取花费()

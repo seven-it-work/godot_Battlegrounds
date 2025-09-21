@@ -69,6 +69,7 @@ func 添加磁力(磁力随从:CardEntity,是否触发信号:bool):
 	已经贴了的磁力.append(磁力随从)
 	if 是否触发信号:
 		player.磁力吸附信号.emit(磁力随从)
+		player.磁力吸附次数+=1
 	pass
 
 func 攻击其他随从(防御者:BaseMinion):
@@ -89,11 +90,16 @@ func 受到攻击(攻击者:BaseMinion):
 	await 生命扣除(攻击者,伤害)
 	pass
 
+func 圣盾失效():
+	player.随从失去圣盾信号.emit(self)
+	攻击过了关键词失效.append("圣盾")
+	pass
+
 func 生命扣除(攻击者:BaseMinion,扣除值:int):
 	if 获取圣盾():
 		if 扣除值<=0:
 			return
-		攻击过了关键词失效.append("圣盾")
+		圣盾失效()
 		return
 	if 攻击者.剧毒 or 攻击者.烈毒:
 		if 攻击者.剧毒:

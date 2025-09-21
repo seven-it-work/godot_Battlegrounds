@@ -26,7 +26,7 @@ func _on_我方召唤随从(召唤随从:BaseMinion):
 		str(lushi_id)
 	)
 	属性加成(加成, false)
-	圣盾 = true
+	攻击过了关键词失效.erase(\"圣盾\")
 "
 
 [node name="偏折机器人" type="Node"]
@@ -43,4 +43,3 @@ str_id = "BGS_071"
 在战斗阶段中，每当你召唤一个机械，便获得+4攻击力和[b]圣盾[/b]。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-

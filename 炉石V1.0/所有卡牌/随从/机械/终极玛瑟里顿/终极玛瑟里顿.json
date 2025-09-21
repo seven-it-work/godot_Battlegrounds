@@ -1,0 +1,52 @@
+{
+    "id": 96924,
+    "strId": "BG25_807t2",
+    "cardType": "minion",
+    "name": "Magtheridon Prime",
+    "nameCN": "终极玛瑟里顿",
+    "text": "<b>嘲讽<\/b>。可以<b>磁力吸附<\/b>在机械<i>和<\/i>恶魔上。",
+    "mechanics": [
+        "MAGNETIC",
+        "TAUNT"
+    ],
+    "referencedTags": [],
+    "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t2_battlegroundsImage.png",
+    "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t2_cardArtFromHsJson256x.png",
+    "tier": 1,
+    "health": 10,
+    "attack": 1,
+    "minionTypes": [
+        "mech",
+        "demon"
+    ],
+    "minionTypesCN": [
+        "机械",
+        "恶魔"
+    ],
+    "upgradeCard": {
+        "id": 96930,
+        "strId": "BG25_807t2_G",
+        "cardType": "minion",
+        "name": "Magtheridon Prime",
+        "nameCN": "终极玛瑟里顿",
+        "text": "<b>嘲讽<\/b>。可以<b>磁力吸附<\/b>在机械<i>和<\/i>恶魔上。",
+        "mechanics": [
+            "MAGNETIC",
+            "TAUNT"
+        ],
+        "referencedTags": [],
+        "img": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t2_G_battlegroundsImageGold.png",
+        "art": "https:\/\/battlegrounds.oss.gamerhub.cn\/all_images\/32.2.4.221850\/BG25_807t2_G_cardArtFromHsJson256x.png",
+        "tier": 1,
+        "health": 20,
+        "attack": 2,
+        "minionTypes": [
+            "mech",
+            "demon"
+        ],
+        "minionTypesCN": [
+            "机械",
+            "恶魔"
+        ]
+    }
+},

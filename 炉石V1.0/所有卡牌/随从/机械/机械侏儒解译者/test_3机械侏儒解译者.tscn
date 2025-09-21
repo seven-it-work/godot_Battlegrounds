@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://blunsu25bb57y"]
+[gd_scene load_steps=4 format=3 uid="uid://c1gmk5bx47vh8"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_tykny"]
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_mgoj7"]
@@ -15,6 +15,7 @@ func _ready() -> void:
 	CardUtils.游戏初始化加载卡牌([])
 
 	var array=[
+		\"吵吵模组\",
 		\"机械侏儒解译者\",
 		\"机械侏儒解译者\",
 		\"机械侏儒解译者\",

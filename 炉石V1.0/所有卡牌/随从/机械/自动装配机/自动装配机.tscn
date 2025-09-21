@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nvyjpr8jga3"]
+
+[sub_resource type="GDScript" id="GDScript_assembler"]
+script/source = "extends BaseMinion
+"
+
+[sub_resource type="GDScript" id="GDScript_5iwby"]
+script/source = "extends Deathrattle
+
+# todo 还是一样的问题 磁力后 亡语没了
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 亡语：召唤一个星元自动机
+	var 星元自动机 = CardUtils.get_card(\"星元自动机\", 触发卡.player)
+	if 星元自动机 and 星元自动机 is BaseMinion:
+		# 金色版本召唤金色星元自动机
+		if 触发卡.is_gold:
+			星元自动机.is_gold = true
+			星元自动机.atk_hp = 星元自动机.atk_hp * 2
+		
+		触发卡.player.添加卡片(星元自动机, Enums.CardPosition.战场, -1, true)
+		print(\"自动装配机：亡语召唤星元自动机\")
+"
+
+[node name="自动装配机" type="Node" node_paths=PackedStringArray("亡语")]
+script = SubResource("GDScript_assembler")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 2)
+"亡语" = [NodePath("Deathrattle")]
+"是否为磁力" = true
+lushi_id = 120025
+str_id = "BG32_172"
+"名称" = "自动装配机"
+"描述" = "<b>磁力</b>。<b>亡语：</b>召唤一个星元自动机。"
+"glod_描述" = "<b>磁力</b>。<b>亡语：</b>\\n召唤一个金色的星元自动机。"
+"等级" = 4
+"花费" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_5iwby")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"

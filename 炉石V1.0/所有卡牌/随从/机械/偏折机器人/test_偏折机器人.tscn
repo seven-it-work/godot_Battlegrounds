@@ -9,12 +9,16 @@ script/source = "extends Control
 func _ready() -> void:
 	CardUtils.游戏初始化加载卡牌([])
 
-	$Player.添加卡片(CardUtils.get_card(\"偏折机器人\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"拔线机\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"拔线机\",$Player),Enums.CardPosition.战场,-1,true)
+	$Player.添加卡片(CardUtils.get_card(\"拔线机\",$Player),Enums.CardPosition.战场,-1,true)
 	$Player.添加卡片(CardUtils.get_card(\"偏折机器人\",$Player),Enums.CardPosition.战场,-1,true)
 	$Player.添加卡片(CardUtils.get_card(\"偏折机器人\",$Player),Enums.CardPosition.战场,-1,true)
 
 
-	$Player2.添加卡片(CardUtils.get_card(\"偏折机器人\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"拔线机\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"拔线机\",$Player2),Enums.CardPosition.战场,-1,true)
+	$Player2.添加卡片(CardUtils.get_card(\"拔线机\",$Player2),Enums.CardPosition.战场,-1,true)
 	$Player2.添加卡片(CardUtils.get_card(\"偏折机器人\",$Player2),Enums.CardPosition.战场,-1,true)
 	$Player2.添加卡片(CardUtils.get_card(\"偏折机器人\",$Player2),Enums.CardPosition.战场,-1,true)
 

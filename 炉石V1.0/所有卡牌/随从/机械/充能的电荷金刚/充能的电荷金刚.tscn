@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://ysoli65qesh0"]
+
+[sub_resource type="GDScript" id="GDScript_wmoyg"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	if !player.回合结束信号.is_connected(_on_回合结束):
+		player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 为你的所有机械磁力吸附一个3/3的卫星（金色版本触发两次）
+	var 倍率 = 获取倍率()
+	for i in 倍率:
+		var 友方机械 = player.获取战场上的牌().filter(func(item): 
+			return item is BaseMinion and Enums.CardRace.机械 in item.race
+		)
+		
+		for 机械:BaseMinion in 友方机械:
+			# 创建卫星并磁力吸附
+			var 卫星 = CardUtils.get_card(\"卫星\", player) as BaseMinion
+			卫星.atk_hp=Vector2i(3,3)
+			if 卫星 and 卫星 is BaseMinion:
+				机械.添加磁力(卫星,false)
+				print(\"充能的电荷金刚：为\", 机械.名称, \"磁力吸附卫星\")
+"
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="充能的电荷金刚" type="Node"]
+script = SubResource("GDScript_wmoyg")
+race = Array[int]([4])
+atk_hp = Vector2i(6, 6)
+lushi_id = 120029
+str_id = "BG32_174"
+"名称" = "充能的电荷金刚"
+"描述" = "在你的回合结束时，为你的所有机械<b>磁力吸附</b>一个3/3的卫星。"
+"glod_描述" = "在你的回合结束时，为你的所有机械<b>磁力吸附</b>一个3/3的卫星，触发两次。"
+"等级" = 6
+"花费" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jga2"]
+
+[sub_resource type="GDScript" id="GDScript_rover"]
+script/source = "extends BaseMinion
+
+func 攻击其他随从(目标:BaseMinion):
+	# 先执行正常攻击
+	super.攻击其他随从(目标)
+	
+	# 每当本随从攻击时，随机获取一张磁力机械牌
+	var 倍率 = 获取倍率()
+	var 磁力机械列表 = CardUtils.find_card([
+		CardUtils.COMMON_CODITION.随从,
+		CardUtils.COMMON_CODITION.是否出现在酒馆,
+		CardFindCondition.build(\"是否为磁力\", true, Enums.ConditionEnum.等于),
+		CardFindCondition.build(\"race\", Enums.CardRace.机械, Enums.ConditionEnum.在)
+	])
+	
+	if !磁力机械列表.is_empty():
+		for i in 倍率:
+			var 发现的机械 = 磁力机械列表.pick_random() as CardEntity
+			var 机械卡 = CardUtils.get_card(发现的机械.名称, player)
+			if 机械卡:
+				player.添加卡片(机械卡, Enums.CardPosition.手牌, -1, true)
+				print(\"移动投影仪：攻击后获得磁力机械\", 发现的机械.名称)
+"
+
+[node name="移动投影仪" type="Node"]
+script = SubResource("GDScript_rover")
+race = Array[int]([4])
+atk_hp = Vector2i(4, 8)
+lushi_id = 115674
+str_id = "BG31_175"
+"名称" = "移动投影仪"
+"描述" = "每当本随从攻击时，随机获取一张<b>磁力</b>机械牌。"
+"glod_描述" = "每当本随从攻击时，随机获取2张<b>磁力</b>机械牌。"
+"等级" = 5
+"花费" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

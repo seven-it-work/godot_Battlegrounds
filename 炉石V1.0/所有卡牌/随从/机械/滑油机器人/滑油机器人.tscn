@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jf88"]
+
+[sub_resource type="GDScript" id="GDScript_grease"]
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	if !player.随从失去圣盾信号.is_connected(_on_随从失去圣盾):
+		player.随从失去圣盾信号.connect(_on_随从失去圣盾)
+
+func _on_随从失去圣盾(失去圣盾的随从:BaseMinion):
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 在一个友方随从失去圣盾后，使其永久获得+2/+1（金色版本+4/+2）
+	var 加成值 = Vector2i(2, 1) * 获取倍率()
+	var 加成 = AttributeBonus.build(名称, 加成值, 名称)
+	失去圣盾的随从.属性加成(加成, true)  # 永久加成
+	print(\"滑油机器人：\", 失去圣盾的随从.名称, \"失去圣盾，获得永久+\", 加成值.x, \"/+\", 加成值.y)
+"
+
+[node name="滑油机器人" type="Node"]
+script = SubResource("GDScript_grease")
+race = Array[int]([4])
+atk_hp = Vector2i(2, 5)
+"圣盾" = true
+lushi_id = 72389
+str_id = "BG21_024"
+"名称" = "滑油机器人"
+"描述" = "<b>圣盾</b>。在一个友方随从失去<b>圣盾</b>后，使其永久获得+2/+1。"
+"glod_描述" = "<b>圣盾</b>。在一个友方随从失去<b>圣盾</b>后，使其永久获得+4/+2。"
+"等级" = 4
+"花费" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

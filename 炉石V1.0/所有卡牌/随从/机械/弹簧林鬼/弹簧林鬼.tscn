@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jf84"]
+
+[sub_resource type="GDScript" id="GDScript_spriggan"]
+script/source = "extends BaseMinion
+
+# todo 磁力贴了就没有回合结束效果了
+
+func 信号绑定():
+	if !player.回合结束信号.is_connected(_on_回合结束):
+		player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 使你的其他机械获得+1攻击力（金色版本+2攻击力）
+	var 加成值 = 获取倍率()
+	var 友方机械 = player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and item != self and Enums.CardRace.机械 in item.race
+	)
+	
+	for 机械 in 友方机械:
+		var 加成 = AttributeBonus.build(名称, Vector2i(加成值, 0), 名称)
+		机械.属性加成(加成, !player.是否在战斗中())
+		print(\"弹簧林鬼：给\", 机械.名称, \"加\", 加成值, \"攻击力\")
+"
+
+[node name="弹簧林鬼" type="Node"]
+script = SubResource("GDScript_spriggan")
+race = Array[int]([4])
+atk_hp = Vector2i(4, 2)
+"是否为磁力" = true
+lushi_id = 120023
+str_id = "BG32_171"
+"名称" = "弹簧林鬼"
+"描述" = "<b>磁力</b>。在你的回合结束时，使你的其他机械获得+1攻击力。"
+"glod_描述" = "<b>磁力</b>。在你的回合结束时，使你的其他机械获得+2攻击力。"
+"等级" = 3
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"

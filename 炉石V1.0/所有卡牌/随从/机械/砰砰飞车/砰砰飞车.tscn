@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nvyjpr8jgac"]
+
+[sub_resource type="GDScript" id="GDScript_boommobile"]
+script/source = "extends BaseMinion
+"
+
+[node name="砰砰飞车" type="Node"]
+script = SubResource("GDScript_boommobile")
+race = Array[int]([4])
+atk_hp = Vector2i(20, 20)
+"是否为磁力" = true
+"复生" = true
+"圣盾" = true
+"嘲讽" = true
+"风怒" = true
+lushi_id = 103708
+str_id = "BG27_021"
+"名称" = "砰砰飞车"
+"描述" = "<b>磁力</b>\\n<b>复生</b>。<b>圣盾</b>。<b>嘲讽</b>。<b>风怒</b>"
+"glod_描述" = "<b>磁力</b>\\n<b>复生</b>。<b>圣盾</b>。<b>嘲讽</b>。<b>风怒</b>"
+"等级" = 7
+"花费" = 7
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
