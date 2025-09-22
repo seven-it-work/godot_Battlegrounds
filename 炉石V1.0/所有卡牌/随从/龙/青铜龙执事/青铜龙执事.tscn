@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq8x7k9m2n4ph"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_battlecry"]
+resource_name = "青铜龙执事战吼"
+script/source = "extends Roar
+
+func _具体战吼方法接口(触发卡:CardEntity):
+	# 战吼：使其他龙获得攻击力
+	给其他龙加成(触发卡)
+"
+
+[sub_resource type="GDScript" id="GDScript_deathrattle"]
+resource_name = "青铜龙执事亡语"
+script/source = "extends Deathrattle
+
+func _具体亡语方法接口(攻击者:CardEntity):
+	# 亡语：使其他龙获得攻击力
+	给其他龙加成(触发卡)
+
+func 给其他龙加成(触发卡:CardEntity):
+	var 攻击力加成 = 10 * 触发卡.获取倍率()  # 普通:+10, 金色:+20
+	
+	# 获取所有其他龙
+	var 其他龙列表 = 触发卡.player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and Enums.CardRace.龙 in item.race and item != 触发卡
+	)
+	
+	for 龙 in 其他龙列表:
+		var 加成 = AttributeBonus.build(触发卡.名称, Vector2i(攻击力加成, 0), 触发卡.名称)
+		龙.属性加成(加成, !触发卡.player.是否在战斗中())
+	
+	print(触发卡.名称, "：使 ", 其他龙列表.size(), " 个其他龙获得 +", 攻击力加成, " 攻击力")
+"
+
+[node name="青铜龙执事" type="Node" node_paths=PackedStringArray("战吼", "亡语")]
+script = ExtResource("1_6s83g")
+race = Array[int]([3])
+atk_hp = Vector2i(10, 2)
+"战吼" = [NodePath("Roar")]
+"亡语" = [NodePath("Deathrattle")]
+lushi_id = 120305
+str_id = "BG32_824"
+"名称" = "青铜龙执事"
+"描述" = "[b]战吼，亡语：[/b]\\n使你的其他龙获得+10攻击力。"
+"glod_描述" = "[b]战吼，亡语：[/b]\\n使你的其他龙获得+20攻击力。"
+"等级" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_battlecry")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://bq8x7k9m2n4p0"
+
+[node name="Deathrattle" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_deathrattle")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://ccf1ijg3n2357"
+
+

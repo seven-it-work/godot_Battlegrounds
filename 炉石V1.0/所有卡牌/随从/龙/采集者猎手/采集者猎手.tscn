@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4pg"]
+
+[sub_resource type="GDScript" id="GDScript_1"]
+resource_name = "采集者猎手"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 监听随从属性加成信号
+	if !player.随从属性加成信号.is_connected(_on_随从属性加成):
+		player.随从属性加成信号.connect(_on_随从属性加成)
+
+func _on_随从属性加成(随从:BaseMinion, 加成:AttributeBonus):
+	# 仅当本随从获得攻击力时触发
+	if 随从 != self:
+		return
+	
+	# 检查是否获得了攻击力加成
+	if 加成.atk_hp.x > 0:
+		# 使所有友方随从获得生命值
+		var 生命值加成 = 2 * 获取倍率()  # 普通:+2, 金色:+4
+		
+		var 友方随从列表 = player.获取战场上的牌().filter(func(item): 
+			return item is BaseMinion and item != self
+		)
+		
+		for 随从 in 友方随从列表:
+			var 生命加成 = AttributeBonus.build(名称, Vector2i(0, 生命值加成), 名称)
+			随从.属性加成(生命加成, !player.是否在战斗中())
+		
+		print("采集者猎手：获得攻击力，使 ", 友方随从列表.size(), " 个友方随从获得 +", 生命值加成, " 生命值")
+"
+
+[node name="采集者猎手" type="Node"]
+script = SubResource("GDScript_1")
+race = Array[int]([3])
+atk_hp = Vector2i(3, 5)
+lushi_id = 95293
+str_id = "BG25_027"
+"名称" = "采集者猎手"
+"描述" = "每当本随从获得攻击力，使你的随从获得+2生命值。"
+"glod_描述" = "每当本随从获得攻击力，使你的随从获得+4生命值。"
+"等级" = 5
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

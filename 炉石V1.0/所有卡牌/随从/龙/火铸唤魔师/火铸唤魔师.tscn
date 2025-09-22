@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4pb"]
+
+[sub_resource type="GDScript" id="GDScript_1"]
+resource_name = "火铸唤魔师"
+script/source = "extends BaseMinion
+
+@export var 当前加成值:Vector2i = Vector2i(1, 1)  # 当前给龙的加成值
+
+func 信号绑定():
+	# 监听战斗开始信号
+	if !player.战斗开始信号.is_connected(_on_战斗开始):
+		player.战斗开始信号.connect(_on_战斗开始)
+	
+	# 监听施放酒馆法术信号
+	if !player.施放酒馆法术信号.is_connected(_on_施放酒馆法术):
+		player.施放酒馆法术信号.connect(_on_施放酒馆法术)
+
+func _on_战斗开始():
+	# 战斗开始时，使其他龙获得当前加成值
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	给其他龙加成()
+
+func _on_施放酒馆法术(法术:CardEntity):
+	# 施放酒馆法术后，提升加成效果
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	# 提升加成值
+	当前加成值 += Vector2i(1, 1)
+	print(\"火铸唤魔师：施放酒馆法术，加成值提升至 +\", 当前加成值.x, \"/+\", 当前加成值.y)
+
+func 给其他龙加成():
+	# 获取所有其他龙
+	var 其他龙列表 = player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and Enums.CardRace.龙 in item.race and item != self
+	)
+	
+	var 最终加成值 = 当前加成值 * 获取倍率()  # 金色版本翻倍
+	
+	for 龙 in 其他龙列表:
+		var 加成 = AttributeBonus.build(名称, 最终加成值, 名称)
+		龙.属性加成(加成, false)  # 战斗中的加成是临时的
+	
+	print(\"火铸唤魔师：给 \", 其他龙列表.size(), \" 个其他龙获得 +\", 最终加成值.x, \"/+\", 最终加成值.y)
+"
+
+[node name="火铸唤魔师" type="Node"]
+script = SubResource("GDScript_1")
+race = Array[int]([3])
+atk_hp = Vector2i(8, 5)
+lushi_id = 120301
+str_id = "BG32_822"
+"名称" = "火铸唤魔师"
+"描述" = "[b]战斗开始时：[/b]使你的其他龙获得+{0}/+{1}。在你施放一个酒馆法术后，提升此效果。"
+"glod_描述" = "[b]战斗开始时：[/b]使你的其他龙获得+{0}/+{1}。在你施放一个酒馆法术后，提升此效果。"
+"等级" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

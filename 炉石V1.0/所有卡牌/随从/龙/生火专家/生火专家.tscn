@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4pd"]
+
+[sub_resource type="GDScript" id="GDScript_1"]
+resource_name = "生火专家"
+script/source = "extends BaseMinion
+
+func 信号绑定():
+	# 监听回合结束信号
+	if !player.回合结束信号.is_connected(_on_回合结束):
+		player.回合结束信号.connect(_on_回合结束)
+
+func _on_回合结束():
+	# 回合结束时，随机获取酒馆法术牌
+	if 卡片所在位置 != Enums.CardPosition.战场:
+		return
+	
+	var 获取数量 = 2 * 获取倍率()  # 普通:2张, 金色:4张
+	
+	for i in 获取数量:
+		# 从酒馆法术池中随机获取一张
+		var 酒馆法术列表 = player.酒馆.filter(func(item): return item is TavernSpell)
+		if !酒馆法术列表.is_empty():
+			var 随机法术 = 酒馆法术列表.pick_random()
+			var 复制法术 = CardUtils.get_card(随机法术.名称, player)
+			if 复制法术:
+				player.添加卡片(复制法术, Enums.CardPosition.手牌, -1, true)
+				print(\"生火专家：获取酒馆法术 \", 复制法术.名称)
+		else:
+			print(\"生火专家：酒馆中没有法术可获取\")
+"
+
+[node name="生火专家" type="Node"]
+script = SubResource("GDScript_1")
+race = Array[int]([3])
+atk_hp = Vector2i(8, 8)
+lushi_id = 105852
+str_id = "BG28_595"
+"名称" = "生火专家"
+"描述" = "在你的回合结束时，随机获取2张\\n酒馆法术牌。"
+"glod_描述" = "在你的回合结束时，随机获取4张\\n酒馆法术牌。"
+"等级" = 6
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+

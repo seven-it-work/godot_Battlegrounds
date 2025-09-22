@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7k9m2n4pa"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_battlecry"]
+resource_name = "活跃的奇想幼龙战吼"
+script/source = "extends Roar
+
+func _具体战吼方法接口(触发卡:CardEntity):
+	# 战吼：随机获取一张龙牌
+	var 获取数量 = 触发卡.获取倍率()  # 普通:1张, 金色:2张
+	
+	for i in 获取数量:
+		# 从龙族卡池中随机获取一张龙牌
+		var 龙族卡牌列表 = []
+		# 这里需要从卡池中筛选龙族卡牌，暂时用占位符
+		# var 龙族卡牌列表 = CardUtils.get_dragon_cards()
+		
+		# 临时实现：随机生成一个龙族随从
+		var 随机龙牌 = CardUtils.get_card("泰蕾苟萨", 触发卡.player)
+		if 随机龙牌:
+			触发卡.player.添加卡片(随机龙牌, Enums.CardPosition.手牌, -1, true)
+			print(\"活跃的奇想幼龙：获取龙牌 \", 随机龙牌.名称)
+		else:
+			print(\"活跃的奇想幼龙：无法获取龙牌\")
+"
+
+[node name="活跃的奇想幼龙" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_6s83g")
+race = Array[int]([3])
+atk_hp = Vector2i(4, 4)
+"战吼" = [NodePath("Roar")]
+lushi_id = 120303
+str_id = "BG32_823"
+"名称" = "活跃的奇想幼龙"
+"描述" = "[b]战吼：[/b]随机获取一张龙牌。"
+"glod_描述" = "[b]战吼：[/b]随机获取\\n2张龙牌。"
+"等级" = 4
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_battlecry")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://bq8x7k9m2n4p0"
+
+

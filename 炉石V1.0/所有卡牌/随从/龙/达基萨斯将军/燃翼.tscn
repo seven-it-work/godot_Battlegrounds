@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7k9m2n4pf"]
+
+[ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
+
+[sub_resource type="GDScript" id="GDScript_battlecry"]
+resource_name = "燃翼战吼"
+script/source = "extends Roar
+
+func _具体战吼方法接口(触发卡:CardEntity):
+	# 战吼：使一条龙获得攻击力
+	var 攻击力加成 = 5 * 触发卡.获取倍率()  # 普通:+5, 金色:+10
+	
+	# 获取所有友方龙
+	var 友方龙列表 = 触发卡.player.获取战场上的牌().filter(func(item): 
+		return item is BaseMinion and Enums.CardRace.龙 in item.race
+	)
+	
+	if 友方龙列表.size() > 0:
+		# 选择第一个龙（可以改为让玩家选择）
+		var 目标龙 = 友方龙列表[0] as BaseMinion
+		var 加成 = AttributeBonus.build(触发卡.名称, Vector2i(攻击力加成, 0), 触发卡.名称)
+		目标龙.属性加成(加成, !触发卡.player.是否在战斗中())
+		print("燃翼：使 ", 目标龙.名称, " 获得 +", 攻击力加成, " 攻击力")
+	else:
+		print("燃翼：没有友方龙可以加成")
+"
+
+[node name="燃翼" type="Node" node_paths=PackedStringArray("战吼")]
+script = ExtResource("1_6s83g")
+race = Array[int]([3])
+atk_hp = Vector2i(2, 1)
+"战吼" = [NodePath("Roar")]
+lushi_id = 96170
+str_id = "BG25_309t"
+"名称" = "燃翼"
+"描述" = "[b]战吼：[/b]使一条龙获得+5攻击力。"
+"glod_描述" = "[b]战吼：[/b]使一条龙获得+10攻击力。"
+"等级" = 1
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
+
+[node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
+script = SubResource("GDScript_battlecry")
+"触发卡" = NodePath("..")
+metadata/_custom_type_script = "uid://bq8x7k9m2n4p0"
+
+
