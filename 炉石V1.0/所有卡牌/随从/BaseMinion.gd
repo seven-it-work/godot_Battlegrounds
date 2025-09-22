@@ -72,7 +72,12 @@ func 添加磁力(磁力随从:CardEntity,是否触发信号:bool):
 		player.磁力吸附次数+=1
 	pass
 
+func 攻击前(防御者:BaseMinion):
+	pass
+
 func 攻击其他随从(防御者:BaseMinion):
+	player.其他随从攻击前.emit(self,防御者)
+	攻击前(防御者)
 	await player.fightUI.start_animation_sequence(self.get_cardUI(),防御者.get_cardUI())
 	print("%s 对 %s 进行攻击"%[self.debug_str(),防御者.debug_str()])
 	await 防御者.受到攻击(self)

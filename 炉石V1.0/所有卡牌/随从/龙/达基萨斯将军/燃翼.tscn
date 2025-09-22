@@ -6,23 +6,6 @@
 resource_name = "燃翼战吼"
 script/source = "extends Roar
 
-func _具体战吼方法接口(触发卡:CardEntity):
-	# 战吼：使一条龙获得攻击力
-	var 攻击力加成 = 5 * 触发卡.获取倍率()  # 普通:+5, 金色:+10
-	
-	# 获取所有友方龙
-	var 友方龙列表 = 触发卡.player.获取战场上的牌().filter(func(item): 
-		return item is BaseMinion and Enums.CardRace.龙 in item.race
-	)
-	
-	if 友方龙列表.size() > 0:
-		# 选择第一个龙（可以改为让玩家选择）
-		var 目标龙 = 友方龙列表[0] as BaseMinion
-		var 加成 = AttributeBonus.build(触发卡.名称, Vector2i(攻击力加成, 0), 触发卡.名称)
-		目标龙.属性加成(加成, !触发卡.player.是否在战斗中())
-		print("燃翼：使 ", 目标龙.名称, " 获得 +", 攻击力加成, " 攻击力")
-	else:
-		print("燃翼：没有友方龙可以加成")
 "
 
 [node name="燃翼" type="Node" node_paths=PackedStringArray("战吼")]

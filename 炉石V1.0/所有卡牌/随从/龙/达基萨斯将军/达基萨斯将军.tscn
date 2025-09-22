@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq8x7k9m2n4pe"]
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7lam2n4pe"]
 
 [ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
 
@@ -6,19 +6,20 @@
 resource_name = "达基萨斯将军战吼"
 script/source = "extends Roar
 
-func _具体战吼方法接口(触发卡:CardEntity):
+func _具体战吼方法接口():
 	# 战吼：获取燃翼
 	var 获取数量 = 触发卡.获取倍率()  # 普通:1张, 金色:2张
 	
 	for i in 获取数量:
-		var 燃翼 = CardUtils.get_card("燃翼", 触发卡.player)
+		var 燃翼 = CardUtils.get_card(\"燃翼\", 触发卡.player)
 		if 燃翼:
 			燃翼.is_gold = 触发卡.is_gold  # 继承金色状态
 			触发卡.player.添加卡片(燃翼, Enums.CardPosition.手牌, -1, true)
-			print("达基萨斯将军：获取燃翼")
+			print(\"达基萨斯将军：获取燃翼\")
 		else:
-			print("达基萨斯将军：无法获取燃翼")
+			print(\"达基萨斯将军：无法获取燃翼\")
 "
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="达基萨斯将军" type="Node" node_paths=PackedStringArray("战吼")]
 script = ExtResource("1_6s83g")
@@ -36,6 +37,3 @@ metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
 script = SubResource("GDScript_battlecry")
 "触发卡" = NodePath("..")
-metadata/_custom_type_script = "uid://bq8x7k9m2n4p0"
-
-

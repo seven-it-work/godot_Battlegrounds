@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4pi"]
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7lam2n4pi"]
 
 [sub_resource type="GDScript" id="GDScript_1"]
 resource_name = "黑曜石掠夺者"
@@ -44,14 +44,14 @@ func 触发溅射伤害(目标:BaseMinion):
 		if 随从 is BaseMinion:
 			await 造成伤害(随从 as BaseMinion, 伤害值)
 	
-	print("黑曜石掠夺者：对 ", 目标列表.size(), " 个随从造成 ", 伤害值, " 点溅射伤害")
+	print(\"黑曜石掠夺者：对 \", 目标列表.size(), \" 个随从造成 \", 伤害值, \" 点溅射伤害\")
 
 func 造成伤害(随从:BaseMinion, 伤害:int):
 	# 造成伤害的逻辑
 	if 随从.获取圣盾():
 		# 圣盾抵消伤害
-		随从.攻击过了关键词失效.append("圣盾")
-		print("黑曜石掠夺者：", 随从.名称, " 的圣盾被破坏")
+		随从.攻击过了关键词失效.append(\"圣盾\")
+		print(\"黑曜石掠夺者：\", 随从.名称, \" 的圣盾被破坏\")
 		return
 	
 	if 剧毒 or 烈毒:
@@ -61,11 +61,12 @@ func 造成伤害(随从:BaseMinion, 伤害:int):
 	
 	# 正常伤害
 	随从.current_hp -= 伤害
-	print("黑曜石掠夺者：对 ", 随从.名称, " 造成 ", 伤害, " 点伤害")
+	print(\"黑曜石掠夺者：对 \", 随从.名称, \" 造成 \", 伤害, \" 点伤害\")
 	
 	if 随从.current_hp <= 0:
 		await 随从.死亡(self)
 "
+metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 
 [node name="黑曜石掠夺者" type="Node"]
 script = SubResource("GDScript_1")
@@ -78,5 +79,3 @@ str_id = "BG27_017"
 "glod_描述" = "每当本随从攻击时，对目标及相邻的随从造成等同于本随从攻击力的伤害。"
 "等级" = 7
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-

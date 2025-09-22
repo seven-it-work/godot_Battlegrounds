@@ -4,12 +4,16 @@
 resource_name = "咆哮聚群龙"
 script/source = "extends BaseMinion
 
+
 func 战斗开始时():
-	if !player.战斗中添加卡片信号.is_connected(_on_攻击后触发):
+	if !player.其他随从攻击前.is_connected(_on_攻击后触发):
+		player.其他随从攻击前.connect(_on_攻击后触发)
 		pass
 
-func _on_攻击后触发(d:CardEntity, cardPosition:Enums.CardPosition, index:int):
-	pass # 占位：攻击后触发在 FightUI 内部流程，后续接入
+func _on_攻击后触发(攻击随从:BaseMinion,防御随从:BaseMinion):
+	if self.卡片所在位置==Enums.CardPosition.战场:
+		if 攻击随从.race.has(Enums.CardRace.龙):
+			攻击随从.属性加成(AttributeBonus.build(名称,Vector2i(3,1)*获取倍率(),名称),false)
 "
 
 [node name="咆哮聚群龙" type="Node"]
@@ -23,6 +27,3 @@ str_id = "BG29_816"
 "glod_描述" = "每当一条友方的龙攻击时，使其获得+6/+2。"
 "等级" = 3
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-
-

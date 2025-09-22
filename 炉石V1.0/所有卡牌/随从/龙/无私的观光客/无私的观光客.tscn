@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq8x7k9m2n4p9"]
+[gd_scene load_steps=3 format=3 uid="uid://bq8x7lam2n4qa"]
 
 [ext_resource type="Script" uid="uid://d1rstpchmbfdi" path="res://所有卡牌/随从/BaseMinion.gd" id="1_6s83g"]
 
@@ -6,7 +6,7 @@
 resource_name = "无私的观光客战吼"
 script/source = "extends Roar
 
-func _具体战吼方法接口(触发卡:CardEntity):
+func _具体战吼方法接口():
 	# 战吼：你的队伍的铸币上限提高（1）枚
 	var 提高数量 = 触发卡.获取倍率()  # 普通:1枚, 金色:2枚
 	
@@ -20,7 +20,7 @@ func _具体战吼方法接口(触发卡:CardEntity):
 script = ExtResource("1_6s83g")
 race = Array[int]([3])
 atk_hp = Vector2i(5, 2)
-"战吼" = [NodePath("Roar")]
+"战吼" = [null]
 lushi_id = 117332
 str_id = "BGDUO31_205"
 "名称" = "无私的观光客"
@@ -32,6 +32,3 @@ metadata/_custom_type_script = "uid://d1rstpchmbfdi"
 [node name="Roar" type="Node" parent="." node_paths=PackedStringArray("触发卡")]
 script = SubResource("GDScript_battlecry")
 "触发卡" = NodePath("..")
-metadata/_custom_type_script = "uid://bq8x7k9m2n4p0"
-
-

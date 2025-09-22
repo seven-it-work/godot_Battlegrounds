@@ -146,6 +146,7 @@ signal 酒馆刷新信号()
 signal 花费金币信号(消费金币数:int)
 signal 购买卡牌信号(购买卡牌:CardEntity)
 signal 随从失去圣盾信号(失去圣盾随从:CardEntity)
+signal 其他随从攻击前(攻击随从:BaseMinion,防御随从:BaseMinion)
 
 func 购买卡片(card:CardEntity)->bool:
 	var 花费=card.获取花费()
