@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://858x5330gmbi"]
+[gd_scene load_steps=4 format=3 uid="uid://byqy82r5yycfi"]
 
 [ext_resource type="PackedScene" uid="uid://c1s2h3xa4m35v" path="res://ui/操作UI/操作回合.tscn" id="1_tykny"]
 [ext_resource type="PackedScene" uid="uid://dotdr12rv651g" path="res://ui/战斗ui/FightUI.tscn" id="2_mgoj7"]
@@ -17,7 +17,8 @@ func _ready() -> void:
 	var array=[
 		\"执念诗心龙\",
 		\"执念诗心龙\",
-		\"执念诗心龙\",
+		\"咆哮聚群龙\",
+		\"咆哮聚群龙\",
 	]
 	for i in array:
 		var card=CardUtils.get_card(i,player)

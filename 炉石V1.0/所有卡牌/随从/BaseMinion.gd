@@ -181,6 +181,16 @@ func 获取带加成属性()->Vector2i:
 
 func 属性加成(data:AttributeBonus,是否永久:bool):
 	current_hp+=data.atk_hp.y
+	# 判断相邻是否存在执念诗心龙，存在且当前种族是龙 则为永久加成
+	if self.race.has(Enums.CardRace.龙):
+		var 相邻随从=ArrayUtils.get_neighboring_data(self,player.获取战场上的牌())
+		var 执念诗心龙倍率=0
+		for i in 相邻随从:
+			if i.名称=="执念诗心龙":
+				执念诗心龙倍率=maxi(执念诗心龙倍率,i.获取倍率())
+		if 执念诗心龙倍率>0:
+			data.atk_hp*=执念诗心龙倍率
+			是否永久=true
 	super.属性加成(data,是否永久)
 	player.随从属性加成信号.emit(self,data)
 
