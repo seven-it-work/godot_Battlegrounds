@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4p8"]
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7lam2n4p8"]
 
 [sub_resource type="GDScript" id="GDScript_1"]
 resource_name = "护植绿龙"
@@ -17,7 +17,7 @@ func 攻击其他随从(防御者:BaseMinion):
 func 触发最右边战吼():
 	# 获取战场上的所有随从
 	var 战场随从 = player.获取战场上的牌()
-	var 最右边随从 = null
+	var 最右边随从:BaseMinion = null
 	var 最右边位置 = -1
 	
 	# 找到最右边的随从
@@ -35,7 +35,7 @@ func 触发最右边战吼():
 	var 触发次数 = 获取倍率()  # 普通:1次, 金色:2次
 	for i in 触发次数:
 		for 战吼 in 最右边随从.战吼:
-			await 战吼.战吼执行(最右边随从)
+			await 战吼.战吼执行()
 	
 	print(\"护植绿龙：触发 \", 最右边随从.名称, \" 的战吼 \", 触发次数, \" 次\")
 "
@@ -51,5 +51,3 @@ str_id = "BG30_008"
 "glod_描述" = "在本随从攻击后，触发你最右边的[b]战吼[/b]，触发两次。"
 "等级" = 4
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-

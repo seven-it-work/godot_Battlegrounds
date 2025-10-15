@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4p6"]
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7lam2n4p6"]
 
 [sub_resource type="GDScript" id="GDScript_1"]
 resource_name = "奥术守护者卡雷苟斯"
@@ -15,7 +15,7 @@ func _on_战吼触发(触发卡牌:CardEntity):
 	
 	# 获取所有友方龙
 	var 友方龙列表 = player.获取战场上的牌().filter(func(item): 
-		return item is BaseMinion and Enums.CardRace.龙 in item.race and item != self
+		return item is BaseMinion and Enums.CardRace.龙 in item.race
 	)
 	
 	var 加成值 = Vector2i(1, 2) * 获取倍率()  # 普通:+1/+2, 金色:+2/+4
@@ -38,5 +38,3 @@ str_id = "BGS_041"
 "glod_描述" = "在你触发一个[b]战吼[/b]后，使你的龙获得+2/+4。"
 "等级" = 6
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-

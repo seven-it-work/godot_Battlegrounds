@@ -1,54 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq8x7k9m2n4p7"]
+[gd_scene load_steps=2 format=3 uid="uid://bq8x7lam2n4p7"]
 
 [sub_resource type="GDScript" id="GDScript_1"]
 resource_name = "执念诗心龙"
 script/source = "extends BaseMinion
-
-# 执念诗心龙：圣盾。相邻的龙可永久保留战斗阶段受到的你的附加效果
-# 这个效果比较复杂，需要在战斗阶段监听相邻龙的属性变化
-
-func 信号绑定():
-	# 监听战斗开始，为相邻龙添加效果保留标记
-	if !player.战斗开始信号.is_connected(_on_战斗开始):
-		player.战斗开始信号.connect(_on_战斗开始)
-
-func _on_战斗开始():
-	# 仅当在战场上时生效
-	if 卡片所在位置 != Enums.CardPosition.战场:
-		return
-	
-	# 获取相邻的龙
-	var 相邻龙 = 获取相邻龙()
-	for 龙 in 相邻龙:
-		# 为相邻龙添加效果保留标记
-		if !龙.has_meta(\"执念诗心龙标记\"):
-			龙.set_meta(\"执念诗心龙标记\", true)
-			龙.set_meta(\"执念诗心龙倍率\", 获取倍率())
-			print(\"执念诗心龙：为 \", 龙.名称, \" 添加效果保留标记\")
-
-func 获取相邻龙() -> Array[BaseMinion]:
-	var 相邻龙 = []
-	var 战场随从 = player.获取战场上的牌()
-	var 我的位置 = -1
-	
-	# 找到自己的位置
-	for i in range(战场随从.size()):
-		if 战场随从[i] == self:
-			我的位置 = i
-			break
-	
-	if 我的位置 == -1:
-		return 相邻龙
-	
-	# 检查左右相邻的龙
-	for 偏移 in [-1, 1]:
-		var 相邻位置 = 我的位置 + 偏移
-		if 相邻位置 >= 0 and 相邻位置 < 战场随从.size():
-			var 相邻随从 = 战场随从[相邻位置]
-			if 相邻随从 is BaseMinion and Enums.CardRace.龙 in 相邻随从.race:
-				相邻龙.append(相邻随从)
-	
-	return 相邻龙
+# todo 关键词 加成没有做哦
 "
 
 [node name="执念诗心龙" type="Node"]
@@ -63,5 +18,3 @@ str_id = "BG29_813"
 "glod_描述" = "[b]圣盾[/b]。相邻的龙在战斗阶段受到的你的附加效果翻倍，并可永久保留。"
 "等级" = 4
 metadata/_custom_type_script = "uid://d1rstpchmbfdi"
-
-
